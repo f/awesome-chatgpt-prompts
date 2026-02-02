@@ -1,269 +1,269 @@
-A good prompt gets the job done. An optimized prompt gets the job done efficiently—faster, cheaper, more consistently. This chapter teaches you how to systematically improve prompts across multiple dimensions.
+良いプロンプトは仕事を完了させます。最適化されたプロンプトは仕事を効率的に完了させます—より速く、より安く、より一貫して。この章では、複数の側面からプロンプトを体系的に改善する方法を学びます。
 
-<Callout type="tip" title="Try the Prompt Enhancer">
-Want to optimize your prompts automatically? Use our [Prompt Enhancer](/developers#enhancer) tool. It analyzes your prompt, applies optimization techniques, and shows you similar community prompts for inspiration.
+<Callout type="tip" title="Prompt Enhancerを試してみましょう">
+プロンプトを自動的に最適化したいですか？[Prompt Enhancer](/developers#enhancer)ツールをお使いください。プロンプトを分析し、最適化技術を適用し、インスピレーションを得るための類似したコミュニティプロンプトを表示します。
 </Callout>
 
-## The Optimization Trade-offs
+## 最適化のトレードオフ
 
-Every optimization involves trade-offs. Understanding these helps you make intentional choices:
-
-<InfoGrid items={[
-  { label: "Quality vs. Cost", description: "Higher quality often requires more tokens or better models", example: "Adding examples improves accuracy but increases token count", exampleType: "text", color: "blue" },
-  { label: "Speed vs. Quality", description: "Faster models may sacrifice some capability", example: "GPT-4 is smarter but slower than GPT-4o-mini", exampleType: "text", color: "purple" },
-  { label: "Consistency vs. Creativity", description: "Lower temperature = more predictable but less creative", example: "Temperature 0.2 for facts, 0.8 for brainstorming", exampleType: "text", color: "green" },
-  { label: "Simplicity vs. Robustness", description: "Edge case handling adds complexity", example: "Simple prompts fail on unusual inputs", exampleType: "text", color: "amber" }
-]} />
-
-## Measuring What Matters
-
-Before optimizing, define success. What does "better" mean for your use case?
+すべての最適化にはトレードオフが伴います。これらを理解することで、意図的な選択ができるようになります：
 
 <InfoGrid items={[
-  { label: "Accuracy", description: "How often is the output correct?", example: "90% of code suggestions compile without errors", exampleType: "text", color: "blue" },
-  { label: "Relevance", description: "Does it address what was actually asked?", example: "Response directly answers the question vs. tangents", exampleType: "text", color: "blue" },
-  { label: "Completeness", description: "Are all requirements covered?", example: "All 5 requested sections included in output", exampleType: "text", color: "blue" },
-  { label: "Latency", description: "How long until the response arrives?", example: "p50 < 2s, p95 < 5s for chat applications", exampleType: "text", color: "purple" },
-  { label: "Token Efficiency", description: "How many tokens for the same result?", example: "500 tokens vs. 1500 tokens for equivalent output", exampleType: "text", color: "purple" },
-  { label: "Consistency", description: "How similar are outputs for similar inputs?", example: "Same question gets structurally similar answers", exampleType: "text", color: "green" }
+  { label: "品質 vs. コスト", description: "高品質にはより多くのトークンやより優れたモデルが必要になることが多いです", example: "例を追加すると精度は向上しますが、トークン数が増加します", exampleType: "text", color: "blue" },
+  { label: "速度 vs. 品質", description: "高速なモデルは一部の能力を犠牲にする場合があります", example: "GPT-4はGPT-4o-miniより賢いですが、遅いです", exampleType: "text", color: "purple" },
+  { label: "一貫性 vs. 創造性", description: "温度が低い = より予測可能ですが、創造性が低下します", example: "事実には温度0.2、ブレインストーミングには0.8", exampleType: "text", color: "green" },
+  { label: "シンプルさ vs. 堅牢性", description: "エッジケースの処理は複雑さを増します", example: "シンプルなプロンプトは異常な入力で失敗します", exampleType: "text", color: "amber" }
 ]} />
 
-<Callout type="info" title="What Do p50 and p95 Mean?">
-Percentile metrics show response time distribution. **p50** (median) means 50% of requests are faster than this value. **p95** means 95% are faster—it catches slow outliers. If your p50 is 1s but p95 is 10s, most users are happy but 5% experience frustrating delays.
+## 重要な指標を測定する
+
+最適化の前に、成功を定義しましょう。あなたのユースケースにおいて「より良い」とは何を意味しますか？
+
+<InfoGrid items={[
+  { label: "精度", description: "出力はどれくらいの頻度で正確ですか？", example: "コード提案の90%がエラーなしでコンパイルされる", exampleType: "text", color: "blue" },
+  { label: "関連性", description: "実際に質問されたことに対応していますか？", example: "回答が質問に直接答えているか vs. 脱線しているか", exampleType: "text", color: "blue" },
+  { label: "完全性", description: "すべての要件がカバーされていますか？", example: "要求された5つのセクションすべてが出力に含まれている", exampleType: "text", color: "blue" },
+  { label: "レイテンシ", description: "回答が届くまでどれくらいかかりますか？", example: "チャットアプリケーションでp50 < 2秒、p95 < 5秒", exampleType: "text", color: "purple" },
+  { label: "トークン効率", description: "同じ結果を得るのに何トークン必要ですか？", example: "同等の出力に500トークン vs. 1500トークン", exampleType: "text", color: "purple" },
+  { label: "一貫性", description: "類似した入力に対する出力はどれくらい似ていますか？", example: "同じ質問に対して構造的に類似した回答が得られる", exampleType: "text", color: "green" }
+]} />
+
+<Callout type="info" title="p50とp95とは何ですか？">
+パーセンタイル指標は応答時間の分布を示します。**p50**（中央値）は、リクエストの50%がこの値より速いことを意味します。**p95**は95%がより速いことを意味し、遅い外れ値を捉えます。p50が1秒でp95が10秒の場合、ほとんどのユーザーは満足していますが、5%のユーザーはストレスを感じる遅延を経験しています。
 </Callout>
 
 <TryIt 
-  title="Define Your Success Metrics"
-  description="Use this template to clarify what you're optimizing for before making changes."
-  prompt={`Help me define success metrics for my prompt optimization.
+  title="成功指標を定義する"
+  description="変更を加える前に、何を最適化しているかを明確にするために、このテンプレートを使用してください。"
+  prompt={`プロンプト最適化の成功指標を定義するのを手伝ってください。
 
-**My use case**: \${useCase}
-**Current pain points**: \${painPoints}
+**私のユースケース**: \${useCase}
+**現在の問題点**: \${painPoints}
 
-For this use case, help me define:
+このユースケースについて、以下を定義するのを手伝ってください：
 
-1. **Primary metric**: What single metric matters most?
-2. **Secondary metrics**: What else should I track?
-3. **Acceptable trade-offs**: What can I sacrifice for the primary metric?
-4. **Red lines**: What quality level is unacceptable?
-5. **How to measure**: Practical ways to evaluate each metric`}
+1. **主要指標**: 最も重要な単一の指標は何ですか？
+2. **副次指標**: 他に何を追跡すべきですか？
+3. **許容できるトレードオフ**: 主要指標のために何を犠牲にできますか？
+4. **譲れない基準**: どの品質レベルが許容できませんか？
+5. **測定方法**: 各指標を評価する実用的な方法`}
 />
 
-## Token Optimization
+## トークン最適化
 
-Tokens cost money and add latency. Here's how to say the same thing with fewer tokens.
+トークンはコストがかかり、レイテンシを増加させます。ここでは、より少ないトークンで同じことを伝える方法を説明します。
 
-### The Compression Principle
+### 圧縮の原則
 
 <Compare 
-  before={{ label: "Verbose (67 tokens)", content: "I would like you to please help me with the following task. I need you to take the text that I'm going to provide below and create a summary of it. The summary should capture the main points and be concise. Please make sure to include all the important information. Here is the text:\n\n[text]" }}
-  after={{ label: "Concise (12 tokens)", content: "Summarize this text, capturing main points concisely:\n\n[text]" }}
+  before={{ label: "冗長（67トークン）", content: "I would like you to please help me with the following task. I need you to take the text that I'm going to provide below and create a summary of it. The summary should capture the main points and be concise. Please make sure to include all the important information. Here is the text:\n\n[text]" }}
+  after={{ label: "簡潔（12トークン）", content: "Summarize this text, capturing main points concisely:\n\n[text]" }}
 />
 
-**Same result, 82% fewer tokens.**
+**同じ結果で、82%のトークン削減。**
 
-### Token-Saving Techniques
+### トークン節約テクニック
 
 <InfoGrid items={[
-  { label: "Cut Pleasantries", description: "\"Please\" and \"Thank you\" add tokens without improving output", example: "\"Please summarize\" → \"Summarize\"", color: "green" },
-  { label: "Eliminate Redundancy", description: "Don't repeat yourself or state the obvious", example: "\"Write a summary that summarizes\" → \"Summarize\"", color: "green" },
-  { label: "Use Abbreviations", description: "Where meaning is clear, abbreviate", example: "\"for example\" → \"e.g.\"", color: "green" },
-  { label: "Reference by Position", description: "Point to content instead of repeating it", example: "\"the text above\" instead of re-quoting", color: "green" }
+  { label: "丁寧語を削除", description: "「Please」や「Thank you」は出力を改善することなくトークンを追加します", example: "\"Please summarize\" → \"Summarize\"", color: "green" },
+  { label: "冗長性を排除", description: "繰り返しや明白なことを述べないようにします", example: "\"Write a summary that summarizes\" → \"Summarize\"", color: "green" },
+  { label: "略語を使用", description: "意味が明確な場合は略語を使用します", example: "\"for example\" → \"e.g.\"", color: "green" },
+  { label: "位置で参照", description: "内容を繰り返す代わりに、位置で指し示します", example: "再引用する代わりに「the text above」", color: "green" }
 ]} />
 
 <TryIt 
-  title="Prompt Compressor"
-  description="Paste a verbose prompt to get a token-optimized version."
-  prompt={`Compress this prompt while preserving its meaning and effectiveness:
+  title="プロンプト圧縮ツール"
+  description="冗長なプロンプトを貼り付けて、トークン最適化版を取得します。"
+  prompt={`このプロンプトの意味と効果を保ちながら圧縮してください：
 
-Original prompt:
+元のプロンプト：
 "\${verbosePrompt}"
 
-Instructions:
-1. Remove unnecessary pleasantries and filler words
-2. Eliminate redundancy
-3. Use concise phrasing
-4. Keep all essential instructions and constraints
-5. Maintain clarity—don't sacrifice understanding for brevity
+指示：
+1. 不要な丁寧語やフィラーワードを削除する
+2. 冗長性を排除する
+3. 簡潔な表現を使用する
+4. すべての重要な指示と制約を保持する
+5. 明確さを維持する—簡潔さのために理解を犠牲にしない
 
-Provide:
-- **Compressed version**: The optimized prompt
-- **Token reduction**: Estimated percentage saved
-- **What was cut**: Brief explanation of what was removed and why it was safe to remove`}
+以下を提供してください：
+- **圧縮版**: 最適化されたプロンプト
+- **トークン削減**: 推定節約率
+- **削除したもの**: 何を削除し、なぜ削除しても安全だったかの簡単な説明`}
 />
 
-## Quality Optimization
+## 品質最適化
 
-Sometimes you need better outputs, not cheaper ones. Here's how to improve quality.
+より安いものではなく、より良い出力が必要な場合もあります。ここでは品質を向上させる方法を説明します。
 
-### Accuracy Boosters
+### 精度向上テクニック
 
 <InfoGrid items={[
-  { label: "Add Verification", description: "Ask the model to check its own work", example: "\"...then verify your answer is correct\"", color: "blue" },
-  { label: "Request Confidence", description: "Make uncertainty explicit", example: "\"Rate your confidence 1-10 and explain any uncertainty\"", color: "blue" },
-  { label: "Multiple Approaches", description: "Get different perspectives, then choose", example: "\"Provide 3 approaches and recommend the best one\"", color: "blue" },
-  { label: "Explicit Reasoning", description: "Force step-by-step thinking", example: "\"Think step by step and show your reasoning\"", color: "blue" }
+  { label: "検証を追加", description: "モデルに自身の作業をチェックさせます", example: "\"...then verify your answer is correct\"", color: "blue" },
+  { label: "確信度を要求", description: "不確実性を明示的にします", example: "\"Rate your confidence 1-10 and explain any uncertainty\"", color: "blue" },
+  { label: "複数のアプローチ", description: "異なる視点を得てから選択します", example: "\"Provide 3 approaches and recommend the best one\"", color: "blue" },
+  { label: "明示的な推論", description: "段階的な思考を強制します", example: "\"Think step by step and show your reasoning\"", color: "blue" }
 ]} />
 
-### Consistency Boosters
+### 一貫性向上テクニック
 
 <InfoGrid items={[
-  { label: "Detailed Format Specs", description: "Show exactly what output should look like", example: "Include a template or schema", exampleType: "text", color: "purple" },
-  { label: "Few-Shot Examples", description: "Provide 2-3 examples of ideal output", example: "\"Here's what good looks like: [examples]\"", color: "purple" },
-  { label: "Lower Temperature", description: "Reduce randomness for more predictable output", example: "Temperature 0.3-0.5 for consistent results", exampleType: "text", color: "purple" },
-  { label: "Output Validation", description: "Add a validation step for critical fields", example: "\"Verify all required fields are present\"", color: "purple" }
+  { label: "詳細なフォーマット仕様", description: "出力がどのように見えるべきかを正確に示します", example: "テンプレートやスキーマを含める", exampleType: "text", color: "purple" },
+  { label: "Few-Shotの例", description: "理想的な出力の2〜3個の例を提供します", example: "\"Here's what good looks like: [examples]\"", color: "purple" },
+  { label: "温度を下げる", description: "より予測可能な出力のためにランダム性を減らします", example: "一貫した結果には温度0.3〜0.5", exampleType: "text", color: "purple" },
+  { label: "出力検証", description: "重要なフィールドに検証ステップを追加します", example: "\"Verify all required fields are present\"", color: "purple" }
 ]} />
 
 <TryIt 
-  title="Quality Enhancer"
-  description="Add quality-improving elements to your prompt."
-  prompt={`Enhance this prompt for higher quality outputs:
+  title="品質向上ツール"
+  description="プロンプトに品質向上要素を追加します。"
+  prompt={`このプロンプトをより高品質な出力のために強化してください：
 
-Original prompt:
+元のプロンプト：
 "\${originalPrompt}"
 
-**What quality issue I'm seeing**: \${qualityIssue}
+**見られる品質の問題**: \${qualityIssue}
 
-Add appropriate quality boosters:
-1. If accuracy is the issue → add verification steps
-2. If consistency is the issue → add format specifications or examples
-3. If relevance is the issue → add context and constraints
-4. If completeness is the issue → add explicit requirements
+適切な品質向上要素を追加してください：
+1. 精度が問題の場合 → 検証ステップを追加
+2. 一貫性が問題の場合 → フォーマット仕様や例を追加
+3. 関連性が問題の場合 → コンテキストと制約を追加
+4. 完全性が問題の場合 → 明示的な要件を追加
 
-Provide the enhanced prompt with explanations for each addition.`}
+各追加の説明とともに、強化されたプロンプトを提供してください。`}
 />
 
-## Latency Optimization
+## レイテンシ最適化
 
-When speed matters, every millisecond counts.
+速度が重要な場合、すべてのミリ秒が重要です。
 
-### Model Selection by Speed Need
-
-<InfoGrid items={[
-  { label: "Real-time (< 500ms)", description: "Use smallest effective model + aggressive caching", example: "GPT-4o-mini, Claude Haiku, cached responses", exampleType: "text", color: "red" },
-  { label: "Interactive (< 2s)", description: "Fast models, streaming enabled", example: "GPT-4o-mini with streaming", exampleType: "text", color: "amber" },
-  { label: "Tolerant (< 10s)", description: "Mid-tier models, balance quality/speed", example: "GPT-4o, Claude Sonnet", exampleType: "text", color: "green" },
-  { label: "Async/Batch", description: "Use best model, process in background", example: "GPT-4, Claude Opus for offline processing", exampleType: "text", color: "blue" }
-]} />
-
-### Speed Techniques
+### 速度要件によるモデル選択
 
 <InfoGrid items={[
-  { label: "Shorter Prompts", description: "Fewer input tokens = faster processing", example: "Compress prompts, remove unnecessary context", exampleType: "text", color: "cyan" },
-  { label: "Limit Output", description: "Set max_tokens to prevent runaway responses", example: "max_tokens: 500 for summaries", exampleType: "text", color: "cyan" },
-  { label: "Use Streaming", description: "Get first tokens faster, better UX", example: "Stream for any response > 100 tokens", exampleType: "text", color: "cyan" },
-  { label: "Cache Aggressively", description: "Don't recompute identical queries", example: "Cache common questions, template outputs", exampleType: "text", color: "cyan" }
+  { label: "リアルタイム（< 500ms）", description: "最小限の効果的なモデル + 積極的なキャッシングを使用", example: "GPT-4o-mini、Claude Haiku、キャッシュされた応答", exampleType: "text", color: "red" },
+  { label: "インタラクティブ（< 2秒）", description: "高速モデル、ストリーミング有効", example: "ストリーミング付きのGPT-4o-mini", exampleType: "text", color: "amber" },
+  { label: "許容範囲（< 10秒）", description: "中間層モデル、品質と速度のバランス", example: "GPT-4o、Claude Sonnet", exampleType: "text", color: "green" },
+  { label: "非同期/バッチ", description: "最良のモデルを使用し、バックグラウンドで処理", example: "オフライン処理にGPT-4、Claude Opus", exampleType: "text", color: "blue" }
 ]} />
 
-## Cost Optimization
+### 高速化テクニック
 
-At scale, small savings multiply into significant budget impact.
+<InfoGrid items={[
+  { label: "短いプロンプト", description: "入力トークンが少ない = 処理が速い", example: "プロンプトを圧縮し、不要なコンテキストを削除", exampleType: "text", color: "cyan" },
+  { label: "出力を制限", description: "暴走する応答を防ぐためにmax_tokensを設定", example: "要約にはmax_tokens: 500", exampleType: "text", color: "cyan" },
+  { label: "ストリーミングを使用", description: "最初のトークンをより速く取得し、UXを向上", example: "100トークン以上の応答にはストリーミング", exampleType: "text", color: "cyan" },
+  { label: "積極的にキャッシュ", description: "同一のクエリを再計算しない", example: "よくある質問やテンプレート出力をキャッシュ", exampleType: "text", color: "cyan" }
+]} />
 
-### Understanding Costs
+## コスト最適化
 
-Use this calculator to estimate your API costs across different models:
+大規模では、小さな節約が大きな予算への影響に拡大します。
+
+### コストを理解する
+
+この計算機を使用して、異なるモデル間でのAPIコストを見積もってください：
 
 <CostCalculatorDemo />
 
-### Cost Reduction Strategies
+### コスト削減戦略
 
 <InfoGrid items={[
-  { label: "Model Routing", description: "Use expensive models only when needed", example: "Simple questions → GPT-4o-mini, Complex → GPT-4", exampleType: "text", color: "green" },
-  { label: "Prompt Efficiency", description: "Shorter prompts = lower cost per request", example: "Cut 50% of tokens = 50% input cost savings", exampleType: "text", color: "green" },
-  { label: "Output Control", description: "Limit response length when full detail isn't needed", example: "\"Answer in 2-3 sentences\" vs. unlimited", color: "green" },
-  { label: "Batching", description: "Combine related queries into single requests", example: "Analyze 10 items in one prompt vs. 10 separate calls", exampleType: "text", color: "green" },
-  { label: "Pre-filtering", description: "Don't send requests that don't need AI", example: "Keyword matching before expensive classification", exampleType: "text", color: "green" }
+  { label: "モデルルーティング", description: "高価なモデルは必要な時だけ使用", example: "シンプルな質問 → GPT-4o-mini、複雑なもの → GPT-4", exampleType: "text", color: "green" },
+  { label: "プロンプト効率", description: "短いプロンプト = リクエストあたりのコストが低い", example: "トークンを50%削減 = 入力コスト50%節約", exampleType: "text", color: "green" },
+  { label: "出力制御", description: "完全な詳細が必要ない場合は応答長を制限", example: "「2〜3文で回答」vs. 無制限", color: "green" },
+  { label: "バッチング", description: "関連するクエリを単一のリクエストにまとめる", example: "10個の項目を1つのプロンプトで分析 vs. 10回の個別呼び出し", exampleType: "text", color: "green" },
+  { label: "事前フィルタリング", description: "AIが必要ないリクエストは送信しない", example: "高価な分類の前にキーワードマッチング", exampleType: "text", color: "green" }
 ]} />
 
-## The Optimization Loop
+## 最適化ループ
 
-Optimization is iterative. Here's a systematic process:
+最適化は反復的なプロセスです。ここに体系的なプロセスを示します：
 
-### Step 1: Establish Baseline
+### ステップ1：ベースラインを確立する
 
-You can't improve what you don't measure. Before changing anything, document your starting point rigorously.
+測定しないものは改善できません。何かを変更する前に、出発点を厳密に文書化してください。
 
 <InfoGrid items={[
-  { label: "Prompt Documentation", description: "Save the exact prompt text, including system prompts and any templates", example: "Version control your prompts like code", exampleType: "text", color: "blue" },
-  { label: "Test Set", description: "Create 20-50 representative inputs that cover common cases and edge cases", example: "Include easy, medium, and hard examples", exampleType: "text", color: "blue" },
-  { label: "Quality Metrics", description: "Score each output against your success criteria", example: "Accuracy %, relevance score, format compliance", exampleType: "text", color: "purple" },
-  { label: "Performance Metrics", description: "Measure tokens and timing for each test case", example: "Avg input: 450 tokens, Avg output: 200 tokens, p50 latency: 1.2s", exampleType: "text", color: "purple" }
+  { label: "プロンプトの文書化", description: "システムプロンプトやテンプレートを含む正確なプロンプトテキストを保存", example: "プロンプトをコードのようにバージョン管理する", exampleType: "text", color: "blue" },
+  { label: "テストセット", description: "一般的なケースとエッジケースをカバーする20〜50個の代表的な入力を作成", example: "簡単、中程度、難しい例を含める", exampleType: "text", color: "blue" },
+  { label: "品質指標", description: "成功基準に対して各出力をスコアリング", example: "精度%、関連性スコア、フォーマット準拠", exampleType: "text", color: "purple" },
+  { label: "パフォーマンス指標", description: "各テストケースのトークンとタイミングを測定", example: "平均入力: 450トークン、平均出力: 200トークン、p50レイテンシ: 1.2秒", exampleType: "text", color: "purple" }
 ]} />
 
 <TryIt 
-  title="Baseline Documentation Template"
-  description="Use this to create a comprehensive baseline before optimizing."
-  prompt={`Create a baseline documentation for my prompt optimization project.
+  title="ベースライン文書化テンプレート"
+  description="最適化前に包括的なベースラインを作成するために使用してください。"
+  prompt={`プロンプト最適化プロジェクトのベースライン文書を作成してください。
 
-**Current prompt**:
+**現在のプロンプト**：
 "\${currentPrompt}"
 
-**What the prompt does**: \${promptPurpose}
+**プロンプトの目的**: \${promptPurpose}
 
-**Current issues I'm seeing**: \${currentIssues}
+**現在見られる問題**: \${currentIssues}
 
-Generate a baseline documentation template with:
+以下を含むベースライン文書テンプレートを生成してください：
 
-1. **Prompt Snapshot**: The exact prompt text (for version control)
+1. **プロンプトスナップショット**: 正確なプロンプトテキスト（バージョン管理用）
 
-2. **Test Cases**: Suggest 10 representative test inputs I should use, covering:
-   - 3 typical/easy cases
-   - 4 medium complexity cases  
-   - 3 edge cases or difficult inputs
+2. **テストケース**: 使用すべき10個の代表的なテスト入力を提案してください：
+   - 3個の典型的/簡単なケース
+   - 4個の中程度の複雑さのケース
+   - 3個のエッジケースまたは難しい入力
 
-3. **Metrics to Track**:
-   - Quality metrics specific to this use case
-   - Efficiency metrics (tokens, latency)
-   - How to score each metric
+3. **追跡する指標**：
+   - このユースケースに特有の品質指標
+   - 効率指標（トークン、レイテンシ）
+   - 各指標のスコアリング方法
 
-4. **Baseline Hypothesis**: What do I expect the current performance to be?
+4. **ベースライン仮説**: 現在のパフォーマンスはどの程度だと予想しますか？
 
-5. **Success Criteria**: What numbers would make me satisfied with optimization?`}
+5. **成功基準**: どの数値なら最適化に満足できますか？`}
 />
 
-### Step 2: Form a Hypothesis
+### ステップ2：仮説を立てる
 
 <Compare 
-  before={{ label: "Vague goal", content: "I want to make my prompt better." }}
-  after={{ label: "Testable hypothesis", content: "If I add 2 few-shot examples, accuracy will improve from 75% to 85% because the model will learn the expected pattern." }}
+  before={{ label: "曖昧な目標", content: "プロンプトをより良くしたい。" }}
+  after={{ label: "テスト可能な仮説", content: "2つのfew-shot例を追加すれば、モデルが期待されるパターンを学習するため、精度が75%から85%に向上するだろう。" }}
 />
 
-### Step 3: Test One Change
+### ステップ3：1つの変更をテストする
 
-Change one thing at a time. Run both versions on the same test inputs. Measure the metrics that matter.
+一度に1つのことだけを変更します。両方のバージョンを同じテスト入力で実行します。重要な指標を測定します。
 
-### Step 4: Analyze and Decide
+### ステップ4：分析して決定する
 
-Did it work? Keep the change. Did it hurt? Revert. Was it neutral? Revert (simpler is better).
+うまくいきましたか？変更を維持します。悪化しましたか？元に戻します。中立でしたか？元に戻します（シンプルな方が良いです）。
 
-### Step 5: Repeat
+### ステップ5：繰り返す
 
-Generate new hypotheses based on what you learned. Keep iterating until you hit your targets or reach diminishing returns.
+学んだことに基づいて新しい仮説を生成します。目標に到達するか、収穫逓減に達するまで反復を続けます。
 
-## Optimization Checklist
+## 最適化チェックリスト
 
 <Checklist 
-  title="Before Deploying an Optimized Prompt"
+  title="最適化されたプロンプトをデプロイする前に"
   items={[
-    { text: "Defined clear success metrics" },
-    { text: "Measured baseline performance" },
-    { text: "Tested changes on representative inputs" },
-    { text: "Verified quality didn't regress" },
-    { text: "Checked edge case handling" },
-    { text: "Calculated cost at expected scale" },
-    { text: "Tested latency under load" },
-    { text: "Documented what changed and why" }
+    { text: "明確な成功指標を定義した" },
+    { text: "ベースラインパフォーマンスを測定した" },
+    { text: "代表的な入力で変更をテストした" },
+    { text: "品質が低下していないことを確認した" },
+    { text: "エッジケースの処理を確認した" },
+    { text: "予想される規模でのコストを計算した" },
+    { text: "負荷時のレイテンシをテストした" },
+    { text: "何を変更し、なぜ変更したかを文書化した" }
   ]}
 />
 
 <Quiz 
-  question="You have a prompt that works well but costs too much at scale. What's the FIRST thing you should do?"
+  question="うまく機能するプロンプトがありますが、大規模ではコストがかかりすぎます。最初にすべきことは何ですか？"
   options={[
-    "Switch to a cheaper model immediately",
-    "Remove words from the prompt to reduce tokens",
-    "Measure which part of the prompt is using the most tokens",
-    "Add caching for all requests"
+    "すぐに安いモデルに切り替える",
+    "トークンを減らすためにプロンプトから単語を削除する",
+    "プロンプトのどの部分が最も多くのトークンを使用しているか測定する",
+    "すべてのリクエストにキャッシュを追加する"
   ]}
   correctIndex={2}
-  explanation="Before optimizing, measure. You need to understand where the tokens are going before you can effectively reduce them. The prompt might have unnecessary context, verbose instructions, or generate longer outputs than needed. Measurement tells you where to focus your optimization efforts."
+  explanation="最適化の前に、測定してください。トークンを効果的に削減するには、トークンがどこに使われているかを理解する必要があります。プロンプトには不要なコンテキスト、冗長な指示、または必要以上に長い出力が含まれているかもしれません。測定によって、最適化の取り組みをどこに集中すべきかがわかります。"
 />

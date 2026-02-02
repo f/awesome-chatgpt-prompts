@@ -1,32 +1,32 @@
-Few-shot learning is one of the most powerful prompting techniques. By providing examples of what you want, you can teach the model complex tasks without any fine-tuning.
+Few-shot learningは、最も強力なプロンプティング技術の一つです。欲しい結果の例を提示することで、ファインチューニングなしでモデルに複雑なタスクを教えることができます。
 
-<Callout type="info" title="Learn by Example">
-Just like humans learn by seeing examples, AI models can learn patterns from the examples you provide in your prompt.
+<Callout type="info" title="例から学ぶ">
+人間が例を見て学ぶように、AIモデルもプロンプトで提供された例からパターンを学習することができます。
 </Callout>
 
-## What is Few-Shot Learning?
+## Few-Shot Learningとは？
 
-Few-shot learning shows the model examples of input-output pairs before asking it to perform the same task. The model learns the pattern from your examples and applies it to new inputs.
+Few-shot learningは、タスクを実行させる前に、入力と出力のペアの例をモデルに示す手法です。モデルは提供された例からパターンを学習し、新しい入力に適用します。
 
 <Compare 
   before={{ 
-    label: "Zero-Shot (No Examples)", 
-    content: `Classify this review as positive or negative:
+    label: "Zero-Shot（例なし）", 
+    content: `このレビューを肯定的か否定的かに分類してください：
 
-"The battery lasts forever but the screen is too dim."
+「バッテリーは長持ちしますが、画面が暗すぎます。」
 
-→ Model may be inconsistent with edge cases` 
+→ モデルはエッジケースで一貫性を欠く可能性があります` 
   }}
   after={{ 
-    label: "Few-Shot (With Examples)", 
-    content: `"Love it!" → Positive
-"Terrible quality" → Negative  
-"Good but expensive" → Mixed
+    label: "Few-Shot（例あり）", 
+    content: `「最高です！」→ 肯定的
+「品質がひどい」→ 否定的  
+「良いけど高い」→ 混合
 
-Now classify:
-"The battery lasts forever but the screen is too dim."
+次を分類してください：
+「バッテリーは長持ちしますが、画面が暗すぎます。」
 
-→ Model learns your exact categories` 
+→ モデルはあなたの正確なカテゴリを学習します` 
   }}
 />
 
@@ -49,430 +49,431 @@ Now classify:
   </div>
 </div>
 
-## Why Examples Work
+## 例が効果的な理由
 
 <FewShotDemo />
 
-Examples communicate:
-- **Format**: How output should be structured
-- **Style**: Tone, length, vocabulary
-- **Logic**: The reasoning pattern to follow
-- **Edge cases**: How to handle special situations
+例は以下を伝えます：
+- **フォーマット**：出力の構造
+- **スタイル**：トーン、長さ、語彙
+- **ロジック**：従うべき推論パターン
+- **エッジケース**：特殊な状況の処理方法
 
-## Basic Few-Shot Pattern
+## 基本的なFew-Shotパターン
 
-The fundamental structure of few-shot prompting follows a simple pattern: show examples, then ask for the new task. Consistency in formatting between examples is crucial. The model learns from the pattern you establish.
+Few-shotプロンプティングの基本構造はシンプルなパターンに従います：例を示してから、新しいタスクを依頼します。例の間でフォーマットを一貫させることが重要です。モデルはあなたが確立したパターンから学習します。
 
 ```
-[Example 1]
-Input: [input 1]
-Output: [output 1]
+[例 1]
+入力: [入力 1]
+出力: [出力 1]
 
-[Example 2]
-Input: [input 2]
-Output: [output 2]
+[例 2]
+入力: [入力 2]
+出力: [出力 2]
 
-[Example 3]
-Input: [input 3]
-Output: [output 3]
+[例 3]
+入力: [入力 3]
+出力: [出力 3]
 
-Now do this one:
-Input: [new input]
-Output:
+次を実行してください：
+入力: [新しい入力]
+出力:
 ```
 
-## Few-Shot for Classification
+## 分類のためのFew-Shot
 
-Classification is one of the strongest use cases for few-shot learning. By showing examples of each category, you define the boundaries between classes more precisely than instructions alone could achieve.
+分類はFew-shot learningの最も強力なユースケースの一つです。各カテゴリの例を示すことで、指示だけでは達成できないほど正確にクラス間の境界を定義できます。
 
-### Sentiment Analysis
+### 感情分析
 
-<Callout type="info" title="What is Sentiment Analysis?">
-Sentiment analysis classifies text by emotional tone: positive, negative, neutral, or mixed. It's widely used for customer feedback, social media monitoring, and brand perception tracking.
+<Callout type="info" title="感情分析とは？">
+感情分析は、テキストを感情的なトーンによって分類します：肯定的、否定的、中立的、または混合。顧客フィードバック、ソーシャルメディアモニタリング、ブランド認知追跡などで広く使用されています。
 </Callout>
 
-Sentiment classification benefits from showing examples of each sentiment type, especially edge cases like "mixed" sentiment that might be ambiguous.
+感情分類は、各感情タイプの例を示すことで効果が上がります。特に「混合」感情のような曖昧なエッジケースに有効です。
 
-<TryIt compact prompt={`Classify the sentiment of these customer reviews.
+<TryIt compact prompt={`これらの顧客レビューの感情を分類してください。
 
-Review: "This product exceeded all my expectations! Will buy again."
-Sentiment: Positive
+レビュー: 「この製品は期待をはるかに超えました！また買います。」
+感情: 肯定的
 
-Review: "Arrived broken and customer service was unhelpful."
-Sentiment: Negative
+レビュー: 「壊れた状態で届き、カスタマーサービスも役に立ちませんでした。」
+感情: 否定的
 
-Review: "It works fine, nothing special but does the job."
-Sentiment: Neutral
+レビュー: 「普通に動きます。特別なことはありませんが、役目は果たします。」
+感情: 中立的
 
-Review: "The quality is amazing but shipping took forever."
-Sentiment: Mixed
+レビュー: 「品質は素晴らしいですが、配送に時間がかかりすぎました。」
+感情: 混合
 
-Now classify:
-Review: "Love the design but the battery life is disappointing."
-Sentiment:`} />
+次を分類してください：
+レビュー: 「デザインは気に入っていますが、バッテリー寿命が残念です。」
+感情:`} />
 
-### Topic Classification
+### トピック分類
 
-For multi-class categorization, include at least one example per category. This helps the model understand your specific taxonomy, which may differ from its default understanding.
+マルチクラス分類では、各カテゴリに少なくとも1つの例を含めてください。これにより、モデルのデフォルトの理解とは異なる可能性のある、あなた特有の分類体系を理解させることができます。
 
-<TryIt compact prompt={`Categorize these support tickets.
+<TryIt compact prompt={`これらのサポートチケットを分類してください。
 
-Ticket: "I can't log into my account, password reset not working"
-Category: Authentication
+チケット: 「アカウントにログインできません。パスワードリセットも機能しません」
+カテゴリ: 認証
 
-Ticket: "How do I upgrade to the premium plan?"
-Category: Billing
+チケット: 「プレミアムプランへのアップグレード方法を教えてください」
+カテゴリ: 請求
 
-Ticket: "The app crashes when I try to export data"
-Category: Bug Report
+チケット: 「データをエクスポートしようとするとアプリがクラッシュします」
+カテゴリ: バグ報告
 
-Ticket: "Can you add dark mode to the mobile app?"
-Category: Feature Request
+チケット: 「モバイルアプリにダークモードを追加できますか？」
+カテゴリ: 機能リクエスト
 
-Now categorize:
-Ticket: "My payment was declined but I see the charge on my card"
-Category:`} />
+次を分類してください：
+チケット: 「支払いが拒否されましたが、カードには請求が表示されています」
+カテゴリ:`} />
 
-## Few-Shot for Transformation
+## 変換のためのFew-Shot
 
-Transformation tasks convert input from one form to another while preserving meaning. Examples are essential here because they define exactly what "transformation" means for your use case.
+変換タスクは、意味を保持しながら入力を別の形式に変換します。例はここで不可欠です。なぜなら、あなたのユースケースにおいて「変換」が何を意味するかを正確に定義するからです。
 
-### Text Rewriting
+### テキストの書き換え
 
-Style transformation requires examples that show the exact tone shift you want. Abstract instructions like "make it professional" are interpreted differently. Examples make it concrete.
+スタイル変換には、希望するトーンの変化を正確に示す例が必要です。「プロフェッショナルにする」のような抽象的な指示は、異なる解釈をされます。例があれば具体的になります。
 
-<TryIt compact prompt={`Rewrite these sentences in a professional tone.
+<TryIt compact prompt={`これらの文をプロフェッショナルなトーンに書き換えてください。
 
-Casual: "Hey, just wanted to check if you got my email?"
-Professional: "I wanted to follow up regarding my previous email."
+カジュアル: 「ねえ、私のメール届いたか確認したかっただけなんだけど？」
+プロフェッショナル: 「先日お送りしたメールについて、確認のためご連絡させていただきました。」
 
-Casual: "This is super important and needs to be done ASAP!"
-Professional: "This matter requires urgent attention and prompt action."
+カジュアル: 「これ超重要で、今すぐやらなきゃいけないんだ！」
+プロフェッショナル: 「この件は緊急の対応が必要であり、迅速な処置をお願いいたします。」
 
-Casual: "Sorry for the late reply, been swamped!"
-Professional: "I apologize for the delayed response. I've had a particularly demanding schedule."
+カジュアル: 「返信遅れてごめん、忙しすぎて！」
+プロフェッショナル: 「ご返信が遅れまして申し訳ございません。多忙を極めておりました。」
 
-Now rewrite:
-Casual: "Can't make it to the meeting, something came up."
-Professional:`} />
+次を書き換えてください：
+カジュアル: 「ミーティング行けない、ちょっと用事ができた。」
+プロフェッショナル:`} />
 
-### Format Conversion
+### フォーマット変換
 
-Format conversion tasks benefit from examples showing edge cases and ambiguous inputs. The model learns your specific conventions for handling tricky cases.
+フォーマット変換タスクは、エッジケースや曖昧な入力を示す例があると効果的です。モデルは、扱いにくいケースに対するあなた特有の規則を学習します。
 
-<TryIt compact prompt={`Convert these natural language dates to ISO format.
+<TryIt compact prompt={`これらの自然言語の日付をISO形式に変換してください。
 
-Input: "next Tuesday"
-Output: 2024-01-16 (assuming today is 2024-01-11, Thursday)
+入力: 「来週の火曜日」
+出力: 2024-01-16（今日が2024-01-11木曜日の場合）
 
-Input: "the day after tomorrow"
-Output: 2024-01-13
+入力: 「明後日」
+出力: 2024-01-13
 
-Input: "last day of this month"
-Output: 2024-01-31
+入力: 「今月末」
+出力: 2024-01-31
 
-Input: "two weeks from now"
-Output: 2024-01-25
+入力: 「2週間後」
+出力: 2024-01-25
 
-Now convert:
-Input: "the first Monday of next month"
-Output:`} />
+次を変換してください：
+入力: 「来月の最初の月曜日」
+出力:`} />
 
-## Few-Shot for Generation
+## 生成のためのFew-Shot
 
-Generation tasks create new content following a learned pattern. Examples establish length, structure, tone, and what details to highlight. These are hard to specify in instructions alone.
+生成タスクは、学習したパターンに従って新しいコンテンツを作成します。例は、長さ、構造、トーン、強調すべき詳細を確立します。これらは指示だけでは指定しにくいものです。
 
-### Product Descriptions
+### 製品説明
 
-Marketing copy benefits enormously from examples because they capture brand voice, feature emphasis, and persuasive techniques that are difficult to describe abstractly.
+マーケティングコピーは、例があると非常に効果的です。なぜなら、抽象的に説明することが難しいブランドボイス、機能の強調、説得テクニックを捉えることができるからです。
 
-<TryIt compact prompt={`Write product descriptions in this style:
+<TryIt compact prompt={`このスタイルで製品説明を書いてください：
 
-Product: Wireless Bluetooth Headphones
-Description: Immerse yourself in crystal-clear sound with our lightweight wireless headphones. Featuring 40-hour battery life, active noise cancellation, and plush memory foam ear cushions for all-day comfort.
+製品: ワイヤレスBluetoothヘッドフォン
+説明: クリスタルクリアなサウンドに包まれる、軽量ワイヤレスヘッドフォン。40時間のバッテリー寿命、アクティブノイズキャンセリング、そしてふかふかのメモリーフォームイヤークッションで、一日中快適に過ごせます。
 
-Product: Stainless Steel Water Bottle
-Description: Stay hydrated in style with our double-walled insulated bottle. Keeps drinks cold for 24 hours or hot for 12. Features a leak-proof lid and fits standard cup holders.
+製品: ステンレス製ウォーターボトル
+説明: スタイリッシュに水分補給。二重壁断熱構造のボトルは、冷たいドリンクを24時間、温かいドリンクを12時間キープ。漏れ防止の蓋と標準的なカップホルダーに収まるサイズが特徴です。
 
-Product: Ergonomic Office Chair
-Description: Transform your workspace with our adjustable ergonomic chair. Breathable mesh back, lumbar support, and 360° swivel combine to keep you comfortable during long work sessions.
+製品: エルゴノミックオフィスチェア
+説明: 調節可能なエルゴノミックチェアでワークスペースを変革。通気性のあるメッシュバック、ランバーサポート、360°スイベルの組み合わせで、長時間の作業でも快適に過ごせます。
 
-Now write:
-Product: Portable Phone Charger
-Description:`} />
+次を書いてください：
+製品: ポータブル電話充電器
+説明:`} />
 
-### Code Documentation
+### コードドキュメンテーション
 
-<Callout type="info" title="Why Document Code?">
-Good documentation explains what code does, its parameters, return values, and usage examples. Consistent docstrings enable auto-generated API docs and help IDEs provide better code completion.
+<Callout type="info" title="なぜコードをドキュメント化するのか？">
+良いドキュメンテーションは、コードが何をするか、パラメータ、戻り値、使用例を説明します。一貫したdocstringにより、自動生成されるAPIドキュメントが可能になり、IDEがより良いコード補完を提供できるようになります。
 </Callout>
 
-Documentation style varies widely between projects. Examples teach your specific format, what to include (args, returns, examples), and the level of detail expected.
+ドキュメンテーションのスタイルはプロジェクトによって大きく異なります。例は、あなた特有のフォーマット、含めるべき内容（引数、戻り値、例）、期待される詳細レベルを教えます。
 
-<TryIt compact prompt={`Write documentation comments for these functions:
+<TryIt compact prompt={`これらの関数のドキュメンテーションコメントを書いてください：
 
-Function:
+関数:
 def calculate_bmi(weight_kg, height_m):
     return weight_kg / (height_m ** 2)
 
-Documentation:
+ドキュメンテーション:
 """
-Calculate Body Mass Index (BMI) from weight and height.
+体重と身長からBMI（ボディマス指数）を計算します。
 
 Args:
-    weight_kg (float): Weight in kilograms
-    height_m (float): Height in meters
+    weight_kg (float): 体重（キログラム）
+    height_m (float): 身長（メートル）
 
 Returns:
-    float: BMI value (weight/height²)
+    float: BMI値（体重/身長²）
 
 Example:
     >>> calculate_bmi(70, 1.75)
     22.86
 """
 
-Now document:
-Function:
+次をドキュメント化してください：
+関数:
 def is_palindrome(text):
     cleaned = ''.join(c.lower() for c in text if c.isalnum())
     return cleaned == cleaned[::-1]
 
-Documentation:`} />
+ドキュメンテーション:`} />
 
-## Few-Shot for Extraction
+## 抽出のためのFew-Shot
 
-Extraction tasks pull structured information from unstructured text. Examples define which entities matter, how to format output, and how to handle cases where information is missing or ambiguous.
+抽出タスクは、非構造化テキストから構造化された情報を取り出します。例は、どのエンティティが重要か、出力のフォーマット方法、情報が欠落または曖昧な場合の処理方法を定義します。
 
-### Entity Extraction
+### エンティティ抽出
 
-<Callout type="info" title="What is Named Entity Recognition?">
-Named Entity Recognition (NER) identifies and classifies named entities in text into categories like persons, organizations, locations, dates, and products. It's fundamental for information retrieval and knowledge graphs.
+<Callout type="info" title="固有表現認識とは？">
+固有表現認識（NER）は、テキスト内の固有表現を識別し、人物、組織、場所、日付、製品などのカテゴリに分類します。情報検索や知識グラフの構築に不可欠な技術です。
 </Callout>
 
-NER benefits from examples showing your specific entity types and how to handle entities that could fit multiple categories.
+NERは、あなた特有のエンティティタイプと、複数のカテゴリに該当しうるエンティティの処理方法を示す例があると効果的です。
 
-<TryIt compact prompt={`Extract named entities from these sentences.
+<TryIt compact prompt={`これらの文から固有表現を抽出してください。
 
-Text: "Apple CEO Tim Cook announced the iPhone 15 in Cupertino."
-Entities:
-- COMPANY: Apple
-- PERSON: Tim Cook
-- PRODUCT: iPhone 15
-- LOCATION: Cupertino
+テキスト: 「AppleのCEOティム・クックがクパチーノでiPhone 15を発表しました。」
+エンティティ:
+- 企業: Apple
+- 人物: ティム・クック
+- 製品: iPhone 15
+- 場所: クパチーノ
 
-Text: "The European Union fined Google €4.34 billion in 2018."
-Entities:
-- ORGANIZATION: European Union
-- COMPANY: Google
-- MONEY: €4.34 billion
-- DATE: 2018
+テキスト: 「欧州連合は2018年にGoogleに43.4億ユーロの罰金を科しました。」
+エンティティ:
+- 組織: 欧州連合
+- 企業: Google
+- 金額: 43.4億ユーロ
+- 日付: 2018
 
-Now extract from:
-Text: "Elon Musk's SpaceX launched 23 Starlink satellites from Cape Canaveral on December 3rd."
-Entities:`} />
+次から抽出してください：
+テキスト: 「イーロン・マスクのSpaceXが12月3日にケープカナベラルから23基のStarlink衛星を打ち上げました。」
+エンティティ:`} />
 
-### Structured Data Extraction
+### 構造化データ抽出
 
-Extracting structured data from natural language requires examples showing how to handle missing fields, implicit information, and varying input formats.
+自然言語から構造化データを抽出するには、欠落フィールド、暗黙の情報、さまざまな入力形式の処理方法を示す例が必要です。
 
-<TryIt compact prompt={`Extract meeting details into structured format.
+<TryIt compact prompt={`ミーティングの詳細を構造化フォーマットで抽出してください。
 
-Email: "Let's meet tomorrow at 3pm in Conference Room B to discuss the Q4 budget. Please bring your laptop."
+メール: 「明日午後3時に会議室Bで会って、第4四半期の予算について話し合いましょう。ノートパソコンを持ってきてください。」
 
-Meeting:
-- Date: [tomorrow's date]
-- Time: 3:00 PM
-- Location: Conference Room B
-- Topic: Q4 budget discussion
-- Requirements: Bring laptop
+ミーティング:
+- 日付: [明日の日付]
+- 時間: 午後3時
+- 場所: 会議室B
+- トピック: 第4四半期の予算討議
+- 必要なもの: ノートパソコン持参
 
-Email: "Team sync moved to Friday 10am, we'll use Zoom instead. Link in calendar invite. 30 minutes max."
+メール: 「チームの同期会議は金曜日の午前10時に変更になりました。代わりにZoomを使います。リンクはカレンダー招待にあります。最大30分です。」
 
-Meeting:
-- Date: Friday
-- Time: 10:00 AM
-- Location: Zoom (virtual)
-- Topic: Team sync
-- Duration: 30 minutes
+ミーティング:
+- 日付: 金曜日
+- 時間: 午前10時
+- 場所: Zoom（バーチャル）
+- トピック: チーム同期
+- 所要時間: 30分
 
-Now extract from:
-Email: "Can we do a quick call Monday morning around 9:30 to go over the client presentation? I'll send a Teams link."
+次から抽出してください：
+メール: 「月曜日の朝9時半頃にクライアントプレゼンについて簡単に通話できますか？Teamsのリンクを送ります。」
 
-Meeting:`} />
+ミーティング:`} />
 
-## Advanced Few-Shot Techniques
+## 高度なFew-Shot技術
 
-Beyond basic few-shot, several techniques can improve results for complex tasks.
+基本的なFew-shot以外にも、複雑なタスクの結果を改善できる技術がいくつかあります。
 
-### Diverse Examples
+### 多様な例
 
-Diversity in examples is more valuable than quantity. Cover different scenarios, edge cases, and potential ambiguities rather than showing similar examples repeatedly.
+例の多様性は量よりも価値があります。同じような例を繰り返し示すのではなく、異なるシナリオ、エッジケース、潜在的な曖昧さをカバーしてください。
 
-<TryIt compact prompt={`Respond to customer complaints.
+<TryIt compact prompt={`顧客の苦情に対応してください。
 
-Example 1 (Product Issue):
-Customer: "My order arrived damaged."
-Response: "I sincerely apologize for the damaged delivery. I'll immediately send a replacement at no charge. You don't need to return the damaged item. May I confirm your shipping address?"
+例1（製品の問題）:
+顧客: 「注文した商品が破損して届きました。」
+対応: 「破損した商品をお届けしてしまい、誠に申し訳ございません。直ちに無料で交換品をお送りいたします。破損した商品はご返送いただく必要はございません。配送先住所を確認させていただけますでしょうか？」
 
-Example 2 (Service Issue):
-Customer: "I've been on hold for 2 hours!"
-Response: "I'm very sorry for the long wait time. That's unacceptable. I'm here now and will personally ensure your issue is resolved. What can I help you with today?"
+例2（サービスの問題）:
+顧客: 「2時間も保留にされています！」
+対応: 「長時間お待たせしてしまい、大変申し訳ございません。これは許容できることではありません。ただいまから私が責任を持って問題を解決させていただきます。どのようなご用件でしょうか？」
 
-Example 3 (Billing Issue):
-Customer: "You charged me twice for the same order!"
-Response: "I apologize for this billing error. I've verified the duplicate charge and initiated a refund of $XX.XX to your original payment method. You should see it within 3-5 business days."
+例3（請求の問題）:
+顧客: 「同じ注文に対して二重に請求されています！」
+対応: 「この請求ミスについてお詫び申し上げます。二重請求を確認し、XX.XXドルの返金処理を開始いたしました。3〜5営業日以内に元のお支払い方法に反映されます。」
 
-Now respond to:
-Customer: "The product doesn't match what was shown on the website."
-Response:`} />
+次に対応してください：
+顧客: 「製品がウェブサイトに表示されていたものと違います。」
+対応:`} />
 
-### Negative Examples
+### 否定的な例
 
-<Callout type="tip" title="Contrastive Learning">
-Showing "good" vs "bad" examples is called contrastive learning. It helps the model understand not just what you want, but what to avoid. This is especially useful for style and quality judgments.
+<Callout type="tip" title="対照学習">
+「良い」例と「悪い」例を示すことを対照学習と呼びます。これにより、モデルは何が望まれているかだけでなく、何を避けるべきかを理解できます。スタイルや品質の判断に特に有効です。
 </Callout>
 
-Sometimes showing what *not* to do is as valuable as showing correct examples. Negative examples help the model understand boundaries and avoid common mistakes.
+何を*しない*かを示すことは、正しい例を示すのと同じくらい価値があることがあります。否定的な例は、モデルが境界を理解し、よくある間違いを避けるのに役立ちます。
 
-<TryIt compact prompt={`Write concise email subject lines.
+<TryIt compact prompt={`簡潔なメールの件名を書いてください。
 
-Good: "Q3 Report Ready for Review"
-Bad: "Hey, I finished that report thing we talked about"
+良い: 「Q3レポート レビューのご依頼」
+悪い: 「ねえ、前に話してた例のレポートできたよ」
 
-Good: "Action Required: Approve PTO by Friday"
-Bad: "I need you to do something for me please read this"
+良い: 「要対応：金曜日までに休暇申請の承認をお願いします」
+悪い: 「お願いがあるので読んでください」
 
-Good: "Meeting Rescheduled: Project Sync → Thursday 2pm"
-Bad: "Change of plans!!!!!"
+良い: 「会議変更：プロジェクト同期 → 木曜14時」
+悪い: 「予定変更！！！！！」
 
-Now write a subject line for:
-Email about: Requesting feedback on a proposal draft
-Subject:`} />
+次の件名を書いてください：
+メール内容：提案書の下書きへのフィードバック依頼
+件名:`} />
 
-### Edge Case Examples
+### エッジケースの例
 
-Edge cases often determine whether a solution works in production. Including unusual inputs in your examples prevents the model from failing on real-world data that doesn't fit the "happy path."
+エッジケースは、ソリューションが本番環境で機能するかどうかを決定することがよくあります。例に異常な入力を含めることで、「ハッピーパス」に当てはまらない実世界のデータでモデルが失敗するのを防ぎます。
 
-<TryIt compact prompt={`Parse names into structured format.
+<TryIt compact prompt={`名前を構造化フォーマットにパースしてください。
 
-Input: "John Smith"
-Output: {"first": "John", "last": "Smith", "middle": null, "suffix": null}
+入力: 「山田太郎」
+出力: {"first": "太郎", "last": "山田", "middle": null, "suffix": null}
 
-Input: "Mary Jane Watson-Parker"
-Output: {"first": "Mary", "middle": "Jane", "last": "Watson-Parker", "suffix": null}
+入力: 「田中花子・スミス」
+出力: {"first": "花子", "middle": null, "last": "田中・スミス", "suffix": null}
 
-Input: "Dr. Martin Luther King Jr."
-Output: {"prefix": "Dr.", "first": "Martin", "middle": "Luther", "last": "King", "suffix": "Jr."}
+入力: 「マーティン・ルーサー・キング・ジュニア博士」
+出力: {"prefix": "博士", "first": "マーティン", "middle": "ルーサー", "last": "キング", "suffix": "ジュニア"}
 
-Input: "Madonna"
-Output: {"first": "Madonna", "last": null, "middle": null, "suffix": null, "mononym": true}
+入力: 「マドンナ」
+出力: {"first": "マドンナ", "last": null, "middle": null, "suffix": null, "mononym": true}
 
-Now parse:
-Input: "Sir Patrick Stewart III"
-Output:`} />
+次をパースしてください：
+入力: 「サー・パトリック・スチュワート三世」
+出力:`} />
 
-## How Many Examples?
+## 例の数は？
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Simple classification</span>
+    <span className="font-semibold min-w-40">シンプルな分類</span>
     <span className="text-primary font-mono">2-3</span>
-    <span className="text-muted-foreground">One per category minimum</span>
+    <span className="text-muted-foreground">各カテゴリに最低1つ</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Complex formatting</span>
+    <span className="font-semibold min-w-40">複雑なフォーマット</span>
     <span className="text-primary font-mono">3-5</span>
-    <span className="text-muted-foreground">Show variations</span>
+    <span className="text-muted-foreground">バリエーションを示す</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Nuanced style</span>
+    <span className="font-semibold min-w-40">微妙なスタイル</span>
     <span className="text-primary font-mono">4-6</span>
-    <span className="text-muted-foreground">Capture full range</span>
+    <span className="text-muted-foreground">全範囲をカバー</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Edge cases</span>
+    <span className="font-semibold min-w-40">エッジケース</span>
     <span className="text-primary font-mono">1-2</span>
-    <span className="text-muted-foreground">Alongside normal examples</span>
+    <span className="text-muted-foreground">通常の例と一緒に</span>
   </div>
 </div>
 
-## Example Quality Matters
+## 例の品質が重要
 
 <Compare 
   before={{ 
-    label: "Bad Examples", 
-    content: `"Nice product" → Good
-"Nice service" → Good
-"Nice price" → Good
+    label: "悪い例", 
+    content: `「良い製品」→ 良い
+「良いサービス」→ 良い
+「良い価格」→ 良い
 
-✗ All too similar
-✗ Same word repeated
-✗ No edge cases shown` 
+✗ すべて似すぎている
+✗ 同じ言葉の繰り返し
+✗ エッジケースがない` 
   }}
   after={{ 
-    label: "Good Examples", 
-    content: `"Exceeded expectations!" → Positive
-"Broken on arrival" → Negative
-"Works fine, nothing special" → Neutral
-"Great quality but overpriced" → Mixed
+    label: "良い例", 
+    content: `「期待を超えました！」→ 肯定的
+「届いた時点で壊れていた」→ 否定的
+「普通に動く、特別なことはない」→ 中立的
+「品質は素晴らしいが高すぎる」→ 混合
 
-✓ Diverse scenarios
-✓ Clear boundaries
-✓ Covers edge cases` 
+✓ 多様なシナリオ
+✓ 明確な境界
+✓ エッジケースをカバー` 
   }}
 />
 
-## Combining Few-Shot with Other Techniques
+## Few-Shotと他の技術の組み合わせ
 
-Few-shot learning combines powerfully with other prompting techniques. The examples provide the "what" while other techniques can add context, reasoning, or structure.
+Few-shot learningは他のプロンプティング技術と組み合わせると強力です。例は「何を」を提供し、他の技術がコンテキスト、推論、または構造を追加できます。
 
-### Few-Shot + Role
+### Few-Shot + ロール
 
-Adding a role gives the model context for *why* it's doing the task, which can improve quality and consistency.
+ロールを追加することで、モデルにタスクを実行する*理由*のコンテキストを与え、品質と一貫性を向上させることができます。
 
 ```
-You are a legal contract reviewer.
+あなたは法務契約レビュアーです。
 
-[examples of contract clause analysis]
+[契約条項分析の例]
 
-Now analyze: [new clause]
+次を分析してください: [新しい条項]
 ```
 
 ### Few-Shot + CoT
 
-Combining few-shot with Chain of Thought shows not just *what* answer to give, but *how* to reason through to that answer. This is powerful for tasks requiring judgment.
+Few-shotとChain of Thoughtを組み合わせることで、*どの*答えを出すかだけでなく、その答えに至る*推論方法*を示すことができます。判断が必要なタスクに効果的です。
 
 ```
-Classify and explain reasoning.
+分類し、推論を説明してください。
 
-Review: "Great features but overpriced"
-Thinking: The review mentions positive aspects ("great features") 
-but also a significant negative ("overpriced"). The negative seems 
-to outweigh the positive based on the "but" conjunction.
-Classification: Mixed-Negative
+レビュー: 「機能は素晴らしいが高すぎる」
+思考: このレビューはポジティブな面（「素晴らしい機能」）を
+述べていますが、重大なネガティブな面（「高すぎる」）もあります。
+「が」という接続詞から、ネガティブな面がポジティブな面を
+上回っているようです。
+分類: 混合-ネガティブ
 
-[more examples with reasoning]
+[推論を含む他の例]
 
-Now classify with reasoning:
-Review: "Exactly what I needed, arrived faster than expected"
+次を推論とともに分類してください：
+レビュー: 「まさに必要としていたもので、予想より早く届きました」
 ```
 
-## Summary
+## まとめ
 
-<Callout type="tip" title="Key Takeaways">
-Few-shot learning teaches through demonstration and is often more effective than instructions alone. Use 2-5 diverse, correct examples and combine with other techniques for best results.
+<Callout type="tip" title="重要なポイント">
+Few-shot learningは実演を通じて教え、多くの場合、指示だけよりも効果的です。2〜5個の多様で正確な例を使用し、最良の結果を得るために他の技術と組み合わせてください。
 </Callout>
 
 <Quiz 
-  question="How many examples should you typically provide in few-shot learning?"
+  question="Few-shot learningでは通常何個の例を提供すべきですか？"
   options={[
-    "As many as possible (10+)",
-    "Just 1 example is always enough",
-    "2-5 diverse, correct examples",
-    "Examples aren't necessary if instructions are clear"
+    "できるだけ多く（10個以上）",
+    "1つの例で常に十分",
+    "2〜5個の多様で正確な例",
+    "指示が明確であれば例は不要"
   ]}
   correctIndex={2}
-  explanation="2-5 diverse, correct examples typically work best. Too few may not capture the pattern, while too many waste tokens and may confuse the model. Quality and diversity matter more than quantity."
+  explanation="2〜5個の多様で正確な例が通常最も効果的です。少なすぎるとパターンを捉えられず、多すぎるとトークンを無駄にし、モデルを混乱させる可能性があります。量よりも品質と多様性が重要です。"
 />
 
-In the next chapter, we'll explore iterative refinement: the art of improving prompts through successive attempts.
+次の章では、反復的な改善について探ります：連続した試行を通じてプロンプトを改善する技術です。

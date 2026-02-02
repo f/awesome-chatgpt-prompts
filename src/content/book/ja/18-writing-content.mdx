@@ -1,393 +1,393 @@
-AI excels at writing tasks when properly prompted. This chapter covers techniques for various content creation scenarios.
+AIは適切にプロンプトを設計することで、ライティングタスクに優れた能力を発揮します。この章では、さまざまなコンテンツ作成シナリオのためのテクニックを解説します。
 
-<Callout type="info" title="AI as Writing Partner">
-AI works best as a collaborative writing tool—use it to generate drafts, then refine with your expertise and voice.
+<Callout type="info" title="AIはライティングパートナー">
+AIは共同執筆ツールとして最も効果を発揮します。AIで下書きを生成し、あなたの専門知識と文体で仕上げましょう。
 </Callout>
 
-## Blog Posts and Articles
+## ブログ記事と記事
 
-### Do's and Don'ts: Writing Prompts
+### やるべきこと・避けるべきこと：ライティングプロンプト
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write a blog post about productivity." }}
-  after={{ label: "✓ Specific brief", content: "Write an 800-word blog post about productivity for remote workers.\n\nAudience: Tech professionals working from home\nTone: Conversational but actionable\nInclude: 3 specific techniques with examples\nKeyword: 'remote productivity tips'" }}
+  before={{ label: "❌ 曖昧なリクエスト", content: "生産性についてのブログ記事を書いてください。" }}
+  after={{ label: "✓ 具体的なブリーフ", content: "リモートワーカー向けの生産性に関する800語のブログ記事を書いてください。\n\n対象読者：在宅勤務のテック専門家\nトーン：会話調だが実用的\n含める内容：具体例付きの3つのテクニック\nキーワード：「リモート生産性のヒント」" }}
 />
 
-### Blog Post Framework
+### ブログ記事フレームワーク
 
 <TryIt 
-  title="Blog Post Generator"
-  description="Generate a structured blog post with SEO optimization."
-  prompt={`Write a blog post about \${topic}.
+  title="ブログ記事ジェネレーター"
+  description="SEO最適化された構造化ブログ記事を生成します。"
+  prompt={`\${topic}についてのブログ記事を書いてください。
 
-Specifications:
-- Length: \${wordCount:800-1000} words
-- Audience: \${audience}
-- Tone: \${tone:conversational}
-- Purpose: \${purpose:inform and provide actionable advice}
+仕様：
+- 文字数：\${wordCount:800-1000}語
+- 対象読者：\${audience}
+- トーン：\${tone:conversational}
+- 目的：\${purpose:inform and provide actionable advice}
 
-Structure:
-1. Hook opening (grab attention in first 2 sentences)
-2. Introduction (state the problem/opportunity)
-3. Main content (3-4 key points with examples)
-4. Practical takeaways (actionable advice)
-5. Conclusion with call-to-action
+構成：
+1. フック導入（最初の2文で注意を引く）
+2. イントロダクション（問題/機会を提示）
+3. メインコンテンツ（例付きの3-4つの重要ポイント）
+4. 実践的なポイント（実行可能なアドバイス）
+5. 行動喚起を含む結論
 
-SEO Requirements:
-- Include keyword "\${keyword}" naturally 3-5 times
-- Use H2 headers for main sections
-- Include a meta description (155 chars)`}
+SEO要件：
+- キーワード「\${keyword}」を自然に3-5回含める
+- メインセクションにH2ヘッダーを使用
+- メタディスクリプションを含める（155文字）`}
 />
 
-### Article Types
+### 記事タイプ
 
-**How-To Article:**
-<TryIt compact prompt={`Write a step-by-step how-to article on \${topic}.
+**ハウツー記事：**
+<TryIt compact prompt={`\${topic}についてのステップバイステップのハウツー記事を書いてください。
 
-Requirements:
-- Clear numbered steps
-- Each step: action + explanation + tip
-- Include "what you'll need" section
-- Add troubleshooting section for common issues
-- Estimated time to complete`} />
+要件：
+- 明確な番号付きステップ
+- 各ステップ：アクション + 説明 + ヒント
+- 「必要なもの」セクションを含める
+- よくある問題のトラブルシューティングセクションを追加
+- 完了までの推定時間`} />
 
-**Listicle:**
-<TryIt compact prompt={`Write a listicle: "\${count} \${topic} Tips/Tools/Ideas"
+**リスト記事：**
+<TryIt compact prompt={`リスト記事を書いてください：「\${count}の\${topic}ヒント/ツール/アイデア」
 
-For each item:
-- Catchy subheading
-- 2-3 sentence explanation
-- Concrete example or use case
-- Pro tip or caveat
+各項目について：
+- キャッチーな小見出し
+- 2-3文の説明
+- 具体的な例またはユースケース
+- プロのヒントまたは注意点
 
-Order by: \${ordering:most important first}`} />
+順序：\${ordering:most important first}`} />
 
-## Marketing Copy
+## マーケティングコピー
 
-<Callout type="tip" title="Marketing Copy Principle">
-Focus on **benefits over features**. Instead of "Our software uses AI algorithms," write "Save 10 hours a week with automated reports." Show readers how their lives improve.
+<Callout type="tip" title="マーケティングコピーの原則">
+**機能より利点**に焦点を当てましょう。「当社のソフトウェアはAIアルゴリズムを使用しています」ではなく、「自動レポートで週10時間節約できます」と書きましょう。読者の生活がどのように改善されるかを示してください。
 </Callout>
 
-### Landing Page Copy
+### ランディングページコピー
 
-<TryIt compact prompt={`Write landing page copy for \${product}.
+<TryIt compact prompt={`\${product}のランディングページコピーを書いてください。
 
-Sections needed:
-1. Hero: Headline (10 words max) + subheadline + CTA button text
-2. Problem: Pain points the audience faces (3 bullet points)
-3. Solution: How your product solves these (with benefits, not features)
-4. Social proof: Placeholder for testimonials
-5. Features: 3 key features with benefit-focused descriptions
-6. CTA: Final call-to-action with urgency
+必要なセクション：
+1. ヒーロー：見出し（最大10語）+ サブ見出し + CTAボタンテキスト
+2. 問題：対象読者が直面する課題（3つの箇条書き）
+3. 解決策：製品がこれらをどのように解決するか（機能ではなく利点で）
+4. 社会的証明：お客様の声のプレースホルダー
+5. 機能：利点重視の説明付き3つの主要機能
+6. CTA：緊急性を持たせた最終行動喚起
 
-Voice: \${brandVoice}
-Target audience: \${targetAudience}
-Key differentiator: \${differentiator}`} />
+ボイス：\${brandVoice}
+ターゲット読者：\${targetAudience}
+主な差別化要因：\${differentiator}`} />
 
-### Email Sequences
+### メールシーケンス
 
-<TryIt compact prompt={`Write a 5-email welcome sequence for new subscribers.
+<TryIt compact prompt={`新規購読者向けの5通のウェルカムメールシーケンスを書いてください。
 
-Brand: \${brand}
-Goal: \${goal:convert to paid}
+ブランド：\${brand}
+目標：\${goal:convert to paid}
 
-For each email provide:
-- Subject line (+ 1 alternative)
-- Preview text
-- Body (150-200 words)
+各メールに含めるもの：
+- 件名（+ 代替案1つ）
+- プレビューテキスト
+- 本文（150-200語）
 - CTA
 
-Sequence flow:
-Email 1 (Day 0): Welcome + immediate value
-Email 2 (Day 2): Share story/mission
-Email 3 (Day 4): Educational content
-Email 4 (Day 7): Social proof + soft pitch
-Email 5 (Day 10): Direct offer with urgency`} />
+シーケンスの流れ：
+メール1（0日目）：歓迎 + 即時の価値
+メール2（2日目）：ストーリー/ミッションの共有
+メール3（4日目）：教育的コンテンツ
+メール4（7日目）：社会的証明 + ソフトな提案
+メール5（10日目）：緊急性のある直接的なオファー`} />
 
-### Social Media Posts
+### ソーシャルメディア投稿
 
-<TryIt compact prompt={`Create social media content for \${topic}.
+<TryIt compact prompt={`\${topic}のソーシャルメディアコンテンツを作成してください。
 
-Platform-specific versions:
+プラットフォーム別バージョン：
 
-Twitter/X (280 chars):
-- Hook + key point + hashtags
-- Thread option (5 tweets) for complex topics
+Twitter/X（280文字）：
+- フック + キーポイント + ハッシュタグ
+- 複雑なトピック用のスレッドオプション（5ツイート）
 
-LinkedIn (1300 chars):
-- Professional angle
-- Story structure
-- End with question for engagement
+LinkedIn（1300文字）：
+- プロフェッショナルな切り口
+- ストーリー構造
+- エンゲージメントのための質問で終わる
 
-Instagram caption:
-- Opening hook (shows before "more")
-- Value-packed body
+Instagramキャプション：
+- オープニングフック（「続きを見る」前に表示される）
+- 価値満載の本文
 - CTA
-- Hashtags (20-30 relevant)`} />
+- ハッシュタグ（関連性のある20-30個）`} />
 
-## Technical Writing
+## テクニカルライティング
 
-<Callout type="info" title="Technical Writing Principle">
-**Clarity over cleverness.** Use simple words, short sentences, and active voice. Every sentence should have one job. If readers have to re-read something, simplify it.
+<Callout type="info" title="テクニカルライティングの原則">
+**巧みさより明確さ**を重視しましょう。シンプルな言葉、短い文、能動態を使用してください。各文は一つの役割を持つべきです。読者が読み返す必要があれば、簡略化しましょう。
 </Callout>
 
-### Documentation
+### ドキュメンテーション
 
-<TryIt compact prompt={`Write documentation for \${feature}.
+<TryIt compact prompt={`\${feature}のドキュメントを書いてください。
 
-Structure:
-## Overview
-Brief description of what it does and why you'd use it.
+構成：
+## 概要
+何をするものか、なぜ使うのかの簡単な説明。
 
-## Quick Start
-Minimal example to get started in under 2 minutes.
+## クイックスタート
+2分以内で始められる最小限の例。
 
-## Installation/Setup
-Step-by-step setup instructions.
+## インストール/セットアップ
+ステップバイステップのセットアップ手順。
 
-## Usage
-Detailed usage with examples.
+## 使用方法
+例を含む詳細な使用方法。
 
-## API Reference
-Parameters, return values, types.
+## APIリファレンス
+パラメータ、戻り値、型。
 
-## Examples
-3-4 real-world usage examples.
+## 例
+3-4つの実際のユースケース例。
 
-## Troubleshooting
-Common issues and solutions.
+## トラブルシューティング
+よくある問題と解決策。
 
-Style: 
-- Second person ("you")
-- Present tense
-- Active voice
-- Code examples for every concept`} />
+スタイル：
+- 二人称（「あなた」）
+- 現在形
+- 能動態
+- すべての概念にコード例`} />
 
-### README Files
+### READMEファイル
 
 <TryIt 
-  title="README Generator"
-  description="Generate a professional README.md for your project."
-  prompt={`Write a README.md for \${project}.
+  title="READMEジェネレーター"
+  description="プロジェクト用のプロフェッショナルなREADME.mdを生成します。"
+  prompt={`\${project}のREADME.mdを書いてください。
 
-Include these sections:
-# Project Name - One-line description
+以下のセクションを含めてください：
+# プロジェクト名 - 一行の説明
 
-## Features
-- Bullet list of key features
+## 機能
+- 主要機能の箇条書き
 
-## Installation
-(bash installation commands)
+## インストール
+（bashインストールコマンド）
 
-## Quick Start
-(minimal working example)
+## クイックスタート
+（最小限の動作例）
 
-## Configuration
-Key configuration options
+## 設定
+主要な設定オプション
 
-## Documentation
-Link to full docs
+## ドキュメント
+完全なドキュメントへのリンク
 
-## Contributing
-Brief contribution guidelines
+## コントリビューション
+簡単な貢献ガイドライン
 
-## License
-License type`}
+## ライセンス
+ライセンスタイプ`}
 />
 
-## Creative Writing
+## クリエイティブライティング
 
-### Do's and Don'ts: Creative Prompts
+### やるべきこと・避けるべきこと：クリエイティブプロンプト
 
 <Compare 
-  before={{ label: "❌ Too open-ended", content: "Write me a story." }}
-  after={{ label: "✓ Rich with constraints", content: "Write a 1000-word mystery story set in a small coastal town. The protagonist is a retired detective. Include a twist ending where the victim isn't who we thought. Tone: noir with dark humor." }}
+  before={{ label: "❌ 漠然としすぎ", content: "物語を書いてください。" }}
+  after={{ label: "✓ 制約が豊富", content: "小さな海辺の町を舞台にした1000語のミステリー小説を書いてください。主人公は引退した探偵です。被害者が思っていた人物ではないというどんでん返しを含めてください。トーン：ダークユーモアを交えたノワール。" }}
 />
 
-### Story Elements
+### ストーリー要素
 
-<TryIt compact prompt={`Write a \${genre} short story.
+<TryIt compact prompt={`\${genre}の短編小説を書いてください。
 
-Elements to include:
-- Protagonist: \${protagonist}
-- Setting: \${setting}
-- Central conflict: \${conflict}
-- Theme: \${theme}
-- Word count: \${wordCount:1000}
+含める要素：
+- 主人公：\${protagonist}
+- 設定：\${setting}
+- 中心的な葛藤：\${conflict}
+- テーマ：\${theme}
+- 語数：\${wordCount:1000}
 
-Style preferences:
-- POV: \${pov:third person}
-- Tense: \${tense:past}
-- Tone: \${tone:suspenseful}
+スタイルの好み：
+- 視点：\${pov:third person}
+- 時制：\${tense:past}
+- トーン：\${tone:suspenseful}
 
-Start with: \${openingHook}`} />
+次の書き出しで始める：\${openingHook}`} />
 
-### Character Development
+### キャラクター開発
 
-<TryIt compact prompt={`Create a detailed character profile for \${characterName}.
+<TryIt compact prompt={`\${characterName}の詳細なキャラクタープロフィールを作成してください。
 
-Basic Information:
-- Name, age, occupation
-- Physical description
-- Background/history
+基本情報：
+- 名前、年齢、職業
+- 外見の説明
+- 背景/経歴
 
-Personality:
-- 3 core traits
-- Strengths and flaws
-- Fears and desires
-- How they speak (verbal tics, vocabulary level)
+性格：
+- 3つの核となる特性
+- 長所と短所
+- 恐れと願望
+- 話し方（口癖、語彙レベル）
 
-Relationships:
-- Key relationships
-- How they treat strangers vs friends
+人間関係：
+- 重要な人間関係
+- 見知らぬ人と友人への態度の違い
 
-Character arc:
-- Starting state
-- What they need to learn
-- Potential transformation`} />
+キャラクターアーク：
+- 開始時の状態
+- 学ぶ必要があること
+- 潜在的な変化`} />
 
-## Editing and Rewriting
+## 編集とリライト
 
-### Comprehensive Edit
+### 総合的な編集
 
-<TryIt compact prompt={`Edit this text for \${purpose}.
+<TryIt compact prompt={`このテキストを\${purpose}のために編集してください。
 
-Check and improve:
-□ Grammar and spelling
-□ Sentence structure variety
-□ Word choice (eliminate weak words)
-□ Flow and transitions
-□ Clarity and conciseness
-□ Tone consistency
+チェックして改善する項目：
+□ 文法とスペル
+□ 文構造の多様性
+□ 語彙の選択（弱い言葉を排除）
+□ 流れと移行
+□ 明確さと簡潔さ
+□ トーンの一貫性
 
-Provide:
-1. Edited version
-2. Summary of major changes
-3. Suggestions for further improvement
+提供するもの：
+1. 編集済みバージョン
+2. 主要な変更点の要約
+3. さらなる改善のための提案
 
-Original text:
+元のテキスト：
 \${text}`} />
 
-### Style Transformation
+### スタイル変換
 
 <Compare 
-  before={{ label: "Technical/Formal", content: "The implementation of the new algorithm resulted in a 47% reduction in computational overhead, thereby significantly enhancing system throughput and reducing latency metrics across all measured endpoints." }}
-  after={{ label: "Casual/Accessible", content: "We made the system way faster! The new approach cut processing time nearly in half, which means everything loads quicker for you." }}
+  before={{ label: "技術的/フォーマル", content: "新しいアルゴリズムの実装により、計算オーバーヘッドが47%削減され、システムスループットが大幅に向上し、測定されたすべてのエンドポイントでレイテンシメトリクスが改善されました。" }}
+  after={{ label: "カジュアル/親しみやすい", content: "システムがめちゃくちゃ速くなりました！新しいアプローチで処理時間がほぼ半分になったので、すべてがより素早く読み込まれます。" }}
 />
 
-<TryIt compact prompt={`Rewrite this text in a different style.
+<TryIt compact prompt={`このテキストを別のスタイルで書き直してください。
 
-Original style: \${originalStyle}
-Target style: \${targetStyle}
+元のスタイル：\${originalStyle}
+目標スタイル：\${targetStyle}
 
-Preserve:
-- Core meaning and information
-- Key terminology
-- Proper nouns
+保持するもの：
+- 核心的な意味と情報
+- 重要な用語
+- 固有名詞
 
-Change:
-- Sentence length and structure
-- Vocabulary level
-- Tone and formality
-- Rhetorical devices
+変更するもの：
+- 文の長さと構造
+- 語彙レベル
+- トーンとフォーマルさ
+- 修辞技法
 
-Original:
+元のテキスト：
 \${text}`} />
 
-### Simplification
+### 簡略化
 
-<TryIt compact prompt={`Simplify this text for \${audience}.
+<TryIt compact prompt={`このテキストを\${audience}向けに簡略化してください。
 
-Target reading level: \${readingLevel:8th grade}
+目標読解レベル：\${readingLevel:8th grade}
 
-Guidelines:
-- Replace jargon with plain language
-- Shorten sentences (aim for 15-20 words average)
-- Use common words
-- Add explanations for necessary technical terms
-- Break complex ideas into steps
+ガイドライン：
+- 専門用語を平易な言葉に置き換える
+- 文を短くする（平均15-20語を目指す）
+- 一般的な言葉を使用する
+- 必要な技術用語には説明を追加する
+- 複雑なアイデアをステップに分解する
 
-Original:
+元のテキスト：
 \${text}`} />
 
-## Prompt Templates from prompts.chat
+## prompts.chatからのプロンプトテンプレート
 
-Here are popular writing prompts from the prompts.chat community:
+prompts.chatコミュニティで人気のライティングプロンプトをご紹介します：
 
-### Act as a Copywriter
+### コピーライターとして振る舞う
 
-<TryIt compact prompt={`I want you to act as a copywriter. I will provide you with a product or service, and you will create compelling copy that highlights its benefits and persuades potential customers to take action. Your copy should be creative, attention-grabbing, and tailored to the target audience.
+<TryIt compact prompt={`あなたにはコピーライターとして振る舞ってほしいです。製品やサービスを提供しますので、その利点を強調し、潜在的な顧客に行動を促す魅力的なコピーを作成してください。コピーはクリエイティブで、注目を集め、ターゲット読者に合わせたものにしてください。
 
-Product/Service: \${product}`} />
+製品/サービス：\${product}`} />
 
-### Act as a Technical Writer
+### テクニカルライターとして振る舞う
 
-<TryIt compact prompt={`I want you to act as a technical writer. You will create clear, concise documentation for software products. I will provide you with technical information, and you will transform it into user-friendly documentation that is easy to understand for both technical and non-technical audiences.
+<TryIt compact prompt={`あなたにはテクニカルライターとして振る舞ってほしいです。ソフトウェア製品のための明確で簡潔なドキュメントを作成してください。技術的な情報を提供しますので、それを技術者と非技術者の両方が理解しやすいユーザーフレンドリーなドキュメントに変換してください。
 
-Topic: \${topic}`} />
+トピック：\${topic}`} />
 
-### Act as a Storyteller
+### ストーリーテラーとして振る舞う
 
-<TryIt compact prompt={`I want you to act as a storyteller. You will come up with entertaining stories that are engaging, imaginative, and captivating for the audience. It can be fairy tales, educational stories, or any other type of story that has the potential to capture people's attention and imagination.
+<TryIt compact prompt={`あなたにはストーリーテラーとして振る舞ってほしいです。読者を引き込む、想像力豊かで魅力的なエンターテイメント性のある物語を作成してください。おとぎ話、教育的な物語、または人々の注目と想像力を捉える可能性のあるあらゆる種類の物語が可能です。
 
-Story theme: \${theme}`} />
+物語のテーマ：\${theme}`} />
 
-## Writing Workflow Tips
+## ライティングワークフローのヒント
 
-### 1. Outline First
+### 1. まずアウトラインを作成
 
-<TryIt compact prompt={`Before writing, create an outline:
+<TryIt compact prompt={`執筆前に、アウトラインを作成してください：
 
-Topic: \${topic}
+トピック：\${topic}
 
-1. Generate 5 possible angles
-2. Choose the best angle and explain why
-3. Create detailed outline with:
-   - Main sections
-   - Key points per section
-   - Supporting evidence/examples needed
-4. Identify gaps that need research`} />
+1. 5つの可能な切り口を生成
+2. 最適な切り口を選び、理由を説明
+3. 詳細なアウトラインを作成：
+   - メインセクション
+   - セクションごとの重要ポイント
+   - 必要な裏付け証拠/例
+4. リサーチが必要なギャップを特定`} />
 
-### 2. Draft Then Refine
+### 2. 下書きしてから推敲
 
-<TryIt compact prompt={`Phase 1 - Draft:
-"Write a rough draft focusing on getting ideas down. Don't worry about perfection. Just capture the key points."
+<TryIt compact prompt={`フェーズ1 - 下書き：
+「アイデアを出すことに集中して、大まかな下書きを書いてください。完璧さは気にせず、重要なポイントを捉えてください。」
 
-Phase 2 - Refine:
-"Now improve this draft: tighten sentences, add transitions, strengthen the opening and closing."
+フェーズ2 - 推敲：
+「この下書きを改善してください：文を引き締め、移行を追加し、冒頭と結末を強化してください。」
 
-Phase 3 - Polish:
-"Final pass: check grammar, vary sentence structure, ensure consistent tone."
+フェーズ3 - 仕上げ：
+「最終チェック：文法を確認し、文構造を変化させ、一貫したトーンを確保してください。」
 
-Topic: \${topic}`} />
+トピック：\${topic}`} />
 
-### 3. Voice Matching
+### 3. ボイスマッチング
 
-<TryIt compact prompt={`Analyze this writing sample for voice characteristics:
+<TryIt compact prompt={`この文章サンプルのボイス特性を分析してください：
 \${sample}
 
-Then write \${newContent} matching:
-- Sentence length patterns
-- Vocabulary level
-- Rhetorical devices used
-- Tone and personality`} />
+次に、以下をマッチさせて\${newContent}を書いてください：
+- 文の長さパターン
+- 語彙レベル
+- 使用されている修辞技法
+- トーンと個性`} />
 
-## Summary
+## まとめ
 
-<Callout type="tip" title="Key Techniques">
-Specify audience and purpose clearly, define structure and format, include style guidelines, provide examples when possible, and request specific deliverables.
+<Callout type="tip" title="主要テクニック">
+対象読者と目的を明確に指定し、構造とフォーマットを定義し、スタイルガイドラインを含め、可能な場合は例を提供し、具体的な成果物を要求しましょう。
 </Callout>
 
 <Quiz 
-  question="What's the most effective way to use AI for writing tasks?"
+  question="ライティングタスクでAIを使う最も効果的な方法は何ですか？"
   options={[
-    "Let AI write the final version without editing",
-    "Use AI to generate drafts, then refine with your expertise",
-    "Only use AI for grammar checking",
-    "Avoid AI for creative writing entirely"
+    "AIに編集なしで最終版を書かせる",
+    "AIで下書きを生成し、自分の専門知識で仕上げる",
+    "AIは文法チェックのみに使用する",
+    "クリエイティブライティングではAIを完全に避ける"
   ]}
   correctIndex={1}
-  explanation="AI works best as a collaborative writing tool. Use it to generate drafts and ideas, then apply your expertise, voice, and judgment to refine the output."
+  explanation="AIは共同執筆ツールとして最も効果を発揮します。AIで下書きやアイデアを生成し、その後あなたの専門知識、文体、判断力を活用してアウトプットを仕上げましょう。"
 />
 
-Writing with AI works best as collaboration—let AI generate drafts, then refine with your expertise and voice.
+AIを使ったライティングは、共同作業として最も効果を発揮します。AIで下書きを生成し、あなたの専門知識と文体で仕上げましょう。

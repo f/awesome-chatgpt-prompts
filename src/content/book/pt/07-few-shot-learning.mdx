@@ -1,32 +1,32 @@
-Few-shot learning is one of the most powerful prompting techniques. By providing examples of what you want, you can teach the model complex tasks without any fine-tuning.
+Few-shot learning é uma das técnicas de prompting mais poderosas. Ao fornecer exemplos do que você quer, você pode ensinar ao modelo tarefas complexas sem nenhum fine-tuning.
 
-<Callout type="info" title="Learn by Example">
-Just like humans learn by seeing examples, AI models can learn patterns from the examples you provide in your prompt.
+<Callout type="info" title="Aprenda por Exemplo">
+Assim como humanos aprendem vendo exemplos, modelos de IA podem aprender padrões dos exemplos que você fornece no seu prompt.
 </Callout>
 
-## What is Few-Shot Learning?
+## O Que É Few-Shot Learning?
 
-Few-shot learning shows the model examples of input-output pairs before asking it to perform the same task. The model learns the pattern from your examples and applies it to new inputs.
+Few-shot learning mostra ao modelo exemplos de pares entrada-saída antes de pedir que ele execute a mesma tarefa. O modelo aprende o padrão dos seus exemplos e aplica a novas entradas.
 
 <Compare 
   before={{ 
-    label: "Zero-Shot (No Examples)", 
-    content: `Classify this review as positive or negative:
+    label: "Zero-Shot (Sem Exemplos)", 
+    content: `Classifique esta avaliação como positiva ou negativa:
 
-"The battery lasts forever but the screen is too dim."
+"A bateria dura muito mas a tela é muito escura."
 
-→ Model may be inconsistent with edge cases` 
+→ Modelo pode ser inconsistente com casos limite` 
   }}
   after={{ 
-    label: "Few-Shot (With Examples)", 
-    content: `"Love it!" → Positive
-"Terrible quality" → Negative  
-"Good but expensive" → Mixed
+    label: "Few-Shot (Com Exemplos)", 
+    content: `"Amei!" → Positivo
+"Qualidade terrível" → Negativo  
+"Bom mas caro" → Misto
 
-Now classify:
-"The battery lasts forever but the screen is too dim."
+Agora classifique:
+"A bateria dura muito mas a tela é muito escura."
 
-→ Model learns your exact categories` 
+→ Modelo aprende suas categorias exatas` 
   }}
 />
 
@@ -49,430 +49,430 @@ Now classify:
   </div>
 </div>
 
-## Why Examples Work
+## Por Que Exemplos Funcionam
 
 <FewShotDemo />
 
-Examples communicate:
-- **Format**: How output should be structured
-- **Style**: Tone, length, vocabulary
-- **Logic**: The reasoning pattern to follow
-- **Edge cases**: How to handle special situations
+Exemplos comunicam:
+- **Formato**: Como a saída deve ser estruturada
+- **Estilo**: Tom, tamanho, vocabulário
+- **Lógica**: O padrão de raciocínio a seguir
+- **Casos limite**: Como lidar com situações especiais
 
-## Basic Few-Shot Pattern
+## Padrão Básico de Few-Shot
 
-The fundamental structure of few-shot prompting follows a simple pattern: show examples, then ask for the new task. Consistency in formatting between examples is crucial. The model learns from the pattern you establish.
+A estrutura fundamental de prompting few-shot segue um padrão simples: mostre exemplos, depois peça a nova tarefa. Consistência na formatação entre exemplos é crucial. O modelo aprende do padrão que você estabelece.
 
 ```
-[Example 1]
-Input: [input 1]
-Output: [output 1]
+[Exemplo 1]
+Entrada: [entrada 1]
+Saída: [saída 1]
 
-[Example 2]
-Input: [input 2]
-Output: [output 2]
+[Exemplo 2]
+Entrada: [entrada 2]
+Saída: [saída 2]
 
-[Example 3]
-Input: [input 3]
-Output: [output 3]
+[Exemplo 3]
+Entrada: [entrada 3]
+Saída: [saída 3]
 
-Now do this one:
-Input: [new input]
-Output:
+Agora faça este:
+Entrada: [nova entrada]
+Saída:
 ```
 
-## Few-Shot for Classification
+## Few-Shot para Classificação
 
-Classification is one of the strongest use cases for few-shot learning. By showing examples of each category, you define the boundaries between classes more precisely than instructions alone could achieve.
+Classificação é um dos casos de uso mais fortes para few-shot learning. Ao mostrar exemplos de cada categoria, você define os limites entre classes mais precisamente do que instruções sozinhas conseguiriam.
 
-### Sentiment Analysis
+### Análise de Sentimento
 
-<Callout type="info" title="What is Sentiment Analysis?">
-Sentiment analysis classifies text by emotional tone: positive, negative, neutral, or mixed. It's widely used for customer feedback, social media monitoring, and brand perception tracking.
+<Callout type="info" title="O Que É Análise de Sentimento?">
+Análise de sentimento classifica texto por tom emocional: positivo, negativo, neutro ou misto. É amplamente usada para feedback de clientes, monitoramento de mídias sociais e rastreamento de percepção de marca.
 </Callout>
 
-Sentiment classification benefits from showing examples of each sentiment type, especially edge cases like "mixed" sentiment that might be ambiguous.
+Classificação de sentimento se beneficia de mostrar exemplos de cada tipo de sentimento, especialmente casos limite como sentimento "misto" que pode ser ambíguo.
 
-<TryIt compact prompt={`Classify the sentiment of these customer reviews.
+<TryIt compact prompt={`Classifique o sentimento destas avaliações de clientes.
 
-Review: "This product exceeded all my expectations! Will buy again."
-Sentiment: Positive
+Avaliação: "Este produto superou todas minhas expectativas! Comprarei novamente."
+Sentimento: Positivo
 
-Review: "Arrived broken and customer service was unhelpful."
-Sentiment: Negative
+Avaliação: "Chegou quebrado e o atendimento ao cliente não ajudou."
+Sentimento: Negativo
 
-Review: "It works fine, nothing special but does the job."
-Sentiment: Neutral
+Avaliação: "Funciona bem, nada especial mas faz o trabalho."
+Sentimento: Neutro
 
-Review: "The quality is amazing but shipping took forever."
-Sentiment: Mixed
+Avaliação: "A qualidade é incrível mas o frete demorou muito."
+Sentimento: Misto
 
-Now classify:
-Review: "Love the design but the battery life is disappointing."
-Sentiment:`} />
+Agora classifique:
+Avaliação: "Amei o design mas a duração da bateria é decepcionante."
+Sentimento:`} />
 
-### Topic Classification
+### Classificação por Tópico
 
-For multi-class categorization, include at least one example per category. This helps the model understand your specific taxonomy, which may differ from its default understanding.
+Para categorização multi-classe, inclua pelo menos um exemplo por categoria. Isso ajuda o modelo a entender sua taxonomia específica, que pode diferir do seu entendimento padrão.
 
-<TryIt compact prompt={`Categorize these support tickets.
+<TryIt compact prompt={`Categorize estes tickets de suporte.
 
-Ticket: "I can't log into my account, password reset not working"
-Category: Authentication
+Ticket: "Não consigo fazer login na minha conta, reset de senha não funciona"
+Categoria: Autenticação
 
-Ticket: "How do I upgrade to the premium plan?"
-Category: Billing
+Ticket: "Como faço para upgrade para o plano premium?"
+Categoria: Cobrança
 
-Ticket: "The app crashes when I try to export data"
-Category: Bug Report
+Ticket: "O app trava quando tento exportar dados"
+Categoria: Relatório de Bug
 
-Ticket: "Can you add dark mode to the mobile app?"
-Category: Feature Request
+Ticket: "Vocês podem adicionar modo escuro no app mobile?"
+Categoria: Solicitação de Recurso
 
-Now categorize:
-Ticket: "My payment was declined but I see the charge on my card"
-Category:`} />
+Agora categorize:
+Ticket: "Meu pagamento foi recusado mas vejo a cobrança no meu cartão"
+Categoria:`} />
 
-## Few-Shot for Transformation
+## Few-Shot para Transformação
 
-Transformation tasks convert input from one form to another while preserving meaning. Examples are essential here because they define exactly what "transformation" means for your use case.
+Tarefas de transformação convertem entrada de uma forma para outra preservando significado. Exemplos são essenciais aqui porque definem exatamente o que "transformação" significa para seu caso de uso.
 
-### Text Rewriting
+### Reescrita de Texto
 
-Style transformation requires examples that show the exact tone shift you want. Abstract instructions like "make it professional" are interpreted differently. Examples make it concrete.
+Transformação de estilo requer exemplos que mostram a mudança exata de tom que você quer. Instruções abstratas como "torne profissional" são interpretadas diferentemente. Exemplos tornam concreto.
 
-<TryIt compact prompt={`Rewrite these sentences in a professional tone.
+<TryIt compact prompt={`Reescreva estas frases em tom profissional.
 
-Casual: "Hey, just wanted to check if you got my email?"
-Professional: "I wanted to follow up regarding my previous email."
+Casual: "E aí, só queria saber se você recebeu meu email?"
+Profissional: "Gostaria de fazer o acompanhamento do meu email anterior."
 
-Casual: "This is super important and needs to be done ASAP!"
-Professional: "This matter requires urgent attention and prompt action."
+Casual: "Isso é super importante e precisa ser feito URGENTE!"
+Profissional: "Este assunto requer atenção urgente e ação imediata."
 
-Casual: "Sorry for the late reply, been swamped!"
-Professional: "I apologize for the delayed response. I've had a particularly demanding schedule."
+Casual: "Desculpa a demora pra responder, tava muito ocupado!"
+Profissional: "Peço desculpas pelo atraso na resposta. Tive um período particularmente demandante."
 
-Now rewrite:
-Casual: "Can't make it to the meeting, something came up."
-Professional:`} />
+Agora reescreva:
+Casual: "Não vou conseguir ir na reunião, surgiu um imprevisto."
+Profissional:`} />
 
-### Format Conversion
+### Conversão de Formato
 
-Format conversion tasks benefit from examples showing edge cases and ambiguous inputs. The model learns your specific conventions for handling tricky cases.
+Tarefas de conversão de formato se beneficiam de exemplos mostrando casos limite e entradas ambíguas. O modelo aprende suas convenções específicas para lidar com casos difíceis.
 
-<TryIt compact prompt={`Convert these natural language dates to ISO format.
+<TryIt compact prompt={`Converta estas datas em linguagem natural para formato ISO.
 
-Input: "next Tuesday"
-Output: 2024-01-16 (assuming today is 2024-01-11, Thursday)
+Entrada: "terça que vem"
+Saída: 2024-01-16 (assumindo que hoje é 2024-01-11, quinta)
 
-Input: "the day after tomorrow"
-Output: 2024-01-13
+Entrada: "depois de amanhã"
+Saída: 2024-01-13
 
-Input: "last day of this month"
-Output: 2024-01-31
+Entrada: "último dia deste mês"
+Saída: 2024-01-31
 
-Input: "two weeks from now"
-Output: 2024-01-25
+Entrada: "daqui a duas semanas"
+Saída: 2024-01-25
 
-Now convert:
-Input: "the first Monday of next month"
-Output:`} />
+Agora converta:
+Entrada: "primeira segunda do mês que vem"
+Saída:`} />
 
-## Few-Shot for Generation
+## Few-Shot para Geração
 
-Generation tasks create new content following a learned pattern. Examples establish length, structure, tone, and what details to highlight. These are hard to specify in instructions alone.
+Tarefas de geração criam novo conteúdo seguindo um padrão aprendido. Exemplos estabelecem tamanho, estrutura, tom e quais detalhes destacar. Estes são difíceis de especificar apenas em instruções.
 
-### Product Descriptions
+### Descrições de Produto
 
-Marketing copy benefits enormously from examples because they capture brand voice, feature emphasis, and persuasive techniques that are difficult to describe abstractly.
+Copy de marketing se beneficia enormemente de exemplos porque capturam voz da marca, ênfase em recursos e técnicas persuasivas que são difíceis de descrever abstratamente.
 
-<TryIt compact prompt={`Write product descriptions in this style:
+<TryIt compact prompt={`Escreva descrições de produto neste estilo:
 
-Product: Wireless Bluetooth Headphones
-Description: Immerse yourself in crystal-clear sound with our lightweight wireless headphones. Featuring 40-hour battery life, active noise cancellation, and plush memory foam ear cushions for all-day comfort.
+Produto: Fones de Ouvido Bluetooth Sem Fio
+Descrição: Mergulhe em som cristalino com nossos fones sem fio leves. Com 40 horas de bateria, cancelamento ativo de ruído e almofadas macias de espuma memory para conforto o dia todo.
 
-Product: Stainless Steel Water Bottle
-Description: Stay hydrated in style with our double-walled insulated bottle. Keeps drinks cold for 24 hours or hot for 12. Features a leak-proof lid and fits standard cup holders.
+Produto: Garrafa de Água de Aço Inoxidável
+Descrição: Mantenha-se hidratado com estilo com nossa garrafa com isolamento de parede dupla. Mantém bebidas geladas por 24 horas ou quentes por 12. Com tampa à prova de vazamentos e cabe em porta-copos padrão.
 
-Product: Ergonomic Office Chair
-Description: Transform your workspace with our adjustable ergonomic chair. Breathable mesh back, lumbar support, and 360° swivel combine to keep you comfortable during long work sessions.
+Produto: Cadeira de Escritório Ergonômica
+Descrição: Transforme seu espaço de trabalho com nossa cadeira ergonômica ajustável. Encosto de malha respirável, suporte lombar e giro 360° combinam para mantê-lo confortável durante longas sessões de trabalho.
 
-Now write:
-Product: Portable Phone Charger
-Description:`} />
+Agora escreva:
+Produto: Carregador Portátil de Celular
+Descrição:`} />
 
-### Code Documentation
+### Documentação de Código
 
-<Callout type="info" title="Why Document Code?">
-Good documentation explains what code does, its parameters, return values, and usage examples. Consistent docstrings enable auto-generated API docs and help IDEs provide better code completion.
+<Callout type="info" title="Por Que Documentar Código?">
+Boa documentação explica o que o código faz, seus parâmetros, valores de retorno e exemplos de uso. Docstrings consistentes permitem docs de API auto-geradas e ajudam IDEs a fornecer melhor completação de código.
 </Callout>
 
-Documentation style varies widely between projects. Examples teach your specific format, what to include (args, returns, examples), and the level of detail expected.
+Estilo de documentação varia muito entre projetos. Exemplos ensinam seu formato específico, o que incluir (args, returns, exemplos) e o nível de detalhe esperado.
 
-<TryIt compact prompt={`Write documentation comments for these functions:
+<TryIt compact prompt={`Escreva comentários de documentação para estas funções:
 
-Function:
+Função:
 def calculate_bmi(weight_kg, height_m):
     return weight_kg / (height_m ** 2)
 
-Documentation:
+Documentação:
 """
-Calculate Body Mass Index (BMI) from weight and height.
+Calcula Índice de Massa Corporal (IMC) a partir de peso e altura.
 
 Args:
-    weight_kg (float): Weight in kilograms
-    height_m (float): Height in meters
+    weight_kg (float): Peso em quilogramas
+    height_m (float): Altura em metros
 
 Returns:
-    float: BMI value (weight/height²)
+    float: Valor do IMC (peso/altura²)
 
 Example:
     >>> calculate_bmi(70, 1.75)
     22.86
 """
 
-Now document:
-Function:
+Agora documente:
+Função:
 def is_palindrome(text):
     cleaned = ''.join(c.lower() for c in text if c.isalnum())
     return cleaned == cleaned[::-1]
 
-Documentation:`} />
+Documentação:`} />
 
-## Few-Shot for Extraction
+## Few-Shot para Extração
 
-Extraction tasks pull structured information from unstructured text. Examples define which entities matter, how to format output, and how to handle cases where information is missing or ambiguous.
+Tarefas de extração puxam informação estruturada de texto não estruturado. Exemplos definem quais entidades importam, como formatar saída e como lidar com casos onde informação está faltando ou é ambígua.
 
-### Entity Extraction
+### Extração de Entidades
 
-<Callout type="info" title="What is Named Entity Recognition?">
-Named Entity Recognition (NER) identifies and classifies named entities in text into categories like persons, organizations, locations, dates, and products. It's fundamental for information retrieval and knowledge graphs.
+<Callout type="info" title="O Que É Reconhecimento de Entidades Nomeadas?">
+Reconhecimento de Entidades Nomeadas (NER) identifica e classifica entidades nomeadas em texto em categorias como pessoas, organizações, locais, datas e produtos. É fundamental para recuperação de informação e grafos de conhecimento.
 </Callout>
 
-NER benefits from examples showing your specific entity types and how to handle entities that could fit multiple categories.
+NER se beneficia de exemplos mostrando seus tipos de entidade específicos e como lidar com entidades que poderiam se encaixar em múltiplas categorias.
 
-<TryIt compact prompt={`Extract named entities from these sentences.
+<TryIt compact prompt={`Extraia entidades nomeadas destas frases.
 
-Text: "Apple CEO Tim Cook announced the iPhone 15 in Cupertino."
-Entities:
-- COMPANY: Apple
-- PERSON: Tim Cook
-- PRODUCT: iPhone 15
-- LOCATION: Cupertino
+Texto: "O CEO da Apple Tim Cook anunciou o iPhone 15 em Cupertino."
+Entidades:
+- EMPRESA: Apple
+- PESSOA: Tim Cook
+- PRODUTO: iPhone 15
+- LOCAL: Cupertino
 
-Text: "The European Union fined Google €4.34 billion in 2018."
-Entities:
-- ORGANIZATION: European Union
-- COMPANY: Google
-- MONEY: €4.34 billion
-- DATE: 2018
+Texto: "A União Europeia multou o Google em €4,34 bilhões em 2018."
+Entidades:
+- ORGANIZAÇÃO: União Europeia
+- EMPRESA: Google
+- DINHEIRO: €4,34 bilhões
+- DATA: 2018
 
-Now extract from:
-Text: "Elon Musk's SpaceX launched 23 Starlink satellites from Cape Canaveral on December 3rd."
-Entities:`} />
+Agora extraia de:
+Texto: "A SpaceX de Elon Musk lançou 23 satélites Starlink de Cabo Canaveral em 3 de dezembro."
+Entidades:`} />
 
-### Structured Data Extraction
+### Extração de Dados Estruturados
 
-Extracting structured data from natural language requires examples showing how to handle missing fields, implicit information, and varying input formats.
+Extrair dados estruturados de linguagem natural requer exemplos mostrando como lidar com campos faltantes, informação implícita e formatos de entrada variados.
 
-<TryIt compact prompt={`Extract meeting details into structured format.
+<TryIt compact prompt={`Extraia detalhes da reunião em formato estruturado.
 
-Email: "Let's meet tomorrow at 3pm in Conference Room B to discuss the Q4 budget. Please bring your laptop."
+Email: "Vamos nos encontrar amanhã às 15h na Sala de Conferência B para discutir o orçamento do T4. Por favor traga seu notebook."
 
-Meeting:
-- Date: [tomorrow's date]
-- Time: 3:00 PM
-- Location: Conference Room B
-- Topic: Q4 budget discussion
-- Requirements: Bring laptop
+Reunião:
+- Data: [data de amanhã]
+- Hora: 15:00
+- Local: Sala de Conferência B
+- Tópico: discussão do orçamento T4
+- Requisitos: Trazer notebook
 
-Email: "Team sync moved to Friday 10am, we'll use Zoom instead. Link in calendar invite. 30 minutes max."
+Email: "Sync da equipe movido para sexta 10h, vamos usar Zoom. Link no convite do calendário. 30 minutos no máximo."
 
-Meeting:
-- Date: Friday
-- Time: 10:00 AM
-- Location: Zoom (virtual)
-- Topic: Team sync
-- Duration: 30 minutes
+Reunião:
+- Data: Sexta
+- Hora: 10:00
+- Local: Zoom (virtual)
+- Tópico: Sync da equipe
+- Duração: 30 minutos
 
-Now extract from:
-Email: "Can we do a quick call Monday morning around 9:30 to go over the client presentation? I'll send a Teams link."
+Agora extraia de:
+Email: "Podemos fazer uma call rápida segunda de manhã por volta das 9:30 para revisar a apresentação do cliente? Vou enviar um link do Teams."
 
-Meeting:`} />
+Reunião:`} />
 
-## Advanced Few-Shot Techniques
+## Técnicas Avançadas de Few-Shot
 
-Beyond basic few-shot, several techniques can improve results for complex tasks.
+Além do few-shot básico, várias técnicas podem melhorar resultados para tarefas complexas.
 
-### Diverse Examples
+### Exemplos Diversos
 
-Diversity in examples is more valuable than quantity. Cover different scenarios, edge cases, and potential ambiguities rather than showing similar examples repeatedly.
+Diversidade em exemplos é mais valiosa que quantidade. Cubra diferentes cenários, casos limite e ambiguidades potenciais em vez de mostrar exemplos similares repetidamente.
 
-<TryIt compact prompt={`Respond to customer complaints.
+<TryIt compact prompt={`Responda a reclamações de clientes.
 
-Example 1 (Product Issue):
-Customer: "My order arrived damaged."
-Response: "I sincerely apologize for the damaged delivery. I'll immediately send a replacement at no charge. You don't need to return the damaged item. May I confirm your shipping address?"
+Exemplo 1 (Problema com Produto):
+Cliente: "Meu pedido chegou danificado."
+Resposta: "Peço sinceras desculpas pela entrega danificada. Enviarei imediatamente uma reposição sem custo. Você não precisa devolver o item danificado. Posso confirmar seu endereço de entrega?"
 
-Example 2 (Service Issue):
-Customer: "I've been on hold for 2 hours!"
-Response: "I'm very sorry for the long wait time. That's unacceptable. I'm here now and will personally ensure your issue is resolved. What can I help you with today?"
+Exemplo 2 (Problema com Serviço):
+Cliente: "Estou na espera há 2 horas!"
+Resposta: "Lamento muito pelo longo tempo de espera. Isso é inaceitável. Estou aqui agora e vou pessoalmente garantir que seu problema seja resolvido. Em que posso ajudar hoje?"
 
-Example 3 (Billing Issue):
-Customer: "You charged me twice for the same order!"
-Response: "I apologize for this billing error. I've verified the duplicate charge and initiated a refund of $XX.XX to your original payment method. You should see it within 3-5 business days."
+Exemplo 3 (Problema de Cobrança):
+Cliente: "Vocês me cobraram duas vezes pelo mesmo pedido!"
+Resposta: "Peço desculpas por este erro de cobrança. Verifiquei a cobrança duplicada e iniciei um reembolso de R$XX,XX para seu método de pagamento original. Você deve ver em 3-5 dias úteis."
 
-Now respond to:
-Customer: "The product doesn't match what was shown on the website."
-Response:`} />
+Agora responda a:
+Cliente: "O produto não corresponde ao que foi mostrado no site."
+Resposta:`} />
 
-### Negative Examples
+### Exemplos Negativos
 
-<Callout type="tip" title="Contrastive Learning">
-Showing "good" vs "bad" examples is called contrastive learning. It helps the model understand not just what you want, but what to avoid. This is especially useful for style and quality judgments.
+<Callout type="tip" title="Aprendizado Contrastivo">
+Mostrar exemplos "bons" vs "ruins" é chamado aprendizado contrastivo. Ajuda o modelo a entender não apenas o que você quer, mas o que evitar. Isso é especialmente útil para julgamentos de estilo e qualidade.
 </Callout>
 
-Sometimes showing what *not* to do is as valuable as showing correct examples. Negative examples help the model understand boundaries and avoid common mistakes.
+Às vezes mostrar o que *não* fazer é tão valioso quanto mostrar exemplos corretos. Exemplos negativos ajudam o modelo a entender limites e evitar erros comuns.
 
-<TryIt compact prompt={`Write concise email subject lines.
+<TryIt compact prompt={`Escreva linhas de assunto de email concisas.
 
-Good: "Q3 Report Ready for Review"
-Bad: "Hey, I finished that report thing we talked about"
+Bom: "Relatório T3 Pronto para Revisão"
+Ruim: "Oi, terminei aquele relatório que a gente conversou"
 
-Good: "Action Required: Approve PTO by Friday"
-Bad: "I need you to do something for me please read this"
+Bom: "Ação Necessária: Aprovar Férias até Sexta"
+Ruim: "Preciso que você faça algo pra mim por favor leia isso"
 
-Good: "Meeting Rescheduled: Project Sync → Thursday 2pm"
-Bad: "Change of plans!!!!!"
+Bom: "Reunião Remarcada: Sync do Projeto → Quinta 14h"
+Ruim: "Mudança de planos!!!!!"
 
-Now write a subject line for:
-Email about: Requesting feedback on a proposal draft
-Subject:`} />
+Agora escreva uma linha de assunto para:
+Email sobre: Solicitando feedback sobre rascunho de proposta
+Assunto:`} />
 
-### Edge Case Examples
+### Exemplos de Casos Limite
 
-Edge cases often determine whether a solution works in production. Including unusual inputs in your examples prevents the model from failing on real-world data that doesn't fit the "happy path."
+Casos limite frequentemente determinam se uma solução funciona em produção. Incluir entradas incomuns nos seus exemplos previne o modelo de falhar em dados do mundo real que não se encaixam no "caminho feliz".
 
-<TryIt compact prompt={`Parse names into structured format.
+<TryIt compact prompt={`Parse nomes em formato estruturado.
 
-Input: "John Smith"
-Output: {"first": "John", "last": "Smith", "middle": null, "suffix": null}
+Entrada: "João Silva"
+Saída: {"primeiro": "João", "ultimo": "Silva", "meio": null, "sufixo": null}
 
-Input: "Mary Jane Watson-Parker"
-Output: {"first": "Mary", "middle": "Jane", "last": "Watson-Parker", "suffix": null}
+Entrada: "Maria José Santos-Oliveira"
+Saída: {"primeiro": "Maria", "meio": "José", "ultimo": "Santos-Oliveira", "sufixo": null}
 
-Input: "Dr. Martin Luther King Jr."
-Output: {"prefix": "Dr.", "first": "Martin", "middle": "Luther", "last": "King", "suffix": "Jr."}
+Entrada: "Dr. Martin Luther King Jr."
+Saída: {"prefixo": "Dr.", "primeiro": "Martin", "meio": "Luther", "ultimo": "King", "sufixo": "Jr."}
 
-Input: "Madonna"
-Output: {"first": "Madonna", "last": null, "middle": null, "suffix": null, "mononym": true}
+Entrada: "Pelé"
+Saída: {"primeiro": "Pelé", "ultimo": null, "meio": null, "sufixo": null, "mononimo": true}
 
-Now parse:
-Input: "Sir Patrick Stewart III"
-Output:`} />
+Agora parse:
+Entrada: "Sir Patrick Stewart III"
+Saída:`} />
 
-## How Many Examples?
+## Quantos Exemplos?
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Simple classification</span>
+    <span className="font-semibold min-w-40">Classificação simples</span>
     <span className="text-primary font-mono">2-3</span>
-    <span className="text-muted-foreground">One per category minimum</span>
+    <span className="text-muted-foreground">Um por categoria no mínimo</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Complex formatting</span>
+    <span className="font-semibold min-w-40">Formatação complexa</span>
     <span className="text-primary font-mono">3-5</span>
-    <span className="text-muted-foreground">Show variations</span>
+    <span className="text-muted-foreground">Mostrar variações</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Nuanced style</span>
+    <span className="font-semibold min-w-40">Estilo nuanceado</span>
     <span className="text-primary font-mono">4-6</span>
-    <span className="text-muted-foreground">Capture full range</span>
+    <span className="text-muted-foreground">Capturar range completo</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Edge cases</span>
+    <span className="font-semibold min-w-40">Casos limite</span>
     <span className="text-primary font-mono">1-2</span>
-    <span className="text-muted-foreground">Alongside normal examples</span>
+    <span className="text-muted-foreground">Junto com exemplos normais</span>
   </div>
 </div>
 
-## Example Quality Matters
+## Qualidade dos Exemplos Importa
 
 <Compare 
   before={{ 
-    label: "Bad Examples", 
-    content: `"Nice product" → Good
-"Nice service" → Good
-"Nice price" → Good
+    label: "Exemplos Ruins", 
+    content: `"Produto legal" → Bom
+"Serviço legal" → Bom
+"Preço legal" → Bom
 
-✗ All too similar
-✗ Same word repeated
-✗ No edge cases shown` 
+✗ Todos muito similares
+✗ Mesma palavra repetida
+✗ Sem casos limite mostrados` 
   }}
   after={{ 
-    label: "Good Examples", 
-    content: `"Exceeded expectations!" → Positive
-"Broken on arrival" → Negative
-"Works fine, nothing special" → Neutral
-"Great quality but overpriced" → Mixed
+    label: "Exemplos Bons", 
+    content: `"Superou expectativas!" → Positivo
+"Chegou quebrado" → Negativo
+"Funciona ok, nada especial" → Neutro
+"Ótima qualidade mas caro demais" → Misto
 
-✓ Diverse scenarios
-✓ Clear boundaries
-✓ Covers edge cases` 
+✓ Cenários diversos
+✓ Limites claros
+✓ Cobre casos limite` 
   }}
 />
 
-## Combining Few-Shot with Other Techniques
+## Combinando Few-Shot com Outras Técnicas
 
-Few-shot learning combines powerfully with other prompting techniques. The examples provide the "what" while other techniques can add context, reasoning, or structure.
+Few-shot learning combina poderosamente com outras técnicas de prompting. Os exemplos fornecem o "o quê" enquanto outras técnicas podem adicionar contexto, raciocínio ou estrutura.
 
-### Few-Shot + Role
+### Few-Shot + Papel
 
-Adding a role gives the model context for *why* it's doing the task, which can improve quality and consistency.
+Adicionar um papel dá ao modelo contexto para *por quê* está fazendo a tarefa, o que pode melhorar qualidade e consistência.
 
 ```
-You are a legal contract reviewer.
+Você é um revisor de contratos legais.
 
-[examples of contract clause analysis]
+[exemplos de análise de cláusulas contratuais]
 
-Now analyze: [new clause]
+Agora analise: [nova cláusula]
 ```
 
 ### Few-Shot + CoT
 
-Combining few-shot with Chain of Thought shows not just *what* answer to give, but *how* to reason through to that answer. This is powerful for tasks requiring judgment.
+Combinar few-shot com Chain of Thought mostra não apenas *qual* resposta dar, mas *como* raciocinar até ela. Isso é poderoso para tarefas que requerem julgamento.
 
 ```
-Classify and explain reasoning.
+Classifique e explique o raciocínio.
 
-Review: "Great features but overpriced"
-Thinking: The review mentions positive aspects ("great features") 
-but also a significant negative ("overpriced"). The negative seems 
-to outweigh the positive based on the "but" conjunction.
-Classification: Mixed-Negative
+Avaliação: "Ótimos recursos mas caro demais"
+Pensamento: A avaliação menciona aspectos positivos ("ótimos recursos") 
+mas também um negativo significativo ("caro demais"). O negativo parece 
+superar o positivo baseado na conjunção "mas".
+Classificação: Misto-Negativo
 
-[more examples with reasoning]
+[mais exemplos com raciocínio]
 
-Now classify with reasoning:
-Review: "Exactly what I needed, arrived faster than expected"
+Agora classifique com raciocínio:
+Avaliação: "Exatamente o que eu precisava, chegou mais rápido que esperado"
 ```
 
-## Summary
+## Resumo
 
-<Callout type="tip" title="Key Takeaways">
-Few-shot learning teaches through demonstration and is often more effective than instructions alone. Use 2-5 diverse, correct examples and combine with other techniques for best results.
+<Callout type="tip" title="Principais Conclusões">
+Few-shot learning ensina através de demonstração e frequentemente é mais eficaz que apenas instruções. Use 2-5 exemplos diversos e corretos e combine com outras técnicas para melhores resultados.
 </Callout>
 
 <Quiz 
-  question="How many examples should you typically provide in few-shot learning?"
+  question="Quantos exemplos você tipicamente deve fornecer em few-shot learning?"
   options={[
-    "As many as possible (10+)",
-    "Just 1 example is always enough",
-    "2-5 diverse, correct examples",
-    "Examples aren't necessary if instructions are clear"
+    "O máximo possível (10+)",
+    "Apenas 1 exemplo é sempre suficiente",
+    "2-5 exemplos diversos e corretos",
+    "Exemplos não são necessários se instruções são claras"
   ]}
   correctIndex={2}
-  explanation="2-5 diverse, correct examples typically work best. Too few may not capture the pattern, while too many waste tokens and may confuse the model. Quality and diversity matter more than quantity."
+  explanation="2-5 exemplos diversos e corretos tipicamente funcionam melhor. Poucos demais podem não capturar o padrão, enquanto muitos desperdiçam tokens e podem confundir o modelo. Qualidade e diversidade importam mais que quantidade."
 />
 
-In the next chapter, we'll explore iterative refinement: the art of improving prompts through successive attempts.
+No próximo capítulo, exploraremos refinamento iterativo: a arte de melhorar prompts através de tentativas sucessivas.

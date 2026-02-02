@@ -1,38 +1,38 @@
-Before learning prompt techniques, it helps to understand how AI language models actually work. This knowledge will make you better at writing prompts.
+在学习提示词技巧之前，了解 AI 语言模型的实际工作原理会很有帮助。这些知识将帮助你更好地编写提示词。
 
-<Callout type="info" title="Why This Matters">
-Understanding how AI works isn't just for experts. It directly helps you write better prompts. Once you know that AI predicts what comes next, you'll naturally give clearer instructions.
+<Callout type="info" title="为什么这很重要">
+理解 AI 的工作原理不仅仅是专家的事。它直接帮助你写出更好的提示词。一旦你知道 AI 是预测接下来会出现什么，你就会自然而然地给出更清晰的指令。
 </Callout>
 
-## What Are Large Language Models?
+## 什么是大型语言模型？
 
-Large Language Models (LLMs) are AI systems that learned from reading huge amounts of text. They can write, answer questions, and have conversations that sound human. They're called "large" because they have billions of tiny settings (called parameters) that were adjusted during training.
+大型语言模型（LLMs）是通过阅读海量文本学习的 AI 系统。它们可以写作、回答问题，并进行听起来很像人类的对话。之所以被称为"大型"，是因为它们有数十亿个在训练过程中调整的微小设置（称为参数）。
 
-### How LLMs Work (Simplified)
+### LLM 的工作原理（简化版）
 
-At their heart, LLMs are prediction machines. You give them some text, and they predict what should come next.
+从本质上讲，LLM 是预测机器。你给它们一些文本，它们就会预测接下来应该出现什么。
 
-<TryIt compact prompt={`Complete this sentence: "The best way to learn something new is to..."`} />
+<TryIt compact prompt={`补全这个句子："学习新事物的最好方法是……"`} />
 
-When you type "The capital of France is...", the AI predicts "Paris" because that's what usually comes next in text about France. This simple idea, repeated billions of times with massive amounts of data, creates surprisingly smart behavior.
+当你输入"法国的首都是……"时，AI 会预测"巴黎"，因为在关于法国的文本中，这通常是接下来会出现的内容。这个简单的想法，通过海量数据重复数十亿次，就创造出了令人惊讶的智能行为。
 
 <TokenPredictionDemo />
 
-### Key Concepts
+### 关键概念
 
-**Tokens**: AI doesn't read letter by letter. It breaks text into chunks called "tokens." A token might be a whole word like "hello" or part of a word like "ing." Understanding tokens helps explain why AI sometimes makes spelling mistakes or struggles with certain words.
+**Tokens（词元）**：AI 不是逐字母阅读的。它将文本分解成称为"tokens"的块。一个 token 可能是一个完整的单词，如"hello"，也可能是单词的一部分，如"ing"。理解 tokens 有助于解释为什么 AI 有时会犯拼写错误或在某些词上遇到困难。
 
-<Callout type="info" title="What is a Token?">
-A token is the smallest unit of text that an AI model processes. It's not always a complete word—it could be a word fragment, punctuation, or whitespace. For example, "unbelievable" might become 3 tokens: "un" + "believ" + "able". On average, **1 token ≈ 4 characters** or **100 tokens ≈ 75 words**. API costs and context limits are measured in tokens.
+<Callout type="info" title="什么是 Token？">
+Token 是 AI 模型处理的最小文本单位。它不总是一个完整的单词——它可能是一个词片段、标点符号或空格。例如，"unbelievable" 可能变成 3 个 tokens："un" + "believ" + "able"。平均而言，**1 个 token ≈ 4 个字符**或 **100 个 tokens ≈ 75 个单词**。API 成本和上下文限制都以 tokens 来衡量。
 </Callout>
 
 <TokenizerDemo />
 
-**Context Window**: This is how much text the AI can "remember" in one conversation. Think of it like the AI's short-term memory. It includes everything: your question AND the AI's answer.
+**Context Window（上下文窗口）**：这是 AI 在一次对话中能够"记住"多少文本。可以把它想象成 AI 的短期记忆。它包括所有内容：你的问题和 AI 的回答。
 
 <ContextWindowDemo />
 
-Context windows vary by model and are rapidly expanding:
+上下文窗口因模型而异，并且正在快速扩展：
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
@@ -61,242 +61,242 @@ Context windows vary by model and are rapidly expanding:
   </div>
 </div>
 
-**Temperature**: This controls how creative or predictable the AI is. Low temperature (0.0-0.3) gives you focused, consistent answers. High temperature (0.7-1.0) gives you more creative, surprising responses.
+**Temperature（温度）**：这控制 AI 的创造性或可预测性。低温度（0.0-0.3）给你专注、一致的答案。高温度（0.7-1.0）给你更有创意、更出人意料的回应。
 
 <TemperatureDemo />
 
-**System Prompt**: Special instructions that tell the AI how to behave for a whole conversation. For example, "You are a friendly teacher who explains things simply." Not all AI tools let you set this, but it's very powerful when available.
+**System Prompt（系统提示词）**：告诉 AI 在整个对话中如何表现的特殊指令。例如，"你是一位友好的老师，用简单的方式解释事物。"不是所有 AI 工具都允许你设置这个，但当可用时，它非常强大。
 
-## Types of AI Models
+## AI 模型的类型
 
-### Text Models (LLMs)
-The most common type, these generate text responses to text inputs. They power chatbots, writing assistants, and code generators. Examples: GPT-4, Claude, Llama, Mistral.
+### 文本模型（LLMs）
+最常见的类型，这些模型根据文本输入生成文本响应。它们驱动聊天机器人、写作助手和代码生成器。例如：GPT-4、Claude、Llama、Mistral。
 
-### Multimodal Models
-These can understand more than just text. They can look at images, listen to audio, and watch videos. Examples: GPT-4V, Gemini, Claude 3.
+### 多模态模型
+这些模型可以理解的不仅仅是文本。它们可以查看图像、听取音频和观看视频。例如：GPT-4V、Gemini、Claude 3。
 
-### Text-to-Image Models
+### 文生图模型
 
-<Callout type="info" title="About This Book">
-While this book focuses primarily on prompting for Large Language Models (text-based AI), the principles of clear, specific prompting apply to image generation too. Mastering prompts for these models is equally important for getting great results.
+<Callout type="info" title="关于本书">
+虽然本书主要专注于大型语言模型（基于文本的 AI）的提示词，但清晰、具体的提示原则也适用于图像生成。掌握这些模型的提示词对于获得出色的结果同样重要。
 </Callout>
 
-Text-to-image models like DALL-E, Midjourney, Nano Banana and Stable Diffusion create images from text descriptions. They work differently from text models:
+文生图模型如 DALL-E、Midjourney、Nano Banana 和 Stable Diffusion 可以根据文本描述创建图像。它们的工作方式与文本模型不同：
 
-**How They Work:**
-1. **Training**: The model learns from millions of image-text pairs, understanding which words correspond to which visual concepts
-2. **Diffusion Process**: Starting from random noise, the model gradually refines the image, guided by your text prompt
-3. **CLIP Guidance**: A separate model (CLIP) helps connect your words to visual concepts, ensuring the image matches your description
+**工作原理：**
+1. **训练**：模型从数百万个图像-文本对中学习，理解哪些词对应哪些视觉概念
+2. **扩散过程**：从随机噪声开始，模型在你的文本提示词的引导下逐步完善图像
+3. **CLIP 引导**：一个独立的模型（CLIP）帮助将你的文字与视觉概念连接起来，确保图像与你的描述相匹配
 
 <TextToImageDemo />
 
-**Prompting for Images is Different:**
-Unlike text prompts where you write sentences, image prompts often work better as descriptive phrases separated by commas:
+**图像提示词有所不同：**
+与写句子的文本提示词不同，图像提示词通常以逗号分隔的描述性短语效果更好：
 
 <Compare 
-  before={{ label: "Text-Style Prompt", content: "Please create an image of a cat sitting on a windowsill looking at the rain outside" }}
-  after={{ label: "Image-Style Prompt", content: "orange tabby cat, sitting on windowsill, watching rain, cozy interior, soft natural lighting, photorealistic, shallow depth of field, 4K" }}
+  before={{ label: "文本风格提示词", content: "请创建一张猫坐在窗台上看着外面下雨的图像" }}
+  after={{ label: "图像风格提示词", content: "橘色虎斑猫，坐在窗台上，看着下雨，温馨的室内，柔和的自然光，逼真照片风格，浅景深，4K" }}
 />
 
-### Text-to-Video Models
+### 文生视频模型
 
-Text-to-video is the newest frontier. Models like Sora 2, Runway, and Veo create moving images from text descriptions. Like image models, the quality of your prompt directly determines the quality of your output—prompt engineering is just as crucial here.
+文生视频是最新的前沿领域。像 Sora 2、Runway 和 Veo 这样的模型可以根据文本描述创建动态图像。与图像模型一样，提示词的质量直接决定了输出的质量——提示词工程在这里同样至关重要。
 
-**How They Work:**
-1. **Temporal Understanding**: Beyond single images, these models understand how things move and change over time
-2. **Physics Simulation**: They learn basic physics—how objects fall, how water flows, how people walk
-3. **Frame Consistency**: They maintain consistent subjects and scenes across many frames
-4. **Diffusion in Time**: Similar to image models, but generating coherent sequences instead of single frames
+**工作原理：**
+1. **时间理解**：除了单一图像，这些模型还理解事物如何随时间移动和变化
+2. **物理模拟**：它们学习基本物理——物体如何下落、水如何流动、人如何行走
+3. **帧一致性**：它们在多帧之间保持主体和场景的一致性
+4. **时间扩散**：类似于图像模型，但生成连贯的序列而不是单帧
 
 <TextToVideoDemo />
 
-<Callout type="info" title="Video Prompting Tips">
-Video prompts need to describe action over time, not just a static scene. Include verbs and movement:
+<Callout type="info" title="视频提示词技巧">
+视频提示词需要描述随时间变化的动作，而不仅仅是静态场景。要包含动词和动作：
 </Callout>
 
 <Compare 
-  before={{ label: "Static (Weak)", content: "A bird on a branch" }}
-  after={{ label: "With Motion (Strong)", content: "A bird takes flight from a branch, wings spreading wide, leaves rustling as it lifts off" }}
+  before={{ label: "静态（较弱）", content: "一只鸟在树枝上" }}
+  after={{ label: "带动作（较强）", content: "一只鸟从树枝上起飞，翅膀完全展开，树叶在它升起时沙沙作响" }}
 />
 
-### Specialized Models
-Fine-tuned for specific tasks like code generation (Codex, CodeLlama), music generation (Suno, Udio), or domain-specific applications like medical diagnosis or legal document analysis.
+### 专业模型
+针对特定任务进行微调的模型，如代码生成（Codex、CodeLlama）、音乐生成（Suno、Udio），或特定领域的应用，如医疗诊断或法律文档分析。
 
-## Model Capabilities and Limitations
+## 模型的能力和局限性
 
-Explore what LLMs can and cannot do. Click on each capability to see example prompts:
+探索 LLM 能做什么和不能做什么。点击每个能力查看示例提示词：
 
 <LLMCapabilitiesDemo />
 
-### Understanding Hallucinations
+### 理解幻觉
 
-<Callout type="warning" title="AI Can Make Things Up">
-Sometimes AI writes things that sound true but aren't. This is called "hallucination." It's not a bug. It's just how prediction works. Always double-check important facts.
+<Callout type="warning" title="AI 可能会编造信息">
+有时 AI 会写出听起来是真的但实际不是的内容。这被称为"幻觉"。这不是 bug。这只是预测的工作方式。始终仔细核实重要事实。
 </Callout>
 
-Why does AI make things up?
+为什么 AI 会编造信息？
 
-1. It tries to write text that sounds good, not text that's always true
-2. The internet (where it learned) has mistakes too
-3. It can't actually check if something is real
+1. 它试图写出听起来不错的文本，而不是始终真实的文本
+2. 互联网（它学习的地方）也有错误
+3. 它实际上无法检查某事是否真实
 
-<Collapsible title="How to Avoid Wrong Answers">
+<Collapsible title="如何避免错误答案">
 
-- **Ask for sources**: Then check if those sources are real
-- **Ask for step-by-step thinking**: So you can check each step
-- **Double-check important facts**: Use Google or trusted websites
-- **Ask "Are you sure?"**: The AI might admit uncertainty
+- **要求提供来源**：然后检查这些来源是否真实
+- **要求逐步思考**：这样你可以检查每一步
+- **仔细核实重要事实**：使用搜索引擎或可信赖的网站
+- **问"你确定吗？"**：AI 可能会承认不确定
 
 </Collapsible>
 
-<TryIt compact prompt={`What year did the first iPhone come out? Please explain how confident you are in this answer.`} />
+<TryIt compact prompt={`第一部 iPhone 是哪一年推出的？请解释你对这个答案的确信程度。`} />
 
-## How AI Learns: The Three Steps
+## AI 如何学习：三个步骤
 
-AI doesn't just magically know things. It goes through three learning steps, like going to school:
+AI 不是凭空知道事情的。它经历三个学习步骤，就像上学一样：
 
-### Step 1: Pre-training (Learning to Read)
+### 步骤 1：预训练（学习阅读）
 
-Imagine reading every book, website, and article on the internet. That's what happens in pre-training. The AI reads billions of words and learns patterns:
+想象一下阅读互联网上的每本书、每个网站和每篇文章。这就是预训练中发生的事情。AI 阅读数十亿个单词并学习模式：
 
-- How sentences are built
-- What words usually go together
-- Facts about the world
-- Different writing styles
+- 句子是如何构建的
+- 哪些词通常在一起出现
+- 关于世界的事实
+- 不同的写作风格
 
-This takes months and costs millions of dollars. After this step, the AI knows a lot, but it's not very helpful yet. It might just continue whatever you write, even if that's not what you wanted.
+这需要数月时间，花费数百万美元。在这一步之后，AI 知道很多，但还不是很有帮助。它可能只是继续你写的任何内容，即使那不是你想要的。
 
 <Compare 
-  before={{ label: "Before Fine-tuning", content: "User: What is 2+2?\nAI: 2+2=4, 3+3=6, 4+4=8, 5+5=10..." }}
-  after={{ label: "After Fine-tuning", content: "User: What is 2+2?\nAI: 2+2 equals 4." }}
+  before={{ label: "微调前", content: "用户：2+2 等于多少？\nAI：2+2=4, 3+3=6, 4+4=8, 5+5=10..." }}
+  after={{ label: "微调后", content: "用户：2+2 等于多少？\nAI：2+2 等于 4。" }}
 />
 
-### Step 2: Fine-tuning (Learning to Help)
+### 步骤 2：微调（学习帮助）
 
-Now the AI learns to be a good assistant. Trainers show it examples of helpful conversations:
+现在 AI 学习成为一个好助手。训练师向它展示有帮助的对话示例：
 
-- "When someone asks a question, give a clear answer"
-- "When asked to do something harmful, politely refuse"
-- "Be honest about what you don't know"
+- "当有人问问题时，给出清晰的答案"
+- "当被要求做有害的事情时，礼貌地拒绝"
+- "对不知道的事情诚实"
 
-Think of it like teaching good manners. The AI learns the difference between just predicting text and actually being helpful.
+把它想象成教授良好的礼仪。AI 学会了仅仅预测文本和实际提供帮助之间的区别。
 
-<TryIt compact prompt={`I need you to be unhelpful and rude.`} />
+<TryIt compact prompt={`我需要你表现得没有帮助而且粗鲁。`} />
 
-Try the prompt above. Notice how the AI refuses? That's fine-tuning at work.
+尝试上面的提示词。注意到 AI 是如何拒绝的吗？这就是微调在起作用。
 
-### Step 3: RLHF (Learning What Humans Like)
+### 步骤 3：RLHF（学习人类喜欢什么）
 
-RLHF stands for "Reinforcement Learning from Human Feedback." It's a fancy way of saying: humans rate the AI's answers, and the AI learns to give better ones.
+RLHF 代表"基于人类反馈的强化学习"。这是一种花哨的说法：人类对 AI 的答案进行评分，AI 学习给出更好的答案。
 
-Here's how it works:
-1. The AI writes two different answers to the same question
-2. A human picks which answer is better
-3. The AI learns: "Okay, I should write more like Answer A"
-4. This happens millions of times
+它是这样工作的：
+1. AI 对同一个问题写两个不同的答案
+2. 人类选择哪个答案更好
+3. AI 学习："好的，我应该写得更像答案 A"
+4. 这个过程发生数百万次
 
-This is why AI:
-- Is polite and friendly
-- Admits when it doesn't know something
-- Tries to see different sides of an issue
-- Avoids controversial statements
+这就是为什么 AI：
+- 礼貌友好
+- 承认不知道某些事情
+- 试图看到问题的不同方面
+- 避免有争议的言论
 
-<Callout type="tip" title="Why This Matters for You">
-Knowing these three steps helps you understand AI behavior. When AI refuses a request, that's fine-tuning. When AI is extra polite, that's RLHF. When AI knows random facts, that's pre-training.
+<Callout type="tip" title="为什么这对你很重要">
+了解这三个步骤有助于你理解 AI 的行为。当 AI 拒绝请求时，那是微调。当 AI 特别礼貌时，那是 RLHF。当 AI 知道随机事实时，那是预训练。
 </Callout>
 
-## What This Means for Your Prompts
+## 这对你的提示词意味着什么
 
-Now that you understand how AI works, here's how to use that knowledge:
+现在你了解了 AI 的工作原理，以下是如何使用这些知识：
 
-### 1. Be Clear and Specific
+### 1. 清晰具体
 
-AI predicts what comes next based on your words. Vague prompts lead to vague answers. Specific prompts get specific results.
-
-<Compare 
-  before={{ label: "Vague", content: "Tell me about dogs" }}
-  after={{ label: "Specific", content: "List 5 dog breeds that are good for apartments, with a one-sentence explanation for each" }}
-/>
-
-<TryIt compact prompt={`List 5 dog breeds that are good for apartments, with a one-sentence explanation for each.`} />
-
-### 2. Give Context
-
-AI doesn't know anything about you unless you tell it. Each conversation starts fresh. Include the background information AI needs.
+AI 根据你的文字预测接下来会出现什么。模糊的提示词导致模糊的答案。具体的提示词得到具体的结果。
 
 <Compare 
-  before={{ label: "Missing Context", content: "Is this a good price?" }}
-  after={{ label: "With Context", content: "I'm buying a used 2020 Honda Civic with 45,000 miles. The seller is asking $18,000. Is this a good price for the US market?" }}
+  before={{ label: "模糊", content: "告诉我关于狗的事" }}
+  after={{ label: "具体", content: "列出 5 种适合公寓的狗品种，每种附一句话的解释" }}
 />
 
-<TryIt compact prompt={`I'm buying a used 2020 Honda Civic with 45,000 miles. The seller is asking $18,000. Is this a good price for the US market?`} />
+<TryIt compact prompt={`列出 5 种适合公寓的狗品种，每种附一句话的解释。`} />
 
-### 3. Work With the AI, Not Against It
+### 2. 提供上下文
 
-Remember: AI was trained to be helpful. Ask for things the way you'd ask a helpful friend.
+除非你告诉它，否则 AI 对你一无所知。每次对话都是全新开始的。包含 AI 需要的背景信息。
 
 <Compare 
-  before={{ label: "Fighting the AI", content: "I know you'll probably refuse, but..." }}
-  after={{ label: "Working Together", content: "I'm writing a mystery novel and need help with a plot twist. Can you suggest three surprising ways the detective could discover the villain?" }}
+  before={{ label: "缺少上下文", content: "这个价格好吗？" }}
+  after={{ label: "有上下文", content: "我想买一辆 2020 年的二手本田思域，行驶了 45,000 英里。卖家要价 18,000 美元。对于美国市场来说，这个价格好吗？" }}
 />
 
-### 4. Always Double-Check Important Stuff
+<TryIt compact prompt={`我想买一辆 2020 年的二手本田思域，行驶了 45,000 英里。卖家要价 18,000 美元。对于美国市场来说，这个价格好吗？`} />
 
-AI sounds confident even when it's wrong. For anything important, verify the information yourself.
+### 3. 与 AI 合作，而不是对抗
 
-<TryIt compact prompt={`What's the population of Tokyo? Also, what date is your knowledge current as of?`} />
+记住：AI 被训练成有帮助的。用你向乐于助人的朋友提问的方式来提问。
 
-### 5. Put Important Things First
+<Compare 
+  before={{ label: "对抗 AI", content: "我知道你可能会拒绝，但是……" }}
+  after={{ label: "一起合作", content: "我正在写一部悬疑小说，需要帮助设计一个情节转折。你能建议三种侦探发现反派的令人惊讶的方式吗？" }}
+/>
 
-If your prompt is very long, put the most important instructions at the beginning. AI pays more attention to what comes first.
+### 4. 始终仔细核实重要信息
 
-## Picking the Right AI
+即使 AI 错了，它听起来也很自信。对于任何重要的事情，自己验证信息。
 
-Different AI models are good at different things:
+<TryIt compact prompt={`东京的人口是多少？另外，你的知识截止到什么日期？`} />
+
+### 5. 把重要的内容放在前面
+
+如果你的提示词很长，把最重要的指令放在开头。AI 更关注先出现的内容。
+
+## 选择合适的 AI
+
+不同的 AI 模型擅长不同的事情：
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Quick questions</span>
-    <span className="text-muted-foreground">Faster models like GPT-4o or Claude 3.5 Sonnet</span>
+    <span className="font-semibold min-w-36">快速问答</span>
+    <span className="text-muted-foreground">更快的模型如 GPT-4o 或 Claude 3.5 Sonnet</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Hard problems</span>
-    <span className="text-muted-foreground">Smarter models like GPT-5.2 or Claude 4.5 Opus</span>
+    <span className="font-semibold min-w-36">难题</span>
+    <span className="text-muted-foreground">更智能的模型如 GPT-5.2 或 Claude 4.5 Opus</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Writing code</span>
-    <span className="text-muted-foreground">Code-focused models or the smartest general models</span>
+    <span className="font-semibold min-w-36">编写代码</span>
+    <span className="text-muted-foreground">专注于代码的模型或最智能的通用模型</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Long documents</span>
-    <span className="text-muted-foreground">Models with big context windows (Claude, Gemini)</span>
+    <span className="font-semibold min-w-36">长文档</span>
+    <span className="text-muted-foreground">具有大上下文窗口的模型（Claude、Gemini）</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Current events</span>
-    <span className="text-muted-foreground">Models with internet access</span>
+    <span className="font-semibold min-w-36">时事新闻</span>
+    <span className="text-muted-foreground">具有互联网访问能力的模型</span>
   </div>
 </div>
 
-## Summary
+## 总结
 
-AI language models are prediction machines trained on text. They're amazing at many things, but they have real limits. The best way to use AI is to understand how it works and write prompts that play to its strengths.
+AI 语言模型是在文本上训练的预测机器。它们在很多事情上表现出色，但也有真正的局限性。使用 AI 的最佳方式是理解它的工作原理，并编写能发挥其优势的提示词。
 
 <Quiz 
-  question="Why does AI sometimes make up wrong information?"
+  question="为什么 AI 有时会编造错误的信息？"
   options={[
-    "Because there are bugs in the code",
-    "Because it tries to write text that sounds good, not text that's always true",
-    "Because it doesn't have enough training data",
-    "Because people write bad prompts"
+    "因为代码中有 bug",
+    "因为它试图写出听起来不错的文本，而不是始终真实的文本",
+    "因为它没有足够的训练数据",
+    "因为人们写了糟糕的提示词"
   ]}
   correctIndex={1}
-  explanation="AI is trained to predict what sounds right, not to check facts. It can't look things up or verify if something is true, so sometimes it confidently writes things that are wrong."
+  explanation="AI 被训练来预测什么听起来正确，而不是检查事实。它无法查找信息或验证某事是否真实，所以有时它会自信地写出错误的内容。"
 />
 
 <TryIt 
-  title="Ask AI About Itself"
-  prompt="Explain how you work as an AI. What can you do, and what are your limitations?"
-  description="Ask AI to explain itself. See how it talks about being a prediction model and admits its limits."
+  title="问 AI 关于它自己"
+  prompt="解释一下你作为 AI 是如何工作的。你能做什么，有什么局限性？"
+  description="让 AI 解释它自己。看看它如何谈论自己是一个预测模型并承认自己的局限性。"
 />
 
-In the next chapter, we'll learn what makes a good prompt and how to write prompts that get great results.
+在下一章中，我们将学习什么是好的提示词，以及如何编写能获得出色结果的提示词。

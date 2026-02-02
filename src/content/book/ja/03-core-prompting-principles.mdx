@@ -1,373 +1,373 @@
-Beyond structure, effective prompt engineering is guided by principles—fundamental truths that apply across models, tasks, and contexts. Master these principles, and you'll be able to adapt to any prompting challenge.
+構造を超えて、効果的なプロンプトエンジニアリングは原則によって導かれます。これらはモデル、タスク、コンテキストを問わず適用される基本的な真理です。これらの原則をマスターすれば、あらゆるプロンプティングの課題に対応できるようになります。
 
-<Callout type="info" title="The 8 Core Principles">
-These principles apply to every AI model and every task. Learn them once, use them everywhere.
+<Callout type="info" title="8つの核心原則">
+これらの原則はすべてのAIモデルとすべてのタスクに適用されます。一度学べば、どこでも使えます。
 </Callout>
 
-## Principle 1: Clarity Over Cleverness
+## 原則1：巧みさよりも明確さ
 
-The best prompts are clear, not clever. AI models are literal interpreters—they work with exactly what you give them.
+最良のプロンプトは巧みではなく、明確です。AIモデルは文字通りの解釈者であり、与えられたものをそのまま処理します。
 
-### Be Explicit
-
-<Compare 
-  before={{ label: "Implicit (problematic)", content: "Make this better." }}
-  after={{ label: "Explicit (effective)", content: "Improve this email by:\n1. Making the subject line more compelling\n2. Shortening paragraphs to 2-3 sentences max\n3. Adding a clear call-to-action at the end" }}
-/>
-
-### Avoid Ambiguity
-
-Words can have multiple meanings. Choose precise language.
+### 明示的に伝える
 
 <Compare 
-  before={{ label: "Ambiguous", content: "Give me a short summary.\n(How short? 1 sentence? 1 paragraph? 1 page?)" }}
-  after={{ label: "Precise", content: "Summarize in exactly 3 bullet points, each under 20 words." }}
+  before={{ label: "暗黙的（問題あり）", content: "これをもっと良くして。" }}
+  after={{ label: "明示的（効果的）", content: "このメールを以下の点で改善してください：\n1. 件名をより魅力的にする\n2. 段落を最大2〜3文に短縮する\n3. 最後に明確なコールトゥアクションを追加する" }}
 />
 
-### State the Obvious
+### 曖昧さを避ける
 
-What's obvious to you isn't obvious to the model. Spell out assumptions.
+言葉には複数の意味があります。正確な言葉を選びましょう。
+
+<Compare 
+  before={{ label: "曖昧", content: "短い要約をください。\n（どのくらい短く？1文？1段落？1ページ？）" }}
+  after={{ label: "正確", content: "正確に3つの箇条書きで、各項目20語以内で要約してください。" }}
+/>
+
+### 当たり前のことも述べる
+
+あなたにとって当たり前のことは、モデルにとっては当たり前ではありません。前提を明確に示しましょう。
 
 ```
-You're helping me write a cover letter.
+カバーレターの作成を手伝ってください。
 
-Important context:
-- I'm applying for a Software Engineer position at Google
-- I have 5 years of experience in Python and distributed systems
-- The role requires leadership experience (I've led a team of 4)
-- I want to emphasize my open-source contributions
+重要なコンテキスト：
+- GoogleのSoftware Engineerポジションに応募しています
+- Pythonと分散システムで5年の経験があります
+- リーダーシップ経験が必要な役割です（4人のチームをリードしてきました）
+- オープンソースへの貢献を強調したいです
 ```
 
-## Principle 2: Specificity Yields Quality
+## 原則2：具体性が品質を生む
 
-Vague inputs produce vague outputs. Specific inputs produce specific, useful outputs.
+曖昧な入力は曖昧な出力を生みます。具体的な入力は具体的で有用な出力を生みます。
 
-### The Specificity Ladder
+### 具体性の階段
 
 <SpecificitySpectrum levels={[
-  { level: "Level 1", text: "Write about climate change" },
-  { level: "Level 2", text: "Write an article about climate change effects" },
-  { level: "Level 3", text: "Write a 500-word article about how climate change affects coral reefs" },
-  { level: "Level 4", text: "Write a 500-word article explaining how rising ocean temperatures cause coral bleaching, aimed at high school students, with 2 specific examples from the Great Barrier Reef, in an engaging but scientifically accurate tone" }
+  { level: "レベル1", text: "気候変動について書いて" },
+  { level: "レベル2", text: "気候変動の影響についての記事を書いて" },
+  { level: "レベル3", text: "気候変動がサンゴ礁にどのように影響するかについて500語の記事を書いて" },
+  { level: "レベル4", text: "海水温の上昇がサンゴの白化を引き起こす仕組みを説明する500語の記事を書いてください。対象は高校生で、グレートバリアリーフからの具体例を2つ含め、魅力的でありながら科学的に正確なトーンで" }
 ]} />
 
-Each level adds specificity and dramatically improves output quality.
+各レベルが具体性を追加し、出力品質を劇的に向上させます。
 
-### Specify These Elements
+### 指定すべき要素
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Audience</span>
-    <span className="text-muted-foreground">Who will read/use this?</span>
+    <span className="font-semibold min-w-24">対象者</span>
+    <span className="text-muted-foreground">誰がこれを読む/使うのか？</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Length</span>
-    <span className="text-muted-foreground">How long/short should it be?</span>
+    <span className="font-semibold min-w-24">長さ</span>
+    <span className="text-muted-foreground">どのくらいの長さ/短さが必要か？</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Tone</span>
-    <span className="text-muted-foreground">Formal? Casual? Technical?</span>
+    <span className="font-semibold min-w-24">トーン</span>
+    <span className="text-muted-foreground">フォーマル？カジュアル？テクニカル？</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Format</span>
-    <span className="text-muted-foreground">Prose? List? Table? Code?</span>
+    <span className="font-semibold min-w-24">フォーマット</span>
+    <span className="text-muted-foreground">文章？リスト？表？コード？</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Scope</span>
-    <span className="text-muted-foreground">What to include/exclude?</span>
+    <span className="font-semibold min-w-24">範囲</span>
+    <span className="text-muted-foreground">何を含める/除外するか？</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Purpose</span>
-    <span className="text-muted-foreground">What should this accomplish?</span>
+    <span className="font-semibold min-w-24">目的</span>
+    <span className="text-muted-foreground">これで何を達成すべきか？</span>
   </div>
 </div>
 
-## Principle 3: Context Is King
+## 原則3：コンテキストは王様
 
-Models have no memory, no access to your files, and no knowledge of your situation. Everything relevant must be in the prompt.
+モデルには記憶がなく、あなたのファイルにアクセスできず、あなたの状況を知りません。関連するすべての情報はプロンプトに含める必要があります。
 
-### Provide Sufficient Context
+### 十分なコンテキストを提供する
 
 <Compare 
-  before={{ label: "Insufficient context", content: "Why isn't my function working?" }}
-  after={{ label: "Sufficient context", content: "I have a Python function that should filter a list of dictionaries by a specific key value. It's returning an empty list when it should return 3 items.\n\nFunction:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nCall: filter_items(items, 'status', 'active')\nExpected: 2 items, Got: empty list" }}
+  before={{ label: "コンテキスト不足", content: "なぜ私の関数が動かないの？" }}
+  after={{ label: "十分なコンテキスト", content: "特定のキー値で辞書のリストをフィルタリングするPython関数があります。3つのアイテムを返すべきところで空のリストを返しています。\n\n関数：\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\n呼び出し：filter_items(items, 'status', 'active')\n期待値：2アイテム、実際：空のリスト" }}
 />
 
-### The Context Checklist
+### コンテキストチェックリスト
 
-<Callout type="tip" title="Before You Submit">
-Ask yourself: Would a smart stranger understand this request? If not, add more context.
+<Callout type="tip" title="送信する前に">
+自問してください：賢い見知らぬ人がこのリクエストを理解できるだろうか？できないなら、コンテキストを追加しましょう。
 </Callout>
 
 <Checklist 
-  title="Context Checklist"
+  title="コンテキストチェックリスト"
   items={[
-    { text: "Does the model know what I'm working on?" },
-    { text: "Does it know my goal?" },
-    { text: "Does it have all necessary information?" },
-    { text: "Does it understand the constraints?" },
-    { text: "Would a smart stranger understand this request?" }
+    { text: "モデルは私が何に取り組んでいるか知っているか？" },
+    { text: "モデルは私の目標を知っているか？" },
+    { text: "モデルは必要な情報をすべて持っているか？" },
+    { text: "モデルは制約を理解しているか？" },
+    { text: "賢い見知らぬ人がこのリクエストを理解できるか？" }
   ]}
 />
 
-## Principle 4: Guide, Don't Just Ask
+## 原則4：質問だけでなく、導く
 
-Don't just ask for an answer—guide the model toward the answer you want.
+答えを求めるだけでなく、望む答えへとモデルを導きましょう。
 
-### Use Instructional Framing
+### 指示的なフレーミングを使う
 
 <Compare 
-  before={{ label: "Just Asking", content: "What are the pros and cons of microservices?" }}
-  after={{ label: "Guiding", content: "List 5 advantages and 5 disadvantages of microservices architecture.\n\nFor each point:\n- State the point clearly in one sentence\n- Provide a brief explanation (2-3 sentences)\n- Give a concrete example\n\nConsider perspectives of: small startups, large enterprises, and teams transitioning from monoliths." }}
+  before={{ label: "質問するだけ", content: "マイクロサービスの長所と短所は何ですか？" }}
+  after={{ label: "導く", content: "マイクロサービスアーキテクチャの利点5つと欠点5つをリストアップしてください。\n\n各ポイントについて：\n- ポイントを1文で明確に述べる\n- 簡単な説明（2〜3文）を提供する\n- 具体例を挙げる\n\n以下の視点を考慮してください：小規模スタートアップ、大企業、モノリスから移行中のチーム。" }}
 />
 
-### Provide Reasoning Scaffolds
+### 推論の足場を提供する
 
-For complex tasks, guide the reasoning process:
+複雑なタスクでは、推論プロセスを導きましょう：
 
 <TryIt 
-  title="Reasoning Scaffold Example"
-  description="This prompt guides the AI through a systematic decision-making process."
-  prompt={`I need to choose between PostgreSQL and MongoDB for my e-commerce project.
+  title="推論の足場の例"
+  description="このプロンプトはAIを体系的な意思決定プロセスに導きます。"
+  prompt={`私のeコマースプロジェクトでPostgreSQLとMongoDBのどちらを選ぶべきか決める必要があります。
 
-Think through this systematically:
-1. First, list the typical requirements for an e-commerce database
-2. Then, evaluate each database against each requirement
-3. Consider trade-offs specific to my use case
-4. Make a recommendation with clear justification`}
+これを体系的に考えてください：
+1. まず、eコマースデータベースの典型的な要件をリストアップする
+2. 次に、各要件に対して各データベースを評価する
+3. 私のユースケースに特有のトレードオフを考慮する
+4. 明確な根拠とともに推奨を示す`}
 />
 
-## Principle 5: Iterate and Refine
+## 原則5：反復と改良
 
-Prompt engineering is an iterative process. Your first prompt is rarely your best.
+プロンプトエンジニアリングは反復的なプロセスです。最初のプロンプトが最良であることはめったにありません。
 
-### The Iteration Cycle
+### 反復サイクル
 
 ```
-1. Write initial prompt
-2. Review output
-3. Identify gaps or issues
-4. Refine prompt
-5. Repeat until satisfied
+1. 最初のプロンプトを書く
+2. 出力を確認する
+3. ギャップや問題を特定する
+4. プロンプトを改良する
+5. 満足するまで繰り返す
 ```
 
-### Common Refinements
+### よくある改良
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Too verbose</span>
-    <span className="text-muted-foreground">Add "Be concise" or length limits</span>
+    <span className="font-semibold min-w-32">冗長すぎる</span>
+    <span className="text-muted-foreground">「簡潔に」または長さ制限を追加</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Too vague</span>
-    <span className="text-muted-foreground">Add specific examples or constraints</span>
+    <span className="font-semibold min-w-32">曖昧すぎる</span>
+    <span className="text-muted-foreground">具体例や制約を追加</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Wrong format</span>
-    <span className="text-muted-foreground">Specify exact output structure</span>
+    <span className="font-semibold min-w-32">フォーマットが違う</span>
+    <span className="text-muted-foreground">正確な出力構造を指定</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Missing aspects</span>
-    <span className="text-muted-foreground">Add "Make sure to include..."</span>
+    <span className="font-semibold min-w-32">要素が足りない</span>
+    <span className="text-muted-foreground">「必ず含めてください...」を追加</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Wrong tone</span>
-    <span className="text-muted-foreground">Specify audience and style</span>
+    <span className="font-semibold min-w-32">トーンが違う</span>
+    <span className="text-muted-foreground">対象者とスタイルを指定</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Inaccurate</span>
-    <span className="text-muted-foreground">Request citations or step-by-step reasoning</span>
+    <span className="font-semibold min-w-32">不正確</span>
+    <span className="text-muted-foreground">引用やステップバイステップの推論を要求</span>
   </div>
 </div>
 
-### Keep a Prompt Journal
+### プロンプトジャーナルをつける
 
-Document what works:
+うまくいったことを記録しましょう：
 ```
-Task: Code review
-Version 1: "Review this code" → Too generic
-Version 2: Added specific review criteria → Better
-Version 3: Added example of good review → Excellent
-Final: [Save successful prompt as template]
+タスク：コードレビュー
+バージョン1：「このコードをレビューして」→ 一般的すぎる
+バージョン2：具体的なレビュー基準を追加 → 改善
+バージョン3：良いレビューの例を追加 → 優秀
+最終版：[成功したプロンプトをテンプレートとして保存]
 ```
 
-## Principle 6: Leverage the Model's Strengths
+## 原則6：モデルの強みを活用する
 
-Work with how models are trained, not against them.
+モデルがどのように訓練されているかに沿って、逆らわずに作業しましょう。
 
-### Models Want to Be Helpful
+### モデルは助けたがっている
 
-Frame requests as things a helpful assistant would naturally do:
+リクエストを、助けたがっているアシスタントが自然に行うことのようにフレーミングしましょう：
 
 <Compare 
-  before={{ label: "Against the grain", content: "I know you can't do this, but try to..." }}
-  after={{ label: "With the grain", content: "Help me understand...\nI'm working on X and need assistance with...\nCould you walk me through..." }}
+  before={{ label: "逆らう方向", content: "できないとは思いますが、試してみて..." }}
+  after={{ label: "沿う方向", content: "...を理解するのを手伝ってください\n私はXに取り組んでいて、...の支援が必要です\n...を順を追って説明していただけますか" }}
 />
 
-### Models Excel at Patterns
+### モデルはパターンが得意
 
-If you need consistent output, show the pattern:
+一貫した出力が必要な場合は、パターンを示しましょう：
 
 <TryIt 
-  title="Pattern Example"
-  description="This prompt shows the AI exactly what format you want for book recommendations."
-  prompt={`Recommend 3 science fiction books. Format each recommendation as:
+  title="パターンの例"
+  description="このプロンプトは、本の推薦にどのフォーマットを求めているかAIに正確に示します。"
+  prompt={`SF小説を3冊推薦してください。各推薦を以下の形式でフォーマットしてください：
 
-📚 **[Title]** by [Author]
-*[Genre] | [Publication Year]*
-[2-sentence description]
-Why you'll love it: [1 sentence hook]
+📚 **[タイトル]** 著：[著者]
+*[ジャンル] | [出版年]*
+[2文の説明]
+おすすめの理由：[1文のフック]
 
 ---`}
 />
 
-### Models Can Role-Play
+### モデルはロールプレイができる
 
-Use personas to access different "modes" of response:
-
-```
-As a devil's advocate, argue against my proposal...
-As a supportive mentor, help me improve...
-As a skeptical investor, question this business plan...
-```
-
-## Principle 7: Control Output Structure
-
-Structured outputs are more useful than free-form text.
-
-### Request Specific Formats
+異なる「モード」の応答にアクセスするためにペルソナを使いましょう：
 
 ```
-Return your analysis as:
-
-SUMMARY: [1 sentence]
-
-KEY FINDINGS:
-• [Finding 1]
-• [Finding 2]
-• [Finding 3]
-
-RECOMMENDATION: [1-2 sentences]
-
-CONFIDENCE: [Low/Medium/High] because [reason]
+悪魔の代弁者として、私の提案に反論してください...
+支援的なメンターとして、私の改善を手伝ってください...
+懐疑的な投資家として、このビジネスプランに疑問を呈してください...
 ```
 
-### Use Delimiters
+## 原則7：出力構造を制御する
 
-Clearly separate sections of your prompt:
+構造化された出力は、自由形式のテキストよりも有用です。
 
-```
-### CONTEXT ###
-[Your context here]
-
-### TASK ###
-[Your task here]
-
-### FORMAT ###
-[Desired format here]
-```
-
-### Request Machine-Readable Output
-
-For programmatic use:
+### 特定のフォーマットを要求する
 
 ```
-Return only valid JSON, no explanation:
+分析結果を以下の形式で返してください：
+
+要約：[1文]
+
+主な発見：
+• [発見1]
+• [発見2]
+• [発見3]
+
+推奨：[1〜2文]
+
+確信度：[低/中/高] 理由：[理由]
+```
+
+### 区切り文字を使う
+
+プロンプトのセクションを明確に分けましょう：
+
+```
+### コンテキスト ###
+[コンテキストをここに]
+
+### タスク ###
+[タスクをここに]
+
+### フォーマット ###
+[希望するフォーマットをここに]
+```
+
+### 機械可読な出力を要求する
+
+プログラムで使用する場合：
+
+```
+有効なJSONのみを返してください、説明は不要です：
 {
   "decision": "approve" | "reject" | "review",
   "confidence": 0.0-1.0,
-  "reasons": ["string array"]
+  "reasons": ["文字列の配列"]
 }
 ```
 
-## Principle 8: Verify and Validate
+## 原則8：検証と確認
 
-Never blindly trust model outputs, especially for important tasks.
+特に重要なタスクでは、モデルの出力を盲目的に信頼しないでください。
 
-### Ask for Reasoning
-
-```
-Solve this problem and show your work step by step.
-After solving, verify your answer by [checking method].
-```
-
-### Request Multiple Perspectives
+### 推論を求める
 
 ```
-Give me three different approaches to solve this problem.
-For each, explain the trade-offs.
+この問題を解いて、ステップバイステップで作業を示してください。
+解いた後、[確認方法]で答えを検証してください。
 ```
 
-### Build in Self-Checking
+### 複数の視点を要求する
 
 ```
-After generating the code, review it for:
-- Syntax errors
-- Edge cases
-- Security vulnerabilities
-List any issues found.
+この問題を解決するための3つの異なるアプローチを教えてください。
+それぞれについて、トレードオフを説明してください。
 ```
 
-## Summary: The Principles at a Glance
+### 自己チェックを組み込む
+
+```
+コードを生成した後、以下についてレビューしてください：
+- 構文エラー
+- エッジケース
+- セキュリティの脆弱性
+見つかった問題をリストアップしてください。
+```
+
+## まとめ：原則の一覧
 
 <PrinciplesSummary />
 
 <Quiz 
-  question="Which principle suggests you should include all relevant background information in your prompt?"
+  question="プロンプトにすべての関連する背景情報を含めるべきと示唆している原則はどれですか？"
   options={[
-    "Clarity Over Cleverness",
-    "Specificity Yields Quality",
-    "Context Is King",
-    "Iterate and Refine"
+    "巧みさよりも明確さ",
+    "具体性が品質を生む",
+    "コンテキストは王様",
+    "反復と改良"
   ]}
   correctIndex={2}
-  explanation="Context Is King emphasizes that AI models have no memory between sessions and cannot read your mind. Including relevant background, constraints, and goals helps the model understand your needs."
+  explanation="「コンテキストは王様」は、AIモデルにはセッション間の記憶がなく、あなたの心を読むことができないことを強調しています。関連する背景、制約、目標を含めることで、モデルがあなたのニーズを理解するのに役立ちます。"
 />
 
-## Practice: Fill in the Blanks
+## 練習：空欄を埋める
 
-Test your understanding of the core principles by completing this prompt template:
+このプロンプトテンプレートを完成させて、核心原則の理解をテストしましょう：
 
 <FillInTheBlank
-  title="Apply the Principles"
-  description="Fill in the blanks to create a well-structured prompt — write anything you want!"
+  title="原則を適用する"
+  description="空欄を埋めて、構造化されたプロンプトを作成してください — 自由に書いてください！"
   useAI={true}
   openEnded={true}
-  template={`You are a {{role}} with expertise in {{expertise}}.
+  template={`あなたは{{expertise}}の専門知識を持つ{{role}}です。
 
-Context: I'm working on {{context}}.
+コンテキスト：私は{{context}}に取り組んでいます。
 
-Task: {{task}}
+タスク：{{task}}
 
-Constraints:
-- Keep your response under {{length}} words
-- Focus only on {{focus}}
+制約：
+- 回答を{{length}}語以内に収めてください
+- {{focus}}のみに焦点を当ててください
 
-Format: Return your answer as {{format}}.`}
+フォーマット：回答を{{format}}として返してください。`}
   blanks={[
-    { id: "role", correctAnswers: [], hint: "What professional role should the AI assume?", context: "A job title or professional role" },
-    { id: "expertise", correctAnswers: [], hint: "What specific domain knowledge is needed?", context: "A skill or domain that matches the role" },
-    { id: "context", correctAnswers: [], hint: "What's the project or situation?", context: "A project that someone with this expertise would work on" },
-    { id: "task", correctAnswers: [], hint: "What specific action should the AI take?", context: "An action appropriate for the role and context" },
-    { id: "length", correctAnswers: [], hint: "How long should the response be?", context: "A number (word count)" },
-    { id: "focus", correctAnswers: [], hint: "What aspect should be prioritized?", context: "A quality or aspect relevant to the task" },
-    { id: "format", correctAnswers: [], hint: "How should the output be structured?", context: "An output format type" }
+    { id: "role", correctAnswers: [], hint: "AIはどのような専門的役割を担うべきですか？", context: "職種や専門的役割" },
+    { id: "expertise", correctAnswers: [], hint: "どのような特定のドメイン知識が必要ですか？", context: "役割に合ったスキルやドメイン" },
+    { id: "context", correctAnswers: [], hint: "プロジェクトや状況は何ですか？", context: "この専門知識を持つ人が取り組むプロジェクト" },
+    { id: "task", correctAnswers: [], hint: "AIはどのような具体的なアクションを取るべきですか？", context: "役割とコンテキストに適したアクション" },
+    { id: "length", correctAnswers: [], hint: "回答はどのくらいの長さであるべきですか？", context: "数字（語数）" },
+    { id: "focus", correctAnswers: [], hint: "どの側面を優先すべきですか？", context: "タスクに関連する品質や側面" },
+    { id: "format", correctAnswers: [], hint: "出力はどのように構造化されるべきですか？", context: "出力フォーマットのタイプ" }
   ]}
-  explanation="A well-structured prompt includes: a clear role (Principle 1), sufficient context (Principle 3), specific task (Principle 2), constraints (Principle 4), and output format (Principle 5). The AI checks if your choices are internally consistent."
+  explanation="構造化されたプロンプトには以下が含まれます：明確な役割（原則1）、十分なコンテキスト（原則3）、具体的なタスク（原則2）、制約（原則4）、出力フォーマット（原則5）。AIはあなたの選択が内部的に一貫しているかどうかを確認します。"
 />
 
 <InteractiveChecklist
-  title="Principles Checklist"
+  title="原則チェックリスト"
   items={[
-    { id: "clarity", label: "Clarity Over Cleverness", description: "Is your prompt explicit and unambiguous?" },
-    { id: "specificity", label: "Specificity Yields Quality", description: "Have you included audience, length, tone, and format?" },
-    { id: "context", label: "Context Is King", description: "Does the prompt include all necessary background information?" },
-    { id: "examples", label: "Examples Beat Explanations", description: "Have you shown what you want, not just described it?" },
-    { id: "constraints", label: "Constraints Focus Output", description: "Are there clear boundaries on scope and format?" },
-    { id: "iteration", label: "Iterate and Refine", description: "Are you prepared to improve based on results?" },
-    { id: "persona", label: "Persona Shapes Perspective", description: "Does the AI know what role to play?" },
-    { id: "verify", label: "Verify and Validate", description: "Have you built in checks for accuracy?" }
+    { id: "clarity", label: "巧みさよりも明確さ", description: "プロンプトは明示的で曖昧さがありませんか？" },
+    { id: "specificity", label: "具体性が品質を生む", description: "対象者、長さ、トーン、フォーマットを含めましたか？" },
+    { id: "context", label: "コンテキストは王様", description: "プロンプトに必要な背景情報がすべて含まれていますか？" },
+    { id: "examples", label: "説明より例が効果的", description: "説明するだけでなく、望むものを示しましたか？" },
+    { id: "constraints", label: "制約が出力を集中させる", description: "範囲とフォーマットに明確な境界がありますか？" },
+    { id: "iteration", label: "反復と改良", description: "結果に基づいて改善する準備ができていますか？" },
+    { id: "persona", label: "ペルソナが視点を形作る", description: "AIはどの役割を演じるべきか知っていますか？" },
+    { id: "verify", label: "検証と確認", description: "正確性のチェックを組み込みましたか？" }
   ]}
 />
 
-These principles form the foundation for everything that follows. In Part II, we'll apply them to specific techniques that dramatically enhance prompt effectiveness.
+これらの原則は、これから続くすべての基礎を形成します。パートIIでは、プロンプトの効果を劇的に高める具体的なテクニックにこれらを適用します。

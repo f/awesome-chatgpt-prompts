@@ -1,103 +1,103 @@
-Structured data formats like JSON and YAML are essential for building applications that consume AI outputs programmatically. This chapter covers techniques for reliable structured output generation.
+Formatos de dados estruturados como JSON e YAML são essenciais para construir aplicações que consomem saídas de IA programaticamente. Este capítulo cobre técnicas para geração confiável de saída estruturada.
 
-<Callout type="info" title="From Text to Data">
-JSON and YAML transform AI outputs from freeform text into structured, type-safe data that code can consume directly.
+<Callout type="info" title="De Texto para Dados">
+JSON e YAML transformam saídas de IA de texto livre em dados estruturados e type-safe que código pode consumir diretamente.
 </Callout>
 
-## Why Structured Formats?
+## Por Que Formatos Estruturados?
 
 <JsonYamlDemo />
 
-## JSON Prompting Basics
+## Básicos de Prompting JSON
 
-JSON (JavaScript Object Notation) is the most common format for programmatic AI outputs. Its strict syntax makes it easy to parse, but also means small errors can break your entire pipeline.
+JSON (JavaScript Object Notation) é o formato mais comum para saídas programáticas de IA. Sua sintaxe estrita torna fácil de parsear, mas também significa que pequenos erros podem quebrar todo seu pipeline.
 
-### Do's and Don'ts: Requesting JSON
+### O Que Fazer e Não Fazer: Solicitando JSON
 
 <Compare 
-  before={{ label: "❌ Don't: Vague request", content: "Give me the user info as JSON." }}
-  after={{ label: "✓ Do: Show the schema", content: "Extract user info as JSON matching this schema:\n\n{\n  \"name\": \"string\",\n  \"age\": number,\n  \"email\": \"string\"\n}\n\nReturn ONLY valid JSON, no markdown." }}
+  before={{ label: "❌ Não Faça: Requisição vaga", content: "Me dê as info do usuário como JSON." }}
+  after={{ label: "✓ Faça: Mostre o schema", content: "Extraia info do usuário como JSON seguindo este schema:\n\n{\n  \"nome\": \"string\",\n  \"idade\": number,\n  \"email\": \"string\"\n}\n\nRetorne APENAS JSON válido, sem markdown." }}
 />
 
-### Simple JSON Output
+### Saída JSON Simples
 
-Start with a schema showing the expected structure. The model will fill in values based on the input text.
+Comece com um schema mostrando a estrutura esperada. O modelo vai preencher valores baseado no texto de entrada.
 
 ```
-Extract the following information as JSON:
+Extraia as seguintes informações como JSON:
 
 {
-  "name": "string",
-  "age": number,
+  "nome": "string",
+  "idade": number,
   "email": "string"
 }
 
-Text: "Contact John Smith, 34 years old, at john@example.com"
+Texto: "Contate João Silva, 34 anos, em joao@exemplo.com"
 ```
 
-Output:
+Saída:
 ```json
 {
-  "name": "John Smith",
-  "age": 34,
-  "email": "john@example.com"
+  "nome": "João Silva",
+  "idade": 34,
+  "email": "joao@exemplo.com"
 }
 ```
 
-### Nested JSON Structures
+### Estruturas JSON Aninhadas
 
-Real-world data often has nested relationships. Define each level of your schema clearly, especially for arrays of objects.
+Dados do mundo real frequentemente têm relacionamentos aninhados. Defina cada nível do seu schema claramente, especialmente para arrays de objetos.
 
 ```
-Parse this order into JSON:
+Parse este pedido em JSON:
 
 {
-  "order_id": "string",
-  "customer": {
-    "name": "string",
+  "pedido_id": "string",
+  "cliente": {
+    "nome": "string",
     "email": "string"
   },
-  "items": [
+  "itens": [
     {
-      "product": "string",
-      "quantity": number,
-      "price": number
+      "produto": "string",
+      "quantidade": number,
+      "preco": number
     }
   ],
   "total": number
 }
 
-Order: "Order #12345 for Jane Doe (jane@email.com): 2x Widget ($10 each), 
-1x Gadget ($25). Total: $45"
+Pedido: "Pedido #12345 para Maria Silva (maria@email.com): 2x Widget (R$20 cada), 
+1x Gadget (R$50). Total: R$90"
 ```
 
-### Ensuring Valid JSON
+### Garantindo JSON Válido
 
-<Callout type="warning" title="Common Failure Point">
-Models often wrap JSON in markdown code blocks or add explanatory text. Be explicit about wanting raw JSON only.
+<Callout type="warning" title="Ponto de Falha Comum">
+Modelos frequentemente envolvem JSON em blocos de código markdown ou adicionam texto explicativo. Seja explícito sobre querer apenas JSON puro.
 </Callout>
 
-Add explicit instructions:
+Adicione instruções explícitas:
 
 ```
-CRITICAL: Return ONLY valid JSON. No markdown, no explanation, 
-no additional text before or after the JSON object.
+CRÍTICO: Retorne APENAS JSON válido. Sem markdown, sem explicação, 
+sem texto adicional antes ou depois do objeto JSON.
 
-If a field cannot be determined, use null.
-Ensure all strings are properly quoted and escaped.
-Numbers should not be quoted.
+Se um campo não puder ser determinado, use null.
+Garanta que todas as strings estejam corretamente com aspas e escapadas.
+Números não devem ter aspas.
 ```
 
-## YAML Prompting Basics
+## Básicos de Prompting YAML
 
-YAML is more human-readable than JSON and supports comments. It's the standard for configuration files, especially in DevOps (Docker, Kubernetes, GitHub Actions).
+YAML é mais legível por humanos que JSON e suporta comentários. É o padrão para arquivos de configuração, especialmente em DevOps (Docker, Kubernetes, GitHub Actions).
 
-### Simple YAML Output
+### Saída YAML Simples
 
-YAML uses indentation instead of braces. Provide a template showing the expected structure.
+YAML usa indentação em vez de chaves. Forneça um template mostrando a estrutura esperada.
 
 ```
-Generate a configuration file in YAML format:
+Gere um arquivo de configuração em formato YAML:
 
 server:
   host: string
@@ -107,10 +107,10 @@ database:
   type: string
   connection_string: string
 
-Requirements: Production server on port 443 with SSL, PostgreSQL database
+Requisitos: Servidor de produção na porta 443 com SSL, banco de dados PostgreSQL
 ```
 
-Output:
+Saída:
 ```yaml
 server:
   host: "0.0.0.0"
@@ -121,32 +121,32 @@ database:
   connection_string: "postgresql://user:pass@localhost:5432/prod"
 ```
 
-### Complex YAML Structures
+### Estruturas YAML Complexas
 
-For complex configurations, be specific about requirements. The model knows common patterns for tools like GitHub Actions, Docker Compose, and Kubernetes.
+Para configurações complexas, seja específico sobre requisitos. O modelo conhece padrões comuns para ferramentas como GitHub Actions, Docker Compose e Kubernetes.
 
 ```
-Generate a GitHub Actions workflow in YAML:
+Gere um workflow do GitHub Actions em YAML:
 
-Requirements:
-- Trigger on push to main and pull requests
-- Run on Ubuntu latest
-- Steps: checkout, setup Node 18, install dependencies, run tests
-- Cache npm dependencies
+Requisitos:
+- Trigger em push para main e pull requests
+- Executar em Ubuntu latest
+- Passos: checkout, setup Node 18, instalar dependências, rodar testes
+- Cache de dependências npm
 ```
 
-## Type Definitions in Prompts
+## Definições de Tipo em Prompts
 
-Type definitions give the model a precise contract for output structure. They're more explicit than examples and easier to validate programmatically.
+Definições de tipo dão ao modelo um contrato preciso para estrutura de saída. São mais explícitas que exemplos e mais fáceis de validar programaticamente.
 
-### Using TypeScript-like Types
+### Usando Tipos Estilo TypeScript
 
-TypeScript interfaces are familiar to developers and precisely describe optional fields, union types, and arrays. The prompts.chat platform uses this approach for structured prompts.
+Interfaces TypeScript são familiares para desenvolvedores e descrevem precisamente campos opcionais, tipos union e arrays. A plataforma prompts.chat usa esta abordagem para prompts estruturados.
 
 <TryIt 
-  title="TypeScript Interface Extraction"
-  description="Use a TypeScript interface to extract structured data."
-  prompt={`Extract data according to this type definition:
+  title="Extração com Interface TypeScript"
+  description="Use uma interface TypeScript para extrair dados estruturados."
+  prompt={`Extraia dados de acordo com esta definição de tipo:
 
 interface ChatPersona {
     name?: string;
@@ -157,21 +157,21 @@ interface ChatPersona {
     background?: string;
 }
 
-Return as JSON matching this interface.
+Retorne como JSON correspondendo a esta interface.
 
-Description: "A senior software engineer named Alex who reviews code. They're analytical and thorough, with expertise in backend systems and databases. Professional but approachable tone."`}
+Descrição: "Um engenheiro de software sênior chamado Alex que faz code review. Ele é analítico e minucioso, com expertise em sistemas backend e bancos de dados. Tom profissional mas acessível."`}
 />
 
-### JSON Schema Definition
+### Definição JSON Schema
 
-<Callout type="info" title="Industry Standard">
-JSON Schema is a formal specification for describing JSON structure. It's supported by many validation libraries and API tools.
+<Callout type="info" title="Padrão da Indústria">
+JSON Schema é uma especificação formal para descrever estrutura JSON. É suportado por muitas bibliotecas de validação e ferramentas de API.
 </Callout>
 
-JSON Schema provides constraints like min/max values, required fields, and regex patterns:
+JSON Schema fornece restrições como valores min/max, campos obrigatórios e padrões regex:
 
 ```
-Extract data according to this JSON Schema:
+Extraia dados de acordo com este JSON Schema:
 
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -193,394 +193,394 @@ Extract data according to this JSON Schema:
   }
 }
 
-Book: "1984 by George Orwell (1949) - A dystopian masterpiece. 
-Genres: Science Fiction, Political Fiction. Rated 4.8/5"
+Livro: "1984 de George Orwell (1949) - Uma obra-prima distópica. 
+Gêneros: Ficção Científica, Ficção Política. Nota 4.8/5"
 ```
 
-## Handling Arrays
+## Lidando com Arrays
 
-Arrays require special attention. Specify whether you need a fixed number of items or a variable-length list, and how to handle empty cases.
+Arrays requerem atenção especial. Especifique se você precisa de um número fixo de itens ou uma lista de tamanho variável, e como lidar com casos vazios.
 
-### Fixed-Length Arrays
+### Arrays de Tamanho Fixo
 
-When you need exactly N items, state it explicitly. The model will ensure the array has the right length.
+Quando você precisa de exatamente N itens, declare explicitamente. O modelo vai garantir que o array tenha o tamanho certo.
 
 ```
-Extract exactly 3 key points as JSON:
+Extraia exatamente 3 pontos-chave como JSON:
 
 {
-  "key_points": [
-    "string (first point)",
-    "string (second point)", 
-    "string (third point)"
+  "pontos_chave": [
+    "string (primeiro ponto)",
+    "string (segundo ponto)", 
+    "string (terceiro ponto)"
   ]
 }
 
-Article: [article text]
+Artigo: [texto do artigo]
 ```
 
-### Variable-Length Arrays
+### Arrays de Tamanho Variável
 
-For variable-length arrays, specify what to do when there are zero items. Including a count field helps verify extraction completeness.
+Para arrays de tamanho variável, especifique o que fazer quando há zero itens. Incluir um campo de contagem ajuda a verificar completude da extração.
 
 ```
-Extract all mentioned people as JSON:
+Extraia todas as pessoas mencionadas como JSON:
 
 {
-  "people": [
+  "pessoas": [
     {
-      "name": "string",
-      "role": "string or null if not mentioned"
+      "nome": "string",
+      "cargo": "string ou null se não mencionado"
     }
   ],
-  "count": number
+  "contagem": number
 }
 
-If no people are mentioned, return empty array.
+Se nenhuma pessoa for mencionada, retorne array vazio.
 
-Text: [text]
+Texto: [texto]
 ```
 
-## Enum Values and Constraints
+## Valores Enum e Restrições
 
-Enums restrict values to a predefined set. This is crucial for classification tasks and anywhere you need consistent, predictable outputs.
+Enums restringem valores a um conjunto predefinido. Isso é crucial para tarefas de classificação e qualquer lugar onde você precisa de saídas consistentes e previsíveis.
 
-### Do's and Don'ts: Enum Values
+### O Que Fazer e Não Fazer: Valores Enum
 
 <Compare 
-  before={{ label: "❌ Don't: Open-ended categories", content: "Classify this text into a category.\n\n{\n  \"category\": \"string\"\n}" }}
-  after={{ label: "✓ Do: Restrict to valid values", content: "Classify this text. Category MUST be exactly one of:\n- \"technical\"\n- \"business\"\n- \"creative\"\n- \"personal\"\n\n{\n  \"category\": \"one of the values above\"\n}" }}
+  before={{ label: "❌ Não Faça: Categorias abertas", content: "Classifique este texto em uma categoria.\n\n{\n  \"categoria\": \"string\"\n}" }}
+  after={{ label: "✓ Faça: Restringir a valores válidos", content: "Classifique este texto. Categoria DEVE ser exatamente um de:\n- \"tecnico\"\n- \"negocios\"\n- \"criativo\"\n- \"pessoal\"\n\n{\n  \"categoria\": \"um dos valores acima\"\n}" }}
 />
 
-### String Enums
+### Enums de String
 
-List allowed values explicitly. Use "MUST be one of" language to enforce strict matching.
+Liste valores permitidos explicitamente. Use linguagem "DEVE ser um de" para forçar correspondência estrita.
 
 ```
-Classify this text. The category MUST be one of these exact values:
-- "technical"
-- "business" 
-- "creative"
-- "personal"
+Classifique este texto. A categoria DEVE ser um destes valores exatos:
+- "tecnico"
+- "negocios" 
+- "criativo"
+- "pessoal"
 
-Return JSON:
+Retorne JSON:
 {
-  "text": "original text (truncated to 50 chars)",
-  "category": "one of the enum values above",
-  "confidence": number between 0 and 1
+  "texto": "texto original (truncado para 50 chars)",
+  "categoria": "um dos valores enum acima",
+  "confianca": número entre 0 e 1
 }
 
-Text: [text to classify]
+Texto: [texto para classificar]
 ```
 
-### Validated Numbers
+### Números Validados
 
-Numeric constraints prevent out-of-range values. Specify the type (integer vs float) and valid range.
+Restrições numéricas previnem valores fora do range. Especifique o tipo (inteiro vs float) e range válido.
 
 ```
-Rate these aspects. Each score MUST be an integer from 1 to 5.
+Avalie estes aspectos. Cada nota DEVE ser um inteiro de 1 a 5.
 
 {
-  "quality": 1-5,
-  "value": 1-5,
-  "service": 1-5,
-  "overall": 1-5
+  "qualidade": 1-5,
+  "valor": 1-5,
+  "servico": 1-5,
+  "geral": 1-5
 }
 
-Review: [review text]
+Avaliação: [texto da avaliação]
 ```
 
-## Handling Missing Data
+## Lidando com Dados Faltantes
 
-Real-world text often lacks some information. Define how the model should handle missing data to avoid hallucinated values.
+Texto do mundo real frequentemente carece de algumas informações. Defina como o modelo deve lidar com dados faltantes para evitar valores alucinados.
 
-### Do's and Don'ts: Missing Information
+### O Que Fazer e Não Fazer: Informação Faltante
 
 <Compare 
-  before={{ label: "❌ Don't: Let AI guess", content: "Extract all company details as JSON:\n{\n  \"revenue\": number,\n  \"employees\": number\n}" }}
-  after={{ label: "✓ Do: Explicitly allow null", content: "Extract company details. Use null for any field NOT explicitly mentioned. Do NOT invent or estimate values.\n\n{\n  \"revenue\": \"number or null\",\n  \"employees\": \"number or null\"\n}" }}
+  before={{ label: "❌ Não Faça: Deixar IA adivinhar", content: "Extraia todos os detalhes da empresa como JSON:\n{\n  \"receita\": number,\n  \"funcionarios\": number\n}" }}
+  after={{ label: "✓ Faça: Permitir null explicitamente", content: "Extraia detalhes da empresa. Use null para qualquer campo NÃO mencionado explicitamente. NÃO invente ou estime valores.\n\n{\n  \"receita\": \"number ou null\",\n  \"funcionarios\": \"number ou null\"\n}" }}
 />
 
-### Null Values
+### Valores Null
 
-Explicitly allow null and instruct the model not to invent information. This is safer than having the model guess.
+Permita null explicitamente e instrua o modelo a não inventar informação. Isso é mais seguro do que fazer o modelo adivinhar.
 
 ```
-Extract information. Use null for any field that cannot be 
-determined from the text. Do NOT invent information.
+Extraia informação. Use null para qualquer campo que não puder ser 
+determinado do texto. NÃO invente informação.
 
 {
-  "company": "string or null",
-  "revenue": "number or null",
-  "employees": "number or null",
-  "founded": "number (year) or null",
-  "headquarters": "string or null"
+  "empresa": "string ou null",
+  "receita": "number ou null",
+  "funcionarios": "number ou null",
+  "fundada": "number (ano) ou null",
+  "sede": "string ou null"
 }
 
-Text: "Apple, headquartered in Cupertino, was founded in 1976."
+Texto: "Apple, sediada em Cupertino, foi fundada em 1976."
 ```
 
-Output:
+Saída:
 ```json
 {
-  "company": "Apple",
-  "revenue": null,
-  "employees": null,
-  "founded": 1976,
-  "headquarters": "Cupertino"
+  "empresa": "Apple",
+  "receita": null,
+  "funcionarios": null,
+  "fundada": 1976,
+  "sede": "Cupertino"
 }
 ```
 
-### Default Values
+### Valores Padrão
 
-When defaults make sense, specify them in the schema. This is common for configuration extraction.
+Quando padrões fazem sentido, especifique-os no schema. Isso é comum para extração de configuração.
 
 ```
-Extract settings with these defaults if not specified:
+Extraia configurações com estes padrões se não especificado:
 
 {
-  "theme": "light" (default) | "dark",
-  "language": "en" (default) | other ISO code,
-  "notifications": true (default) | false,
-  "fontSize": 14 (default) | number
+  "tema": "claro" (padrão) | "escuro",
+  "idioma": "pt" (padrão) | outro código ISO,
+  "notificacoes": true (padrão) | false,
+  "tamanhoFonte": 14 (padrão) | number
 }
 
-User preferences: "I want dark mode and larger text (18px)"
+Preferências do usuário: "Quero modo escuro e texto maior (18px)"
 ```
 
-## Multi-Object Responses
+## Respostas Multi-Objeto
 
-Often you need to extract multiple items from a single input. Define the array structure and any sorting/grouping requirements.
+Frequentemente você precisa extrair múltiplos itens de uma única entrada. Defina a estrutura do array e quaisquer requisitos de ordenação/agrupamento.
 
-### Array of Objects
+### Array de Objetos
 
-For lists of similar items, define the object schema once and specify it's an array.
+Para listas de itens similares, defina o schema do objeto uma vez e especifique que é um array.
 
 ```
-Parse this list into JSON array:
+Parse esta lista em array JSON:
 
 [
   {
-    "task": "string",
-    "priority": "high" | "medium" | "low",
-    "due": "ISO date string or null"
+    "tarefa": "string",
+    "prioridade": "alta" | "media" | "baixa",
+    "prazo": "string data ISO ou null"
   }
 ]
 
-Todo list:
-- Finish report (urgent, due tomorrow)
-- Call dentist (low priority)
-- Review PR #123 (medium, due Friday)
+Lista de tarefas:
+- Terminar relatório (urgente, prazo amanhã)
+- Ligar dentista (baixa prioridade)
+- Revisar PR #123 (média, prazo sexta)
 ```
 
-### Grouped Objects
+### Objetos Agrupados
 
-Grouping tasks require categorization logic. The model will sort items into the categories you define.
+Tarefas de agrupamento requerem lógica de categorização. O modelo vai classificar itens nas categorias que você definir.
 
 ```
-Categorize these items into JSON:
+Categorize estes itens em JSON:
 
 {
-  "fruits": ["string array"],
-  "vegetables": ["string array"],
-  "other": ["string array"]
+  "frutas": ["array de strings"],
+  "vegetais": ["array de strings"],
+  "outros": ["array de strings"]
 }
 
-Items: apple, carrot, bread, banana, broccoli, milk, orange, spinach
+Itens: maçã, cenoura, pão, banana, brócolis, leite, laranja, espinafre
 ```
 
-## YAML for Configuration Generation
+## YAML para Geração de Configuração
 
-YAML shines for DevOps configurations. The model knows standard patterns for common tools and can generate production-ready configs.
+YAML brilha para configurações DevOps. O modelo conhece padrões comuns para ferramentas populares e pode gerar configs prontas para produção.
 
-### Do's and Don'ts: YAML Configs
+### O Que Fazer e Não Fazer: Configs YAML
 
 <Compare 
-  before={{ label: "❌ Don't: Vague requirements", content: "Generate a docker-compose file for my app." }}
-  after={{ label: "✓ Do: Specify components and needs", content: "Generate docker-compose.yml for:\n- Node.js app (port 3000)\n- PostgreSQL database\n- Redis cache\n\nInclude: health checks, volume persistence, environment from .env file" }}
+  before={{ label: "❌ Não Faça: Requisitos vagos", content: "Gere um arquivo docker-compose para meu app." }}
+  after={{ label: "✓ Faça: Especificar componentes e necessidades", content: "Gere docker-compose.yml para:\n- App Node.js (porta 3000)\n- Banco de dados PostgreSQL\n- Cache Redis\n\nInclua: health checks, persistência de volumes, environment do arquivo .env" }}
 />
 
 ### Docker Compose
 
-Specify the services you need and any special requirements. The model will handle the YAML syntax and best practices.
+Especifique os serviços que você precisa e quaisquer requisitos especiais. O modelo vai cuidar da sintaxe YAML e boas práticas.
 
 ```
-Generate a docker-compose.yml for:
-- Node.js app on port 3000
-- PostgreSQL database
-- Redis cache
-- Nginx reverse proxy
+Gere um docker-compose.yml para:
+- App Node.js na porta 3000
+- Banco de dados PostgreSQL
+- Cache Redis
+- Nginx como reverse proxy
 
-Include:
+Inclua:
 - Health checks
-- Volume persistence
-- Environment variables from .env file
-- Network isolation
+- Persistência de volumes
+- Variáveis de ambiente do arquivo .env
+- Isolamento de rede
 ```
 
-### Kubernetes Manifests
+### Manifests Kubernetes
 
-Kubernetes manifests are verbose but follow predictable patterns. Provide the key parameters and the model will generate compliant YAML.
+Manifests Kubernetes são verbosos mas seguem padrões previsíveis. Forneça os parâmetros chave e o modelo vai gerar YAML compatível.
 
 ```
-Generate Kubernetes deployment YAML:
+Gere YAML de deployment Kubernetes:
 
 Deployment:
-- Name: api-server
-- Image: myapp:v1.2.3
-- Replicas: 3
-- Resources: 256Mi memory, 250m CPU (requests)
-- Health checks: /health endpoint
-- Environment from ConfigMap: api-config
+- Nome: api-server
+- Imagem: myapp:v1.2.3
+- Réplicas: 3
+- Recursos: 256Mi memória, 250m CPU (requests)
+- Health checks: endpoint /health
+- Environment de ConfigMap: api-config
 
-Also generate matching Service (ClusterIP, port 8080)
+Também gere Service correspondente (ClusterIP, porta 8080)
 ```
 
-## Validation and Error Handling
+## Validação e Tratamento de Erros
 
-For production systems, build validation into your prompts. This catches errors before they propagate through your pipeline.
+Para sistemas de produção, incorpore validação nos seus prompts. Isso captura erros antes que propaguem pelo seu pipeline.
 
-### Self-Validation Prompt
+### Prompt de Auto-Validação
 
-Ask the model to validate its own output against rules you specify. This catches format errors and invalid values.
+Peça ao modelo para validar sua própria saída contra regras que você especifica. Isso captura erros de formato e valores inválidos.
 
 ```
-Extract data as JSON, then validate your output.
+Extraia dados como JSON, depois valide sua saída.
 
 Schema:
 {
-  "email": "valid email format",
-  "phone": "E.164 format (+1234567890)",
-  "date": "ISO 8601 format (YYYY-MM-DD)"
+  "email": "formato de email válido",
+  "telefone": "formato E.164 (+5511999999999)",
+  "data": "formato ISO 8601 (AAAA-MM-DD)"
 }
 
-After generating JSON, check:
-1. Email contains @ and valid domain
-2. Phone starts with + and contains only digits
-3. Date is valid and parseable
+Após gerar JSON, verifique:
+1. Email contém @ e domínio válido
+2. Telefone começa com + e contém apenas dígitos
+3. Data é válida e parseável
 
-If validation fails, fix the issues before responding.
+Se validação falhar, corrija os problemas antes de responder.
 
-Text: [contact information]
+Texto: [informação de contato]
 ```
 
-### Error Response Format
+### Formato de Resposta de Erro
 
-Define separate success and error formats. This makes programmatic handling much easier.
+Defina formatos de sucesso e erro separados. Isso torna tratamento programático muito mais fácil.
 
 ```
-Attempt to extract data. If extraction fails, return error format:
+Tente extrair dados. Se extração falhar, retorne formato de erro:
 
-Success format:
+Formato de sucesso:
 {
-  "success": true,
-  "data": { ... extracted data ... }
+  "sucesso": true,
+  "dados": { ... dados extraídos ... }
 }
 
-Error format:
+Formato de erro:
 {
-  "success": false,
-  "error": "description of what went wrong",
-  "partial_data": { ... any data that could be extracted ... }
+  "sucesso": false,
+  "erro": "descrição do que deu errado",
+  "dados_parciais": { ... quaisquer dados que puderam ser extraídos ... }
 }
 ```
 
-## JSON vs YAML: When to Use Which
+## JSON vs YAML: Quando Usar Qual
 
 <div className="my-4 grid md:grid-cols-2 gap-4">
   <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-800">
-    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">Use JSON When</div>
+    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">Use JSON Quando</div>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Programmatic parsing needed</p>
-      <p className="m-0!">API responses</p>
-      <p className="m-0!">Strict type requirements</p>
-      <p className="m-0!">JavaScript/Web integration</p>
-      <p className="m-0!">Compact representation</p>
+      <p className="m-0!">Parsing programático necessário</p>
+      <p className="m-0!">Respostas de API</p>
+      <p className="m-0!">Requisitos de tipo estritos</p>
+      <p className="m-0!">Integração JavaScript/Web</p>
+      <p className="m-0!">Representação compacta</p>
     </div>
   </div>
   <div className="p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg border border-purple-200 dark:border-purple-800">
-    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Use YAML When</div>
+    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Use YAML Quando</div>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Human readability matters</p>
-      <p className="m-0!">Configuration files</p>
-      <p className="m-0!">Comments are needed</p>
-      <p className="m-0!">DevOps/Infrastructure</p>
-      <p className="m-0!">Deep nested structures</p>
+      <p className="m-0!">Legibilidade humana importa</p>
+      <p className="m-0!">Arquivos de configuração</p>
+      <p className="m-0!">Comentários são necessários</p>
+      <p className="m-0!">DevOps/Infraestrutura</p>
+      <p className="m-0!">Estruturas profundamente aninhadas</p>
     </div>
   </div>
 </div>
 
-## Prompts.chat Structured Prompts
+## Prompts Estruturados prompts.chat
 
-On prompts.chat, you can create prompts with structured output formats:
+No prompts.chat, você pode criar prompts com formatos de saída estruturados:
 
 ```
-When creating a prompt on prompts.chat, you can specify:
+Ao criar um prompt no prompts.chat, você pode especificar:
 
-Type: STRUCTURED
-Format: JSON or YAML
+Tipo: STRUCTURED
+Formato: JSON ou YAML
 
-The platform will:
-- Validate outputs against your schema
-- Provide syntax highlighting
-- Enable easy copying of structured output
-- Support template variables in your schema
+A plataforma vai:
+- Validar saídas contra seu schema
+- Fornecer syntax highlighting
+- Permitir cópia fácil de saída estruturada
+- Suportar variáveis de template no seu schema
 ```
 
-## Common Pitfalls
+## Armadilhas Comuns
 
-<Callout type="warning" title="Debug These First">
-These three issues cause most JSON parsing failures. Check for them when your code can't parse AI output.
+<Callout type="warning" title="Debug Estes Primeiro">
+Estes três problemas causam a maioria das falhas de parsing JSON. Verifique-os quando seu código não conseguir parsear saída de IA.
 </Callout>
 
-### 1. Markdown Code Blocks
+### 1. Blocos de Código Markdown
 
-**Problem:** Model wraps JSON in ```json blocks
+**Problema:** Modelo envolve JSON em blocos ```json
 
-**Solution:** 
+**Solução:** 
 ```
-Return ONLY the JSON object. Do not wrap in markdown code blocks.
-Do not include ```json or ``` markers.
-```
-
-### 2. Trailing Commas
-
-**Problem:** Invalid JSON due to trailing commas
-
-**Solution:**
-```
-Ensure valid JSON syntax. No trailing commas after the last 
-element in arrays or objects.
+Retorne APENAS o objeto JSON. Não envolva em blocos de código markdown.
+Não inclua marcadores ```json ou ```.
 ```
 
-### 3. Unescaped Strings
+### 2. Vírgulas Finais
 
-**Problem:** Quotes or special characters break JSON
+**Problema:** JSON inválido devido a vírgulas finais
 
-**Solution:**
+**Solução:**
 ```
-Properly escape special characters in strings:
-- \" for quotes
-- \\ for backslashes
-- \n for newlines
+Garanta sintaxe JSON válida. Sem vírgulas finais após o último 
+elemento em arrays ou objetos.
 ```
 
-## Summary
+### 3. Strings Não Escapadas
 
-<Callout type="tip" title="Key Techniques">
-Define schemas explicitly using TypeScript interfaces or JSON Schema. Specify types and constraints, handle nulls and defaults, request self-validation, and choose the right format for your use case.
+**Problema:** Aspas ou caracteres especiais quebram JSON
+
+**Solução:**
+```
+Escape corretamente caracteres especiais em strings:
+- \" para aspas
+- \\ para barras invertidas
+- \n para quebras de linha
+```
+
+## Resumo
+
+<Callout type="tip" title="Técnicas Principais">
+Defina schemas explicitamente usando interfaces TypeScript ou JSON Schema. Especifique tipos e restrições, lide com nulls e padrões, solicite auto-validação e escolha o formato certo para seu caso de uso.
 </Callout>
 
 <Quiz 
-  question="When should you prefer YAML over JSON for AI outputs?"
+  question="Quando você deve preferir YAML sobre JSON para saídas de IA?"
   options={[
-    "When building REST APIs",
-    "When the output needs to be human-readable and may include comments",
-    "When working with JavaScript applications",
-    "When you need the most compact representation"
+    "Ao construir APIs REST",
+    "Quando a saída precisa ser legível por humanos e pode incluir comentários",
+    "Ao trabalhar com aplicações JavaScript",
+    "Quando você precisa da representação mais compacta"
   ]}
   correctIndex={1}
-  explanation="YAML is preferred when human readability matters, such as configuration files, DevOps manifests, and documentation. It also supports comments, unlike JSON."
+  explanation="YAML é preferido quando legibilidade humana importa, como arquivos de configuração, manifests DevOps e documentação. Também suporta comentários, diferente de JSON."
 />
 
-This completes Part II on techniques. In Part III, we'll explore practical applications across different domains.
+Isso completa a Parte II sobre técnicas. Na Parte III, exploraremos aplicações práticas em diferentes domínios.

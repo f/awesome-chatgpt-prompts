@@ -1,242 +1,242 @@
-Role-based prompting is one of the most powerful and widely-used techniques in prompt engineering. By assigning a specific role or persona to the AI, you can dramatically influence the quality, style, and relevance of responses.
+角色扮演提示是提示工程中最强大且使用最广泛的技术之一。通过为AI分配特定的角色或人设，你可以显著提升回复的质量、风格和相关性。
 
-<Callout type="tip" title="The Power of Personas">
-Think of roles as filters for AI's vast knowledge. The right role focuses responses like a lens focuses light.
+<Callout type="tip" title="人设的力量">
+将角色视为AI庞大知识库的过滤器。合适的角色能像透镜聚焦光线一样聚焦回复。
 </Callout>
 
-## Why Roles Work
+## 角色为何有效
 
-When you assign a role, you're essentially telling the model: "Filter your vast knowledge through this specific lens." The model adjusts its:
+当你分配一个角色时，你实际上是在告诉模型："通过这个特定的视角来过滤你的海量知识。"模型会调整以下方面：
 
-- **Vocabulary**: Using terminology appropriate to the role
-- **Perspective**: Considering problems from that viewpoint
-- **Expertise depth**: Providing role-appropriate detail levels
-- **Communication style**: Matching how that role would communicate
+- **词汇**：使用与角色相匹配的专业术语
+- **视角**：从该角色的立场思考问题
+- **专业深度**：提供与角色相匹配的细节程度
+- **沟通风格**：模仿该角色的表达方式
 
-### The Technical Explanation
+### 技术原理解释
 
-LLMs work by predicting the most likely next token based on the context they're given. When you specify a role, you're fundamentally changing what "likely" means.
+大语言模型通过根据给定的上下文预测最可能的下一个token来工作。当你指定一个角色时，你从根本上改变了"可能"的含义。
 
-**Activating Relevant Knowledge**: The role primes specific regions of the model's learned associations. Saying "You are a doctor" activates medical terminology, diagnostic reasoning patterns, and clinical communication styles from the training data.
+**激活相关知识**：角色会激活模型学习到的特定关联区域。说"你是一名医生"会激活训练数据中的医学术语、诊断推理模式和临床沟通风格。
 
-**Statistical Conditioning**: LLMs learned from millions of documents written by real experts. When you assign a role, the model conditions its probability distributions to match patterns it saw from that type of author.
+**统计条件化**：大语言模型从数百万份由真实专家撰写的文档中学习。当你分配一个角色时，模型会调整其概率分布，以匹配它从该类型作者那里学到的模式。
 
-**Reducing Ambiguity**: Without a role, the model averages across all possible responders. With a role, it narrows to a specific subset, making responses more focused and consistent.
+**减少歧义**：没有角色时，模型会在所有可能的回答者之间取平均值。有了角色，它就会缩小到特定子集，使回复更加聚焦和一致。
 
-**Context Anchoring**: The role creates a persistent context anchor throughout the conversation. Every subsequent response is influenced by this initial framing.
+**上下文锚定**：角色在整个对话过程中创建一个持久的上下文锚点。每个后续回复都会受到这个初始框架的影响。
 
-Think of it this way: if you ask "What should I do about this cough?" the model could respond as a doctor, a friend, a pharmacist, or a worried parent. Each would give different advice. By specifying the role upfront, you're telling the model which "voice" to use from its training data.
+这样理解：如果你问"我该怎么处理这个咳嗽？"模型可能会以医生、朋友、药剂师或担心的父母的身份回答。每种身份给出的建议都不同。通过预先指定角色，你是在告诉模型该使用训练数据中的哪种"声音"。
 
-<Callout type="info" title="Why This Matters">
-The model isn't pretending or role-playing in a theatrical sense. It's statistically biasing its outputs toward patterns it learned from real experts, professionals, and specialists during training. A "doctor" role activates medical knowledge pathways; a "poet" role activates literary patterns.
+<Callout type="info" title="为什么这很重要">
+模型并不是在戏剧意义上的假装或角色扮演。它是在统计上将输出偏向于它在训练期间从真实专家、专业人士和专业人员那里学到的模式。"医生"角色激活医学知识通路；"诗人"角色激活文学模式。
 </Callout>
 
-## Basic Role Patterns
+## 基础角色模式
 
-These foundational patterns work across most use cases. Start with these templates and customize them for your needs.
+这些基础模式适用于大多数用例。从这些模板开始，根据你的需求进行定制。
 
-### The Expert Pattern
+### 专家模式
 
-The most versatile pattern. Specify the field of expertise and years of experience to get authoritative, in-depth responses. Works well for technical questions, analysis, and professional advice.
+最通用的模式。指定专业领域和从业年限，获得权威、深入的回复。适用于技术问题、分析和专业建议。
 
 <TryIt compact prompt={`You are an expert \${field} with \${years:10} years of experience in \${specialty}.
 
 \${task}`} />
 
-### The Professional Pattern
+### 专业人士模式
 
-Ground the role in a real-world context by specifying a job title and organization type. This adds institutional knowledge and professional norms to the response.
+通过指定职位和组织类型，将角色置于现实世界的背景中。这会为回复添加机构知识和专业规范。
 
 <TryIt compact prompt={`You are a \${profession} working at \${organization}.
 
 \${task}`} />
 
-### The Teacher Pattern
+### 教师模式
 
-Perfect for learning and explanations. Specifying the audience level ensures the response matches the learner's background, from beginners to advanced practitioners.
+非常适合学习和解释。指定受众级别可确保回复与学习者的背景相匹配，从初学者到高级从业者都适用。
 
 <TryIt compact prompt={`You are a \${subject} teacher who specializes in explaining complex concepts to \${audience}.
 
 \${task}`} />
 
-## Advanced Role Constructions
+## 高级角色构建
 
-### Compound Roles
+### 复合角色
 
-Combine multiple identities to get responses that blend different perspectives. This pediatrician-parent combination produces advice that's both medically sound and practically tested.
+结合多种身份，获得融合不同视角的回复。这个儿科医生兼家长的组合能产生既具医学专业性又经过实践检验的建议。
 
 <TryIt compact prompt={`You are a pediatrician who is also a parent of three children. You understand both the medical and practical aspects of childhood health issues. You communicate with empathy and without medical jargon.
 
 \${question}`} />
 
-### Situational Roles
+### 情境角色
 
-Place the role in a specific scenario to shape both content and tone. Here, the code review context makes the AI constructive and educational rather than just critical.
+将角色置于特定场景中，以塑造内容和语气。这里的代码审查情境使AI具有建设性和教育性，而不仅仅是批评性的。
 
 <TryIt compact prompt={`You are a senior developer conducting a code review for a junior team member. You want to be helpful and educational, not critical. You explain not just what to fix, but why.
 
 Code to review:
 \${code}`} />
 
-### Perspective Roles
+### 视角角色
 
-Get feedback from a specific stakeholder's point of view. A VC perspective evaluates viability and scalability differently than a customer or engineer would.
+从特定利益相关者的角度获取反馈。风险投资人的视角评估可行性和可扩展性的方式与客户或工程师不同。
 
 <TryIt compact prompt={`You are a venture capitalist evaluating startup pitches. You've seen thousands of pitches and can quickly identify strengths, weaknesses, and red flags. Be direct but constructive.
 
 Pitch: \${pitch}`} />
 
-## Role Categories and Examples
+## 角色类别与示例
 
-Different domains benefit from different types of roles. Here are proven examples organized by category that you can adapt for your tasks.
+不同领域适合不同类型的角色。以下是按类别组织的经过验证的示例，你可以根据自己的任务进行调整。
 
-### Technical Roles
+### 技术角色
 
-**Software Architect**: Best for system design decisions, technology choices, and architectural trade-offs. The focus on maintainability steers responses toward practical, long-term solutions.
+**软件架构师**：最适合系统设计决策、技术选型和架构权衡。对可维护性的关注使回复倾向于实用的长期解决方案。
 
 <TryIt compact prompt={`You are a software architect specializing in scalable distributed systems. You prioritize maintainability, performance, and team productivity in your recommendations.
 
 \${question}`} />
 
-**Security Specialist**: The attacker mindset is key here. This role produces threat-focused analysis that identifies vulnerabilities a defensive-only perspective might miss.
+**安全专家**：攻击者思维是这里的关键。这个角色产生以威胁为中心的分析，能识别出仅防御性视角可能遗漏的漏洞。
 
 <TryIt compact prompt={`You are a cybersecurity specialist who conducts penetration testing. You think like an attacker to identify vulnerabilities.
 
 Analyze: \${target}`} />
 
-**DevOps Engineer**: Ideal for deployment, automation, and infrastructure questions. The emphasis on reliability ensures production-ready recommendations.
+**DevOps工程师**：适合部署、自动化和基础设施问题。对可靠性的强调确保了生产就绪的建议。
 
 <TryIt compact prompt={`You are a DevOps engineer focused on CI/CD pipelines and infrastructure as code. You value automation and reliability.
 
 \${question}`} />
 
-### Creative Roles
+### 创意角色
 
-**Copywriter**: The "award-winning" qualifier and conversion focus produce punchy, persuasive copy rather than generic marketing text.
+**文案撰稿人**："屡获殊荣"的修饰语和转化率导向能产生简洁有力、有说服力的文案，而非泛泛的营销文本。
 
 <TryIt compact prompt={`You are an award-winning copywriter known for creating compelling headlines and persuasive content that drives conversions.
 
 Write copy for: \${product}`} />
 
-**Screenwriter**: Activates knowledge of dramatic structure, pacing, and dialogue conventions. Great for any narrative writing that needs tension and character voice.
+**编剧**：激活戏剧结构、节奏和对话惯例的知识。适合任何需要张力和角色声音的叙事写作。
 
 <TryIt compact prompt={`You are a screenwriter who has written for popular TV dramas. You understand story structure, dialogue, and character development.
 
 Write: \${scene}`} />
 
-**UX Writer**: A specialized role for interface text. The focus on brevity and user guidance produces concise, action-oriented copy.
+**用户体验文案**：专门用于界面文本的角色。对简洁性和用户引导的关注产生简明、面向行动的文案。
 
 <TryIt compact prompt={`You are a UX writer specializing in microcopy. You make interfaces feel human and guide users with minimal text.
 
 Write microcopy for: \${element}`} />
 
-### Analytical Roles
+### 分析角色
 
-**Business Analyst**: Bridges the gap between technical and non-technical stakeholders. Useful for requirement gathering, spec writing, and identifying gaps in project plans.
+**业务分析师**：连接技术团队和非技术利益相关者之间的桥梁。适用于需求收集、规格撰写和识别项目计划中的缺口。
 
 <TryIt compact prompt={`You are a business analyst who translates between technical teams and stakeholders. You clarify requirements and identify edge cases.
 
 Analyze: \${requirement}`} />
 
-**Research Scientist**: The emphasis on evidence and uncertainty acknowledgment produces balanced, well-sourced responses that distinguish facts from speculation.
+**研究科学家**：强调证据和承认不确定性，产生平衡、有据可查的回复，区分事实和推测。
 
 <TryIt compact prompt={`You are a research scientist who values empirical evidence and acknowledges uncertainty. You distinguish between established facts and hypotheses.
 
 Research question: \${question}`} />
 
-**Financial Analyst**: Combines quantitative analysis with risk assessment. The dual focus on returns and risk produces more balanced investment perspectives.
+**金融分析师**：结合量化分析和风险评估。对回报和风险的双重关注产生更平衡的投资观点。
 
 <TryIt compact prompt={`You are a financial analyst who evaluates investments using fundamental and technical analysis. You consider risk alongside potential returns.
 
 Evaluate: \${investment}`} />
 
-### Educational Roles
+### 教育角色
 
-**Socratic Tutor**: Instead of giving answers, this role asks guiding questions. Excellent for deeper learning and helping students develop critical thinking skills.
+**苏格拉底式导师**：这个角色不直接给出答案，而是提出引导性问题。非常适合深度学习和帮助学生培养批判性思维能力。
 
 <TryIt compact prompt={`You are a tutor using the Socratic method. Instead of giving answers directly, you guide students to discover answers through thoughtful questions.
 
 Topic: \${topic}`} />
 
-**Instructional Designer**: Structures learning for maximum retention. Use this role when you need to break down complex topics into teachable chunks with clear progression.
+**教学设计师**：构建学习内容以实现最大记忆留存。当你需要将复杂主题分解为具有清晰进度的可教授模块时，使用这个角色。
 
 <TryIt compact prompt={`You are an instructional designer who creates engaging learning experiences. You break complex topics into digestible modules with clear learning objectives.
 
 Create curriculum for: \${topic}`} />
 
-## The Role Stack Technique
+## 角色堆叠技术
 
-For complex tasks, combine multiple role aspects into a single, layered identity. This technique stacks expertise, audience awareness, and style guidelines to create highly specialized responses.
+对于复杂任务，将多个角色方面组合成一个分层的身份。这种技术堆叠专业知识、受众意识和风格指南，以创建高度专业化的回复。
 
-This example layers three elements: domain expertise (API documentation), audience (junior developers), and style guide (Google's conventions). Each layer constrains the output further.
+这个例子叠加了三个元素：领域专业知识（API文档）、受众（初级开发人员）和风格指南（Google的惯例）。每一层都进一步约束输出。
 
 <TryIt compact prompt={`You are a technical writer with expertise in API documentation. You write for developers who are new to REST APIs. Follow the Google developer documentation style guide: use second person ("you"), active voice, present tense, and keep sentences under 26 words.
 
 Document: \${apiEndpoint}`} />
 
-## Roles for Different Tasks
+## 不同任务的角色
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Code review</span>
-    <span className="text-muted-foreground">Senior developer + mentor</span>
+    <span className="font-semibold min-w-40">代码审查</span>
+    <span className="text-muted-foreground">高级开发人员 + 导师</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Writing feedback</span>
-    <span className="text-muted-foreground">Editor + target audience member</span>
+    <span className="font-semibold min-w-40">写作反馈</span>
+    <span className="text-muted-foreground">编辑 + 目标受众成员</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Business strategy</span>
-    <span className="text-muted-foreground">Consultant + industry expert</span>
+    <span className="font-semibold min-w-40">商业策略</span>
+    <span className="text-muted-foreground">顾问 + 行业专家</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Learning new topic</span>
-    <span className="text-muted-foreground">Patient teacher + practitioner</span>
+    <span className="font-semibold min-w-40">学习新主题</span>
+    <span className="text-muted-foreground">耐心的老师 + 实践者</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Creative writing</span>
-    <span className="text-muted-foreground">Specific genre author</span>
+    <span className="font-semibold min-w-40">创意写作</span>
+    <span className="text-muted-foreground">特定类型作家</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Technical explanation</span>
-    <span className="text-muted-foreground">Expert + communicator</span>
+    <span className="font-semibold min-w-40">技术解释</span>
+    <span className="text-muted-foreground">专家 + 沟通者</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Problem-solving</span>
-    <span className="text-muted-foreground">Domain specialist + generalist</span>
+    <span className="font-semibold min-w-40">问题解决</span>
+    <span className="text-muted-foreground">领域专家 + 通才</span>
   </div>
 </div>
 
-## Anti-Patterns to Avoid
+## 应避免的反模式
 
-### Overly Generic Roles
-
-<Compare 
-  before={{ label: "Weak", content: "You are a helpful assistant." }}
-  after={{ label: "Better", content: "You are a helpful assistant specializing in Python development, particularly web applications with Flask and Django." }}
-/>
-
-### Conflicting Roles
+### 过于笼统的角色
 
 <Compare 
-  before={{ label: "Problematic", content: "You are a creative writer who always follows strict templates." }}
-  after={{ label: "Better", content: "You are a creative writer who works within established story structures while adding original elements." }}
+  before={{ label: "弱", content: "You are a helpful assistant." }}
+  after={{ label: "更好", content: "You are a helpful assistant specializing in Python development, particularly web applications with Flask and Django." }}
 />
 
-### Unrealistic Expertise
+### 冲突的角色
 
 <Compare 
-  before={{ label: "Problematic", content: "You are an expert in everything." }}
-  after={{ label: "Better", content: "You are a T-shaped professional: deep expertise in machine learning with broad knowledge of software engineering practices." }}
+  before={{ label: "有问题", content: "You are a creative writer who always follows strict templates." }}
+  after={{ label: "更好", content: "You are a creative writer who works within established story structures while adding original elements." }}
 />
 
-## Real-World Prompt Examples
+### 不切实际的专业知识
 
-### Technical Documentation
+<Compare 
+  before={{ label: "有问题", content: "You are an expert in everything." }}
+  after={{ label: "更好", content: "You are a T-shaped professional: deep expertise in machine learning with broad knowledge of software engineering practices." }}
+/>
+
+## 真实世界提示示例
+
+### 技术文档
 
 <TryIt 
-  title="Technical Writer Role"
-  description="Try this technical documentation prompt with your own API endpoint."
+  title="技术写作者角色"
+  description="尝试使用你自己的API端点来测试这个技术文档提示。"
   prompt={`You are a senior technical writer at a developer tools company. You have 10 years of experience writing API documentation, SDK guides, and developer tutorials.
 
 Your documentation style:
@@ -249,11 +249,11 @@ Your documentation style:
 Document this API endpoint: GET /api/users/:id - Returns user profile data`}
 />
 
-### Creative Writing
+### 创意写作
 
 <TryIt 
-  title="Novelist Role"
-  description="This role combines genre expertise with specific stylistic traits."
+  title="小说家角色"
+  description="这个角色结合了类型专业知识和特定的风格特征。"
   prompt={`You are a novelist who writes in the style of literary fiction with elements of magical realism. Your prose is known for:
 - Lyrical but accessible language
 - Deep psychological character portraits
@@ -263,11 +263,11 @@ Document this API endpoint: GET /api/users/:id - Returns user profile data`}
 Write the opening scene of a story about a librarian who discovers that books in her library are slowly changing their endings.`}
 />
 
-### Business Communication
+### 商务沟通
 
 <TryIt 
-  title="Executive Coach Role"
-  description="This role helps with sensitive business communications."
+  title="高管教练角色"
+  description="这个角色有助于处理敏感的商务沟通。"
   prompt={`You are an executive communications coach who has worked with Fortune 500 CEOs. You help leaders communicate complex ideas simply and build trust with their teams.
 
 Review this message for a team meeting about budget cuts. Suggest improvements that:
@@ -279,13 +279,13 @@ Review this message for a team meeting about budget cuts. Suggest improvements t
 Draft message: "Due to budget constraints, we need to reduce project scope. Some initiatives will be paused."`}
 />
 
-## Combining Roles with Other Techniques
+## 将角色与其他技术结合
 
-Roles work even better when combined with other prompting techniques:
+角色与其他提示技术结合使用时效果更佳：
 
-### Role + Few-Shot
+### 角色 + 少样本学习
 
-Combine a role with an example to show exactly how the role should respond. The example teaches tone and format while the role provides context and expertise.
+将角色与示例结合，展示角色应该如何回应。示例教授语气和格式，而角色提供上下文和专业知识。
 
 <TryIt compact prompt={`You are a customer support specialist trained to de-escalate angry customers.
 
@@ -296,9 +296,9 @@ You: "I completely understand your frustration, and I apologize for the delay. L
 Now respond to:
 Customer: "\${customerMessage}"`} />
 
-### Role + Chain of Thought
+### 角色 + 思维链
 
-The detective role naturally encourages step-by-step reasoning. Combining roles with chain-of-thought produces more transparent, verifiable problem-solving.
+侦探角色自然鼓励逐步推理。将角色与思维链结合可产生更透明、可验证的问题解决过程。
 
 <TryIt compact prompt={`You are a detective solving a logic puzzle. Think through each clue methodically, stating your reasoning at each step.
 
@@ -307,22 +307,22 @@ Clues:
 
 Solve step by step, explaining your deductions.`} />
 
-## Summary
+## 总结
 
-<Callout type="info" title="Key Takeaways">
-Role-based prompting is powerful because it focuses the model's vast knowledge, sets expectations for tone and style, provides implicit context, and makes outputs more consistent.
+<Callout type="info" title="关键要点">
+角色扮演提示之所以强大，是因为它能聚焦模型的海量知识、设定语气和风格的期望、提供隐含上下文，并使输出更加一致。
 </Callout>
 
 <Quiz 
-  question="What makes a role-based prompt more effective?"
+  question="是什么让角色扮演提示更有效？"
   options={[
-    "Using generic role titles like 'expert'",
-    "Adding specific expertise, experience, and perspective details",
-    "Keeping the role description as short as possible",
-    "Asking the AI to switch roles frequently"
+    "使用像'专家'这样的笼统角色称谓",
+    "添加具体的专业知识、经验和视角细节",
+    "尽可能保持角色描述简短",
+    "让AI频繁切换角色"
   ]}
   correctIndex={1}
-  explanation="The more detailed and realistic the role, the better the results. Specificity helps the model understand exactly what knowledge, tone, and perspective to apply."
+  explanation="角色越详细和真实，效果越好。具体性帮助模型准确理解应该应用什么知识、语气和视角。"
 />
 
-The key is **specificity**: the more detailed and realistic the role, the better the results. In the next chapter, we'll explore how to get consistent, structured outputs from your prompts.
+关键是**具体性**：角色越详细和真实，效果越好。在下一章中，我们将探讨如何从你的提示中获得一致的、结构化的输出。

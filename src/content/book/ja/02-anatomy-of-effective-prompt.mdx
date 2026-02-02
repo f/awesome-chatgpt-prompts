@@ -1,343 +1,343 @@
-Every great prompt shares common structural elements. Understanding these components allows you to construct prompts systematically rather than through trial and error.
+優れたプロンプトには共通の構造要素があります。これらの構成要素を理解することで、試行錯誤ではなく体系的にプロンプトを構築できるようになります。
 
-<Callout type="tip" title="The Building Blocks">
-Think of these components like LEGO bricks. You don't need all of them for every prompt, but knowing what's available helps you build exactly what you need.
+<Callout type="tip" title="プロンプトの構成要素">
+これらの構成要素はレゴブロックのようなものだと考えてください。すべてのプロンプトにすべての要素が必要なわけではありませんが、何が使えるかを知っておくことで、必要なものを正確に組み立てることができます。
 </Callout>
 
-## The Core Components
+## 主要な構成要素
 
-An effective prompt typically includes some or all of these elements:
+効果的なプロンプトには、通常以下の要素の一部またはすべてが含まれます：
 
 <PromptBreakdown parts={[
-  { label: "Role", text: "You are a senior software engineer" },
-  { label: "Context", text: "working on a React application." },
-  { label: "Task", text: "Review this code for bugs" },
-  { label: "Constraints", text: "and focus only on security issues." },
-  { label: "Format", text: "Return findings as a numbered list." },
-  { label: "Example", text: "Like: 1. SQL injection risk on line 42" }
+  { label: "役割", text: "あなたはシニアソフトウェアエンジニアです" },
+  { label: "文脈", text: "Reactアプリケーションの開発に携わっています。" },
+  { label: "タスク", text: "このコードのバグをレビューしてください" },
+  { label: "制約", text: "セキュリティの問題のみに焦点を当ててください。" },
+  { label: "形式", text: "発見事項を番号付きリストで返してください。" },
+  { label: "例", text: "例：1. 42行目にSQLインジェクションのリスク" }
 ]} />
 
-Let's examine each component in detail.
+それぞれの構成要素を詳しく見ていきましょう。
 
-## 1. Role / Persona
+## 1. 役割 / ペルソナ
 
-Setting a role focuses the model's responses through the lens of a specific expertise or perspective.
-
-<Compare 
-  before={{ label: "Without Role", content: "Explain quantum computing." }}
-  after={{ label: "With Role", content: "You are a physics professor who specializes in making complex topics accessible to beginners. Explain quantum computing." }}
-/>
-
-The role primes the model to:
-- Use appropriate vocabulary
-- Apply relevant expertise
-- Maintain a consistent perspective
-- Consider the audience appropriately
-
-### Effective Role Patterns
-
-```
-"You are a [profession] with [X years] of experience in [specialty]"
-"Act as a [role] who is [characteristic]"
-"You are an expert [field] helping a [audience type]"
-```
-
-## 2. Context / Background
-
-Context provides the information the model needs to understand your situation. Remember: the model knows nothing about you, your project, or your goals unless you tell it.
+役割を設定することで、モデルの回答を特定の専門性や視点を通して焦点を絞ることができます。
 
 <Compare 
-  before={{ label: "Weak Context", content: "Fix this bug in my code." }}
-  after={{ label: "Strong Context", content: "I'm building a Node.js REST API using Express.js. The API handles user authentication with JWT tokens. When a user tries to access a protected route, they're getting a 403 error even with a valid token. Here's the relevant code: [code]" }}
+  before={{ label: "役割なし", content: "量子コンピューティングについて説明してください。" }}
+  after={{ label: "役割あり", content: "あなたは複雑なトピックを初心者にもわかりやすく説明することを専門とする物理学教授です。量子コンピューティングについて説明してください。" }}
 />
 
-### What to Include in Context
+役割を設定することで、モデルは以下のことができるようになります：
+- 適切な語彙を使用する
+- 関連する専門知識を適用する
+- 一貫した視点を維持する
+- 聴衆を適切に考慮する
 
-- **Project details** — Technology stack, architecture, constraints
-- **Current state** — What you've tried, what's working, what isn't
-- **Goals** — What you're ultimately trying to achieve
-- **Constraints** — Time limits, technical requirements, style guides
+### 効果的な役割のパターン
 
-## 3. Task / Instruction
+```
+「あなたは[専門分野]で[X年]の経験を持つ[職業]です」
+「[特徴]を持つ[役割]として振る舞ってください」
+「あなたは[対象者タイプ]を支援する[分野]の専門家です」
+```
 
-The task is the heart of your prompt—what you want the model to do. Be specific and unambiguous.
+## 2. 文脈 / 背景
 
-### The Specificity Spectrum
+文脈は、モデルがあなたの状況を理解するために必要な情報を提供します。覚えておいてください：あなたが伝えない限り、モデルはあなた、あなたのプロジェクト、あなたの目標について何も知りません。
+
+<Compare 
+  before={{ label: "弱い文脈", content: "このコードのバグを修正してください。" }}
+  after={{ label: "強い文脈", content: "Express.jsを使用してNode.jsのREST APIを構築しています。APIはJWTトークンを使用してユーザー認証を処理します。ユーザーが保護されたルートにアクセスしようとすると、有効なトークンを持っていても403エラーが発生します。関連するコードは以下の通りです：[コード]" }}
+/>
+
+### 文脈に含めるべき内容
+
+- **プロジェクトの詳細** — 技術スタック、アーキテクチャ、制約
+- **現在の状態** — 試したこと、うまくいっていること、いないこと
+- **目標** — 最終的に達成しようとしていること
+- **制約** — 時間制限、技術要件、スタイルガイド
+
+## 3. タスク / 指示
+
+タスクはプロンプトの核心であり、モデルに何をしてほしいかを示します。具体的で曖昧さのないようにしましょう。
+
+### 具体性のスペクトラム
 
 <SpecificitySpectrum levels={[
-  { level: "Vague", text: "Help me with this essay" },
-  { level: "Better", text: "Edit this essay" },
-  { level: "Good", text: "Edit this essay for grammar and clarity" },
-  { level: "Best", text: "Edit this essay for grammar and clarity, maintaining the original tone but reducing wordiness by 20%" }
+  { level: "曖昧", text: "このエッセイを手伝ってください" },
+  { level: "やや良い", text: "このエッセイを編集してください" },
+  { level: "良い", text: "このエッセイの文法と明瞭さを編集してください" },
+  { level: "最良", text: "このエッセイの文法と明瞭さを編集し、元のトーンを維持しながら冗長さを20%削減してください" }
 ]} />
 
-### Action Verbs That Work Well
+### 効果的なアクション動詞
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Creation</span>
+    <span className="font-semibold min-w-32">作成</span>
     <span className="text-muted-foreground">Write, Create, Generate, Compose, Design</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Analysis</span>
+    <span className="font-semibold min-w-32">分析</span>
     <span className="text-muted-foreground">Analyze, Evaluate, Compare, Assess, Review</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Transformation</span>
+    <span className="font-semibold min-w-32">変換</span>
     <span className="text-muted-foreground">Convert, Translate, Reformat, Summarize, Expand</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Explanation</span>
+    <span className="font-semibold min-w-32">説明</span>
     <span className="text-muted-foreground">Explain, Describe, Clarify, Define, Illustrate</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Problem-solving</span>
+    <span className="font-semibold min-w-32">問題解決</span>
     <span className="text-muted-foreground">Solve, Debug, Fix, Optimize, Improve</span>
   </div>
 </div>
 
-## 4. Constraints / Rules
+## 4. 制約 / ルール
 
-Constraints bound the model's output. They prevent common issues and ensure relevance.
+制約はモデルの出力を制限します。よくある問題を防ぎ、関連性を確保します。
 
-### Types of Constraints
+### 制約の種類
 
-**Length constraints:**
+**長さの制約：**
 ```
-"Keep your response under 200 words"
-"Provide exactly 5 suggestions"
-"Write 3-4 paragraphs"
-```
-
-**Content constraints:**
-```
-"Do not include any code examples"
-"Focus only on the technical aspects"
-"Avoid marketing language"
+「回答を200語以内にしてください」
+「正確に5つの提案を提供してください」
+「3〜4段落で書いてください」
 ```
 
-**Style constraints:**
+**内容の制約：**
 ```
-"Use a formal, academic tone"
-"Write as if speaking to a 10-year-old"
-"Be direct and avoid hedging language"
-```
-
-**Scope constraints:**
-```
-"Only consider options available in Python 3.10+"
-"Limit suggestions to free tools"
-"Focus on solutions that don't require additional dependencies"
+「コード例は含めないでください」
+「技術的な側面のみに焦点を当ててください」
+「マーケティング用語は避けてください」
 ```
 
-## 5. Output Format
-
-Specifying the output format ensures you get responses in a usable structure.
-
-### Common Formats
-
-**Lists:**
+**スタイルの制約：**
 ```
-"Return as a bulleted list"
-"Provide a numbered list of steps"
+「フォーマルで学術的なトーンを使用してください」
+「10歳の子供に話すように書いてください」
+「直接的に、曖昧な表現は避けてください」
 ```
 
-**Structured data:**
+**範囲の制約：**
 ```
-"Return as JSON with keys: title, description, priority"
-"Format as a markdown table with columns: Feature, Pros, Cons"
-```
-
-**Specific structures:**
-```
-"Structure your response as:
- ## Summary
- ## Key Points
- ## Recommendations"
+「Python 3.10以降で利用可能なオプションのみを考慮してください」
+「提案は無料のツールに限定してください」
+「追加の依存関係を必要としない解決策に焦点を当ててください」
 ```
 
-### JSON Output Example
+## 5. 出力形式
+
+出力形式を指定することで、使用可能な構造で回答を得ることができます。
+
+### 一般的な形式
+
+**リスト：**
+```
+「箇条書きリストで返してください」
+「番号付きの手順リストを提供してください」
+```
+
+**構造化データ：**
+```
+「title、description、priorityをキーとするJSONで返してください」
+「Feature、Pros、Consの列を持つMarkdownテーブルとしてフォーマットしてください」
+```
+
+**特定の構造：**
+```
+「以下の構造で回答してください：
+ ## 概要
+ ## 重要なポイント
+ ## 推奨事項」
+```
+
+### JSON出力の例
 
 ```
-Analyze this customer review and return JSON:
+この顧客レビューを分析し、JSONで返してください：
 {
   "sentiment": "positive" | "negative" | "neutral",
-  "topics": ["array of main topics"],
+  "topics": ["主なトピックの配列"],
   "rating_prediction": 1-5,
-  "key_phrases": ["notable phrases"]
+  "key_phrases": ["注目すべきフレーズ"]
 }
 
-Review: "The product arrived quickly and works great, but 
-the instructions were confusing."
+レビュー：「商品は早く届き、動作も良好ですが、
+説明書がわかりにくかったです。」
 ```
 
-## 6. Examples (Few-Shot Learning)
+## 6. 例（Few-Shot Learning）
 
-Examples are the most powerful way to show the model exactly what you want.
+例は、モデルに正確に何を求めているかを示す最も強力な方法です。
 
-### One-Shot Example
-
-```
-Convert these sentences to past tense.
-
-Example:
-Input: "She walks to the store"
-Output: "She walked to the store"
-
-Now convert:
-Input: "They run every morning"
-```
-
-### Few-Shot Example
+### One-Shotの例
 
 ```
-Classify these support tickets by urgency.
+これらの文を過去形に変換してください。
 
-Examples:
-"My account was hacked" → Critical
-"How do I change my password?" → Low
-"Payment failed but I was charged" → High
+例：
+入力：「彼女は店まで歩く」
+出力：「彼女は店まで歩いた」
 
-Classify: "The app crashes when I open settings"
+次を変換してください：
+入力：「彼らは毎朝走る」
 ```
 
-## Putting It All Together
+### Few-Shotの例
 
-Here's a complete prompt using all components:
+```
+これらのサポートチケットを緊急度で分類してください。
+
+例：
+「アカウントがハッキングされました」→ 重大
+「パスワードの変更方法は？」→ 低
+「支払いに失敗しましたが、請求されました」→ 高
+
+分類してください：「設定を開くとアプリがクラッシュします」
+```
+
+## すべてを組み合わせる
+
+すべての構成要素を使用した完全なプロンプトの例を示します：
 
 <TryIt 
-  title="Complete Prompt Example"
-  description="This prompt demonstrates all six components working together. Try it to see how structured prompts produce professional results."
-  prompt={`# Role
-You are a senior technical writer with 10 years of experience creating developer documentation.
+  title="完全なプロンプトの例"
+  description="このプロンプトは6つの構成要素がすべて連携して機能する様子を示しています。試してみて、構造化されたプロンプトがプロフェッショナルな結果を生み出すことを確認してください。"
+  prompt={`# 役割
+あなたは開発者向けドキュメント作成で10年の経験を持つシニアテクニカルライターです。
 
-# Context
-I'm documenting a REST API for a payment processing service. The audience is developers integrating our API into their applications. They have intermediate programming knowledge but may be new to payment processing concepts.
+# 文脈
+決済処理サービスのREST APIのドキュメントを作成しています。対象読者は私たちのAPIをアプリケーションに統合する開発者です。彼らは中級レベルのプログラミング知識を持っていますが、決済処理の概念には不慣れかもしれません。
 
-# Task
-Write documentation for the following API endpoint that creates a new payment intent.
+# タスク
+新しい決済インテントを作成する以下のAPIエンドポイントのドキュメントを書いてください。
 
-# Constraints
-- Use clear, concise language
-- Include common error scenarios
-- Do not include implementation details about our backend
-- Assume readers understand HTTP and JSON basics
+# 制約
+- 明確で簡潔な言葉を使用する
+- 一般的なエラーシナリオを含める
+- バックエンドの実装詳細は含めない
+- 読者がHTTPとJSONの基本を理解していると想定する
 
-# Output Format
-Structure the documentation as:
-1. Endpoint Overview (2-3 sentences)
-2. Request (method, URL, headers, body with example)
-3. Response (success and error examples)
-4. Code Example (in JavaScript/Node.js)
+# 出力形式
+以下の構造でドキュメントを作成してください：
+1. エンドポイントの概要（2〜3文）
+2. リクエスト（メソッド、URL、ヘッダー、ボディと例）
+3. レスポンス（成功とエラーの例）
+4. コード例（JavaScript/Node.jsで）
 
-# Endpoint Details
+# エンドポイントの詳細
 POST /v1/payments/intents
 Body: { "amount": 1000, "currency": "usd", "description": "Order #1234" }`}
 />
 
-## The Minimal Effective Prompt
+## 最小限の効果的なプロンプト
 
-Not every prompt needs all components. For simple tasks, a clear instruction may suffice:
+すべてのプロンプトにすべての構成要素が必要なわけではありません。シンプルなタスクでは、明確な指示だけで十分な場合があります：
 
 ```
-Translate "Hello, how are you?" to Spanish.
+「Hello, how are you?」をスペイン語に翻訳してください。
 ```
 
-Use additional components when:
-- The task is complex or ambiguous
-- You need specific formatting
-- Results aren't matching expectations
-- Consistency across multiple queries matters
+追加の構成要素を使用するのは：
+- タスクが複雑または曖昧な場合
+- 特定のフォーマットが必要な場合
+- 結果が期待と一致しない場合
+- 複数のクエリ間で一貫性が重要な場合
 
-## Common Prompt Patterns
+## 一般的なプロンプトパターン
 
-These frameworks give you a simple checklist to follow when writing prompts. Click on each step to see an example.
+これらのフレームワークは、プロンプトを書く際に従うべきシンプルなチェックリストを提供します。各ステップをクリックすると例が表示されます。
 
 <CRISPEFramework />
 
 <RTFFramework />
 
-## Summary
+## まとめ
 
-Effective prompts are constructed, not discovered. By understanding and applying these structural components, you can:
+効果的なプロンプトは発見されるものではなく、構築されるものです。これらの構造的な構成要素を理解し適用することで、以下のことができるようになります：
 
-- Get better results on the first try
-- Debug prompts that aren't working
-- Create reusable prompt templates
-- Communicate your intentions clearly
+- 最初の試行でより良い結果を得る
+- うまくいかないプロンプトをデバッグする
+- 再利用可能なプロンプトテンプレートを作成する
+- 意図を明確に伝える
 
 <Quiz 
-  question="Which component has the biggest impact on response quality?"
+  question="回答の品質に最も大きな影響を与える構成要素はどれですか？"
   options={[
-    "Always the role/persona",
-    "Always the output format",
-    "It depends on the task",
-    "The length of the prompt"
+    "常に役割/ペルソナ",
+    "常に出力形式",
+    "タスクによって異なる",
+    "プロンプトの長さ"
   ]}
   correctIndex={2}
-  explanation="Different tasks benefit from different components. A simple translation needs minimal structure, while a complex analysis benefits from detailed role, context, and format specifications."
+  explanation="タスクによって効果的な構成要素は異なります。シンプルな翻訳には最小限の構造で十分ですが、複雑な分析には詳細な役割、文脈、形式の指定が有効です。"
 />
 
 <TryIt 
-  prompt={`You are a senior product manager with 10 years of experience in SaaS products.
+  prompt={`あなたはSaaS製品で10年の経験を持つシニアプロダクトマネージャーです。
 
-Context: I'm building a task management app for remote teams. We're a small startup with limited engineering resources.
+文脈：リモートチーム向けのタスク管理アプリを構築しています。私たちはエンジニアリングリソースが限られた小さなスタートアップです。
 
-Task: Suggest 3 features we should prioritize for our MVP.
+タスク：MVPで優先すべき3つの機能を提案してください。
 
-Constraints:
-- Features must be implementable by a team of 2 developers in 4 weeks
-- Focus on what differentiates us from Trello and Asana
+制約：
+- 機能は2人の開発者が4週間で実装可能であること
+- TrelloやAsanaとの差別化ポイントに焦点を当てること
 
-Format: For each feature, provide:
-1. Feature name
-2. One-sentence description  
-3. Why it matters for remote teams`}
-  description="This prompt uses all six components. Try it and see how the structured approach produces focused, actionable results."
+形式：各機能について以下を提供してください：
+1. 機能名
+2. 一文での説明
+3. リモートチームにとって重要な理由`}
+  description="このプロンプトは6つの構成要素をすべて使用しています。試してみて、構造化されたアプローチが焦点を絞った実用的な結果を生み出すことを確認してください。"
 />
 
-## Build Your Own Prompt
+## 自分のプロンプトを作ってみよう
 
-Now it's your turn! Use this interactive prompt builder to construct your own prompt using the components you've learned:
+今度はあなたの番です！このインタラクティブなプロンプトビルダーを使って、学んだ構成要素を活用して自分のプロンプトを構築してみましょう：
 
 <PromptBuilder 
-  title="Interactive Prompt Builder"
-  description="Fill in each section to build a complete, well-structured prompt"
+  title="インタラクティブプロンプトビルダー"
+  description="各セクションに入力して、完全で構造化されたプロンプトを作成しましょう"
 />
 
 <PromptChallenge
-  title="Chapter Challenge: Build a Code Review Prompt"
-  task="Write a prompt that asks an AI to review code for security vulnerabilities. Your prompt should be specific enough to get actionable feedback."
+  title="章のチャレンジ：コードレビュープロンプトを作成する"
+  task="セキュリティの脆弱性についてコードをレビューするようAIに依頼するプロンプトを書いてください。実用的なフィードバックを得られるほど具体的なプロンプトにしてください。"
   criteria={[
-    "Includes a clear role or expertise level",
-    "Specifies what type of code review (security focus)",
-    "Defines the expected output format",
-    "Sets appropriate constraints or scope"
+    "明確な役割または専門性レベルを含める",
+    "コードレビューの種類を指定する（セキュリティに焦点）",
+    "期待される出力形式を定義する",
+    "適切な制約または範囲を設定する"
   ]}
   hints={[
-    "Think about what expertise a code reviewer should have",
-    "Be specific about what security issues to look for",
-    "Consider asking for a structured response format"
+    "コードレビュアーが持つべき専門知識について考えてください",
+    "どのようなセキュリティの問題を探すべきか具体的にしてください",
+    "構造化された回答形式を求めることを検討してください"
   ]}
-  exampleSolution={`You are a senior security engineer with expertise in web application security and OWASP Top 10 vulnerabilities.
+  exampleSolution={`あなたはWebアプリケーションセキュリティとOWASP Top 10の脆弱性に精通したシニアセキュリティエンジニアです。
 
-Task: Review the following code for security vulnerabilities.
+タスク：以下のコードのセキュリティ脆弱性をレビューしてください。
 
-Focus on:
-- SQL injection risks
-- XSS vulnerabilities  
-- Authentication/authorization issues
-- Input validation gaps
+焦点を当てる項目：
+- SQLインジェクションのリスク
+- XSSの脆弱性
+- 認証/認可の問題
+- 入力バリデーションの欠陥
 
-Output format:
-For each issue found:
-1. Line number(s)
-2. Vulnerability type
-3. Risk level (High/Medium/Low)
-4. Recommended fix
+出力形式：
+発見した各問題について：
+1. 行番号
+2. 脆弱性の種類
+3. リスクレベル（高/中/低）
+4. 推奨される修正方法
 
-[CODE TO REVIEW]`}
+[レビュー対象のコード]`}
   difficulty="intermediate"
 />
 
-In the next chapter, we'll explore the core principles that guide prompt construction decisions.
+次の章では、プロンプト構築の判断を導く基本原則について探っていきます。

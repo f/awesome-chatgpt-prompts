@@ -1,323 +1,323 @@
-AI can accelerate research workflows from literature review to data analysis. This chapter covers prompting techniques for academic and professional research.
+AIは文献レビューからデータ分析まで、研究ワークフローを加速させることができます。この章では、学術および専門的な研究のためのプロンプト技術について解説します。
 
-<Callout type="info" title="AI in Research">
-AI can assist with synthesis, analysis, and writing—but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims and cite original sources.
+<Callout type="info" title="研究におけるAI">
+AIは統合、分析、執筆を支援できますが、批判的思考、倫理的判断、専門知識を置き換えることはできません。常に主張を検証し、原典を引用してください。
 </Callout>
 
-## Literature & Information Review
+## 文献・情報レビュー
 
-### Do's and Don'ts: Research Prompts
+### すべきこととすべきでないこと：研究プロンプト
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Summarize this paper for me." }}
-  after={{ label: "✓ Structured request", content: "Summarize this paper for my literature review on machine learning in healthcare.\n\nProvide:\n1. Main thesis (1-2 sentences)\n2. Methodology\n3. Key findings (bullets)\n4. Limitations\n5. Relevance to my research\n\nReading level: Graduate student" }}
+  before={{ label: "❌ 曖昧なリクエスト", content: "この論文を要約してください。" }}
+  after={{ label: "✓ 構造化されたリクエスト", content: "ヘルスケアにおける機械学習に関する文献レビューのために、この論文を要約してください。\n\n以下を提供してください：\n1. 主論旨（1-2文）\n2. 方法論\n3. 主要な発見（箇条書き）\n4. 限界\n5. 私の研究との関連性\n\n読解レベル：大学院生" }}
 />
 
-### Paper Summarization
+### 論文要約
 
-<TryIt compact prompt={`Summarize this academic paper:
+<TryIt compact prompt={`この学術論文を要約してください：
 
-[paper abstract or full text]
+[論文の要旨または全文]
 
-Provide:
-1. **Main thesis** - Central argument (1-2 sentences)
-2. **Methodology** - How they approached it
-3. **Key findings** - Most important results (bullet points)
-4. **Contributions** - What's new/significant
-5. **Limitations** - Acknowledged or apparent weaknesses
-6. **Relevance to [my research topic]** - How it connects
+以下を提供してください：
+1. **主論旨** - 中心的な主張（1-2文）
+2. **方法論** - どのようにアプローチしたか
+3. **主要な発見** - 最も重要な結果（箇条書き）
+4. **貢献** - 新しい点/重要な点
+5. **限界** - 認識されている、または明らかな弱点
+6. **[私の研究テーマ]との関連性** - どのように結びつくか
 
-Reading level: \${readingLevel:graduate}`} />
+読解レベル：\${readingLevel:大学院生}`} />
 
-### Literature Synthesis
+### 文献統合
 
-<TryIt compact prompt={`Synthesize these papers on \${topic:the effectiveness of remote work}:
+<TryIt compact prompt={`\${topic:リモートワークの効果}に関するこれらの論文を統合してください：
 
-Paper 1: \${paper1:Smith 2021 - found productivity increased 15%}
-Paper 2: \${paper2:Jones 2022 - noted collaboration challenges}
-Paper 3: \${paper3:Chen 2023 - hybrid model showed best outcomes}
+論文1：\${paper1:Smith 2021 - 生産性が15%向上したことを発見}
+論文2：\${paper2:Jones 2022 - コラボレーションの課題を指摘}
+論文3：\${paper3:Chen 2023 - ハイブリッドモデルが最良の成果を示した}
 
-Analyze:
-1. **Common themes** - What do they agree on?
-2. **Contradictions** - Where do they disagree?
-3. **Gaps** - What's not addressed?
-4. **Evolution** - How has thinking progressed?
-5. **Synthesis** - Integrated understanding
+分析：
+1. **共通テーマ** - 何について一致しているか？
+2. **矛盾** - どこで意見が異なるか？
+3. **ギャップ** - 何が扱われていないか？
+4. **進展** - 思考はどのように進化したか？
+5. **統合** - 統合された理解
 
-Format as: Literature review paragraph suitable for \${outputType:thesis}`} />
+形式：\${outputType:論文}に適した文献レビューの段落`} />
 
-### Research Question Development
+### 研究課題の開発
 
-<TryIt compact prompt={`Help me develop research questions for \${topic:AI adoption in healthcare}.
+<TryIt compact prompt={`\${topic:ヘルスケアにおけるAI導入}の研究課題を開発するのを手伝ってください。
 
-Context:
-- Field: \${field:health informatics}
-- Current knowledge: \${currentKnowledge:AI tools exist but adoption is slow}
-- Gap identified: \${gap:limited understanding of physician resistance factors}
-- My interest: \${interest:organizational change management}
+背景：
+- 分野：\${field:医療情報学}
+- 現在の知識：\${currentKnowledge:AIツールは存在するが、導入が遅い}
+- 特定されたギャップ：\${gap:医師の抵抗要因に関する理解が限られている}
+- 私の関心：\${interest:組織変革マネジメント}
 
-Generate:
-1. **Primary RQ** - Main question to answer
-2. **Sub-questions** - Supporting inquiries (3-4)
-3. **Hypotheses** - Testable predictions (if applicable)
+生成：
+1. **主要な研究課題** - 答えるべき主な質問
+2. **副次的質問** - 補足的な質問（3-4個）
+3. **仮説** - 検証可能な予測（該当する場合）
 
-Criteria: Questions should be:
-- Answerable with available methods
-- Significant to the field
-- Appropriately scoped`} />
+基準：質問は以下であるべきです：
+- 利用可能な方法で回答可能
+- その分野にとって重要
+- 適切な範囲`} />
 
-## Data Analysis
+## データ分析
 
-<Callout type="warning" title="AI Cannot Analyze Your Actual Data">
-AI can guide methodology and help interpret results, but it cannot access or process your actual datasets. Never paste sensitive research data into prompts. Use AI for **guidance**, not computation.
+<Callout type="warning" title="AIは実際のデータを分析できません">
+AIは方法論のガイドや結果の解釈を支援できますが、実際のデータセットにアクセスしたり処理したりすることはできません。機密性の高い研究データをプロンプトに貼り付けないでください。AIは計算ではなく、**ガイダンス**のために使用してください。
 </Callout>
 
-### Statistical Analysis Guidance
+### 統計分析ガイダンス
 
-<TryIt compact prompt={`Help me analyze this data:
+<TryIt compact prompt={`このデータの分析を手伝ってください：
 
-Data description:
-- Variables: \${variables:age (continuous), treatment group (categorical: A/B/C), outcome score (continuous)}
-- Sample size: \${sampleSize:n=150 (50 per group)}
-- Research question: \${researchQuestion:Does treatment type affect outcome scores?}
-- Data characteristics: \${characteristics:normally distributed, no missing values}
+データの説明：
+- 変数：\${variables:年齢（連続）、治療群（カテゴリカル：A/B/C）、アウトカムスコア（連続）}
+- サンプルサイズ：\${sampleSize:n=150（各群50名）}
+- 研究課題：\${researchQuestion:治療タイプはアウトカムスコアに影響を与えるか？}
+- データの特性：\${characteristics:正規分布、欠損値なし}
 
-Advise on:
-1. **Appropriate tests** - Which statistical tests to use
-2. **Assumptions to check** - Prerequisites
-3. **How to interpret results** - What different outcomes mean
-4. **Effect size** - Practical significance
-5. **Reporting** - How to present findings
+以下についてアドバイスしてください：
+1. **適切な検定** - どの統計検定を使用すべきか
+2. **確認すべき仮定** - 前提条件
+3. **結果の解釈方法** - 異なる結果が意味すること
+4. **効果量** - 実践的な有意性
+5. **報告** - 結果の提示方法
 
-Note: Guide my analysis, don't fabricate results.`} />
+注意：私の分析をガイドしてください。結果を捏造しないでください。`} />
 
-### Qualitative Analysis
+### 質的分析
 
-<TryIt compact prompt={`Help me analyze these qualitative responses:
+<TryIt compact prompt={`これらの質的回答の分析を手伝ってください：
 
-Responses:
-\${responses:paste interview excerpts or survey responses here}
+回答：
+\${responses:インタビューの抜粋やアンケート回答をここに貼り付けてください}
 
-Using \${method:thematic analysis}:
+\${method:テーマ分析}を使用：
 
-1. **Initial codes** - Identify recurring concepts
-2. **Categories** - Group related codes
-3. **Themes** - Overarching patterns
-4. **Relationships** - How themes connect
-5. **Representative quotes** - Evidence for each theme
+1. **初期コード** - 繰り返し現れる概念を特定
+2. **カテゴリ** - 関連するコードをグループ化
+3. **テーマ** - 包括的なパターン
+4. **関係性** - テーマ同士のつながり
+5. **代表的な引用** - 各テーマの証拠
 
-Maintain: Participant voice and context`} />
+維持：参加者の声と文脈`} />
 
-### Data Interpretation
+### データ解釈
 
-<TryIt compact prompt={`Help me interpret these findings:
+<TryIt compact prompt={`これらの発見の解釈を手伝ってください：
 
-Results:
-\${results:paste statistical output or data summary here}
+結果：
+\${results:統計出力またはデータの要約をここに貼り付けてください}
 
-Context:
-- Research question: \${researchQuestion:Does X predict Y?}
-- Hypothesis: \${hypothesis:X positively predicts Y}
-- Expected results: \${expectedResults:significant positive correlation}
+背景：
+- 研究課題：\${researchQuestion:XはYを予測するか？}
+- 仮説：\${hypothesis:XはYを正に予測する}
+- 予想される結果：\${expectedResults:有意な正の相関}
 
-Provide:
-1. **Plain language interpretation** - What does this mean?
-2. **Statistical significance** - What the p-values tell us
-3. **Practical significance** - Real-world meaning
-4. **Comparison to literature** - How does this fit?
-5. **Alternative explanations** - Other interpretations
-6. **Limitations of interpretation**`} />
+以下を提供してください：
+1. **平易な言葉での解釈** - これは何を意味するか？
+2. **統計的有意性** - p値が示すこと
+3. **実践的有意性** - 現実世界での意味
+4. **文献との比較** - これはどのように当てはまるか？
+5. **代替的説明** - 他の解釈
+6. **解釈の限界**`} />
 
-## Structured Analysis Frameworks
+## 構造化された分析フレームワーク
 
-### PESTLE Analysis
+### PESTLE分析
 
-<TryIt compact prompt={`Conduct a PESTLE analysis for \${subject:electric vehicle industry in Europe}.
+<TryIt compact prompt={`\${subject:ヨーロッパの電気自動車産業}のPESTLE分析を実施してください。
 
-**Political** factors:
-- Government policies, regulations, political stability
+**政治的（Political）**要因：
+- 政府の政策、規制、政治的安定性
 
-**Economic** factors:
-- Economic growth, inflation, exchange rates, unemployment
+**経済的（Economic）**要因：
+- 経済成長、インフレ、為替レート、失業率
 
-**Social** factors:
-- Demographics, cultural trends, lifestyle changes
+**社会的（Social）**要因：
+- 人口動態、文化的トレンド、ライフスタイルの変化
 
-**Technological** factors:
-- Innovation, R&D, automation, technology changes
+**技術的（Technological）**要因：
+- イノベーション、研究開発、自動化、技術変化
 
-**Legal** factors:
-- Legislation, regulatory bodies, employment law
+**法的（Legal）**要因：
+- 法律、規制機関、雇用法
 
-**Environmental** factors:
-- Climate, sustainability, environmental regulations
+**環境的（Environmental）**要因：
+- 気候、持続可能性、環境規制
 
-For each: Current state + trends + implications`} />
+各項目について：現状 + トレンド + 影響`} />
 
-### Root Cause Analysis
+### 根本原因分析
 
-<TryIt compact prompt={`Perform root cause analysis for \${problem:customer churn increased 20% last quarter}.
+<TryIt compact prompt={`\${problem:前四半期に顧客離反率が20%増加した}の根本原因分析を実施してください。
 
-Problem statement:
-\${problemStatement:Monthly churn rate rose from 3% to 3.6% between Q3 and Q4}
+問題の記述：
+\${problemStatement:月間離反率がQ3からQ4の間に3%から3.6%に上昇した}
 
-Using 5 Whys:
-1. Why? First level cause
-   2. Why? Deeper cause
-      3. Why? Deeper still
-         4. Why? Approaching root
-            5. Why? Root cause
+5つのなぜを使用：
+1. なぜ？ 第一レベルの原因
+   2. なぜ？ より深い原因
+      3. なぜ？ さらに深く
+         4. なぜ？ 根本に近づく
+            5. なぜ？ 根本原因
 
-Alternative: Fishbone diagram categories
-- People
-- Process
-- Equipment
-- Materials
-- Environment
-- Management
+代替：フィッシュボーン図のカテゴリ
+- 人
+- プロセス
+- 設備
+- 材料
+- 環境
+- マネジメント
 
-Provide: Root cause(s) + recommended actions`} />
+提供：根本原因 + 推奨される対策`} />
 
-### Gap Analysis
+### ギャップ分析
 
-<TryIt compact prompt={`Conduct a gap analysis for \${subject:our customer support operations}.
+<TryIt compact prompt={`\${subject:当社のカスタマーサポート業務}のギャップ分析を実施してください。
 
-**Current State:**
-- \${currentState:Average response time 24 hours, CSAT 3.2/5}
+**現状：**
+- \${currentState:平均応答時間24時間、CSAT 3.2/5}
 
-**Desired State:**
-- \${desiredState:Response time under 4 hours, CSAT 4.5/5}
+**望ましい状態：**
+- \${desiredState:応答時間4時間以内、CSAT 4.5/5}
 
-**Gap Identification:**
-| Area | Current | Desired | Gap | Priority |
+**ギャップの特定：**
+| 領域 | 現状 | 望ましい | ギャップ | 優先度 |
 |------|---------|---------|-----|----------|
-| ... | ... | ... | ... | H/M/L |
+| ... | ... | ... | ... | 高/中/低 |
 
-**Action Plan:**
-For each high-priority gap:
-- Specific actions
-- Resources needed
-- Timeline
-- Success metrics`} />
+**アクションプラン：**
+各優先度の高いギャップについて：
+- 具体的なアクション
+- 必要なリソース
+- タイムライン
+- 成功指標`} />
 
-## Academic Writing Support
+## アカデミックライティング支援
 
-### Argument Structure
+### 議論の構造
 
-<TryIt compact prompt={`Help me structure an argument for \${topic:why remote work should become permanent policy}.
+<TryIt compact prompt={`\${topic:リモートワークが恒久的な政策になるべき理由}の議論を構造化するのを手伝ってください。
 
-Main claim: \${thesis:Organizations should adopt permanent remote/hybrid policies for knowledge workers}
+主張：\${thesis:組織はナレッジワーカーのために恒久的なリモート/ハイブリッド政策を採用すべきである}
 
-Required:
-1. **Premises** - Supporting claims that lead to conclusion
-2. **Evidence** - Data/sources for each premise
-3. **Counterarguments** - Opposing views
-4. **Rebuttals** - Responses to counterarguments
-5. **Logical flow** - How it all connects
+必要事項：
+1. **前提** - 結論に導く支持主張
+2. **証拠** - 各前提のデータ/出典
+3. **反論** - 反対意見
+4. **再反論** - 反論への回答
+5. **論理の流れ** - すべてがどのようにつながるか
 
-Check for:
-- Logical fallacies
-- Unsupported claims
-- Gaps in reasoning`} />
+チェック：
+- 論理的誤謬
+- 裏付けのない主張
+- 推論のギャップ`} />
 
-### Methods Section
+### 方法セクション
 
-<TryIt compact prompt={`Help me write a methods section for:
+<TryIt compact prompt={`以下の方法セクションの執筆を手伝ってください：
 
-Study type: \${studyType:survey}
-Participants: \${participants:200 undergraduate students, convenience sampling}
-Materials: \${materials:online questionnaire with Likert scales}
-Procedure: \${procedure:participants completed 20-minute survey online}
-Analysis: \${analysis:descriptive statistics and regression analysis}
+研究タイプ：\${studyType:調査}
+参加者：\${participants:学部生200名、便宜的サンプリング}
+材料：\${materials:リッカート尺度を用いたオンライン質問票}
+手続き：\${procedure:参加者はオンラインで20分の調査を完了した}
+分析：\${analysis:記述統計および回帰分析}
 
-Standards: Follow \${standards:APA 7th edition} guidelines
-Include: Enough detail for replication
-Tone: Passive voice, past tense`} />
+基準：\${standards:APA第7版}ガイドラインに従う
+含める：再現に十分な詳細
+トーン：受動態、過去形`} />
 
-### Discussion Section
+### 考察セクション
 
-<TryIt compact prompt={`Help me write a discussion section.
+<TryIt compact prompt={`考察セクションの執筆を手伝ってください。
 
-Key findings:
-\${findings:1. Significant positive correlation (r=0.45) between X and Y\n2. No significant difference between groups on secondary measure}
+主要な発見：
+\${findings:1. XとYの間に有意な正の相関（r=0.45）\n2. 副次的な測定において群間に有意差なし}
 
-Structure:
-1. **Summary** - Brief restatement of main findings
-2. **Interpretation** - What the findings mean
-3. **Context** - How findings relate to existing literature
-4. **Implications** - Theoretical and practical significance
-5. **Limitations** - Study weaknesses
-6. **Future directions** - What research should follow
-7. **Conclusion** - Take-home message
+構造：
+1. **要約** - 主要な発見の簡潔な再述
+2. **解釈** - 発見が意味すること
+3. **文脈** - 発見が既存の文献とどのように関連するか
+4. **含意** - 理論的および実践的意義
+5. **限界** - 研究の弱点
+6. **今後の方向性** - どのような研究が続くべきか
+7. **結論** - 主要なメッセージ
 
-Avoid: Overstating findings or introducing new results`} />
+避ける：発見の過大解釈や新しい結果の導入`} />
 
-## Critical Analysis
+## 批判的分析
 
-### Source Evaluation
+### 情報源の評価
 
-<TryIt compact prompt={`Evaluate this source for academic use:
+<TryIt compact prompt={`この情報源を学術利用のために評価してください：
 
-Source: \${source:paste citation or link here}
-Content summary: \${summary:brief description of what the source claims}
+情報源：\${source:引用またはリンクをここに貼り付けてください}
+内容の要約：\${summary:情報源が主張することの簡単な説明}
 
-Assess using CRAAP criteria:
-- **Currency**: When published? Updated? Current enough?
-- **Relevance**: Relates to my topic? Appropriate level?
-- **Authority**: Author credentials? Publisher reputation?
-- **Accuracy**: Supported by evidence? Peer-reviewed?
-- **Purpose**: Why was it written? Bias evident?
+CRAAP基準を使用して評価：
+- **新しさ（Currency）**：いつ出版されたか？更新されたか？十分に最新か？
+- **関連性（Relevance）**：私のトピックに関連するか？適切なレベルか？
+- **権威（Authority）**：著者の資格は？出版社の評判は？
+- **正確性（Accuracy）**：証拠に裏付けられているか？査読されているか？
+- **目的（Purpose）**：なぜ書かれたか？バイアスは明らかか？
 
-Verdict: Highly credible / Use with caution / Avoid
-How to use: Recommendations for incorporation`} />
+判定：非常に信頼できる / 注意して使用 / 避ける
+使用方法：組み込みに関する推奨事項`} />
 
-### Argument Analysis
+### 議論の分析
 
-<TryIt compact prompt={`Analyze the argument in this text:
+<TryIt compact prompt={`このテキストの議論を分析してください：
 
-\${text:paste the text you want to analyze}
+\${text:分析したいテキストをここに貼り付けてください}
 
-Identify:
-1. **Main claim** - What's being argued
-2. **Supporting evidence** - What backs it up
-3. **Assumptions** - Unstated premises
-4. **Logical structure** - How conclusion follows
-5. **Strengths** - What's compelling
-6. **Weaknesses** - Logical gaps or fallacies
-7. **Alternative interpretations**
+特定：
+1. **主張** - 何が論じられているか
+2. **支持する証拠** - 何が裏付けているか
+3. **前提** - 述べられていない前提
+4. **論理構造** - 結論がどのように導かれるか
+5. **強み** - 説得力のある点
+6. **弱み** - 論理的なギャップや誤謬
+7. **代替的解釈**
 
-Provide: Fair, balanced assessment`} />
+提供：公平でバランスの取れた評価`} />
 
-## Prompt Templates from prompts.chat
+## prompts.chatからのプロンプトテンプレート
 
-### Act as a Research Assistant
+### リサーチアシスタントとして振る舞う
 
-<TryIt compact prompt={`I want you to act as a research assistant. Help me explore topics, find information, synthesize sources, and develop arguments. Ask clarifying questions, suggest relevant areas to investigate, and help me think critically about evidence. Be thorough but acknowledge the limits of your knowledge.`} />
+<TryIt compact prompt={`あなたにはリサーチアシスタントとして振る舞ってほしいです。トピックの探索、情報の検索、情報源の統合、議論の展開を手伝ってください。明確化のための質問をし、調査すべき関連分野を提案し、証拠について批判的に考えるのを助けてください。徹底的でありながら、知識の限界を認めてください。`} />
 
-### Act as a Data Analyst
+### データアナリストとして振る舞う
 
-<TryIt compact prompt={`I want you to act as a data analyst. I will describe datasets and research questions, and you will suggest analysis approaches, help interpret results, and identify potential issues. Focus on sound methodology and clear communication of findings.`} />
+<TryIt compact prompt={`あなたにはデータアナリストとして振る舞ってほしいです。私がデータセットと研究課題について説明しますので、分析アプローチを提案し、結果の解釈を助け、潜在的な問題を特定してください。健全な方法論と発見の明確なコミュニケーションに焦点を当ててください。`} />
 
-### Act as a Peer Reviewer
+### 査読者として振る舞う
 
-<TryIt compact prompt={`I want you to act as an academic peer reviewer. I will share manuscripts or sections, and you will provide constructive feedback on methodology, argument, writing, and contribution to the field. Be rigorous but supportive, noting both strengths and areas for improvement.`} />
+<TryIt compact prompt={`あなたには学術的な査読者として振る舞ってほしいです。私が原稿やセクションを共有しますので、方法論、議論、文章、その分野への貢献について建設的なフィードバックを提供してください。厳格でありながら支援的であり、強みと改善点の両方を指摘してください。`} />
 
-## Summary
+## まとめ
 
-<Callout type="tip" title="Key Techniques">
-Clearly state research context and goals, specify the analytical framework to use, request acknowledgment of limitations, ask for evidence-based reasoning, and maintain academic rigor and honesty.
+<Callout type="tip" title="主要なテクニック">
+研究の背景と目標を明確に述べ、使用する分析フレームワークを指定し、限界の認識を求め、証拠に基づいた推論を要求し、学術的な厳密さと誠実さを維持してください。
 </Callout>
 
 <Quiz 
-  question="What's the most important thing to remember when using AI for research?"
+  question="AIを研究に使用する際に覚えておくべき最も重要なことは何ですか？"
   options={[
-    "AI can replace the need for primary sources",
-    "AI analysis is always accurate and up-to-date",
-    "Always verify AI claims independently and cite original sources",
-    "AI can access and analyze your actual datasets"
+    "AIは一次資料の必要性を置き換えることができる",
+    "AIの分析は常に正確で最新である",
+    "AIの主張を常に独自に検証し、原典を引用する",
+    "AIは実際のデータセットにアクセスして分析できる"
   ]}
   correctIndex={2}
-  explanation="AI can assist with synthesis and structure, but it can hallucinate citations, have outdated information, and cannot access your actual data. Always verify claims against primary sources and maintain academic integrity."
+  explanation="AIは統合や構造化を支援できますが、引用を捏造したり、情報が古かったり、実際のデータにアクセスできなかったりすることがあります。常に一次資料に対して主張を検証し、学術的誠実さを維持してください。"
 />
 
-Remember: AI can assist research but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims independently.
+覚えておいてください：AIは研究を支援できますが、批判的思考、倫理的判断、専門知識を置き換えることはできません。常に独自に主張を検証してください。

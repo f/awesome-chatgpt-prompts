@@ -1,326 +1,326 @@
-AI is a powerful creative collaborator. This chapter covers prompting techniques for visual arts, music, game design, and other creative domains.
+AI 是强大的创意协作伙伴。本章涵盖视觉艺术、音乐、游戏设计及其他创意领域的提示技巧。
 
-<Callout type="info" title="AI as Creative Partner">
-AI expands your creative possibilities—use it to explore variations, overcome blocks, and generate options. The creative vision and final decisions remain yours.
+<Callout type="info" title="AI 作为创意伙伴">
+AI 拓展你的创意可能性——用它来探索变体、克服创作瓶颈、生成选项。创意愿景和最终决策仍然由你掌控。
 </Callout>
 
-## Visual Art & Design
+## 视觉艺术与设计
 
-### Do's and Don'ts: Image Prompts
+### 图像提示的正确与错误做法
 
 <Compare 
-  before={{ label: "❌ Vague prompt", content: "A wizard in a library" }}
-  after={{ label: "✓ Rich description", content: "A wise elderly wizard reading an ancient tome, sitting in a tower library at sunset, fantasy art style, warm golden lighting, contemplative mood, highly detailed, 4K, by Greg Rutkowski" }}
+  before={{ label: "❌ 模糊的提示", content: "图书馆里的巫师" }}
+  after={{ label: "✓ 丰富的描述", content: "一位睿智的年迈巫师在阅读一本古老典籍，坐在日落时分的塔楼图书馆中，奇幻艺术风格，温暖的金色光线，沉思的氛围，高度细节化，4K，Greg Rutkowski 风格" }}
 />
 
-### Image Prompt Crafting
+### 图像提示构建
 
-When working with image generation models (DALL-E, Midjourney, Stable Diffusion):
+在使用图像生成模型（DALL-E、Midjourney、Stable Diffusion）时：
 
-<TryIt compact prompt={`Create an image prompt for [concept].
+<TryIt compact prompt={`为[概念]创建一个图像提示。
 
-Structure:
-[Subject] + [Action/Pose] + [Setting/Background] + [Style] + 
-[Lighting] + [Mood] + [Technical specs]
+结构：
+[主体] + [动作/姿势] + [场景/背景] + [风格] + 
+[光线] + [氛围] + [技术规格]
 
-Example:
-"A wise elderly wizard reading an ancient tome, sitting in a 
-tower library at sunset, fantasy art style, warm golden lighting, 
-contemplative mood, highly detailed, 4K"`} />
+示例：
+"一位睿智的年迈巫师在阅读一本古老典籍，坐在
+日落时分的塔楼图书馆中，奇幻艺术风格，温暖的金色光线，
+沉思的氛围，高度细节化，4K"`} />
 
-### Art Direction
+### 艺术指导
 
-<TryIt compact prompt={`Describe artwork for \${project:fantasy book cover}.
+<TryIt compact prompt={`为 \${project:奇幻书籍封面} 描述艺术作品。
 
-Include:
-1. **Composition** - arrangement of elements
-2. **Color palette** - specific colors and their relationships
-3. **Style reference** - similar artists/works/movements
-4. **Focal point** - where the eye should be drawn
-5. **Mood/Atmosphere** - emotional quality
-6. **Technical approach** - medium, technique
+包括：
+1. **构图** - 元素的排列
+2. **色彩调色板** - 具体颜色及其关系
+3. **风格参考** - 类似的艺术家/作品/流派
+4. **焦点** - 视线应被引导到的位置
+5. **情绪/氛围** - 情感特质
+6. **技术方法** - 媒介、技法
 
-Purpose: \${purpose:illustration for book cover}`} />
+目的：\${purpose:书籍封面插图}`} />
 
-### Design Critique
+### 设计评审
 
-<TryIt compact prompt={`Critique this design from a professional perspective.
+<TryIt compact prompt={`从专业角度评审这个设计。
 
-Design: \${design:a landing page with hero section, feature grid, and testimonials}
-Context: \${context:SaaS product for project management}
+设计：\${design:一个包含主视觉区、功能网格和用户评价的落地页}
+背景：\${context:项目管理 SaaS 产品}
 
-Evaluate:
-1. **Visual hierarchy** - Is importance clear?
-2. **Balance** - Is it visually stable?
-3. **Contrast** - Do elements stand out appropriately?
-4. **Alignment** - Is it organized?
-5. **Repetition** - Is there consistency?
-6. **Proximity** - Are related items grouped?
+评估：
+1. **视觉层次** - 重要性是否清晰？
+2. **平衡** - 视觉上是否稳定？
+3. **对比** - 元素是否适当突出？
+4. **对齐** - 是否有组织性？
+5. **重复** - 是否有一致性？
+6. **邻近** - 相关项目是否分组？
 
-Provide:
-- Specific strengths
-- Areas for improvement
-- Actionable suggestions`} />
+提供：
+- 具体优势
+- 改进空间
+- 可操作的建议`} />
 
-## Creative Writing
+## 创意写作
 
-<Callout type="tip" title="Creative Constraint Principle">
-**Constraints fuel creativity.** A prompt like "write anything" produces generic results. Specific constraints like genre, tone, and structure force unexpected, interesting solutions.
+<Callout type="tip" title="创意约束原则">
+**约束激发创造力。** 像"写任何东西"这样的提示会产生平庸的结果。具体的约束如体裁、语气和结构会迫使产生意想不到的、有趣的解决方案。
 </Callout>
 
-### Worldbuilding
+### 世界构建
 
-<TryIt compact prompt={`Help me build a world for \${project:a fantasy novel}.
+<TryIt compact prompt={`帮我为 \${project:一部奇幻小说} 构建一个世界。
 
-Genre: \${genre:dark fantasy}
-Scope: \${scope:a kingdom}
+类型：\${genre:黑暗奇幻}
+范围：\${scope:一个王国}
 
-Develop:
-1. **Geography** - physical environment
-2. **History** - key events that shaped this world
-3. **Culture** - customs, values, daily life
-4. **Power structures** - who rules, how
-5. **Economy** - how people survive
-6. **Conflict** - sources of tension
-7. **Unique element** - what makes this world special
+开发：
+1. **地理** - 自然环境
+2. **历史** - 塑造这个世界的关键事件
+3. **文化** - 习俗、价值观、日常生活
+4. **权力结构** - 谁统治、如何统治
+5. **经济** - 人们如何生存
+6. **冲突** - 紧张的来源
+7. **独特元素** - 是什么让这个世界与众不同
 
-Start with broad strokes, then detail one aspect deeply.`} />
+从大框架开始，然后深入某一方面的细节。`} />
 
-### Plot Development
+### 情节发展
 
-<TryIt compact prompt={`Help me develop a plot for \${storyConcept:a heist gone wrong}.
+<TryIt compact prompt={`帮我为 \${storyConcept:一场出了差错的抢劫} 发展情节。
 
-Genre: \${genre:thriller}
-Tone: \${tone:dark with moments of dark humor}
-Length: \${length:novel}
+类型：\${genre:惊悚}
+基调：\${tone:黑暗但带有黑色幽默}
+篇幅：\${length:长篇小说}
 
-Using \${structure:three-act} structure:
+使用 \${structure:三幕} 结构：
 
-1. **Setup** - world, character, normal life
-2. **Inciting incident** - what disrupts normalcy
-3. **Rising action** - escalating challenges
-4. **Midpoint** - major shift or revelation
-5. **Crisis** - darkest moment
-6. **Climax** - confrontation
-7. **Resolution** - new normal
+1. **铺垫** - 世界、角色、正常生活
+2. **触发事件** - 打破常态的事件
+3. **上升动作** - 逐步升级的挑战
+4. **中点** - 重大转折或揭示
+5. **危机** - 最黑暗的时刻
+6. **高潮** - 对决
+7. **结局** - 新的常态
 
-For each beat, suggest specific scenes.`} />
+为每个节点建议具体场景。`} />
 
-### Dialogue Writing
+### 对话写作
 
-<TryIt compact prompt={`Write dialogue between \${characters:two siblings} about \${topic:their estranged father returning}.
+<TryIt compact prompt={`写一段 \${characters:两个兄妹} 关于 \${topic:疏远的父亲回来} 的对话。
 
-Character A: \${characterA:older sister, protective, pragmatic, wants to move on}
-Character B: \${characterB:younger brother, hopeful, emotional, wants to reconnect}
-Relationship: \${relationship:close but with different coping styles}
-Subtext: \${subtext:unspoken resentment about who bore more burden}
+角色 A：\${characterA:姐姐，保护欲强，务实，想要向前看}
+角色 B：\${characterB:弟弟，充满希望，情绪化，想要重建关系}
+关系：\${relationship:亲密但应对方式不同}
+潜台词：\${subtext:对谁承担了更多负担的未言明的怨恨}
 
-Guidelines:
-- Each character has distinct voice
-- Dialogue reveals character, not just information
-- Include beats (actions/reactions)
-- Build tension or develop relationship
-- Show, don't tell emotions`} />
+指导原则：
+- 每个角色都有独特的声音
+- 对话揭示角色，而不仅仅是信息
+- 包含节拍（动作/反应）
+- 建立紧张感或发展关系
+- 展示情感，而不是直接说明`} />
 
-## Music & Audio
+## 音乐与音频
 
-### Song Structure
+### 歌曲结构
 
-<TryIt compact prompt={`Help me structure a song.
+<TryIt compact prompt={`帮我构建一首歌曲的结构。
 
-Genre: \${genre:indie folk}
-Mood: \${mood:bittersweet nostalgia}
-Tempo: \${tempo:moderate, around 90 BPM}
-Theme/Message: \${theme:looking back on a hometown you've outgrown}
+类型：\${genre:独立民谣}
+情绪：\${mood:苦乐参半的怀旧}
+节奏：\${tempo:中等，约 90 BPM}
+主题/信息：\${theme:回顾一个你已经长大离开的家乡}
 
-Provide:
-1. **Structure** - verse/chorus/bridge arrangement
-2. **Verse 1** - lyrical concept, 4-8 lines
-3. **Chorus** - hook concept, 4 lines
-4. **Verse 2** - development, 4-8 lines
-5. **Bridge** - contrast/shift, 4 lines
-6. **Chord progression suggestion**
-7. **Melodic direction notes**`} />
+提供：
+1. **结构** - 主歌/副歌/桥段安排
+2. **主歌 1** - 歌词概念，4-8 行
+3. **副歌** - 记忆点概念，4 行
+4. **主歌 2** - 发展，4-8 行
+5. **桥段** - 对比/转折，4 行
+6. **和弦进行建议**
+7. **旋律走向说明`} />
 
-### Sound Design Description
+### 音效设计描述
 
-<TryIt compact prompt={`Describe a sound design for \${scene:a character entering an abandoned space station}.
+<TryIt compact prompt={`为 \${scene:一个角色进入废弃空间站} 描述音效设计。
 
-Context: \${context:protagonist discovers the station has been empty for decades}
-Emotion to evoke: \${emotion:eerie wonder mixed with dread}
-Medium: \${medium:video game}
+背景：\${context:主角发现这个空间站已经空置了几十年}
+要唤起的情感：\${emotion:诡异的惊奇混合着恐惧}
+媒介：\${medium:电子游戏}
 
-Layer by layer:
-1. **Foundation** - ambient/background
-2. **Mid-ground** - environmental sounds
-3. **Foreground** - focal sounds
-4. **Accents** - punctuation sounds
-5. **Music** - score suggestions
+逐层描述：
+1. **基础层** - 环境音/背景音
+2. **中景层** - 环境声效
+3. **前景层** - 焦点声音
+4. **点缀层** - 强调音效
+5. **音乐** - 配乐建议
 
-Describe sounds in evocative terms, not just names.`} />
+用富有表现力的词语描述声音，而不仅仅是名称。`} />
 
-## Game Design
+## 游戏设计
 
-### Game Mechanic Design
+### 游戏机制设计
 
-<TryIt compact prompt={`Design a game mechanic for \${gameType:a puzzle platformer}.
+<TryIt compact prompt={`为 \${gameType:一款解谜平台游戏} 设计一个游戏机制。
 
-Core loop: \${coreLoop:manipulate gravity to solve spatial puzzles}
-Player motivation: \${motivation:mastery and discovery}
-Skill involved: \${skill:spatial reasoning and timing}
+核心循环：\${coreLoop:操控重力来解决空间谜题}
+玩家动机：\${motivation:掌握和发现}
+涉及技能：\${skill:空间推理和时机把握}
 
-Describe:
-1. **The mechanic** - how it works
-2. **Player input** - what they control
-3. **Feedback** - how they know the result
-4. **Progression** - how it evolves/deepens
-5. **Balance considerations**
-6. **Edge cases** - unusual scenarios`} />
+描述：
+1. **机制** - 如何运作
+2. **玩家输入** - 他们控制什么
+3. **反馈** - 他们如何知道结果
+4. **进阶** - 如何演变/深化
+5. **平衡考量**
+6. **边界情况** - 不寻常的场景`} />
 
-### Level Design
+### 关卡设计
 
-<TryIt compact prompt={`Design a level for \${gameType:a stealth action game}.
+<TryIt compact prompt={`为 \${gameType:一款潜行动作游戏} 设计一个关卡。
 
-Setting: \${setting:corporate headquarters at night}
-Objectives: \${objectives:infiltrate the server room and extract data}
-Difficulty: \${difficulty:mid-game, player has basic abilities}
+场景：\${setting:夜间的公司总部}
+目标：\${objectives:潜入服务器室并提取数据}
+难度：\${difficulty:游戏中期，玩家具备基础能力}
 
-Include:
-1. **Layout overview** - spatial description
-2. **Pacing graph** - tension over time
-3. **Challenges** - obstacles and how to overcome
-4. **Rewards** - what player gains
-5. **Secrets** - optional discoveries
-6. **Teaching moments** - skill introduction
-7. **Environmental storytelling** - narrative through design`} />
+包括：
+1. **布局概览** - 空间描述
+2. **节奏图** - 随时间变化的紧张度
+3. **挑战** - 障碍及克服方法
+4. **奖励** - 玩家获得什么
+5. **秘密** - 可选发现
+6. **教学时刻** - 技能引入
+7. **环境叙事** - 通过设计讲述故事`} />
 
-### Character/Enemy Design
+### 角色/敌人设计
 
-<TryIt compact prompt={`Design a \${entityType:boss enemy} for \${game:a dark fantasy action RPG}.
+<TryIt compact prompt={`为 \${game:一款黑暗奇幻动作 RPG} 设计一个 \${entityType:Boss 敌人}。
 
-Role: \${role:mid-game boss}
-Context: \${context:guards a corrupted forest temple}
+角色：\${role:游戏中期 Boss}
+背景：\${context:守护着一座被腐蚀的森林神殿}
 
-Define:
-1. **Visual concept** - appearance description
-2. **Abilities** - what they can do
-3. **Behavior patterns** - how they act
-4. **Weaknesses** - vulnerabilities
-5. **Personality** - if relevant
-6. **Lore/Backstory** - world integration
-7. **Player strategy** - how to interact/defeat`} />
+定义：
+1. **视觉概念** - 外观描述
+2. **能力** - 能做什么
+3. **行为模式** - 如何行动
+4. **弱点** - 脆弱之处
+5. **个性** - 如果相关
+6. **传说/背景故事** - 世界观整合
+7. **玩家策略** - 如何互动/击败`} />
 
-## Brainstorming & Ideation
+## 头脑风暴与创意构思
 
-### Creative Brainstorm
+### 创意头脑风暴
 
-<TryIt compact prompt={`Brainstorm ideas for \${project:a mobile game about mindfulness}.
+<TryIt compact prompt={`为 \${project:一款关于正念冥想的手机游戏} 进行头脑风暴。
 
-Constraints:
-- \${constraint1:must be playable in 2-minute sessions}
-- \${constraint2:no violence or competition}
-- \${constraint3:nature themes}
+限制条件：
+- \${constraint1:必须能在 2 分钟内进行一局}
+- \${constraint2:没有暴力或竞争}
+- \${constraint3:自然主题}
 
-Generate:
-1. **10 conventional ideas** - solid, expected
-2. **5 unusual ideas** - unexpected angles
-3. **3 wild ideas** - boundary-pushing
-4. **1 combination** - merge best elements
+生成：
+1. **10 个常规想法** - 稳妥的、预期内的
+2. **5 个不寻常的想法** - 意想不到的角度
+3. **3 个大胆的想法** - 突破边界的
+4. **1 个组合** - 融合最佳元素
 
-For each, one sentence description + why it works.
-Don't self-censor—quantity over quality first.`} />
+每个想法用一句话描述 + 为什么可行。
+不要自我审查——先追求数量而非质量。`} />
 
-### Creative Constraints
+### 创意约束
 
-<TryIt compact prompt={`Give me creative constraints for \${projectType:writing a short story}.
+<TryIt compact prompt={`为 \${projectType:写一篇短篇小说} 给我一些创意约束。
 
-I want constraints that:
-- Force unexpected choices
-- Eliminate obvious solutions
-- Create productive limitations
+我想要的约束：
+- 迫使做出意想不到的选择
+- 排除显而易见的解决方案
+- 创造有效的限制
 
-Format:
-1. Constraint - Why it helps creativity
+格式：
+1. 约束 - 为什么有助于创造力
 2. ...
 
-Then show one example of how applying these constraints 
-transforms a generic concept into something interesting.`} />
+然后展示一个例子，说明应用这些约束如何
+将一个平庸的概念转变为有趣的东西。`} />
 
-### Style Exploration
+### 风格探索
 
-<TryIt compact prompt={`Explore different styles for \${concept:a coffee shop logo}.
+<TryIt compact prompt={`为 \${concept:一个咖啡店 logo} 探索不同风格。
 
-Show how this concept would manifest in:
-1. **Minimalist** - stripped to essence
-2. **Maximalist** - abundant and detailed
-3. **Retro 1950s** - period-specific
-4. **Futuristic** - forward-looking
-5. **Folk/Traditional** - cultural roots
-6. **Abstract** - non-representational
-7. **Surrealist** - dreamlike logic
+展示这个概念在以下风格中的呈现方式：
+1. **极简主义** - 剥离至本质
+2. **极繁主义** - 丰富且细节充实
+3. **1950 年代复古** - 特定时期风格
+4. **未来主义** - 前瞻性
+5. **民间/传统** - 文化根源
+6. **抽象** - 非具象
+7. **超现实主义** - 梦幻逻辑
 
-For each, describe key characteristics and example.`} />
+对于每种风格，描述关键特征和示例。`} />
 
-## Prompt Templates from prompts.chat
+## 来自 prompts.chat 的提示模板
 
-### Act as a Creative Director
+### 扮演创意总监
 
-<TryIt compact prompt={`I want you to act as a creative director. I will describe creative projects and you will develop creative visions, guide aesthetic decisions, and ensure conceptual coherence. Draw on art history, design principles, and cultural trends. Help me make bold creative choices with clear rationale.`} />
+<TryIt compact prompt={`我希望你扮演一位创意总监。我会描述创意项目，你将发展创意愿景，指导美学决策，并确保概念的连贯性。借鉴艺术史、设计原则和文化趋势。帮助我做出有明确理由的大胆创意选择。`} />
 
-### Act as a Worldbuilder
+### 扮演世界构建者
 
-<TryIt compact prompt={`I want you to act as a worldbuilder. Help me create rich, consistent fictional worlds with detailed histories, cultures, and systems. Ask probing questions to deepen the world. Point out inconsistencies and suggest solutions. Make the world feel lived-in and believable.`} />
+<TryIt compact prompt={`我希望你扮演一位世界构建者。帮助我创建丰富、一致的虚构世界，包含详细的历史、文化和系统。提出深入的问题来丰富这个世界。指出不一致之处并提出解决方案。让这个世界感觉真实可信、充满生活气息。`} />
 
-### Act as a Dungeon Master
+### 扮演地下城主
 
-<TryIt compact prompt={`I want you to act as a Dungeon Master for a tabletop RPG. Create engaging scenarios, describe vivid settings, roleplay NPCs with distinct personalities, and respond dynamically to player choices. Balance challenge with fun, and keep the narrative compelling.`} />
+<TryIt compact prompt={`我希望你扮演桌游 RPG 的地下城主。创建引人入胜的场景，描述生动的环境，扮演具有鲜明个性的 NPC，并动态响应玩家的选择。在挑战和乐趣之间保持平衡，让叙事引人入胜。`} />
 
-## Creative Collaboration Tips
+## 创意协作技巧
 
-### Building on Ideas
+### 发展想法
 
-<TryIt compact prompt={`I have this creative idea: \${idea:a mystery novel set in a space station where the AI is the detective}
+<TryIt compact prompt={`我有这个创意想法：\${idea:一部以空间站为背景的悬疑小说，AI 是侦探}
 
-Help me develop it by:
-1. What's working well
-2. Questions to explore
-3. Unexpected directions
-4. Potential challenges
-5. First three development steps
+帮我发展它：
+1. 什么地方做得好
+2. 值得探索的问题
+3. 意想不到的方向
+4. 潜在的挑战
+5. 前三个发展步骤
 
-Don't replace my vision—enhance it.`} />
+不要取代我的愿景——增强它。`} />
 
-### Creative Feedback
+### 创意反馈
 
-<TryIt compact prompt={`Give me feedback on this creative work:
+<TryIt compact prompt={`给我这个创意作品的反馈：
 
-\${work:paste your creative work here}
+\${work:在此粘贴你的创意作品}
 
-As a \${perspective:fellow creator}:
-1. What resonates most strongly
-2. What feels underdeveloped
-3. What's confusing or unclear
-4. One bold suggestion
-5. What would make this unforgettable
+作为 \${perspective:同行创作者}：
+1. 什么最能引起共鸣
+2. 什么感觉不够充分
+3. 什么令人困惑或不清楚
+4. 一个大胆的建议
+5. 什么能让这个作品令人难忘
 
-Be honest but constructive.`} />
+坦诚但有建设性。`} />
 
-## Summary
+## 总结
 
-<Callout type="tip" title="Key Techniques">
-Provide enough structure to guide without constraining, embrace specificity (vague = generic), include references and inspirations, request variations and alternatives, and maintain your creative vision while exploring possibilities.
+<Callout type="tip" title="关键技巧">
+提供足够的结构来引导而不限制，拥抱具体性（模糊 = 平庸），包含参考和灵感来源，请求变体和替代方案，在探索可能性的同时保持你的创意愿景。
 </Callout>
 
 <Quiz 
-  question="Why do specific constraints often produce better creative results than open-ended prompts?"
+  question="为什么具体的约束通常比开放式提示产生更好的创意结果？"
   options={[
-    "AI can only follow strict instructions",
-    "Constraints force unexpected solutions and eliminate obvious choices",
-    "Open-ended prompts are too difficult for AI",
-    "Constraints make the output shorter"
+    "AI 只能遵循严格的指令",
+    "约束迫使产生意想不到的解决方案并排除显而易见的选择",
+    "开放式提示对 AI 来说太难了",
+    "约束使输出更短"
   ]}
   correctIndex={1}
-  explanation="Paradoxically, limitations spark creativity. When obvious solutions are eliminated, you're forced to explore unexpected directions. 'Write a story' produces clichés; 'Write a mystery set in a submarine, told backwards, in under 500 words' produces something unique."
+  explanation="矛盾的是，限制能激发创造力。当显而易见的解决方案被排除时，你被迫探索意想不到的方向。'写一个故事'产生陈词滥调；'写一个发生在潜水艇上的悬疑故事，倒叙讲述，500 字以内'则会产生独特的作品。"
 />
 
-AI is a collaborator, not a replacement for creative vision. Use it to explore, generate options, and overcome blocks—but the creative decisions remain yours.
+AI 是协作者，而不是创意愿景的替代品。用它来探索、生成选项和克服创作瓶颈——但创意决策仍然由你做出。

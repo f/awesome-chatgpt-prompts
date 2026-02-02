@@ -1,19 +1,19 @@
-AI has transformed software development. This chapter covers prompting techniques for code generation, debugging, review, and development workflows.
+AIはソフトウェア開発を大きく変革しました。この章では、コード生成、デバッグ、レビュー、開発ワークフローのためのプロンプティング技術について解説します。
 
-<Callout type="info" title="AI as Coding Partner">
-AI excels at code generation, debugging, and documentation—but always review generated code for security, correctness, and maintainability. Never deploy AI code without testing.
+<Callout type="info" title="コーディングパートナーとしてのAI">
+AIはコード生成、デバッグ、ドキュメント作成に優れていますが、生成されたコードはセキュリティ、正確性、保守性の観点から必ずレビューしてください。AIが生成したコードをテストなしで本番環境にデプロイしてはいけません。
 </Callout>
 
-## Code Generation
+## コード生成
 
-### Do's and Don'ts: Code Prompts
+### コードプロンプトの良い例と悪い例
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write a function to validate emails." }}
-  after={{ label: "✓ Complete specification", content: "Write a Python function that validates email addresses.\n\nInput: string (potential email)\nOutput: tuple[bool, str | None] - (is_valid, error_message)\nHandle: empty string, None, unicode chars\nUse regex, include type hints and docstring." }}
+  before={{ label: "❌ 曖昧なリクエスト", content: "メールを検証する関数を書いて。" }}
+  after={{ label: "✓ 完全な仕様", content: "メールアドレスを検証するPython関数を書いてください。\n\n入力: 文字列（メールアドレス候補）\n出力: tuple[bool, str | None] - (is_valid, error_message)\n処理すべきケース: 空文字列、None、Unicode文字\nregexを使用し、型ヒントとdocstringを含めてください。" }}
 />
 
-### Function Generation
+### 関数の生成
 
 <TryIt compact prompt={`Write a \${language:Python} function that \${description:validates email addresses}.
 
@@ -29,7 +29,7 @@ Include:
 - Input validation
 - Error handling`} />
 
-### Class/Module Generation
+### クラス/モジュールの生成
 
 <TryIt compact prompt={`Create a \${language:Python} class for \${purpose:managing user sessions}.
 
@@ -48,7 +48,7 @@ Requirements:
 Testing:
 - Include unit test skeleton`} />
 
-### API Endpoint Generation
+### APIエンドポイントの生成
 
 <TryIt compact prompt={`Create a REST API endpoint for \${resource:user profiles}.
 
@@ -71,13 +71,13 @@ Include:
 - Error handling
 - Rate limiting consideration`} />
 
-## Debugging
+## デバッグ
 
-<Callout type="tip" title="Debugging Principle">
-Always include the **expected behavior**, **actual behavior**, and **error message** (if any). The more context you provide, the faster AI can identify the root cause.
+<Callout type="tip" title="デバッグの原則">
+常に**期待される動作**、**実際の動作**、そして**エラーメッセージ**（ある場合）を含めてください。より多くのコンテキストを提供するほど、AIは根本原因をより早く特定できます。
 </Callout>
 
-### Bug Analysis
+### バグの分析
 
 <TryIt compact prompt={`Debug this code. It should \${expectedBehavior:return the sum of all numbers} but instead \${actualBehavior:returns 0 for all inputs}.
 
@@ -94,7 +94,7 @@ Steps to debug:
 4. Explain the root cause
 5. Provide the fix with explanation`} />
 
-### Error Message Interpretation
+### エラーメッセージの解釈
 
 <TryIt compact prompt={`Explain this error and how to fix it:
 
@@ -112,7 +112,7 @@ Provide:
 3. Step-by-step fix
 4. How to prevent this in the future`} />
 
-### Performance Debugging
+### パフォーマンスのデバッグ
 
 <TryIt compact prompt={`This code is slow. Analyze and optimize:
 
@@ -130,16 +130,16 @@ Provide:
 4. Show optimized code
 5. Estimate improvement`} />
 
-## Code Review
+## コードレビュー
 
-### Do's and Don'ts: Code Review Prompts
+### コードレビュープロンプトの良い例と悪い例
 
 <Compare 
-  before={{ label: "❌ Generic request", content: "Review this code." }}
-  after={{ label: "✓ Specific criteria", content: "Review this code for a pull request.\n\nCheck for:\n1. Correctness: bugs, logic errors, edge cases\n2. Security: injection risks, auth issues\n3. Performance: N+1 queries, memory leaks\n4. Maintainability: naming, complexity\n\nFormat: 🔴 Critical / 🟡 Important / 🟢 Suggestion" }}
+  before={{ label: "❌ 一般的なリクエスト", content: "このコードをレビューして。" }}
+  after={{ label: "✓ 具体的な基準", content: "このコードをプルリクエスト用にレビューしてください。\n\n以下をチェック:\n1. 正確性: バグ、ロジックエラー、エッジケース\n2. セキュリティ: インジェクションリスク、認証問題\n3. パフォーマンス: N+1クエリ、メモリリーク\n4. 保守性: 命名、複雑性\n\nフォーマット: 🔴 重大 / 🟡 重要 / 🟢 提案" }}
 />
 
-### Comprehensive Review
+### 包括的なレビュー
 
 <TryIt compact prompt={`Review this code for a pull request.
 
@@ -159,7 +159,7 @@ Format your review as:
 🟢 Suggestion: nice to have
 💭 Question: clarification needed`} />
 
-### Security Review
+### セキュリティレビュー
 
 <TryIt compact prompt={`Perform a security review of this code:
 
@@ -182,9 +182,9 @@ For each finding:
 - Exploit: How it could be attacked
 - Fix: Recommended remediation`} />
 
-## Refactoring
+## リファクタリング
 
-### Code Smell Detection
+### コードスメルの検出
 
 <TryIt compact prompt={`Analyze this code for code smells and refactoring opportunities:
 
@@ -200,7 +200,7 @@ Identify:
 
 For each issue, show before/after code.`} />
 
-### Design Pattern Application
+### デザインパターンの適用
 
 <TryIt compact prompt={`Refactor this code using the \${patternName:Factory} pattern.
 
@@ -217,9 +217,9 @@ Provide:
 3. Refactored code
 4. Trade-offs to consider`} />
 
-## Testing
+## テスト
 
-### Unit Test Generation
+### ユニットテストの生成
 
 <TryIt compact prompt={`Write unit tests for this function:
 
@@ -237,7 +237,7 @@ Cover:
 Format: Arrange-Act-Assert pattern
 Include: Descriptive test names`} />
 
-### Test Case Generation
+### テストケースの生成
 
 <TryIt compact prompt={`Generate test cases for this feature:
 
@@ -250,9 +250,9 @@ Provide test cases in this format:
 |----|----------|-------|------|------|----------|
 | TC01 | ... | ... | ... | ... | High |`} />
 
-## Architecture & Design
+## アーキテクチャと設計
 
-### System Design
+### システム設計
 
 <TryIt compact prompt={`Design a system for \${requirement:real-time chat application}.
 
@@ -270,7 +270,7 @@ Provide:
 5. Scaling strategy
 6. Trade-offs and alternatives considered`} />
 
-### Database Schema Design
+### データベーススキーマ設計
 
 <TryIt compact prompt={`Design a database schema for \${application:e-commerce platform}.
 
@@ -286,9 +286,9 @@ Provide:
 4. Foreign key relationships
 5. Sample queries for key operations`} />
 
-## Documentation Generation
+## ドキュメント生成
 
-### API Documentation
+### APIドキュメント
 
 <TryIt compact prompt={`Generate API documentation from this code:
 
@@ -304,7 +304,7 @@ Include:
 - Error codes
 - Authentication requirements`} />
 
-### Inline Documentation
+### インラインドキュメント
 
 <TryIt compact prompt={`Add comprehensive documentation to this code:
 
@@ -319,40 +319,39 @@ Add:
 
 Style: \${docStyle:Google}`} />
 
-## Prompt Templates from prompts.chat
+## prompts.chatのプロンプトテンプレート
 
-### Act as a Senior Developer
-
-```
-I want you to act as a senior software developer. I will provide 
-code and ask questions about it. You will review the code, suggest 
-improvements, explain concepts, and help debug issues. Your 
-responses should be educational and help me become a better 
-developer.
-```
-
-### Act as a Code Reviewer
+### シニア開発者として振る舞う
 
 ```
-I want you to act as a code reviewer. I will provide pull requests 
-with code changes, and you will review them thoroughly. Check for 
-bugs, security issues, performance problems, and adherence to best 
-practices. Provide constructive feedback that helps the developer 
-improve.
+シニアソフトウェア開発者として振る舞ってほしいです。私がコードを提供し、
+それについて質問します。あなたはコードをレビューし、改善点を提案し、
+概念を説明し、デバッグを手伝ってください。回答は教育的であり、
+私がより良い開発者になれるよう助けてください。
 ```
 
-### Act as a Software Architect
+### コードレビュアーとして振る舞う
 
 ```
-I want you to act as a software architect. I will describe system 
-requirements and constraints, and you will design scalable, 
-maintainable architectures. Explain your design decisions, 
-trade-offs, and provide diagrams where helpful.
+コードレビュアーとして振る舞ってほしいです。私がコード変更を含む
+プルリクエストを提供するので、徹底的にレビューしてください。
+バグ、セキュリティの問題、パフォーマンスの問題、ベストプラクティスへの
+準拠をチェックしてください。開発者が改善できるよう建設的な
+フィードバックを提供してください。
 ```
 
-## Development Workflow Integration
+### ソフトウェアアーキテクトとして振る舞う
 
-### Commit Message Generation
+```
+ソフトウェアアーキテクトとして振る舞ってほしいです。私がシステムの
+要件と制約を説明するので、スケーラブルで保守性の高いアーキテクチャを
+設計してください。設計の決定、トレードオフを説明し、必要に応じて
+図を提供してください。
+```
+
+## 開発ワークフローへの統合
+
+### コミットメッセージの生成
 
 <TryIt compact prompt={`Generate a commit message for these changes:
 
@@ -367,7 +366,7 @@ Provide:
 - Body (what and why, wrapped at 72 chars)
 - Footer (references issues if applicable)`} />
 
-### PR Description Generation
+### PR説明文の生成
 
 <TryIt compact prompt={`Generate a pull request description:
 
@@ -392,22 +391,22 @@ placeholder
 ## Related Issues
 Closes #\${issueNumber:123}`} />
 
-## Summary
+## まとめ
 
-<Callout type="tip" title="Key Techniques">
-Include full context (language, framework, constraints), specify requirements precisely, request specific output formats, ask for explanations alongside code, and include edge cases to handle.
+<Callout type="tip" title="重要なテクニック">
+完全なコンテキスト（言語、フレームワーク、制約）を含め、要件を正確に指定し、具体的な出力フォーマットをリクエストし、コードと一緒に説明を求め、処理すべきエッジケースを含めてください。
 </Callout>
 
 <Quiz 
-  question="What's the most important element to include when asking AI to debug code?"
+  question="AIにコードのデバッグを依頼する際に含めるべき最も重要な要素は何ですか？"
   options={[
-    "The programming language only",
-    "Expected behavior, actual behavior, and error message",
-    "Just the code snippet",
-    "The file name"
+    "プログラミング言語のみ",
+    "期待される動作、実際の動作、エラーメッセージ",
+    "コードスニペットのみ",
+    "ファイル名"
   ]}
   correctIndex={1}
-  explanation="Debugging requires context: what should happen vs. what actually happens. Error messages and stack traces help AI pinpoint the exact issue quickly."
+  explanation="デバッグにはコンテキストが必要です：何が起こるべきか、実際に何が起こっているか。エラーメッセージとスタックトレースにより、AIは正確な問題を素早く特定できます。"
 />
 
-AI is a powerful coding partner—use it for generation, review, debugging, and documentation while maintaining your architectural judgment.
+AIは強力なコーディングパートナーです。コード生成、レビュー、デバッグ、ドキュメント作成に活用しながら、アーキテクチャに関する判断は自分自身で行いましょう。

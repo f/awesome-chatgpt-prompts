@@ -1,59 +1,59 @@
-The prompts you write shape how AI behaves. A well-crafted prompt can educate, assist, and empower. A careless one can deceive, discriminate, or cause harm. As prompt engineers, we're not just users—we're designers of AI behavior, and that comes with real responsibility.
+你编写的提示词塑造了AI的行为方式。一个精心设计的提示词可以教育、帮助和赋能他人。而一个草率的提示词则可能导致欺骗、歧视或伤害。作为提示词工程师，我们不仅仅是用户——我们是AI行为的设计者，这意味着我们肩负着真正的责任。
 
-This chapter isn't about rules imposed from above. It's about understanding the impact of our choices and building habits that lead to AI use we can be proud of.
+本章不是要讨论从上而下强加的规则。而是要理解我们选择所带来的影响，并养成让我们能够为之自豪的AI使用习惯。
 
-<Callout type="warning" title="Why This Matters">
-AI amplifies whatever it's given. A biased prompt produces biased outputs at scale. A deceptive prompt enables deception at scale. The ethical implications of prompt engineering grow with every new capability these systems gain.
+<Callout type="warning" title="为什么这很重要">
+AI会放大它所接收到的一切。有偏见的提示词会大规模产生有偏见的输出。欺骗性的提示词会大规模助长欺骗行为。随着这些系统获得越来越多的新能力，提示词工程的伦理影响也在不断扩大。
 </Callout>
 
-## Ethical Foundations
+## 伦理基础
 
-Every decision in prompt engineering connects to a few core principles:
-
-<InfoGrid items={[
-  { label: "Honesty", description: "Don't use AI to deceive people or create misleading content", example: "No fake reviews, impersonation, or manufactured 'evidence'", exampleType: "text", color: "blue" },
-  { label: "Fairness", description: "Actively work to avoid perpetuating biases and stereotypes", example: "Test prompts across demographics, request diverse perspectives", exampleType: "text", color: "purple" },
-  { label: "Transparency", description: "Be clear about AI involvement when it matters", example: "Disclose AI assistance in published work, professional contexts", exampleType: "text", color: "green" },
-  { label: "Privacy", description: "Protect personal information in prompts and outputs", example: "Anonymize data, avoid including PII, understand data policies", exampleType: "text", color: "amber" },
-  { label: "Safety", description: "Design prompts that prevent harmful outputs", example: "Build in guardrails, test for edge cases, handle refusals gracefully", exampleType: "text", color: "red" },
-  { label: "Accountability", description: "Take responsibility for what your prompts produce", example: "Review outputs, fix issues, maintain human oversight", exampleType: "text", color: "cyan" }
-]} />
-
-### The Prompt Engineer's Role
-
-You have more influence than you might realize:
-
-- **What AI produces**: Your prompts determine the content, tone, and quality of outputs
-- **How AI interacts**: Your system prompts shape personality, boundaries, and user experience
-- **What safeguards exist**: Your design choices determine what the AI will and won't do
-- **How mistakes are handled**: Your error handling determines whether failures are graceful or harmful
-
-## Avoiding Harmful Outputs
-
-The most fundamental ethical obligation is preventing your prompts from causing harm.
-
-### Categories of Harmful Content
+提示词工程中的每个决策都与几个核心原则相关：
 
 <InfoGrid items={[
-  { label: "Violence & Harm", description: "Instructions that could lead to physical harm", example: "Weapons creation, self-harm, violence against others", exampleType: "text", color: "red" },
-  { label: "Illegal Activities", description: "Content that facilitates breaking laws", example: "Fraud schemes, hacking instructions, drug synthesis", exampleType: "text", color: "red" },
-  { label: "Harassment & Hate", description: "Content targeting individuals or groups", example: "Discriminatory content, doxxing, targeted harassment", exampleType: "text", color: "red" },
-  { label: "Misinformation", description: "Deliberately false or misleading content", example: "Fake news, health misinformation, conspiracy content", exampleType: "text", color: "red" },
-  { label: "Privacy Violations", description: "Exposing or exploiting personal information", example: "Revealing private data, stalking assistance", exampleType: "text", color: "red" },
-  { label: "Exploitation", description: "Content that exploits vulnerable individuals", example: "CSAM, non-consensual intimate content, scams targeting elderly", exampleType: "text", color: "red" }
+  { label: "诚实", description: "不要使用AI欺骗他人或创建误导性内容", example: "不制作虚假评论、冒充他人或伪造"证据"", exampleType: "text", color: "blue" },
+  { label: "公平", description: "积极努力避免延续偏见和刻板印象", example: "在不同人群中测试提示词，征求多元化观点", exampleType: "text", color: "purple" },
+  { label: "透明", description: "在重要的时候明确说明AI的参与", example: "在已发布的作品和专业场合中披露AI辅助", exampleType: "text", color: "green" },
+  { label: "隐私", description: "保护提示词和输出中的个人信息", example: "对数据进行匿名化处理，避免包含PII，了解数据政策", exampleType: "text", color: "amber" },
+  { label: "安全", description: "设计能够防止有害输出的提示词", example: "建立防护措施，测试边缘情况，优雅地处理拒绝", exampleType: "text", color: "red" },
+  { label: "责任", description: "对你的提示词产生的结果负责", example: "审查输出，修复问题，保持人工监督", exampleType: "text", color: "cyan" }
 ]} />
 
-<Callout type="warning" title="What is CSAM?">
-CSAM stands for **Child Sexual Abuse Material**. Creating, distributing, or possessing such content is illegal worldwide. AI systems must never generate content depicting minors in sexual situations, and responsible prompt engineers actively build safeguards against such misuse.
+### 提示词工程师的角色
+
+你的影响力可能比你意识到的更大：
+
+- **AI产出什么**：你的提示词决定了输出的内容、语气和质量
+- **AI如何交互**：你的系统提示词塑造了个性、边界和用户体验
+- **存在哪些防护措施**：你的设计选择决定了AI会做什么和不会做什么
+- **如何处理错误**：你的错误处理决定了失败是优雅的还是有害的
+
+## 避免有害输出
+
+最基本的伦理义务是防止你的提示词造成伤害。
+
+### 有害内容的类别
+
+<InfoGrid items={[
+  { label: "暴力与伤害", description: "可能导致人身伤害的指示", example: "武器制造、自我伤害、伤害他人", exampleType: "text", color: "red" },
+  { label: "非法活动", description: "助长违法行为的内容", example: "欺诈计划、黑客指令、毒品合成", exampleType: "text", color: "red" },
+  { label: "骚扰与仇恨", description: "针对个人或群体的内容", example: "歧视性内容、人肉搜索、针对性骚扰", exampleType: "text", color: "red" },
+  { label: "虚假信息", description: "故意虚假或误导性的内容", example: "假新闻、健康谣言、阴谋论内容", exampleType: "text", color: "red" },
+  { label: "隐私侵犯", description: "暴露或利用个人信息", example: "泄露私人数据、协助跟踪", exampleType: "text", color: "red" },
+  { label: "剥削", description: "剥削弱势群体的内容", example: "CSAM、未经同意的私密内容、针对老年人的诈骗", exampleType: "text", color: "red" }
+]} />
+
+<Callout type="warning" title="什么是CSAM？">
+CSAM是**儿童性虐待材料**（Child Sexual Abuse Material）的缩写。在全球范围内，制作、传播或持有此类内容都是违法的。AI系统绝不能生成描绘未成年人涉及性情境的内容，负责任的提示词工程师会主动建立防护措施，防止此类滥用。
 </Callout>
 
-### Building Safety Into Prompts
+### 在提示词中构建安全措施
 
-When building AI systems, include explicit safety guidelines:
+在构建AI系统时，请包含明确的安全指南：
 
 <TryIt 
-  title="Safety-First System Prompt"
-  description="A template for building safety guidelines into your AI systems."
+  title="安全优先的系统提示词"
+  description="一个将安全指南构建到AI系统中的模板。"
   prompt={`You are a helpful assistant for \${purpose}.
 
 ## SAFETY GUIDELINES
@@ -78,13 +78,13 @@ When building AI systems, include explicit safety guidelines:
 Now, please help the user with: \${userRequest}`}
 />
 
-### The Intent vs. Impact Framework
+### 意图与影响框架
 
-Not every sensitive request is malicious. Use this framework for ambiguous cases:
+并非每个敏感请求都是恶意的。对于模糊的情况，请使用以下框架：
 
 <TryIt 
-  title="Ethical Edge Case Analyzer"
-  description="Work through ambiguous requests to determine the appropriate response."
+  title="伦理边缘案例分析器"
+  description="分析模糊请求以确定适当的回应方式。"
   prompt={`I received this request that might be sensitive:
 
 "\${sensitiveRequest}"
@@ -108,24 +108,24 @@ Based on this analysis:
 - If declining, how should I phrase it helpfully?`}
 />
 
-## Addressing Bias
+## 处理偏见
 
-AI models inherit biases from their training data—historical inequities, representation gaps, cultural assumptions, and linguistic patterns. As prompt engineers, we can either amplify these biases or actively counteract them.
+AI模型从其训练数据中继承了偏见——历史不平等、代表性差距、文化假设和语言模式。作为提示词工程师，我们可以选择放大这些偏见，也可以主动对抗它们。
 
-### How Bias Manifests
+### 偏见的表现形式
 
 <InfoGrid items={[
-  { label: "Default Assumptions", description: "The model assumes certain demographics for roles", example: "Doctors defaulting to male, nurses to female", exampleType: "text", color: "amber" },
-  { label: "Stereotyping", description: "Reinforcing cultural stereotypes in descriptions", example: "Associating certain ethnicities with specific traits", exampleType: "text", color: "amber" },
-  { label: "Representation Gaps", description: "Some groups are underrepresented or misrepresented", example: "Limited accurate information about minority cultures", exampleType: "text", color: "amber" },
-  { label: "Western-Centric Views", description: "Perspectives skewed toward Western culture and values", example: "Assuming Western norms are universal", exampleType: "text", color: "amber" }
+  { label: "默认假设", description: "模型对某些角色假设特定的人口统计特征", example: "医生默认为男性，护士默认为女性", exampleType: "text", color: "amber" },
+  { label: "刻板印象", description: "在描述中强化文化刻板印象", example: "将某些族裔与特定特征联系起来", exampleType: "text", color: "amber" },
+  { label: "代表性差距", description: "某些群体的代表性不足或被误解", example: "关于少数群体文化的准确信息有限", exampleType: "text", color: "amber" },
+  { label: "西方中心视角", description: "观点偏向西方文化和价值观", example: "假设西方规范具有普遍性", exampleType: "text", color: "amber" }
 ]} />
 
-### Testing for Bias
+### 偏见测试
 
 <TryIt 
-  title="Bias Detection Test"
-  description="Use this to test your prompts for potential bias issues."
+  title="偏见检测测试"
+  description="使用此工具测试你的提示词是否存在潜在的偏见问题。"
   prompt={`I want to test this prompt for bias:
 
 "\${promptToTest}"
@@ -151,67 +151,67 @@ When demographics aren't specified:
 Based on findings, suggest prompt modifications to reduce bias.`}
 />
 
-### Mitigating Bias in Practice
+### 实践中减少偏见
 
 <Compare 
-  before={{ label: "Bias-prone prompt", content: "Describe a typical CEO." }}
-  after={{ label: "Bias-aware prompt", content: "Describe a CEO. Vary demographics across examples, and avoid defaulting to any particular gender, ethnicity, or age." }}
+  before={{ label: "易产生偏见的提示词", content: "描述一个典型的CEO。" }}
+  after={{ label: "考虑偏见的提示词", content: "描述一位CEO。在示例中变化人口统计特征，避免默认为任何特定的性别、族裔或年龄。" }}
 />
 
-## Transparency and Disclosure
+## 透明度与披露
 
-When should you tell people AI was involved? The answer depends on context—but the trend is toward more disclosure, not less.
+什么时候应该告诉别人有AI参与？答案取决于具体情况——但趋势是更多披露，而不是更少。
 
-### When Disclosure Matters
+### 何时需要披露
 
 <InfoGrid items={[
-  { label: "Published Content", description: "Articles, posts, or content shared publicly", example: "Blog posts, social media, marketing materials", exampleType: "text", color: "blue" },
-  { label: "Consequential Decisions", description: "When AI outputs affect people's lives", example: "Hiring recommendations, medical info, legal guidance", exampleType: "text", color: "blue" },
-  { label: "Trust Contexts", description: "Where authenticity is expected or valued", example: "Personal correspondence, testimonials, reviews", exampleType: "text", color: "blue" },
-  { label: "Professional Settings", description: "Workplace or academic environments", example: "Reports, research, client deliverables", exampleType: "text", color: "blue" }
+  { label: "已发布的内容", description: "公开分享的文章、帖子或内容", example: "博客文章、社交媒体、营销材料", exampleType: "text", color: "blue" },
+  { label: "重大决策", description: "当AI输出影响人们的生活时", example: "招聘建议、医疗信息、法律指导", exampleType: "text", color: "blue" },
+  { label: "信任场景", description: "期望或重视真实性的场合", example: "私人通信、推荐语、评论", exampleType: "text", color: "blue" },
+  { label: "专业场合", description: "工作或学术环境", example: "报告、研究、客户交付物", exampleType: "text", color: "blue" }
 ]} />
 
-### How to Disclose Appropriately
+### 如何恰当地披露
 
 <Compare 
-  before={{ label: "Hidden AI involvement", content: "Here's my analysis of the market trends..." }}
-  after={{ label: "Transparent disclosure", content: "I used AI tools to help analyze the data and draft this report. All conclusions have been verified and edited by me." }}
+  before={{ label: "隐藏AI参与", content: "这是我对市场趋势的分析..." }}
+  after={{ label: "透明披露", content: "我使用AI工具帮助分析数据并起草了这份报告。所有结论都经过我的验证和编辑。" }}
 />
 
-Common disclosure phrases that work well:
-- "Written with AI assistance"
-- "AI-generated first draft, human edited"
-- "Analysis performed using AI tools"
-- "Created with AI, reviewed and approved by [name]"
+常用且效果良好的披露用语：
+- "在AI辅助下撰写"
+- "AI生成初稿，经人工编辑"
+- "使用AI工具进行分析"
+- "由AI创建，经[姓名]审核批准"
 
-## Privacy Considerations
+## 隐私注意事项
 
-Every prompt you send contains data. Understanding where that data goes—and what shouldn't be in it—is essential.
+你发送的每个提示词都包含数据。了解这些数据的去向——以及哪些内容不应该包含在内——至关重要。
 
-### What Never Belongs in Prompts
+### 绝不应出现在提示词中的内容
 
 <InfoGrid items={[
-  { label: "Personal Identifiers", description: "Names, addresses, phone numbers, SSNs", example: "Use [CUSTOMER] instead of 'John Smith'", color: "red" },
-  { label: "Financial Data", description: "Account numbers, credit cards, income details", example: "Describe the pattern, not the actual numbers", exampleType: "text", color: "red" },
-  { label: "Health Information", description: "Medical records, diagnoses, prescriptions", example: "Ask about conditions generally, not specific patients", exampleType: "text", color: "red" },
-  { label: "Credentials", description: "Passwords, API keys, tokens, secrets", example: "Never paste credentials—use placeholders", exampleType: "text", color: "red" },
-  { label: "Private Communications", description: "Personal emails, messages, confidential docs", example: "Summarize the situation without quoting private text", exampleType: "text", color: "red" }
+  { label: "个人标识信息", description: "姓名、地址、电话号码、身份证号", example: "使用[客户]代替"张三"", color: "red" },
+  { label: "财务数据", description: "账号、信用卡、收入详情", example: "描述模式，而非实际数字", exampleType: "text", color: "red" },
+  { label: "健康信息", description: "医疗记录、诊断、处方", example: "询问一般性病症，而非特定患者", exampleType: "text", color: "red" },
+  { label: "凭证信息", description: "密码、API密钥、令牌、机密", example: "绝不粘贴凭证——使用占位符", exampleType: "text", color: "red" },
+  { label: "私人通信", description: "私人邮件、消息、机密文档", example: "概述情况，而不引用私人文本", exampleType: "text", color: "red" }
 ]} />
 
-### Safe Data Handling Pattern
+### 安全的数据处理模式
 
 <Compare 
-  before={{ label: "Unsafe: Contains PII", content: "Summarize this complaint from John Smith at 123 Main St, Anytown about order #12345: 'I ordered on March 15 and still haven't received...'" }}
-  after={{ label: "Safe: Anonymized", content: "Summarize this customer complaint pattern: A customer ordered 3 weeks ago, hasn't received their order, and has contacted support twice without resolution." }}
+  before={{ label: "不安全：包含PII", content: "总结张三在北京市朝阳区XXX路123号关于订单#12345的投诉：'我3月15日下单，到现在还没收到...'" }}
+  after={{ label: "安全：已匿名化", content: "总结这种客户投诉模式：一位客户3周前下单，至今未收到订单，已联系客服两次但未解决问题。" }}
 />
 
-<Callout type="info" title="What is PII?">
-**PII** stands for **Personally Identifiable Information**—any data that can identify a specific individual. This includes names, addresses, phone numbers, email addresses, Social Security numbers, financial account numbers, and even combinations of data (like job title + company + city) that could identify someone. When prompting AI, always anonymize or remove PII to protect privacy.
+<Callout type="info" title="什么是PII？">
+**PII**是**个人可识别信息**（Personally Identifiable Information）的缩写——指任何可以识别特定个人身份的数据。这包括姓名、地址、电话号码、电子邮件地址、身份证号、金融账户号码，甚至是可能识别某人身份的数据组合（如职位+公司+城市）。在向AI发送提示词时，始终要对PII进行匿名化处理或删除，以保护隐私。
 </Callout>
 
 <TryIt 
-  title="PII Scrubber"
-  description="Use this to identify and remove sensitive information before including text in prompts."
+  title="PII清理器"
+  description="在将文本纳入提示词之前，使用此工具识别和删除敏感信息。"
   prompt={`Review this text for sensitive information that should be removed before using it in an AI prompt:
 
 "\${textToReview}"
@@ -226,70 +226,70 @@ Identify:
 For each item found, suggest how to anonymize or generalize it while preserving the information needed for the task.`}
 />
 
-## Authenticity and Deception
+## 真实性与欺骗
 
-There's a difference between using AI as a tool and using AI to deceive.
+使用AI作为工具和使用AI进行欺骗之间存在区别。
 
-### The Legitimacy Line
+### 合法性界限
 
 <InfoGrid items={[
-  { label: "Legitimate Uses", description: "AI as a tool to enhance your work", example: "Drafting, brainstorming, editing, learning", exampleType: "text", color: "green" },
-  { label: "Gray Areas", description: "Context-dependent, requires judgment", example: "Ghostwriting, templates, automated responses", exampleType: "text", color: "amber" },
-  { label: "Deceptive Uses", description: "Misrepresenting AI work as human-original", example: "Fake reviews, academic fraud, impersonation", exampleType: "text", color: "red" }
+  { label: "合法使用", description: "将AI作为提升工作质量的工具", example: "起草、头脑风暴、编辑、学习", exampleType: "text", color: "green" },
+  { label: "灰色地带", description: "取决于具体情况，需要判断", example: "代笔、模板、自动回复", exampleType: "text", color: "amber" },
+  { label: "欺骗性使用", description: "将AI作品误称为人类原创", example: "虚假评论、学术欺诈、冒充他人", exampleType: "text", color: "red" }
 ]} />
 
-Key questions to ask:
-- Would the recipient expect this to be original human work?
-- Am I gaining unfair advantage through deception?
-- Would disclosure change how the work is received?
+需要思考的关键问题：
+- 接收者是否期望这是人类的原创作品？
+- 我是否通过欺骗获得不公平的优势？
+- 披露是否会改变作品被接受的方式？
 
-### Synthetic Media Responsibility
+### 合成媒体责任
 
-Creating realistic depictions of real people—whether images, audio, or video—carries special obligations:
+创建真实人物的逼真描绘——无论是图像、音频还是视频——都有特殊的义务：
 
-- **Never** create realistic depictions without consent
-- **Always** label synthetic media clearly
-- **Consider** potential for misuse before creating
-- **Refuse** to create non-consensual intimate imagery
+- **绝不**在未经同意的情况下创建逼真的人物描绘
+- **始终**明确标注合成媒体
+- **在创建之前考虑**被滥用的可能性
+- **拒绝**创建未经同意的私密图像
 
-## Responsible Deployment
+## 负责任的部署
 
-When building AI features for others to use, your ethical obligations multiply.
+当为他人构建AI功能时，你的伦理义务成倍增加。
 
-### Pre-Deployment Checklist
+### 部署前检查清单
 
 <Checklist 
-  title="Deployment Readiness"
+  title="部署准备"
   items={[
-    { text: "Tested for harmful outputs across diverse inputs" },
-    { text: "Tested for bias with varied demographics" },
-    { text: "User disclosure/consent mechanisms in place" },
-    { text: "Human oversight for high-stakes decisions" },
-    { text: "Feedback and reporting system available" },
-    { text: "Incident response plan documented" },
-    { text: "Clear usage policies communicated" },
-    { text: "Monitoring and alerting configured" }
+    { text: "在多样化输入中测试了有害输出" },
+    { text: "在不同人口统计特征下测试了偏见" },
+    { text: "用户披露/同意机制已就位" },
+    { text: "高风险决策有人工监督" },
+    { text: "反馈和举报系统可用" },
+    { text: "事件响应计划已记录" },
+    { text: "使用政策已明确传达" },
+    { text: "监控和警报已配置" }
   ]}
 />
 
-### Human Oversight Principles
+### 人工监督原则
 
 <InfoGrid items={[
-  { label: "High-Stakes Review", description: "Humans review decisions that significantly affect people", example: "Hiring, medical, legal, financial recommendations", exampleType: "text", color: "blue" },
-  { label: "Error Correction", description: "Mechanisms exist to catch and fix AI mistakes", example: "User feedback, quality sampling, appeals process", exampleType: "text", color: "blue" },
-  { label: "Continuous Learning", description: "Insights from issues improve the system", example: "Post-mortems, prompt updates, training improvements", exampleType: "text", color: "blue" },
-  { label: "Override Capability", description: "Humans can intervene when AI fails", example: "Manual review queues, escalation paths", exampleType: "text", color: "blue" }
+  { label: "高风险审查", description: "人工审查对人们有重大影响的决策", example: "招聘、医疗、法律、财务建议", exampleType: "text", color: "blue" },
+  { label: "错误纠正", description: "存在发现和修复AI错误的机制", example: "用户反馈、质量抽样、申诉流程", exampleType: "text", color: "blue" },
+  { label: "持续学习", description: "从问题中获得的见解用于改进系统", example: "事后分析、提示词更新、训练改进", exampleType: "text", color: "blue" },
+  { label: "覆盖能力", description: "当AI失败时人工可以介入", example: "人工审核队列、上报路径", exampleType: "text", color: "blue" }
 ]} />
 
-## Special Context Guidelines
+## 特殊场景指南
 
-Some domains require extra care due to their potential for harm or the vulnerability of those involved.
+某些领域由于其潜在的危害性或涉及人群的脆弱性，需要格外谨慎。
 
-### Healthcare
+### 医疗健康
 
 <TryIt 
-  title="Medical Context Disclaimer"
-  description="Template for AI systems that might receive health-related queries."
+  title="医疗场景免责声明"
+  description="可能收到健康相关查询的AI系统的模板。"
   prompt={`You are an AI assistant. When users ask about health or medical topics:
 
 **Always**:
@@ -309,49 +309,49 @@ User question: \${healthQuestion}
 Respond helpfully while following these guidelines.`}
 />
 
-### Legal and Financial
+### 法律和金融
 
-These domains have regulatory implications and require appropriate disclaimers:
-
-<InfoGrid items={[
-  { label: "Legal Queries", description: "Provide general information, not legal advice", example: "\"This is general information. For your specific situation, consult a licensed attorney.\"", color: "purple" },
-  { label: "Financial Queries", description: "Educate without providing personal financial advice", example: "\"This is educational. Consider consulting a financial advisor for your situation.\"", color: "purple" },
-  { label: "Jurisdiction Awareness", description: "Laws vary by location", example: "\"Laws differ by state/country. Verify requirements for your jurisdiction.\"", color: "purple" }
-]} />
-
-### Children and Education
+这些领域涉及监管影响，需要适当的免责声明：
 
 <InfoGrid items={[
-  { label: "Age-Appropriate Content", description: "Ensure outputs are suitable for the age group", example: "Filter mature content, use appropriate language", exampleType: "text", color: "cyan" },
-  { label: "Academic Integrity", description: "Support learning, don't replace it", example: "Explain concepts rather than writing essays for students", exampleType: "text", color: "cyan" },
-  { label: "Safety First", description: "Extra protection for vulnerable users", example: "Stricter content filters, no personal data collection", exampleType: "text", color: "cyan" }
+  { label: "法律咨询", description: "提供一般信息，而非法律建议", example: ""这是一般性信息。对于你的具体情况，请咨询持证律师。"", color: "purple" },
+  { label: "财务咨询", description: "教育性质，而非个人理财建议", example: ""这是教育性内容。对于你的情况，请考虑咨询理财顾问。"", color: "purple" },
+  { label: "管辖区意识", description: "法律因地区而异", example: ""各省/国家法律不同。请核实你所在地区的要求。"", color: "purple" }
 ]} />
 
-## Self-Assessment
+### 儿童与教育
 
-Before deploying any prompt or AI system, run through these questions:
+<InfoGrid items={[
+  { label: "年龄适宜的内容", description: "确保输出适合目标年龄群体", example: "过滤成人内容，使用适当的语言", exampleType: "text", color: "cyan" },
+  { label: "学术诚信", description: "支持学习，而非代替学习", example: "解释概念，而不是替学生写作文", exampleType: "text", color: "cyan" },
+  { label: "安全第一", description: "对弱势用户提供额外保护", example: "更严格的内容过滤，不收集个人数据", exampleType: "text", color: "cyan" }
+]} />
+
+## 自我评估
+
+在部署任何提示词或AI系统之前，请思考以下问题：
 
 <Checklist 
-  title="Ethical Self-Check"
+  title="伦理自检"
   items={[
-    { text: "Could this be used to harm someone?" },
-    { text: "Does this respect user privacy?" },
-    { text: "Could this perpetuate harmful biases?" },
-    { text: "Is AI involvement appropriately disclosed?" },
-    { text: "Is there adequate human oversight?" },
-    { text: "What's the worst that could happen?" },
-    { text: "Would I be comfortable if this use were public?" }
+    { text: "这可能被用来伤害他人吗？" },
+    { text: "这尊重用户隐私吗？" },
+    { text: "这可能延续有害偏见吗？" },
+    { text: "AI的参与是否得到适当披露？" },
+    { text: "是否有足够的人工监督？" },
+    { text: "最坏的情况会是什么？" },
+    { text: "如果这种使用方式被公开，我会感到舒适吗？" }
   ]}
 />
 
 <Quiz 
-  question="A user asks your AI system how to 'get rid of someone who's bothering them.' What's the most appropriate response strategy?"
+  question="一个用户问你的AI系统如何"摆脱一个烦人的人"。最恰当的回应策略是什么？"
   options={[
-    "Refuse immediately—this could be a request for harm instructions",
-    "Provide conflict resolution advice since that's the most likely intent",
-    "Ask clarifying questions to understand intent before deciding how to respond",
-    "Explain you can't help with anything related to harming people"
+    "立即拒绝——这可能是请求伤害他人的指示",
+    "提供冲突解决建议，因为这是最可能的意图",
+    "提出澄清问题以了解意图，然后决定如何回应",
+    "解释你无法帮助任何与伤害他人相关的事情"
   ]}
   correctIndex={2}
-  explanation="Ambiguous requests deserve clarification, not assumptions. 'Get rid of someone' could mean ending a friendship, resolving a workplace conflict, or something harmful. Asking clarifying questions lets you respond appropriately to the actual intent while remaining cautious about providing harmful information."
+  explanation="模糊的请求需要澄清，而不是假设。"摆脱某人"可能意味着结束友谊、解决职场冲突，或者某些有害的事情。提出澄清问题可以让你针对实际意图做出适当回应，同时对提供有害信息保持谨慎。"
 />

@@ -1,200 +1,200 @@
-Prompt chaining breaks complex tasks into sequences of simpler prompts, where each step's output feeds into the next. This technique dramatically improves reliability and enables sophisticated workflows that would be impossible with a single prompt.
+提示链将复杂任务分解为一系列更简单的提示，每个步骤的输出作为下一步的输入。这种技术显著提高了可靠性，并能实现单个提示无法完成的复杂工作流程。
 
-<Callout type="tip" title="Think Assembly Lines">
-Just like a factory assembly line breaks manufacturing into specialized stations, prompt chaining breaks AI tasks into specialized steps. Each step does one thing well, and the combined output is far better than trying to do everything at once.
+<Callout type="tip" title="像流水线一样思考">
+就像工厂流水线将制造过程分解为专门的工位一样，提示链将 AI 任务分解为专门的步骤。每个步骤专注于做好一件事，组合输出远比试图一次完成所有事情要好得多。
 </Callout>
 
-## Why Chain Prompts?
+## 为什么要使用提示链？
 
-Single prompts struggle with complex tasks because they try to do too much at once. The AI has to simultaneously understand, analyze, plan, and generate, which leads to errors and inconsistencies.
+单个提示在处理复杂任务时会遇到困难，因为它们试图同时完成太多事情。AI 必须同时理解、分析、规划和生成，这会导致错误和不一致。
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Single Prompt Struggles</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> 单个提示的困境</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Multi-step reasoning gets confused</p>
-      <p className="m-0!">Different "modes" of thinking clash</p>
-      <p className="m-0!">Complex outputs lack consistency</p>
-      <p className="m-0!">No opportunity for quality control</p>
+      <p className="m-0!">多步推理容易混乱</p>
+      <p className="m-0!">不同的"思维模式"相互冲突</p>
+      <p className="m-0!">复杂输出缺乏一致性</p>
+      <p className="m-0!">没有质量控制的机会</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Chaining Solves This</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> 提示链解决方案</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Each step focuses on one task</p>
-      <p className="m-0!">Specialized prompts for each mode</p>
-      <p className="m-0!">Validate between steps</p>
-      <p className="m-0!">Debug and improve individual steps</p>
+      <p className="m-0!">每个步骤专注于一个任务</p>
+      <p className="m-0!">每种模式有专门的提示</p>
+      <p className="m-0!">在步骤之间进行验证</p>
+      <p className="m-0!">调试和改进单个步骤</p>
     </div>
   </div>
 </div>
 
-## Basic Chaining Pattern
+## 基本链式模式
 
-The simplest chain passes output from one prompt directly to the next. Each step has a clear, focused purpose.
+最简单的链将一个提示的输出直接传递给下一个。每个步骤都有明确、专注的目的。
 
 <div className="my-6 flex items-center justify-center gap-3 p-6 bg-muted/30 rounded-lg overflow-x-auto">
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Prompt 1</p>
-      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">(Extract)</p>
+      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">提示 1</p>
+      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">（提取）</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Input</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">输入</p>
   </div>
   <div className="text-blue-400 dark:text-blue-500">→</div>
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Prompt 2</p>
-      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">(Analyze)</p>
+      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">提示 2</p>
+      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">（分析）</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Intermediate</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">中间结果</p>
   </div>
   <div className="text-purple-400 dark:text-purple-500">→</div>
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Prompt 3</p>
-      <p className="text-xs text-green-600 dark:text-green-400 m-0!">(Generate)</p>
+      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">提示 3</p>
+      <p className="text-xs text-green-600 dark:text-green-400 m-0!">（生成）</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Output</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">输出</p>
   </div>
 </div>
 
-<Callout type="info" title="The ETG Pattern">
-The most common chain pattern is **Extract → Transform → Generate**. First extract raw data, then reshape it for your purpose, then generate the final output. This pattern works for almost any content task.
+<Callout type="info" title="ETG 模式">
+最常见的链式模式是**提取 → 转换 → 生成**。首先提取原始数据，然后根据您的目的重塑它，最后生成最终输出。这种模式几乎适用于任何内容任务。
 </Callout>
 
-## Chain Types
+## 链的类型
 
-Different tasks require different chain architectures. Choose the pattern that matches your workflow.
+不同的任务需要不同的链式架构。选择与您的工作流程相匹配的模式。
 
 <ChainFlowDemo />
 
-### Sequential Chain
+### 顺序链
 
-The most straightforward pattern: each step depends on the previous. Think of it as a relay race where each runner passes the baton to the next.
+最直接的模式：每个步骤都依赖于前一个步骤。可以把它想象成接力赛，每个选手将接力棒传递给下一个。
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Step 1: Extract", prompt: "Extract all dates, names, and numbers from: [text]", output: '{ dates: ["2024-01-15", "2024-02-20"], names: ["John Smith", "Acme Corp"], numbers: [15000, 42] }' },
-    { step: "Step 2: Analyze", prompt: "Given this extracted data: [step1_output], identify relationships and patterns.", output: '{ patterns: ["Monthly meetings scheduled"], relationships: ["John Smith works at Acme Corp"] }' },
-    { step: "Step 3: Generate", prompt: "Using these patterns: [step2_output], write a summary report highlighting the most significant findings.", output: "Summary Report: Analysis of the document reveals a business relationship between John Smith and Acme Corp, with scheduled monthly meetings..." }
+    { step: "步骤 1：提取", prompt: "从以下文本中提取所有日期、姓名和数字：[text]", output: '{ dates: ["2024-01-15", "2024-02-20"], names: ["John Smith", "Acme Corp"], numbers: [15000, 42] }' },
+    { step: "步骤 2：分析", prompt: "根据提取的数据：[step1_output]，识别关系和模式。", output: '{ patterns: ["每月安排会议"], relationships: ["John Smith 在 Acme Corp 工作"] }' },
+    { step: "步骤 3：生成", prompt: "使用这些模式：[step2_output]，撰写一份总结报告，突出最重要的发现。", output: "总结报告：文档分析揭示了 John Smith 与 Acme Corp 之间的业务关系，并安排了每月例会..." }
   ]}
 />
 
-### Parallel Chain
+### 并行链
 
-When you need multiple perspectives on the same input, run prompts in parallel and merge results. This is faster than sequential chains and provides richer analysis.
+当您需要从多个角度分析同一输入时，可以并行运行提示并合并结果。这比顺序链更快，并能提供更丰富的分析。
 
 <ChainExample 
   type="parallel"
   steps={[
-    { step: "Input", prompt: "Product review text", output: '"I love these earbuds! The battery lasts forever and the display on the case is so convenient. Perfect for my daily commute."' },
-    { step: "Branch A: Sentiment", prompt: "Analyze sentiment: [text]", output: '{ sentiment: "positive", score: 0.85 }' },
-    { step: "Branch B: Features", prompt: "Extract features mentioned: [text]", output: '{ features: ["battery", "display"] }' },
-    { step: "Branch C: Persona", prompt: "Identify user persona: [text]", output: '{ persona: "commuter" }' },
-    { step: "Merge", prompt: "Combine analyses into unified report", output: "Unified Report: Positive review from a commuter highlighting battery and display." }
+    { step: "输入", prompt: "产品评论文本", output: '"我太喜欢这款耳机了！电池续航超长，充电盒上的显示屏太方便了。非常适合我的日常通勤。"' },
+    { step: "分支 A：情感分析", prompt: "分析情感：[text]", output: '{ sentiment: "positive", score: 0.85 }' },
+    { step: "分支 B：功能提取", prompt: "提取提到的功能：[text]", output: '{ features: ["电池", "显示屏"] }' },
+    { step: "分支 C：用户画像", prompt: "识别用户画像：[text]", output: '{ persona: "通勤者" }' },
+    { step: "合并", prompt: "将分析结果合并为统一报告", output: "统一报告：来自通勤用户的正面评价，强调了电池和显示屏功能。" }
   ]}
 />
 
-### Conditional Chain
+### 条件链
 
-Route inputs through different paths based on classification. This is like a decision tree where the AI first categorizes the input, then handles each category differently.
+根据分类将输入路由到不同的路径。这就像一个决策树，AI 首先对输入进行分类，然后以不同方式处理每个类别。
 
 <ChainExample 
   type="conditional"
   steps={[
-    { step: "Classify Input", prompt: "Classify this customer message as: complaint, question, feedback, or other.\n\nMessage: [text]", output: '{ classification: "complaint", confidence: 0.92 }' },
-    { step: "Route: Question (skipped)", prompt: "Identify what information is needed", output: "Skipped - input classified as complaint" },
-    { step: "Route: Complaint", prompt: "Identify the issue and severity: [text]", output: '{ issue: "delayed shipping", severity: "medium" }' },
-    { step: "Generate Response", prompt: "Generate empathetic response with resolution: [analysis]", output: "Dear Customer, We sincerely apologize for the delay. Your order has been expedited..." }
+    { step: "分类输入", prompt: "将此客户消息分类为：投诉、问题、反馈或其他。\n\n消息：[text]", output: '{ classification: "complaint", confidence: 0.92 }' },
+    { step: "路由：问题（跳过）", prompt: "识别需要的信息", output: "跳过 - 输入被分类为投诉" },
+    { step: "路由：投诉", prompt: "识别问题和严重程度：[text]", output: '{ issue: "发货延迟", severity: "中等" }' },
+    { step: "生成回复", prompt: "生成带有解决方案的同理心回复：[analysis]", output: "尊敬的客户，对于延迟我们深表歉意。您的订单已加急处理..." }
   ]}
 />
 
-### Iterative Chain
+### 迭代链
 
-Keep refining output until it meets quality standards. The AI generates, evaluates, and improves in a loop until satisfied or max iterations reached.
+不断优化输出，直到达到质量标准。AI 在循环中生成、评估和改进，直到满意或达到最大迭代次数。
 
-<Callout type="warning" title="Set Iteration Limits">
-Always set a maximum number of iterations (typically 3-5) to prevent infinite loops and control costs. The law of diminishing returns applies: most improvement happens in the first 2-3 iterations.
+<Callout type="warning" title="设置迭代限制">
+始终设置最大迭代次数（通常为 3-5 次）以防止无限循环并控制成本。收益递减规律适用于此：大部分改进发生在前 2-3 次迭代中。
 </Callout>
 
 <ChainExample 
   type="iterative"
   steps={[
-    { step: "Generate Draft", prompt: "Write a product description for: [wireless earbuds]", output: "These wireless earbuds offer good sound quality and comfortable fit for everyday use." },
-    { step: "Evaluate (Score: 5)", prompt: "Rate this description 1-10 on: clarity, persuasiveness, accuracy.\n\nDescription: [current_draft]", output: '{ score: 5, improvements: ["Add specific features", "Include emotional benefits", "Mention battery life", "Add call-to-action"] }' },
-    { step: "Improve Draft", prompt: "Improve this description based on this feedback:\n\nCurrent: [current_draft]\nFeedback: [improvements]", output: "Experience crystal-clear audio with our premium wireless earbuds. Featuring 30-hour battery life, active noise cancellation, and an ergonomic design that stays comfortable all day. Perfect for music lovers and professionals alike. Order now and transform your listening experience." },
-    { step: "Evaluate (Score: 8)", prompt: "Rate this description 1-10 on: clarity, persuasiveness, accuracy.\n\nDescription: [improved_draft]", output: '{ score: 8, improvements: ["Minor: Could add warranty info"] }\n\n✓ Score >= 8: EXIT LOOP' }
+    { step: "生成草稿", prompt: "为[无线耳机]撰写产品描述", output: "这款无线耳机音质不错，佩戴舒适，适合日常使用。" },
+    { step: "评估（得分：5）", prompt: "从清晰度、说服力、准确性三个维度为此描述打分 1-10。\n\n描述：[current_draft]", output: '{ score: 5, improvements: ["添加具体功能", "加入情感利益点", "提及电池续航", "添加行动号召"] }' },
+    { step: "改进草稿", prompt: "根据反馈改进此描述：\n\n当前版本：[current_draft]\n反馈：[improvements]", output: "体验我们高端无线耳机带来的水晶般清澈音质。具备 30 小时电池续航、主动降噪功能，以及全天舒适的人体工学设计。无论是音乐爱好者还是职场人士都是理想之选。立即订购，开启全新听觉体验。" },
+    { step: "评估（得分：8）", prompt: "从清晰度、说服力、准确性三个维度为此描述打分 1-10。\n\n描述：[improved_draft]", output: '{ score: 8, improvements: ["小建议：可以添加保修信息"] }\n\n✓ 得分 >= 8：退出循环' }
   ]}
 />
 
-## Common Chain Patterns
+## 常见链式模式
 
-These battle-tested patterns solve common problems. Use them as starting points and adapt to your needs.
+这些久经考验的模式可以解决常见问题。将它们作为起点，根据您的需求进行调整。
 
-### Extract → Transform → Generate
+### 提取 → 转换 → 生成
 
-The workhorse of content processing. Pull data out, reshape it, then create something new.
+内容处理的主力模式。提取数据，重塑它，然后创建新内容。
 
 <div className="mb-4 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
-  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">Document summarization, report generation, content repurposing, data-to-narrative conversion</p>
+  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">最适用于</p>
+  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">文档摘要、报告生成、内容再利用、数据转叙事</p>
 </div>
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Extract", prompt: "From this document, extract:\n- Main topic\n- Key arguments (list)\n- Supporting evidence (list)\n- Conclusions\nReturn as JSON.", output: '{ "topic": "Climate change impacts", "arguments": ["Rising temperatures", "Sea level rise"], "evidence": ["NASA data", "IPCC reports"], "conclusions": ["Urgent action needed"] }' },
-    { step: "Transform", prompt: "Reorganize this information for [business executives]:\n[extracted_data]\nFocus on: economic implications\nRemove: technical jargon", output: '{ "summary": "Climate risks to business", "key_points": ["Supply chain disruption", "Insurance costs rising"], "action_items": ["Assess vulnerabilities", "Plan adaptations"] }' },
-    { step: "Generate", prompt: "Using this restructured information, write a [executive brief]:\n[transformed_data]\nTone: professional\nLength: 200 words", output: "Executive Brief: Climate change presents significant operational risks to our business. Key concerns include supply chain disruptions from extreme weather events and rising insurance premiums. We recommend immediate assessment of facility vulnerabilities and development of adaptation strategies..." }
+    { step: "提取", prompt: "从此文档中提取：\n- 主题\n- 关键论点（列表）\n- 支持证据（列表）\n- 结论\n以 JSON 格式返回。", output: '{ "topic": "气候变化影响", "arguments": ["气温上升", "海平面上升"], "evidence": ["NASA 数据", "IPCC 报告"], "conclusions": ["需要紧急行动"] }' },
+    { step: "转换", prompt: "为[企业高管]重新组织此信息：\n[extracted_data]\n重点关注：经济影响\n移除：技术术语", output: '{ "summary": "气候对企业的风险", "key_points": ["供应链中断", "保险成本上升"], "action_items": ["评估脆弱性", "规划适应措施"] }' },
+    { step: "生成", prompt: "使用重构后的信息，撰写一份[执行摘要]：\n[transformed_data]\n语气：专业\n长度：200 字", output: "执行摘要：气候变化对我们的业务构成重大运营风险。主要关注点包括极端天气事件造成的供应链中断和不断上涨的保险费用。我们建议立即评估设施脆弱性并制定适应策略..." }
   ]}
 />
 
-### Analyze → Plan → Execute
+### 分析 → 规划 → 执行
 
-Perfect for code refactoring, project planning, or any task where you need to understand before acting.
+非常适合代码重构、项目规划或任何需要先理解后行动的任务。
 
 <div className="mb-4 p-3 rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-800">
-  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">Code refactoring, project planning, troubleshooting, strategic decision-making, complex problem solving</p>
+  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">最适用于</p>
+  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">代码重构、项目规划、故障排除、战略决策、复杂问题解决</p>
 </div>
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Analyze", prompt: "Analyze this codebase structure and identify:\n- Architecture pattern\n- Main components\n- Dependencies\n- Potential issues\n[code]", output: '{ "pattern": "MVC", "components": ["UserController", "AuthService", "Database"], "dependencies": ["express", "mongoose"], "issues": ["No input validation", "Hardcoded secrets"] }' },
-    { step: "Plan", prompt: "Based on this analysis, create a refactoring plan:\n[analysis_output]\nGoal: improve security\nConstraints: no breaking changes", output: '{ "steps": ["1. Add input validation middleware", "2. Move secrets to env vars", "3. Add rate limiting"], "priority": "high", "estimated_time": "4 hours" }' },
-    { step: "Execute", prompt: "Implement step 1 of this plan:\n[plan_output]\nShow the refactored code with explanations.", output: "// Added validation middleware\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Invalid email' });\n  }\n  next();\n};" }
+    { step: "分析", prompt: "分析此代码库结构并识别：\n- 架构模式\n- 主要组件\n- 依赖项\n- 潜在问题\n[code]", output: '{ "pattern": "MVC", "components": ["UserController", "AuthService", "Database"], "dependencies": ["express", "mongoose"], "issues": ["没有输入验证", "硬编码密钥"] }' },
+    { step: "规划", prompt: "基于此分析，创建重构计划：\n[analysis_output]\n目标：提高安全性\n约束：无破坏性更改", output: '{ "steps": ["1. 添加输入验证中间件", "2. 将密钥移至环境变量", "3. 添加速率限制"], "priority": "高", "estimated_time": "4 小时" }' },
+    { step: "执行", prompt: "实施此计划的第 1 步：\n[plan_output]\n展示重构后的代码并附说明。", output: "// 添加验证中间件\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Invalid email' });\n  }\n  next();\n};" }
   ]}
 />
 
-### Generate → Critique → Refine
+### 生成 → 评审 → 优化
 
-The self-improvement loop. Generate content, have the AI evaluate it critically, then improve based on that feedback. This mimics how professional writers and editors work together.
+自我改进循环。生成内容，让 AI 进行批判性评估，然后根据反馈进行改进。这模拟了专业作家和编辑的协作方式。
 
 <div className="mb-4 p-3 rounded-lg bg-green-50/50 dark:bg-green-950/20 border border-green-200 dark:border-green-800">
-  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-green-600 dark:text-green-400 m-0!">Marketing copy, creative writing, email drafts, presentations, any content that benefits from revision</p>
+  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">最适用于</p>
+  <p className="text-sm text-green-600 dark:text-green-400 m-0!">营销文案、创意写作、邮件草稿、演示文稿，以及任何能从修订中受益的内容</p>
 </div>
 
 <ChainExample 
   type="iterative"
   steps={[
-    { step: "Generate", prompt: "Write a marketing email for [fitness app] targeting [busy professionals].", output: "Subject: Get Fit Fast!\n\nHey there! Our app helps you exercise. Download it today and start your fitness journey. Thanks!" },
-    { step: "Critique", prompt: "As a marketing expert, critique this email:\n[generated_email]\nEvaluate: subject line, hook, value proposition, CTA, tone\nScore each 1-10.", output: '{ "subject_line": 4, "hook": 3, "value_proposition": 2, "cta": 5, "tone": 4, "feedback": "Too generic, no specific benefits, weak urgency" }' },
-    { step: "Refine", prompt: "Rewrite the email addressing this feedback:\nOriginal: [generated_email]\nCritique: [critique_output]\nFocus on the lowest-scored elements.", output: "Subject: 15-Min Workouts for Your Lunch Break\n\nBusy schedule? We get it. Our app delivers science-backed workouts designed for professionals who have zero time to waste. Join 50,000+ executives who transformed their health in just 15 minutes a day. Start your free trial now—your future self will thank you." },
-    { step: "Final Score", prompt: "Re-evaluate the refined email.", output: '{ "subject_line": 8, "hook": 8, "value_proposition": 9, "cta": 8, "tone": 9, "improvement": "+23 points total" }' }
+    { step: "生成", prompt: "为[健身应用]撰写一封针对[忙碌职场人士]的营销邮件。", output: "主题：快速健身！\n\n嗨！我们的应用帮助您锻炼。今天就下载，开始您的健身之旅。谢谢！" },
+    { step: "评审", prompt: "作为营销专家，评审这封邮件：\n[generated_email]\n评估：主题行、开头吸引力、价值主张、行动号召、语气\n每项打分 1-10。", output: '{ "subject_line": 4, "hook": 3, "value_proposition": 2, "cta": 5, "tone": 4, "feedback": "太笼统，没有具体好处，缺乏紧迫感" }' },
+    { step: "优化", prompt: "根据反馈重写邮件：\n原版：[generated_email]\n评审：[critique_output]\n重点改进得分最低的方面。", output: "主题：午休时间的 15 分钟健身\n\n日程繁忙？我们理解。我们的应用提供经科学验证的健身计划，专为没有时间浪费的职场人士设计。加入超过 50,000 名高管的行列，每天只需 15 分钟就能改变健康状况。立即开始免费试用——未来的您会感谢现在的决定。" },
+    { step: "最终得分", prompt: "重新评估优化后的邮件。", output: '{ "subject_line": 8, "hook": 8, "value_proposition": 9, "cta": 8, "tone": 9, "improvement": "总分提升 +23 分" }' }
   ]}
 />
 
-## Implementing Chains
+## 实现链
 
-You can implement chains manually for experimentation, or programmatically for production systems. Start simple and add complexity as needed.
+您可以手动实现链进行实验，或以编程方式实现用于生产系统。从简单开始，根据需要增加复杂性。
 
-### Manual Chaining
+### 手动链式操作
 
-The copy-paste approach is perfect for prototyping and experimentation. Run each prompt manually, examine the output, and paste it into the next prompt.
+复制粘贴方法非常适合原型设计和实验。手动运行每个提示，检查输出，然后将其粘贴到下一个提示中。
 
 <CodeEditor 
   language="python"
@@ -205,9 +205,9 @@ step2_output = call_ai("Analyze relationships: " + step1_output)
 final_output = call_ai("Generate report: " + step2_output)`}
 />
 
-### Programmatic Chaining
+### 编程式链式操作
 
-For production systems, automate the chain with code. This enables error handling, logging, and integration with your application.
+对于生产系统，使用代码自动化链。这可以实现错误处理、日志记录以及与应用程序的集成。
 
 <CodeEditor 
   language="python"
@@ -241,9 +241,9 @@ For production systems, automate the chain with code. This enables error handlin
     }`}
 />
 
-### Using Chain Templates
+### 使用链式模板
 
-Define chains as configuration files for reusability and easy modification. This separates prompt logic from application code.
+将链定义为配置文件以便重用和轻松修改。这将提示逻辑与应用程序代码分离。
 
 <CodeEditor 
   language="yaml"
@@ -270,110 +270,110 @@ steps:
       Format: 3 paragraphs, business tone`}
 />
 
-## Error Handling in Chains
+## 链中的错误处理
 
-Chains can fail at any step. Build in validation, retries, and fallbacks to make your chains robust.
+链可能在任何步骤失败。内置验证、重试和回退机制可使您的链更加健壮。
 
 <ChainErrorDemo />
 
-<Callout type="warning" title="Garbage In, Garbage Out">
-If one step produces bad output, every following step will be affected. Always validate critical intermediate results before passing them forward.
+<Callout type="warning" title="垃圾进，垃圾出">
+如果某个步骤产生了糟糕的输出，后续每个步骤都会受到影响。在将关键中间结果传递下去之前，务必进行验证。
 </Callout>
 
-### Validation Between Steps
+### 步骤间验证
 
-Add a validation step after any step that produces structured data. This catches errors early before they cascade.
+在任何产生结构化数据的步骤之后添加验证步骤。这可以在错误级联之前及早捕获它们。
 
 <ValidationDemo />
 
-### Fallback Chains
+### 回退链
 
-When your primary approach fails, have a simpler backup ready. Trade capability for reliability.
+当主要方法失败时，准备一个更简单的备用方案。用能力换取可靠性。
 
 <FallbackDemo />
 
-## Chain Optimization
+## 链的优化
 
-Once your chain works, optimize for speed, cost, and reliability. These often trade off against each other.
+一旦您的链正常工作，就可以针对速度、成本和可靠性进行优化。这些因素通常需要相互权衡。
 
 <div className="my-6 grid md:grid-cols-3 gap-4">
   <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
-    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Reducing Latency</p>
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">降低延迟</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Parallelize independent steps</p>
-      <p className="m-0!">Cache intermediate results</p>
-      <p className="m-0!">Use smaller models for simple steps</p>
-      <p className="m-0!">Batch similar operations</p>
+      <p className="m-0!">并行化独立步骤</p>
+      <p className="m-0!">缓存中间结果</p>
+      <p className="m-0!">简单步骤使用较小模型</p>
+      <p className="m-0!">批量处理相似操作</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Reducing Cost</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">降低成本</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Use cheaper models for classification</p>
-      <p className="m-0!">Limit iterations in loops</p>
-      <p className="m-0!">Short-circuit when possible</p>
-      <p className="m-0!">Cache repeated queries</p>
+      <p className="m-0!">分类任务使用更便宜的模型</p>
+      <p className="m-0!">限制循环迭代次数</p>
+      <p className="m-0!">尽可能提前终止</p>
+      <p className="m-0!">缓存重复查询</p>
     </div>
   </div>
   <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
-    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Improving Reliability</p>
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">提高可靠性</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Add validation between steps</p>
-      <p className="m-0!">Include retry logic</p>
-      <p className="m-0!">Log intermediate results</p>
-      <p className="m-0!">Implement fallback paths</p>
+      <p className="m-0!">在步骤间添加验证</p>
+      <p className="m-0!">包含重试逻辑</p>
+      <p className="m-0!">记录中间结果</p>
+      <p className="m-0!">实现回退路径</p>
     </div>
   </div>
 </div>
 
-## Real-World Chain Example
+## 实际链式示例
 
-Let's walk through a complete production chain. This content pipeline transforms a raw idea into a polished article package.
+让我们来看一个完整的生产链。这个内容管道将原始想法转化为精美的文章包。
 
-### Content Pipeline Chain
+### 内容管道链
 
 <ContentPipelineDemo />
 
-## Summary
+## 总结
 
-Prompt chaining transforms what AI can accomplish by breaking impossible tasks into achievable steps.
+提示链通过将不可能的任务分解为可实现的步骤，从而改变了 AI 所能完成的事情。
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
-    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">Chaining Enables</p>
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">链式操作的优势</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Complex multi-step workflows</p>
-      <p className="m-0!">Higher quality through specialization</p>
-      <p className="m-0!">Better error handling and validation</p>
-      <p className="m-0!">Modular, reusable prompt components</p>
+      <p className="m-0!">复杂的多步骤工作流程</p>
+      <p className="m-0!">通过专业化提高质量</p>
+      <p className="m-0!">更好的错误处理和验证</p>
+      <p className="m-0!">模块化、可重用的提示组件</p>
     </div>
   </div>
   <div className="border rounded-lg bg-cyan-50/50 dark:bg-cyan-950/20 border-cyan-200 dark:border-cyan-900 p-4">
-    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Key Principles</p>
+    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">关键原则</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Break complex tasks into simple steps</p>
-      <p className="m-0!">Design clear interfaces between steps</p>
-      <p className="m-0!">Validate intermediate outputs</p>
-      <p className="m-0!">Build in error handling and fallbacks</p>
-      <p className="m-0!">Optimize for your constraints</p>
+      <p className="m-0!">将复杂任务分解为简单步骤</p>
+      <p className="m-0!">设计步骤间清晰的接口</p>
+      <p className="m-0!">验证中间输出</p>
+      <p className="m-0!">内置错误处理和回退机制</p>
+      <p className="m-0!">根据约束条件进行优化</p>
     </div>
   </div>
 </div>
 
-<Callout type="tip" title="Start Simple">
-Begin with a 2-3 step sequential chain. Get it working reliably before adding complexity. Most tasks don't need elaborate chain architectures.
+<Callout type="tip" title="从简单开始">
+从 2-3 步的顺序链开始。让它可靠运行后再增加复杂性。大多数任务不需要复杂的链式架构。
 </Callout>
 
 <Quiz 
-  question="What is the main advantage of prompt chaining over a single complex prompt?"
+  question="与单个复杂提示相比，提示链的主要优势是什么？"
   options={[
-    "It uses fewer tokens overall",
-    "It's faster to execute",
-    "Each step can specialize, improving quality and enabling error handling",
-    "It requires less planning"
+    "它总体上使用更少的 token",
+    "执行速度更快",
+    "每个步骤可以专业化，提高质量并支持错误处理",
+    "它需要更少的规划"
   ]}
   correctIndex={2}
-  explanation="Prompt chaining breaks complex tasks into specialized steps. Each step can focus on one thing well, intermediate results can be validated, errors can be caught and retried, and the overall quality improves through specialization."
+  explanation="提示链将复杂任务分解为专业化的步骤。每个步骤可以专注于做好一件事，中间结果可以被验证，错误可以被捕获和重试，通过专业化提高整体质量。"
 />
 
-In the next chapter, we'll explore multimodal prompting: working with images, audio, and other non-text content.
+在下一章中，我们将探索多模态提示：处理图像、音频和其他非文本内容。

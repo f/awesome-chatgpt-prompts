@@ -1,287 +1,287 @@
-Understanding context is essential for building AI applications that actually work. This chapter covers everything you need to know about giving AI the right information at the right time.
+理解上下文对于构建真正有效的 AI 应用程序至关重要。本章涵盖了你需要了解的关于在正确时间为 AI 提供正确信息的所有内容。
 
-<Callout type="info" title="Why Context Matters">
-AI models are stateless. They don't remember past conversations. Every time you send a message, you need to include everything the AI needs to know. This is called "context engineering."
+<Callout type="info" title="为什么上下文很重要">
+AI 模型是无状态的。它们不会记住过去的对话。每次发送消息时，你都需要包含 AI 需要知道的所有信息。这就是所谓的"上下文工程"。
 </Callout>
 
-## What is Context?
+## 什么是上下文？
 
-Context is all the information you give to AI alongside your question. Think of it like this:
+上下文是你在提问时一并提供给 AI 的所有信息。可以这样理解：
 
 <Compare 
-  before={{ label: "No Context", content: "What's the status?" }}
-  after={{ label: "With Context", content: "You are a project manager assistant. The user is working on Project Alpha, which is due Friday. The last update was: 'Backend complete, frontend 80% done.'\n\nUser: What's the status?" }}
+  before={{ label: "无上下文", content: "进展如何？" }}
+  after={{ label: "有上下文", content: "你是一个项目管理助手。用户正在进行 Alpha 项目，截止日期是周五。最新进展是：'后端已完成，前端完成 80%。'\n\n用户：进展如何？" }}
 />
 
-Without context, the AI has no idea what "status" you're asking about. With context, it can give a useful answer.
+没有上下文，AI 不知道你问的是什么"进展"。有了上下文，它就能给出有用的回答。
 
-### The Context Window
+### 上下文窗口
 
-Remember from earlier chapters: AI has a limited "context window" - the maximum amount of text it can see at once. This includes:
+还记得前面章节提到的：AI 有一个有限的"上下文窗口"——它一次能看到的最大文本量。这包括：
 
 <InfoGrid items={[
-  { label: "System Prompt", description: "Instructions that define AI behavior", color: "purple" },
-  { label: "Conversation History", description: "Previous messages in this chat", color: "blue" },
-  { label: "Retrieved Information", description: "Documents, data, or knowledge fetched for this query", color: "green" },
-  { label: "Current Query", description: "The user's actual question", color: "amber" },
-  { label: "AI Response", description: "The answer (also counts toward the limit!)", color: "rose" },
+  { label: "系统提示", description: "定义 AI 行为的指令", color: "purple" },
+  { label: "对话历史", description: "此次聊天中的先前消息", color: "blue" },
+  { label: "检索信息", description: "为此查询获取的文档、数据或知识", color: "green" },
+  { label: "当前查询", description: "用户的实际问题", color: "amber" },
+  { label: "AI 响应", description: "回答（也计入限制！）", color: "rose" },
 ]} />
 
-## AI is Stateless
+## AI 是无状态的
 
-<Callout type="warning" title="Important Concept">
-AI doesn't remember anything between conversations. Every API call starts fresh. If you want the AI to "remember" something, YOU have to include it in the context every time.
+<Callout type="warning" title="重要概念">
+AI 不会在对话之间记住任何东西。每次 API 调用都是全新开始。如果你想让 AI "记住"某些内容，你必须每次都将其包含在上下文中。
 </Callout>
 
-This is why chatbots send your entire conversation history with each message. It's not that the AI remembers - it's that the app re-sends everything.
+这就是为什么聊天机器人会在每条消息中发送你的整个对话历史。不是 AI 记住了——而是应用程序重新发送了所有内容。
 
-<TryIt compact prompt={`Pretend this is a new conversation with no history.
+<TryIt compact prompt={`假设这是一个没有历史记录的新对话。
 
-What did I just ask you about?`} />
+我刚才问了你什么？`} />
 
-The AI will say it doesn't know because it truly doesn't have access to any previous context.
+AI 会说它不知道，因为它确实无法访问任何先前的上下文。
 
-## RAG: Retrieval-Augmented Generation
+## RAG：检索增强生成
 
-RAG is a technique for giving AI access to knowledge it wasn't trained on. Instead of trying to fit everything into the AI's training, you:
+RAG 是一种让 AI 访问其训练数据之外知识的技术。与其试图将所有内容都放入 AI 的训练中，你可以：
 
-1. **Store** your documents in a searchable database
-2. **Search** for relevant documents when a user asks a question
-3. **Retrieve** the most relevant pieces
-4. **Augment** your prompt with those pieces
-5. **Generate** an answer using that context
+1. **存储** 你的文档到可搜索的数据库中
+2. **搜索** 用户提问时的相关文档
+3. **检索** 最相关的片段
+4. **增强** 你的提示词，加入这些片段
+5. **生成** 使用该上下文的答案
 
 <div className="my-6 p-4 border rounded-lg bg-muted/30">
-  <p className="font-semibold mb-3">How RAG Works:</p>
+  <p className="font-semibold mb-3">RAG 工作原理：</p>
   <div className="flex flex-col gap-2 text-sm">
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">1</span>
-      <span>User asks: "What's our refund policy?"</span>
+      <span>用户问："我们的退款政策是什么？"</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">2</span>
-      <span>System searches your documents for "refund policy"</span>
+      <span>系统在你的文档中搜索"退款政策"</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">3</span>
-      <span>Finds relevant section from your policy document</span>
+      <span>从你的政策文档中找到相关部分</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">4</span>
-      <span>Sends to AI: "Based on this policy: [text], answer: What's our refund policy?"</span>
+      <span>发送给 AI："根据此政策：[文本]，回答：我们的退款政策是什么？"</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 font-bold">5</span>
-      <span>AI generates accurate answer using your actual policy</span>
+      <span>AI 使用你的实际政策生成准确答案</span>
     </div>
   </div>
 </div>
 
-### Why RAG?
+### 为什么使用 RAG？
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="p-4 border rounded-lg">
-    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> RAG Advantages</p>
+    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> RAG 优势</p>
     <ul className="text-sm space-y-1 text-muted-foreground">
-      <li>Uses your actual, current data</li>
-      <li>Reduces hallucinations</li>
-      <li>Can cite sources</li>
-      <li>Easy to update (just update documents)</li>
-      <li>No expensive fine-tuning needed</li>
+      <li>使用你实际的、最新的数据</li>
+      <li>减少幻觉</li>
+      <li>可以引用来源</li>
+      <li>易于更新（只需更新文档）</li>
+      <li>无需昂贵的微调</li>
     </ul>
   </div>
   <div className="p-4 border rounded-lg">
-    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> When to Use RAG</p>
+    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> 何时使用 RAG</p>
     <ul className="text-sm space-y-1 text-muted-foreground">
-      <li>Customer support bots</li>
-      <li>Documentation search</li>
-      <li>Internal knowledge bases</li>
-      <li>Any domain-specific Q&A</li>
-      <li>When accuracy matters</li>
+      <li>客户支持机器人</li>
+      <li>文档搜索</li>
+      <li>内部知识库</li>
+      <li>任何特定领域的问答</li>
+      <li>当准确性很重要时</li>
     </ul>
   </div>
 </div>
 
-## Embeddings: How Search Works
+## Embeddings：搜索的工作原理
 
-How does RAG know which documents are "relevant"? It uses **embeddings** - a way to turn text into numbers that capture meaning.
+RAG 如何知道哪些文档是"相关的"？它使用 **embeddings**——一种将文本转换为能捕获含义的数字的方法。
 
-### What Are Embeddings?
+### 什么是 Embeddings？
 
-An embedding is a list of numbers (a "vector") that represents the meaning of text. Similar meanings = similar numbers.
+Embedding 是一个表示文本含义的数字列表（"向量"）。相似的含义 = 相似的数字。
 
 <EmbeddingsDemo />
 
-### Semantic Search
+### 语义搜索
 
-With embeddings, you can search by meaning, not just keywords:
+使用 embeddings，你可以按含义搜索，而不仅仅是关键词：
 
 <Compare 
-  before={{ label: "Keyword Search", content: "Query: 'return policy'\nFinds: Documents containing 'return' and 'policy'\nMisses: 'How to get a refund'" }}
-  after={{ label: "Semantic Search", content: "Query: 'return policy'\nFinds: All related documents including:\n- 'Refund guidelines'\n- 'How to send items back'\n- 'Money-back guarantee'" }}
+  before={{ label: "关键词搜索", content: "查询：'退货政策'\n找到：包含'退货'和'政策'的文档\n遗漏：'如何获得退款'" }}
+  after={{ label: "语义搜索", content: "查询：'退货政策'\n找到：所有相关文档，包括：\n- '退款指南'\n- '如何退回商品'\n- '退款保证'" }}
 />
 
-This is why RAG is so powerful - it finds relevant information even when the exact words don't match.
+这就是 RAG 如此强大的原因——即使确切的词语不匹配，它也能找到相关信息。
 
 ## Function Calling / Tool Use
 
-Function calling lets AI use external tools - like searching the web, checking a database, or calling an API.
+Function calling 让 AI 可以使用外部工具——比如搜索网络、查询数据库或调用 API。
 
-<Callout type="tip" title="Also Called">
-Different AI providers call this different things: "function calling" (OpenAI), "tool use" (Anthropic/Claude), or "tools" (general term). They all mean the same thing.
+<Callout type="tip" title="也被称为">
+不同的 AI 提供商对此有不同的叫法："function calling"（OpenAI）、"tool use"（Anthropic/Claude）或 "tools"（通用术语）。它们都是同一个意思。
 </Callout>
 
-### How It Works
+### 工作原理
 
-1. You tell the AI what tools are available
-2. AI decides if it needs a tool to answer
-3. AI outputs a structured request for the tool
-4. Your code runs the tool and returns results
-5. AI uses the results to form its answer
+1. 你告诉 AI 有哪些工具可用
+2. AI 决定是否需要工具来回答
+3. AI 输出对工具的结构化请求
+4. 你的代码运行工具并返回结果
+5. AI 使用结果形成答案
 
 <TryIt 
-  title="Function Calling Example"
-  description="This prompt shows how AI decides to use a tool:"
-  prompt={`You have access to these tools:
+  title="Function Calling 示例"
+  description="这个提示展示了 AI 如何决定使用工具："
+  prompt={`你可以使用以下工具：
 
-1. get_weather(city: string) - Get current weather for a city
-2. search_web(query: string) - Search the internet
-3. calculate(expression: string) - Do math calculations
+1. get_weather(city: string) - 获取城市的当前天气
+2. search_web(query: string) - 搜索互联网
+3. calculate(expression: string) - 进行数学计算
 
-User: What's the weather like in Tokyo right now?
+用户：东京现在的天气怎么样？
 
-Think step by step: Do you need a tool? Which one? What parameters?`}
+逐步思考：你需要工具吗？哪一个？什么参数？`}
 />
 
-## Summarization: Managing Long Conversations
+## 摘要：管理长对话
 
-As conversations get longer, you'll hit the context window limit. Since AI is stateless (it doesn't remember anything), long conversations can overflow. The solution? **Summarization**.
+随着对话变长，你会达到上下文窗口限制。由于 AI 是无状态的（它不记得任何东西），长对话可能会溢出。解决方案？**摘要**。
 
-### The Problem
+### 问题所在
 
 <Compare 
-  before={{ label: "Without Summarization", content: "Message 1 (500 tokens)\nMessage 2 (800 tokens)\nMessage 3 (600 tokens)\n... 50 more messages ...\n────────────────────\n= 40,000+ tokens\n= OVER THE LIMIT!" }}
-  after={{ label: "With Summarization", content: "[Summary]: 200 tokens\nRecent messages: 2,000 tokens\nCurrent query: 100 tokens\n────────────────────\n= 2,300 tokens\n= Fits perfectly!" }}
+  before={{ label: "不使用摘要", content: "消息 1（500 tokens）\n消息 2（800 tokens）\n消息 3（600 tokens）\n... 还有 50 条消息 ...\n────────────────────\n= 40,000+ tokens\n= 超出限制！" }}
+  after={{ label: "使用摘要", content: "[摘要]：200 tokens\n最近消息：2,000 tokens\n当前查询：100 tokens\n────────────────────\n= 2,300 tokens\n= 完美适配！" }}
 />
 
-### Summarization Strategies
+### 摘要策略
 
-Different approaches work for different use cases. Click each strategy to see how it processes the same conversation:
+不同的方法适用于不同的用例。点击每个策略查看它如何处理同一对话：
 
 <SummarizationDemo />
 
-### What to Capture in Summaries
+### 摘要中应该捕获什么
 
-A good conversation summary preserves what matters:
+好的对话摘要应保留重要内容：
 
 <Checklist 
-  title="Summary Checklist"
+  title="摘要检查清单"
   items={[
-    { text: "Key decisions made" },
-    { text: "Important facts mentioned" },
-    { text: "User preferences discovered" },
-    { text: "Current task or goal" },
-    { text: "Any pending questions" },
-    { text: "Tone and formality level" }
+    { text: "做出的关键决定" },
+    { text: "提到的重要事实" },
+    { text: "发现的用户偏好" },
+    { text: "当前任务或目标" },
+    { text: "任何待解决的问题" },
+    { text: "语气和正式程度" }
   ]}
 />
 
-### Try It: Create a Summary
+### 试一试：创建摘要
 
 <TryIt 
-  title="Conversation Summarizer"
-  description="Practice creating a context-preserving summary from this conversation:"
-  prompt={`Summarize this conversation for context management. The summary will replace the full conversation in the AI's memory.
+  title="对话摘要器"
+  description="练习从这段对话中创建保留上下文的摘要："
+  prompt={`为上下文管理总结这段对话。摘要将替换 AI 记忆中的完整对话。
 
-CONVERSATION:
-User: Hi, I'm learning Python for data analysis
-Assistant: Welcome! Python is great for data analysis. What's your current experience level?
-User: I know basic Excel. Complete beginner with programming.
-Assistant: Perfect starting point! Let's begin with variables - they're like Excel cells that store data.
-User: Can you explain variables?
-Assistant: Variables are containers for storing data. In Python: name = "Alice" or age = 25
-User: What about lists? I need to handle multiple values.
-Assistant: Lists are like Excel columns! Create one like: prices = [10, 20, 30]. Access items with prices[0].
-User: Can I do calculations on lists?
-Assistant: Yes! Use sum(prices), len(prices), or max(prices). For complex analysis, we'll use pandas later.
-User: What's pandas?
-Assistant: Pandas is a library for data analysis - think "Excel on steroids". It has DataFrames (like spreadsheets).
+对话：
+用户：你好，我正在学习 Python 进行数据分析
+助手：欢迎！Python 非常适合数据分析。你目前的经验水平如何？
+用户：我懂基本的 Excel。编程完全是初学者。
+助手：很好的起点！让我们从变量开始——它们就像存储数据的 Excel 单元格。
+用户：你能解释一下变量吗？
+助手：变量是存储数据的容器。在 Python 中：name = "Alice" 或 age = 25
+用户：列表呢？我需要处理多个值。
+助手：列表就像 Excel 列！创建一个：prices = [10, 20, 30]。用 prices[0] 访问项目。
+用户：我可以对列表进行计算吗？
+助手：可以！使用 sum(prices)、len(prices) 或 max(prices)。对于复杂分析，我们稍后会用 pandas。
+用户：什么是 pandas？
+助手：Pandas 是一个数据分析库——可以理解为"增强版 Excel"。它有 DataFrames（像电子表格）。
 
-CREATE A SUMMARY that captures:
-1. User's goal and background (1 sentence)
-2. Topics covered so far (1 sentence)  
-3. User's learning style/preferences (1 sentence)
-4. What to cover next (1 sentence)`}
+创建一个摘要，捕获：
+1. 用户的目标和背景（1 句话）
+2. 到目前为止涵盖的主题（1 句话）
+3. 用户的学习风格/偏好（1 句话）
+4. 接下来要涵盖的内容（1 句话）`}
 />
 
-### When to Summarize
+### 何时进行摘要
 
-<TryIt compact prompt={`You are managing a conversation's context window. Given these conditions, decide when to trigger summarization:
+<TryIt compact prompt={`你正在管理对话的上下文窗口。根据这些条件，决定何时触发摘要：
 
-CONTEXT WINDOW: 8,000 tokens max
-CURRENT USAGE:
-- System prompt: 500 tokens
-- Conversation history: 6,200 tokens  
-- Buffer for response: 1,500 tokens
+上下文窗口：最大 8,000 tokens
+当前使用情况：
+- 系统提示：500 tokens
+- 对话历史：6,200 tokens
+- 响应缓冲：1,500 tokens
 
-RULES:
-- Summarize when history exceeds 70% of available space
-- Keep last 5 messages intact
-- Preserve all user preferences and decisions
+规则：
+- 当历史超过可用空间的 70% 时进行摘要
+- 保持最后 5 条消息完整
+- 保留所有用户偏好和决定
 
-Should you summarize now? If yes, what messages should be summarized vs kept intact?`} />
+你现在应该进行摘要吗？如果是，哪些消息应该被摘要，哪些应该保持完整？`} />
 
-## MCP: Model Context Protocol
+## MCP：模型上下文协议
 
-MCP (Model Context Protocol) is a standard way to connect AI to external data and tools. Instead of building custom integrations for each AI provider, MCP provides a universal interface.
+MCP（Model Context Protocol）是一种将 AI 连接到外部数据和工具的标准方式。MCP 提供了一个通用接口，而不是为每个 AI 提供商构建自定义集成。
 
-### Why MCP?
+### 为什么使用 MCP？
 
 <InfoGrid columns={2} items={[
-  { label: "Without MCP", description: "Build separate integrations for ChatGPT, Claude, Gemini... Maintain multiple codebases. Break when APIs change.", color: "red" },
-  { label: "With MCP", description: "Build once, works everywhere. Standard protocol. AI can discover and use your tools automatically.", color: "green" },
+  { label: "没有 MCP", description: "为 ChatGPT、Claude、Gemini 分别构建集成... 维护多个代码库。API 变化时会出问题。", color: "red" },
+  { label: "有 MCP", description: "构建一次，到处可用。标准协议。AI 可以自动发现和使用你的工具。", color: "green" },
 ]} />
 
-### MCP Provides
+### MCP 提供
 
-- **Resources**: Data the AI can read (files, database records, API responses)
-- **Tools**: Actions the AI can take (search, create, update, delete)
-- **Prompts**: Pre-built prompt templates
+- **Resources**：AI 可以读取的数据（文件、数据库记录、API 响应）
+- **Tools**：AI 可以执行的操作（搜索、创建、更新、删除）
+- **Prompts**：预构建的提示模板
 
-<Callout type="info" title="prompts.chat Uses MCP">
-This platform has an MCP server! You can connect it to Claude Desktop or other MCP-compatible clients to search and use prompts directly from your AI assistant.
+<Callout type="info" title="prompts.chat 使用 MCP">
+这个平台有一个 MCP 服务器！你可以将它连接到 Claude Desktop 或其他兼容 MCP 的客户端，直接从你的 AI 助手搜索和使用提示词。
 </Callout>
 
-## Building Context: The Complete Picture
+## 构建上下文：完整图景
 
 <ContextPlayground />
 
-## Best Practices
+## 最佳实践
 
 <Checklist 
-  title="Context Engineering Checklist"
+  title="上下文工程检查清单"
   items={[
-    { text: "Keep system prompts concise but complete" },
-    { text: "Only include relevant context (not everything)" },
-    { text: "Summarize long conversations" },
-    { text: "Use RAG for domain-specific knowledge" },
-    { text: "Give AI tools for real-time data" },
-    { text: "Monitor token usage to stay within limits" },
-    { text: "Test with edge cases (very long inputs, etc.)" }
+    { text: "保持系统提示简洁但完整" },
+    { text: "只包含相关上下文（不是所有内容）" },
+    { text: "对长对话进行摘要" },
+    { text: "对特定领域知识使用 RAG" },
+    { text: "为实时数据提供工具给 AI" },
+    { text: "监控 token 使用量以保持在限制内" },
+    { text: "用边缘情况测试（非常长的输入等）" }
   ]}
 />
 
-## Summary
+## 总结
 
-Context engineering is about giving AI the right information:
+上下文工程是关于为 AI 提供正确的信息：
 
-- **AI is stateless** - include everything it needs every time
-- **RAG** retrieves relevant documents to augment prompts
-- **Embeddings** enable semantic search (meaning, not just keywords)
-- **Function calling** lets AI use external tools
-- **Summarization** manages long conversations
-- **MCP** standardizes how AI connects to data and tools
+- **AI 是无状态的** - 每次都要包含它需要的所有内容
+- **RAG** 检索相关文档来增强提示词
+- **Embeddings** 实现语义搜索（按含义，而非仅关键词）
+- **Function calling** 让 AI 可以使用外部工具
+- **摘要** 管理长对话
+- **MCP** 标准化 AI 连接数据和工具的方式
 
-<Callout type="tip" title="Remember">
-The quality of AI output depends on the quality of context you provide. Better context = better answers.
+<Callout type="tip" title="记住">
+AI 输出的质量取决于你提供的上下文质量。更好的上下文 = 更好的答案。
 </Callout>

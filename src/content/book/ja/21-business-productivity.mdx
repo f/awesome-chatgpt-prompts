@@ -1,335 +1,335 @@
-AI can dramatically enhance professional productivity. This chapter covers prompts for business communication, analysis, planning, and workflow optimization.
+AIはプロフェッショナルの生産性を劇的に向上させることができます。この章では、ビジネスコミュニケーション、分析、計画、ワークフロー最適化のためのプロンプトを解説します。
 
-<Callout type="info" title="AI for Business">
-AI excels at drafting, analysis, and structuring—freeing you to focus on strategy, relationships, and decisions that require human judgment.
+<Callout type="info" title="ビジネスのためのAI">
+AIは文書作成、分析、情報の構造化に優れています。これにより、あなたは戦略、人間関係、人間の判断が必要な意思決定に集中できるようになります。
 </Callout>
 
-## Business Communication
+## ビジネスコミュニケーション
 
-### Do's and Don'ts: Business Emails
+### Do'sとDon'ts：ビジネスメール
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write an email to my boss about the project." }}
-  after={{ label: "✓ Complete context", content: "Write an email to my manager (Sarah) updating her on the Q4 marketing project.\n\nKey points: We're on track for the Nov 15 deadline, resolved the vendor issue, need her approval on the $5K budget increase.\nTone: Professional but friendly (we have a good relationship)\nKeep under 150 words with a clear ask at the end." }}
+  before={{ label: "❌ 曖昧なリクエスト", content: "プロジェクトについて上司にメールを書いて。" }}
+  after={{ label: "✓ 完全なコンテキスト", content: "マネージャーの田中さんに、Q4マーケティングプロジェクトの進捗報告メールを書いてください。\n\n要点：11月15日の締め切りに向けて順調に進行中、ベンダーの問題は解決済み、50万円の予算増額の承認が必要\nトーン：プロフェッショナルだが親しみやすく（良好な関係があるので）\n150語以内で、最後に明確な依頼を含めてください。" }}
 />
 
-### Email Drafting
+### メール作成
 
-<TryIt compact prompt={`Write a professional email.
+<TryIt compact prompt={`プロフェッショナルなメールを作成してください。
 
-Context:
-- To: [recipient and relationship]
-- Purpose: [request/inform/follow-up/apologize]
-- Key points: [what must be communicated]
-- Tone: [formal/friendly professional/urgent]
+コンテキスト：
+- 宛先：[受信者と関係性]
+- 目的：[依頼/報告/フォローアップ/お詫び]
+- 要点：[伝えるべき内容]
+- トーン：[フォーマル/親しみやすいビジネス調/緊急]
 
-Constraints:
-- Keep under [X] sentences
-- Clear call-to-action
-- Subject line included`} />
+制約：
+- [X]文以内に収める
+- 明確なアクション依頼を含める
+- 件名を含める`} />
 
-**Examples by purpose:**
+**目的別の例：**
 
-<TryIt compact prompt={`\${emailType:Meeting Request}: Write an email requesting a meeting with a potential client to discuss partnership opportunities. Keep it brief and make it easy for them to say yes.`} />
+<TryIt compact prompt={`\${emailType:ミーティング依頼}：パートナーシップの可能性について話し合うため、見込み顧客にミーティングを依頼するメールを書いてください。簡潔に、相手が承諾しやすいように書いてください。`} />
 
-<TryIt compact prompt={`\${emailType:Difficult Conversation}: Write an email declining a vendor's proposal while maintaining the relationship for future opportunities. Be clear but diplomatic.`} />
+<TryIt compact prompt={`\${emailType:難しい会話}：今後の取引機会を維持しながら、ベンダーの提案を丁重にお断りするメールを書いてください。明確でありながら外交的に。`} />
 
-<TryIt compact prompt={`\${emailType:Status Update}: Write a project status email to stakeholders. The project is 2 weeks behind schedule due to scope changes. Present the situation professionally with a recovery plan.`} />
+<TryIt compact prompt={`\${emailType:進捗報告}：ステークホルダー向けのプロジェクト進捗報告メールを書いてください。スコープ変更により、プロジェクトは2週間遅れています。状況をプロフェッショナルに説明し、リカバリープランを提示してください。`} />
 
-### Presentation Content
+### プレゼンテーションコンテンツ
 
-<TryIt compact prompt={`Create presentation content for \${topic:Q4 sales strategy}.
+<TryIt compact prompt={`\${topic:Q4営業戦略}のプレゼンテーションコンテンツを作成してください。
 
-Audience: \${audience:executive leadership}
-Duration: \${duration:15 minutes}
-Goal: \${goal:persuade to approve budget increase}
+対象者：\${audience:経営陣}
+時間：\${duration:15分}
+目標：\${goal:予算増額の承認を得る}
 
-Provide for each slide:
-- Title
-- Key message (one main point)
-- Supporting points (3 max)
-- Speaker notes (what to say)
-- Visual suggestion (chart/image/diagram)
+各スライドについて以下を提供してください：
+- タイトル
+- キーメッセージ（主要ポイント1つ）
+- サポートポイント（最大3つ）
+- スピーカーノート（話す内容）
+- ビジュアル提案（チャート/画像/図）
 
-Structure:
-1. Hook/Attention grabber
-2. Problem/Opportunity
-3. Solution/Recommendation
-4. Evidence/Support
-5. Call to action`} />
+構成：
+1. フック/注意を引く導入
+2. 問題/機会
+3. 解決策/提案
+4. 根拠/サポート
+5. アクションの呼びかけ`} />
 
-### Report Writing
+### レポート作成
 
-<TryIt compact prompt={`Write a \${reportType:recommendation} report on \${topic:expanding into European markets}.
+<TryIt compact prompt={`\${topic:ヨーロッパ市場への進出}に関する\${reportType:提言}レポートを作成してください。
 
-Report type: \${type:recommendation}
-Audience: \${audience:C-suite}
-Length: \${length:5 pages}
+レポートタイプ：\${type:提言}
+対象読者：\${audience:経営幹部}
+長さ：\${length:5ページ}
 
-Structure:
-1. Executive Summary (key findings, 1 paragraph)
-2. Background/Context
-3. Methodology (if applicable)
-4. Findings
-5. Analysis
-6. Recommendations
-7. Next Steps
+構成：
+1. エグゼクティブサマリー（主要な発見、1段落）
+2. 背景/コンテキスト
+3. 方法論（該当する場合）
+4. 調査結果
+5. 分析
+6. 提言
+7. 次のステップ
 
-Include: Data visualization suggestions where relevant
-Tone: \${tone:formal business}`} />
+含める内容：関連箇所にデータ可視化の提案
+トーン：\${tone:フォーマルなビジネス調}`} />
 
-## Analysis & Decision-Making
+## 分析と意思決定
 
-<Callout type="tip" title="Analysis Principle">
-AI can structure your thinking, but **you provide the real-world context**. The best analyses combine AI's frameworks with your domain knowledge.
+<Callout type="tip" title="分析の原則">
+AIは思考を構造化できますが、**実世界のコンテキストを提供するのはあなたです**。最良の分析は、AIのフレームワークとあなたの専門知識を組み合わせることで生まれます。
 </Callout>
 
-### SWOT Analysis
+### SWOT分析
 
-<TryIt compact prompt={`Conduct a SWOT analysis for \${subject:launching a new mobile app}.
+<TryIt compact prompt={`\${subject:新しいモバイルアプリのローンチ}についてSWOT分析を実施してください。
 
-Context:
-\${context:We're a mid-size fintech company considering a consumer banking app}
+コンテキスト：
+\${context:当社は中堅フィンテック企業で、消費者向け銀行アプリの開発を検討しています}
 
-Provide:
+以下を提供してください：
 
-**Strengths** (internal positives)
-- At least 4 points with brief explanations
+**Strengths（強み）**（内部のプラス要因）
+- 簡単な説明付きで少なくとも4点
 
-**Weaknesses** (internal negatives)
-- At least 4 points with brief explanations
+**Weaknesses（弱み）**（内部のマイナス要因）
+- 簡単な説明付きで少なくとも4点
 
-**Opportunities** (external positives)
-- At least 4 points with brief explanations
+**Opportunities（機会）**（外部のプラス要因）
+- 簡単な説明付きで少なくとも4点
 
-**Threats** (external negatives)
-- At least 4 points with brief explanations
+**Threats（脅威）**（外部のマイナス要因）
+- 簡単な説明付きで少なくとも4点
 
-**Strategic Implications**
-- Key insight from analysis
-- Recommended priorities`} />
+**戦略的示唆**
+- 分析からの主要インサイト
+- 推奨される優先事項`} />
 
-### Decision Framework
+### 意思決定フレームワーク
 
-<TryIt compact prompt={`Help me make a decision about \${decision:which CRM to choose}.
+<TryIt compact prompt={`\${decision:どのCRMを選ぶか}について意思決定を手伝ってください。
 
-Options:
+選択肢：
 1. \${optionA:Salesforce}
 2. \${optionB:HubSpot}
 3. \${optionC:Pipedrive}
 
-Criteria that matter to me:
-- \${criterion1:ease of use} (weight: high)
-- \${criterion2:integration with existing tools} (weight: high)
-- \${criterion3:cost} (weight: medium)
+重視する基準：
+- \${criterion1:使いやすさ}（重要度：高）
+- \${criterion2:既存ツールとの連携}（重要度：高）
+- \${criterion3:コスト}（重要度：中）
 
-Provide:
-1. Score each option against each criterion (1-5)
-2. Weighted analysis
-3. Pros/cons summary for each
-4. Risk assessment
-5. Recommendation with rationale
-6. Questions to consider before deciding`} />
+以下を提供してください：
+1. 各オプションを各基準に対して評価（1-5）
+2. 重み付け分析
+3. 各オプションの長所/短所のまとめ
+4. リスク評価
+5. 根拠を含めた推奨
+6. 決定前に検討すべき質問`} />
 
-### Competitive Analysis
+### 競合分析
 
-<TryIt compact prompt={`Analyze \${competitor:Slack} compared to \${ourProduct:our team communication tool}.
+<TryIt compact prompt={`\${ourProduct:当社のチームコミュニケーションツール}と比較して、\${competitor:Slack}を分析してください。
 
-Research their:
-1. **Products/Services** - offerings, pricing, positioning
-2. **Strengths** - what they do well
-3. **Weaknesses** - where they fall short
-4. **Market position** - target segments, market share
-5. **Strategy** - apparent direction and focus
+以下について調査してください：
+1. **製品/サービス** - 提供内容、価格設定、ポジショニング
+2. **強み** - 優れている点
+3. **弱み** - 不足している点
+4. **市場ポジション** - ターゲットセグメント、市場シェア
+5. **戦略** - 明らかな方向性とフォーカス
 
-Compare to us:
-- Where we're stronger
-- Where they're stronger
-- Opportunity gaps
-- Competitive threats
+当社との比較：
+- 当社が優れている点
+- 競合が優れている点
+- 機会のギャップ
+- 競合脅威
 
-Recommend: Actions to improve our competitive position`} />
+推奨：競争力を向上させるためのアクション`} />
 
-## Planning & Strategy
+## 計画と戦略
 
-### Goal Setting (OKRs)
+### 目標設定（OKR）
 
-<TryIt compact prompt={`Help me set OKRs for \${scope:Q1 marketing team}.
+<TryIt compact prompt={`\${scope:Q1マーケティングチーム}のOKR設定を手伝ってください。
 
-Context:
-- Company goals: \${companyGoals:increase revenue 25% YoY}
-- Current situation: \${currentState:brand awareness is low in new markets}
-- Key priorities: \${priorities:lead generation, content marketing}
+コンテキスト：
+- 会社目標：\${companyGoals:売上を前年比25%増加}
+- 現状：\${currentState:新市場でのブランド認知度が低い}
+- 主要な優先事項：\${priorities:リード獲得、コンテンツマーケティング}
 
-Create 3 Objectives with 3-4 Key Results each.
+3つのObjectiveを作成し、それぞれに3-4つのKey Resultを設定してください。
 
-Format:
-**Objective 1:** Qualitative goal - inspiring
-- KR 1.1: Quantitative measure (Current: X → Target: Y)
-- KR 1.2: Quantitative measure (Current: X → Target: Y)
-- KR 1.3: Quantitative measure (Current: X → Target: Y)
+フォーマット：
+**Objective 1：** 定性的な目標 - インスピレーションを与えるもの
+- KR 1.1: 定量的な指標（現在：X → 目標：Y）
+- KR 1.2: 定量的な指標（現在：X → 目標：Y）
+- KR 1.3: 定量的な指標（現在：X → 目標：Y）
 
-Ensure KRs are:
-- Measurable
-- Ambitious but achievable
-- Time-bound
-- Outcome-focused (not tasks)`} />
+KRは以下を満たすこと：
+- 測定可能
+- 野心的だが達成可能
+- 期限付き
+- 成果志向（タスクではない）`} />
 
-### Project Planning
+### プロジェクト計画
 
-<TryIt compact prompt={`Create a project plan for \${project:website redesign}.
+<TryIt compact prompt={`\${project:ウェブサイトリニューアル}のプロジェクト計画を作成してください。
 
-Scope: \${scope:new homepage, product pages, checkout flow}
-Timeline: \${timeline:3 months}
-Team: \${team:2 developers, 1 designer, 1 PM}
-Budget: \${budget:$50,000}
+スコープ：\${scope:新しいホームページ、製品ページ、購入フロー}
+タイムライン：\${timeline:3ヶ月}
+チーム：\${team:開発者2名、デザイナー1名、PM 1名}
+予算：\${budget:500万円}
 
-Provide:
-1. **Project phases** with milestones
-2. **Work breakdown structure** (major tasks)
-3. **Timeline** (Gantt-style description)
-4. **Dependencies** (what blocks what)
-5. **Risks** (potential issues and mitigation)
-6. **Success criteria** (how we know we're done)`} />
+以下を提供してください：
+1. **プロジェクトフェーズ**とマイルストーン
+2. **作業分解構成**（主要タスク）
+3. **タイムライン**（ガントチャート形式の説明）
+4. **依存関係**（何が何をブロックするか）
+5. **リスク**（潜在的な問題と緩和策）
+6. **成功基準**（完了の判断基準）`} />
 
-### Meeting Agenda
+### 会議アジェンダ
 
-<TryIt compact prompt={`Create an agenda for \${meetingType:quarterly planning}.
+<TryIt compact prompt={`\${meetingType:四半期計画}のアジェンダを作成してください。
 
-Purpose: \${purpose:align on Q2 priorities and resource allocation}
-Attendees: \${attendees:department heads, CEO, COO}
-Duration: \${duration:90 minutes}
+目的：\${purpose:Q2の優先事項とリソース配分について合意する}
+参加者：\${attendees:部門長、CEO、COO}
+時間：\${duration:90分}
 
-Format:
-| Time | Topic | Owner | Goal |
+フォーマット：
+| 時間 | トピック | 担当 | 目標 |
 |------|-------|-------|------|
-| 5 min | Opening | Facilitator | Context |
+| 5分 | オープニング | ファシリテーター | コンテキスト設定 |
 | ... | ... | ... | ... |
 
-Include:
-- Time allocations
-- Clear owner for each item
-- Specific outcomes expected
-- Pre-work required
-- Follow-up action item template`} />
+含める内容：
+- 時間配分
+- 各項目の明確な担当者
+- 期待される具体的な成果
+- 必要な事前準備
+- フォローアップアクションアイテムのテンプレート`} />
 
-## Productivity Workflows
+## 生産性ワークフロー
 
-### Task Prioritization
+### タスクの優先順位付け
 
-<TryIt compact prompt={`Help me prioritize my tasks using the Eisenhower Matrix.
+<TryIt compact prompt={`アイゼンハワーマトリクスを使って、私のタスクの優先順位付けを手伝ってください。
 
-My tasks:
-\${tasks:1. Prepare quarterly report (due Friday)\n2. Review job applications\n3. Reply to vendor emails\n4. Plan team offsite\n5. Update LinkedIn profile}
+私のタスク：
+\${tasks:1. 四半期レポートの作成（金曜日締め切り）\n2. 採用応募書類のレビュー\n3. ベンダーへのメール返信\n4. チームオフサイトの企画\n5. LinkedInプロフィールの更新}
 
-Categorize each into:
-1. **Urgent + Important** (Do first)
-2. **Important, Not Urgent** (Schedule)
-3. **Urgent, Not Important** (Delegate)
-4. **Neither** (Eliminate)
+各タスクを以下に分類してください：
+1. **緊急＋重要**（最優先で実行）
+2. **重要、緊急ではない**（スケジュール）
+3. **緊急、重要ではない**（委任）
+4. **どちらでもない**（排除）
 
-Then provide:
-- Recommended order of execution
-- Time estimates
-- Suggestions for delegation or elimination`} />
+次に以下を提供してください：
+- 推奨される実行順序
+- 時間見積もり
+- 委任または排除の提案`} />
 
-### Process Documentation
+### プロセスドキュメント
 
-<TryIt compact prompt={`Document this business process: \${processName:customer refund request}.
+<TryIt compact prompt={`このビジネスプロセスを文書化してください：\${processName:顧客返金リクエスト}。
 
-Create:
-1. **Process overview** (1 paragraph)
-2. **Trigger** (what starts this process)
-3. **Steps** (numbered, with responsible party)
-4. **Decision points** (if X then Y format)
-5. **Outputs** (what this process produces)
-6. **Systems involved** (tools/software)
-7. **Exceptions** (edge cases and handling)
+作成内容：
+1. **プロセス概要**（1段落）
+2. **トリガー**（このプロセスを開始するもの）
+3. **ステップ**（番号付き、担当者明記）
+4. **判断ポイント**（Xの場合はY形式）
+5. **アウトプット**（このプロセスが生成するもの）
+6. **関連システム**（ツール/ソフトウェア）
+7. **例外**（エッジケースとその対応）
 
-Format: Clear enough for new employee to follow`} />
+フォーマット：新入社員でも理解できる明確さ`} />
 
-### Standard Operating Procedure
+### 標準作業手順書
 
-<TryIt compact prompt={`Write an SOP for \${task:onboarding new employees to Slack}.
+<TryIt compact prompt={`\${task:新入社員のSlackオンボーディング}のSOPを作成してください。
 
-Audience: \${audience:HR administrators}
-Complexity: \${complexity:basic users}
+対象者：\${audience:人事管理者}
+複雑さ：\${complexity:基本ユーザー向け}
 
-Include:
-1. Purpose and scope
-2. Prerequisites/requirements
-3. Step-by-step instructions
-4. Screenshots/visual placeholders
-5. Quality checkpoints
-6. Common errors and troubleshooting
-7. Related SOPs/documents
-8. Version history`} />
+含める内容：
+1. 目的と範囲
+2. 前提条件/要件
+3. ステップバイステップの手順
+4. スクリーンショット/ビジュアルのプレースホルダー
+5. 品質チェックポイント
+6. よくあるエラーとトラブルシューティング
+7. 関連するSOP/ドキュメント
+8. バージョン履歴`} />
 
-## Communication Templates
+## コミュニケーションテンプレート
 
-### Stakeholder Update
+### ステークホルダーアップデート
 
-<TryIt compact prompt={`Write a stakeholder update for \${project:CRM migration project}.
+<TryIt compact prompt={`\${project:CRM移行プロジェクト}のステークホルダーアップデートを作成してください。
 
-Status: \${status:at risk}
-Period: \${period:Week of Jan 6-10}
+ステータス：\${status:リスクあり}
+期間：\${period:1月6-10日の週}
 
-Format:
-## Project Name Update
+フォーマット：
+## プロジェクト名アップデート
 
-**Status:** 🟢/🟡/🔴
+**ステータス：** 🟢/🟡/🔴
 
-**Progress this period:**
-- Accomplishment 1
-- Accomplishment 2
+**今期の進捗：**
+- 達成事項1
+- 達成事項2
 
-**Next period goals:**
-- Goal 1
-- Goal 2
+**来期の目標：**
+- 目標1
+- 目標2
 
-**Risks/Blockers:**
-- If any
+**リスク/ブロッカー：**
+- 該当があれば
 
-**Decisions needed:**
-- If any`} />
+**必要な決定事項：**
+- 該当があれば`} />
 
-### Feedback Request
+### フィードバック依頼
 
-<TryIt compact prompt={`Write a message requesting feedback on \${deliverable:the new product roadmap document}.
+<TryIt compact prompt={`\${deliverable:新しい製品ロードマップ文書}についてフィードバックを依頼するメッセージを作成してください。
 
-Context: \${context:This will guide our Q2 priorities, I want to make sure I haven't missed anything}
-Specific areas for feedback: \${feedbackAreas:timeline feasibility, resource allocation, missing features}
-Timeline: \${deadline:by Friday EOD}
+コンテキスト：\${context:これがQ2の優先事項のガイドになります。見落としがないか確認したいです}
+フィードバックを求める具体的な領域：\${feedbackAreas:タイムラインの実現可能性、リソース配分、不足している機能}
+期限：\${deadline:金曜日の終業時まで}
 
-Tone: Professional but not overly formal
-Make it easy to respond with specific questions`} />
+トーン：プロフェッショナルだが堅すぎない
+具体的な質問を含め、回答しやすくしてください`} />
 
-## Prompt Templates from prompts.chat
+## prompts.chatからのプロンプトテンプレート
 
-### Act as a Business Consultant
+### ビジネスコンサルタントとして振る舞う
 
-<TryIt compact prompt={`I want you to act as a business consultant. I will describe business situations and challenges, and you will provide strategic advice, frameworks for thinking about problems, and actionable recommendations. Draw on established business principles while being practical and specific.`} />
+<TryIt compact prompt={`あなたにはビジネスコンサルタントとして振る舞ってほしいです。ビジネスの状況と課題を説明しますので、戦略的なアドバイス、問題を考えるためのフレームワーク、実行可能な提言を提供してください。確立されたビジネス原則を活用しながら、実践的かつ具体的に回答してください。`} />
 
-### Act as a Meeting Facilitator
+### 会議ファシリテーターとして振る舞う
 
-<TryIt compact prompt={`I want you to act as a meeting facilitator. Help me plan and run effective meetings. Create agendas, suggest discussion frameworks, help synthesize conversations, and draft follow-up communications. Focus on making meetings productive and action-oriented.`} />
+<TryIt compact prompt={`あなたには会議ファシリテーターとして振る舞ってほしいです。効果的な会議の計画と運営を手伝ってください。アジェンダの作成、ディスカッションフレームワークの提案、会話の要約、フォローアップコミュニケーションの下書きを行ってください。会議を生産的でアクション志向にすることに焦点を当ててください。`} />
 
-## Summary
+## まとめ
 
-<Callout type="tip" title="Key Techniques">
-Specify the audience and their needs, define the desired outcome clearly, include relevant context and constraints, request specific formats and structures, and consider professional tone requirements.
+<Callout type="tip" title="重要なテクニック">
+対象者とそのニーズを明確にし、望む結果を明確に定義し、関連するコンテキストと制約を含め、具体的なフォーマットと構成を依頼し、プロフェッショナルなトーンの要件を考慮してください。
 </Callout>
 
 <Quiz 
-  question="What should you always include when asking AI to write a business email?"
+  question="AIにビジネスメールの作成を依頼する際、常に含めるべきものは何ですか？"
   options={[
-    "Just the topic you want to discuss",
-    "Recipient, purpose, key points, and desired tone",
-    "Only the recipient's name",
-    "A template from the internet"
+    "話したいトピックだけ",
+    "受信者、目的、要点、希望するトーン",
+    "受信者の名前のみ",
+    "インターネットから取得したテンプレート"
   ]}
   correctIndex={1}
-  explanation="Effective business emails need context: who you're writing to, why, what must be communicated, and the appropriate tone. AI can't infer your professional relationships or organizational context."
+  explanation="効果的なビジネスメールにはコンテキストが必要です：誰に書くのか、なぜ書くのか、何を伝えるべきか、そして適切なトーン。AIはあなたの職業上の関係性や組織のコンテキストを推測することはできません。"
 />
 
-AI can handle routine business communication while you focus on strategy and relationships.
+AIが日常的なビジネスコミュニケーションを担当することで、あなたは戦略と人間関係に集中できます。

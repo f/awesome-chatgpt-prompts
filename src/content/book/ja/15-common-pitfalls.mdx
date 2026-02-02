@@ -1,373 +1,373 @@
-Even experienced prompt engineers fall into predictable traps. The good news? Once you recognize these patterns, they're easy to avoid. This chapter walks through the most common pitfalls, explains why they happen, and gives you concrete strategies to sidestep them.
+経験豊富なプロンプトエンジニアでも、予測可能な罠に陥ることがあります。良いニュースは、これらのパターンを認識すれば、簡単に避けられるということです。この章では、最も一般的な落とし穴を解説し、なぜそれが起こるのかを説明し、回避するための具体的な戦略を提供します。
 
-<Callout type="warning" title="Why Pitfalls Matter">
-A single pitfall can turn a powerful AI into a frustrating tool. Understanding these patterns is often the difference between "AI doesn't work for me" and "AI transformed my workflow."
+<Callout type="warning" title="落とし穴が重要な理由">
+たった一つの落とし穴が、強力なAIをフラストレーションの溜まるツールに変えてしまうことがあります。これらのパターンを理解することが、「AIは私には使えない」と「AIが私のワークフローを変革した」の違いを生むことが多いのです。
 </Callout>
 
-## The Vagueness Trap
+## 曖昧さの罠
 
-**The Pattern**: You know what you want, so you assume the AI will figure it out too. But vague prompts produce vague results.
+**パターン**：自分が何を求めているかを知っているので、AIもそれを理解してくれると思い込みます。しかし、曖昧なプロンプトは曖昧な結果を生み出します。
 
 <Compare 
-  before={{ label: "Vague prompt", content: "Write something about marketing." }}
-  after={{ label: "Specific prompt", content: "Write a 300-word LinkedIn post about the importance of brand consistency for B2B SaaS companies, targeting marketing managers. Use a professional but approachable tone. Include one concrete example." }}
+  before={{ label: "曖昧なプロンプト", content: "マーケティングについて何か書いて。" }}
+  after={{ label: "具体的なプロンプト", content: "B2B SaaS企業におけるブランド一貫性の重要性について、マーケティングマネージャー向けに300語のLinkedIn投稿を書いてください。プロフェッショナルでありながら親しみやすいトーンで。具体的な例を1つ含めてください。" }}
 />
 
-**Why it happens**: We naturally skip details when we think they're "obvious." But what's obvious to you isn't obvious to a model that has no context about your situation, audience, or goals.
+**なぜ起こるのか**：私たちは「当たり前」だと思う詳細を自然と省略してしまいます。しかし、あなたにとって当たり前のことは、あなたの状況、オーディエンス、目標についてのコンテキストを持たないモデルにとっては当たり前ではありません。
 
 <TryIt 
-  title="Specificity Improver"
-  description="Take a vague prompt and make it specific. Notice how adding details transforms the quality of results."
-  prompt={`I have a vague prompt that needs improvement.
+  title="具体性改善ツール"
+  description="曖昧なプロンプトを具体的にしてみましょう。詳細を追加することで結果の質がどう変わるか注目してください。"
+  prompt={`改善が必要な曖昧なプロンプトがあります。
 
-Original vague prompt: "\${vaguePrompt}"
+元の曖昧なプロンプト: "\${vaguePrompt}"
 
-Make this prompt specific by adding:
-1. **Audience**: Who will read/use this?
-2. **Format**: What structure should it have?
-3. **Length**: How long should it be?
-4. **Tone**: What voice or style?
-5. **Context**: What's the situation or purpose?
-6. **Constraints**: Any must-haves or must-avoids?
+以下を追加してこのプロンプトを具体的にしてください：
+1. **オーディエンス**：誰がこれを読む/使用するか？
+2. **フォーマット**：どのような構成にすべきか？
+3. **長さ**：どのくらいの長さにすべきか？
+4. **トーン**：どのような声や文体か？
+5. **コンテキスト**：状況や目的は何か？
+6. **制約**：必須事項や避けるべきことはあるか？
 
-Rewrite the prompt with all these details included.`}
+これらの詳細をすべて含めてプロンプトを書き直してください。`}
 />
 
-## The Overloading Trap
+## 過負荷の罠
 
-**The Pattern**: You try to get everything in one prompt—comprehensive, funny, professional, beginner-friendly, advanced, SEO-optimized, and short. The result? The AI misses half your requirements or produces a confused mess.
+**パターン**：一つのプロンプトですべてを得ようとします—包括的で、面白く、プロフェッショナルで、初心者向けで、上級者向けで、SEO最適化されていて、かつ短い。結果は？AIが要件の半分を見落とすか、混乱した内容を生成します。
 
 <Compare 
-  before={{ label: "Overloaded prompt", content: "Write a blog post about AI that's SEO optimized and includes code examples and is funny but professional and targets beginners but also has advanced tips and should be 500 words but comprehensive and mentions our product and has a call to action..." }}
-  after={{ label: "Focused prompt", content: "Write a 500-word blog post introducing AI to beginners.\n\nRequirements:\n1. Explain one core concept clearly\n2. Include one simple code example\n3. End with a call to action\n\nTone: Professional but approachable" }}
+  before={{ label: "過負荷なプロンプト", content: "AIについてSEO最適化されていてコード例も含み、面白いけどプロフェッショナルで初心者向けだけど上級者向けのヒントもあり500語だけど包括的で製品についても言及しCTAもあるブログ記事を書いて..." }}
+  after={{ label: "焦点を絞ったプロンプト", content: "初心者にAIを紹介する500語のブログ記事を書いてください。\n\n要件：\n1. 一つの核心概念を明確に説明\n2. シンプルなコード例を1つ含める\n3. CTAで締めくくる\n\nトーン：プロフェッショナルだが親しみやすい" }}
 />
 
-**Why it happens**: Fear of multiple interactions, or wanting to "get it all out" in one go. But cognitive overload affects AI just like it affects humans—too many competing requirements leads to dropped balls.
+**なぜ起こるのか**：複数のやり取りへの恐れ、または一度に「すべてを出し切りたい」という願望。しかし、認知的過負荷はAIにも人間と同様に影響します—競合する要件が多すぎると、漏れが発生します。
 
 <InfoGrid items={[
-  { label: "Limit Requirements", description: "Stick to 3-5 key requirements per prompt", example: "Focus on: audience, format, length, one key constraint", exampleType: "text", color: "green" },
-  { label: "Use Numbered Lists", description: "Structure makes priorities clear", example: "1. Must have X, 2. Should have Y, 3. Nice to have Z", exampleType: "text", color: "green" },
-  { label: "Chain Prompts", description: "Break complex tasks into steps", example: "First: outline. Then: draft section 1. Then: draft section 2.", exampleType: "text", color: "green" },
-  { label: "Prioritize Ruthlessly", description: "What's essential vs. nice-to-have?", example: "If I could only get ONE thing right, what would it be?", color: "green" }
+  { label: "要件を制限する", description: "1つのプロンプトにつき3〜5個の主要な要件に絞る", example: "焦点：オーディエンス、フォーマット、長さ、1つの主要な制約", exampleType: "text", color: "green" },
+  { label: "番号付きリストを使う", description: "構造化することで優先順位が明確になる", example: "1. Xは必須、2. Yがあると良い、3. Zはできれば", exampleType: "text", color: "green" },
+  { label: "プロンプトを連鎖させる", description: "複雑なタスクをステップに分割する", example: "最初：アウトライン。次に：セクション1の下書き。次に：セクション2の下書き。", exampleType: "text", color: "green" },
+  { label: "徹底的に優先順位をつける", description: "本質的なものと「あれば良い」ものは？", example: "1つだけ正しくできるとしたら、何を選ぶ？", color: "green" }
 ]} />
 
-<Callout type="tip" title="Learn Prompt Chaining">
-When a single prompt gets overloaded, [prompt chaining](/book/11-prompt-chaining) is often the solution. Break complex tasks into a sequence of focused prompts, where each step builds on the previous one.
+<Callout type="tip" title="プロンプトチェーンを学ぶ">
+単一のプロンプトが過負荷になったとき、[プロンプトチェーン](/book/11-prompt-chaining)が解決策になることが多いです。複雑なタスクを一連の焦点を絞ったプロンプトに分割し、各ステップが前のステップの上に構築されるようにします。
 </Callout>
 
-## The Assumption Trap
+## 思い込みの罠
 
-**The Pattern**: You reference something "from earlier" or assume the AI knows your project, your company, or your previous conversations. It doesn't.
+**パターン**：「さっき」のことを参照したり、AIがあなたのプロジェクト、会社、または以前の会話を知っていると思い込みます。実際には知りません。
 
 <Compare 
-  before={{ label: "Assumes context", content: "Update the function I showed you earlier to add error handling." }}
-  after={{ label: "Provides context", content: "Update this function to add error handling:\n\n```python\ndef calculate_total(items):\n    return sum(item.price for item in items)\n```\n\nAdd try/except for empty lists and invalid items." }}
+  before={{ label: "コンテキストを想定", content: "さっき見せた関数にエラーハンドリングを追加して更新して。" }}
+  after={{ label: "コンテキストを提供", content: "この関数にエラーハンドリングを追加して更新してください：\n\n```python\ndef calculate_total(items):\n    return sum(item.price for item in items)\n```\n\n空のリストと無効なアイテムに対するtry/exceptを追加してください。" }}
 />
 
-**Why it happens**: AI conversations feel like talking to a colleague. But unlike colleagues, most AI models have no persistent memory between sessions—each conversation starts fresh.
+**なぜ起こるのか**：AIとの会話は同僚と話しているように感じます。しかし、同僚とは異なり、ほとんどのAIモデルはセッション間で持続的な記憶を持ちません—各会話は新しく始まります。
 
 <TryIt 
-  title="Context Completeness Check"
-  description="Use this to verify your prompt contains all necessary context before sending."
-  prompt={`Review this prompt for missing context:
+  title="コンテキスト完全性チェック"
+  description="送信前にプロンプトに必要なコンテキストがすべて含まれているか確認するために使用します。"
+  prompt={`このプロンプトに不足しているコンテキストがないか確認してください：
 
 "\${promptToCheck}"
 
-Check for:
-1. **Referenced but not included**: Does it mention "the code," "the document," "earlier," or "above" without including the actual content?
+以下をチェック：
+1. **参照されているが含まれていない**：実際のコンテンツを含めずに「そのコード」「その文書」「さっき」「上記」と言及していないか？
 
-2. **Assumed knowledge**: Does it assume knowledge about a specific project, company, or situation?
+2. **想定されている知識**：特定のプロジェクト、会社、状況についての知識を前提としていないか？
 
-3. **Implicit requirements**: Are there unstated expectations about format, length, or style?
+3. **暗黙の要件**：フォーマット、長さ、スタイルについて述べられていない期待はないか？
 
-4. **Missing background**: Would a smart stranger understand what's being asked?
+4. **不足している背景**：賢い初見の人が何を求められているか理解できるか？
 
-List what's missing and suggest how to add it.`}
+不足しているものをリストアップし、追加方法を提案してください。`}
 />
 
-## The Leading Question Trap
+## 誘導質問の罠
 
-**The Pattern**: You phrase your question in a way that embeds your assumption, getting back confirmation rather than insight.
+**パターン**：あなたの思い込みを埋め込んだ形で質問を組み立て、洞察ではなく確認を得てしまいます。
 
 <Compare 
-  before={{ label: "Leading question", content: "Why is Python the best programming language for data science?" }}
-  after={{ label: "Neutral question", content: "Compare Python, R, and Julia for data science work. What are the strengths and weaknesses of each? When would you choose one over the others?" }}
+  before={{ label: "誘導質問", content: "なぜPythonはデータサイエンスに最適なプログラミング言語なのですか？" }}
+  after={{ label: "中立的な質問", content: "データサイエンスの仕事においてPython、R、Juliaを比較してください。それぞれの長所と短所は何ですか？どのような場合にどれを選びますか？" }}
 />
 
-**Why it happens**: We often seek confirmation, not information. Our phrasing unconsciously pushes toward the answer we expect or want.
+**なぜ起こるのか**：私たちはしばしば情報ではなく確認を求めています。私たちの言い回しは無意識のうちに期待する、または望む答えに向かって誘導します。
 
 <TryIt 
-  title="Bias Detector"
-  description="Check your prompts for hidden biases and leading language."
-  prompt={`Analyze this prompt for bias and leading language:
+  title="バイアス検出器"
+  description="プロンプトに隠れたバイアスや誘導的な言葉がないかチェックします。"
+  prompt={`このプロンプトのバイアスと誘導的な言葉を分析してください：
 
 "\${promptToAnalyze}"
 
-Check for:
-1. **Embedded assumptions**: Does the question assume something is true?
-2. **Leading phrasing**: Does "Why is X good?" assume X is good?
-3. **Missing alternatives**: Does it ignore other possibilities?
-4. **Confirmation seeking**: Is it asking for validation rather than analysis?
+以下をチェック：
+1. **埋め込まれた仮定**：質問が何かを真実だと仮定していないか？
+2. **誘導的な言い回し**：「なぜXは良いのか？」はXが良いと仮定していないか？
+3. **代替案の欠如**：他の可能性を無視していないか？
+4. **確認を求めている**：分析ではなく検証を求めていないか？
 
-Rewrite the prompt to be neutral and open-ended.`}
+中立的でオープンエンドになるようにプロンプトを書き直してください。`}
 />
 
-## The Trust Everything Trap
+## すべてを信じる罠
 
-**The Pattern**: AI responses sound confident and authoritative, so you accept them without verification. But confidence doesn't equal accuracy.
+**パターン**：AIの応答は自信に満ちて権威があるように聞こえるので、検証せずに受け入れてしまいます。しかし、自信は正確さとイコールではありません。
 
 <InfoGrid items={[
-  { label: "Unreviewed Content", description: "Publishing AI-generated text without fact-checking", example: "Blog posts with invented statistics or fake quotes", exampleType: "text", color: "red" },
-  { label: "Untested Code", description: "Using AI code in production without testing", example: "Security vulnerabilities, edge case failures, subtle bugs", exampleType: "text", color: "red" },
-  { label: "Blind Decisions", description: "Making important choices based solely on AI analysis", example: "Business strategy based on hallucinated market data", exampleType: "text", color: "red" }
+  { label: "レビューなしのコンテンツ", description: "ファクトチェックなしでAI生成テキストを公開", example: "でっち上げの統計や偽の引用を含むブログ記事", exampleType: "text", color: "red" },
+  { label: "テストなしのコード", description: "テストせずにAIコードを本番環境で使用", example: "セキュリティの脆弱性、エッジケースの失敗、微妙なバグ", exampleType: "text", color: "red" },
+  { label: "盲目的な意思決定", description: "AIの分析のみに基づいて重要な選択をする", example: "幻覚された市場データに基づくビジネス戦略", exampleType: "text", color: "red" }
 ]} />
 
-**Why it happens**: AI sounds confident even when completely wrong. We're also prone to "automation bias"—the tendency to trust computer outputs more than we should.
+**なぜ起こるのか**：AIは完全に間違っていても自信を持って聞こえます。私たちはまた「自動化バイアス」—コンピュータの出力を過度に信頼する傾向—にも陥りやすいです。
 
 <TryIt 
-  title="Verification Prompt"
-  description="Use this to get the AI to flag its own uncertainties and potential errors."
-  prompt={`I need you to provide information about: \${topic}
+  title="検証プロンプト"
+  description="AIに自身の不確実性と潜在的なエラーをフラグさせるために使用します。"
+  prompt={`以下について情報を提供してください：\${topic}
 
-IMPORTANT: After your response, add a section called "Verification Notes" that includes:
+重要：回答の後に「検証ノート」というセクションを追加し、以下を含めてください：
 
-1. **Confidence Level**: How certain are you about this information? (High/Medium/Low)
+1. **確信度**：この情報についてどの程度確信していますか？（高/中/低）
 
-2. **Potential Errors**: What parts of this response are most likely to be wrong or outdated?
+2. **潜在的なエラー**：この回答のどの部分が間違っている、または古くなっている可能性が最も高いですか？
 
-3. **What to Verify**: What specific claims should the user fact-check independently?
+3. **検証すべき事項**：ユーザーが独自にファクトチェックすべき具体的な主張は何ですか？
 
-4. **Sources to Check**: Where could the user verify this information?
+4. **確認するソース**：ユーザーはどこでこの情報を検証できますか？
 
-Be honest about limitations. It's better to flag uncertainty than to sound confident about something wrong.`}
+限界について正直に。間違っていることに自信を持つより、不確実性をフラグする方が良いです。`}
 />
 
-## The One-Shot Trap
+## 一発勝負の罠
 
-**The Pattern**: You send one prompt, get a mediocre result, and conclude that AI "doesn't work" for your use case. But great results almost always require iteration.
+**パターン**：一つのプロンプトを送信し、平凡な結果を得て、AIはあなたのユースケースに「使えない」と結論づけます。しかし、優れた結果を得るにはほぼ常に反復が必要です。
 
 <Compare 
-  before={{ label: "One-shot thinking", content: "Mediocre output → \"AI can't do this\" → Give up" }}
-  after={{ label: "Iterative thinking", content: "Mediocre output → Analyze what's wrong → Refine prompt → Better output → Refine again → Excellent output" }}
+  before={{ label: "一発勝負の考え方", content: "平凡な出力 → 「AIにはこれはできない」 → 諦める" }}
+  after={{ label: "反復的な考え方", content: "平凡な出力 → 何が間違っているか分析 → プロンプトを改良 → より良い出力 → さらに改良 → 優れた出力" }}
 />
 
-**Why it happens**: We expect AI to read our minds on the first try. We don't expect to iterate with Google searches, but somehow expect perfection from AI.
+**なぜ起こるのか**：私たちはAIが最初の試みで心を読んでくれることを期待します。Google検索では反復を期待しないのに、AIには完璧を期待してしまいます。
 
 <TryIt 
-  title="Iteration Helper"
-  description="When your first result isn't right, use this to systematically improve it."
-  prompt={`My original prompt was:
+  title="反復ヘルパー"
+  description="最初の結果が正しくない場合、これを使って体系的に改善します。"
+  prompt={`私の元のプロンプトは：
 "\${originalPrompt}"
 
-The output I got was:
+得られた出力は：
 "\${outputReceived}"
 
-What's wrong with it:
+問題点：
 "\${whatIsWrong}"
 
-Help me iterate:
+反復を助けてください：
 
-1. **Diagnosis**: Why did the original prompt produce this result?
+1. **診断**：なぜ元のプロンプトはこの結果を生み出したのか？
 
-2. **Missing Elements**: What was I not explicit about that I should have been?
+2. **不足している要素**：明示すべきだったのに明示しなかったことは何か？
 
-3. **Revised Prompt**: Rewrite my prompt to address these issues.
+3. **修正されたプロンプト**：これらの問題に対処するためにプロンプトを書き直してください。
 
-4. **What to Watch For**: What should I check in the new output?`}
+4. **注意すべき点**：新しい出力で何をチェックすべきか？`}
 />
 
-## The Format Neglect Trap
+## フォーマット軽視の罠
 
-**The Pattern**: You focus on what you want the AI to say, but forget to specify how it should be formatted. Then you get prose when you needed JSON, or a wall of text when you needed bullet points.
+**パターン**：AIに何を言ってほしいかに集中し、どのようにフォーマットすべきかを指定するのを忘れます。そして、JSONが必要なのに散文が返ってきたり、箇条書きが必要なのにテキストの壁が返ってきたりします。
 
 <Compare 
-  before={{ label: "No format specified", content: "Extract the key data from this text." }}
-  after={{ label: "Format specified", content: "Extract the key data from this text as JSON:\n\n{\n  \"name\": string,\n  \"date\": \"YYYY-MM-DD\",\n  \"amount\": number,\n  \"category\": string\n}\n\nReturn ONLY the JSON, no explanation." }}
+  before={{ label: "フォーマット指定なし", content: "このテキストから主要なデータを抽出して。" }}
+  after={{ label: "フォーマット指定あり", content: "このテキストから主要なデータをJSONとして抽出してください：\n\n{\n  \"name\": string,\n  \"date\": \"YYYY-MM-DD\",\n  \"amount\": number,\n  \"category\": string\n}\n\nJSONのみを返し、説明は不要です。" }}
 />
 
-**Why it happens**: We focus on content over structure. But if you need to parse the output programmatically, or paste it somewhere specific, format matters as much as content.
+**なぜ起こるのか**：私たちは構造よりもコンテンツに集中します。しかし、出力をプログラムで解析する必要がある場合や、特定の場所に貼り付ける必要がある場合、フォーマットはコンテンツと同じくらい重要です。
 
 <TryIt 
-  title="Format Specification Builder"
-  description="Generate clear format specifications for any output type you need."
-  prompt={`I need AI output in a specific format.
+  title="フォーマット仕様ビルダー"
+  description="必要な任意の出力タイプに対して明確なフォーマット仕様を生成します。"
+  prompt={`特定のフォーマットでAI出力が必要です。
 
-**What I'm asking for**: \${taskDescription}
-**How I'll use the output**: \${intendedUse}
-**Preferred format**: \${formatType} (JSON, Markdown, CSV, bullet points, etc.)
+**求めていること**：\${taskDescription}
+**出力の使用方法**：\${intendedUse}
+**希望するフォーマット**：\${formatType}（JSON、Markdown、CSV、箇条書きなど）
 
-Generate a format specification I can add to my prompt, including:
+プロンプトに追加できるフォーマット仕様を生成してください。以下を含めます：
 
-1. **Exact structure** with field names and types
-2. **Example output** showing the format
-3. **Constraints** (e.g., "Return ONLY the JSON, no explanation")
-4. **Edge cases** (what to output if data is missing)`}
+1. **正確な構造**（フィールド名と型を含む）
+2. **出力例**（フォーマットを示す）
+3. **制約**（例：「JSONのみを返し、説明は不要」）
+4. **エッジケース**（データが欠落している場合の出力内容）`}
 />
 
-## The Context Window Trap
+## コンテキストウィンドウの罠
 
-**The Pattern**: You paste an enormous document and expect comprehensive analysis. But models have limits—they may truncate, lose focus, or miss important details in long inputs.
+**パターン**：巨大な文書を貼り付けて包括的な分析を期待します。しかし、モデルには限界があり、長い入力を切り詰めたり、焦点を失ったり、重要な詳細を見落としたりすることがあります。
 
 <InfoGrid items={[
-  { label: "Know Your Limits", description: "Different models have different context windows", example: "GPT-4: 128K tokens, Claude: 200K tokens, Gemini: 1M tokens", exampleType: "text", color: "blue" },
-  { label: "Chunk Large Inputs", description: "Break documents into manageable sections", example: "Analyze chapters separately, then synthesize", exampleType: "text", color: "blue" },
-  { label: "Front-Load Important Info", description: "Put critical context early in the prompt", example: "Key requirements first, background details later", exampleType: "text", color: "blue" },
-  { label: "Trim the Fat", description: "Remove unnecessary context", example: "Do you really need the entire doc, or just relevant sections?", exampleType: "text", color: "blue" }
+  { label: "限界を知る", description: "異なるモデルには異なるコンテキストウィンドウがある", example: "GPT-4: 128Kトークン、Claude: 200Kトークン、Gemini: 1Mトークン", exampleType: "text", color: "blue" },
+  { label: "大きな入力を分割", description: "文書を管理可能なセクションに分割する", example: "章を個別に分析し、その後統合する", exampleType: "text", color: "blue" },
+  { label: "重要な情報を先頭に", description: "重要なコンテキストをプロンプトの早い段階に配置", example: "主要な要件を先に、背景の詳細は後に", exampleType: "text", color: "blue" },
+  { label: "無駄を削る", description: "不要なコンテキストを削除する", example: "本当に文書全体が必要か、関連するセクションだけで良いか？", exampleType: "text", color: "blue" }
 ]} />
 
 <TryIt 
-  title="Document Chunking Strategy"
-  description="Get a strategy for processing documents that exceed context limits."
-  prompt={`I have a large document to analyze:
+  title="文書分割戦略"
+  description="コンテキスト制限を超える文書を処理するための戦略を取得します。"
+  prompt={`分析する大きな文書があります：
 
-**Document type**: \${documentType}
-**Approximate length**: \${documentLength}
-**What I need to extract/analyze**: \${analysisGoal}
-**Model I'm using**: \${modelName}
+**文書の種類**：\${documentType}
+**おおよその長さ**：\${documentLength}
+**抽出/分析したいこと**：\${analysisGoal}
+**使用しているモデル**：\${modelName}
 
-Create a chunking strategy:
+分割戦略を作成してください：
 
-1. **How to divide**: Logical break points for this document type
-2. **What to include in each chunk**: Context needed for standalone analysis
-3. **How to synthesize**: Combining results from multiple chunks
-4. **What to watch for**: Information that might span chunks`}
+1. **分割方法**：この文書タイプの論理的な区切り点
+2. **各チャンクに含めるもの**：単独分析に必要なコンテキスト
+3. **統合方法**：複数のチャンクからの結果を組み合わせる方法
+4. **注意点**：チャンクをまたぐ可能性のある情報`}
 />
 
-## The Anthropomorphization Trap
+## 擬人化の罠
 
-**The Pattern**: You treat AI like a human colleague—expecting it to "enjoy" tasks, remember you, or care about outcomes. It doesn't.
+**パターン**：AIを人間の同僚のように扱い、タスクを「楽しむ」こと、あなたを覚えていること、結果を気にかけることを期待します。AIはそうしません。
 
 <Compare 
-  before={{ label: "Anthropomorphized", content: "I'm sure you'll enjoy this creative project! I know you love helping people, and this is really important to me personally." }}
-  after={{ label: "Clear and direct", content: "Write a creative short story with these specifications:\n- Genre: Science fiction\n- Length: 500 words\n- Tone: Hopeful\n- Must include: A twist ending" }}
+  before={{ label: "擬人化", content: "このクリエイティブなプロジェクトをきっと楽しんでくれると思います！人を助けることが好きだと知っていますし、これは私にとって本当に重要なんです。" }}
+  after={{ label: "明確で直接的", content: "以下の仕様でクリエイティブな短編小説を書いてください：\n- ジャンル：サイエンスフィクション\n- 長さ：500語\n- トーン：希望に満ちた\n- 必須：どんでん返しのエンディング" }}
 />
 
-**Why it happens**: AI responses are so human-like that we naturally slip into social patterns. But emotional appeals don't make the AI try harder—clear instructions do.
+**なぜ起こるのか**：AIの応答は非常に人間らしいため、自然と社会的なパターンに陥ります。しかし、感情的なアピールはAIをより頑張らせることはありません—明確な指示がそうするのです。
 
-<Callout type="info" title="What Actually Helps">
-Instead of emotional appeals, focus on: clear requirements, good examples, specific constraints, and explicit success criteria. These improve outputs. "Please try really hard" doesn't.
+<Callout type="info" title="実際に効果があるもの">
+感情的なアピールの代わりに、以下に焦点を当ててください：明確な要件、良い例、具体的な制約、明示的な成功基準。これらは出力を改善します。「本当に頑張ってください」は効果がありません。
 </Callout>
 
-## The Security Neglect Trap
+## セキュリティ軽視の罠
 
-**The Pattern**: In the rush to get things working, you include sensitive information in prompts—API keys, passwords, personal data, or proprietary information.
+**パターン**：動作させることを急ぐあまり、プロンプトに機密情報—APIキー、パスワード、個人データ、または機密情報—を含めてしまいます。
 
 <InfoGrid items={[
-  { label: "Secrets in Prompts", description: "API keys, passwords, tokens pasted into prompts", example: "\"Use this API key: sk-abc123...\"", color: "red" },
-  { label: "Personal Data", description: "Including PII that gets sent to third-party servers", example: "Customer names, emails, addresses in prompts", exampleType: "text", color: "red" },
-  { label: "Unsanitized User Input", description: "Passing user input directly into prompts", example: "Prompt injection vulnerabilities", exampleType: "text", color: "red" },
-  { label: "Proprietary Information", description: "Trade secrets or confidential data", example: "Internal strategies, unreleased product details", exampleType: "text", color: "red" }
+  { label: "プロンプト内の秘密", description: "APIキー、パスワード、トークンをプロンプトに貼り付け", example: "「このAPIキーを使用してください：sk-abc123...」", color: "red" },
+  { label: "個人データ", description: "サードパーティサーバーに送信されるPIIを含める", example: "プロンプト内の顧客名、メール、住所", exampleType: "text", color: "red" },
+  { label: "サニタイズされていないユーザー入力", description: "ユーザー入力を直接プロンプトに渡す", example: "プロンプトインジェクションの脆弱性", exampleType: "text", color: "red" },
+  { label: "機密情報", description: "企業秘密や機密データ", example: "内部戦略、未発表の製品詳細", exampleType: "text", color: "red" }
 ]} />
 
-**Why it happens**: Focus on functionality over security. But remember: prompts often go to external servers, may be logged, and could be used for training.
+**なぜ起こるのか**：セキュリティよりも機能性に焦点を当てています。しかし覚えておいてください：プロンプトは外部サーバーに送られることが多く、ログに記録される可能性があり、トレーニングに使用される可能性があります。
 
 <TryIt 
-  title="Security Review"
-  description="Check your prompt for security issues before sending."
-  prompt={`Review this prompt for security concerns:
+  title="セキュリティレビュー"
+  description="送信前にプロンプトのセキュリティ問題をチェックします。"
+  prompt={`このプロンプトのセキュリティ上の懸念をレビューしてください：
 
 "\${promptToReview}"
 
-Check for:
+以下をチェック：
 
-1. **Exposed Secrets**: API keys, passwords, tokens, credentials
-2. **Personal Data**: Names, emails, addresses, phone numbers, SSNs
-3. **Proprietary Info**: Trade secrets, internal strategies, confidential data
-4. **Injection Risks**: User input that could manipulate the prompt
+1. **露出した秘密**：APIキー、パスワード、トークン、資格情報
+2. **個人データ**：名前、メール、住所、電話番号、SSN
+3. **機密情報**：企業秘密、内部戦略、機密データ
+4. **インジェクションリスク**：プロンプトを操作する可能性のあるユーザー入力
 
-For each issue found:
-- Explain the risk
-- Suggest how to redact or protect the information
-- Recommend safer alternatives`}
+見つかった各問題について：
+- リスクを説明
+- 情報を編集または保護する方法を提案
+- より安全な代替案を推奨`}
 />
 
-## The Hallucination Ignorance Trap
+## 幻覚無視の罠
 
-**The Pattern**: You ask for citations, statistics, or specific facts, and assume they're real because the AI stated them confidently. But AI regularly invents plausible-sounding information.
+**パターン**：引用、統計、または特定の事実を求め、AIが自信を持って述べているので本物だと思い込みます。しかし、AIはもっともらしく聞こえる情報を定期的にでっち上げます。
 
 <Compare 
-  before={{ label: "Trusting blindly", content: "Give me 5 statistics about remote work productivity with sources." }}
-  after={{ label: "Acknowledging limitations", content: "What do we know about remote work productivity? For any statistics you mention, note whether they're well-established findings or more uncertain. I will verify any specific numbers independently." }}
+  before={{ label: "盲目的に信頼", content: "リモートワークの生産性に関する統計を5つ、出典付きで教えてください。" }}
+  after={{ label: "限界を認識", content: "リモートワークの生産性について何がわかっていますか？言及する統計について、それが確立された知見か、より不確かなものかを注記してください。具体的な数字は私が独自に検証します。" }}
 />
 
-**Why it happens**: AI generates text that sounds authoritative. It doesn't "know" when it's making things up—it's predicting likely text, not retrieving verified facts.
+**なぜ起こるのか**：AIは権威があるように聞こえるテキストを生成します。AIはでっち上げをしているときに「知っている」わけではありません—検証された事実を取得しているのではなく、ありそうなテキストを予測しているのです。
 
 <TryIt 
-  title="Hallucination-Resistant Query"
-  description="Structure your prompt to minimize hallucination risk and flag uncertainties."
-  prompt={`I need information about: \${topic}
+  title="幻覚耐性クエリ"
+  description="幻覚リスクを最小限に抑え、不確実性をフラグするようにプロンプトを構造化します。"
+  prompt={`以下について情報が必要です：\${topic}
 
-Please follow these guidelines to minimize errors:
+エラーを最小限に抑えるため、以下のガイドラインに従ってください：
 
-1. **Stick to well-established facts**. Avoid obscure claims that are hard to verify.
+1. **確立された事実にとどまる**。検証が難しい曖昧な主張は避けてください。
 
-2. **Flag uncertainty**. If you're not confident about something, say "I believe..." or "This may need verification..."
+2. **不確実性をフラグする**。何かに自信がない場合は、「〜と思われます」や「検証が必要かもしれません」と言ってください。
 
-3. **No invented sources**. Don't cite specific papers, books, or URLs unless you're certain they exist. Instead, describe where to find this type of information.
+3. **出典をでっち上げない**。存在することが確実でない限り、特定の論文、本、URLを引用しないでください。代わりに、この種の情報がどこで見つかるかを説明してください。
 
-4. **Acknowledge knowledge limits**. If my question is about events after your training data, say so.
+4. **知識の限界を認める**。私の質問がトレーニングデータ以降のイベントについてであれば、そう言ってください。
 
-5. **Separate fact from inference**. Clearly distinguish between "X is true" and "Based on Y, X is likely true."
+5. **事実と推論を分ける**。「Xは真実である」と「Yに基づいて、Xは真実である可能性が高い」を明確に区別してください。
 
-Now, with these guidelines in mind: \${actualQuestion}`}
+では、これらのガイドラインを念頭に置いて：\${actualQuestion}`}
 />
 
-## Pre-Send Checklist
+## 送信前チェックリスト
 
-Before sending any important prompt, run through this quick checklist:
+重要なプロンプトを送信する前に、この簡単なチェックリストを確認してください：
 
 <Checklist 
-  title="Prompt Quality Check"
+  title="プロンプト品質チェック"
   items={[
-    { text: "Is it specific enough? (Not vague)" },
-    { text: "Is it focused? (Not overloaded with requirements)" },
-    { text: "Does it include all necessary context?" },
-    { text: "Is the question neutral? (Not leading)" },
-    { text: "Have I specified the output format?" },
-    { text: "Is the input within context limits?" },
-    { text: "Are there any security concerns?" },
-    { text: "Am I prepared to verify the output?" },
-    { text: "Am I prepared to iterate if needed?" }
+    { text: "十分に具体的か？（曖昧ではない）" },
+    { text: "焦点が絞られているか？（要件で過負荷になっていない）" },
+    { text: "必要なコンテキストがすべて含まれているか？" },
+    { text: "質問は中立的か？（誘導的ではない）" },
+    { text: "出力フォーマットを指定したか？" },
+    { text: "入力はコンテキスト制限内か？" },
+    { text: "セキュリティ上の懸念はないか？" },
+    { text: "出力を検証する準備ができているか？" },
+    { text: "必要に応じて反復する準備ができているか？" }
   ]}
 />
 
 <Quiz 
-  question="What's the most dangerous pitfall when using AI for important decisions?"
+  question="重要な意思決定にAIを使用する際の最も危険な落とし穴は何ですか？"
   options={[
-    "Using vague prompts",
-    "Trusting AI outputs without verification",
-    "Not specifying output format",
-    "Overloading prompts with requirements"
+    "曖昧なプロンプトを使用する",
+    "検証せずにAIの出力を信頼する",
+    "出力フォーマットを指定しない",
+    "要件でプロンプトを過負荷にする"
   ]}
   correctIndex={1}
-  explanation="While all pitfalls cause problems, trusting AI outputs without verification is the most dangerous because it can lead to publishing false information, deploying buggy code, or making decisions based on hallucinated data. AI sounds confident even when completely wrong, making verification essential for any important use case."
+  explanation="すべての落とし穴が問題を引き起こしますが、検証せずにAIの出力を信頼することが最も危険です。なぜなら、虚偽の情報の公開、バグのあるコードのデプロイ、または幻覚されたデータに基づく意思決定につながる可能性があるからです。AIは完全に間違っていても自信を持って聞こえるため、重要なユースケースでは検証が不可欠です。"
 />
 
-## Analyze Your Prompts
+## プロンプトを分析する
 
-Use AI to get instant feedback on your prompt quality. Paste any prompt and get a detailed analysis:
+AIを使って、プロンプトの品質に関する即時フィードバックを得ましょう。任意のプロンプトを貼り付けて、詳細な分析を取得できます：
 
 <PromptAnalyzer 
-  title="Prompt Quality Analyzer"
-  description="Get AI-powered feedback on clarity, specificity, and suggestions for improvement"
-  defaultPrompt="Help me with my code"
+  title="プロンプト品質アナライザー"
+  description="明確さ、具体性、改善のための提案についてAIによるフィードバックを取得"
+  defaultPrompt="コードを手伝って"
 />
 
-## Debug This Prompt
+## このプロンプトをデバッグする
 
-Can you spot what's wrong with this prompt?
+このプロンプトの問題点を見つけられますか？
 
 <PromptDebugger
-  title="Find the Pitfall"
-  badPrompt="Write a blog post about technology that's SEO optimized with keywords and also funny but professional and includes code examples and targets beginners but has advanced tips and mentions our product TechCo and has social proof and a call to action and is 500 words but comprehensive."
-  badOutput="Here's a draft blog post about technology...
+  title="落とし穴を見つけよう"
+  badPrompt="テクノロジーについてSEO最適化されてキーワードも含み面白いけどプロフェッショナルでコード例も含み初心者向けだけど上級者向けのヒントもあり製品のTechCoについても言及しソーシャルプルーフもCTAもあり500語だけど包括的なブログ記事を書いて。"
+  badOutput="テクノロジーについてのブログ記事の下書きです...
 
-[Generic, unfocused content that tries to do everything but accomplishes nothing well. Tone shifts awkwardly between casual and technical. Missing half the requirements.]"
+[すべてをやろうとするが何も達成できない、一般的で焦点の定まらないコンテンツ。トーンがカジュアルとテクニカルの間でぎこちなく変化。要件の半分が欠落。]"
   options={[
-    { id: "vague", label: "The prompt is too vague", isCorrect: false, explanation: "Actually, the prompt has many specific requirements. The problem is the opposite—too many requirements, not too few." },
-    { id: "overload", label: "The prompt is overloaded with too many competing requirements", isCorrect: true, explanation: "Correct! This prompt asks for SEO + funny + professional + code + beginners + advanced + product mention + social proof + CTA + length constraint. That's 10+ competing requirements! The AI can't satisfy them all, so it does a mediocre job on everything. Solution: break this into multiple focused prompts." },
-    { id: "format", label: "The output format isn't specified", isCorrect: false, explanation: "While a more specific format would help, the main issue is requirement overload. You can't format your way out of asking for too much." },
-    { id: "context", label: "There's not enough context", isCorrect: false, explanation: "The prompt actually has a lot of context—maybe too much! The problem is that it's trying to satisfy too many goals at once." }
+    { id: "vague", label: "プロンプトが曖昧すぎる", isCorrect: false, explanation: "実際、このプロンプトには多くの具体的な要件があります。問題は逆で、要件が少なすぎるのではなく、多すぎるのです。" },
+    { id: "overload", label: "プロンプトが競合する要件で過負荷になっている", isCorrect: true, explanation: "正解！このプロンプトはSEO + 面白い + プロフェッショナル + コード + 初心者向け + 上級者向け + 製品言及 + ソーシャルプルーフ + CTA + 長さの制約を要求しています。10以上の競合する要件です！AIはすべてを満たすことができないので、すべてに対して平凡な仕事をします。解決策：複数の焦点を絞ったプロンプトに分割してください。" },
+    { id: "format", label: "出力フォーマットが指定されていない", isCorrect: false, explanation: "より具体的なフォーマットは役立ちますが、主な問題は要件の過負荷です。多くを求めすぎていることはフォーマットでは解決できません。" },
+    { id: "context", label: "コンテキストが不足している", isCorrect: false, explanation: "このプロンプトには実際に多くのコンテキストがあります—おそらく多すぎるくらいです！問題は、一度に多くの目標を満たそうとしていることです。" }
   ]}
-  hint="Count how many different requirements are packed into this single prompt."
+  hint="この単一のプロンプトにいくつの異なる要件が詰め込まれているか数えてみてください。"
 />

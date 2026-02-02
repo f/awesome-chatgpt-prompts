@@ -1,335 +1,335 @@
-AI can dramatically enhance professional productivity. This chapter covers prompts for business communication, analysis, planning, and workflow optimization.
+AI 可以显著提升职业生产力。本章涵盖商务沟通、分析、规划和工作流程优化的提示词。
 
-<Callout type="info" title="AI for Business">
-AI excels at drafting, analysis, and structuring—freeing you to focus on strategy, relationships, and decisions that require human judgment.
+<Callout type="info" title="商务中的 AI">
+AI 擅长起草、分析和结构化——让你能够专注于策略、人际关系和需要人类判断的决策。
 </Callout>
 
-## Business Communication
+## 商务沟通
 
-### Do's and Don'ts: Business Emails
+### 注意事项：商务邮件
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write an email to my boss about the project." }}
-  after={{ label: "✓ Complete context", content: "Write an email to my manager (Sarah) updating her on the Q4 marketing project.\n\nKey points: We're on track for the Nov 15 deadline, resolved the vendor issue, need her approval on the $5K budget increase.\nTone: Professional but friendly (we have a good relationship)\nKeep under 150 words with a clear ask at the end." }}
+  before={{ label: "❌ 模糊的请求", content: "给我的老板写一封关于项目的邮件。" }}
+  after={{ label: "✓ 完整的上下文", content: "给我的经理（Sarah）写一封邮件，向她汇报第四季度营销项目的进展。\n\n要点：我们能按时在11月15日前完成，已解决供应商问题，需要她批准增加5000美元预算。\n语气：专业但友好（我们关系很好）\n控制在150字以内，结尾要有明确的请求。" }}
 />
 
-### Email Drafting
+### 邮件起草
 
-<TryIt compact prompt={`Write a professional email.
+<TryIt compact prompt={`撰写一封专业邮件。
 
-Context:
-- To: [recipient and relationship]
-- Purpose: [request/inform/follow-up/apologize]
-- Key points: [what must be communicated]
-- Tone: [formal/friendly professional/urgent]
+背景：
+- 收件人：[收件人及关系]
+- 目的：[请求/通知/跟进/道歉]
+- 要点：[必须传达的内容]
+- 语气：[正式/友好专业/紧急]
 
-Constraints:
-- Keep under [X] sentences
-- Clear call-to-action
-- Subject line included`} />
+约束条件：
+- 控制在 [X] 句以内
+- 明确的行动号召
+- 包含主题行`} />
 
-**Examples by purpose:**
+**按目的分类的示例：**
 
-<TryIt compact prompt={`\${emailType:Meeting Request}: Write an email requesting a meeting with a potential client to discuss partnership opportunities. Keep it brief and make it easy for them to say yes.`} />
+<TryIt compact prompt={`\${emailType:会议请求}：写一封邮件，请求与潜在客户会面讨论合作机会。保持简洁，让对方容易接受。`} />
 
-<TryIt compact prompt={`\${emailType:Difficult Conversation}: Write an email declining a vendor's proposal while maintaining the relationship for future opportunities. Be clear but diplomatic.`} />
+<TryIt compact prompt={`\${emailType:棘手对话}：写一封邮件婉拒供应商的提案，同时为未来的合作机会保持良好关系。要明确但要讲究策略。`} />
 
-<TryIt compact prompt={`\${emailType:Status Update}: Write a project status email to stakeholders. The project is 2 weeks behind schedule due to scope changes. Present the situation professionally with a recovery plan.`} />
+<TryIt compact prompt={`\${emailType:状态更新}：给利益相关者写一封项目状态更新邮件。由于范围变更，项目延期了两周。专业地呈现情况并提供补救计划。`} />
 
-### Presentation Content
+### 演示内容
 
-<TryIt compact prompt={`Create presentation content for \${topic:Q4 sales strategy}.
+<TryIt compact prompt={`为 \${topic:第四季度销售策略} 创建演示内容。
 
-Audience: \${audience:executive leadership}
-Duration: \${duration:15 minutes}
-Goal: \${goal:persuade to approve budget increase}
+受众：\${audience:高管领导层}
+时长：\${duration:15 分钟}
+目标：\${goal:说服批准增加预算}
 
-Provide for each slide:
-- Title
-- Key message (one main point)
-- Supporting points (3 max)
-- Speaker notes (what to say)
-- Visual suggestion (chart/image/diagram)
+为每张幻灯片提供：
+- 标题
+- 核心信息（一个要点）
+- 支撑要点（最多3个）
+- 演讲备注（要说的话）
+- 视觉建议（图表/图片/图示）
 
-Structure:
-1. Hook/Attention grabber
-2. Problem/Opportunity
-3. Solution/Recommendation
-4. Evidence/Support
-5. Call to action`} />
+结构：
+1. 引子/吸引注意力
+2. 问题/机会
+3. 解决方案/建议
+4. 证据/支持
+5. 行动号召`} />
 
-### Report Writing
+### 报告撰写
 
-<TryIt compact prompt={`Write a \${reportType:recommendation} report on \${topic:expanding into European markets}.
+<TryIt compact prompt={`撰写一份关于 \${topic:拓展欧洲市场} 的 \${reportType:建议} 报告。
 
-Report type: \${type:recommendation}
-Audience: \${audience:C-suite}
-Length: \${length:5 pages}
+报告类型：\${type:建议}
+受众：\${audience:高管层}
+长度：\${length:5 页}
 
-Structure:
-1. Executive Summary (key findings, 1 paragraph)
-2. Background/Context
-3. Methodology (if applicable)
-4. Findings
-5. Analysis
-6. Recommendations
-7. Next Steps
+结构：
+1. 执行摘要（主要发现，1段）
+2. 背景/上下文
+3. 方法论（如适用）
+4. 发现
+5. 分析
+6. 建议
+7. 后续步骤
 
-Include: Data visualization suggestions where relevant
-Tone: \${tone:formal business}`} />
+包含：在相关处提供数据可视化建议
+语气：\${tone:正式商务}`} />
 
-## Analysis & Decision-Making
+## 分析与决策
 
-<Callout type="tip" title="Analysis Principle">
-AI can structure your thinking, but **you provide the real-world context**. The best analyses combine AI's frameworks with your domain knowledge.
+<Callout type="tip" title="分析原则">
+AI 可以帮助你构建思路，但**真实的上下文由你提供**。最佳的分析结合了 AI 的框架和你的领域知识。
 </Callout>
 
-### SWOT Analysis
+### SWOT 分析
 
-<TryIt compact prompt={`Conduct a SWOT analysis for \${subject:launching a new mobile app}.
+<TryIt compact prompt={`为 \${subject:推出新款移动应用} 进行 SWOT 分析。
 
-Context:
-\${context:We're a mid-size fintech company considering a consumer banking app}
+背景：
+\${context:我们是一家中型金融科技公司，正在考虑推出消费者银行应用}
 
-Provide:
+提供：
 
-**Strengths** (internal positives)
-- At least 4 points with brief explanations
+**优势**（内部积极因素）
+- 至少4点并简要说明
 
-**Weaknesses** (internal negatives)
-- At least 4 points with brief explanations
+**劣势**（内部消极因素）
+- 至少4点并简要说明
 
-**Opportunities** (external positives)
-- At least 4 points with brief explanations
+**机会**（外部积极因素）
+- 至少4点并简要说明
 
-**Threats** (external negatives)
-- At least 4 points with brief explanations
+**威胁**（外部消极因素）
+- 至少4点并简要说明
 
-**Strategic Implications**
-- Key insight from analysis
-- Recommended priorities`} />
+**战略启示**
+- 分析的关键洞察
+- 建议的优先事项`} />
 
-### Decision Framework
+### 决策框架
 
-<TryIt compact prompt={`Help me make a decision about \${decision:which CRM to choose}.
+<TryIt compact prompt={`帮我做出关于 \${decision:选择哪个 CRM} 的决定。
 
-Options:
+选项：
 1. \${optionA:Salesforce}
 2. \${optionB:HubSpot}
 3. \${optionC:Pipedrive}
 
-Criteria that matter to me:
-- \${criterion1:ease of use} (weight: high)
-- \${criterion2:integration with existing tools} (weight: high)
-- \${criterion3:cost} (weight: medium)
+对我重要的标准：
+- \${criterion1:易用性}（权重：高）
+- \${criterion2:与现有工具集成}（权重：高）
+- \${criterion3:成本}（权重：中）
 
-Provide:
-1. Score each option against each criterion (1-5)
-2. Weighted analysis
-3. Pros/cons summary for each
-4. Risk assessment
-5. Recommendation with rationale
-6. Questions to consider before deciding`} />
+提供：
+1. 按每个标准为每个选项打分（1-5）
+2. 加权分析
+3. 每个选项的优缺点总结
+4. 风险评估
+5. 带有理由的建议
+6. 决定前需要考虑的问题`} />
 
-### Competitive Analysis
+### 竞争分析
 
-<TryIt compact prompt={`Analyze \${competitor:Slack} compared to \${ourProduct:our team communication tool}.
+<TryIt compact prompt={`分析 \${competitor:Slack} 与 \${ourProduct:我们的团队沟通工具} 的对比。
 
-Research their:
-1. **Products/Services** - offerings, pricing, positioning
-2. **Strengths** - what they do well
-3. **Weaknesses** - where they fall short
-4. **Market position** - target segments, market share
-5. **Strategy** - apparent direction and focus
+研究他们的：
+1. **产品/服务** - 产品、定价、定位
+2. **优势** - 他们做得好的地方
+3. **劣势** - 他们的不足之处
+4. **市场地位** - 目标细分市场、市场份额
+5. **策略** - 明显的方向和重点
 
-Compare to us:
-- Where we're stronger
-- Where they're stronger
-- Opportunity gaps
-- Competitive threats
+与我们对比：
+- 我们更强的地方
+- 他们更强的地方
+- 机会缺口
+- 竞争威胁
 
-Recommend: Actions to improve our competitive position`} />
+建议：提升我们竞争地位的行动`} />
 
-## Planning & Strategy
+## 规划与策略
 
-### Goal Setting (OKRs)
+### 目标设定（OKR）
 
-<TryIt compact prompt={`Help me set OKRs for \${scope:Q1 marketing team}.
+<TryIt compact prompt={`帮我为 \${scope:第一季度营销团队} 设定 OKR。
 
-Context:
-- Company goals: \${companyGoals:increase revenue 25% YoY}
-- Current situation: \${currentState:brand awareness is low in new markets}
-- Key priorities: \${priorities:lead generation, content marketing}
+背景：
+- 公司目标：\${companyGoals:同比增长收入25%}
+- 现状：\${currentState:在新市场的品牌知名度较低}
+- 关键优先事项：\${priorities:潜客获取、内容营销}
 
-Create 3 Objectives with 3-4 Key Results each.
+创建3个目标，每个目标有3-4个关键结果。
 
-Format:
-**Objective 1:** Qualitative goal - inspiring
-- KR 1.1: Quantitative measure (Current: X → Target: Y)
-- KR 1.2: Quantitative measure (Current: X → Target: Y)
-- KR 1.3: Quantitative measure (Current: X → Target: Y)
+格式：
+**目标 1：** 定性目标 - 鼓舞人心的
+- KR 1.1：定量指标（当前：X → 目标：Y）
+- KR 1.2：定量指标（当前：X → 目标：Y）
+- KR 1.3：定量指标（当前：X → 目标：Y）
 
-Ensure KRs are:
-- Measurable
-- Ambitious but achievable
-- Time-bound
-- Outcome-focused (not tasks)`} />
+确保关键结果是：
+- 可衡量的
+- 雄心勃勃但可实现的
+- 有时限的
+- 以结果为导向（而非任务）`} />
 
-### Project Planning
+### 项目规划
 
-<TryIt compact prompt={`Create a project plan for \${project:website redesign}.
+<TryIt compact prompt={`为 \${project:网站重新设计} 创建项目计划。
 
-Scope: \${scope:new homepage, product pages, checkout flow}
-Timeline: \${timeline:3 months}
-Team: \${team:2 developers, 1 designer, 1 PM}
-Budget: \${budget:$50,000}
+范围：\${scope:新首页、产品页面、结账流程}
+时间线：\${timeline:3 个月}
+团队：\${team:2 名开发人员、1 名设计师、1 名项目经理}
+预算：\${budget:50,000 美元}
 
-Provide:
-1. **Project phases** with milestones
-2. **Work breakdown structure** (major tasks)
-3. **Timeline** (Gantt-style description)
-4. **Dependencies** (what blocks what)
-5. **Risks** (potential issues and mitigation)
-6. **Success criteria** (how we know we're done)`} />
+提供：
+1. **项目阶段** 及里程碑
+2. **工作分解结构**（主要任务）
+3. **时间线**（甘特图式描述）
+4. **依赖关系**（什么阻塞什么）
+5. **风险**（潜在问题和缓解措施）
+6. **成功标准**（如何判断完成）`} />
 
-### Meeting Agenda
+### 会议议程
 
-<TryIt compact prompt={`Create an agenda for \${meetingType:quarterly planning}.
+<TryIt compact prompt={`为 \${meetingType:季度规划} 创建议程。
 
-Purpose: \${purpose:align on Q2 priorities and resource allocation}
-Attendees: \${attendees:department heads, CEO, COO}
-Duration: \${duration:90 minutes}
+目的：\${purpose:统一第二季度优先事项和资源分配}
+与会者：\${attendees:部门负责人、CEO、COO}
+时长：\${duration:90 分钟}
 
-Format:
-| Time | Topic | Owner | Goal |
+格式：
+| 时间 | 议题 | 负责人 | 目标 |
 |------|-------|-------|------|
-| 5 min | Opening | Facilitator | Context |
+| 5 分钟 | 开场 | 主持人 | 背景介绍 |
 | ... | ... | ... | ... |
 
-Include:
-- Time allocations
-- Clear owner for each item
-- Specific outcomes expected
-- Pre-work required
-- Follow-up action item template`} />
+包含：
+- 时间分配
+- 每项的明确负责人
+- 预期的具体成果
+- 所需的预先准备工作
+- 后续行动项模板`} />
 
-## Productivity Workflows
+## 生产力工作流
 
-### Task Prioritization
+### 任务优先级排序
 
-<TryIt compact prompt={`Help me prioritize my tasks using the Eisenhower Matrix.
+<TryIt compact prompt={`使用艾森豪威尔矩阵帮我排列任务优先级。
 
-My tasks:
-\${tasks:1. Prepare quarterly report (due Friday)\n2. Review job applications\n3. Reply to vendor emails\n4. Plan team offsite\n5. Update LinkedIn profile}
+我的任务：
+\${tasks:1. 准备季度报告（周五截止）\n2. 审阅求职申请\n3. 回复供应商邮件\n4. 规划团队外出活动\n5. 更新 LinkedIn 个人资料}
 
-Categorize each into:
-1. **Urgent + Important** (Do first)
-2. **Important, Not Urgent** (Schedule)
-3. **Urgent, Not Important** (Delegate)
-4. **Neither** (Eliminate)
+将每项归类为：
+1. **紧急+重要**（优先处理）
+2. **重要但不紧急**（安排时间）
+3. **紧急但不重要**（委托他人）
+4. **两者都不是**（删除）
 
-Then provide:
-- Recommended order of execution
-- Time estimates
-- Suggestions for delegation or elimination`} />
+然后提供：
+- 建议的执行顺序
+- 时间估算
+- 委托或删除的建议`} />
 
-### Process Documentation
+### 流程文档
 
-<TryIt compact prompt={`Document this business process: \${processName:customer refund request}.
+<TryIt compact prompt={`记录这个业务流程：\${processName:客户退款请求}。
 
-Create:
-1. **Process overview** (1 paragraph)
-2. **Trigger** (what starts this process)
-3. **Steps** (numbered, with responsible party)
-4. **Decision points** (if X then Y format)
-5. **Outputs** (what this process produces)
-6. **Systems involved** (tools/software)
-7. **Exceptions** (edge cases and handling)
+创建：
+1. **流程概述**（1段）
+2. **触发条件**（什么启动这个流程）
+3. **步骤**（编号，注明负责人）
+4. **决策点**（如果 X 则 Y 格式）
+5. **产出**（这个流程产生什么）
+6. **涉及的系统**（工具/软件）
+7. **例外情况**（边缘案例及处理方式）
 
-Format: Clear enough for new employee to follow`} />
+格式：清晰到新员工可以遵循`} />
 
-### Standard Operating Procedure
+### 标准操作程序
 
-<TryIt compact prompt={`Write an SOP for \${task:onboarding new employees to Slack}.
+<TryIt compact prompt={`为 \${task:将新员工添加到 Slack} 编写 SOP。
 
-Audience: \${audience:HR administrators}
-Complexity: \${complexity:basic users}
+受众：\${audience:人力资源管理员}
+复杂度：\${complexity:基础用户}
 
-Include:
-1. Purpose and scope
-2. Prerequisites/requirements
-3. Step-by-step instructions
-4. Screenshots/visual placeholders
-5. Quality checkpoints
-6. Common errors and troubleshooting
-7. Related SOPs/documents
-8. Version history`} />
+包含：
+1. 目的和范围
+2. 前提条件/要求
+3. 分步说明
+4. 截图/视觉占位符
+5. 质量检查点
+6. 常见错误和故障排除
+7. 相关 SOP/文档
+8. 版本历史`} />
 
-## Communication Templates
+## 沟通模板
 
-### Stakeholder Update
+### 利益相关者更新
 
-<TryIt compact prompt={`Write a stakeholder update for \${project:CRM migration project}.
+<TryIt compact prompt={`为 \${project:CRM 迁移项目} 撰写利益相关者更新。
 
-Status: \${status:at risk}
-Period: \${period:Week of Jan 6-10}
+状态：\${status:有风险}
+周期：\${period:1月6-10日周}
 
-Format:
-## Project Name Update
+格式：
+## 项目名称更新
 
-**Status:** 🟢/🟡/🔴
+**状态：** 🟢/🟡/🔴
 
-**Progress this period:**
-- Accomplishment 1
-- Accomplishment 2
+**本期进展：**
+- 成果 1
+- 成果 2
 
-**Next period goals:**
-- Goal 1
-- Goal 2
+**下期目标：**
+- 目标 1
+- 目标 2
 
-**Risks/Blockers:**
-- If any
+**风险/阻碍：**
+- 如有
 
-**Decisions needed:**
-- If any`} />
+**需要的决策：**
+- 如有`} />
 
-### Feedback Request
+### 反馈请求
 
-<TryIt compact prompt={`Write a message requesting feedback on \${deliverable:the new product roadmap document}.
+<TryIt compact prompt={`撰写一条请求对 \${deliverable:新产品路线图文档} 进行反馈的消息。
 
-Context: \${context:This will guide our Q2 priorities, I want to make sure I haven't missed anything}
-Specific areas for feedback: \${feedbackAreas:timeline feasibility, resource allocation, missing features}
-Timeline: \${deadline:by Friday EOD}
+背景：\${context:这将指导我们第二季度的优先事项，我想确保没有遗漏任何内容}
+需要反馈的具体方面：\${feedbackAreas:时间线可行性、资源分配、遗漏的功能}
+截止时间：\${deadline:周五下班前}
 
-Tone: Professional but not overly formal
-Make it easy to respond with specific questions`} />
+语气：专业但不过于正式
+通过具体问题让对方容易回复`} />
 
-## Prompt Templates from prompts.chat
+## prompts.chat 的提示词模板
 
-### Act as a Business Consultant
+### 充当商业顾问
 
-<TryIt compact prompt={`I want you to act as a business consultant. I will describe business situations and challenges, and you will provide strategic advice, frameworks for thinking about problems, and actionable recommendations. Draw on established business principles while being practical and specific.`} />
+<TryIt compact prompt={`我希望你充当商业顾问。我会描述商业情况和挑战，你来提供战略建议、思考问题的框架和可执行的建议。借鉴成熟的商业原则，同时保持实用和具体。`} />
 
-### Act as a Meeting Facilitator
+### 充当会议主持人
 
-<TryIt compact prompt={`I want you to act as a meeting facilitator. Help me plan and run effective meetings. Create agendas, suggest discussion frameworks, help synthesize conversations, and draft follow-up communications. Focus on making meetings productive and action-oriented.`} />
+<TryIt compact prompt={`我希望你充当会议主持人。帮我规划和主持高效的会议。创建议程、建议讨论框架、帮助综合对话内容并起草后续沟通。专注于使会议富有成效且以行动为导向。`} />
 
-## Summary
+## 总结
 
-<Callout type="tip" title="Key Techniques">
-Specify the audience and their needs, define the desired outcome clearly, include relevant context and constraints, request specific formats and structures, and consider professional tone requirements.
+<Callout type="tip" title="关键技巧">
+明确受众及其需求，清晰定义期望的结果，包含相关的背景和约束条件，要求特定的格式和结构，并考虑专业的语气要求。
 </Callout>
 
 <Quiz 
-  question="What should you always include when asking AI to write a business email?"
+  question="在请求 AI 撰写商务邮件时，你应该始终包含什么？"
   options={[
-    "Just the topic you want to discuss",
-    "Recipient, purpose, key points, and desired tone",
-    "Only the recipient's name",
-    "A template from the internet"
+    "只是你想讨论的话题",
+    "收件人、目的、要点和期望的语气",
+    "只有收件人的姓名",
+    "网上找的模板"
   ]}
   correctIndex={1}
-  explanation="Effective business emails need context: who you're writing to, why, what must be communicated, and the appropriate tone. AI can't infer your professional relationships or organizational context."
+  explanation="有效的商务邮件需要上下文：你写给谁、为什么写、必须传达什么以及适当的语气。AI 无法推断你的职业关系或组织背景。"
 />
 
-AI can handle routine business communication while you focus on strategy and relationships.
+AI 可以处理日常商务沟通，让你专注于策略和人际关系。

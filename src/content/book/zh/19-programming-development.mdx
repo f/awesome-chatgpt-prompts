@@ -1,19 +1,19 @@
-AI has transformed software development. This chapter covers prompting techniques for code generation, debugging, review, and development workflows.
+AI 已经彻底改变了软件开发。本章介绍用于代码生成、调试、审查和开发工作流程的提示词技巧。
 
-<Callout type="info" title="AI as Coding Partner">
-AI excels at code generation, debugging, and documentation—but always review generated code for security, correctness, and maintainability. Never deploy AI code without testing.
+<Callout type="info" title="AI 作为编程伙伴">
+AI 擅长代码生成、调试和文档编写——但务必审查生成的代码，检查安全性、正确性和可维护性。未经测试，切勿部署 AI 生成的代码。
 </Callout>
 
-## Code Generation
+## 代码生成
 
-### Do's and Don'ts: Code Prompts
+### 应做与不应做：代码提示词
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write a function to validate emails." }}
-  after={{ label: "✓ Complete specification", content: "Write a Python function that validates email addresses.\n\nInput: string (potential email)\nOutput: tuple[bool, str | None] - (is_valid, error_message)\nHandle: empty string, None, unicode chars\nUse regex, include type hints and docstring." }}
+  before={{ label: "❌ 模糊的请求", content: "写一个验证邮箱的函数。" }}
+  after={{ label: "✓ 完整的规格说明", content: "写一个 Python 函数来验证邮箱地址。\n\n输入：string（可能的邮箱地址）\n输出：tuple[bool, str | None] - (is_valid, error_message)\n处理：空字符串、None、unicode 字符\n使用正则表达式，包含类型注解和文档字符串。" }}
 />
 
-### Function Generation
+### 函数生成
 
 <TryIt compact prompt={`Write a \${language:Python} function that \${description:validates email addresses}.
 
@@ -29,7 +29,7 @@ Include:
 - Input validation
 - Error handling`} />
 
-### Class/Module Generation
+### 类/模块生成
 
 <TryIt compact prompt={`Create a \${language:Python} class for \${purpose:managing user sessions}.
 
@@ -48,7 +48,7 @@ Requirements:
 Testing:
 - Include unit test skeleton`} />
 
-### API Endpoint Generation
+### API 端点生成
 
 <TryIt compact prompt={`Create a REST API endpoint for \${resource:user profiles}.
 
@@ -71,13 +71,13 @@ Include:
 - Error handling
 - Rate limiting consideration`} />
 
-## Debugging
+## 调试
 
-<Callout type="tip" title="Debugging Principle">
-Always include the **expected behavior**, **actual behavior**, and **error message** (if any). The more context you provide, the faster AI can identify the root cause.
+<Callout type="tip" title="调试原则">
+始终包含**预期行为**、**实际行为**和**错误信息**（如有）。你提供的上下文越多，AI 就能越快找到根本原因。
 </Callout>
 
-### Bug Analysis
+### Bug 分析
 
 <TryIt compact prompt={`Debug this code. It should \${expectedBehavior:return the sum of all numbers} but instead \${actualBehavior:returns 0 for all inputs}.
 
@@ -94,7 +94,7 @@ Steps to debug:
 4. Explain the root cause
 5. Provide the fix with explanation`} />
 
-### Error Message Interpretation
+### 错误信息解读
 
 <TryIt compact prompt={`Explain this error and how to fix it:
 
@@ -112,7 +112,7 @@ Provide:
 3. Step-by-step fix
 4. How to prevent this in the future`} />
 
-### Performance Debugging
+### 性能调试
 
 <TryIt compact prompt={`This code is slow. Analyze and optimize:
 
@@ -130,16 +130,16 @@ Provide:
 4. Show optimized code
 5. Estimate improvement`} />
 
-## Code Review
+## 代码审查
 
-### Do's and Don'ts: Code Review Prompts
+### 应做与不应做：代码审查提示词
 
 <Compare 
-  before={{ label: "❌ Generic request", content: "Review this code." }}
-  after={{ label: "✓ Specific criteria", content: "Review this code for a pull request.\n\nCheck for:\n1. Correctness: bugs, logic errors, edge cases\n2. Security: injection risks, auth issues\n3. Performance: N+1 queries, memory leaks\n4. Maintainability: naming, complexity\n\nFormat: 🔴 Critical / 🟡 Important / 🟢 Suggestion" }}
+  before={{ label: "❌ 笼统的请求", content: "审查这段代码。" }}
+  after={{ label: "✓ 具体的标准", content: "为 Pull Request 审查这段代码。\n\n检查：\n1. 正确性：bug、逻辑错误、边界情况\n2. 安全性：注入风险、认证问题\n3. 性能：N+1 查询、内存泄漏\n4. 可维护性：命名、复杂度\n\n格式：🔴 严重 / 🟡 重要 / 🟢 建议" }}
 />
 
-### Comprehensive Review
+### 综合审查
 
 <TryIt compact prompt={`Review this code for a pull request.
 
@@ -159,7 +159,7 @@ Format your review as:
 🟢 Suggestion: nice to have
 💭 Question: clarification needed`} />
 
-### Security Review
+### 安全审查
 
 <TryIt compact prompt={`Perform a security review of this code:
 
@@ -182,9 +182,9 @@ For each finding:
 - Exploit: How it could be attacked
 - Fix: Recommended remediation`} />
 
-## Refactoring
+## 重构
 
-### Code Smell Detection
+### 代码异味检测
 
 <TryIt compact prompt={`Analyze this code for code smells and refactoring opportunities:
 
@@ -200,7 +200,7 @@ Identify:
 
 For each issue, show before/after code.`} />
 
-### Design Pattern Application
+### 设计模式应用
 
 <TryIt compact prompt={`Refactor this code using the \${patternName:Factory} pattern.
 
@@ -217,9 +217,9 @@ Provide:
 3. Refactored code
 4. Trade-offs to consider`} />
 
-## Testing
+## 测试
 
-### Unit Test Generation
+### 单元测试生成
 
 <TryIt compact prompt={`Write unit tests for this function:
 
@@ -237,7 +237,7 @@ Cover:
 Format: Arrange-Act-Assert pattern
 Include: Descriptive test names`} />
 
-### Test Case Generation
+### 测试用例生成
 
 <TryIt compact prompt={`Generate test cases for this feature:
 
@@ -250,9 +250,9 @@ Provide test cases in this format:
 |----|----------|-------|------|------|----------|
 | TC01 | ... | ... | ... | ... | High |`} />
 
-## Architecture & Design
+## 架构与设计
 
-### System Design
+### 系统设计
 
 <TryIt compact prompt={`Design a system for \${requirement:real-time chat application}.
 
@@ -270,7 +270,7 @@ Provide:
 5. Scaling strategy
 6. Trade-offs and alternatives considered`} />
 
-### Database Schema Design
+### 数据库模式设计
 
 <TryIt compact prompt={`Design a database schema for \${application:e-commerce platform}.
 
@@ -286,9 +286,9 @@ Provide:
 4. Foreign key relationships
 5. Sample queries for key operations`} />
 
-## Documentation Generation
+## 文档生成
 
-### API Documentation
+### API 文档
 
 <TryIt compact prompt={`Generate API documentation from this code:
 
@@ -304,7 +304,7 @@ Include:
 - Error codes
 - Authentication requirements`} />
 
-### Inline Documentation
+### 内联文档
 
 <TryIt compact prompt={`Add comprehensive documentation to this code:
 
@@ -319,40 +319,36 @@ Add:
 
 Style: \${docStyle:Google}`} />
 
-## Prompt Templates from prompts.chat
+## 来自 prompts.chat 的提示词模板
 
-### Act as a Senior Developer
-
-```
-I want you to act as a senior software developer. I will provide 
-code and ask questions about it. You will review the code, suggest 
-improvements, explain concepts, and help debug issues. Your 
-responses should be educational and help me become a better 
-developer.
-```
-
-### Act as a Code Reviewer
+### 扮演高级开发者
 
 ```
-I want you to act as a code reviewer. I will provide pull requests 
-with code changes, and you will review them thoroughly. Check for 
-bugs, security issues, performance problems, and adherence to best 
-practices. Provide constructive feedback that helps the developer 
-improve.
+我希望你扮演一位高级软件开发者。我会提供代码并就其提问。
+你将审查代码、提出改进建议、解释概念并帮助调试问题。
+你的回复应具有教育意义，帮助我成为更好的开发者。
 ```
 
-### Act as a Software Architect
+### 扮演代码审查员
 
 ```
-I want you to act as a software architect. I will describe system 
-requirements and constraints, and you will design scalable, 
-maintainable architectures. Explain your design decisions, 
-trade-offs, and provide diagrams where helpful.
+我希望你扮演一位代码审查员。我会提供包含代码变更的
+Pull Request，你将对其进行全面审查。检查 bug、安全问题、
+性能问题以及是否遵循最佳实践。提供建设性的反馈，
+帮助开发者改进。
 ```
 
-## Development Workflow Integration
+### 扮演软件架构师
 
-### Commit Message Generation
+```
+我希望你扮演一位软件架构师。我会描述系统需求和约束条件，
+你将设计可扩展、可维护的架构。解释你的设计决策、
+权衡考量，并在有帮助时提供图表。
+```
+
+## 开发工作流程集成
+
+### 提交信息生成
 
 <TryIt compact prompt={`Generate a commit message for these changes:
 
@@ -367,7 +363,7 @@ Provide:
 - Body (what and why, wrapped at 72 chars)
 - Footer (references issues if applicable)`} />
 
-### PR Description Generation
+### PR 描述生成
 
 <TryIt compact prompt={`Generate a pull request description:
 
@@ -392,22 +388,22 @@ placeholder
 ## Related Issues
 Closes #\${issueNumber:123}`} />
 
-## Summary
+## 总结
 
-<Callout type="tip" title="Key Techniques">
-Include full context (language, framework, constraints), specify requirements precisely, request specific output formats, ask for explanations alongside code, and include edge cases to handle.
+<Callout type="tip" title="关键技巧">
+包含完整的上下文（语言、框架、约束条件），精确说明需求，请求特定的输出格式，在请求代码的同时要求解释，并包含需要处理的边界情况。
 </Callout>
 
 <Quiz 
-  question="What's the most important element to include when asking AI to debug code?"
+  question="请求 AI 调试代码时，最重要的元素是什么？"
   options={[
-    "The programming language only",
-    "Expected behavior, actual behavior, and error message",
-    "Just the code snippet",
-    "The file name"
+    "仅提供编程语言",
+    "预期行为、实际行为和错误信息",
+    "仅提供代码片段",
+    "文件名"
   ]}
   correctIndex={1}
-  explanation="Debugging requires context: what should happen vs. what actually happens. Error messages and stack traces help AI pinpoint the exact issue quickly."
+  explanation="调试需要上下文：应该发生什么与实际发生了什么。错误信息和堆栈跟踪能帮助 AI 快速定位确切问题。"
 />
 
-AI is a powerful coding partner—use it for generation, review, debugging, and documentation while maintaining your architectural judgment.
+AI 是强大的编程伙伴——将其用于代码生成、审查、调试和文档编写，同时保持你自己的架构判断力。

@@ -1,200 +1,200 @@
-Prompt chaining breaks complex tasks into sequences of simpler prompts, where each step's output feeds into the next. This technique dramatically improves reliability and enables sophisticated workflows that would be impossible with a single prompt.
+プロンプトチェーンは、複雑なタスクをシンプルなプロンプトの連続に分解し、各ステップの出力が次のステップに入力される手法です。この技術により信頼性が大幅に向上し、単一のプロンプトでは不可能な高度なワークフローを実現できます。
 
-<Callout type="tip" title="Think Assembly Lines">
-Just like a factory assembly line breaks manufacturing into specialized stations, prompt chaining breaks AI tasks into specialized steps. Each step does one thing well, and the combined output is far better than trying to do everything at once.
+<Callout type="tip" title="組み立てラインを想像してください">
+工場の組み立てラインが製造工程を専門化されたステーションに分けるように、プロンプトチェーンはAIタスクを専門化されたステップに分けます。各ステップは一つのことを上手くこなし、組み合わせた出力は一度にすべてを行おうとするよりもはるかに優れたものになります。
 </Callout>
 
-## Why Chain Prompts?
+## なぜプロンプトをチェーンするのか？
 
-Single prompts struggle with complex tasks because they try to do too much at once. The AI has to simultaneously understand, analyze, plan, and generate, which leads to errors and inconsistencies.
+単一のプロンプトは、一度に多くのことをしようとするため、複雑なタスクでは苦戦します。AIは同時に理解、分析、計画、生成を行わなければならず、エラーや不整合が生じやすくなります。
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Single Prompt Struggles</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> 単一プロンプトの課題</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Multi-step reasoning gets confused</p>
-      <p className="m-0!">Different "modes" of thinking clash</p>
-      <p className="m-0!">Complex outputs lack consistency</p>
-      <p className="m-0!">No opportunity for quality control</p>
+      <p className="m-0!">多段階の推論が混乱する</p>
+      <p className="m-0!">異なる「思考モード」が衝突する</p>
+      <p className="m-0!">複雑な出力の一貫性が欠ける</p>
+      <p className="m-0!">品質管理の機会がない</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Chaining Solves This</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> チェーンが解決する</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Each step focuses on one task</p>
-      <p className="m-0!">Specialized prompts for each mode</p>
-      <p className="m-0!">Validate between steps</p>
-      <p className="m-0!">Debug and improve individual steps</p>
+      <p className="m-0!">各ステップが一つのタスクに集中</p>
+      <p className="m-0!">各モードに専門化されたプロンプト</p>
+      <p className="m-0!">ステップ間で検証が可能</p>
+      <p className="m-0!">個別のステップをデバッグし改善</p>
     </div>
   </div>
 </div>
 
-## Basic Chaining Pattern
+## 基本的なチェーンパターン
 
-The simplest chain passes output from one prompt directly to the next. Each step has a clear, focused purpose.
+最もシンプルなチェーンは、あるプロンプトの出力を次のプロンプトに直接渡します。各ステップには明確で焦点を絞った目的があります。
 
 <div className="my-6 flex items-center justify-center gap-3 p-6 bg-muted/30 rounded-lg overflow-x-auto">
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Prompt 1</p>
-      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">(Extract)</p>
+      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">プロンプト 1</p>
+      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">（抽出）</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Input</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">入力</p>
   </div>
   <div className="text-blue-400 dark:text-blue-500">→</div>
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Prompt 2</p>
-      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">(Analyze)</p>
+      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">プロンプト 2</p>
+      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">（分析）</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Intermediate</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">中間</p>
   </div>
   <div className="text-purple-400 dark:text-purple-500">→</div>
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Prompt 3</p>
-      <p className="text-xs text-green-600 dark:text-green-400 m-0!">(Generate)</p>
+      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">プロンプト 3</p>
+      <p className="text-xs text-green-600 dark:text-green-400 m-0!">（生成）</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Output</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">出力</p>
   </div>
 </div>
 
-<Callout type="info" title="The ETG Pattern">
-The most common chain pattern is **Extract → Transform → Generate**. First extract raw data, then reshape it for your purpose, then generate the final output. This pattern works for almost any content task.
+<Callout type="info" title="ETGパターン">
+最も一般的なチェーンパターンは**抽出（Extract）→ 変換（Transform）→ 生成（Generate）**です。まず生データを抽出し、次にそれを目的に合わせて整形し、最終的な出力を生成します。このパターンはほぼすべてのコンテンツタスクに有効です。
 </Callout>
 
-## Chain Types
+## チェーンの種類
 
-Different tasks require different chain architectures. Choose the pattern that matches your workflow.
+異なるタスクには異なるチェーンアーキテクチャが必要です。ワークフローに合ったパターンを選択してください。
 
 <ChainFlowDemo />
 
-### Sequential Chain
+### シーケンシャルチェーン
 
-The most straightforward pattern: each step depends on the previous. Think of it as a relay race where each runner passes the baton to the next.
+最も単純なパターンです：各ステップは前のステップに依存します。リレー競走で各ランナーが次のランナーにバトンを渡すようなものと考えてください。
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Step 1: Extract", prompt: "Extract all dates, names, and numbers from: [text]", output: '{ dates: ["2024-01-15", "2024-02-20"], names: ["John Smith", "Acme Corp"], numbers: [15000, 42] }' },
-    { step: "Step 2: Analyze", prompt: "Given this extracted data: [step1_output], identify relationships and patterns.", output: '{ patterns: ["Monthly meetings scheduled"], relationships: ["John Smith works at Acme Corp"] }' },
-    { step: "Step 3: Generate", prompt: "Using these patterns: [step2_output], write a summary report highlighting the most significant findings.", output: "Summary Report: Analysis of the document reveals a business relationship between John Smith and Acme Corp, with scheduled monthly meetings..." }
+    { step: "ステップ 1: 抽出", prompt: "以下からすべての日付、名前、数値を抽出してください: [text]", output: '{ dates: ["2024-01-15", "2024-02-20"], names: ["John Smith", "Acme Corp"], numbers: [15000, 42] }' },
+    { step: "ステップ 2: 分析", prompt: "この抽出されたデータを基に: [step1_output]、関係性とパターンを特定してください。", output: '{ patterns: ["毎月のミーティングが予定されている"], relationships: ["John SmithはAcme Corpで働いている"] }' },
+    { step: "ステップ 3: 生成", prompt: "これらのパターンを使用して: [step2_output]、最も重要な発見を強調した要約レポートを作成してください。", output: "要約レポート: 文書の分析により、John SmithとAcme Corpの間にビジネス関係があり、毎月のミーティングが予定されていることが明らかになりました..." }
   ]}
 />
 
-### Parallel Chain
+### パラレルチェーン
 
-When you need multiple perspectives on the same input, run prompts in parallel and merge results. This is faster than sequential chains and provides richer analysis.
+同じ入力に対して複数の視点が必要な場合、プロンプトを並列に実行して結果をマージします。これはシーケンシャルチェーンより高速で、より豊富な分析を提供します。
 
 <ChainExample 
   type="parallel"
   steps={[
-    { step: "Input", prompt: "Product review text", output: '"I love these earbuds! The battery lasts forever and the display on the case is so convenient. Perfect for my daily commute."' },
-    { step: "Branch A: Sentiment", prompt: "Analyze sentiment: [text]", output: '{ sentiment: "positive", score: 0.85 }' },
-    { step: "Branch B: Features", prompt: "Extract features mentioned: [text]", output: '{ features: ["battery", "display"] }' },
-    { step: "Branch C: Persona", prompt: "Identify user persona: [text]", output: '{ persona: "commuter" }' },
-    { step: "Merge", prompt: "Combine analyses into unified report", output: "Unified Report: Positive review from a commuter highlighting battery and display." }
+    { step: "入力", prompt: "製品レビューテキスト", output: '"このイヤホン大好きです！バッテリーがすごく長持ちするし、ケースのディスプレイがとても便利です。毎日の通勤に最適です。"' },
+    { step: "ブランチ A: 感情", prompt: "感情を分析してください: [text]", output: '{ sentiment: "positive", score: 0.85 }' },
+    { step: "ブランチ B: 機能", prompt: "言及されている機能を抽出してください: [text]", output: '{ features: ["バッテリー", "ディスプレイ"] }' },
+    { step: "ブランチ C: ペルソナ", prompt: "ユーザーペルソナを特定してください: [text]", output: '{ persona: "通勤者" }' },
+    { step: "マージ", prompt: "分析を統合レポートにまとめてください", output: "統合レポート: バッテリーとディスプレイを高く評価する通勤者からの好意的なレビュー。" }
   ]}
 />
 
-### Conditional Chain
+### 条件付きチェーン
 
-Route inputs through different paths based on classification. This is like a decision tree where the AI first categorizes the input, then handles each category differently.
+分類に基づいて入力を異なるパスにルーティングします。これはAIがまず入力をカテゴリ分けし、各カテゴリを異なる方法で処理するデシジョンツリーのようなものです。
 
 <ChainExample 
   type="conditional"
   steps={[
-    { step: "Classify Input", prompt: "Classify this customer message as: complaint, question, feedback, or other.\n\nMessage: [text]", output: '{ classification: "complaint", confidence: 0.92 }' },
-    { step: "Route: Question (skipped)", prompt: "Identify what information is needed", output: "Skipped - input classified as complaint" },
-    { step: "Route: Complaint", prompt: "Identify the issue and severity: [text]", output: '{ issue: "delayed shipping", severity: "medium" }' },
-    { step: "Generate Response", prompt: "Generate empathetic response with resolution: [analysis]", output: "Dear Customer, We sincerely apologize for the delay. Your order has been expedited..." }
+    { step: "入力を分類", prompt: "この顧客メッセージを以下のいずれかに分類してください: クレーム、質問、フィードバック、その他。\n\nメッセージ: [text]", output: '{ classification: "complaint", confidence: 0.92 }' },
+    { step: "ルート: 質問（スキップ）", prompt: "どのような情報が必要か特定してください", output: "スキップ - 入力はクレームとして分類されました" },
+    { step: "ルート: クレーム", prompt: "問題とその重大度を特定してください: [text]", output: '{ issue: "配送遅延", severity: "medium" }' },
+    { step: "回答を生成", prompt: "解決策を含む共感的な回答を生成してください: [analysis]", output: "お客様へ、遅延についてお詫び申し上げます。ご注文は優先対応いたしました..." }
   ]}
 />
 
-### Iterative Chain
+### 反復チェーン
 
-Keep refining output until it meets quality standards. The AI generates, evaluates, and improves in a loop until satisfied or max iterations reached.
+品質基準を満たすまで出力を継続的に改善します。AIは満足するか最大反復回数に達するまで、生成、評価、改善のループを繰り返します。
 
-<Callout type="warning" title="Set Iteration Limits">
-Always set a maximum number of iterations (typically 3-5) to prevent infinite loops and control costs. The law of diminishing returns applies: most improvement happens in the first 2-3 iterations.
+<Callout type="warning" title="反復回数の制限を設定">
+無限ループを防ぎコストを制御するため、常に最大反復回数（通常3〜5回）を設定してください。収穫逓減の法則が適用されます：改善のほとんどは最初の2〜3回の反復で起こります。
 </Callout>
 
 <ChainExample 
   type="iterative"
   steps={[
-    { step: "Generate Draft", prompt: "Write a product description for: [wireless earbuds]", output: "These wireless earbuds offer good sound quality and comfortable fit for everyday use." },
-    { step: "Evaluate (Score: 5)", prompt: "Rate this description 1-10 on: clarity, persuasiveness, accuracy.\n\nDescription: [current_draft]", output: '{ score: 5, improvements: ["Add specific features", "Include emotional benefits", "Mention battery life", "Add call-to-action"] }' },
-    { step: "Improve Draft", prompt: "Improve this description based on this feedback:\n\nCurrent: [current_draft]\nFeedback: [improvements]", output: "Experience crystal-clear audio with our premium wireless earbuds. Featuring 30-hour battery life, active noise cancellation, and an ergonomic design that stays comfortable all day. Perfect for music lovers and professionals alike. Order now and transform your listening experience." },
-    { step: "Evaluate (Score: 8)", prompt: "Rate this description 1-10 on: clarity, persuasiveness, accuracy.\n\nDescription: [improved_draft]", output: '{ score: 8, improvements: ["Minor: Could add warranty info"] }\n\n✓ Score >= 8: EXIT LOOP' }
+    { step: "ドラフトを生成", prompt: "[ワイヤレスイヤホン]の製品説明を書いてください", output: "このワイヤレスイヤホンは、日常使用に適した良好な音質と快適なフィット感を提供します。" },
+    { step: "評価（スコア: 5）", prompt: "この説明を以下の観点で1〜10で評価してください: 明確さ、説得力、正確性。\n\n説明: [current_draft]", output: '{ score: 5, improvements: ["具体的な機能を追加", "感情的なメリットを含める", "バッテリー寿命に言及", "行動喚起を追加"] }' },
+    { step: "ドラフトを改善", prompt: "このフィードバックに基づいて説明を改善してください:\n\n現在: [current_draft]\nフィードバック: [improvements]", output: "クリスタルクリアなオーディオを体験してください。30時間のバッテリー寿命、アクティブノイズキャンセリング、そして一日中快適な人間工学に基づいたデザインを備えたプレミアムワイヤレスイヤホンです。音楽愛好家にもプロフェッショナルにも最適です。今すぐ注文して、リスニング体験を変革しましょう。" },
+    { step: "評価（スコア: 8）", prompt: "この説明を以下の観点で1〜10で評価してください: 明確さ、説得力、正確性。\n\n説明: [improved_draft]", output: '{ score: 8, improvements: ["軽微: 保証情報を追加できる"] }\n\n✓ スコア >= 8: ループ終了' }
   ]}
 />
 
-## Common Chain Patterns
+## 一般的なチェーンパターン
 
-These battle-tested patterns solve common problems. Use them as starting points and adapt to your needs.
+これらは実戦で検証されたパターンで、一般的な問題を解決します。出発点として使用し、必要に応じて適応させてください。
 
-### Extract → Transform → Generate
+### 抽出 → 変換 → 生成
 
-The workhorse of content processing. Pull data out, reshape it, then create something new.
+コンテンツ処理の主力です。データを引き出し、整形し、新しいものを作成します。
 
 <div className="mb-4 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
-  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">Document summarization, report generation, content repurposing, data-to-narrative conversion</p>
+  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">最適な用途</p>
+  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">文書の要約、レポート生成、コンテンツの再利用、データからナラティブへの変換</p>
 </div>
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Extract", prompt: "From this document, extract:\n- Main topic\n- Key arguments (list)\n- Supporting evidence (list)\n- Conclusions\nReturn as JSON.", output: '{ "topic": "Climate change impacts", "arguments": ["Rising temperatures", "Sea level rise"], "evidence": ["NASA data", "IPCC reports"], "conclusions": ["Urgent action needed"] }' },
-    { step: "Transform", prompt: "Reorganize this information for [business executives]:\n[extracted_data]\nFocus on: economic implications\nRemove: technical jargon", output: '{ "summary": "Climate risks to business", "key_points": ["Supply chain disruption", "Insurance costs rising"], "action_items": ["Assess vulnerabilities", "Plan adaptations"] }' },
-    { step: "Generate", prompt: "Using this restructured information, write a [executive brief]:\n[transformed_data]\nTone: professional\nLength: 200 words", output: "Executive Brief: Climate change presents significant operational risks to our business. Key concerns include supply chain disruptions from extreme weather events and rising insurance premiums. We recommend immediate assessment of facility vulnerabilities and development of adaptation strategies..." }
+    { step: "抽出", prompt: "この文書から以下を抽出してください:\n- 主題\n- 主要な論点（リスト）\n- 裏付けとなる証拠（リスト）\n- 結論\nJSONで返してください。", output: '{ "topic": "気候変動の影響", "arguments": ["気温上昇", "海面上昇"], "evidence": ["NASAデータ", "IPCCレポート"], "conclusions": ["緊急な行動が必要"] }' },
+    { step: "変換", prompt: "[ビジネスエグゼクティブ]向けにこの情報を再編成してください:\n[extracted_data]\n焦点: 経済的影響\n削除: 技術用語", output: '{ "summary": "ビジネスへの気候リスク", "key_points": ["サプライチェーンの混乱", "保険コストの上昇"], "action_items": ["脆弱性の評価", "適応策の計画"] }' },
+    { step: "生成", prompt: "この再構成された情報を使用して、[エグゼクティブブリーフ]を作成してください:\n[transformed_data]\nトーン: プロフェッショナル\n長さ: 200語", output: "エグゼクティブブリーフ: 気候変動は当社のビジネスに重大な運営リスクをもたらします。主な懸念事項は、極端な気象現象によるサプライチェーンの混乱と保険料の上昇です。施設の脆弱性の即時評価と適応戦略の策定を推奨します..." }
   ]}
 />
 
-### Analyze → Plan → Execute
+### 分析 → 計画 → 実行
 
-Perfect for code refactoring, project planning, or any task where you need to understand before acting.
+コードのリファクタリング、プロジェクト計画、または行動前に理解が必要なあらゆるタスクに最適です。
 
 <div className="mb-4 p-3 rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-800">
-  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">Code refactoring, project planning, troubleshooting, strategic decision-making, complex problem solving</p>
+  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">最適な用途</p>
+  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">コードリファクタリング、プロジェクト計画、トラブルシューティング、戦略的意思決定、複雑な問題解決</p>
 </div>
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Analyze", prompt: "Analyze this codebase structure and identify:\n- Architecture pattern\n- Main components\n- Dependencies\n- Potential issues\n[code]", output: '{ "pattern": "MVC", "components": ["UserController", "AuthService", "Database"], "dependencies": ["express", "mongoose"], "issues": ["No input validation", "Hardcoded secrets"] }' },
-    { step: "Plan", prompt: "Based on this analysis, create a refactoring plan:\n[analysis_output]\nGoal: improve security\nConstraints: no breaking changes", output: '{ "steps": ["1. Add input validation middleware", "2. Move secrets to env vars", "3. Add rate limiting"], "priority": "high", "estimated_time": "4 hours" }' },
-    { step: "Execute", prompt: "Implement step 1 of this plan:\n[plan_output]\nShow the refactored code with explanations.", output: "// Added validation middleware\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Invalid email' });\n  }\n  next();\n};" }
+    { step: "分析", prompt: "このコードベース構造を分析し、以下を特定してください:\n- アーキテクチャパターン\n- 主要コンポーネント\n- 依存関係\n- 潜在的な問題\n[code]", output: '{ "pattern": "MVC", "components": ["UserController", "AuthService", "Database"], "dependencies": ["express", "mongoose"], "issues": ["入力検証なし", "シークレットがハードコード"] }' },
+    { step: "計画", prompt: "この分析に基づいて、リファクタリング計画を作成してください:\n[analysis_output]\n目標: セキュリティの向上\n制約: 破壊的変更なし", output: '{ "steps": ["1. 入力検証ミドルウェアを追加", "2. シークレットを環境変数に移動", "3. レート制限を追加"], "priority": "high", "estimated_time": "4時間" }' },
+    { step: "実行", prompt: "この計画のステップ1を実装してください:\n[plan_output]\nリファクタリングされたコードと説明を示してください。", output: "// 検証ミドルウェアを追加\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Invalid email' });\n  }\n  next();\n};" }
   ]}
 />
 
-### Generate → Critique → Refine
+### 生成 → 批評 → 改善
 
-The self-improvement loop. Generate content, have the AI evaluate it critically, then improve based on that feedback. This mimics how professional writers and editors work together.
+自己改善ループです。コンテンツを生成し、AIに批評させ、そのフィードバックに基づいて改善します。これはプロのライターと編集者が協働する方法を模倣しています。
 
 <div className="mb-4 p-3 rounded-lg bg-green-50/50 dark:bg-green-950/20 border border-green-200 dark:border-green-800">
-  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-green-600 dark:text-green-400 m-0!">Marketing copy, creative writing, email drafts, presentations, any content that benefits from revision</p>
+  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">最適な用途</p>
+  <p className="text-sm text-green-600 dark:text-green-400 m-0!">マーケティングコピー、クリエイティブライティング、メールドラフト、プレゼンテーション、改訂から恩恵を受けるあらゆるコンテンツ</p>
 </div>
 
 <ChainExample 
   type="iterative"
   steps={[
-    { step: "Generate", prompt: "Write a marketing email for [fitness app] targeting [busy professionals].", output: "Subject: Get Fit Fast!\n\nHey there! Our app helps you exercise. Download it today and start your fitness journey. Thanks!" },
-    { step: "Critique", prompt: "As a marketing expert, critique this email:\n[generated_email]\nEvaluate: subject line, hook, value proposition, CTA, tone\nScore each 1-10.", output: '{ "subject_line": 4, "hook": 3, "value_proposition": 2, "cta": 5, "tone": 4, "feedback": "Too generic, no specific benefits, weak urgency" }' },
-    { step: "Refine", prompt: "Rewrite the email addressing this feedback:\nOriginal: [generated_email]\nCritique: [critique_output]\nFocus on the lowest-scored elements.", output: "Subject: 15-Min Workouts for Your Lunch Break\n\nBusy schedule? We get it. Our app delivers science-backed workouts designed for professionals who have zero time to waste. Join 50,000+ executives who transformed their health in just 15 minutes a day. Start your free trial now—your future self will thank you." },
-    { step: "Final Score", prompt: "Re-evaluate the refined email.", output: '{ "subject_line": 8, "hook": 8, "value_proposition": 9, "cta": 8, "tone": 9, "improvement": "+23 points total" }' }
+    { step: "生成", prompt: "[忙しいプロフェッショナル]をターゲットにした[フィットネスアプリ]のマーケティングメールを書いてください。", output: "件名: 素早くフィットになろう！\n\nこんにちは！私たちのアプリはあなたの運動をサポートします。今日ダウンロードしてフィットネスの旅を始めましょう。ありがとうございます！" },
+    { step: "批評", prompt: "マーケティングエキスパートとして、このメールを批評してください:\n[generated_email]\n評価項目: 件名、フック、価値提案、CTA、トーン\n各項目を1〜10で評価。", output: '{ "subject_line": 4, "hook": 3, "value_proposition": 2, "cta": 5, "tone": 4, "feedback": "一般的すぎる、具体的なメリットがない、緊急性が弱い" }' },
+    { step: "改善", prompt: "このフィードバックに対応してメールを書き直してください:\n元: [generated_email]\n批評: [critique_output]\n最も低いスコアの要素に焦点を当ててください。", output: "件名: ランチ休憩に15分のワークアウト\n\n忙しいスケジュールですか？わかります。当アプリは、時間がまったくないプロフェッショナル向けに設計された科学に基づいたワークアウトを提供します。1日わずか15分で健康を変えた50,000人以上のエグゼクティブに参加しましょう。今すぐ無料トライアルを開始—未来のあなたが感謝します。" },
+    { step: "最終スコア", prompt: "改善されたメールを再評価してください。", output: '{ "subject_line": 8, "hook": 8, "value_proposition": 9, "cta": 8, "tone": 9, "improvement": "+23ポイント合計" }' }
   ]}
 />
 
-## Implementing Chains
+## チェーンの実装
 
-You can implement chains manually for experimentation, or programmatically for production systems. Start simple and add complexity as needed.
+実験用には手動で、本番システム用にはプログラムでチェーンを実装できます。シンプルに始めて、必要に応じて複雑さを追加してください。
 
-### Manual Chaining
+### 手動チェーン
 
-The copy-paste approach is perfect for prototyping and experimentation. Run each prompt manually, examine the output, and paste it into the next prompt.
+コピー＆ペーストアプローチは、プロトタイピングと実験に最適です。各プロンプトを手動で実行し、出力を確認し、次のプロンプトにペーストします。
 
 <CodeEditor 
   language="python"
@@ -205,9 +205,9 @@ step2_output = call_ai("Analyze relationships: " + step1_output)
 final_output = call_ai("Generate report: " + step2_output)`}
 />
 
-### Programmatic Chaining
+### プログラムによるチェーン
 
-For production systems, automate the chain with code. This enables error handling, logging, and integration with your application.
+本番システムでは、コードでチェーンを自動化します。これによりエラー処理、ログ記録、アプリケーションとの統合が可能になります。
 
 <CodeEditor 
   language="python"
@@ -241,9 +241,9 @@ For production systems, automate the chain with code. This enables error handlin
     }`}
 />
 
-### Using Chain Templates
+### チェーンテンプレートの使用
 
-Define chains as configuration files for reusability and easy modification. This separates prompt logic from application code.
+再利用性と容易な変更のために、チェーンを設定ファイルとして定義します。これによりプロンプトロジックをアプリケーションコードから分離できます。
 
 <CodeEditor 
   language="yaml"
@@ -270,110 +270,110 @@ steps:
       Format: 3 paragraphs, business tone`}
 />
 
-## Error Handling in Chains
+## チェーンでのエラー処理
 
-Chains can fail at any step. Build in validation, retries, and fallbacks to make your chains robust.
+チェーンはどのステップでも失敗する可能性があります。検証、リトライ、フォールバックを組み込んで、チェーンを堅牢にしましょう。
 
 <ChainErrorDemo />
 
-<Callout type="warning" title="Garbage In, Garbage Out">
-If one step produces bad output, every following step will be affected. Always validate critical intermediate results before passing them forward.
+<Callout type="warning" title="ゴミを入れればゴミが出る">
+あるステップが悪い出力を生成すると、後続のすべてのステップが影響を受けます。重要な中間結果は、次に渡す前に必ず検証してください。
 </Callout>
 
-### Validation Between Steps
+### ステップ間の検証
 
-Add a validation step after any step that produces structured data. This catches errors early before they cascade.
+構造化データを生成するステップの後には、検証ステップを追加してください。これによりエラーが連鎖する前に早期に発見できます。
 
 <ValidationDemo />
 
-### Fallback Chains
+### フォールバックチェーン
 
-When your primary approach fails, have a simpler backup ready. Trade capability for reliability.
+主要なアプローチが失敗した場合、よりシンプルなバックアップを用意しておきましょう。機能を信頼性と引き換えにします。
 
 <FallbackDemo />
 
-## Chain Optimization
+## チェーンの最適化
 
-Once your chain works, optimize for speed, cost, and reliability. These often trade off against each other.
+チェーンが動作したら、速度、コスト、信頼性を最適化します。これらはしばしばトレードオフの関係にあります。
 
 <div className="my-6 grid md:grid-cols-3 gap-4">
   <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
-    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Reducing Latency</p>
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">レイテンシの削減</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Parallelize independent steps</p>
-      <p className="m-0!">Cache intermediate results</p>
-      <p className="m-0!">Use smaller models for simple steps</p>
-      <p className="m-0!">Batch similar operations</p>
+      <p className="m-0!">独立したステップを並列化</p>
+      <p className="m-0!">中間結果をキャッシュ</p>
+      <p className="m-0!">シンプルなステップには小型モデルを使用</p>
+      <p className="m-0!">類似の操作をバッチ処理</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Reducing Cost</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">コストの削減</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Use cheaper models for classification</p>
-      <p className="m-0!">Limit iterations in loops</p>
-      <p className="m-0!">Short-circuit when possible</p>
-      <p className="m-0!">Cache repeated queries</p>
+      <p className="m-0!">分類には安価なモデルを使用</p>
+      <p className="m-0!">ループの反復回数を制限</p>
+      <p className="m-0!">可能な場合は早期終了</p>
+      <p className="m-0!">繰り返しクエリをキャッシュ</p>
     </div>
   </div>
   <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
-    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Improving Reliability</p>
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">信頼性の向上</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Add validation between steps</p>
-      <p className="m-0!">Include retry logic</p>
-      <p className="m-0!">Log intermediate results</p>
-      <p className="m-0!">Implement fallback paths</p>
+      <p className="m-0!">ステップ間に検証を追加</p>
+      <p className="m-0!">リトライロジックを含める</p>
+      <p className="m-0!">中間結果をログに記録</p>
+      <p className="m-0!">フォールバックパスを実装</p>
     </div>
   </div>
 </div>
 
-## Real-World Chain Example
+## 実世界のチェーン例
 
-Let's walk through a complete production chain. This content pipeline transforms a raw idea into a polished article package.
+完全な本番チェーンを見ていきましょう。このコンテンツパイプラインは、生のアイデアを洗練された記事パッケージに変換します。
 
-### Content Pipeline Chain
+### コンテンツパイプラインチェーン
 
 <ContentPipelineDemo />
 
-## Summary
+## まとめ
 
-Prompt chaining transforms what AI can accomplish by breaking impossible tasks into achievable steps.
+プロンプトチェーンは、不可能なタスクを達成可能なステップに分解することで、AIが達成できることを変革します。
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
-    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">Chaining Enables</p>
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">チェーンが可能にすること</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Complex multi-step workflows</p>
-      <p className="m-0!">Higher quality through specialization</p>
-      <p className="m-0!">Better error handling and validation</p>
-      <p className="m-0!">Modular, reusable prompt components</p>
+      <p className="m-0!">複雑な多段階ワークフロー</p>
+      <p className="m-0!">専門化による高品質</p>
+      <p className="m-0!">より良いエラー処理と検証</p>
+      <p className="m-0!">モジュール式で再利用可能なプロンプトコンポーネント</p>
     </div>
   </div>
   <div className="border rounded-lg bg-cyan-50/50 dark:bg-cyan-950/20 border-cyan-200 dark:border-cyan-900 p-4">
-    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Key Principles</p>
+    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">主要な原則</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Break complex tasks into simple steps</p>
-      <p className="m-0!">Design clear interfaces between steps</p>
-      <p className="m-0!">Validate intermediate outputs</p>
-      <p className="m-0!">Build in error handling and fallbacks</p>
-      <p className="m-0!">Optimize for your constraints</p>
+      <p className="m-0!">複雑なタスクをシンプルなステップに分解</p>
+      <p className="m-0!">ステップ間の明確なインターフェースを設計</p>
+      <p className="m-0!">中間出力を検証</p>
+      <p className="m-0!">エラー処理とフォールバックを組み込む</p>
+      <p className="m-0!">制約に応じて最適化</p>
     </div>
   </div>
 </div>
 
-<Callout type="tip" title="Start Simple">
-Begin with a 2-3 step sequential chain. Get it working reliably before adding complexity. Most tasks don't need elaborate chain architectures.
+<Callout type="tip" title="シンプルに始める">
+2〜3ステップのシーケンシャルチェーンから始めてください。複雑さを追加する前に、確実に動作するようにしましょう。ほとんどのタスクは複雑なチェーンアーキテクチャを必要としません。
 </Callout>
 
 <Quiz 
-  question="What is the main advantage of prompt chaining over a single complex prompt?"
+  question="単一の複雑なプロンプトと比較して、プロンプトチェーンの主な利点は何ですか？"
   options={[
-    "It uses fewer tokens overall",
-    "It's faster to execute",
-    "Each step can specialize, improving quality and enabling error handling",
-    "It requires less planning"
+    "全体的に使用するトークンが少ない",
+    "実行が速い",
+    "各ステップが専門化でき、品質が向上しエラー処理が可能になる",
+    "計画が少なくて済む"
   ]}
   correctIndex={2}
-  explanation="Prompt chaining breaks complex tasks into specialized steps. Each step can focus on one thing well, intermediate results can be validated, errors can be caught and retried, and the overall quality improves through specialization."
+  explanation="プロンプトチェーンは複雑なタスクを専門化されたステップに分解します。各ステップは一つのことに集中でき、中間結果を検証でき、エラーを捕捉してリトライでき、専門化により全体的な品質が向上します。"
 />
 
-In the next chapter, we'll explore multimodal prompting: working with images, audio, and other non-text content.
+次の章では、マルチモーダルプロンプティング—画像、音声、その他のテキスト以外のコンテンツを扱う方法について探ります。

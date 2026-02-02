@@ -1,345 +1,345 @@
-AI is a powerful tool for both teaching and learning. This chapter covers prompts for educational contexts—from personalized tutoring to curriculum development.
+AI 是教学和学习的强大工具。本章涵盖教育场景中的提示词——从个性化辅导到课程开发。
 
-<Callout type="info" title="AI as Learning Partner">
-AI excels as a patient, adaptive tutor that can explain concepts multiple ways, generate unlimited practice problems, and provide instant feedback—available 24/7.
+<Callout type="info" title="AI 作为学习伙伴">
+AI 作为一个耐心、适应性强的导师表现出色，它能够用多种方式解释概念、生成无限的练习题并提供即时反馈——全天候 24 小时可用。
 </Callout>
 
-## Personalized Learning
+## 个性化学习
 
-### Do's and Don'ts: Learning Prompts
+### 学习提示词的正确与错误做法
 
 <Compare 
-  before={{ label: "❌ Passive request", content: "Explain quantum physics to me." }}
-  after={{ label: "✓ Context-rich request", content: "Explain quantum superposition to me.\n\nMy background: I understand basic chemistry and classical physics.\nLearning style: I learn best through analogies and examples.\nExplain with a simple analogy, then the core concept, then a practical example. Check my understanding with a question." }}
+  before={{ label: "❌ 被动请求", content: "给我解释一下量子物理。" }}
+  after={{ label: "✓ 富含上下文的请求", content: "给我解释一下量子叠加态。\n\n我的背景：我了解基础化学和经典物理学。\n学习风格：我通过类比和示例学习效果最好。\n请先用一个简单的类比解释，然后讲解核心概念，再举一个实际例子。最后用一个问题检验我的理解。" }}
 />
 
-### Concept Explanation
+### 概念解释
 
-<TryIt compact prompt={`Explain [concept] to me.
+<TryIt compact prompt={`给我解释一下[概念]。
 
-My background:
-- Current level: [beginner/intermediate/advanced]
-- Related knowledge: [what I already know]
-- Learning style: [visual/examples/theoretical]
+我的背景：
+- 当前水平：[初学者/中级/高级]
+- 相关知识：[我已经知道的内容]
+- 学习风格：[视觉型/示例型/理论型]
 
-Explain with:
-1. Simple analogy to something familiar
-2. Core concept in plain language
-3. How it connects to what I know
-4. A practical example
-5. Common misconceptions to avoid
+请这样解释：
+1. 用熟悉事物做简单类比
+2. 用通俗语言讲解核心概念
+3. 说明它与我已知内容的联系
+4. 举一个实际例子
+5. 列出需要避免的常见误解
 
-Then check my understanding with a question.`} />
+然后用一个问题检验我的理解。`} />
 
-### Adaptive Tutoring
+### 自适应辅导
 
-<TryIt compact prompt={`You are my tutor for \${subject:calculus}. Teach me \${topic:derivatives} adaptively.
+<TryIt compact prompt={`你是我的\${subject:微积分}导师。请自适应地教我\${topic:导数}。
 
-Start with a diagnostic question to assess my level.
-Based on my response:
-- If correct: Move to more advanced aspects
-- If partially correct: Clarify the gap, then continue
-- If incorrect: Step back and build foundation
+先用一个诊断性问题评估我的水平。
+根据我的回答：
+- 如果正确：进入更高级的内容
+- 如果部分正确：澄清知识缺口，然后继续
+- 如果错误：退一步巩固基础
 
-After each explanation:
-- Check understanding with a question
-- Adjust difficulty based on my answers
-- Provide encouragement and track progress`} />
+每次解释后：
+- 用一个问题检验理解
+- 根据我的回答调整难度
+- 提供鼓励并追踪进度`} />
 
-### Learning Path Creation
+### 学习路径创建
 
-<TryIt compact prompt={`Create a learning path for \${goal:becoming a web developer}.
+<TryIt compact prompt={`为\${goal:成为一名 Web 开发者}创建一条学习路径。
 
-My situation:
-- Current skill level: \${skillLevel:complete beginner}
-- Time available: \${timeAvailable:10 hours per week}
-- Target timeline: \${timeline:6 months}
-- Learning preferences: \${preferences:projects and tutorials}
+我的情况：
+- 当前技能水平：\${skillLevel:完全初学者}
+- 可用时间：\${timeAvailable:每周 10 小时}
+- 目标时间线：\${timeline:6 个月}
+- 学习偏好：\${preferences:项目实战和教程}
 
-Provide:
-1. Prerequisites check (what I need first)
-2. Milestone breakdown (phases with goals)
-3. Resources for each phase (free when possible)
-4. Practice projects at each stage
-5. Assessment criteria (how to know I'm ready to advance)`} />
+请提供：
+1. 前置条件检查（我需要先掌握什么）
+2. 里程碑分解（各阶段及目标）
+3. 每个阶段的资源（尽可能免费）
+4. 每个阶段的练习项目
+5. 评估标准（如何知道我准备好进入下一阶段）`} />
 
-## Study Assistance
+## 学习辅助
 
-<Callout type="tip" title="Active Learning Principle">
-Don't just read AI explanations passively. Ask it to quiz you, generate problems, and check your understanding. **Active recall beats passive review.**
+<Callout type="tip" title="主动学习原则">
+不要只是被动地阅读 AI 的解释。让它测验你、生成练习题、检验你的理解。**主动回忆胜过被动复习。**
 </Callout>
 
-### Summary Generation
+### 摘要生成
 
-<TryIt compact prompt={`Summarize this \${contentType:chapter} for study purposes.
+<TryIt compact prompt={`为学习目的总结这个\${contentType:章节}。
 
-Content:
-\${content:paste your content here}
+内容：
+\${content:在此粘贴你的内容}
 
-Provide:
-1. **Key Concepts** (5-7 main ideas)
-2. **Important Terms** (with brief definitions)
-3. **Relationships** (how concepts connect)
-4. **Study Questions** (to test understanding)
-5. **Memory Aids** (mnemonics or associations)
+请提供：
+1. **关键概念**（5-7 个主要观点）
+2. **重要术语**（附简要定义）
+3. **关系图谱**（概念之间如何关联）
+4. **学习问题**（用于测试理解）
+5. **记忆辅助**（助记法或联想）
 
-Format for easy review and memorization.`} />
+格式化以便于复习和记忆。`} />
 
-### Flashcard Generation
+### 闪卡生成
 
-<TryIt compact prompt={`Create flashcards for studying \${topic:World War II}.
+<TryIt compact prompt={`为学习\${topic:第二次世界大战}创建闪卡。
 
-Source material:
-\${content:paste your study material here}
+来源材料：
+\${content:在此粘贴你的学习材料}
 
-Format each card:
-Front: Question or term
-Back: Answer or definition
-Hint: Optional memory aid
+每张卡片格式：
+正面：问题或术语
+背面：答案或定义
+提示：可选的记忆辅助
 
-Categories to cover:
-- Definitions (key terms)
-- Concepts (main ideas)
-- Relationships (how things connect)
-- Applications (real-world uses)
+涵盖的类别：
+- 定义（关键术语）
+- 概念（主要观点）
+- 关系（事物之间的联系）
+- 应用（实际用途）
 
-Generate \${numberOfCards:20} cards, balanced across categories.`} />
+生成\${numberOfCards:20}张卡片，各类别均衡分布。`} />
 
-### Practice Problems
+### 练习题
 
-<TryIt compact prompt={`Generate practice problems for \${topic:quadratic equations}.
+<TryIt compact prompt={`为\${topic:一元二次方程}生成练习题。
 
-Difficulty levels:
-- 3 Basic (test fundamental understanding)
-- 3 Intermediate (require application)
-- 2 Advanced (require synthesis/analysis)
+难度级别：
+- 3 道基础题（测试基本理解）
+- 3 道中级题（需要应用）
+- 2 道高级题（需要综合/分析）
 
-For each problem:
-1. Clear problem statement
-2. Space for student work
-3. Hints available on request
-4. Detailed solution with explanation
+每道题包括：
+1. 清晰的题目描述
+2. 学生作答空间
+3. 按需提供的提示
+4. 详细的解答和解释
 
-Include variety: \${problemTypes:calculation, conceptual, application}`} />
+包含多种类型：\${problemTypes:计算、概念、应用}`} />
 
-## Teaching Tools
+## 教学工具
 
-### Lesson Plan Creation
+### 教案创建
 
-<TryIt compact prompt={`Create a lesson plan for teaching \${topic:photosynthesis}.
+<TryIt compact prompt={`为教授\${topic:光合作用}创建一份教案。
 
-Context:
-- Grade/Level: \${audience:8th grade science}
-- Class duration: \${duration:50 minutes}
-- Class size: \${classSize:25 students}
-- Prior knowledge: \${prerequisites:basic cell structure}
+背景：
+- 年级/水平：\${audience:八年级科学}
+- 课时：\${duration:50 分钟}
+- 班级规模：\${classSize:25 名学生}
+- 前置知识：\${prerequisites:基本细胞结构}
 
-Include:
-1. **Learning Objectives** (SMART format)
-2. **Opening Hook** (5 min) - engagement activity
-3. **Instruction** (15-20 min) - core content delivery
-4. **Guided Practice** (10 min) - work with students
-5. **Independent Practice** (10 min) - students work alone
-6. **Assessment** (5 min) - check understanding
-7. **Closure** - summarize and preview
+包括：
+1. **学习目标**（SMART 格式）
+2. **开场引入**（5 分钟）- 参与活动
+3. **讲授**（15-20 分钟）- 核心内容传递
+4. **指导练习**（10 分钟）- 与学生一起练习
+5. **独立练习**（10 分钟）- 学生独立完成
+6. **评估**（5 分钟）- 检验理解
+7. **结束** - 总结并预告下节课
 
-Materials needed: list
-Differentiation strategies: for various learners`} />
+所需材料：清单
+差异化策略：针对不同类型的学习者`} />
 
-### Assignment Design
+### 作业设计
 
-<TryIt compact prompt={`Design an assignment for \${learningObjective:analyzing primary sources}.
+<TryIt compact prompt={`为\${learningObjective:分析原始资料}设计一份作业。
 
-Parameters:
-- Course: \${course:AP US History}
-- Due in: \${dueIn:2 weeks}
-- Individual/Group: \${grouping:individual}
-- Weight: \${weight:15% of grade}
+参数：
+- 课程：\${course:AP 美国历史}
+- 截止时间：\${dueIn:2 周}
+- 个人/小组：\${grouping:个人}
+- 权重：\${weight:占成绩的 15%}
 
-Include:
-1. Clear instructions
-2. Grading rubric with criteria
-3. Example of expected quality
-4. Submission requirements
-5. Academic integrity reminders
+包括：
+1. 清晰的说明
+2. 带评分标准的评分量规
+3. 预期质量示例
+4. 提交要求
+5. 学术诚信提醒
 
-The assignment should:
-- Assess \${skills:critical thinking and source evaluation}
-- Allow for \${allowFor:analysis and interpretation}
-- Be completable in approximately \${hours:8 hours}`} />
+作业应该：
+- 评估\${skills:批判性思维和资料评估}
+- 允许\${allowFor:分析和解读}
+- 大约需要\${hours:8 小时}完成`} />
 
-### Quiz Generation
+### 测验生成
 
-<TryIt compact prompt={`Create a quiz on \${topic:the American Revolution}.
+<TryIt compact prompt={`创建一份关于\${topic:美国独立战争}的测验。
 
-Format:
-- [X] Multiple choice questions (4 options each)
-- [X] True/False questions
-- [X] Short answer questions
-- [X] One essay question
+格式：
+- [X] 选择题（每题 4 个选项）
+- [X] 判断题
+- [X] 简答题
+- [X] 一道论述题
 
-Specifications:
-- Cover all key learning objectives
-- Range from recall to analysis
-- Include answer key with explanations
-- Time estimate: \${timeEstimate:30 minutes}
-- Point values for each section`} />
+规格：
+- 涵盖所有关键学习目标
+- 从记忆到分析，难度递进
+- 包含带解释的答案
+- 预计时间：\${timeEstimate:30 分钟}
+- 每部分的分值`} />
 
-## Specialized Learning Contexts
+## 专项学习场景
 
-### Language Learning
+### 语言学习
 
-<TryIt compact prompt={`Help me learn \${language:Spanish}.
+<TryIt compact prompt={`帮助我学习\${language:西班牙语}。
 
-Current level: \${currentLevel:A2 - elementary}
-Native language: \${nativeLanguage:English}
-Goals: \${goals:conversation for travel}
+当前水平：\${currentLevel:A2 - 初级}
+母语：\${nativeLanguage:中文}
+目标：\${goals:旅行会话}
 
-Today's lesson: \${focusArea:ordering food at restaurants}
+今天的课程：\${focusArea:在餐厅点餐}
 
-Include:
-1. New vocabulary (5-10 words) with:
-   - Pronunciation guide
-   - Example sentences
-   - Common usage notes
-2. Grammar point with clear explanation
-3. Practice exercises
-4. Cultural context note
-5. Conversation practice scenario`} />
+包括：
+1. 新词汇（5-10 个词）附带：
+   - 发音指南
+   - 例句
+   - 常用注意事项
+2. 语法点及清晰解释
+3. 练习
+4. 文化背景注释
+5. 会话练习场景`} />
 
-### Skill Development
+### 技能培养
 
-<TryIt compact prompt={`I want to learn \${skill:guitar}. Be my coach.
+<TryIt compact prompt={`我想学习\${skill:吉他}。请做我的教练。
 
-My current level: \${currentLevel:complete beginner}
-Goal: \${goal:play 5 songs by ear}
-Practice time available: \${practiceTime:30 minutes per day}
+我的当前水平：\${currentLevel:完全初学者}
+目标：\${goal:能凭耳朵弹奏 5 首歌曲}
+可用练习时间：\${practiceTime:每天 30 分钟}
 
-Provide:
-1. Assessment of starting point
-2. Breakdown of sub-skills needed
-3. Practice routine (specific exercises)
-4. Progress markers (how to measure improvement)
-5. Common plateaus and how to overcome them
-6. First week's practice plan in detail`} />
+请提供：
+1. 起点评估
+2. 所需子技能分解
+3. 练习计划（具体练习内容）
+4. 进度标记（如何衡量进步）
+5. 常见瓶颈及克服方法
+6. 第一周的详细练习计划`} />
 
-### Exam Preparation
+### 考试准备
 
-<TryIt compact prompt={`Help me prepare for \${examName:the GRE}.
+<TryIt compact prompt={`帮助我准备\${examName:GRE 考试}。
 
-Exam format: \${examFormat:Verbal, Quantitative, Writing sections}
-Time until exam: \${timeUntilExam:8 weeks}
-My weak areas: \${weakAreas:reading comprehension, geometry}
-Target score: \${targetScore:320+}
+考试形式：\${examFormat:语文、数学、写作部分}
+距考试时间：\${timeUntilExam:8 周}
+我的薄弱环节：\${weakAreas:阅读理解、几何}
+目标分数：\${targetScore:320+}
 
-Create a study plan:
-1. Topics to cover (prioritized)
-2. Daily study schedule
-3. Practice test strategy
-4. Key formulas/facts to memorize
-5. Test-taking tips specific to this exam
-6. Day-before and day-of recommendations`} />
+创建学习计划：
+1. 需要涵盖的主题（按优先级排序）
+2. 每日学习时间表
+3. 模拟考试策略
+4. 需要记忆的关键公式/知识点
+5. 针对此考试的应试技巧
+6. 考前一天和考试当天的建议`} />
 
-## Prompt Templates from prompts.chat
+## 来自 prompts.chat 的提示词模板
 
-### Act as a Socratic Tutor
+### 扮演苏格拉底式导师
 
-<TryIt compact prompt={`I want you to act as a Socratic tutor. You will help me learn by asking probing questions rather than giving direct answers. When I ask about a topic, respond with questions that guide me to discover the answer myself. If I'm stuck, provide hints but not solutions. Help me develop critical thinking skills.`} />
+<TryIt compact prompt={`我希望你扮演一位苏格拉底式导师。你将通过提出探索性问题而不是直接给出答案来帮助我学习。当我询问某个主题时，请用问题引导我自己发现答案。如果我卡住了，提供提示但不要给出解决方案。帮助我培养批判性思维能力。`} />
 
-### Act as an Educational Content Creator
+### 扮演教育内容创作者
 
-<TryIt compact prompt={`I want you to act as an educational content creator. You will create engaging, accurate educational materials for \${subject:biology}. Make complex topics accessible without oversimplifying. Use analogies, examples, and visual descriptions. Include knowledge checks and encourage active learning.`} />
+<TryIt compact prompt={`我希望你扮演一位教育内容创作者。你将为\${subject:生物学}创建引人入胜、准确的教育材料。使复杂主题易于理解，但不要过度简化。使用类比、示例和视觉描述。包含知识检查并鼓励主动学习。`} />
 
-### Act as a Study Buddy
+### 扮演学习伙伴
 
-<TryIt compact prompt={`I want you to act as my study buddy. We're studying \${subject:organic chemistry} together. Quiz me on concepts, discuss ideas, help me work through problems, and keep me motivated. Be encouraging but also challenge me to think deeper. Let's make studying interactive and effective.`} />
+<TryIt compact prompt={`我希望你扮演我的学习伙伴。我们一起学习\${subject:有机化学}。测验我的概念理解，讨论想法，帮助我解决问题，并保持我的学习动力。要鼓励我，但也要挑战我深入思考。让我们使学习变得互动而有效。`} />
 
-## Accessibility in Education
+## 教育无障碍
 
-### Content Adaptation
+### 内容适配
 
-<TryIt compact prompt={`Adapt this educational content for \${accessibilityNeed:dyslexia-friendly format}:
+<TryIt compact prompt={`将这份教育内容适配为\${accessibilityNeed:阅读障碍友好格式}：
 
-Original content:
-\${content:paste your content here}
+原始内容：
+\${content:在此粘贴你的内容}
 
-Adaptation needed:
-- [ ] Simplified language (lower reading level)
-- [ ] Visual descriptions (for text-to-speech)
-- [ ] Structured format (for cognitive accessibility)
-- [ ] Extended time considerations
-- [ ] Alternative explanations
+需要的适配：
+- [ ] 简化语言（降低阅读难度）
+- [ ] 视觉描述（用于语音合成）
+- [ ] 结构化格式（用于认知无障碍）
+- [ ] 延长时间考虑
+- [ ] 替代解释
 
-Maintain:
-- All key learning objectives
-- Accuracy of content
-- Assessment equivalence`} />
+保持：
+- 所有关键学习目标
+- 内容准确性
+- 评估等效性`} />
 
-### Multiple Modalities
+### 多模态呈现
 
-<TryIt compact prompt={`Present \${concept:photosynthesis} in multiple ways:
+<TryIt compact prompt={`用多种方式呈现\${concept:光合作用}：
 
-1. **Text explanation** (clear prose)
-2. **Visual description** (describe a diagram)
-3. **Analogy** (relate to everyday experience)
-4. **Story/Narrative** (embed in a scenario)
-5. **Q&A format** (question and answer)
+1. **文字解释**（清晰的散文）
+2. **视觉描述**（描述一张图表）
+3. **类比**（与日常经验关联）
+4. **故事/叙事**（嵌入一个场景）
+5. **问答格式**（问题和回答）
 
-This allows learners to engage with their preferred style.`} />
+这样可以让学习者以自己偏好的方式参与学习。`} />
 
-## Assessment & Feedback
+## 评估与反馈
 
-### Providing Feedback
+### 提供反馈
 
-<TryIt compact prompt={`Provide educational feedback on this student work:
+<TryIt compact prompt={`对这份学生作业提供教育反馈：
 
-Assignment: \${assignment:5-paragraph essay on climate change}
-Student submission: \${work:paste student work here}
-Rubric: \${rubric:thesis clarity, evidence, organization, grammar}
+作业：\${assignment:关于气候变化的五段式论文}
+学生提交内容：\${work:在此粘贴学生作业}
+评分量规：\${rubric:论点清晰度、论据、组织结构、语法}
 
-Feedback format:
-1. **Strengths** - What they did well (specific)
-2. **Areas for improvement** - What needs work (constructive)
-3. **Suggestions** - How to improve (actionable)
-4. **Grade/Score** - Based on rubric
-5. **Encouragement** - Motivational closing
+反馈格式：
+1. **优点** - 做得好的地方（具体）
+2. **改进空间** - 需要改进的地方（建设性）
+3. **建议** - 如何改进（可操作）
+4. **成绩/分数** - 基于评分量规
+5. **鼓励** - 激励性结语
 
-Tone: Supportive, specific, growth-oriented`} />
+语气：支持性、具体、成长导向`} />
 
-### Self-Assessment Prompts
+### 自我评估提示词
 
-<TryIt compact prompt={`Help me assess my understanding of \${topic:the French Revolution}.
+<TryIt compact prompt={`帮助我评估我对\${topic:法国大革命}的理解。
 
-Ask me 5 questions that test:
-1. Basic recall
-2. Understanding
-3. Application
-4. Analysis
-5. Synthesis/Creation
+问我 5 个问题，测试：
+1. 基本记忆
+2. 理解
+3. 应用
+4. 分析
+5. 综合/创造
 
-After each answer, tell me:
-- What I demonstrated understanding of
-- What I should review
-- How to deepen my knowledge
+每次回答后，告诉我：
+- 我展示了对什么的理解
+- 我应该复习什么
+- 如何加深我的知识
 
-Be honest but encouraging.`} />
+请诚实但鼓励我。`} />
 
-## Summary
+## 总结
 
-<Callout type="tip" title="Key Techniques">
-Adapt to the learner's level, break complex topics into steps, include active practice (not just explanation), provide varied approaches, check understanding regularly, and give constructive feedback.
+<Callout type="tip" title="关键技巧">
+适应学习者的水平，将复杂主题分解为步骤，包含主动练习（不仅仅是解释），提供多种方法，定期检验理解，并给出建设性反馈。
 </Callout>
 
 <Quiz 
-  question="What's the most effective way to use AI for learning?"
+  question="使用 AI 学习最有效的方式是什么？"
   options={[
-    "Read AI explanations passively like a textbook",
-    "Ask AI to quiz you and generate practice problems",
-    "Only use AI for homework answers",
-    "Avoid AI for learning entirely"
+    "像教科书一样被动阅读 AI 的解释",
+    "让 AI 测验你并生成练习题",
+    "只用 AI 来获取作业答案",
+    "学习时完全避免使用 AI"
   ]}
   correctIndex={1}
-  explanation="Active recall beats passive review. Have AI quiz you, generate problems, and check your understanding—this builds stronger memory than just reading explanations."
+  explanation="主动回忆胜过被动复习。让 AI 测验你、生成练习题、检验你的理解——这比单纯阅读解释能建立更强的记忆。"
 />
 
-AI is a patient, always-available learning partner—use it to supplement, not replace, human instruction.
+AI 是一个耐心的、随时可用的学习伙伴——用它来补充而不是替代人类教学。

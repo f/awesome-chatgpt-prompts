@@ -1,343 +1,342 @@
-Every great prompt shares common structural elements. Understanding these components allows you to construct prompts systematically rather than through trial and error.
+每个优秀的提示词都具有共同的结构要素。理解这些组成部分可以让你系统性地构建提示词，而不是通过反复试错。
 
-<Callout type="tip" title="The Building Blocks">
-Think of these components like LEGO bricks. You don't need all of them for every prompt, but knowing what's available helps you build exactly what you need.
+<Callout type="tip" title="构建模块">
+把这些组成部分想象成乐高积木。你不需要在每个提示词中都使用所有组件，但了解有哪些可用的组件可以帮助你精确构建所需内容。
 </Callout>
 
-## The Core Components
+## 核心组成部分
 
-An effective prompt typically includes some or all of these elements:
+一个有效的提示词通常包含以下部分或全部元素：
 
 <PromptBreakdown parts={[
-  { label: "Role", text: "You are a senior software engineer" },
-  { label: "Context", text: "working on a React application." },
-  { label: "Task", text: "Review this code for bugs" },
-  { label: "Constraints", text: "and focus only on security issues." },
-  { label: "Format", text: "Return findings as a numbered list." },
-  { label: "Example", text: "Like: 1. SQL injection risk on line 42" }
+  { label: "角色", text: "你是一位资深软件工程师" },
+  { label: "背景", text: "正在开发一个 React 应用程序。" },
+  { label: "任务", text: "审查这段代码中的 bug" },
+  { label: "约束", text: "只关注安全问题。" },
+  { label: "格式", text: "以编号列表形式返回发现的问题。" },
+  { label: "示例", text: "例如：1. 第42行存在 SQL 注入风险" }
 ]} />
 
-Let's examine each component in detail.
+让我们详细了解每个组成部分。
 
-## 1. Role / Persona
+## 1. 角色/人设
 
-Setting a role focuses the model's responses through the lens of a specific expertise or perspective.
-
-<Compare 
-  before={{ label: "Without Role", content: "Explain quantum computing." }}
-  after={{ label: "With Role", content: "You are a physics professor who specializes in making complex topics accessible to beginners. Explain quantum computing." }}
-/>
-
-The role primes the model to:
-- Use appropriate vocabulary
-- Apply relevant expertise
-- Maintain a consistent perspective
-- Consider the audience appropriately
-
-### Effective Role Patterns
-
-```
-"You are a [profession] with [X years] of experience in [specialty]"
-"Act as a [role] who is [characteristic]"
-"You are an expert [field] helping a [audience type]"
-```
-
-## 2. Context / Background
-
-Context provides the information the model needs to understand your situation. Remember: the model knows nothing about you, your project, or your goals unless you tell it.
+设定角色可以使模型从特定专业知识或视角的角度来聚焦其回复。
 
 <Compare 
-  before={{ label: "Weak Context", content: "Fix this bug in my code." }}
-  after={{ label: "Strong Context", content: "I'm building a Node.js REST API using Express.js. The API handles user authentication with JWT tokens. When a user tries to access a protected route, they're getting a 403 error even with a valid token. Here's the relevant code: [code]" }}
+  before={{ label: "没有角色", content: "解释量子计算。" }}
+  after={{ label: "有角色", content: "你是一位物理学教授，擅长将复杂话题讲解得通俗易懂。请解释量子计算。" }}
 />
 
-### What to Include in Context
+角色可以引导模型：
+- 使用恰当的词汇
+- 运用相关的专业知识
+- 保持一致的视角
+- 适当考虑受众
 
-- **Project details** — Technology stack, architecture, constraints
-- **Current state** — What you've tried, what's working, what isn't
-- **Goals** — What you're ultimately trying to achieve
-- **Constraints** — Time limits, technical requirements, style guides
+### 有效的角色模式
 
-## 3. Task / Instruction
+```
+"你是一位拥有[X年][专业领域]经验的[职业]"
+"扮演一位[具有某特征]的[角色]"
+"你是一位[领域]专家，正在帮助一位[受众类型]"
+```
 
-The task is the heart of your prompt—what you want the model to do. Be specific and unambiguous.
+## 2. 背景/上下文
 
-### The Specificity Spectrum
+背景提供模型理解你情况所需的信息。请记住：除非你告诉模型，否则它对你、你的项目或你的目标一无所知。
+
+<Compare 
+  before={{ label: "弱背景", content: "修复我代码中的 bug。" }}
+  after={{ label: "强背景", content: "我正在使用 Express.js 构建一个 Node.js REST API。该 API 使用 JWT 令牌处理用户认证。当用户尝试访问受保护的路由时，即使使用有效的令牌也会收到 403 错误。以下是相关代码：[代码]" }}
+/>
+
+### 背景中应包含的内容
+
+- **项目详情** — 技术栈、架构、约束条件
+- **当前状态** — 你已经尝试过什么、什么有效、什么无效
+- **目标** — 你最终想要达成什么
+- **限制条件** — 时间限制、技术要求、风格指南
+
+## 3. 任务/指令
+
+任务是提示词的核心——你希望模型做什么。要具体且明确。
+
+### 具体程度光谱
 
 <SpecificitySpectrum levels={[
-  { level: "Vague", text: "Help me with this essay" },
-  { level: "Better", text: "Edit this essay" },
-  { level: "Good", text: "Edit this essay for grammar and clarity" },
-  { level: "Best", text: "Edit this essay for grammar and clarity, maintaining the original tone but reducing wordiness by 20%" }
+  { level: "模糊", text: "帮我处理这篇文章" },
+  { level: "较好", text: "编辑这篇文章" },
+  { level: "良好", text: "编辑这篇文章的语法和表达清晰度" },
+  { level: "最佳", text: "编辑这篇文章的语法和表达清晰度，保持原有语气但减少20%的冗余内容" }
 ]} />
 
-### Action Verbs That Work Well
+### 有效的动作动词
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Creation</span>
-    <span className="text-muted-foreground">Write, Create, Generate, Compose, Design</span>
+    <span className="font-semibold min-w-32">创作类</span>
+    <span className="text-muted-foreground">撰写、创建、生成、编写、设计</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Analysis</span>
-    <span className="text-muted-foreground">Analyze, Evaluate, Compare, Assess, Review</span>
+    <span className="font-semibold min-w-32">分析类</span>
+    <span className="text-muted-foreground">分析、评估、比较、评价、审查</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Transformation</span>
-    <span className="text-muted-foreground">Convert, Translate, Reformat, Summarize, Expand</span>
+    <span className="font-semibold min-w-32">转换类</span>
+    <span className="text-muted-foreground">转换、翻译、重新格式化、总结、扩展</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Explanation</span>
-    <span className="text-muted-foreground">Explain, Describe, Clarify, Define, Illustrate</span>
+    <span className="font-semibold min-w-32">解释类</span>
+    <span className="text-muted-foreground">解释、描述、阐明、定义、举例说明</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Problem-solving</span>
-    <span className="text-muted-foreground">Solve, Debug, Fix, Optimize, Improve</span>
+    <span className="font-semibold min-w-32">问题解决类</span>
+    <span className="text-muted-foreground">解决、调试、修复、优化、改进</span>
   </div>
 </div>
 
-## 4. Constraints / Rules
+## 4. 约束/规则
 
-Constraints bound the model's output. They prevent common issues and ensure relevance.
+约束限定模型的输出范围。它们可以防止常见问题并确保相关性。
 
-### Types of Constraints
+### 约束类型
 
-**Length constraints:**
+**长度约束：**
 ```
-"Keep your response under 200 words"
-"Provide exactly 5 suggestions"
-"Write 3-4 paragraphs"
-```
-
-**Content constraints:**
-```
-"Do not include any code examples"
-"Focus only on the technical aspects"
-"Avoid marketing language"
+"将回复控制在200字以内"
+"提供恰好5条建议"
+"写3-4段"
 ```
 
-**Style constraints:**
+**内容约束：**
 ```
-"Use a formal, academic tone"
-"Write as if speaking to a 10-year-old"
-"Be direct and avoid hedging language"
-```
-
-**Scope constraints:**
-```
-"Only consider options available in Python 3.10+"
-"Limit suggestions to free tools"
-"Focus on solutions that don't require additional dependencies"
+"不要包含任何代码示例"
+"只关注技术方面"
+"避免使用营销语言"
 ```
 
-## 5. Output Format
-
-Specifying the output format ensures you get responses in a usable structure.
-
-### Common Formats
-
-**Lists:**
+**风格约束：**
 ```
-"Return as a bulleted list"
-"Provide a numbered list of steps"
+"使用正式的学术语气"
+"像对10岁孩子说话一样来写"
+"直接明了，避免模棱两可的表达"
 ```
 
-**Structured data:**
+**范围约束：**
 ```
-"Return as JSON with keys: title, description, priority"
-"Format as a markdown table with columns: Feature, Pros, Cons"
-```
-
-**Specific structures:**
-```
-"Structure your response as:
- ## Summary
- ## Key Points
- ## Recommendations"
+"只考虑 Python 3.10+ 中可用的选项"
+"建议仅限于免费工具"
+"专注于不需要额外依赖的解决方案"
 ```
 
-### JSON Output Example
+## 5. 输出格式
+
+指定输出格式可确保你获得结构可用的回复。
+
+### 常见格式
+
+**列表：**
+```
+"以项目符号列表形式返回"
+"提供编号步骤列表"
+```
+
+**结构化数据：**
+```
+"以 JSON 格式返回，包含以下键：title、description、priority"
+"格式化为 markdown 表格，列名：功能、优点、缺点"
+```
+
+**特定结构：**
+```
+"按以下结构组织你的回复：
+ ## 摘要
+ ## 要点
+ ## 建议"
+```
+
+### JSON 输出示例
 
 ```
-Analyze this customer review and return JSON:
+分析这条客户评价并返回 JSON：
 {
   "sentiment": "positive" | "negative" | "neutral",
-  "topics": ["array of main topics"],
+  "topics": ["主要话题数组"],
   "rating_prediction": 1-5,
-  "key_phrases": ["notable phrases"]
+  "key_phrases": ["关键短语"]
 }
 
-Review: "The product arrived quickly and works great, but 
-the instructions were confusing."
+评价："产品送达很快，使用效果很好，但说明书让人困惑。"
 ```
 
-## 6. Examples (Few-Shot Learning)
+## 6. 示例（少样本学习）
 
-Examples are the most powerful way to show the model exactly what you want.
+示例是向模型展示你期望内容的最有效方式。
 
-### One-Shot Example
-
-```
-Convert these sentences to past tense.
-
-Example:
-Input: "She walks to the store"
-Output: "She walked to the store"
-
-Now convert:
-Input: "They run every morning"
-```
-
-### Few-Shot Example
+### 单样本示例
 
 ```
-Classify these support tickets by urgency.
+将这些句子转换为过去时。
 
-Examples:
-"My account was hacked" → Critical
-"How do I change my password?" → Low
-"Payment failed but I was charged" → High
+示例：
+输入："她走路去商店"
+输出："她走路去了商店"
 
-Classify: "The app crashes when I open settings"
+现在转换：
+输入："他们每天早上跑步"
 ```
 
-## Putting It All Together
+### 少样本示例
 
-Here's a complete prompt using all components:
+```
+按紧急程度对这些支持工单进行分类。
+
+示例：
+"我的账户被黑了" → 紧急
+"如何更改密码？" → 低
+"付款失败但我被扣款了" → 高
+
+分类："打开设置时应用崩溃了"
+```
+
+## 综合运用
+
+以下是一个使用所有组成部分的完整提示词：
 
 <TryIt 
-  title="Complete Prompt Example"
-  description="This prompt demonstrates all six components working together. Try it to see how structured prompts produce professional results."
-  prompt={`# Role
-You are a senior technical writer with 10 years of experience creating developer documentation.
+  title="完整提示词示例"
+  description="此提示词演示了六个组成部分如何协同工作。试试看，了解结构化提示词如何产生专业的结果。"
+  prompt={`# 角色
+你是一位拥有10年开发者文档编写经验的资深技术文档工程师。
 
-# Context
-I'm documenting a REST API for a payment processing service. The audience is developers integrating our API into their applications. They have intermediate programming knowledge but may be new to payment processing concepts.
+# 背景
+我正在为一个支付处理服务编写 REST API 文档。受众是将我们的 API 集成到其应用程序中的开发者。他们具有中级编程知识，但可能对支付处理概念不太熟悉。
 
-# Task
-Write documentation for the following API endpoint that creates a new payment intent.
+# 任务
+为以下创建新支付意向的 API 端点编写文档。
 
-# Constraints
-- Use clear, concise language
-- Include common error scenarios
-- Do not include implementation details about our backend
-- Assume readers understand HTTP and JSON basics
+# 约束
+- 使用清晰、简洁的语言
+- 包含常见错误场景
+- 不要包含关于我们后端的实现细节
+- 假设读者了解 HTTP 和 JSON 基础知识
 
-# Output Format
-Structure the documentation as:
-1. Endpoint Overview (2-3 sentences)
-2. Request (method, URL, headers, body with example)
-3. Response (success and error examples)
-4. Code Example (in JavaScript/Node.js)
+# 输出格式
+按以下结构组织文档：
+1. 端点概述（2-3句话）
+2. 请求（方法、URL、请求头、请求体及示例）
+3. 响应（成功和错误示例）
+4. 代码示例（使用 JavaScript/Node.js）
 
-# Endpoint Details
+# 端点详情
 POST /v1/payments/intents
 Body: { "amount": 1000, "currency": "usd", "description": "Order #1234" }`}
 />
 
-## The Minimal Effective Prompt
+## 最小有效提示词
 
-Not every prompt needs all components. For simple tasks, a clear instruction may suffice:
+并非每个提示词都需要所有组成部分。对于简单任务，一个清晰的指令可能就足够了：
 
 ```
-Translate "Hello, how are you?" to Spanish.
+将"Hello, how are you?"翻译成西班牙语。
 ```
 
-Use additional components when:
-- The task is complex or ambiguous
-- You need specific formatting
-- Results aren't matching expectations
-- Consistency across multiple queries matters
+在以下情况下使用额外组成部分：
+- 任务复杂或模糊
+- 你需要特定格式
+- 结果与预期不符
+- 多次查询之间需要保持一致性
 
-## Common Prompt Patterns
+## 常见提示词模式
 
-These frameworks give you a simple checklist to follow when writing prompts. Click on each step to see an example.
+这些框架为你编写提示词时提供了简单的检查清单。点击每个步骤查看示例。
 
 <CRISPEFramework />
 
 <RTFFramework />
 
-## Summary
+## 总结
 
-Effective prompts are constructed, not discovered. By understanding and applying these structural components, you can:
+有效的提示词是构建出来的，而不是偶然发现的。通过理解和应用这些结构组成部分，你可以：
 
-- Get better results on the first try
-- Debug prompts that aren't working
-- Create reusable prompt templates
-- Communicate your intentions clearly
+- 第一次尝试就获得更好的结果
+- 调试不起作用的提示词
+- 创建可重复使用的提示词模板
+- 清晰地传达你的意图
 
 <Quiz 
-  question="Which component has the biggest impact on response quality?"
+  question="哪个组成部分对回复质量影响最大？"
   options={[
-    "Always the role/persona",
-    "Always the output format",
-    "It depends on the task",
-    "The length of the prompt"
+    "始终是角色/人设",
+    "始终是输出格式",
+    "取决于具体任务",
+    "提示词的长度"
   ]}
   correctIndex={2}
-  explanation="Different tasks benefit from different components. A simple translation needs minimal structure, while a complex analysis benefits from detailed role, context, and format specifications."
+  explanation="不同的任务从不同的组成部分中受益。简单的翻译只需要最少的结构，而复杂的分析则需要详细的角色、背景和格式说明。"
 />
 
 <TryIt 
-  prompt={`You are a senior product manager with 10 years of experience in SaaS products.
+  prompt={`你是一位拥有10年 SaaS 产品经验的资深产品经理。
 
-Context: I'm building a task management app for remote teams. We're a small startup with limited engineering resources.
+背景：我正在为远程团队构建一个任务管理应用。我们是一家工程资源有限的小型初创公司。
 
-Task: Suggest 3 features we should prioritize for our MVP.
+任务：建议我们 MVP 应该优先考虑的3个功能。
 
-Constraints:
-- Features must be implementable by a team of 2 developers in 4 weeks
-- Focus on what differentiates us from Trello and Asana
+约束：
+- 功能必须能由2名开发人员在4周内实现
+- 专注于我们与 Trello 和 Asana 的差异化特点
 
-Format: For each feature, provide:
-1. Feature name
-2. One-sentence description  
-3. Why it matters for remote teams`}
-  description="This prompt uses all six components. Try it and see how the structured approach produces focused, actionable results."
+格式：对于每个功能，提供：
+1. 功能名称
+2. 一句话描述
+3. 为什么它对远程团队很重要`}
+  description="此提示词使用了所有六个组成部分。试试看，体验结构化方法如何产生聚焦、可操作的结果。"
 />
 
-## Build Your Own Prompt
+## 构建你自己的提示词
 
-Now it's your turn! Use this interactive prompt builder to construct your own prompt using the components you've learned:
+现在轮到你了！使用这个交互式提示词构建器，运用你学到的组成部分来构建你自己的提示词：
 
 <PromptBuilder 
-  title="Interactive Prompt Builder"
-  description="Fill in each section to build a complete, well-structured prompt"
+  title="交互式提示词构建器"
+  description="填写每个部分以构建一个完整、结构良好的提示词"
 />
 
 <PromptChallenge
-  title="Chapter Challenge: Build a Code Review Prompt"
-  task="Write a prompt that asks an AI to review code for security vulnerabilities. Your prompt should be specific enough to get actionable feedback."
+  title="章节挑战：构建代码审查提示词"
+  task="编写一个提示词，要求 AI 审查代码中的安全漏洞。你的提示词应该足够具体，以获得可操作的反馈。"
   criteria={[
-    "Includes a clear role or expertise level",
-    "Specifies what type of code review (security focus)",
-    "Defines the expected output format",
-    "Sets appropriate constraints or scope"
+    "包含明确的角色或专业级别",
+    "指定代码审查的类型（安全重点）",
+    "定义预期的输出格式",
+    "设置适当的约束或范围"
   ]}
   hints={[
-    "Think about what expertise a code reviewer should have",
-    "Be specific about what security issues to look for",
-    "Consider asking for a structured response format"
+    "考虑一下代码审查员应该具备什么专业知识",
+    "具体说明要查找哪些安全问题",
+    "考虑要求结构化的回复格式"
   ]}
-  exampleSolution={`You are a senior security engineer with expertise in web application security and OWASP Top 10 vulnerabilities.
+  exampleSolution={`你是一位资深安全工程师，精通 Web 应用安全和 OWASP Top 10 漏洞。
 
-Task: Review the following code for security vulnerabilities.
+任务：审查以下代码中的安全漏洞。
 
-Focus on:
-- SQL injection risks
-- XSS vulnerabilities  
-- Authentication/authorization issues
-- Input validation gaps
+重点关注：
+- SQL 注入风险
+- XSS 漏洞
+- 认证/授权问题
+- 输入验证缺陷
 
-Output format:
-For each issue found:
-1. Line number(s)
-2. Vulnerability type
-3. Risk level (High/Medium/Low)
-4. Recommended fix
+输出格式：
+对于发现的每个问题：
+1. 行号
+2. 漏洞类型
+3. 风险级别（高/中/低）
+4. 建议修复方案
 
-[CODE TO REVIEW]`}
+[待审查代码]`}
   difficulty="intermediate"
 />
 
-In the next chapter, we'll explore the core principles that guide prompt construction decisions.
+在下一章中，我们将探讨指导提示词构建决策的核心原则。

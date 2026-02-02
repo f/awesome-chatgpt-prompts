@@ -1,269 +1,269 @@
-A good prompt gets the job done. An optimized prompt gets the job done efficiently—faster, cheaper, more consistently. This chapter teaches you how to systematically improve prompts across multiple dimensions.
+一个好的提示词能完成任务。一个优化过的提示词能高效地完成任务——更快、更便宜、更稳定。本章将教你如何从多个维度系统性地改进提示词。
 
-<Callout type="tip" title="Try the Prompt Enhancer">
-Want to optimize your prompts automatically? Use our [Prompt Enhancer](/developers#enhancer) tool. It analyzes your prompt, applies optimization techniques, and shows you similar community prompts for inspiration.
+<Callout type="tip" title="试试提示词增强器">
+想要自动优化你的提示词？使用我们的[提示词增强器](/developers#enhancer)工具。它会分析你的提示词，应用优化技术，并展示类似的社区提示词供你参考。
 </Callout>
 
-## The Optimization Trade-offs
+## 优化的权衡
 
-Every optimization involves trade-offs. Understanding these helps you make intentional choices:
-
-<InfoGrid items={[
-  { label: "Quality vs. Cost", description: "Higher quality often requires more tokens or better models", example: "Adding examples improves accuracy but increases token count", exampleType: "text", color: "blue" },
-  { label: "Speed vs. Quality", description: "Faster models may sacrifice some capability", example: "GPT-4 is smarter but slower than GPT-4o-mini", exampleType: "text", color: "purple" },
-  { label: "Consistency vs. Creativity", description: "Lower temperature = more predictable but less creative", example: "Temperature 0.2 for facts, 0.8 for brainstorming", exampleType: "text", color: "green" },
-  { label: "Simplicity vs. Robustness", description: "Edge case handling adds complexity", example: "Simple prompts fail on unusual inputs", exampleType: "text", color: "amber" }
-]} />
-
-## Measuring What Matters
-
-Before optimizing, define success. What does "better" mean for your use case?
+每项优化都涉及权衡。理解这些权衡有助于你做出有意识的选择：
 
 <InfoGrid items={[
-  { label: "Accuracy", description: "How often is the output correct?", example: "90% of code suggestions compile without errors", exampleType: "text", color: "blue" },
-  { label: "Relevance", description: "Does it address what was actually asked?", example: "Response directly answers the question vs. tangents", exampleType: "text", color: "blue" },
-  { label: "Completeness", description: "Are all requirements covered?", example: "All 5 requested sections included in output", exampleType: "text", color: "blue" },
-  { label: "Latency", description: "How long until the response arrives?", example: "p50 < 2s, p95 < 5s for chat applications", exampleType: "text", color: "purple" },
-  { label: "Token Efficiency", description: "How many tokens for the same result?", example: "500 tokens vs. 1500 tokens for equivalent output", exampleType: "text", color: "purple" },
-  { label: "Consistency", description: "How similar are outputs for similar inputs?", example: "Same question gets structurally similar answers", exampleType: "text", color: "green" }
+  { label: "质量 vs. 成本", description: "更高的质量通常需要更多 token 或更好的模型", example: "添加示例可以提高准确性，但会增加 token 数量", exampleType: "text", color: "blue" },
+  { label: "速度 vs. 质量", description: "更快的模型可能会牺牲一些能力", example: "GPT-4 比 GPT-4o-mini 更智能但更慢", exampleType: "text", color: "purple" },
+  { label: "一致性 vs. 创造性", description: "较低的 temperature = 更可预测但创造性更低", example: "事实性内容用 0.2，头脑风暴用 0.8", exampleType: "text", color: "green" },
+  { label: "简单性 vs. 稳健性", description: "边缘情况处理会增加复杂性", example: "简单的提示词在异常输入时会失败", exampleType: "text", color: "amber" }
 ]} />
 
-<Callout type="info" title="What Do p50 and p95 Mean?">
-Percentile metrics show response time distribution. **p50** (median) means 50% of requests are faster than this value. **p95** means 95% are faster—it catches slow outliers. If your p50 is 1s but p95 is 10s, most users are happy but 5% experience frustrating delays.
+## 衡量重要指标
+
+在优化之前，先定义成功。对于你的用例来说，"更好"意味着什么？
+
+<InfoGrid items={[
+  { label: "准确性", description: "输出正确的频率有多高？", example: "90% 的代码建议可以无错误编译", exampleType: "text", color: "blue" },
+  { label: "相关性", description: "是否回答了实际被问到的问题？", example: "回复直接回答问题 vs. 跑题", exampleType: "text", color: "blue" },
+  { label: "完整性", description: "是否涵盖了所有要求？", example: "输出中包含所有 5 个要求的部分", exampleType: "text", color: "blue" },
+  { label: "延迟", description: "响应到达需要多长时间？", example: "聊天应用 p50 < 2秒，p95 < 5秒", exampleType: "text", color: "purple" },
+  { label: "Token 效率", description: "相同结果需要多少 token？", example: "500 tokens vs. 1500 tokens 达到相同输出", exampleType: "text", color: "purple" },
+  { label: "一致性", description: "相似输入的输出有多相似？", example: "相同问题得到结构相似的答案", exampleType: "text", color: "green" }
+]} />
+
+<Callout type="info" title="p50 和 p95 是什么意思？">
+百分位指标显示响应时间分布。**p50**（中位数）意味着 50% 的请求比这个值更快。**p95** 意味着 95% 更快——它能捕捉到慢速异常值。如果你的 p50 是 1 秒但 p95 是 10 秒，大多数用户体验良好，但有 5% 的用户会感到延迟困扰。
 </Callout>
 
 <TryIt 
-  title="Define Your Success Metrics"
-  description="Use this template to clarify what you're optimizing for before making changes."
-  prompt={`Help me define success metrics for my prompt optimization.
+  title="定义你的成功指标"
+  description="在做出更改之前，使用此模板来明确你要优化的目标。"
+  prompt={`帮我为提示词优化定义成功指标。
 
-**My use case**: \${useCase}
-**Current pain points**: \${painPoints}
+**我的用例**：\${useCase}
+**当前痛点**：\${painPoints}
 
-For this use case, help me define:
+针对这个用例，帮我定义：
 
-1. **Primary metric**: What single metric matters most?
-2. **Secondary metrics**: What else should I track?
-3. **Acceptable trade-offs**: What can I sacrifice for the primary metric?
-4. **Red lines**: What quality level is unacceptable?
-5. **How to measure**: Practical ways to evaluate each metric`}
+1. **主要指标**：哪个单一指标最重要？
+2. **次要指标**：还应该跟踪什么？
+3. **可接受的权衡**：为了主要指标可以牺牲什么？
+4. **红线**：什么样的质量水平是不可接受的？
+5. **如何衡量**：评估每个指标的实用方法`}
 />
 
-## Token Optimization
+## Token 优化
 
-Tokens cost money and add latency. Here's how to say the same thing with fewer tokens.
+Token 花费金钱并增加延迟。以下是如何用更少的 token 表达相同的内容。
 
-### The Compression Principle
+### 压缩原则
 
 <Compare 
-  before={{ label: "Verbose (67 tokens)", content: "I would like you to please help me with the following task. I need you to take the text that I'm going to provide below and create a summary of it. The summary should capture the main points and be concise. Please make sure to include all the important information. Here is the text:\n\n[text]" }}
-  after={{ label: "Concise (12 tokens)", content: "Summarize this text, capturing main points concisely:\n\n[text]" }}
+  before={{ label: "冗长版（67 tokens）", content: "I would like you to please help me with the following task. I need you to take the text that I'm going to provide below and create a summary of it. The summary should capture the main points and be concise. Please make sure to include all the important information. Here is the text:\n\n[text]" }}
+  after={{ label: "简洁版（12 tokens）", content: "Summarize this text, capturing main points concisely:\n\n[text]" }}
 />
 
-**Same result, 82% fewer tokens.**
+**相同结果，减少 82% 的 token。**
 
-### Token-Saving Techniques
+### Token 节省技巧
 
 <InfoGrid items={[
-  { label: "Cut Pleasantries", description: "\"Please\" and \"Thank you\" add tokens without improving output", example: "\"Please summarize\" → \"Summarize\"", color: "green" },
-  { label: "Eliminate Redundancy", description: "Don't repeat yourself or state the obvious", example: "\"Write a summary that summarizes\" → \"Summarize\"", color: "green" },
-  { label: "Use Abbreviations", description: "Where meaning is clear, abbreviate", example: "\"for example\" → \"e.g.\"", color: "green" },
-  { label: "Reference by Position", description: "Point to content instead of repeating it", example: "\"the text above\" instead of re-quoting", color: "green" }
+  { label: "删除客套话", description: "\"Please\" 和 \"Thank you\" 增加 token 但不会改善输出", example: "\"Please summarize\" → \"Summarize\"", color: "green" },
+  { label: "消除冗余", description: "不要重复自己或陈述显而易见的事情", example: "\"Write a summary that summarizes\" → \"Summarize\"", color: "green" },
+  { label: "使用缩写", description: "在意思明确的地方使用缩写", example: "\"for example\" → \"e.g.\"", color: "green" },
+  { label: "通过位置引用", description: "指向内容而不是重复它", example: "\"the text above\" 而不是重新引用", color: "green" }
 ]} />
 
 <TryIt 
-  title="Prompt Compressor"
-  description="Paste a verbose prompt to get a token-optimized version."
-  prompt={`Compress this prompt while preserving its meaning and effectiveness:
+  title="提示词压缩器"
+  description="粘贴一个冗长的提示词，获取 token 优化版本。"
+  prompt={`压缩这个提示词，同时保留其含义和有效性：
 
-Original prompt:
+原始提示词：
 "\${verbosePrompt}"
 
-Instructions:
-1. Remove unnecessary pleasantries and filler words
-2. Eliminate redundancy
-3. Use concise phrasing
-4. Keep all essential instructions and constraints
-5. Maintain clarity—don't sacrifice understanding for brevity
+说明：
+1. 删除不必要的客套话和填充词
+2. 消除冗余
+3. 使用简洁的措辞
+4. 保留所有关键指令和约束
+5. 保持清晰——不要为了简短而牺牲理解
 
-Provide:
-- **Compressed version**: The optimized prompt
-- **Token reduction**: Estimated percentage saved
-- **What was cut**: Brief explanation of what was removed and why it was safe to remove`}
+提供：
+- **压缩版本**：优化后的提示词
+- **Token 减少量**：估计节省的百分比
+- **删除了什么**：简要说明删除了什么以及为什么可以安全删除`}
 />
 
-## Quality Optimization
+## 质量优化
 
-Sometimes you need better outputs, not cheaper ones. Here's how to improve quality.
+有时你需要更好的输出，而不是更便宜的输出。以下是如何提高质量。
 
-### Accuracy Boosters
+### 准确性提升技巧
 
 <InfoGrid items={[
-  { label: "Add Verification", description: "Ask the model to check its own work", example: "\"...then verify your answer is correct\"", color: "blue" },
-  { label: "Request Confidence", description: "Make uncertainty explicit", example: "\"Rate your confidence 1-10 and explain any uncertainty\"", color: "blue" },
-  { label: "Multiple Approaches", description: "Get different perspectives, then choose", example: "\"Provide 3 approaches and recommend the best one\"", color: "blue" },
-  { label: "Explicit Reasoning", description: "Force step-by-step thinking", example: "\"Think step by step and show your reasoning\"", color: "blue" }
+  { label: "添加验证", description: "让模型检查自己的工作", example: "\"...then verify your answer is correct\"", color: "blue" },
+  { label: "请求置信度", description: "让不确定性明确化", example: "\"Rate your confidence 1-10 and explain any uncertainty\"", color: "blue" },
+  { label: "多种方法", description: "获取不同的视角，然后选择", example: "\"Provide 3 approaches and recommend the best one\"", color: "blue" },
+  { label: "明确推理", description: "强制逐步思考", example: "\"Think step by step and show your reasoning\"", color: "blue" }
 ]} />
 
-### Consistency Boosters
+### 一致性提升技巧
 
 <InfoGrid items={[
-  { label: "Detailed Format Specs", description: "Show exactly what output should look like", example: "Include a template or schema", exampleType: "text", color: "purple" },
-  { label: "Few-Shot Examples", description: "Provide 2-3 examples of ideal output", example: "\"Here's what good looks like: [examples]\"", color: "purple" },
-  { label: "Lower Temperature", description: "Reduce randomness for more predictable output", example: "Temperature 0.3-0.5 for consistent results", exampleType: "text", color: "purple" },
-  { label: "Output Validation", description: "Add a validation step for critical fields", example: "\"Verify all required fields are present\"", color: "purple" }
+  { label: "详细格式规范", description: "准确展示输出应该是什么样子", example: "包含模板或 schema", exampleType: "text", color: "purple" },
+  { label: "少样本示例", description: "提供 2-3 个理想输出的示例", example: "\"Here's what good looks like: [examples]\"", color: "purple" },
+  { label: "降低 Temperature", description: "减少随机性以获得更可预测的输出", example: "Temperature 0.3-0.5 以获得一致的结果", exampleType: "text", color: "purple" },
+  { label: "输出验证", description: "为关键字段添加验证步骤", example: "\"Verify all required fields are present\"", color: "purple" }
 ]} />
 
 <TryIt 
-  title="Quality Enhancer"
-  description="Add quality-improving elements to your prompt."
-  prompt={`Enhance this prompt for higher quality outputs:
+  title="质量增强器"
+  description="为你的提示词添加质量提升元素。"
+  prompt={`增强这个提示词以获得更高质量的输出：
 
-Original prompt:
+原始提示词：
 "\${originalPrompt}"
 
-**What quality issue I'm seeing**: \${qualityIssue}
+**我看到的质量问题**：\${qualityIssue}
 
-Add appropriate quality boosters:
-1. If accuracy is the issue → add verification steps
-2. If consistency is the issue → add format specifications or examples
-3. If relevance is the issue → add context and constraints
-4. If completeness is the issue → add explicit requirements
+添加适当的质量提升器：
+1. 如果问题是准确性 → 添加验证步骤
+2. 如果问题是一致性 → 添加格式规范或示例
+3. 如果问题是相关性 → 添加上下文和约束
+4. 如果问题是完整性 → 添加明确的要求
 
-Provide the enhanced prompt with explanations for each addition.`}
+提供增强后的提示词，并解释每个添加项。`}
 />
 
-## Latency Optimization
+## 延迟优化
 
-When speed matters, every millisecond counts.
+当速度很重要时，每毫秒都很关键。
 
-### Model Selection by Speed Need
-
-<InfoGrid items={[
-  { label: "Real-time (< 500ms)", description: "Use smallest effective model + aggressive caching", example: "GPT-4o-mini, Claude Haiku, cached responses", exampleType: "text", color: "red" },
-  { label: "Interactive (< 2s)", description: "Fast models, streaming enabled", example: "GPT-4o-mini with streaming", exampleType: "text", color: "amber" },
-  { label: "Tolerant (< 10s)", description: "Mid-tier models, balance quality/speed", example: "GPT-4o, Claude Sonnet", exampleType: "text", color: "green" },
-  { label: "Async/Batch", description: "Use best model, process in background", example: "GPT-4, Claude Opus for offline processing", exampleType: "text", color: "blue" }
-]} />
-
-### Speed Techniques
+### 按速度需求选择模型
 
 <InfoGrid items={[
-  { label: "Shorter Prompts", description: "Fewer input tokens = faster processing", example: "Compress prompts, remove unnecessary context", exampleType: "text", color: "cyan" },
-  { label: "Limit Output", description: "Set max_tokens to prevent runaway responses", example: "max_tokens: 500 for summaries", exampleType: "text", color: "cyan" },
-  { label: "Use Streaming", description: "Get first tokens faster, better UX", example: "Stream for any response > 100 tokens", exampleType: "text", color: "cyan" },
-  { label: "Cache Aggressively", description: "Don't recompute identical queries", example: "Cache common questions, template outputs", exampleType: "text", color: "cyan" }
+  { label: "实时（< 500ms）", description: "使用最小有效模型 + 积极缓存", example: "GPT-4o-mini、Claude Haiku、缓存响应", exampleType: "text", color: "red" },
+  { label: "交互式（< 2s）", description: "快速模型，启用流式输出", example: "GPT-4o-mini 配合流式输出", exampleType: "text", color: "amber" },
+  { label: "可容忍（< 10s）", description: "中等模型，平衡质量/速度", example: "GPT-4o、Claude Sonnet", exampleType: "text", color: "green" },
+  { label: "异步/批量", description: "使用最佳模型，后台处理", example: "GPT-4、Claude Opus 用于离线处理", exampleType: "text", color: "blue" }
 ]} />
 
-## Cost Optimization
+### 速度优化技巧
 
-At scale, small savings multiply into significant budget impact.
+<InfoGrid items={[
+  { label: "更短的提示词", description: "更少的输入 token = 更快的处理", example: "压缩提示词，删除不必要的上下文", exampleType: "text", color: "cyan" },
+  { label: "限制输出", description: "设置 max_tokens 防止响应过长", example: "摘要使用 max_tokens: 500", exampleType: "text", color: "cyan" },
+  { label: "使用流式输出", description: "更快获得第一个 token，更好的用户体验", example: "任何超过 100 tokens 的响应都使用流式", exampleType: "text", color: "cyan" },
+  { label: "积极缓存", description: "不要重复计算相同的查询", example: "缓存常见问题、模板输出", exampleType: "text", color: "cyan" }
+]} />
 
-### Understanding Costs
+## 成本优化
 
-Use this calculator to estimate your API costs across different models:
+在规模化运营时，小的节省会累积成显著的预算影响。
+
+### 理解成本
+
+使用此计算器估算不同模型的 API 成本：
 
 <CostCalculatorDemo />
 
-### Cost Reduction Strategies
+### 成本降低策略
 
 <InfoGrid items={[
-  { label: "Model Routing", description: "Use expensive models only when needed", example: "Simple questions → GPT-4o-mini, Complex → GPT-4", exampleType: "text", color: "green" },
-  { label: "Prompt Efficiency", description: "Shorter prompts = lower cost per request", example: "Cut 50% of tokens = 50% input cost savings", exampleType: "text", color: "green" },
-  { label: "Output Control", description: "Limit response length when full detail isn't needed", example: "\"Answer in 2-3 sentences\" vs. unlimited", color: "green" },
-  { label: "Batching", description: "Combine related queries into single requests", example: "Analyze 10 items in one prompt vs. 10 separate calls", exampleType: "text", color: "green" },
-  { label: "Pre-filtering", description: "Don't send requests that don't need AI", example: "Keyword matching before expensive classification", exampleType: "text", color: "green" }
+  { label: "模型路由", description: "只在需要时使用昂贵的模型", example: "简单问题 → GPT-4o-mini，复杂问题 → GPT-4", exampleType: "text", color: "green" },
+  { label: "提示词效率", description: "更短的提示词 = 更低的每次请求成本", example: "减少 50% 的 token = 节省 50% 的输入成本", exampleType: "text", color: "green" },
+  { label: "输出控制", description: "当不需要完整细节时限制响应长度", example: "\"Answer in 2-3 sentences\" vs. 无限制", color: "green" },
+  { label: "批处理", description: "将相关查询合并到单个请求中", example: "在一个提示词中分析 10 个项目 vs. 10 次单独调用", exampleType: "text", color: "green" },
+  { label: "预过滤", description: "不要发送不需要 AI 的请求", example: "在昂贵的分类之前使用关键词匹配", exampleType: "text", color: "green" }
 ]} />
 
-## The Optimization Loop
+## 优化循环
 
-Optimization is iterative. Here's a systematic process:
+优化是迭代的。这是一个系统性的过程：
 
-### Step 1: Establish Baseline
+### 第一步：建立基准
 
-You can't improve what you don't measure. Before changing anything, document your starting point rigorously.
+你无法改进你没有衡量的东西。在改变任何事情之前，严格记录你的起点。
 
 <InfoGrid items={[
-  { label: "Prompt Documentation", description: "Save the exact prompt text, including system prompts and any templates", example: "Version control your prompts like code", exampleType: "text", color: "blue" },
-  { label: "Test Set", description: "Create 20-50 representative inputs that cover common cases and edge cases", example: "Include easy, medium, and hard examples", exampleType: "text", color: "blue" },
-  { label: "Quality Metrics", description: "Score each output against your success criteria", example: "Accuracy %, relevance score, format compliance", exampleType: "text", color: "purple" },
-  { label: "Performance Metrics", description: "Measure tokens and timing for each test case", example: "Avg input: 450 tokens, Avg output: 200 tokens, p50 latency: 1.2s", exampleType: "text", color: "purple" }
+  { label: "提示词文档", description: "保存精确的提示词文本，包括系统提示词和任何模板", example: "像管理代码一样对提示词进行版本控制", exampleType: "text", color: "blue" },
+  { label: "测试集", description: "创建 20-50 个代表性输入，涵盖常见情况和边缘情况", example: "包含简单、中等和困难的示例", exampleType: "text", color: "blue" },
+  { label: "质量指标", description: "根据你的成功标准对每个输出评分", example: "准确率 %、相关性评分、格式合规性", exampleType: "text", color: "purple" },
+  { label: "性能指标", description: "测量每个测试用例的 token 和时间", example: "平均输入：450 tokens，平均输出：200 tokens，p50 延迟：1.2s", exampleType: "text", color: "purple" }
 ]} />
 
 <TryIt 
-  title="Baseline Documentation Template"
-  description="Use this to create a comprehensive baseline before optimizing."
-  prompt={`Create a baseline documentation for my prompt optimization project.
+  title="基准文档模板"
+  description="在优化之前使用此模板创建全面的基准。"
+  prompt={`为我的提示词优化项目创建基准文档。
 
-**Current prompt**:
+**当前提示词**：
 "\${currentPrompt}"
 
-**What the prompt does**: \${promptPurpose}
+**提示词的功能**：\${promptPurpose}
 
-**Current issues I'm seeing**: \${currentIssues}
+**我看到的当前问题**：\${currentIssues}
 
-Generate a baseline documentation template with:
+生成一个基准文档模板，包含：
 
-1. **Prompt Snapshot**: The exact prompt text (for version control)
+1. **提示词快照**：精确的提示词文本（用于版本控制）
 
-2. **Test Cases**: Suggest 10 representative test inputs I should use, covering:
-   - 3 typical/easy cases
-   - 4 medium complexity cases  
-   - 3 edge cases or difficult inputs
+2. **测试用例**：建议我应该使用的 10 个代表性测试输入，涵盖：
+   - 3 个典型/简单案例
+   - 4 个中等复杂度案例
+   - 3 个边缘案例或困难输入
 
-3. **Metrics to Track**:
-   - Quality metrics specific to this use case
-   - Efficiency metrics (tokens, latency)
-   - How to score each metric
+3. **要跟踪的指标**：
+   - 针对此用例的质量指标
+   - 效率指标（tokens、延迟）
+   - 如何对每个指标评分
 
-4. **Baseline Hypothesis**: What do I expect the current performance to be?
+4. **基准假设**：我预期当前性能是多少？
 
-5. **Success Criteria**: What numbers would make me satisfied with optimization?`}
+5. **成功标准**：什么数字会让我对优化感到满意？`}
 />
 
-### Step 2: Form a Hypothesis
+### 第二步：形成假设
 
 <Compare 
-  before={{ label: "Vague goal", content: "I want to make my prompt better." }}
-  after={{ label: "Testable hypothesis", content: "If I add 2 few-shot examples, accuracy will improve from 75% to 85% because the model will learn the expected pattern." }}
+  before={{ label: "模糊目标", content: "我想让我的提示词变得更好。" }}
+  after={{ label: "可测试的假设", content: "如果我添加 2 个少样本示例，准确率将从 75% 提高到 85%，因为模型将学会预期的模式。" }}
 />
 
-### Step 3: Test One Change
+### 第三步：测试单一变更
 
-Change one thing at a time. Run both versions on the same test inputs. Measure the metrics that matter.
+一次只改变一件事。在相同的测试输入上运行两个版本。衡量重要的指标。
 
-### Step 4: Analyze and Decide
+### 第四步：分析并决策
 
-Did it work? Keep the change. Did it hurt? Revert. Was it neutral? Revert (simpler is better).
+有效吗？保留更改。有害吗？还原。中性的？还原（简单更好）。
 
-### Step 5: Repeat
+### 第五步：重复
 
-Generate new hypotheses based on what you learned. Keep iterating until you hit your targets or reach diminishing returns.
+根据你学到的内容生成新的假设。持续迭代，直到达到目标或收益递减。
 
-## Optimization Checklist
+## 优化清单
 
 <Checklist 
-  title="Before Deploying an Optimized Prompt"
+  title="部署优化后的提示词之前"
   items={[
-    { text: "Defined clear success metrics" },
-    { text: "Measured baseline performance" },
-    { text: "Tested changes on representative inputs" },
-    { text: "Verified quality didn't regress" },
-    { text: "Checked edge case handling" },
-    { text: "Calculated cost at expected scale" },
-    { text: "Tested latency under load" },
-    { text: "Documented what changed and why" }
+    { text: "定义了明确的成功指标" },
+    { text: "测量了基准性能" },
+    { text: "在代表性输入上测试了更改" },
+    { text: "验证了质量没有退化" },
+    { text: "检查了边缘情况处理" },
+    { text: "计算了预期规模下的成本" },
+    { text: "测试了负载下的延迟" },
+    { text: "记录了更改的内容和原因" }
   ]}
 />
 
 <Quiz 
-  question="You have a prompt that works well but costs too much at scale. What's the FIRST thing you should do?"
+  question="你有一个效果很好但规模化时成本太高的提示词。你应该首先做什么？"
   options={[
-    "Switch to a cheaper model immediately",
-    "Remove words from the prompt to reduce tokens",
-    "Measure which part of the prompt is using the most tokens",
-    "Add caching for all requests"
+    "立即切换到更便宜的模型",
+    "从提示词中删除词语以减少 token",
+    "测量提示词的哪个部分使用了最多的 token",
+    "为所有请求添加缓存"
   ]}
   correctIndex={2}
-  explanation="Before optimizing, measure. You need to understand where the tokens are going before you can effectively reduce them. The prompt might have unnecessary context, verbose instructions, or generate longer outputs than needed. Measurement tells you where to focus your optimization efforts."
+  explanation="在优化之前，先测量。你需要了解 token 花在哪里，然后才能有效地减少它们。提示词可能有不必要的上下文、冗长的指令，或生成比需要的更长的输出。测量告诉你应该把优化工作集中在哪里。"
 />

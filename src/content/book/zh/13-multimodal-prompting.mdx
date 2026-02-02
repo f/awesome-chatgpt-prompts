@@ -1,171 +1,171 @@
-For most of history, computers worked with one type of data at a time: text in one program, images in another, audio somewhere else. But humans don't experience the world this way. We see, hear, read, and speak simultaneously, combining all these inputs to understand our environment.
+在计算机发展的大部分历史中，它们一次只能处理一种类型的数据：文本在一个程序中，图像在另一个程序中，音频又在其他地方。但人类并不是这样体验世界的。我们同时看、听、读和说，将所有这些输入结合起来理解我们的环境。
 
-**Multimodal AI** changes everything. These models can process multiple types of information together—analyzing an image while reading your question about it, or generating images from your text descriptions. This chapter teaches you how to communicate effectively with these powerful systems.
+**多模态 AI** 改变了一切。这些模型可以同时处理多种类型的信息——在阅读你关于图像的问题时分析图像，或者根据你的文字描述生成图像。本章将教你如何有效地与这些强大的系统进行沟通。
 
-<Callout type="info" title="What Does Multimodal Mean?">
-"Multi" means many, and "modal" refers to modes or types of data. A multimodal model can work with multiple modalities: text, images, audio, video, or even code. Instead of separate tools for each type, one model understands them all together.
+<Callout type="info" title="什么是多模态？">
+"Multi"意味着多种，"modal"指的是模式或数据类型。多模态模型可以处理多种模态：文本、图像、音频、视频，甚至代码。不再需要为每种类型使用单独的工具，一个模型就能理解所有这些。
 </Callout>
 
-## Why Multimodal Matters
+## 为什么多模态很重要
 
-Traditional AI required you to describe everything in words. Want to ask about an image? You'd have to describe it first. Want to analyze a document? You'd need to transcribe it manually. Multimodal models eliminate these barriers.
+传统 AI 需要你用文字描述一切。想询问关于图像的问题？你必须先描述它。想分析一份文档？你需要手动转录它。多模态模型消除了这些障碍。
 
 <InfoGrid items={[
-  { label: "See and Understand", description: "Upload an image and ask questions about it directly—no description needed", example: "\"What's wrong with this circuit diagram?\"", color: "blue" },
-  { label: "Create from Words", description: "Describe what you want and generate images, audio, or video", example: "\"A sunset over mountains in watercolor style\"", color: "purple" },
-  { label: "Combine Everything", description: "Mix text, images, and other media in a single conversation", example: "\"Compare these two designs and tell me which is better for mobile\"", color: "green" },
-  { label: "Analyze Documents", description: "Extract information from photos of documents, receipts, or screenshots", example: "\"Extract all the line items from this invoice photo\"", color: "amber" }
+  { label: "观看并理解", description: "上传图像并直接提问——无需描述", example: "\"这个电路图有什么问题？\"", color: "blue" },
+  { label: "从文字创作", description: "描述你想要的内容，生成图像、音频或视频", example: "\"水彩风格的山间日落\"", color: "purple" },
+  { label: "组合一切", description: "在单次对话中混合文本、图像和其他媒体", example: "\"比较这两个设计，告诉我哪个更适合移动端\"", color: "green" },
+  { label: "分析文档", description: "从文档、收据或截图的照片中提取信息", example: "\"从这张发票照片中提取所有行项目\"", color: "amber" }
 ]} />
 
-## Why Prompting Matters Even More for Multimodal
+## 为什么提示词对多模态更加重要
 
-With text-only models, the AI receives exactly what you type. But with multimodal models, the AI must interpret visual or audio information—and interpretation requires guidance.
+对于纯文本模型，AI 接收的正是你输入的内容。但对于多模态模型，AI 必须解释视觉或音频信息——而解释需要引导。
 
 <Compare 
-  before={{ label: "Vague multimodal prompt", content: "What do you see in this image?\n\n[image of a complex dashboard]" }}
-  after={{ label: "Guided multimodal prompt", content: "This is a screenshot of our analytics dashboard. Focus on:\n1. The conversion rate graph in the top-right\n2. Any error indicators or warnings\n3. Whether the data looks normal or anomalous\n\n[image of a complex dashboard]" }}
+  before={{ label: "模糊的多模态提示词", content: "你在这张图片中看到了什么？\n\n[复杂仪表盘的图像]" }}
+  after={{ label: "有引导的多模态提示词", content: "这是我们分析仪表盘的截图。请关注：\n1. 右上角的转化率图表\n2. 任何错误指示器或警告\n3. 数据看起来是否正常或异常\n\n[复杂仪表盘的图像]" }}
 />
 
-**Without guidance**, the model might describe colors, layout, or irrelevant details. **With guidance**, it focuses on what actually matters to you.
+**没有引导时**，模型可能会描述颜色、布局或无关的细节。**有引导时**，它会专注于对你真正重要的内容。
 
-<Callout type="warning" title="The Interpretation Gap">
-When you look at an image, you instantly know what's important based on your context and goals. The AI doesn't have this context unless you provide it. A photo of a crack in a wall could be: a structural engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets it.
+<Callout type="warning" title="解释鸿沟">
+当你看一张图片时，你会根据自己的背景和目标立即知道什么是重要的。AI 没有这种背景，除非你提供。一张墙上裂缝的照片可能是：结构工程问题、艺术纹理，或者无关的背景。你的提示词决定了 AI 如何解释它。
 </Callout>
 
-## The Multimodal Landscape
+## 多模态领域概览
 
-Different models have different capabilities. Here's what's available in 2025:
+不同的模型有不同的能力。以下是 2025 年的可用情况：
 
-### Understanding Models (Input → Analysis)
+### 理解模型（输入 → 分析）
 
-These models accept various media types and produce text analysis or responses.
-
-<InfoGrid items={[
-  { label: "GPT-4o / GPT-5", description: "Text + Images + Audio → Text. OpenAI's flagship with 128K context, strong creative and reasoning abilities, reduced hallucination rates.", color: "green" },
-  { label: "Claude 4 Sonnet/Opus", description: "Text + Images → Text. Anthropic's safety-focused model with advanced reasoning, excellent for coding and complex multi-step tasks.", color: "purple" },
-  { label: "Gemini 2.5", description: "Text + Images + Audio + Video → Text. Google's model with 1M token context, self-fact-checking, fast processing for coding and research.", color: "blue" },
-  { label: "LLaMA 4 Scout", description: "Text + Images + Video → Text. Meta's open-source model with massive 10M token context for long documents and codebases.", color: "cyan" },
-  { label: "Grok 4", description: "Text + Images → Text. xAI's model with real-time data access and social media integration for up-to-date responses.", color: "red" }
-]} />
-
-### Generation Models (Text → Media)
-
-These models create images, audio, or video from text descriptions.
+这些模型接受各种媒体类型，并产生文本分析或回复。
 
 <InfoGrid items={[
-  { label: "DALL-E 3", description: "Text → Images. OpenAI's image generator with high accuracy to prompt descriptions.", color: "amber" },
-  { label: "Midjourney", description: "Text + Images → Images. Known for artistic quality, style control, and aesthetic outputs.", color: "pink" },
-  { label: "Sora", description: "Text → Video. OpenAI's video generation model for creating clips from descriptions.", color: "red" },
-  { label: "Whisper", description: "Audio → Text. OpenAI's speech-to-text with high accuracy across languages.", color: "cyan" }
+  { label: "GPT-4o / GPT-5", description: "文本 + 图像 + 音频 → 文本。OpenAI 的旗舰产品，拥有 128K 上下文，强大的创意和推理能力，幻觉率降低。", color: "green" },
+  { label: "Claude 4 Sonnet/Opus", description: "文本 + 图像 → 文本。Anthropic 注重安全的模型，具有高级推理能力，非常适合编程和复杂的多步骤任务。", color: "purple" },
+  { label: "Gemini 2.5", description: "文本 + 图像 + 音频 + 视频 → 文本。Google 的模型，拥有 1M token 上下文，自我事实核查，快速处理编程和研究任务。", color: "blue" },
+  { label: "LLaMA 4 Scout", description: "文本 + 图像 + 视频 → 文本。Meta 的开源模型，拥有海量 10M token 上下文，适用于长文档和代码库。", color: "cyan" },
+  { label: "Grok 4", description: "文本 + 图像 → 文本。xAI 的模型，具有实时数据访问和社交媒体集成，提供最新的回复。", color: "red" }
 ]} />
 
-<Callout type="info" title="Rapid Evolution">
-The multimodal landscape changes quickly. New models launch frequently, and existing models gain capabilities through updates. Always check the latest documentation for current features and limitations.
+### 生成模型（文本 → 媒体）
+
+这些模型根据文字描述创建图像、音频或视频。
+
+<InfoGrid items={[
+  { label: "DALL-E 3", description: "文本 → 图像。OpenAI 的图像生成器，对提示词描述的准确度很高。", color: "amber" },
+  { label: "Midjourney", description: "文本 + 图像 → 图像。以艺术质量、风格控制和美学输出著称。", color: "pink" },
+  { label: "Sora", description: "文本 → 视频。OpenAI 的视频生成模型，根据描述创建视频片段。", color: "red" },
+  { label: "Whisper", description: "音频 → 文本。OpenAI 的语音转文字工具，跨语言准确率很高。", color: "cyan" }
+]} />
+
+<Callout type="info" title="快速演进">
+多模态领域变化很快。新模型频繁发布，现有模型通过更新获得新功能。请务必查看最新文档以了解当前的功能和限制。
 </Callout>
 
-## Image Understanding Prompts
+## 图像理解提示词
 
-The most common multimodal use case is asking AI to analyze images. The key is providing context about what you need.
+最常见的多模态用例是让 AI 分析图像。关键是提供你需要什么的背景信息。
 
-### Basic Image Analysis
+### 基础图像分析
 
-Start with a clear request structure. Tell the model what aspects to focus on.
+从清晰的请求结构开始。告诉模型要关注哪些方面。
 
 <TryIt 
-  title="Structured Image Analysis"
-  description="This prompt provides a clear framework for image analysis. The model knows exactly what information you need."
-  prompt={`Analyze this image and describe:
+  title="结构化图像分析"
+  description="这个提示词为图像分析提供了清晰的框架。模型准确知道你需要什么信息。"
+  prompt={`分析这张图像并描述：
 
-1. **Main Subject**: What is the primary focus of this image?
-2. **Setting**: Where does this appear to be? (indoor/outdoor, location type)
-3. **Mood**: What emotional tone or atmosphere does it convey?
-4. **Text Content**: Any visible text, signs, or labels?
-5. **Notable Details**: What might someone miss at first glance?
-6. **Technical Quality**: How is the lighting, focus, and composition?
+1. **主体**：这张图像的主要焦点是什么？
+2. **场景**：这看起来在哪里？（室内/室外，地点类型）
+3. **情绪**：它传达了什么情感基调或氛围？
+4. **文字内容**：任何可见的文字、标志或标签？
+5. **值得注意的细节**：有什么可能一眼看不到的内容？
+6. **技术质量**：光线、对焦和构图如何？
 
-[Paste or describe the image you want to analyze]
+[粘贴或描述你想分析的图像]
 
-Image description or URL: \${imageDescription}`}
+图像描述或 URL：\${imageDescription}`}
 />
 
-### Structured Output for Images
+### 图像的结构化输出
 
-When you need to process image analysis programmatically, request JSON output.
+当你需要以编程方式处理图像分析时，请求 JSON 输出。
 
 <TryIt 
-  title="JSON Image Analysis"
-  description="Get structured data from image analysis that's easy to parse and use in applications."
-  prompt={`Analyze this image and return a JSON object with the following structure:
+  title="JSON 图像分析"
+  description="从图像分析中获取结构化数据，便于在应用程序中解析和使用。"
+  prompt={`分析这张图像并返回以下结构的 JSON 对象：
 
 {
-  "summary": "One sentence description",
-  "objects": ["List of main objects visible"],
+  "summary": "一句话描述",
+  "objects": ["可见主要物体列表"],
   "people": {
-    "count": "number or 'none'",
-    "activities": ["What they're doing, if any"]
+    "count": "数量或'无'",
+    "activities": ["他们在做什么，如果有的话"]
   },
-  "text_detected": ["Any text visible in the image"],
+  "text_detected": ["图像中可见的任何文字"],
   "colors": {
-    "dominant": ["Top 3 colors"],
-    "mood": "Warm/Cool/Neutral"
+    "dominant": ["前三种主色"],
+    "mood": "暖色调/冷色调/中性色调"
   },
   "setting": {
-    "type": "indoor/outdoor/unknown",
-    "description": "More specific location description"
+    "type": "室内/室外/未知",
+    "description": "更具体的地点描述"
   },
   "technical": {
-    "quality": "high/medium/low",
-    "lighting": "Description of lighting",
-    "composition": "Description of framing/composition"
+    "quality": "高/中/低",
+    "lighting": "光线描述",
+    "composition": "取景/构图描述"
   },
-  "confidence": "high/medium/low"
+  "confidence": "高/中/低"
 }
 
-Image to analyze: \${imageDescription}`}
+要分析的图像：\${imageDescription}`}
 />
 
-### Comparative Analysis
+### 对比分析
 
-Comparing multiple images requires clear labeling and specific comparison criteria.
+比较多张图像需要清晰的标签和具体的比较标准。
 
 <TryIt 
-  title="Image Comparison"
-  description="Compare two or more images with specific criteria that matter to your decision."
-  prompt={`Compare these images for \${purpose}:
+  title="图像比较"
+  description="使用对你决策重要的具体标准比较两张或多张图像。"
+  prompt={`为 \${purpose} 比较这些图像：
 
-**Image A**: \${imageA}
-**Image B**: \${imageB}
+**图像 A**：\${imageA}
+**图像 B**：\${imageB}
 
-Analyze each image on these criteria:
-1. \${criterion1} (importance: high)
-2. \${criterion2} (importance: medium)  
-3. \${criterion3} (importance: low)
+根据以下标准分析每张图像：
+1. \${criterion1}（重要性：高）
+2. \${criterion2}（重要性：中）  
+3. \${criterion3}（重要性：低）
 
-Provide:
-- Side-by-side comparison for each criterion
-- Strengths and weaknesses of each
-- Clear recommendation with reasoning
-- Any concerns or caveats`}
+提供：
+- 每个标准的并排比较
+- 每个选项的优缺点
+- 带有理由的明确推荐
+- 任何顾虑或注意事项`}
 />
 
-## Document and Screenshot Analysis
+## 文档和截图分析
 
-One of the most practical applications of multimodal AI is analyzing documents, screenshots, and UI elements. This saves hours of manual transcription and review.
+多模态 AI 最实用的应用之一是分析文档、截图和 UI 元素。这可以节省数小时的手动转录和审查时间。
 
-### Document Extraction
+### 文档提取
 
-Scanned documents, photos of receipts, and PDFs as images can all be processed. The key is telling the model what type of document it is and what information you need.
+扫描文档、收据照片和作为图像的 PDF 都可以处理。关键是告诉模型这是什么类型的文档以及你需要什么信息。
 
 <TryIt 
-  title="Document Data Extractor"
-  description="Extract structured data from photos of documents, receipts, invoices, or forms."
-  prompt={`This is a photo/scan of a \${documentType}.
+  title="文档数据提取器"
+  description="从文档、收据、发票或表格的照片中提取结构化数据。"
+  prompt={`这是一张 \${documentType} 的照片/扫描件。
 
-Extract all information into structured JSON format:
+将所有信息提取为结构化 JSON 格式：
 
 {
-  "document_type": "detected type",
-  "date": "if present",
+  "document_type": "检测到的类型",
+  "date": "如果存在",
   "key_fields": {
     "field_name": "value"
   },
@@ -177,489 +177,489 @@ Extract all information into structured JSON format:
     "tax": "",
     "total": ""
   },
-  "handwritten_notes": ["any handwritten text"],
-  "unclear_sections": ["areas that were hard to read"],
-  "confidence": "high/medium/low"
+  "handwritten_notes": ["任何手写文字"],
+  "unclear_sections": ["难以阅读的区域"],
+  "confidence": "高/中/低"
 }
 
-IMPORTANT: If any text is unclear, note it in "unclear_sections" rather than guessing. Mark confidence as "low" if significant portions were hard to read.
+重要提示：如果任何文字不清楚，请在"unclear_sections"中注明，而不是猜测。如果有大部分内容难以阅读，请将置信度标记为"低"。
 
-Document description: \${documentDescription}`}
+文档描述：\${documentDescription}`}
 />
 
-### Screenshot and UI Analysis
+### 截图和 UI 分析
 
-Screenshots are goldmines for debugging, UX review, and documentation. Guide the AI to focus on what matters.
+截图是调试、用户体验审查和文档编写的宝库。引导 AI 关注重要的内容。
 
 <TryIt 
-  title="UI/UX Screenshot Analyzer"
-  description="Get detailed analysis of screenshots for debugging, UX review, or documentation."
-  prompt={`This is a screenshot of \${applicationName}.
+  title="UI/UX 截图分析器"
+  description="获取截图的详细分析，用于调试、用户体验审查或文档编写。"
+  prompt={`这是 \${applicationName} 的截图。
 
-Analyze this interface:
+分析这个界面：
 
-**Identification**
-- What screen/page/state is this?
-- What is the user likely trying to accomplish here?
+**识别**
+- 这是什么屏幕/页面/状态？
+- 用户在这里可能想要完成什么？
 
-**UI Elements**
-- Key interactive elements (buttons, forms, menus)
-- Current state (anything selected, filled in, or expanded?)
-- Any error messages, warnings, or notifications?
+**UI 元素**
+- 关键交互元素（按钮、表单、菜单）
+- 当前状态（有什么被选中、填写或展开了吗？）
+- 任何错误消息、警告或通知？
 
-**UX Assessment**
-- Is the layout clear and intuitive?
-- Any confusing elements or unclear labels?
-- Accessibility concerns (contrast, text size, etc.)?
+**UX 评估**
+- 布局是否清晰直观？
+- 有任何令人困惑的元素或不清楚的标签吗？
+- 无障碍问题（对比度、文字大小等）？
 
-**Issues Detected**
-- Visual bugs or misalignments?
-- Truncated text or overflow issues?
-- Inconsistent styling?
+**检测到的问题**
+- 视觉错误或错位？
+- 截断的文字或溢出问题？
+- 不一致的样式？
 
-Screenshot description: \${screenshotDescription}`}
+截图描述：\${screenshotDescription}`}
 />
 
-### Error Message Analysis
+### 错误消息分析
 
-When you encounter an error, a screenshot often contains more context than copying the error text alone.
+当你遇到错误时，截图通常比单独复制错误文本包含更多上下文信息。
 
 <TryIt 
-  title="Error Diagnosis from Screenshot"
-  description="Get plain-language explanations and fixes for error messages in screenshots."
-  prompt={`I'm seeing this error in \${context}.
+  title="从截图诊断错误"
+  description="获取截图中错误消息的通俗解释和修复方法。"
+  prompt={`我在 \${context} 中看到这个错误。
 
-[Describe or paste the error message/screenshot]
-Error details: \${errorDetails}
+[描述或粘贴错误消息/截图]
+错误详情：\${errorDetails}
 
-Please provide:
+请提供：
 
-1. **Plain Language Explanation**: What does this error actually mean?
+1. **通俗解释**：这个错误实际上是什么意思？
 
-2. **Likely Causes** (ranked by probability):
-   - Most likely: 
-   - Also possible:
-   - Less common:
+2. **可能原因**（按概率排序）：
+   - 最可能：
+   - 也可能：
+   - 较少见：
 
-3. **Step-by-Step Fix**:
-   - First, try...
-   - If that doesn't work...
-   - As a last resort...
+3. **逐步修复**：
+   - 首先，尝试...
+   - 如果不行...
+   - 作为最后手段...
 
-4. **Prevention**: How to avoid this error in the future
+4. **预防**：将来如何避免这个错误
 
-5. **Red Flags**: When this error might indicate a more serious problem`}
+5. **警示信号**：这个错误何时可能表明更严重的问题`}
 />
 
-## Image Generation Prompts
+## 图像生成提示词
 
-Generating images from text descriptions is an art form. The more specific and structured your prompt, the closer the result will match your vision.
+从文字描述生成图像是一门艺术。你的提示词越具体和结构化，结果就越接近你的设想。
 
-### The Anatomy of an Image Prompt
+### 图像提示词的结构
 
-Effective image generation prompts have several components:
+有效的图像生成提示词包含几个组成部分：
 
 <InfoGrid items={[
-  { label: "Subject", description: "What is the main focus of the image?", example: "A golden retriever playing in autumn leaves", color: "blue" },
-  { label: "Style", description: "What artistic style or medium?", example: "Watercolor painting, digital art, photorealistic", color: "purple" },
-  { label: "Composition", description: "How is the scene arranged?", example: "Close-up portrait, wide landscape, bird's eye view", color: "green" },
-  { label: "Lighting", description: "What's the light source and quality?", example: "Soft morning light, dramatic shadows, neon glow", color: "amber" },
-  { label: "Mood", description: "What feeling should it evoke?", example: "Peaceful, energetic, mysterious, nostalgic", color: "pink" },
-  { label: "Details", description: "Specific elements to include or avoid", example: "Include: flowers. Avoid: text, watermarks", color: "cyan" }
+  { label: "主体", description: "图像的主要焦点是什么？", example: "一只金毛寻回犬在秋叶中玩耍", color: "blue" },
+  { label: "风格", description: "什么艺术风格或媒介？", example: "水彩画、数字艺术、照片级真实感", color: "purple" },
+  { label: "构图", description: "场景如何安排？", example: "特写肖像、广角风景、鸟瞰视角", color: "green" },
+  { label: "光线", description: "光源和质量是什么？", example: "柔和的晨光、戏剧性的阴影、霓虹灯光", color: "amber" },
+  { label: "情绪", description: "应该唤起什么感觉？", example: "宁静、充满活力、神秘、怀旧", color: "pink" },
+  { label: "细节", description: "要包含或避免的具体元素", example: "包含：花朵。避免：文字、水印", color: "cyan" }
 ]} />
 
-### Basic Image Generation
+### 基础图像生成
 
 <TryIt 
-  title="Structured Image Prompt"
-  description="Use this template to create detailed, specific image generation prompts."
-  prompt={`Create an image with these specifications:
+  title="结构化图像提示词"
+  description="使用这个模板创建详细、具体的图像生成提示词。"
+  prompt={`使用以下规格创建图像：
 
-**Subject**: \${subject}
+**主体**：\${subject}
 
-**Style**: \${style}
-**Medium**: \${medium} (e.g., oil painting, digital art, photograph)
+**风格**：\${style}
+**媒介**：\${medium}（如油画、数字艺术、照片）
 
-**Composition**:
-- Framing: \${framing} (close-up, medium shot, wide angle)
-- Perspective: \${perspective} (eye level, low angle, overhead)
-- Focus: \${focusArea}
+**构图**：
+- 取景：\${framing}（特写、中景、广角）
+- 视角：\${perspective}（平视、仰视、俯视）
+- 焦点：\${focusArea}
 
-**Lighting**:
-- Source: \${lightSource}
-- Quality: \${lightQuality} (soft, harsh, diffused)
-- Time of day: \${timeOfDay}
+**光线**：
+- 光源：\${lightSource}
+- 质量：\${lightQuality}（柔和、强烈、漫射）
+- 时间：\${timeOfDay}
 
-**Color Palette**: \${colors}
+**色彩调色板**：\${colors}
 
-**Mood/Atmosphere**: \${mood}
+**情绪/氛围**：\${mood}
 
-**Must Include**: \${includeElements}
-**Must Avoid**: \${avoidElements}
+**必须包含**：\${includeElements}
+**必须避免**：\${avoidElements}
 
-**Technical**: \${aspectRatio} aspect ratio, high quality`}
+**技术参数**：\${aspectRatio} 宽高比，高质量`}
 />
 
-### Scene Building
+### 场景构建
 
-For complex scenes, describe layers from foreground to background.
+对于复杂场景，从前景到背景逐层描述。
 
 <TryIt 
-  title="Layered Scene Description"
-  description="Build complex scenes by describing what appears in each layer of depth."
-  prompt={`Generate a detailed scene:
+  title="分层场景描述"
+  description="通过描述每个深度层中出现的内容来构建复杂场景。"
+  prompt={`生成一个详细的场景：
 
-**Setting**: \${setting}
+**场景设定**：\${setting}
 
-**Foreground** (closest to viewer):
+**前景**（最靠近观众）：
 \${foreground}
 
-**Middle Ground** (main action area):
+**中景**（主要动作区域）：
 \${middleGround}
 
-**Background** (distant elements):
+**背景**（远处元素）：
 \${background}
 
-**Atmospheric Details**:
-- Weather/Air: \${weather}
-- Lighting: \${lighting}
-- Time: \${timeOfDay}
+**氛围细节**：
+- 天气/空气：\${weather}
+- 光线：\${lighting}
+- 时间：\${timeOfDay}
 
-**Style**: \${artisticStyle}
-**Mood**: \${mood}
-**Color Palette**: \${colors}
+**风格**：\${artisticStyle}
+**情绪**：\${mood}
+**色彩调色板**：\${colors}
 
-Additional details to include: \${additionalDetails}`}
+要包含的额外细节：\${additionalDetails}`}
 />
 
-## Audio Prompting
+## 音频提示词
 
-Audio processing opens up transcription, analysis, and understanding of spoken content. The key is providing context about what the audio contains.
+音频处理开启了转录、分析和理解语音内容的大门。关键是提供关于音频内容的背景信息。
 
-### Enhanced Transcription
+### 增强转录
 
-Basic transcription is just the start. With good prompts, you can get speaker identification, timestamps, and domain-specific accuracy.
+基础转录只是开始。通过好的提示词，你可以获得说话人识别、时间戳和特定领域的准确性。
 
 <TryIt 
-  title="Smart Transcription"
-  description="Get accurate transcriptions with speaker labels, timestamps, and handling of unclear sections."
-  prompt={`Transcribe this audio recording.
+  title="智能转录"
+  description="获取带有说话人标签、时间戳和不清楚部分处理的准确转录。"
+  prompt={`转录这段音频录音。
 
-**Context**: \${recordingType} (meeting, interview, podcast, lecture, etc.)
-**Expected Speakers**: \${speakerCount} (\${speakerRoles})
-**Domain**: \${domain} (technical terms to expect: \${technicalTerms})
+**背景**：\${recordingType}（会议、访谈、播客、讲座等）
+**预期说话人**：\${speakerCount}（\${speakerRoles}）
+**领域**：\${domain}（预期的专业术语：\${technicalTerms}）
 
-**Output Format**:
-[00:00] **Speaker 1 (Name/Role)**: Transcribed text here.
-[00:15] **Speaker 2 (Name/Role)**: Their response here.
+**输出格式**：
+[00:00] **说话人 1（姓名/角色）**：转录的文字在这里。
+[00:15] **说话人 2（姓名/角色）**：他们的回应在这里。
 
-**Instructions**:
-- Include timestamps at natural breaks (every 30-60 seconds or at speaker changes)
-- Mark unclear sections as [inaudible] or [unclear: best guess?]
-- Note non-speech sounds in brackets: [laughter], [phone ringing], [long pause]
-- Preserve filler words only if they're meaningful (um, uh can be removed)
-- Flag any action items or decisions with → symbol
+**说明**：
+- 在自然停顿处包含时间戳（每 30-60 秒或说话人切换时）
+- 将不清楚的部分标记为 [听不清] 或 [不确定：最佳猜测？]
+- 用方括号注明非语音声音：[笑声]、[电话铃声]、[长时间停顿]
+- 只有在有意义时才保留填充词（嗯、啊可以删除）
+- 用 → 符号标记任何行动项目或决定
 
-Audio description: \${audioDescription}`}
+音频描述：\${audioDescription}`}
 />
 
-### Audio Content Analysis
+### 音频内容分析
 
-Beyond transcription, AI can analyze the content, tone, and key moments in audio.
+除了转录，AI 还可以分析音频中的内容、语气和关键时刻。
 
 <TryIt 
-  title="Audio Content Analyzer"
-  description="Get a comprehensive analysis of audio content including summary, key moments, and sentiment."
-  prompt={`Analyze this audio recording:
+  title="音频内容分析器"
+  description="获取音频内容的全面分析，包括摘要、关键时刻和情感。"
+  prompt={`分析这段音频录音：
 
-Audio description: \${audioDescription}
+音频描述：\${audioDescription}
 
-Provide:
+提供：
 
-**1. Executive Summary** (2-3 sentences)
-What is this recording about? What's the main takeaway?
+**1. 执行摘要**（2-3 句话）
+这段录音是关于什么的？主要收获是什么？
 
-**2. Speakers**
-- How many distinct speakers?
-- Characteristics (if discernible): tone, speaking style, expertise level
+**2. 说话人**
+- 有多少不同的说话人？
+- 特征（如果可辨别）：语气、说话风格、专业水平
 
-**3. Content Breakdown**
-- Main topics discussed (with approximate timestamps)
-- Key points made
-- Questions raised
+**3. 内容细分**
+- 讨论的主要话题（附大致时间戳）
+- 提出的关键观点
+- 提出的问题
 
-**4. Emotional Analysis**
-- Overall tone (formal, casual, tense, friendly)
-- Notable emotional moments
-- Energy level throughout
+**4. 情感分析**
+- 整体语气（正式、随意、紧张、友好）
+- 值得注意的情感时刻
+- 整体的能量水平
 
-**5. Actionable Items**
-- Decisions made
-- Action items mentioned
-- Follow-ups needed
+**5. 可行动项目**
+- 做出的决定
+- 提到的行动项目
+- 需要的后续跟进
 
-**6. Notable Quotes**
-Pull out 2-3 significant quotes with timestamps
+**6. 值得注意的引用**
+提取 2-3 句重要引用并附上时间戳
 
-**7. Audio Quality**
-- Overall clarity
-- Any issues (background noise, interruptions, technical problems)`}
+**7. 音频质量**
+- 整体清晰度
+- 任何问题（背景噪音、打断、技术问题）`}
 />
 
-## Video Prompting
+## 视频提示词
 
-Video combines visual and audio analysis over time. The challenge is guiding the AI to focus on the relevant aspects across the entire duration.
+视频结合了随时间变化的视觉和音频分析。挑战在于引导 AI 在整个时长内关注相关方面。
 
-### Video Understanding
+### 视频理解
 
 <TryIt 
-  title="Comprehensive Video Analysis"
-  description="Get a structured breakdown of video content including timeline, visual elements, and key moments."
-  prompt={`Analyze this video: \${videoDescription}
+  title="全面视频分析"
+  description="获取视频内容的结构化分解，包括时间线、视觉元素和关键时刻。"
+  prompt={`分析这个视频：\${videoDescription}
 
-Provide a comprehensive analysis:
+提供全面分析：
 
-**1. Overview** (2-3 sentences)
-What is this video about? What's the main message or purpose?
+**1. 概述**（2-3 句话）
+这个视频是关于什么的？主要信息或目的是什么？
 
-**2. Timeline of Key Moments**
-| Timestamp | Event | Significance |
-|-----------|-------|--------------|
+**2. 关键时刻时间线**
+| 时间戳 | 事件 | 重要性 |
+|--------|------|--------|
 | 0:00 | ... | ... |
 
-**3. Visual Analysis**
-- Setting/Location: Where does this take place?
-- People: Who appears? What are they doing?
-- Objects: Key items or props featured
-- Visual style: Quality, editing, graphics used
+**3. 视觉分析**
+- 场景/地点：这发生在哪里？
+- 人物：谁出现了？他们在做什么？
+- 物品：展示的关键物品或道具
+- 视觉风格：质量、剪辑、使用的图形
 
-**4. Audio Analysis**
-- Speech: Main points made (if any dialogue)
-- Music: Type, mood, how it's used
-- Sound effects: Notable audio elements
+**4. 音频分析**
+- 语音：主要观点（如果有对话）
+- 音乐：类型、情绪、如何使用
+- 音效：值得注意的音频元素
 
-**5. Production Quality**
-- Video quality and editing
-- Pacing and structure
-- Effectiveness for its purpose
+**5. 制作质量**
+- 视频质量和剪辑
+- 节奏和结构
+- 对其目的的有效性
 
-**6. Target Audience**
-Who is this video made for? Does it serve them well?
+**6. 目标受众**
+这个视频是为谁制作的？它是否很好地服务了他们？
 
-**7. Key Takeaways**
-What should a viewer remember from this video?`}
+**7. 关键要点**
+观众应该从这个视频中记住什么？`}
 />
 
-### Video Content Extraction
+### 视频内容提取
 
-For specific information extraction from videos, be precise about what you need.
+对于从视频中提取特定信息，要精确说明你需要什么。
 
 <TryIt 
-  title="Video Data Extractor"
-  description="Extract specific information from videos with timestamps and structured output."
-  prompt={`Extract specific information from this video:
+  title="视频数据提取器"
+  description="从视频中提取特定信息，附带时间戳和结构化输出。"
+  prompt={`从这个视频中提取特定信息：
 
-Video type: \${videoType}
-Video description: \${videoDescription}
+视频类型：\${videoType}
+视频描述：\${videoDescription}
 
-**Information to Extract**:
+**要提取的信息**：
 1. \${extractItem1}
 2. \${extractItem2}
 3. \${extractItem3}
 
-**Output Format**:
+**输出格式**：
 {
-  "video_summary": "Brief description",
-  "duration": "estimated length",
+  "video_summary": "简短描述",
+  "duration": "估计时长",
   "extracted_data": [
     {
       "timestamp": "MM:SS",
-      "item": "What was found",
-      "details": "Additional context",
-      "confidence": "high/medium/low"
+      "item": "发现了什么",
+      "details": "额外背景",
+      "confidence": "高/中/低"
     }
   ],
-  "items_not_found": ["List anything requested but not present"],
-  "additional_observations": "Anything relevant not explicitly requested"
+  "items_not_found": ["列出请求但未找到的任何内容"],
+  "additional_observations": "任何未明确请求但相关的内容"
 }`}
 />
 
-## Multimodal Combinations
+## 多模态组合
 
-The real power of multimodal AI emerges when you combine different types of input. These combinations enable analysis that would be impossible with any single modality.
+多模态 AI 的真正威力在于你组合不同类型输入时显现出来。这些组合实现了单一模态无法完成的分析。
 
-### Image + Text Verification
+### 图像 + 文字验证
 
-Check if images and their descriptions match—essential for e-commerce, content moderation, and quality assurance.
+检查图像和描述是否匹配——对于电子商务、内容审核和质量保证至关重要。
 
 <TryIt 
-  title="Image-Text Alignment Checker"
-  description="Verify that images accurately represent their text descriptions and vice versa."
-  prompt={`Analyze this image and its accompanying text for alignment:
+  title="图像-文字对齐检查器"
+  description="验证图像是否准确代表其文字描述，反之亦然。"
+  prompt={`分析这张图像及其配套文字的对齐程度：
 
-**Image**: \${imageDescription}
-**Text Description**: "\${textDescription}"
+**图像**：\${imageDescription}
+**文字描述**："\${textDescription}"
 
-Evaluate:
+评估：
 
-**1. Accuracy Match**
-- Does the image show what the text describes?
-- Score: [1-10] with explanation
+**1. 准确度匹配**
+- 图像是否显示了文字描述的内容？
+- 评分：[1-10] 附解释
 
-**2. Text Claims vs. Visual Reality**
-| Claim in Text | Visible in Image? | Notes |
-|---------------|-------------------|-------|
-| ... | Yes/No/Partial | ... |
+**2. 文字声明与视觉现实**
+| 文字中的声明 | 在图像中可见？ | 备注 |
+|--------------|----------------|------|
+| ... | 是/否/部分 | ... |
 
-**3. Visual Elements Not Mentioned**
-What's visible in the image but not described in the text?
+**3. 未提及的视觉元素**
+图像中可见但文字未描述的内容有哪些？
 
-**4. Text Claims Not Visible**
-What's described in text but can't be verified from the image?
+**4. 不可见的文字声明**
+文字中描述但无法从图像验证的内容有哪些？
 
-**5. Recommendations**
-- For the text: [improvements to match image]
-- For the image: [improvements to match text]
+**5. 建议**
+- 对于文字：[改进以匹配图像]
+- 对于图像：[改进以匹配文字]
 
-**6. Overall Assessment**
-Is this image-text pair trustworthy for \${purpose}?`}
+**6. 总体评估**
+这个图像-文字配对对于 \${purpose} 是否可信？`}
 />
 
-### Screenshot + Code Debugging
+### 截图 + 代码调试
 
-One of the most powerful combinations for developers: seeing the visual bug alongside the code.
+对开发者来说最强大的组合之一：同时查看视觉错误和代码。
 
 <TryIt 
-  title="Visual Bug Debugger"
-  description="Debug UI issues by analyzing both the visual output and the source code together."
-  prompt={`I have a UI bug. Here's what I see and my code:
+  title="可视化错误调试器"
+  description="通过同时分析视觉输出和源代码来调试 UI 问题。"
+  prompt={`我有一个 UI 错误。这是我看到的和我的代码：
 
-**Screenshot Description**: \${screenshotDescription}
-**What's Wrong**: \${bugDescription}
-**Expected Behavior**: \${expectedBehavior}
+**截图描述**：\${screenshotDescription}
+**问题所在**：\${bugDescription}
+**预期行为**：\${expectedBehavior}
 
-**Relevant Code**:
+**相关代码**：
 \`\`\`\${language}
 \${code}
 \`\`\`
 
-Please help me:
+请帮我：
 
-**1. Root Cause Analysis**
-- What in the code is causing this visual issue?
-- Which specific line(s) are responsible?
+**1. 根本原因分析**
+- 代码中的什么导致了这个视觉问题？
+- 具体是哪一行负责？
 
-**2. Explanation**
-- Why does this code produce this visual result?
-- What's the underlying mechanism?
+**2. 解释**
+- 为什么这段代码产生了这个视觉结果？
+- 底层机制是什么？
 
-**3. The Fix**
+**3. 修复方案**
 \`\`\`\${language}
-// Corrected code here
+// 修正后的代码在这里
 \`\`\`
 
-**4. Prevention**
-- How to avoid this type of bug in the future
-- Any related issues to check for`}
+**4. 预防**
+- 将来如何避免这类错误
+- 任何需要检查的相关问题`}
 />
 
-### Multi-Image Decision Making
+### 多图像决策
 
-When choosing between options, structured comparison helps make better decisions.
+在多个选项之间做选择时，结构化比较有助于做出更好的决定。
 
 <TryIt 
-  title="Visual Option Comparator"
-  description="Compare multiple images systematically against your criteria to make informed decisions."
-  prompt={`I'm choosing between these options for \${purpose}:
+  title="视觉选项比较器"
+  description="根据你的标准系统地比较多张图像，以做出明智的决定。"
+  prompt={`我正在为 \${purpose} 在这些选项之间做选择：
 
-**Option A**: \${optionA}
-**Option B**: \${optionB}
-**Option C**: \${optionC}
+**选项 A**：\${optionA}
+**选项 B**：\${optionB}
+**选项 C**：\${optionC}
 
-**My Criteria** (in order of importance):
-1. \${criterion1} (weight: high)
-2. \${criterion2} (weight: medium)
-3. \${criterion3} (weight: low)
+**我的标准**（按重要性排序）：
+1. \${criterion1}（权重：高）
+2. \${criterion2}（权重：中）
+3. \${criterion3}（权重：低）
 
-Provide:
+提供：
 
-**Comparison Matrix**
-| Criterion | Option A | Option B | Option C |
-|-----------|----------|----------|----------|
-| \${criterion1} | Score + notes | ... | ... |
+**比较矩阵**
+| 标准 | 选项 A | 选项 B | 选项 C |
+|------|--------|--------|--------|
+| \${criterion1} | 评分 + 备注 | ... | ... |
 | \${criterion2} | ... | ... | ... |
 | \${criterion3} | ... | ... | ... |
 
-**Weighted Scores**
-- Option A: X/10
-- Option B: X/10
-- Option C: X/10
+**加权分数**
+- 选项 A：X/10
+- 选项 B：X/10
+- 选项 C：X/10
 
-**Recommendation**
-Based on your stated priorities, I recommend [Option] because...
+**推荐**
+根据你陈述的优先级，我推荐 [选项] 因为...
 
-**Caveats**
-- If [condition], consider [alternative] instead
-- Watch out for [potential issue]`}
+**注意事项**
+- 如果 [条件]，请考虑 [替代方案]
+- 注意 [潜在问题]`}
 />
 
-## Best Practices for Multimodal Prompts
+## 多模态提示词最佳实践
 
-Getting great results from multimodal AI requires understanding both its capabilities and limitations.
+要从多模态 AI 获得出色的结果，需要理解它的能力和局限性。
 
-### What Makes Multimodal Prompts Effective
-
-<InfoGrid items={[
-  { label: "Provide Context", description: "Tell the model what the media is and why you're analyzing it", example: "\"This is a product photo for our e-commerce site...\"", color: "green" },
-  { label: "Be Specific", description: "Ask about particular elements rather than general impressions", example: "\"Focus on the pricing table in the top-right corner\"", color: "green" },
-  { label: "Reference Locations", description: "Point to specific areas using spatial language", example: "\"In the bottom-left quadrant...\"", color: "green" },
-  { label: "State Your Goal", description: "Explain what you'll use the analysis for", example: "\"I need to decide if this image works for our mobile app\"", color: "green" }
-]} />
-
-### Common Pitfalls to Avoid
+### 什么使多模态提示词有效
 
 <InfoGrid items={[
-  { label: "Assuming Perfect Vision", description: "Models may miss small details, especially in low-resolution images", example: "Don't ask about 8pt text in a compressed screenshot", color: "red" },
-  { label: "Expecting Perfect OCR", description: "Handwriting, unusual fonts, and complex layouts can cause errors", example: "Verify extracted text from receipts and forms", color: "red" },
-  { label: "Ignoring Content Policies", description: "Models have restrictions on certain types of content", example: "Won't identify specific individuals or analyze inappropriate content", color: "red" },
-  { label: "Skipping Verification", description: "Always verify critical information extracted from media", example: "Double-check numbers, dates, and names from document extraction", color: "red" }
+  { label: "提供背景", description: "告诉模型媒体是什么以及你为什么要分析它", example: "\"这是我们电商网站的产品照片...\"", color: "green" },
+  { label: "具体明确", description: "询问特定元素而不是笼统印象", example: "\"关注右上角的价格表\"", color: "green" },
+  { label: "引用位置", description: "使用空间语言指向特定区域", example: "\"在左下象限...\"", color: "green" },
+  { label: "说明你的目标", description: "解释你将如何使用这个分析", example: "\"我需要决定这张图片是否适合我们的移动应用\"", color: "green" }
 ]} />
 
-### Handling Limitations Gracefully
+### 要避免的常见陷阱
+
+<InfoGrid items={[
+  { label: "假设完美视觉", description: "模型可能会遗漏小细节，尤其是在低分辨率图像中", example: "不要询问压缩截图中 8pt 的文字", color: "red" },
+  { label: "期望完美 OCR", description: "手写字、不寻常的字体和复杂的布局可能导致错误", example: "验证从收据和表格中提取的文字", color: "red" },
+  { label: "忽略内容政策", description: "模型对某些类型的内容有限制", example: "不会识别特定个人或分析不当内容", color: "red" },
+  { label: "跳过验证", description: "始终验证从媒体中提取的关键信息", example: "仔细核对从文档提取中得到的数字、日期和姓名", color: "red" }
+]} />
+
+### 优雅地处理局限性
 
 <TryIt 
-  title="Uncertainty-Aware Image Analysis"
-  description="This prompt explicitly handles cases where the model can't see clearly or is uncertain."
-  prompt={`Analyze this image: \${imageDescription}
+  title="考虑不确定性的图像分析"
+  description="这个提示词明确处理模型看不清楚或不确定的情况。"
+  prompt={`分析这张图像：\${imageDescription}
 
-**Instructions for Handling Uncertainty**:
+**处理不确定性的说明**：
 
-IF YOU CAN'T SEE SOMETHING CLEARLY:
-- Don't guess or make up details
-- Say: "I can see [what's visible] but cannot clearly make out [unclear element]"
-- Suggest what additional information would help
+如果你看不清楚某些内容：
+- 不要猜测或编造细节
+- 说："我可以看到 [可见的内容] 但无法清楚地辨认 [不清楚的元素]"
+- 建议什么额外信息会有帮助
 
-IF CONTENT SEEMS RESTRICTED:
-- Explain what you can and cannot analyze
-- Focus on permitted aspects of the analysis
+如果内容似乎受限：
+- 解释你能分析和不能分析的内容
+- 关注分析中允许的方面
 
-IF ASKED ABOUT PEOPLE:
-- Describe actions, positions, and general characteristics
-- Do not attempt to identify specific individuals
-- Focus on: number of people, activities, expressions, attire
+如果被问及人物：
+- 描述动作、位置和一般特征
+- 不要尝试识别特定个人
+- 关注：人数、活动、表情、着装
 
-**Your Analysis**:
-[Proceed with analysis, applying these guidelines]`}
+**你的分析**：
+[继续分析，应用这些指南]`}
 />
 
 <Quiz 
-  question="Why does prompting matter MORE for multimodal models than for text-only models?"
+  question="为什么提示词对多模态模型比对纯文本模型更重要？"
   options={[
-    "Multimodal models are less intelligent and need more help",
-    "Images and audio are inherently ambiguous—the AI needs context to know what aspects matter",
-    "Multimodal models can only process one type of input at a time",
-    "Text prompts don't work with multimodal models"
+    "多模态模型不够智能，需要更多帮助",
+    "图像和音频本质上是模糊的——AI 需要背景信息来知道哪些方面重要",
+    "多模态模型一次只能处理一种类型的输入",
+    "文本提示词不适用于多模态模型"
   ]}
   correctIndex={1}
-  explanation="When you look at an image, you instantly know what's important based on your goals. The AI doesn't have this context—a photo of a wall crack could be an engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets and focuses on the media you provide."
+  explanation="当你看一张图片时，你会根据自己的目标立即知道什么是重要的。AI 没有这种背景——一张墙上裂缝的照片可能是工程问题、艺术纹理，或者无关的背景。你的提示词决定了 AI 如何解释和关注你提供的媒体。"
 />

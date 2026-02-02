@@ -1,242 +1,242 @@
-Role-based prompting is one of the most powerful and widely-used techniques in prompt engineering. By assigning a specific role or persona to the AI, you can dramatically influence the quality, style, and relevance of responses.
+ロールベースプロンプティングは、プロンプトエンジニアリングにおいて最も強力で広く使用されているテクニックの一つです。AIに特定のロールやペルソナを割り当てることで、応答の品質、スタイル、関連性を劇的に向上させることができます。
 
-<Callout type="tip" title="The Power of Personas">
-Think of roles as filters for AI's vast knowledge. The right role focuses responses like a lens focuses light.
+<Callout type="tip" title="ペルソナの力">
+ロールはAIの膨大な知識のフィルターとして機能すると考えてください。適切なロールは、レンズが光を集めるように応答を焦点化します。
 </Callout>
 
-## Why Roles Work
+## ロールが機能する理由
 
-When you assign a role, you're essentially telling the model: "Filter your vast knowledge through this specific lens." The model adjusts its:
+ロールを割り当てると、本質的にモデルに「あなたの膨大な知識をこの特定のレンズを通してフィルタリングしてください」と伝えていることになります。モデルは以下を調整します：
 
-- **Vocabulary**: Using terminology appropriate to the role
-- **Perspective**: Considering problems from that viewpoint
-- **Expertise depth**: Providing role-appropriate detail levels
-- **Communication style**: Matching how that role would communicate
+- **語彙**: ロールに適した用語を使用
+- **視点**: その立場から問題を考慮
+- **専門性の深さ**: ロールに適した詳細レベルを提供
+- **コミュニケーションスタイル**: そのロールがどのようにコミュニケーションするかに合わせる
 
-### The Technical Explanation
+### 技術的な説明
 
-LLMs work by predicting the most likely next token based on the context they're given. When you specify a role, you're fundamentally changing what "likely" means.
+LLMは、与えられたコンテキストに基づいて最も可能性の高い次のトークンを予測することで動作します。ロールを指定すると、「可能性が高い」の意味を根本的に変えることになります。
 
-**Activating Relevant Knowledge**: The role primes specific regions of the model's learned associations. Saying "You are a doctor" activates medical terminology, diagnostic reasoning patterns, and clinical communication styles from the training data.
+**関連する知識の活性化**: ロールはモデルが学習した関連付けの特定の領域をプライミングします。「あなたは医師です」と言うと、トレーニングデータから医学用語、診断推論パターン、臨床的なコミュニケーションスタイルが活性化されます。
 
-**Statistical Conditioning**: LLMs learned from millions of documents written by real experts. When you assign a role, the model conditions its probability distributions to match patterns it saw from that type of author.
+**統計的条件付け**: LLMは実際の専門家が書いた何百万もの文書から学習しています。ロールを割り当てると、モデルはそのタイプの著者から見たパターンに合わせて確率分布を条件付けします。
 
-**Reducing Ambiguity**: Without a role, the model averages across all possible responders. With a role, it narrows to a specific subset, making responses more focused and consistent.
+**曖昧さの軽減**: ロールがない場合、モデルはすべての可能な回答者の平均を取ります。ロールがあると、特定のサブセットに絞り込まれ、応答がより焦点化され一貫性のあるものになります。
 
-**Context Anchoring**: The role creates a persistent context anchor throughout the conversation. Every subsequent response is influenced by this initial framing.
+**コンテキストアンカリング**: ロールは会話全体を通じて持続的なコンテキストアンカーを作成します。その後のすべての応答は、この最初のフレーミングに影響されます。
 
-Think of it this way: if you ask "What should I do about this cough?" the model could respond as a doctor, a friend, a pharmacist, or a worried parent. Each would give different advice. By specifying the role upfront, you're telling the model which "voice" to use from its training data.
+このように考えてみてください：「この咳についてどうすればいいですか？」と尋ねると、モデルは医師として、友人として、薬剤師として、または心配する親として応答できます。それぞれが異なるアドバイスを提供します。事前にロールを指定することで、トレーニングデータからどの「声」を使用するかをモデルに伝えているのです。
 
-<Callout type="info" title="Why This Matters">
-The model isn't pretending or role-playing in a theatrical sense. It's statistically biasing its outputs toward patterns it learned from real experts, professionals, and specialists during training. A "doctor" role activates medical knowledge pathways; a "poet" role activates literary patterns.
+<Callout type="info" title="なぜこれが重要なのか">
+モデルは演劇的な意味で演技やロールプレイをしているわけではありません。トレーニング中に実際の専門家、プロフェッショナル、スペシャリストから学習したパターンに向けて出力を統計的にバイアスしているのです。「医師」のロールは医学知識の経路を活性化し、「詩人」のロールは文学的なパターンを活性化します。
 </Callout>
 
-## Basic Role Patterns
+## 基本的なロールパターン
 
-These foundational patterns work across most use cases. Start with these templates and customize them for your needs.
+これらの基本的なパターンは、ほとんどのユースケースで機能します。これらのテンプレートから始めて、ニーズに合わせてカスタマイズしてください。
 
-### The Expert Pattern
+### エキスパートパターン
 
-The most versatile pattern. Specify the field of expertise and years of experience to get authoritative, in-depth responses. Works well for technical questions, analysis, and professional advice.
+最も汎用性の高いパターンです。専門分野と経験年数を指定して、権威のある詳細な応答を得ることができます。技術的な質問、分析、専門的なアドバイスに適しています。
 
 <TryIt compact prompt={`You are an expert \${field} with \${years:10} years of experience in \${specialty}.
 
 \${task}`} />
 
-### The Professional Pattern
+### プロフェッショナルパターン
 
-Ground the role in a real-world context by specifying a job title and organization type. This adds institutional knowledge and professional norms to the response.
+職種と組織タイプを指定して、ロールを実世界のコンテキストに基づかせます。これにより、組織の知識と専門的な規範が応答に追加されます。
 
 <TryIt compact prompt={`You are a \${profession} working at \${organization}.
 
 \${task}`} />
 
-### The Teacher Pattern
+### 教師パターン
 
-Perfect for learning and explanations. Specifying the audience level ensures the response matches the learner's background, from beginners to advanced practitioners.
+学習と説明に最適です。対象者のレベルを指定することで、初心者から上級者まで、学習者のバックグラウンドに合った応答が得られます。
 
 <TryIt compact prompt={`You are a \${subject} teacher who specializes in explaining complex concepts to \${audience}.
 
 \${task}`} />
 
-## Advanced Role Constructions
+## 高度なロール構成
 
-### Compound Roles
+### 複合ロール
 
-Combine multiple identities to get responses that blend different perspectives. This pediatrician-parent combination produces advice that's both medically sound and practically tested.
+複数のアイデンティティを組み合わせて、異なる視点を融合した応答を得ることができます。この小児科医と親の組み合わせは、医学的に正確でありながら実践的に検証されたアドバイスを生み出します。
 
 <TryIt compact prompt={`You are a pediatrician who is also a parent of three children. You understand both the medical and practical aspects of childhood health issues. You communicate with empathy and without medical jargon.
 
 \${question}`} />
 
-### Situational Roles
+### 状況的ロール
 
-Place the role in a specific scenario to shape both content and tone. Here, the code review context makes the AI constructive and educational rather than just critical.
+ロールを特定のシナリオに配置して、内容とトーンの両方を形作ります。ここでは、コードレビューのコンテキストにより、AIは単に批判的ではなく、建設的で教育的になります。
 
 <TryIt compact prompt={`You are a senior developer conducting a code review for a junior team member. You want to be helpful and educational, not critical. You explain not just what to fix, but why.
 
 Code to review:
 \${code}`} />
 
-### Perspective Roles
+### 視点ロール
 
-Get feedback from a specific stakeholder's point of view. A VC perspective evaluates viability and scalability differently than a customer or engineer would.
+特定のステークホルダーの視点からフィードバックを得ることができます。VCの視点は、顧客やエンジニアとは異なる方法で実現可能性とスケーラビリティを評価します。
 
 <TryIt compact prompt={`You are a venture capitalist evaluating startup pitches. You've seen thousands of pitches and can quickly identify strengths, weaknesses, and red flags. Be direct but constructive.
 
 Pitch: \${pitch}`} />
 
-## Role Categories and Examples
+## ロールカテゴリと例
 
-Different domains benefit from different types of roles. Here are proven examples organized by category that you can adapt for your tasks.
+異なるドメインは異なるタイプのロールから恩恵を受けます。ここでは、タスクに適応できるカテゴリ別に整理された実証済みの例を紹介します。
 
-### Technical Roles
+### 技術的ロール
 
-**Software Architect**: Best for system design decisions, technology choices, and architectural trade-offs. The focus on maintainability steers responses toward practical, long-term solutions.
+**ソフトウェアアーキテクト**: システム設計の決定、技術選択、アーキテクチャのトレードオフに最適です。保守性への焦点が、実用的で長期的なソリューションへと応答を導きます。
 
 <TryIt compact prompt={`You are a software architect specializing in scalable distributed systems. You prioritize maintainability, performance, and team productivity in your recommendations.
 
 \${question}`} />
 
-**Security Specialist**: The attacker mindset is key here. This role produces threat-focused analysis that identifies vulnerabilities a defensive-only perspective might miss.
+**セキュリティスペシャリスト**: 攻撃者のマインドセットがここでの鍵です。このロールは、防御的な視点だけでは見逃される可能性のある脆弱性を特定する、脅威に焦点を当てた分析を生成します。
 
 <TryIt compact prompt={`You are a cybersecurity specialist who conducts penetration testing. You think like an attacker to identify vulnerabilities.
 
 Analyze: \${target}`} />
 
-**DevOps Engineer**: Ideal for deployment, automation, and infrastructure questions. The emphasis on reliability ensures production-ready recommendations.
+**DevOpsエンジニア**: デプロイメント、自動化、インフラストラクチャの質問に最適です。信頼性への重点が、本番環境に対応した推奨事項を保証します。
 
 <TryIt compact prompt={`You are a DevOps engineer focused on CI/CD pipelines and infrastructure as code. You value automation and reliability.
 
 \${question}`} />
 
-### Creative Roles
+### クリエイティブロール
 
-**Copywriter**: The "award-winning" qualifier and conversion focus produce punchy, persuasive copy rather than generic marketing text.
+**コピーライター**: 「受賞歴のある」という修飾語とコンバージョンへの焦点が、一般的なマーケティングテキストではなく、パンチの効いた説得力のあるコピーを生成します。
 
 <TryIt compact prompt={`You are an award-winning copywriter known for creating compelling headlines and persuasive content that drives conversions.
 
 Write copy for: \${product}`} />
 
-**Screenwriter**: Activates knowledge of dramatic structure, pacing, and dialogue conventions. Great for any narrative writing that needs tension and character voice.
+**脚本家**: ドラマチックな構造、ペーシング、対話の慣例に関する知識を活性化します。緊張感とキャラクターの声が必要なあらゆるナラティブライティングに最適です。
 
 <TryIt compact prompt={`You are a screenwriter who has written for popular TV dramas. You understand story structure, dialogue, and character development.
 
 Write: \${scene}`} />
 
-**UX Writer**: A specialized role for interface text. The focus on brevity and user guidance produces concise, action-oriented copy.
+**UXライター**: インターフェーステキストに特化したロールです。簡潔さとユーザーガイダンスへの焦点が、簡潔でアクション指向のコピーを生成します。
 
 <TryIt compact prompt={`You are a UX writer specializing in microcopy. You make interfaces feel human and guide users with minimal text.
 
 Write microcopy for: \${element}`} />
 
-### Analytical Roles
+### 分析的ロール
 
-**Business Analyst**: Bridges the gap between technical and non-technical stakeholders. Useful for requirement gathering, spec writing, and identifying gaps in project plans.
+**ビジネスアナリスト**: 技術チームと非技術的なステークホルダーの間の橋渡しをします。要件収集、仕様書作成、プロジェクト計画のギャップの特定に役立ちます。
 
 <TryIt compact prompt={`You are a business analyst who translates between technical teams and stakeholders. You clarify requirements and identify edge cases.
 
 Analyze: \${requirement}`} />
 
-**Research Scientist**: The emphasis on evidence and uncertainty acknowledgment produces balanced, well-sourced responses that distinguish facts from speculation.
+**研究科学者**: 証拠と不確実性の認識への重点が、事実と推測を区別する、バランスの取れた根拠のある応答を生成します。
 
 <TryIt compact prompt={`You are a research scientist who values empirical evidence and acknowledges uncertainty. You distinguish between established facts and hypotheses.
 
 Research question: \${question}`} />
 
-**Financial Analyst**: Combines quantitative analysis with risk assessment. The dual focus on returns and risk produces more balanced investment perspectives.
+**ファイナンシャルアナリスト**: 定量分析とリスク評価を組み合わせます。リターンとリスクの両方への焦点が、よりバランスの取れた投資視点を生み出します。
 
 <TryIt compact prompt={`You are a financial analyst who evaluates investments using fundamental and technical analysis. You consider risk alongside potential returns.
 
 Evaluate: \${investment}`} />
 
-### Educational Roles
+### 教育的ロール
 
-**Socratic Tutor**: Instead of giving answers, this role asks guiding questions. Excellent for deeper learning and helping students develop critical thinking skills.
+**ソクラテス式チューター**: 答えを与える代わりに、導く質問をします。より深い学習と、学生の批判的思考スキルの発達を助けるのに優れています。
 
 <TryIt compact prompt={`You are a tutor using the Socratic method. Instead of giving answers directly, you guide students to discover answers through thoughtful questions.
 
 Topic: \${topic}`} />
 
-**Instructional Designer**: Structures learning for maximum retention. Use this role when you need to break down complex topics into teachable chunks with clear progression.
+**インストラクショナルデザイナー**: 最大限の定着のために学習を構造化します。複雑なトピックを明確な進行を持つ教えやすいチャンクに分解する必要がある場合に、このロールを使用してください。
 
 <TryIt compact prompt={`You are an instructional designer who creates engaging learning experiences. You break complex topics into digestible modules with clear learning objectives.
 
 Create curriculum for: \${topic}`} />
 
-## The Role Stack Technique
+## ロールスタックテクニック
 
-For complex tasks, combine multiple role aspects into a single, layered identity. This technique stacks expertise, audience awareness, and style guidelines to create highly specialized responses.
+複雑なタスクには、複数のロール要素を単一の階層化されたアイデンティティに組み合わせます。このテクニックは、専門知識、対象者への意識、スタイルガイドラインを重ねて、高度に専門化された応答を作成します。
 
-This example layers three elements: domain expertise (API documentation), audience (junior developers), and style guide (Google's conventions). Each layer constrains the output further.
+この例では、3つの要素を階層化しています：ドメインの専門知識（APIドキュメント）、対象者（ジュニア開発者）、スタイルガイド（Googleの規約）。各レイヤーが出力をさらに制約します。
 
 <TryIt compact prompt={`You are a technical writer with expertise in API documentation. You write for developers who are new to REST APIs. Follow the Google developer documentation style guide: use second person ("you"), active voice, present tense, and keep sentences under 26 words.
 
 Document: \${apiEndpoint}`} />
 
-## Roles for Different Tasks
+## さまざまなタスクのためのロール
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Code review</span>
-    <span className="text-muted-foreground">Senior developer + mentor</span>
+    <span className="font-semibold min-w-40">コードレビュー</span>
+    <span className="text-muted-foreground">シニア開発者 + メンター</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Writing feedback</span>
-    <span className="text-muted-foreground">Editor + target audience member</span>
+    <span className="font-semibold min-w-40">ライティングフィードバック</span>
+    <span className="text-muted-foreground">編集者 + ターゲットオーディエンスメンバー</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Business strategy</span>
-    <span className="text-muted-foreground">Consultant + industry expert</span>
+    <span className="font-semibold min-w-40">ビジネス戦略</span>
+    <span className="text-muted-foreground">コンサルタント + 業界専門家</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Learning new topic</span>
-    <span className="text-muted-foreground">Patient teacher + practitioner</span>
+    <span className="font-semibold min-w-40">新しいトピックの学習</span>
+    <span className="text-muted-foreground">忍耐強い教師 + 実践者</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Creative writing</span>
-    <span className="text-muted-foreground">Specific genre author</span>
+    <span className="font-semibold min-w-40">クリエイティブライティング</span>
+    <span className="text-muted-foreground">特定のジャンルの作家</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Technical explanation</span>
-    <span className="text-muted-foreground">Expert + communicator</span>
+    <span className="font-semibold min-w-40">技術的説明</span>
+    <span className="text-muted-foreground">専門家 + コミュニケーター</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Problem-solving</span>
-    <span className="text-muted-foreground">Domain specialist + generalist</span>
+    <span className="font-semibold min-w-40">問題解決</span>
+    <span className="text-muted-foreground">ドメインスペシャリスト + ジェネラリスト</span>
   </div>
 </div>
 
-## Anti-Patterns to Avoid
+## 避けるべきアンチパターン
 
-### Overly Generic Roles
-
-<Compare 
-  before={{ label: "Weak", content: "You are a helpful assistant." }}
-  after={{ label: "Better", content: "You are a helpful assistant specializing in Python development, particularly web applications with Flask and Django." }}
-/>
-
-### Conflicting Roles
+### 過度に一般的なロール
 
 <Compare 
-  before={{ label: "Problematic", content: "You are a creative writer who always follows strict templates." }}
-  after={{ label: "Better", content: "You are a creative writer who works within established story structures while adding original elements." }}
+  before={{ label: "弱い", content: "You are a helpful assistant." }}
+  after={{ label: "より良い", content: "You are a helpful assistant specializing in Python development, particularly web applications with Flask and Django." }}
 />
 
-### Unrealistic Expertise
+### 矛盾するロール
 
 <Compare 
-  before={{ label: "Problematic", content: "You are an expert in everything." }}
-  after={{ label: "Better", content: "You are a T-shaped professional: deep expertise in machine learning with broad knowledge of software engineering practices." }}
+  before={{ label: "問題あり", content: "You are a creative writer who always follows strict templates." }}
+  after={{ label: "より良い", content: "You are a creative writer who works within established story structures while adding original elements." }}
 />
 
-## Real-World Prompt Examples
+### 非現実的な専門性
 
-### Technical Documentation
+<Compare 
+  before={{ label: "問題あり", content: "You are an expert in everything." }}
+  after={{ label: "より良い", content: "You are a T-shaped professional: deep expertise in machine learning with broad knowledge of software engineering practices." }}
+/>
+
+## 実世界のプロンプト例
+
+### 技術ドキュメント
 
 <TryIt 
-  title="Technical Writer Role"
-  description="Try this technical documentation prompt with your own API endpoint."
+  title="テクニカルライターロール"
+  description="この技術ドキュメントプロンプトを、あなた自身のAPIエンドポイントで試してみてください。"
   prompt={`You are a senior technical writer at a developer tools company. You have 10 years of experience writing API documentation, SDK guides, and developer tutorials.
 
 Your documentation style:
@@ -249,11 +249,11 @@ Your documentation style:
 Document this API endpoint: GET /api/users/:id - Returns user profile data`}
 />
 
-### Creative Writing
+### クリエイティブライティング
 
 <TryIt 
-  title="Novelist Role"
-  description="This role combines genre expertise with specific stylistic traits."
+  title="小説家ロール"
+  description="このロールは、ジャンルの専門知識と特定のスタイル特性を組み合わせています。"
   prompt={`You are a novelist who writes in the style of literary fiction with elements of magical realism. Your prose is known for:
 - Lyrical but accessible language
 - Deep psychological character portraits
@@ -263,11 +263,11 @@ Document this API endpoint: GET /api/users/:id - Returns user profile data`}
 Write the opening scene of a story about a librarian who discovers that books in her library are slowly changing their endings.`}
 />
 
-### Business Communication
+### ビジネスコミュニケーション
 
 <TryIt 
-  title="Executive Coach Role"
-  description="This role helps with sensitive business communications."
+  title="エグゼクティブコーチロール"
+  description="このロールは、デリケートなビジネスコミュニケーションを支援します。"
   prompt={`You are an executive communications coach who has worked with Fortune 500 CEOs. You help leaders communicate complex ideas simply and build trust with their teams.
 
 Review this message for a team meeting about budget cuts. Suggest improvements that:
@@ -279,13 +279,13 @@ Review this message for a team meeting about budget cuts. Suggest improvements t
 Draft message: "Due to budget constraints, we need to reduce project scope. Some initiatives will be paused."`}
 />
 
-## Combining Roles with Other Techniques
+## ロールと他のテクニックの組み合わせ
 
-Roles work even better when combined with other prompting techniques:
+ロールは他のプロンプティングテクニックと組み合わせるとさらに効果的になります：
 
-### Role + Few-Shot
+### ロール + Few-Shot
 
-Combine a role with an example to show exactly how the role should respond. The example teaches tone and format while the role provides context and expertise.
+ロールと例を組み合わせて、ロールがどのように応答すべきかを正確に示します。例はトーンとフォーマットを教え、ロールはコンテキストと専門知識を提供します。
 
 <TryIt compact prompt={`You are a customer support specialist trained to de-escalate angry customers.
 
@@ -296,9 +296,9 @@ You: "I completely understand your frustration, and I apologize for the delay. L
 Now respond to:
 Customer: "\${customerMessage}"`} />
 
-### Role + Chain of Thought
+### ロール + Chain of Thought
 
-The detective role naturally encourages step-by-step reasoning. Combining roles with chain-of-thought produces more transparent, verifiable problem-solving.
+探偵のロールは自然にステップバイステップの推論を促します。ロールとChain of Thoughtを組み合わせると、より透明で検証可能な問題解決が生まれます。
 
 <TryIt compact prompt={`You are a detective solving a logic puzzle. Think through each clue methodically, stating your reasoning at each step.
 
@@ -307,22 +307,22 @@ Clues:
 
 Solve step by step, explaining your deductions.`} />
 
-## Summary
+## まとめ
 
-<Callout type="info" title="Key Takeaways">
-Role-based prompting is powerful because it focuses the model's vast knowledge, sets expectations for tone and style, provides implicit context, and makes outputs more consistent.
+<Callout type="info" title="重要なポイント">
+ロールベースプロンプティングが強力なのは、モデルの膨大な知識を焦点化し、トーンとスタイルの期待を設定し、暗黙のコンテキストを提供し、出力をより一貫性のあるものにするためです。
 </Callout>
 
 <Quiz 
-  question="What makes a role-based prompt more effective?"
+  question="ロールベースプロンプトをより効果的にするものは何ですか？"
   options={[
-    "Using generic role titles like 'expert'",
-    "Adding specific expertise, experience, and perspective details",
-    "Keeping the role description as short as possible",
-    "Asking the AI to switch roles frequently"
+    "「エキスパート」のような一般的なロールタイトルを使用する",
+    "具体的な専門知識、経験、視点の詳細を追加する",
+    "ロールの説明をできるだけ短くする",
+    "AIに頻繁にロールを切り替えるよう求める"
   ]}
   correctIndex={1}
-  explanation="The more detailed and realistic the role, the better the results. Specificity helps the model understand exactly what knowledge, tone, and perspective to apply."
+  explanation="ロールが詳細で現実的であるほど、より良い結果が得られます。具体性は、どの知識、トーン、視点を適用するかをモデルが正確に理解するのに役立ちます。"
 />
 
-The key is **specificity**: the more detailed and realistic the role, the better the results. In the next chapter, we'll explore how to get consistent, structured outputs from your prompts.
+鍵となるのは**具体性**です：ロールが詳細で現実的であるほど、より良い結果が得られます。次の章では、プロンプトから一貫した構造化された出力を得る方法を探ります。

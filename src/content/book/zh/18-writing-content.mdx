@@ -1,393 +1,393 @@
-AI excels at writing tasks when properly prompted. This chapter covers techniques for various content creation scenarios.
+AI 在正确提示下擅长写作任务。本章涵盖各种内容创作场景的技巧。
 
-<Callout type="info" title="AI as Writing Partner">
-AI works best as a collaborative writing tool—use it to generate drafts, then refine with your expertise and voice.
+<Callout type="info" title="AI 作为写作伙伴">
+AI 最适合作为协作写作工具——用它来生成初稿，然后用你的专业知识和个人风格进行润色。
 </Callout>
 
-## Blog Posts and Articles
+## 博客文章和文章
 
-### Do's and Don'ts: Writing Prompts
+### 写作提示的正确与错误做法
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write a blog post about productivity." }}
-  after={{ label: "✓ Specific brief", content: "Write an 800-word blog post about productivity for remote workers.\n\nAudience: Tech professionals working from home\nTone: Conversational but actionable\nInclude: 3 specific techniques with examples\nKeyword: 'remote productivity tips'" }}
+  before={{ label: "❌ 模糊的请求", content: "写一篇关于生产力的博客文章。" }}
+  after={{ label: "✓ 具体的简报", content: "写一篇 800 字的博客文章，关于远程工作者的生产力。\n\n受众：在家工作的科技专业人士\n语气：对话式但可操作\n包含：3 个具体技巧及示例\n关键词：'远程生产力技巧'" }}
 />
 
-### Blog Post Framework
+### 博客文章框架
 
 <TryIt 
-  title="Blog Post Generator"
-  description="Generate a structured blog post with SEO optimization."
-  prompt={`Write a blog post about \${topic}.
+  title="博客文章生成器"
+  description="生成具有 SEO 优化的结构化博客文章。"
+  prompt={`写一篇关于 \${topic} 的博客文章。
 
-Specifications:
-- Length: \${wordCount:800-1000} words
-- Audience: \${audience}
-- Tone: \${tone:conversational}
-- Purpose: \${purpose:inform and provide actionable advice}
+规格：
+- 长度：\${wordCount:800-1000} 字
+- 受众：\${audience}
+- 语气：\${tone:conversational}
+- 目的：\${purpose:inform and provide actionable advice}
 
-Structure:
-1. Hook opening (grab attention in first 2 sentences)
-2. Introduction (state the problem/opportunity)
-3. Main content (3-4 key points with examples)
-4. Practical takeaways (actionable advice)
-5. Conclusion with call-to-action
+结构：
+1. 开篇吸引（前两句话抓住注意力）
+2. 引言（陈述问题/机会）
+3. 主要内容（3-4 个关键点配示例）
+4. 实用要点（可操作的建议）
+5. 带有行动号召的结论
 
-SEO Requirements:
-- Include keyword "\${keyword}" naturally 3-5 times
-- Use H2 headers for main sections
-- Include a meta description (155 chars)`}
+SEO 要求：
+- 自然地包含关键词"\${keyword}" 3-5 次
+- 使用 H2 标题作为主要部分
+- 包含元描述（155 字符）`}
 />
 
-### Article Types
+### 文章类型
 
-**How-To Article:**
-<TryIt compact prompt={`Write a step-by-step how-to article on \${topic}.
+**教程文章：**
+<TryIt compact prompt={`写一篇关于 \${topic} 的分步教程文章。
 
-Requirements:
-- Clear numbered steps
-- Each step: action + explanation + tip
-- Include "what you'll need" section
-- Add troubleshooting section for common issues
-- Estimated time to complete`} />
+要求：
+- 清晰的编号步骤
+- 每个步骤：操作 + 解释 + 提示
+- 包含"你需要准备什么"部分
+- 添加常见问题的故障排除部分
+- 预计完成时间`} />
 
-**Listicle:**
-<TryIt compact prompt={`Write a listicle: "\${count} \${topic} Tips/Tools/Ideas"
+**清单式文章：**
+<TryIt compact prompt={`写一篇清单式文章："\${count} 个 \${topic} 技巧/工具/想法"
 
-For each item:
-- Catchy subheading
-- 2-3 sentence explanation
-- Concrete example or use case
-- Pro tip or caveat
+每个条目：
+- 吸引人的小标题
+- 2-3 句解释
+- 具体示例或用例
+- 专业提示或注意事项
 
-Order by: \${ordering:most important first}`} />
+排序方式：\${ordering:most important first}`} />
 
-## Marketing Copy
+## 营销文案
 
-<Callout type="tip" title="Marketing Copy Principle">
-Focus on **benefits over features**. Instead of "Our software uses AI algorithms," write "Save 10 hours a week with automated reports." Show readers how their lives improve.
+<Callout type="tip" title="营销文案原则">
+关注**利益而非功能**。不要写"我们的软件使用 AI 算法"，而要写"通过自动化报告每周节省 10 小时"。向读者展示他们的生活如何得到改善。
 </Callout>
 
-### Landing Page Copy
+### 落地页文案
 
-<TryIt compact prompt={`Write landing page copy for \${product}.
+<TryIt compact prompt={`为 \${product} 写落地页文案。
 
-Sections needed:
-1. Hero: Headline (10 words max) + subheadline + CTA button text
-2. Problem: Pain points the audience faces (3 bullet points)
-3. Solution: How your product solves these (with benefits, not features)
-4. Social proof: Placeholder for testimonials
-5. Features: 3 key features with benefit-focused descriptions
-6. CTA: Final call-to-action with urgency
+需要的部分：
+1. 首屏：标题（最多 10 个词）+ 副标题 + CTA 按钮文字
+2. 问题：受众面临的痛点（3 个要点）
+3. 解决方案：你的产品如何解决这些问题（用利益，而非功能）
+4. 社会证明：推荐语占位符
+5. 功能：3 个关键功能及以利益为导向的描述
+6. CTA：带有紧迫感的最终行动号召
 
-Voice: \${brandVoice}
-Target audience: \${targetAudience}
-Key differentiator: \${differentiator}`} />
+品牌声音：\${brandVoice}
+目标受众：\${targetAudience}
+关键差异化：\${differentiator}`} />
 
-### Email Sequences
+### 邮件序列
 
-<TryIt compact prompt={`Write a 5-email welcome sequence for new subscribers.
+<TryIt compact prompt={`为新订阅者写一个 5 封邮件的欢迎序列。
 
-Brand: \${brand}
-Goal: \${goal:convert to paid}
+品牌：\${brand}
+目标：\${goal:convert to paid}
 
-For each email provide:
-- Subject line (+ 1 alternative)
-- Preview text
-- Body (150-200 words)
+每封邮件提供：
+- 主题行（+ 1 个备选）
+- 预览文字
+- 正文（150-200 字）
 - CTA
 
-Sequence flow:
-Email 1 (Day 0): Welcome + immediate value
-Email 2 (Day 2): Share story/mission
-Email 3 (Day 4): Educational content
-Email 4 (Day 7): Social proof + soft pitch
-Email 5 (Day 10): Direct offer with urgency`} />
+序列流程：
+邮件 1（第 0 天）：欢迎 + 即时价值
+邮件 2（第 2 天）：分享故事/使命
+邮件 3（第 4 天）：教育内容
+邮件 4（第 7 天）：社会证明 + 软推销
+邮件 5（第 10 天）：带紧迫感的直接优惠`} />
 
-### Social Media Posts
+### 社交媒体帖子
 
-<TryIt compact prompt={`Create social media content for \${topic}.
+<TryIt compact prompt={`为 \${topic} 创建社交媒体内容。
 
-Platform-specific versions:
+平台特定版本：
 
-Twitter/X (280 chars):
-- Hook + key point + hashtags
-- Thread option (5 tweets) for complex topics
+Twitter/X（280 字符）：
+- 钩子 + 关键点 + 话题标签
+- 复杂主题的帖子串选项（5 条推文）
 
-LinkedIn (1300 chars):
-- Professional angle
-- Story structure
-- End with question for engagement
+LinkedIn（1300 字符）：
+- 专业角度
+- 故事结构
+- 以问题结尾以促进互动
 
-Instagram caption:
-- Opening hook (shows before "more")
-- Value-packed body
+Instagram 标题：
+- 开篇钩子（在"更多"之前显示）
+- 充满价值的正文
 - CTA
-- Hashtags (20-30 relevant)`} />
+- 话题标签（20-30 个相关的）`} />
 
-## Technical Writing
+## 技术写作
 
-<Callout type="info" title="Technical Writing Principle">
-**Clarity over cleverness.** Use simple words, short sentences, and active voice. Every sentence should have one job. If readers have to re-read something, simplify it.
+<Callout type="info" title="技术写作原则">
+**清晰胜过华丽。** 使用简单的词汇、短句和主动语态。每句话应该只有一个任务。如果读者需要重读某些内容，就简化它。
 </Callout>
 
-### Documentation
+### 文档
 
-<TryIt compact prompt={`Write documentation for \${feature}.
+<TryIt compact prompt={`为 \${feature} 写文档。
 
-Structure:
-## Overview
-Brief description of what it does and why you'd use it.
+结构：
+## 概述
+简要描述它的功能以及为什么要使用它。
 
-## Quick Start
-Minimal example to get started in under 2 minutes.
+## 快速开始
+2 分钟内上手的最小示例。
 
-## Installation/Setup
-Step-by-step setup instructions.
+## 安装/设置
+分步设置说明。
 
-## Usage
-Detailed usage with examples.
+## 使用方法
+带示例的详细使用说明。
 
-## API Reference
-Parameters, return values, types.
+## API 参考
+参数、返回值、类型。
 
-## Examples
-3-4 real-world usage examples.
+## 示例
+3-4 个实际使用示例。
 
-## Troubleshooting
-Common issues and solutions.
+## 故障排除
+常见问题和解决方案。
 
-Style: 
-- Second person ("you")
-- Present tense
-- Active voice
-- Code examples for every concept`} />
+风格：
+- 第二人称（"你"）
+- 现在时
+- 主动语态
+- 每个概念都有代码示例`} />
 
-### README Files
+### README 文件
 
 <TryIt 
-  title="README Generator"
-  description="Generate a professional README.md for your project."
-  prompt={`Write a README.md for \${project}.
+  title="README 生成器"
+  description="为你的项目生成专业的 README.md。"
+  prompt={`为 \${project} 写一个 README.md。
 
-Include these sections:
-# Project Name - One-line description
+包含这些部分：
+# 项目名称 - 一行描述
 
-## Features
-- Bullet list of key features
+## 功能
+- 关键功能的项目符号列表
 
-## Installation
-(bash installation commands)
+## 安装
+（bash 安装命令）
 
-## Quick Start
-(minimal working example)
+## 快速开始
+（最小可运行示例）
 
-## Configuration
-Key configuration options
+## 配置
+关键配置选项
 
-## Documentation
-Link to full docs
+## 文档
+完整文档链接
 
-## Contributing
-Brief contribution guidelines
+## 贡献
+简要贡献指南
 
-## License
-License type`}
+## 许可证
+许可证类型`}
 />
 
-## Creative Writing
+## 创意写作
 
-### Do's and Don'ts: Creative Prompts
+### 创意提示的正确与错误做法
 
 <Compare 
-  before={{ label: "❌ Too open-ended", content: "Write me a story." }}
-  after={{ label: "✓ Rich with constraints", content: "Write a 1000-word mystery story set in a small coastal town. The protagonist is a retired detective. Include a twist ending where the victim isn't who we thought. Tone: noir with dark humor." }}
+  before={{ label: "❌ 过于开放", content: "给我写一个故事。" }}
+  after={{ label: "✓ 富有约束条件", content: "写一个 1000 字的悬疑故事，背景设在一个海滨小镇。主角是一名退休侦探。包含一个反转结局，受害者不是我们想象的那个人。语气：带有黑色幽默的黑色电影风格。" }}
 />
 
-### Story Elements
+### 故事元素
 
-<TryIt compact prompt={`Write a \${genre} short story.
+<TryIt compact prompt={`写一个 \${genre} 短篇故事。
 
-Elements to include:
-- Protagonist: \${protagonist}
-- Setting: \${setting}
-- Central conflict: \${conflict}
-- Theme: \${theme}
-- Word count: \${wordCount:1000}
+需要包含的元素：
+- 主角：\${protagonist}
+- 背景：\${setting}
+- 核心冲突：\${conflict}
+- 主题：\${theme}
+- 字数：\${wordCount:1000}
 
-Style preferences:
-- POV: \${pov:third person}
-- Tense: \${tense:past}
-- Tone: \${tone:suspenseful}
+风格偏好：
+- 视角：\${pov:third person}
+- 时态：\${tense:past}
+- 语气：\${tone:suspenseful}
 
-Start with: \${openingHook}`} />
+开头：\${openingHook}`} />
 
-### Character Development
+### 角色塑造
 
-<TryIt compact prompt={`Create a detailed character profile for \${characterName}.
+<TryIt compact prompt={`为 \${characterName} 创建详细的角色档案。
 
-Basic Information:
-- Name, age, occupation
-- Physical description
-- Background/history
+基本信息：
+- 姓名、年龄、职业
+- 外貌描述
+- 背景/经历
 
-Personality:
-- 3 core traits
-- Strengths and flaws
-- Fears and desires
-- How they speak (verbal tics, vocabulary level)
+性格：
+- 3 个核心特质
+- 优点和缺点
+- 恐惧和欲望
+- 说话方式（口头禅、词汇水平）
 
-Relationships:
-- Key relationships
-- How they treat strangers vs friends
+关系：
+- 关键人际关系
+- 对待陌生人与朋友的方式
 
-Character arc:
-- Starting state
-- What they need to learn
-- Potential transformation`} />
+角色弧：
+- 起始状态
+- 需要学习什么
+- 潜在的转变`} />
 
-## Editing and Rewriting
+## 编辑和改写
 
-### Comprehensive Edit
+### 全面编辑
 
-<TryIt compact prompt={`Edit this text for \${purpose}.
+<TryIt compact prompt={`为 \${purpose} 编辑这段文字。
 
-Check and improve:
-□ Grammar and spelling
-□ Sentence structure variety
-□ Word choice (eliminate weak words)
-□ Flow and transitions
-□ Clarity and conciseness
-□ Tone consistency
+检查并改进：
+□ 语法和拼写
+□ 句子结构变化
+□ 用词选择（消除弱词）
+□ 流畅度和过渡
+□ 清晰度和简洁性
+□ 语气一致性
 
-Provide:
-1. Edited version
-2. Summary of major changes
-3. Suggestions for further improvement
+提供：
+1. 编辑后的版本
+2. 主要修改摘要
+3. 进一步改进的建议
 
-Original text:
+原文：
 \${text}`} />
 
-### Style Transformation
+### 风格转换
 
 <Compare 
-  before={{ label: "Technical/Formal", content: "The implementation of the new algorithm resulted in a 47% reduction in computational overhead, thereby significantly enhancing system throughput and reducing latency metrics across all measured endpoints." }}
-  after={{ label: "Casual/Accessible", content: "We made the system way faster! The new approach cut processing time nearly in half, which means everything loads quicker for you." }}
+  before={{ label: "技术/正式", content: "新算法的实现导致计算开销减少了 47%，从而显著提高了系统吞吐量并降低了所有测量端点的延迟指标。" }}
+  after={{ label: "随意/易懂", content: "我们让系统快了很多！新方法将处理时间减少了近一半，这意味着所有东西加载得更快了。" }}
 />
 
-<TryIt compact prompt={`Rewrite this text in a different style.
+<TryIt compact prompt={`用不同的风格改写这段文字。
 
-Original style: \${originalStyle}
-Target style: \${targetStyle}
+原始风格：\${originalStyle}
+目标风格：\${targetStyle}
 
-Preserve:
-- Core meaning and information
-- Key terminology
-- Proper nouns
+保留：
+- 核心含义和信息
+- 关键术语
+- 专有名词
 
-Change:
-- Sentence length and structure
-- Vocabulary level
-- Tone and formality
-- Rhetorical devices
+改变：
+- 句子长度和结构
+- 词汇水平
+- 语气和正式程度
+- 修辞手法
 
-Original:
+原文：
 \${text}`} />
 
-### Simplification
+### 简化
 
-<TryIt compact prompt={`Simplify this text for \${audience}.
+<TryIt compact prompt={`为 \${audience} 简化这段文字。
 
-Target reading level: \${readingLevel:8th grade}
+目标阅读水平：\${readingLevel:8th grade}
 
-Guidelines:
-- Replace jargon with plain language
-- Shorten sentences (aim for 15-20 words average)
-- Use common words
-- Add explanations for necessary technical terms
-- Break complex ideas into steps
+指南：
+- 用通俗语言替换行话
+- 缩短句子（目标平均 15-20 个词）
+- 使用常用词
+- 为必要的技术术语添加解释
+- 将复杂的想法分解为步骤
 
-Original:
+原文：
 \${text}`} />
 
-## Prompt Templates from prompts.chat
+## 来自 prompts.chat 的提示模板
 
-Here are popular writing prompts from the prompts.chat community:
+以下是 prompts.chat 社区的热门写作提示：
 
-### Act as a Copywriter
+### 扮演文案撰稿人
 
-<TryIt compact prompt={`I want you to act as a copywriter. I will provide you with a product or service, and you will create compelling copy that highlights its benefits and persuades potential customers to take action. Your copy should be creative, attention-grabbing, and tailored to the target audience.
+<TryIt compact prompt={`我希望你扮演一名文案撰稿人。我会向你提供一个产品或服务，你将创作引人注目的文案，突出其好处并说服潜在客户采取行动。你的文案应该有创意、吸引注意力，并针对目标受众量身定制。
 
-Product/Service: \${product}`} />
+产品/服务：\${product}`} />
 
-### Act as a Technical Writer
+### 扮演技术写作人员
 
-<TryIt compact prompt={`I want you to act as a technical writer. You will create clear, concise documentation for software products. I will provide you with technical information, and you will transform it into user-friendly documentation that is easy to understand for both technical and non-technical audiences.
+<TryIt compact prompt={`我希望你扮演一名技术写作人员。你将为软件产品创建清晰、简洁的文档。我会向你提供技术信息，你将把它转化为用户友好的文档，让技术人员和非技术人员都能轻松理解。
 
-Topic: \${topic}`} />
+主题：\${topic}`} />
 
-### Act as a Storyteller
+### 扮演讲故事的人
 
-<TryIt compact prompt={`I want you to act as a storyteller. You will come up with entertaining stories that are engaging, imaginative, and captivating for the audience. It can be fairy tales, educational stories, or any other type of story that has the potential to capture people's attention and imagination.
+<TryIt compact prompt={`我希望你扮演一个讲故事的人。你将想出有趣的故事，这些故事对观众来说既引人入胜、富有想象力又令人着迷。它可以是童话故事、教育故事，或任何其他类型的故事，只要能够吸引人们的注意力和想象力。
 
-Story theme: \${theme}`} />
+故事主题：\${theme}`} />
 
-## Writing Workflow Tips
+## 写作工作流程技巧
 
-### 1. Outline First
+### 1. 先写大纲
 
-<TryIt compact prompt={`Before writing, create an outline:
+<TryIt compact prompt={`在写作之前，创建一个大纲：
 
-Topic: \${topic}
+主题：\${topic}
 
-1. Generate 5 possible angles
-2. Choose the best angle and explain why
-3. Create detailed outline with:
-   - Main sections
-   - Key points per section
-   - Supporting evidence/examples needed
-4. Identify gaps that need research`} />
+1. 生成 5 个可能的角度
+2. 选择最佳角度并解释原因
+3. 创建详细大纲，包括：
+   - 主要部分
+   - 每个部分的关键点
+   - 需要的支持证据/示例
+4. 识别需要研究的空白`} />
 
-### 2. Draft Then Refine
+### 2. 先起草再打磨
 
-<TryIt compact prompt={`Phase 1 - Draft:
-"Write a rough draft focusing on getting ideas down. Don't worry about perfection. Just capture the key points."
+<TryIt compact prompt={`第一阶段 - 起草：
+"写一个粗略的草稿，专注于记录想法。不要担心完美。只需捕捉关键点。"
 
-Phase 2 - Refine:
-"Now improve this draft: tighten sentences, add transitions, strengthen the opening and closing."
+第二阶段 - 打磨：
+"现在改进这个草稿：收紧句子，添加过渡，加强开头和结尾。"
 
-Phase 3 - Polish:
-"Final pass: check grammar, vary sentence structure, ensure consistent tone."
+第三阶段 - 润色：
+"最后一遍：检查语法，变化句子结构，确保语气一致。"
 
-Topic: \${topic}`} />
+主题：\${topic}`} />
 
-### 3. Voice Matching
+### 3. 声音匹配
 
-<TryIt compact prompt={`Analyze this writing sample for voice characteristics:
+<TryIt compact prompt={`分析这个写作样本的声音特征：
 \${sample}
 
-Then write \${newContent} matching:
-- Sentence length patterns
-- Vocabulary level
-- Rhetorical devices used
-- Tone and personality`} />
+然后写 \${newContent}，匹配：
+- 句子长度模式
+- 词汇水平
+- 使用的修辞手法
+- 语气和个性`} />
 
-## Summary
+## 总结
 
-<Callout type="tip" title="Key Techniques">
-Specify audience and purpose clearly, define structure and format, include style guidelines, provide examples when possible, and request specific deliverables.
+<Callout type="tip" title="关键技巧">
+清楚地指定受众和目的，定义结构和格式，包含风格指南，尽可能提供示例，并要求具体的交付物。
 </Callout>
 
 <Quiz 
-  question="What's the most effective way to use AI for writing tasks?"
+  question="使用 AI 进行写作任务最有效的方式是什么？"
   options={[
-    "Let AI write the final version without editing",
-    "Use AI to generate drafts, then refine with your expertise",
-    "Only use AI for grammar checking",
-    "Avoid AI for creative writing entirely"
+    "让 AI 写出最终版本而不编辑",
+    "使用 AI 生成草稿，然后用你的专业知识进行打磨",
+    "只用 AI 做语法检查",
+    "完全避免在创意写作中使用 AI"
   ]}
   correctIndex={1}
-  explanation="AI works best as a collaborative writing tool. Use it to generate drafts and ideas, then apply your expertise, voice, and judgment to refine the output."
+  explanation="AI 最适合作为协作写作工具。用它来生成草稿和想法，然后运用你的专业知识、个人风格和判断力来打磨输出。"
 />
 
-Writing with AI works best as collaboration—let AI generate drafts, then refine with your expertise and voice.
+与 AI 一起写作最好是协作——让 AI 生成草稿，然后用你的专业知识和个人风格进行打磨。

@@ -1,108 +1,108 @@
-Getting consistent, well-formatted output is essential for production applications and efficient workflows. This chapter covers techniques for controlling exactly how AI models format their responses.
+获得一致且格式良好的输出对于生产应用和高效工作流程至关重要。本章介绍如何精确控制 AI 模型格式化响应的技术。
 
-<Callout type="info" title="From Prose to Data">
-Structured output transforms AI responses from freeform text into actionable, parseable data.
+<Callout type="info" title="从散文到数据">
+结构化输出将 AI 响应从自由格式文本转换为可操作、可解析的数据。
 </Callout>
 
-## Why Structure Matters
+## 结构为何重要
 
 <StructuredOutputDemo />
 
-## Basic Formatting Techniques
+## 基础格式化技术
 
-### Lists
+### 列表
 
-Lists are perfect for step-by-step instructions, ranked items, or collections of related points. They're easy to scan and parse. Use **numbered lists** when order matters (steps, rankings) and **bullet points** for unordered collections.
-
-<TryIt 
-  compact
-  title="List Formatting"
-  prompt={`Provide 5 tips for better sleep.
-
-Format: Numbered list with a brief explanation for each.
-Each tip should be bold, followed by a dash and explanation.`}
-/>
-
-<Callout type="tip" title="List Best Practices">
-Specify the exact number of items you want, whether to include explanations, and if items should be bold or have a specific structure.
-</Callout>
-
-### Tables
-
-Tables excel at comparing multiple items across the same dimensions. They're ideal for feature comparisons, data summaries, and any information with consistent attributes. Always define your column headers explicitly.
+列表非常适合分步指令、排名项目或相关要点的集合。它们易于浏览和解析。当顺序重要时使用**编号列表**（步骤、排名），对于无序集合使用**项目符号**。
 
 <TryIt 
   compact
-  title="Table Formatting"
-  prompt={`Compare the top 4 Python web frameworks.
+  title="列表格式化"
+  prompt={`提供5个改善睡眠的建议。
 
-Format as a markdown table with columns:
-| Framework | Best For | Learning Curve | Performance |`}
+格式：编号列表，每条带简短说明。
+每个建议应加粗，后跟破折号和说明。`}
 />
 
-<Callout type="tip" title="Table Best Practices">
-Specify column names, expected data types (text, numbers, ratings), and how many rows you need. For complex comparisons, limit to 4-6 columns for readability.
+<Callout type="tip" title="列表最佳实践">
+明确指定你想要的项目数量、是否包含说明，以及项目是否应该加粗或具有特定结构。
 </Callout>
 
-### Headers and Sections
+### 表格
 
-Headers create a clear document structure, making long responses scannable and organized. Use them for reports, analyses, or any multi-part response. Hierarchical headers (##, ###) show relationships between sections.
+表格擅长在相同维度上比较多个项目。它们非常适合功能比较、数据摘要以及任何具有一致属性的信息。始终明确定义列标题。
 
-```
-Analyze this business proposal.
+<TryIt 
+  compact
+  title="表格格式化"
+  prompt={`比较排名前4的 Python Web 框架。
 
-Structure your response with these sections:
-## Executive Summary
-## Strengths
-## Weaknesses
-## Recommendations
-## Risk Assessment
-```
+格式化为 markdown 表格，包含以下列：
+| 框架 | 最适合 | 学习曲线 | 性能 |`}
+/>
 
-<Callout type="tip" title="Section Best Practices">
-List your sections in the order you want them. For consistency, specify what each section should contain (e.g., "Executive Summary: 2-3 sentences only").
+<Callout type="tip" title="表格最佳实践">
+指定列名、预期数据类型（文本、数字、评级）以及需要多少行。对于复杂比较，为了可读性限制在4-6列。
 </Callout>
 
-### Emphasis with Uppercase Directives
+### 标题和章节
 
-Uppercase words act as strong signals to the model, emphasizing critical constraints or requirements. Use them sparingly for maximum impact—overuse dilutes their effectiveness.
+标题创建清晰的文档结构，使长响应易于浏览和组织。用于报告、分析或任何多部分响应。层级标题（##、###）展示章节之间的关系。
 
-**Common Uppercase Directives:**
+```
+分析这份商业提案。
+
+用以下章节结构化你的回复：
+## 执行摘要
+## 优势
+## 劣势
+## 建议
+## 风险评估
+```
+
+<Callout type="tip" title="章节最佳实践">
+按你期望的顺序列出章节。为保持一致性，指定每个章节应包含的内容（例如，"执行摘要：仅2-3句话"）。
+</Callout>
+
+### 大写指令强调
+
+大写单词作为对模型的强信号，强调关键约束或要求。谨慎使用以获得最大效果——过度使用会削弱其效力。
+
+**常见大写指令：**
 
 <InfoGrid items={[
-  { label: "NEVER", description: "Absolute prohibition: \"NEVER include personal opinions\"", color: "red" },
-  { label: "ALWAYS", description: "Mandatory requirement: \"ALWAYS cite sources\"", color: "green" },
-  { label: "IMPORTANT", description: "Critical instruction: \"IMPORTANT: Keep responses under 100 words\"", color: "amber" },
-  { label: "DO NOT", description: "Strong prohibition: \"DO NOT make up statistics\"", color: "red" },
-  { label: "MUST", description: "Required action: \"Output MUST be valid JSON\"", color: "blue" },
-  { label: "ONLY", description: "Restriction: \"Return ONLY the code, no explanations\"", color: "purple" },
+  { label: "NEVER", description: "绝对禁止：\"NEVER include personal opinions\"", color: "red" },
+  { label: "ALWAYS", description: "强制要求：\"ALWAYS cite sources\"", color: "green" },
+  { label: "IMPORTANT", description: "关键指令：\"IMPORTANT: Keep responses under 100 words\"", color: "amber" },
+  { label: "DO NOT", description: "强烈禁止：\"DO NOT make up statistics\"", color: "red" },
+  { label: "MUST", description: "必须执行：\"Output MUST be valid JSON\"", color: "blue" },
+  { label: "ONLY", description: "限制条件：\"Return ONLY the code, no explanations\"", color: "purple" },
 ]} />
 
 ```
-Summarize this article.
+总结这篇文章。
 
-IMPORTANT: Keep the summary under 100 words.
-NEVER add information not present in the original.
-ALWAYS maintain the original tone and perspective.
-DO NOT include your own opinions or analysis.
+IMPORTANT: 摘要保持在100字以内。
+NEVER 添加原文中没有的信息。
+ALWAYS 保持原文的语气和视角。
+DO NOT 包含你自己的观点或分析。
 ```
 
-<Callout type="warning" title="Use Sparingly">
-If everything is uppercase or marked as critical, nothing stands out. Reserve these directives for genuinely important constraints.
+<Callout type="warning" title="谨慎使用">
+如果所有内容都大写或标记为关键，那什么都不突出了。将这些指令保留给真正重要的约束。
 </Callout>
 
-## JSON Output
+## JSON 输出
 
-JSON (JavaScript Object Notation) is the most popular format for structured AI output. It's machine-readable, widely supported by programming languages, and perfect for APIs, databases, and automation workflows. The key to reliable JSON is providing a clear schema.
+JSON（JavaScript 对象表示法）是结构化 AI 输出最流行的格式。它是机器可读的，被各种编程语言广泛支持，非常适合 API、数据库和自动化工作流程。可靠 JSON 的关键是提供清晰的模式。
 
-### Basic JSON Request
+### 基础 JSON 请求
 
-Start with a template showing the exact structure you want. Include field names, data types, and example values. This acts as a contract the model will follow.
+从展示你想要的确切结构的模板开始。包含字段名、数据类型和示例值。这充当模型将遵循的契约。
 
 <TryIt 
-  title="JSON Extraction"
-  description="Extract structured data from unstructured text."
-  prompt={`Extract information from this text and return as JSON:
+  title="JSON 提取"
+  description="从非结构化文本中提取结构化数据。"
+  prompt={`从这段文本中提取信息并以 JSON 格式返回：
 
 {
     "company_name": "string",
@@ -112,15 +112,15 @@ Start with a template showing the exact structure you want. Include field names,
     "industry": "string"
 }
 
-Text: "Apple Inc., founded in 1976, is headquartered in Cupertino, California. The technology giant employs approximately 164,000 people worldwide."`}
+文本："Apple Inc.，成立于1976年，总部位于加利福尼亚州库比蒂诺。这家科技巨头在全球雇用约164,000名员工。"`}
 />
 
-### Complex JSON Structures
+### 复杂 JSON 结构
 
-For nested data, use hierarchical JSON with objects inside objects, arrays of objects, and mixed types. Define each level clearly and use TypeScript-style annotations (`"positive" | "negative"`) to constrain values.
+对于嵌套数据，使用层级 JSON，包含对象中的对象、对象数组和混合类型。清晰定义每个层级，并使用 TypeScript 风格的注解（`"positive" | "negative"`）来约束值。
 
 ```
-Analyze this product review and return JSON:
+分析这条产品评论并返回 JSON：
 
 {
   "review_id": "string (generate unique)",
@@ -147,11 +147,11 @@ Return ONLY valid JSON, no additional text.
 Review: "[review text]"
 ```
 
-### Ensuring Valid JSON
+### 确保有效 JSON
 
-Models sometimes add explanatory text or markdown formatting around JSON. Prevent this with explicit instructions about output format. You can request raw JSON or JSON inside code blocks—choose based on your parsing needs.
+模型有时会在 JSON 周围添加解释性文本或 markdown 格式。通过关于输出格式的明确指令来防止这种情况。你可以请求原始 JSON 或代码块中的 JSON——根据你的解析需求选择。
 
-Add explicit instructions:
+添加明确指令：
 
 ```
 IMPORTANT:
@@ -161,57 +161,57 @@ IMPORTANT:
 - Validate that the output is parseable JSON
 ```
 
-Or request code blocks by asking the model to wrap its output:
+或通过要求模型包装其输出来请求代码块：
 
 ````
-Return the result as a JSON code block:
+以 JSON 代码块返回结果：
 ```json
 { ... }
 ```
 ````
 
-## YAML Output
+## YAML 输出
 
-YAML is more human-readable than JSON, using indentation instead of brackets. It's the standard for configuration files (Docker, Kubernetes, GitHub Actions) and works well when the output will be read by humans or used in DevOps contexts. YAML is sensitive to indentation, so be specific about formatting requirements.
+YAML 比 JSON 更易于人类阅读，使用缩进而非括号。它是配置文件（Docker、Kubernetes、GitHub Actions）的标准，在输出将由人类阅读或用于 DevOps 场景时效果很好。YAML 对缩进敏感，因此要具体说明格式要求。
 
 <TryIt 
   compact
-  title="YAML Generation"
-  prompt={`Generate a GitHub Actions workflow for a Node.js project.
+  title="YAML 生成"
+  prompt={`为 Node.js 项目生成 GitHub Actions 工作流。
 
-Return as valid YAML:
-- Include: install, lint, test, build stages
-- Use Node.js 18
-- Cache npm dependencies
-- Run on push to main and pull requests`}
+以有效 YAML 返回：
+- 包含：install、lint、test、build 阶段
+- 使用 Node.js 18
+- 缓存 npm 依赖
+- 在推送到 main 和拉取请求时运行`}
 />
 
-## XML Output
+## XML 输出
 
-XML is still required for many enterprise systems, SOAP APIs, and legacy integrations. It's more verbose than JSON but offers features like attributes, namespaces, and CDATA sections for complex data. Specify element names, nesting structure, and where to use attributes vs. child elements.
-
-```
-Convert this data to XML format:
-
-Requirements:
-- Root element: <catalog>
-- Each item in <book> element
-- Include attributes where appropriate
-- Use CDATA for description text
-
-Data: [book data]
-```
-
-## Custom Formats
-
-Sometimes standard formats don't fit your needs. You can define any custom format by providing a clear template. Custom formats work well for reports, logs, or domain-specific outputs that will be read by humans.
-
-### Structured Analysis Format
-
-Use delimiters (===, ---, [SECTION]) to create scannable documents with clear boundaries between sections. This format is great for code reviews, audits, and analyses.
+XML 仍然是许多企业系统、SOAP API 和遗留集成所必需的。它比 JSON 更冗长，但提供属性、命名空间和用于复杂数据的 CDATA 部分等功能。指定元素名称、嵌套结构，以及何时使用属性与子元素。
 
 ```
-Analyze this code using this exact format:
+将此数据转换为 XML 格式：
+
+要求：
+- 根元素：<catalog>
+- 每个项目在 <book> 元素中
+- 在适当的地方包含属性
+- 对描述文本使用 CDATA
+
+数据：[book data]
+```
+
+## 自定义格式
+
+有时标准格式不能满足你的需求。你可以通过提供清晰的模板来定义任何自定义格式。自定义格式非常适合报告、日志或将由人类阅读的特定领域输出。
+
+### 结构化分析格式
+
+使用分隔符（===、---、[SECTION]）创建章节之间有清晰边界的可浏览文档。这种格式非常适合代码审查、审计和分析。
+
+```
+使用这种精确格式分析这段代码：
 
 === CODE ANALYSIS ===
 
@@ -235,12 +235,12 @@ Test Coverage: [estimated %]
 === END ANALYSIS ===
 ```
 
-### Fill-in-the-Blank Format
+### 填空格式
 
-Templates with blanks (___) guide the model to fill in specific fields while maintaining exact formatting. This approach is excellent for forms, briefs, and standardized documents where consistency matters.
+带空白（___）的模板引导模型填写特定字段，同时保持精确格式。这种方法非常适合表单、简报和需要一致性的标准化文档。
 
 ```
-Complete this template for the given product:
+为给定产品完成此模板：
 
 PRODUCT BRIEF
 ─────────────
@@ -257,33 +257,33 @@ Differentiator: _______________
 Product: [product description]
 ```
 
-## Typed Responses
+## 类型化响应
 
-Typed responses define categories or entity types that the model should recognize and label. This technique is essential for Named Entity Recognition (NER), classification tasks, and any extraction where you need to categorize information consistently. Define your types clearly with examples.
+类型化响应定义模型应识别和标记的类别或实体类型。这种技术对于命名实体识别（NER）、分类任务以及任何需要一致分类信息的提取都至关重要。用示例清晰定义你的类型。
 
 <TryIt 
   compact
-  title="Entity Extraction"
-  prompt={`Extract entities from this text.
+  title="实体提取"
+  prompt={`从这段文本中提取实体。
 
-Entity Types:
-- PERSON: Full names of people
-- ORG: Organization/company names
-- LOCATION: Cities, countries, addresses
-- DATE: Dates in ISO format (YYYY-MM-DD)
-- MONEY: Monetary amounts with currency
+实体类型：
+- PERSON：人物全名
+- ORG：组织/公司名称
+- LOCATION：城市、国家、地址
+- DATE：ISO 格式的日期（YYYY-MM-DD）
+- MONEY：带货币的金额
 
-Format each as: [TYPE]: [value]
+将每个格式化为：[TYPE]: [value]
 
-Text: "Tim Cook announced that Apple will invest $1 billion in a new Austin facility by December 2024."`}
+文本："Tim Cook 宣布 Apple 将在2024年12月前向奥斯汀新设施投资10亿美元。"`}
 />
 
-## Multi-Part Structured Responses
+## 多部分结构化响应
 
-When you need comprehensive output covering multiple aspects, define distinct parts with clear boundaries. Specify exactly what goes in each part—format, length, and content type. This prevents the model from blending sections or omitting parts.
+当你需要涵盖多个方面的综合输出时，定义具有清晰边界的不同部分。精确指定每个部分的内容——格式、长度和内容类型。这可以防止模型混合章节或遗漏部分。
 
 ```
-Research this topic and provide:
+研究这个主题并提供：
 
 ### PART 1: EXECUTIVE SUMMARY
 [2-3 sentence overview]
@@ -303,38 +303,38 @@ Research this topic and provide:
 [3 suggested resources with brief descriptions]
 ```
 
-## Conditional Formatting
+## 条件格式化
 
-Conditional formatting lets you define different output formats based on the input's characteristics. This is powerful for classification, triage, and routing systems where the response format should vary based on what the model detects. Use clear if/then logic with explicit output templates for each case.
+条件格式化让你可以根据输入的特征定义不同的输出格式。这对于分类、分诊和路由系统非常强大，在这些系统中响应格式应根据模型检测到的内容而变化。使用清晰的 if/then 逻辑，并为每种情况提供明确的输出模板。
 
 <TryIt 
   compact
-  title="Ticket Classification"
-  prompt={`Classify this support ticket.
+  title="工单分类"
+  prompt={`对这个支持工单进行分类。
 
-If URGENT (system down, security issue, data loss):
-  Return: 🔴 URGENT | [Category] | [Suggested Action]
+如果 URGENT（系统宕机、安全问题、数据丢失）：
+  返回：🔴 URGENT | [Category] | [Suggested Action]
 
-If HIGH (affects multiple users, revenue impact):
-  Return: 🟠 HIGH | [Category] | [Suggested Action]
+如果 HIGH（影响多个用户、收入影响）：
+  返回：🟠 HIGH | [Category] | [Suggested Action]
 
-If MEDIUM (single user affected, workaround exists):
-  Return: 🟡 MEDIUM | [Category] | [Suggested Action]
+如果 MEDIUM（影响单个用户、存在变通方法）：
+  返回：🟡 MEDIUM | [Category] | [Suggested Action]
 
-If LOW (questions, feature requests):
-  Return: 🟢 LOW | [Category] | [Suggested Action]
+如果 LOW（问题、功能请求）：
+  返回：🟢 LOW | [Category] | [Suggested Action]
 
-Ticket: "I can't login to my account. I've tried resetting my password twice but still getting an error. This is blocking my entire team from accessing the dashboard."`}
+工单："我无法登录我的账户。我已经尝试重置密码两次但仍然收到错误。这阻止了我的整个团队访问仪表板。"`}
 />
 
-## Arrays and Lists in JSON
+## JSON 中的数组和列表
 
-Extracting multiple items into arrays requires careful schema definition. Specify the array structure, what each item should contain, and how to handle edge cases (empty arrays, single items). Including a count field helps verify completeness.
+将多个项目提取到数组中需要仔细的模式定义。指定数组结构、每个项目应包含的内容，以及如何处理边缘情况（空数组、单个项目）。包含计数字段有助于验证完整性。
 
 ```
-Extract all action items from this meeting transcript.
+从这份会议记录中提取所有行动项目。
 
-Return as JSON array:
+以 JSON 数组返回：
 {
   "action_items": [
     {
@@ -351,12 +351,12 @@ Return as JSON array:
 Transcript: "[meeting transcript]"
 ```
 
-## Validation Instructions
+## 验证指令
 
-Self-validation prompts the model to check its own output before responding. This catches common issues like missing sections, placeholder text, or constraint violations. The model will iterate internally to fix problems, improving output quality without additional API calls.
+自我验证提示模型在响应之前检查自己的输出。这可以捕获常见问题，如缺少章节、占位符文本或违反约束。模型将在内部迭代以修复问题，无需额外的 API 调用即可提高输出质量。
 
 ```
-Generate the report, then:
+生成报告，然后：
 
 VALIDATION CHECKLIST:
 □ All required sections present
@@ -368,12 +368,12 @@ VALIDATION CHECKLIST:
 If any check fails, fix before responding.
 ```
 
-## Handling Optional Fields
+## 处理可选字段
 
-Real-world data often has missing values. Explicitly instruct the model on how to handle optional fields—using `null` is cleaner than empty strings and easier to process programmatically. Also prevent "hallucination" of missing data by emphasizing that the model should never invent information.
+现实世界的数据经常有缺失值。明确指示模型如何处理可选字段——使用 `null` 比空字符串更简洁，更易于程序化处理。同时通过强调模型永远不应编造信息来防止"幻觉"缺失数据。
 
 ```
-Extract contact information. Use null for missing fields.
+提取联系信息。对缺失字段使用 null。
 
 {
   "name": "string (required)",
@@ -390,22 +390,22 @@ IMPORTANT:
 - Phone numbers in E.164 format if possible
 ```
 
-## Summary
+## 总结
 
-<Callout type="tip" title="Key Techniques">
-Be explicit about format, use examples, specify types, handle edge cases with null values, and ask the model to validate its own output.
+<Callout type="tip" title="关键技术">
+明确格式、使用示例、指定类型、用 null 值处理边缘情况，并要求模型验证自己的输出。
 </Callout>
 
 <Quiz 
-  question="What's the main advantage of structured output over unstructured text?"
+  question="结构化输出相对于非结构化文本的主要优势是什么？"
   options={[
-    "It uses fewer tokens",
-    "It's easier for the AI to generate",
-    "It can be parsed programmatically and validated",
-    "It always produces correct information"
+    "它使用更少的 token",
+    "AI 更容易生成",
+    "可以程序化解析和验证",
+    "它总是产生正确的信息"
   ]}
   correctIndex={2}
-  explanation="Structured outputs like JSON can be parsed by code, compared across queries, integrated into workflows, and validated for completeness—things that are difficult or impossible with freeform text."
+  explanation="像 JSON 这样的结构化输出可以被代码解析、跨查询比较、集成到工作流程中并验证完整性——这些对于自由格式文本来说是困难或不可能的。"
 />
 
-Structured outputs are essential for building reliable AI-powered applications. In the next chapter, we'll explore chain-of-thought prompting for complex reasoning tasks.
+结构化输出对于构建可靠的 AI 驱动应用程序至关重要。在下一章中，我们将探索用于复杂推理任务的思维链提示。

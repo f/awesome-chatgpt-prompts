@@ -1,55 +1,55 @@
-Prompt engineering is rarely a one-shot process. The best prompts emerge through iteration—testing, observing, and refining until you achieve the desired results.
+プロンプトエンジニアリングは、一発で完成するプロセスではありません。最良のプロンプトは、テスト、観察、改良を繰り返す反復作業を通じて生まれます。
 
-<Callout type="info" title="First Draft, Not Final Draft">
-Think of your first prompt as a rough draft. Even experienced prompt engineers rarely nail it on the first try.
+<Callout type="info" title="最初の下書きであり、最終版ではない">
+最初のプロンプトは下書きだと考えてください。経験豊富なプロンプトエンジニアでも、一発で完璧に仕上げることはほとんどありません。
 </Callout>
 
-## The Iteration Cycle
+## 反復サイクル
 
-Effective prompt refinement follows a predictable cycle: write, test, analyze, and improve. Each iteration brings you closer to a prompt that reliably produces the results you need.
+効果的なプロンプトの改良は、予測可能なサイクルに従います：書く、テストする、分析する、改善する。各反復を通じて、求める結果を確実に生成するプロンプトに近づいていきます。
 
 <IterativeRefinementDemo />
 
-## Common Refinement Patterns
+## よくある改良パターン
 
-Most prompt failures fall into a handful of categories. Learning to recognize these patterns lets you quickly diagnose and fix issues without starting from scratch.
+プロンプトの失敗のほとんどは、いくつかのカテゴリに分類されます。これらのパターンを認識することで、ゼロから始めることなく、問題を素早く診断し修正できるようになります。
 
-### Problem: Output Too Long
+### 問題：出力が長すぎる
 
-One of the most common issues. Without explicit constraints, models tend to be thorough rather than concise.
+最も一般的な問題の一つです。明示的な制約がなければ、モデルは簡潔さよりも網羅性を優先する傾向があります。
 
 <DiffView 
   before="Explain how photosynthesis works."
   after={`Explain how photosynthesis works in 3-4 sentences suitable for a 10-year-old.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="オリジナル"
+  afterLabel="改良版"
 />
 
-### Problem: Output Too Vague
+### 問題：出力が曖昧すぎる
 
-Vague prompts produce vague outputs. The model can't read your mind about what "better" means or which aspects matter most to you.
+曖昧なプロンプトは曖昧な出力を生み出します。モデルは、あなたにとって「より良い」とは何を意味するのか、どの側面が最も重要なのかを読み取ることはできません。
 
 <DiffView 
   before="Give me tips for better presentations."
   after={`Give me 5 specific, actionable tips for improving technical presentations to non-technical stakeholders. For each tip, include a concrete example.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="オリジナル"
+  afterLabel="改良版"
 />
 
-### Problem: Wrong Tone
+### 問題：トーンが間違っている
 
-Tone is subjective and varies by context. What sounds "professional" to the model might not match your organization's voice or the relationship with your recipient.
+トーンは主観的であり、文脈によって異なります。モデルが「プロフェッショナル」と判断するものが、あなたの組織の声や受信者との関係性に合わないこともあります。
 
 <DiffView 
   before="Write an apology email for missing a deadline."
   after={`Write a professional but warm apology email for missing a project deadline. The tone should be accountable without being overly apologetic. Include a concrete plan to prevent future delays.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="オリジナル"
+  afterLabel="改良版"
 />
 
-### Problem: Missing Key Information
+### 問題：重要な情報が欠けている
 
-Open-ended requests get open-ended responses. If you need specific types of feedback, you must ask for them explicitly.
+オープンエンドなリクエストは、オープンエンドな回答を生み出します。特定の種類のフィードバックが必要な場合は、明示的に求める必要があります。
 
 <DiffView 
   before="Review this code."
@@ -62,13 +62,13 @@ Open-ended requests get open-ended responses. If you need specific types of feed
 For each issue found, explain the problem and suggest a fix.
 
 [code]`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="オリジナル"
+  afterLabel="改良版"
 />
 
-### Problem: Inconsistent Format
+### 問題：フォーマットが一貫しない
 
-Without a template, the model will structure each response differently, making comparison difficult and automation impossible.
+テンプレートがなければ、モデルは各回答を異なる構造で出力するため、比較が難しくなり、自動化も不可能になります。
 
 <DiffView 
   before="Analyze these three products."
@@ -82,82 +82,82 @@ Without a template, the model will structure each response differently, making c
 **Rating:** X/10
 
 [products]`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="オリジナル"
+  afterLabel="改良版"
 />
 
-## Systematic Refinement Approach
+## 体系的な改良アプローチ
 
-Random changes waste time. A systematic approach helps you identify problems quickly and fix them efficiently.
+ランダムな変更は時間の無駄です。体系的なアプローチにより、問題を素早く特定し、効率的に修正できます。
 
-### Step 1: Diagnose the Issue
+### ステップ1：問題を診断する
 
-Before changing anything, identify what's actually wrong. Use this diagnostic table to map symptoms to solutions:
+何かを変更する前に、実際に何が間違っているのかを特定します。この診断表を使用して、症状を解決策にマッピングしてください：
 
 <div className="my-4 grid gap-2">
   <div className="grid grid-cols-3 gap-2 p-3 bg-muted/50 rounded-lg text-sm">
-    <span className="font-semibold">Symptom</span>
-    <span className="font-semibold">Likely Cause</span>
-    <span className="font-semibold">Solution</span>
+    <span className="font-semibold">症状</span>
+    <span className="font-semibold">考えられる原因</span>
+    <span className="font-semibold">解決策</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Too long</span>
-    <span className="text-muted-foreground">No length constraint</span>
-    <span className="text-green-600 dark:text-green-400">Add word/sentence limits</span>
+    <span>長すぎる</span>
+    <span className="text-muted-foreground">長さの制約がない</span>
+    <span className="text-green-600 dark:text-green-400">単語数/文数の制限を追加</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Too short</span>
-    <span className="text-muted-foreground">Lacks detail request</span>
-    <span className="text-green-600 dark:text-green-400">Ask for elaboration</span>
+    <span>短すぎる</span>
+    <span className="text-muted-foreground">詳細のリクエストがない</span>
+    <span className="text-green-600 dark:text-green-400">詳細な説明を求める</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Off-topic</span>
-    <span className="text-muted-foreground">Vague instructions</span>
-    <span className="text-green-600 dark:text-green-400">Be more specific</span>
+    <span>的外れ</span>
+    <span className="text-muted-foreground">指示が曖昧</span>
+    <span className="text-green-600 dark:text-green-400">より具体的にする</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Wrong format</span>
-    <span className="text-muted-foreground">Format not specified</span>
-    <span className="text-green-600 dark:text-green-400">Define exact structure</span>
+    <span>フォーマットが違う</span>
+    <span className="text-muted-foreground">フォーマットが指定されていない</span>
+    <span className="text-green-600 dark:text-green-400">正確な構造を定義する</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Wrong tone</span>
-    <span className="text-muted-foreground">Audience not clear</span>
-    <span className="text-green-600 dark:text-green-400">Specify audience/style</span>
+    <span>トーンが違う</span>
+    <span className="text-muted-foreground">対象読者が不明確</span>
+    <span className="text-green-600 dark:text-green-400">対象読者/スタイルを指定する</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Inconsistent</span>
-    <span className="text-muted-foreground">No examples provided</span>
-    <span className="text-green-600 dark:text-green-400">Add few-shot examples</span>
+    <span>一貫性がない</span>
+    <span className="text-muted-foreground">例が提供されていない</span>
+    <span className="text-green-600 dark:text-green-400">Few-shot例を追加する</span>
   </div>
 </div>
 
-### Step 2: Make Targeted Changes
+### ステップ2：的を絞った変更を行う
 
-Resist the urge to rewrite everything. Changing multiple variables at once makes it impossible to know what helped and what hurt. Make one change, test it, then proceed:
+すべてを書き直したい衝動を抑えてください。複数の変数を同時に変更すると、何が効果的で何が逆効果だったかを知ることができなくなります。1つ変更し、テストし、次に進みましょう：
 
 ```
-Iteration 1: Add length constraint
-Iteration 2: Specify format
-Iteration 3: Add example
-Iteration 4: Refine tone instructions
+反復1: 長さの制約を追加
+反復2: フォーマットを指定
+反復3: 例を追加
+反復4: トーンの指示を調整
 ```
 
-### Step 3: Document What Works
+### ステップ3：効果があったことを記録する
 
-Prompt engineering knowledge is easily lost. Keep a log of what you tried and why. This saves time when you revisit the prompt later or face similar challenges:
+プロンプトエンジニアリングの知識は簡単に失われます。何を試して、なぜそうしたのかを記録しておきましょう。後でプロンプトを見直すときや、同様の課題に直面したときに時間を節約できます：
 
 ```markdown
-## Prompt: Customer Email Response
+## プロンプト: カスタマーメール対応
 
-### Version 1 (too formal)
+### バージョン1（堅すぎる）
 "Write a response to this customer complaint."
 
-### Version 2 (better tone, still missing structure)
+### バージョン2（トーンは改善、構造がまだ不十分）
 "Write a friendly but professional response to this complaint. 
 Show empathy first."
 
-### Version 3 (final - good results)
+### バージョン3（最終版 - 良い結果）
 "Write a response to this customer complaint. Structure:
 1. Acknowledge their frustration (1 sentence)
 2. Apologize specifically (1 sentence)  
@@ -167,25 +167,25 @@ Show empathy first."
 Tone: Friendly, professional, empathetic but not groveling."
 ```
 
-## Real-World Iteration Example
+## 実践的な反復の例
 
-Let's walk through a complete iteration cycle to see how each refinement builds on the last. Notice how each version addresses specific shortcomings of the previous one.
+完全な反復サイクルを見ていきましょう。各改良が前のバージョンの特定の欠点にどのように対処しているかに注目してください。
 
-### Task: Generate Product Names
+### タスク：製品名の生成
 
 <VersionDiff versions={[
   {
-    label: "Version 1",
+    label: "バージョン1",
     content: "Generate names for a new productivity app.",
-    note: "Too generic, no context"
+    note: "一般的すぎる、コンテキストがない"
   },
   {
-    label: "Version 2",
+    label: "バージョン2",
     content: `Generate names for a new productivity app. The app uses AI to automatically schedule your tasks based on energy levels and calendar availability.`,
-    note: "Added context, still generic"
+    note: "コンテキストを追加、まだ一般的"
   },
   {
-    label: "Version 3",
+    label: "バージョン3",
     content: `Generate 10 unique, memorable names for a productivity app with these characteristics:
 - Uses AI to schedule tasks based on energy levels
 - Target audience: busy professionals aged 25-40
@@ -193,10 +193,10 @@ Let's walk through a complete iteration cycle to see how each refinement builds 
 - Avoid: generic words like "pro", "smart", "AI", "task"
 
 For each name, explain why it works.`,
-    note: "Added constraints and reasoning"
+    note: "制約と理由を追加"
   },
   {
-    label: "Version 4 (final)",
+    label: "バージョン4（最終版）",
     content: `Generate 10 unique, memorable names for a productivity app.
 
 Context:
@@ -212,61 +212,61 @@ Requirements:
 
 Format:
 Name | Pronunciation | Why It Works | Domain Availability Guess`,
-    note: "Structured format, specific requirements"
+    note: "構造化されたフォーマット、具体的な要件"
   }
 ]} />
 
-## Refinement Strategies by Task Type
+## タスクタイプ別の改良戦略
 
-Different tasks fail in predictable ways. Knowing the common failure modes helps you diagnose and fix issues faster.
+異なるタスクは予測可能な方法で失敗します。一般的な失敗パターンを知っておくことで、問題をより早く診断し修正できます。
 
-### For Content Generation
+### コンテンツ生成の場合
 
-Content generation often produces generic, off-target, or poorly formatted output. The fix usually involves being more specific about constraints, providing concrete examples, or defining your brand voice explicitly.
-
-<InfoGrid items={[
-  { icon: "target", title: "Too Generic", description: "Add specific constraints and context", example: "\"Write about dogs\" → \"Write about golden retrievers for first-time owners, focusing on training and exercise needs\"" },
-  { icon: "scissors", title: "Too Long", description: "Set word/paragraph limits", example: "Add: \"Keep response under 150 words\" or \"Maximum 3 paragraphs\"" },
-  { icon: "palette", title: "Wrong Style", description: "Provide style examples", example: "\"Write in the style of this example: [paste sample text]\"" },
-  { icon: "megaphone", title: "Off-Brand", description: "Include brand voice guidelines", example: "\"Use friendly, casual tone. Avoid jargon. Address reader as 'you'.\"" }
-]} />
-
-### For Code Generation
-
-Code output can fail technically (syntax errors, wrong language features) or architecturally (poor patterns, missing cases). Technical issues need version/environment specifics; architectural issues need design guidance.
+コンテンツ生成は、一般的、的外れ、またはフォーマットが不適切な出力を生成することがよくあります。修正には通常、制約をより具体的にする、具体的な例を提供する、またはブランドの声を明示的に定義することが含まれます。
 
 <InfoGrid items={[
-  { icon: "code", title: "Syntax Errors", description: "Specify language version", example: "\"Use Python 3.11+ syntax with type hints\" or \"ES2022 JavaScript\"" },
-  { icon: "git-branch", title: "Wrong Approach", description: "Describe preferred patterns", example: "\"Use functional approach, avoid classes\" or \"Follow repository pattern\"" },
-  { icon: "shield", title: "Missing Edge Cases", description: "List scenarios to handle", example: "\"Handle: empty input, null values, network timeouts, invalid formats\"" },
-  { icon: "tag", title: "Poor Naming", description: "Include naming conventions", example: "\"Use camelCase for variables, PascalCase for classes, UPPER_SNAKE for constants\"" }
+  { icon: "target", title: "一般的すぎる", description: "具体的な制約とコンテキストを追加", example: "\"Write about dogs\" → \"Write about golden retrievers for first-time owners, focusing on training and exercise needs\"" },
+  { icon: "scissors", title: "長すぎる", description: "単語数/段落数の制限を設定", example: "Add: \"Keep response under 150 words\" or \"Maximum 3 paragraphs\"" },
+  { icon: "palette", title: "スタイルが違う", description: "スタイルの例を提供", example: "\"Write in the style of this example: [paste sample text]\"" },
+  { icon: "megaphone", title: "ブランドに合わない", description: "ブランドの声のガイドラインを含める", example: "\"Use friendly, casual tone. Avoid jargon. Address reader as 'you'.\"" }
 ]} />
 
-### For Analysis
+### コード生成の場合
 
-Analysis tasks often produce surface-level or unstructured results. Guide the model with specific frameworks (SWOT, Porter's Five Forces), request multiple viewpoints, or provide a template for the output structure.
+コード出力は技術的に失敗する場合（構文エラー、間違った言語機能）とアーキテクチャ的に失敗する場合（不適切なパターン、欠けているケース）があります。技術的な問題にはバージョン/環境の詳細が必要です。アーキテクチャの問題には設計のガイダンスが必要です。
 
 <InfoGrid items={[
-  { icon: "layers", title: "Too Shallow", description: "Ask for specific frameworks", example: "\"Analyze using SWOT framework\" or \"Apply Porter's Five Forces\"" },
-  { icon: "scale", title: "Biased", description: "Request multiple perspectives", example: "\"Present arguments for and against\" or \"Include skeptic's viewpoint\"" },
-  { icon: "database", title: "Missing Data", description: "Specify what to analyze", example: "\"Focus on: market size, growth rate, key players, entry barriers\"" },
-  { icon: "layout", title: "Unstructured", description: "Provide analysis template", example: "\"Format as: Summary → Key Findings → Implications → Recommendations\"" }
+  { icon: "code", title: "構文エラー", description: "言語バージョンを指定", example: "\"Use Python 3.11+ syntax with type hints\" or \"ES2022 JavaScript\"" },
+  { icon: "git-branch", title: "アプローチが間違っている", description: "好ましいパターンを説明", example: "\"Use functional approach, avoid classes\" or \"Follow repository pattern\"" },
+  { icon: "shield", title: "エッジケースが欠けている", description: "処理すべきシナリオをリスト", example: "\"Handle: empty input, null values, network timeouts, invalid formats\"" },
+  { icon: "tag", title: "命名が不適切", description: "命名規則を含める", example: "\"Use camelCase for variables, PascalCase for classes, UPPER_SNAKE for constants\"" }
 ]} />
 
-### For Q&A
+### 分析の場合
 
-Question-answering can be too terse or too verbose, and may lack confidence indicators or sources. Specify the detail level you need and whether you want citations or uncertainty expressed.
+分析タスクは、表面的または構造化されていない結果を生み出すことがよくあります。特定のフレームワーク（SWOT、ポーターの5つの力）でモデルをガイドするか、複数の視点を求めるか、出力構造のテンプレートを提供してください。
 
 <InfoGrid items={[
-  { icon: "plus", title: "Too Short", description: "Ask for elaboration", example: "\"Explain in detail with examples\" or \"Elaborate on each point\"" },
-  { icon: "minus", title: "Too Long", description: "Request concise answer", example: "\"Answer in 2-3 sentences\" or \"Give me the TL;DR\"" },
-  { icon: "help-circle", title: "Uncertain", description: "Ask for confidence level", example: "\"Rate your confidence 1-10\" or \"Note any assumptions made\"" },
-  { icon: "link", title: "Unsourced", description: "Request citations", example: "\"Cite sources for claims\" or \"Include references where possible\"" }
+  { icon: "layers", title: "浅すぎる", description: "特定のフレームワークを求める", example: "\"Analyze using SWOT framework\" or \"Apply Porter's Five Forces\"" },
+  { icon: "scale", title: "偏っている", description: "複数の視点を要求", example: "\"Present arguments for and against\" or \"Include skeptic's viewpoint\"" },
+  { icon: "database", title: "データが欠けている", description: "分析対象を指定", example: "\"Focus on: market size, growth rate, key players, entry barriers\"" },
+  { icon: "layout", title: "構造化されていない", description: "分析テンプレートを提供", example: "\"Format as: Summary → Key Findings → Implications → Recommendations\"" }
 ]} />
 
-## The Feedback Loop Technique
+### Q&Aの場合
 
-Here's a meta-technique: use the model itself to help improve your prompts. Share what you tried, what you got, and what you wanted. The model can often suggest improvements you hadn't considered.
+質問回答は、簡潔すぎるか冗長すぎることがあり、信頼度の指標やソースが欠けていることもあります。必要な詳細レベルと、引用や不確実性の表現が必要かどうかを指定してください。
+
+<InfoGrid items={[
+  { icon: "plus", title: "短すぎる", description: "詳細な説明を求める", example: "\"Explain in detail with examples\" or \"Elaborate on each point\"" },
+  { icon: "minus", title: "長すぎる", description: "簡潔な回答を要求", example: "\"Answer in 2-3 sentences\" or \"Give me the TL;DR\"" },
+  { icon: "help-circle", title: "不確実", description: "信頼度レベルを求める", example: "\"Rate your confidence 1-10\" or \"Note any assumptions made\"" },
+  { icon: "link", title: "ソースがない", description: "引用を要求", example: "\"Cite sources for claims\" or \"Include references where possible\"" }
+]} />
+
+## フィードバックループテクニック
+
+メタテクニックをご紹介します：モデル自体を使ってプロンプトの改善を手伝ってもらいましょう。試したこと、得られた結果、望んでいたことを共有してください。モデルは、あなたが考えつかなかった改善点を提案できることがあります。
 
 ```
 I used this prompt:
@@ -279,9 +279,9 @@ I wanted something more [describe gap]. How should I modify
 my prompt to get better results?
 ```
 
-## A/B Testing Prompts
+## プロンプトのA/Bテスト
 
-For prompts that will be used repeatedly or at scale, don't just pick the first one that works. Test variations to find the most reliable and highest-quality approach.
+繰り返し使用されるプロンプトや大規模に使用されるプロンプトについては、最初にうまくいったものを選ぶだけでなく、バリエーションをテストして、最も信頼性が高く高品質なアプローチを見つけましょう。
 
 ```
 Prompt A: "Summarize this article in 3 bullet points."
@@ -289,80 +289,80 @@ Prompt B: "Extract the 3 most important insights from this article."
 Prompt C: "What are the key takeaways from this article? List 3."
 ```
 
-Run each multiple times, compare:
-- Consistency of output
-- Quality of information
-- Relevance to your needs
+それぞれを複数回実行し、比較してください：
+- 出力の一貫性
+- 情報の質
+- ニーズとの関連性
 
-## When to Stop Iterating
+## 反復をいつ止めるか
 
-Perfection is the enemy of good enough. Know when your prompt is ready for use and when you're just polishing for diminishing returns.
+完璧は十分の敵です。プロンプトがいつ使用準備完了なのか、いつ収穫逓減のためにただ磨いているだけなのかを見極めましょう。
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Ready to Ship</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> リリース準備完了</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Output consistently meets requirements</p>
-      <p className="m-0!">Edge cases are handled appropriately</p>
-      <p className="m-0!">Format is reliable and parseable</p>
-      <p className="m-0!">Further improvements show diminishing returns</p>
+      <p className="m-0!">出力が一貫して要件を満たしている</p>
+      <p className="m-0!">エッジケースが適切に処理されている</p>
+      <p className="m-0!">フォーマットが信頼でき、パース可能</p>
+      <p className="m-0!">さらなる改善は収穫逓減を示している</p>
     </div>
   </div>
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Keep Iterating</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> 反復を続ける</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Output is inconsistent across runs</p>
-      <p className="m-0!">Edge cases cause failures</p>
-      <p className="m-0!">Critical requirements are missed</p>
-      <p className="m-0!">You haven't tested enough variations</p>
+      <p className="m-0!">実行ごとに出力が一貫しない</p>
+      <p className="m-0!">エッジケースで失敗する</p>
+      <p className="m-0!">重要な要件が欠けている</p>
+      <p className="m-0!">十分なバリエーションをテストしていない</p>
     </div>
   </div>
 </div>
 
-## Version Control for Prompts
+## プロンプトのバージョン管理
 
-Prompts are code. For any prompt used in production, treat it with the same rigor: version control, changelogs, and the ability to roll back if something breaks.
+プロンプトはコードです。本番環境で使用されるプロンプトについては、同じ厳密さで扱いましょう：バージョン管理、変更履歴、そして何か問題が発生した場合にロールバックできる機能。
 
-<Callout type="tip" title="Built-in Versioning">
-prompts.chat includes automatic version history for your prompts. Every edit is saved, so you can compare versions and restore previous iterations with one click.
+<Callout type="tip" title="組み込みのバージョン管理">
+prompts.chatにはプロンプトの自動バージョン履歴機能が含まれています。すべての編集が保存されるため、バージョンを比較したり、ワンクリックで以前の反復を復元したりできます。
 </Callout>
 
-For self-managed prompts, use a folder structure:
+自己管理のプロンプトには、フォルダ構造を使用してください：
 
 ```
 prompts/
 ├── customer-response/
-│   ├── v1.0.txt    # Initial version
-│   ├── v1.1.txt    # Fixed tone issue
-│   ├── v2.0.txt    # Major restructure
-│   └── current.txt # Symlink to active version
-└── changelog.md    # Document changes
+│   ├── v1.0.txt    # 初期バージョン
+│   ├── v1.1.txt    # トーンの問題を修正
+│   ├── v2.0.txt    # 大幅な構造変更
+│   └── current.txt # アクティブバージョンへのシンボリックリンク
+└── changelog.md    # 変更を記録
 ```
 
-## Summary
+## まとめ
 
-<Callout type="tip" title="Key Takeaways">
-Start simple, observe carefully, change one thing at a time, document what works, and know when to stop. The best prompts aren't written—they're discovered through systematic iteration.
+<Callout type="tip" title="重要なポイント">
+シンプルに始め、注意深く観察し、一度に1つだけ変更し、効果があったことを記録し、いつ止めるべきかを知りましょう。最良のプロンプトは書かれるものではなく、体系的な反復を通じて発見されるものです。
 </Callout>
 
 <Quiz 
-  question="What's the best approach when refining a prompt that's producing wrong results?"
+  question="間違った結果を生成しているプロンプトを改良する際の最良のアプローチは何ですか？"
   options={[
-    "Rewrite the entire prompt from scratch",
-    "Add more examples until it works",
-    "Change one thing at a time and test each change",
-    "Make the prompt as long as possible"
+    "プロンプト全体をゼロから書き直す",
+    "うまくいくまで例をどんどん追加する",
+    "一度に1つずつ変更し、各変更をテストする",
+    "プロンプトをできるだけ長くする"
   ]}
   correctIndex={2}
-  explanation="Changing one thing at a time lets you isolate what works and what doesn't. If you change multiple things at once, you won't know which change fixed the problem or which made it worse."
+  explanation="一度に1つずつ変更することで、何が効果的で何がそうでないかを特定できます。複数のことを同時に変更すると、どの変更が問題を解決し、どの変更が悪化させたのかがわかりません。"
 />
 
-## Practice: Improve This Prompt
+## 練習：このプロンプトを改善する
 
-Try improving this weak prompt yourself. Edit it, then use AI to compare your version with the original:
+この弱いプロンプトを自分で改善してみてください。編集してから、AIを使用してあなたのバージョンとオリジナルを比較してください：
 
 <BeforeAfterEditor
-  title="Refine This Email Prompt"
+  title="このメールプロンプトを改良する"
   badPrompt="Write an email."
   idealPrompt={`You are a professional business writer.
 
@@ -381,7 +381,7 @@ Requirements:
 - Keep under 150 words
 
 Format: Subject line + email body`}
-  task="Transform this vague email prompt into something that will produce a professional, effective result."
+  task="この曖昧なメールプロンプトを、プロフェッショナルで効果的な結果を生み出すものに変換してください。"
 />
 
-In the next chapter, we'll explore JSON and YAML prompting for structured data applications.
+次の章では、構造化データアプリケーションのためのJSONおよびYAMLプロンプティングについて探求します。

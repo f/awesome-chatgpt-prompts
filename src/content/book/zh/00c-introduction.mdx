@@ -1,130 +1,130 @@
-Welcome to **The Interactive Book of Prompting**, your guide to communicating effectively with AI.
+欢迎阅读**提示词交互手册**，这是您与 AI 有效沟通的指南。
 
-<Callout type="info" title="What You'll Learn">
-By the end of this book, you'll understand how AI works, how to write better prompts, and how to use these skills for writing, coding, research, and creative projects.
+<Callout type="info" title="您将学到什么">
+读完本书后，您将了解 AI 的工作原理、如何编写更好的提示词，以及如何将这些技能应用于写作、编程、研究和创意项目。
 </Callout>
 
-<Callout type="tip" title="This Is an Interactive Book">
-Unlike traditional books, this guide is fully interactive. You'll find live demos, clickable examples, and "Try It" buttons throughout that let you test prompts instantly. Learning by doing makes complex concepts much easier to understand.
+<Callout type="tip" title="这是一本交互式书籍">
+与传统书籍不同，本指南完全支持交互。您会在全书中发现实时演示、可点击的示例和"试一试"按钮，让您可以即时测试提示词。通过实践学习能让复杂概念变得更容易理解。
 </Callout>
 
-## What is Prompt Engineering?
+## 什么是提示词工程？
 
-Prompt engineering is the skill of writing good instructions for AI. When you type something to ChatGPT, Claude, Gemini, or other AI tools, that's called a "prompt." The better your prompt, the better the answer you get.
+提示词工程是为 AI 编写优质指令的技能。当您向 ChatGPT、Claude、Gemini 或其他 AI 工具输入内容时，这就叫做"提示词"。提示词越好，得到的答案就越好。
 
-Think of it like this: AI is a powerful helper that takes your words very literally. It will do exactly what you ask. The trick is learning how to ask for exactly what you want.
+可以这样理解：AI 是一个强大的助手，它会非常字面地理解您的话。它会完全按照您的要求执行。关键在于学会如何准确地表达您想要的内容。
 
 <Compare 
-  before={{ label: "Simple Prompt", content: "Write about dogs" }}
-  after={{ label: "Engineered Prompt", content: "Write a 200-word informative paragraph about the history of dog domestication, suitable for a middle school science textbook, with an engaging opening hook." }}
+  before={{ label: "简单提示词", content: "写一篇关于狗的文章" }}
+  after={{ label: "精心设计的提示词", content: "写一段200字的信息性段落，介绍狗驯化的历史，适合中学科学教科书使用，开头要有吸引人的引子。" }}
 />
 
-The difference in output quality between these two prompts can be dramatic.
+这两种提示词产生的输出质量差异可能是巨大的。
 
 <TryIt 
-  prompt="Write a 200-word informative paragraph about the history of dog domestication, suitable for a middle school science textbook, with an engaging opening hook."
-  description="Try this engineered prompt and compare the result to simply asking 'Write about dogs'."
+  prompt="写一段200字的信息性段落，介绍狗驯化的历史，适合中学科学教科书使用，开头要有吸引人的引子。"
+  description="试试这个精心设计的提示词，并将结果与简单地询问'写一篇关于狗的文章'进行比较。"
 />
 
-## How Prompt Engineering Has Evolved
+## 提示词工程的发展历程
 
-In just three years since ChatGPT launched, prompt engineering has evolved dramatically alongside the technology itself. What started as simply "writing better questions" has grown into something much broader.
+自 ChatGPT 发布以来的短短三年内，提示词工程随着技术本身的发展而发生了巨大变化。从最初简单的"写出更好的问题"，已经发展成为更加广泛的领域。
 
-Today, we understand that your prompt is just **one part of a larger context**. Modern AI systems work with multiple types of data simultaneously:
+如今，我们认识到您的提示词只是**更大上下文的一部分**。现代 AI 系统同时处理多种类型的数据：
 
-- **System prompts** that define the AI's behavior
-- **Conversation history** from previous messages
-- **Retrieved documents** pulled from databases (RAG)
-- **Tool definitions** that let AI take actions
-- **User preferences** and settings
-- **Your actual prompt** - the question you're asking right now
+- **系统提示词**：定义 AI 的行为方式
+- **对话历史**：来自之前消息的记录
+- **检索文档**：从数据库中提取的内容（RAG）
+- **工具定义**：让 AI 能够执行操作
+- **用户偏好**：用户的设置和偏好
+- **您的实际提示词**：您现在正在提出的问题
 
-This shift from "prompt engineering" to "context engineering" reflects how we now think about AI interactions. Your prompt matters, but so does everything else the AI sees. The best results come from carefully managing all these pieces together.
+这种从"提示词工程"到"上下文工程"的转变反映了我们现在对 AI 交互的理解方式。您的提示词很重要，但 AI 看到的其他所有内容同样重要。最好的结果来自于仔细管理所有这些要素。
 
-We'll explore these concepts in depth throughout this book, especially in the [Context Engineering](/book/20-context-engineering) chapter.
+我们将在本书中深入探讨这些概念，特别是在[上下文工程](/book/20-context-engineering)章节中。
 
-## Why Does Prompt Engineering Matter?
+## 为什么提示词工程很重要？
 
-### 1. Getting Better Answers
+### 1. 获得更好的答案
 
-AI tools are incredibly capable, but they need clear instructions to unlock their full potential. The same AI that gives a mediocre response to a vague question can produce brilliant work when prompted correctly.
+AI 工具功能强大，但需要清晰的指令才能充分发挥其潜力。同一个 AI 对模糊问题可能给出平庸的回答，但在正确提示下却能产出出色的成果。
 
 <Compare 
-  before={{ label: "Vague Prompt", content: "Help me with my resume" }}
-  after={{ label: "Engineered Prompt", content: "Review my resume for a senior software engineer position. Focus on: 1) Impact metrics, 2) Technical skills section, 3) ATS optimization. Suggest specific improvements with examples." }}
+  before={{ label: "模糊的提示词", content: "帮我改改简历" }}
+  after={{ label: "精心设计的提示词", content: "请为高级软件工程师职位审阅我的简历。重点关注：1）影响力指标，2）技术技能部分，3）ATS优化。请提供具体的改进建议和示例。" }}
 />
 
-### 2. Saving Time and Money
+### 2. 节省时间和金钱
 
-A well-crafted prompt gets results in one try instead of multiple back-and-forth exchanges. This matters even more when you're paying per token or working with rate limits. A 5-minute investment in writing a good prompt can save hours of iteration.
+精心设计的提示词可以一次就得到结果，而不需要多次来回交流。当您按 token 付费或受到速率限制时，这一点尤为重要。花5分钟投入编写一个好的提示词可以节省数小时的反复修改时间。
 
-### 3. Getting Consistent, Reproducible Results
+### 3. 获得一致、可重复的结果
 
-Good prompts produce predictable outputs. This is critical for:
-- **Business workflows** where you need the same quality every time
-- **Automation** where prompts run without human review
-- **Teams** where multiple people need similar results
+好的提示词能产生可预测的输出。这对以下场景至关重要：
+- **业务工作流程**：每次都需要相同的质量
+- **自动化**：提示词在没有人工审核的情况下运行
+- **团队协作**：多人需要获得相似的结果
 
-### 4. Unlocking Advanced Capabilities
+### 4. 解锁高级功能
 
-Many powerful AI features only work when you know how to ask:
-- **Chain-of-thought reasoning** for complex problems
-- **Structured output** for data extraction
-- **Role-playing** for specialized expertise
-- **Few-shot learning** for custom tasks
+许多强大的 AI 功能只有在您知道如何提问时才能发挥作用：
+- **思维链推理**：用于复杂问题
+- **结构化输出**：用于数据提取
+- **角色扮演**：用于专业领域知识
+- **少样本学习**：用于自定义任务
 
-Without prompt engineering knowledge, you're only using a fraction of what AI can do.
+没有提示词工程知识，您只能使用 AI 能力的一小部分。
 
-### 5. Staying Safe and Avoiding Pitfalls
+### 5. 保持安全并避免陷阱
 
-Good prompting helps you:
-- Avoid hallucinations by asking for sources and verification
-- Get balanced perspectives instead of one-sided answers
-- Prevent the AI from making assumptions you didn't intend
-- Keep sensitive information out of your prompts
+良好的提示有助于您：
+- 通过要求来源和验证来避免幻觉
+- 获得平衡的观点而不是片面的答案
+- 防止 AI 做出您不希望的假设
+- 避免在提示词中包含敏感信息
 
-### 6. Future-Proofing Your Skills
+### 6. 为未来做好技能储备
 
-As AI becomes more integrated into work and life, prompt engineering becomes a fundamental literacy. The principles you learn here apply across all AI tools—ChatGPT, Claude, Gemini, image generators, and future models we haven't seen yet.
+随着 AI 越来越多地融入工作和生活，提示词工程正在成为一项基础素养。您在这里学到的原则适用于所有 AI 工具——ChatGPT、Claude、Gemini、图像生成器，以及我们尚未见过的未来模型。
 
-## Who Is This Book For?
+## 本书适合谁？
 
-This book is for everyone:
+本书适合所有人：
 
-- **Beginners** who want to learn how to use AI tools better
-- **Students** working on homework, research, or creative projects
-- **Writers and creators** using AI for their work
-- **Developers** building apps with AI
-- **Business people** who want to use AI at work
-- **Anyone curious** about getting more out of AI assistants
+- **初学者**：想要更好地使用 AI 工具
+- **学生**：进行作业、研究或创意项目
+- **作家和创作者**：在工作中使用 AI
+- **开发者**：构建包含 AI 的应用程序
+- **商务人士**：想在工作中使用 AI
+- **任何好奇的人**：想从 AI 助手中获得更多价值
 
-## How This Book Is Organized
+## 本书的组织结构
 
 <BookPartsNav />
 
-Plus an **Appendix** with templates, troubleshooting help, glossary, and extra resources.
+此外还有一个**附录**，包含模板、故障排除帮助、术语表和额外资源。
 
-## A Note on AI Models
+## 关于 AI 模型的说明
 
-This book mostly uses examples from ChatGPT (since it's the most popular), but the ideas work with any AI tool like Claude, Gemini, or others. We'll mention when something only works with specific AI models.
+本书主要使用 ChatGPT 的示例（因为它最受欢迎），但这些理念适用于任何 AI 工具，如 Claude、Gemini 或其他工具。当某些内容仅适用于特定 AI 模型时，我们会特别说明。
 
-AI is changing fast. What works today might be replaced by something better tomorrow. That's why this book focuses on core ideas that will stay useful no matter which AI you use.
+AI 正在快速发展。今天有效的方法明天可能会被更好的方法取代。这就是为什么本书专注于核心理念，无论您使用哪种 AI，这些理念都会保持实用价值。
 
-## Let's Begin
+## 让我们开始吧
 
-Writing good prompts is a skill that gets better with practice. As you read this book:
+编写好的提示词是一项通过练习会越来越好的技能。在阅读本书时：
 
-1. **Try things** - Test the examples, change them, see what happens
-2. **Keep trying** - Don't expect perfect results on your first attempt
-3. **Take notes** - Write down what works and what doesn't
-4. **Share** - Add your discoveries to [prompts.chat](https://prompts.chat)
+1. **动手尝试** - 测试示例，修改它们，看看会发生什么
+2. **持续练习** - 不要期望第一次尝试就能得到完美的结果
+3. **做好笔记** - 记录什么有效，什么无效
+4. **分享交流** - 将您的发现添加到 [prompts.chat](https://prompts.chat)
 
-<Callout type="tip" title="Practice Makes Perfect">
-The best way to learn is by doing. Every chapter has examples you can try right away. Don't just read. Try it yourself!
+<Callout type="tip" title="熟能生巧">
+最好的学习方式是实践。每一章都有您可以立即尝试的示例。不要只是阅读，亲自动手试试吧！
 </Callout>
 
-Ready to transform how you work with AI? Turn the page and let's get started.
+准备好改变您与 AI 协作的方式了吗？翻开下一页，让我们开始吧。
 
 ---
 
-*This book is part of the [Awesome ChatGPT Prompts](https://github.com/f/prompts.chat) project and is licensed under CC0 1.0 Universal (Public Domain).*
+*本书是 [Awesome ChatGPT Prompts](https://github.com/f/prompts.chat) 项目的一部分，采用 CC0 1.0 通用（公共领域）许可证。*

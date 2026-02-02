@@ -1,32 +1,32 @@
-Few-shot learning is one of the most powerful prompting techniques. By providing examples of what you want, you can teach the model complex tasks without any fine-tuning.
+Few-shot learning 是最强大的提示技术之一。通过提供示例来展示你想要的结果，你可以在无需微调的情况下教会模型完成复杂任务。
 
-<Callout type="info" title="Learn by Example">
-Just like humans learn by seeing examples, AI models can learn patterns from the examples you provide in your prompt.
+<Callout type="info" title="通过示例学习">
+就像人类通过观察示例来学习一样，AI 模型也可以从你在提示中提供的示例中学习模式。
 </Callout>
 
-## What is Few-Shot Learning?
+## 什么是 Few-Shot Learning？
 
-Few-shot learning shows the model examples of input-output pairs before asking it to perform the same task. The model learns the pattern from your examples and applies it to new inputs.
+Few-shot learning 在要求模型执行任务之前，先向模型展示输入-输出对的示例。模型从你的示例中学习模式，并将其应用于新的输入。
 
 <Compare 
   before={{ 
-    label: "Zero-Shot (No Examples)", 
-    content: `Classify this review as positive or negative:
+    label: "Zero-Shot（无示例）", 
+    content: `将这条评论分类为正面或负面：
 
-"The battery lasts forever but the screen is too dim."
+"电池续航很长，但屏幕太暗了。"
 
-→ Model may be inconsistent with edge cases` 
+→ 模型在处理边缘情况时可能不一致` 
   }}
   after={{ 
-    label: "Few-Shot (With Examples)", 
-    content: `"Love it!" → Positive
-"Terrible quality" → Negative  
-"Good but expensive" → Mixed
+    label: "Few-Shot（有示例）", 
+    content: `"太喜欢了！" → 正面
+"质量太差" → 负面  
+"不错但太贵" → 混合
 
-Now classify:
-"The battery lasts forever but the screen is too dim."
+现在分类：
+"电池续航很长，但屏幕太暗了。"
 
-→ Model learns your exact categories` 
+→ 模型学习你的精确分类` 
   }}
 />
 
@@ -49,430 +49,430 @@ Now classify:
   </div>
 </div>
 
-## Why Examples Work
+## 为什么示例有效
 
 <FewShotDemo />
 
-Examples communicate:
-- **Format**: How output should be structured
-- **Style**: Tone, length, vocabulary
-- **Logic**: The reasoning pattern to follow
-- **Edge cases**: How to handle special situations
+示例传达了：
+- **格式**：输出应该如何结构化
+- **风格**：语气、长度、词汇
+- **逻辑**：要遵循的推理模式
+- **边缘情况**：如何处理特殊情况
 
-## Basic Few-Shot Pattern
+## 基本 Few-Shot 模式
 
-The fundamental structure of few-shot prompting follows a simple pattern: show examples, then ask for the new task. Consistency in formatting between examples is crucial. The model learns from the pattern you establish.
+Few-shot 提示的基本结构遵循一个简单的模式：展示示例，然后提出新任务。示例之间格式的一致性至关重要。模型会从你建立的模式中学习。
 
 ```
-[Example 1]
-Input: [input 1]
-Output: [output 1]
+[示例 1]
+输入：[输入 1]
+输出：[输出 1]
 
-[Example 2]
-Input: [input 2]
-Output: [output 2]
+[示例 2]
+输入：[输入 2]
+输出：[输出 2]
 
-[Example 3]
-Input: [input 3]
-Output: [output 3]
+[示例 3]
+输入：[输入 3]
+输出：[输出 3]
 
-Now do this one:
-Input: [new input]
-Output:
+现在处理这个：
+输入：[新输入]
+输出：
 ```
 
-## Few-Shot for Classification
+## Few-Shot 用于分类
 
-Classification is one of the strongest use cases for few-shot learning. By showing examples of each category, you define the boundaries between classes more precisely than instructions alone could achieve.
+分类是 few-shot learning 最强大的用例之一。通过展示每个类别的示例，你可以比单纯的指令更精确地定义类别之间的边界。
 
-### Sentiment Analysis
+### 情感分析
 
-<Callout type="info" title="What is Sentiment Analysis?">
-Sentiment analysis classifies text by emotional tone: positive, negative, neutral, or mixed. It's widely used for customer feedback, social media monitoring, and brand perception tracking.
+<Callout type="info" title="什么是情感分析？">
+情感分析按情感基调对文本进行分类：正面、负面、中性或混合。它广泛用于客户反馈、社交媒体监控和品牌感知追踪。
 </Callout>
 
-Sentiment classification benefits from showing examples of each sentiment type, especially edge cases like "mixed" sentiment that might be ambiguous.
+情感分类受益于展示每种情感类型的示例，特别是可能存在歧义的边缘情况，如"混合"情感。
 
-<TryIt compact prompt={`Classify the sentiment of these customer reviews.
+<TryIt compact prompt={`对这些客户评论的情感进行分类。
 
-Review: "This product exceeded all my expectations! Will buy again."
-Sentiment: Positive
+评论："这个产品超出了我所有的期望！会再次购买。"
+情感：正面
 
-Review: "Arrived broken and customer service was unhelpful."
-Sentiment: Negative
+评论："收到时就坏了，客服也没帮上忙。"
+情感：负面
 
-Review: "It works fine, nothing special but does the job."
-Sentiment: Neutral
+评论："用着还行，没什么特别的，但能完成工作。"
+情感：中性
 
-Review: "The quality is amazing but shipping took forever."
-Sentiment: Mixed
+评论："质量很棒，但运送时间太长了。"
+情感：混合
 
-Now classify:
-Review: "Love the design but the battery life is disappointing."
-Sentiment:`} />
+现在分类：
+评论："设计很喜欢，但电池续航让人失望。"
+情感：`} />
 
-### Topic Classification
+### 主题分类
 
-For multi-class categorization, include at least one example per category. This helps the model understand your specific taxonomy, which may differ from its default understanding.
+对于多类别分类，每个类别至少包含一个示例。这有助于模型理解你的特定分类体系，它可能与模型的默认理解不同。
 
-<TryIt compact prompt={`Categorize these support tickets.
+<TryIt compact prompt={`对这些支持工单进行分类。
 
-Ticket: "I can't log into my account, password reset not working"
-Category: Authentication
+工单："我无法登录账户，密码重置不起作用"
+类别：身份验证
 
-Ticket: "How do I upgrade to the premium plan?"
-Category: Billing
+工单："如何升级到高级套餐？"
+类别：账单
 
-Ticket: "The app crashes when I try to export data"
-Category: Bug Report
+工单："导出数据时应用崩溃了"
+类别：Bug 报告
 
-Ticket: "Can you add dark mode to the mobile app?"
-Category: Feature Request
+工单："能在移动应用上添加深色模式吗？"
+类别：功能请求
 
-Now categorize:
-Ticket: "My payment was declined but I see the charge on my card"
-Category:`} />
+现在分类：
+工单："付款被拒绝了，但我看到卡上有扣款"
+类别：`} />
 
-## Few-Shot for Transformation
+## Few-Shot 用于转换
 
-Transformation tasks convert input from one form to another while preserving meaning. Examples are essential here because they define exactly what "transformation" means for your use case.
+转换任务将输入从一种形式转换为另一种形式，同时保留含义。示例在这里至关重要，因为它们精确定义了对于你的用例，"转换"意味着什么。
 
-### Text Rewriting
+### 文本改写
 
-Style transformation requires examples that show the exact tone shift you want. Abstract instructions like "make it professional" are interpreted differently. Examples make it concrete.
+风格转换需要示例来展示你想要的确切语气变化。像"使其更专业"这样的抽象指令会被不同地解释。示例使其具体化。
 
-<TryIt compact prompt={`Rewrite these sentences in a professional tone.
+<TryIt compact prompt={`用专业的语气改写这些句子。
 
-Casual: "Hey, just wanted to check if you got my email?"
-Professional: "I wanted to follow up regarding my previous email."
+随意："嘿，就想确认一下你收到我的邮件了吗？"
+专业："我想跟进一下我之前发送的邮件。"
 
-Casual: "This is super important and needs to be done ASAP!"
-Professional: "This matter requires urgent attention and prompt action."
+随意："这个超级重要，必须尽快完成！"
+专业："此事需要紧急关注并迅速采取行动。"
 
-Casual: "Sorry for the late reply, been swamped!"
-Professional: "I apologize for the delayed response. I've had a particularly demanding schedule."
+随意："抱歉回复晚了，最近忙疯了！"
+专业："对于回复延迟，我深表歉意。最近的工作安排特别紧张。"
 
-Now rewrite:
-Casual: "Can't make it to the meeting, something came up."
-Professional:`} />
+现在改写：
+随意："去不了会议了，有点事。"
+专业：`} />
 
-### Format Conversion
+### 格式转换
 
-Format conversion tasks benefit from examples showing edge cases and ambiguous inputs. The model learns your specific conventions for handling tricky cases.
+格式转换任务受益于展示边缘情况和模糊输入的示例。模型学习你处理棘手情况的特定约定。
 
-<TryIt compact prompt={`Convert these natural language dates to ISO format.
+<TryIt compact prompt={`将这些自然语言日期转换为 ISO 格式。
 
-Input: "next Tuesday"
-Output: 2024-01-16 (assuming today is 2024-01-11, Thursday)
+输入："下周二"
+输出：2024-01-16（假设今天是 2024-01-11，周四）
 
-Input: "the day after tomorrow"
-Output: 2024-01-13
+输入："后天"
+输出：2024-01-13
 
-Input: "last day of this month"
-Output: 2024-01-31
+输入："这个月最后一天"
+输出：2024-01-31
 
-Input: "two weeks from now"
-Output: 2024-01-25
+输入："两周后"
+输出：2024-01-25
 
-Now convert:
-Input: "the first Monday of next month"
-Output:`} />
+现在转换：
+输入："下个月第一个周一"
+输出：`} />
 
-## Few-Shot for Generation
+## Few-Shot 用于生成
 
-Generation tasks create new content following a learned pattern. Examples establish length, structure, tone, and what details to highlight. These are hard to specify in instructions alone.
+生成任务根据学习到的模式创建新内容。示例确定了长度、结构、语气以及要强调哪些细节。这些很难仅通过指令来指定。
 
-### Product Descriptions
+### 产品描述
 
-Marketing copy benefits enormously from examples because they capture brand voice, feature emphasis, and persuasive techniques that are difficult to describe abstractly.
+营销文案从示例中获益巨大，因为它们捕捉了品牌声音、功能重点和说服技巧，这些都很难抽象地描述。
 
-<TryIt compact prompt={`Write product descriptions in this style:
+<TryIt compact prompt={`按照这种风格撰写产品描述：
 
-Product: Wireless Bluetooth Headphones
-Description: Immerse yourself in crystal-clear sound with our lightweight wireless headphones. Featuring 40-hour battery life, active noise cancellation, and plush memory foam ear cushions for all-day comfort.
+产品：无线蓝牙耳机
+描述：用我们的轻量级无线耳机沉浸在清澈的音质中。具有 40 小时电池续航、主动降噪功能和柔软的记忆海绵耳垫，提供全天舒适体验。
 
-Product: Stainless Steel Water Bottle
-Description: Stay hydrated in style with our double-walled insulated bottle. Keeps drinks cold for 24 hours or hot for 12. Features a leak-proof lid and fits standard cup holders.
+产品：不锈钢水瓶
+描述：用我们的双层真空保温瓶时尚补水。保冷 24 小时或保温 12 小时。具有防漏盖设计，适合标准杯架。
 
-Product: Ergonomic Office Chair
-Description: Transform your workspace with our adjustable ergonomic chair. Breathable mesh back, lumbar support, and 360° swivel combine to keep you comfortable during long work sessions.
+产品：人体工学办公椅
+描述：用我们的可调节人体工学座椅改造你的工作空间。透气网面靠背、腰部支撑和 360° 旋转相结合，让你在长时间工作中保持舒适。
 
-Now write:
-Product: Portable Phone Charger
-Description:`} />
+现在撰写：
+产品：便携式手机充电宝
+描述：`} />
 
-### Code Documentation
+### 代码文档
 
-<Callout type="info" title="Why Document Code?">
-Good documentation explains what code does, its parameters, return values, and usage examples. Consistent docstrings enable auto-generated API docs and help IDEs provide better code completion.
+<Callout type="info" title="为什么要编写代码文档？">
+好的文档解释代码的功能、参数、返回值和使用示例。一致的文档字符串使自动生成 API 文档成为可能，并帮助 IDE 提供更好的代码补全。
 </Callout>
 
-Documentation style varies widely between projects. Examples teach your specific format, what to include (args, returns, examples), and the level of detail expected.
+文档风格在不同项目之间差异很大。示例教授你的特定格式、要包含的内容（参数、返回值、示例）以及预期的详细程度。
 
-<TryIt compact prompt={`Write documentation comments for these functions:
+<TryIt compact prompt={`为这些函数编写文档注释：
 
-Function:
+函数：
 def calculate_bmi(weight_kg, height_m):
     return weight_kg / (height_m ** 2)
 
-Documentation:
+文档：
 """
-Calculate Body Mass Index (BMI) from weight and height.
+根据体重和身高计算身体质量指数（BMI）。
 
 Args:
-    weight_kg (float): Weight in kilograms
-    height_m (float): Height in meters
+    weight_kg (float): 体重（千克）
+    height_m (float): 身高（米）
 
 Returns:
-    float: BMI value (weight/height²)
+    float: BMI 值（体重/身高²）
 
 Example:
     >>> calculate_bmi(70, 1.75)
     22.86
 """
 
-Now document:
-Function:
+现在编写文档：
+函数：
 def is_palindrome(text):
     cleaned = ''.join(c.lower() for c in text if c.isalnum())
     return cleaned == cleaned[::-1]
 
-Documentation:`} />
+文档：`} />
 
-## Few-Shot for Extraction
+## Few-Shot 用于提取
 
-Extraction tasks pull structured information from unstructured text. Examples define which entities matter, how to format output, and how to handle cases where information is missing or ambiguous.
+提取任务从非结构化文本中提取结构化信息。示例定义了哪些实体重要、如何格式化输出，以及如何处理信息缺失或模糊的情况。
 
-### Entity Extraction
+### 实体提取
 
-<Callout type="info" title="What is Named Entity Recognition?">
-Named Entity Recognition (NER) identifies and classifies named entities in text into categories like persons, organizations, locations, dates, and products. It's fundamental for information retrieval and knowledge graphs.
+<Callout type="info" title="什么是命名实体识别？">
+命名实体识别（NER）识别文本中的命名实体，并将其分类为人物、组织、地点、日期和产品等类别。它是信息检索和知识图谱的基础。
 </Callout>
 
-NER benefits from examples showing your specific entity types and how to handle entities that could fit multiple categories.
+NER 受益于展示你的特定实体类型以及如何处理可能属于多个类别的实体的示例。
 
-<TryIt compact prompt={`Extract named entities from these sentences.
+<TryIt compact prompt={`从这些句子中提取命名实体。
 
-Text: "Apple CEO Tim Cook announced the iPhone 15 in Cupertino."
-Entities:
-- COMPANY: Apple
-- PERSON: Tim Cook
-- PRODUCT: iPhone 15
-- LOCATION: Cupertino
+文本："苹果公司 CEO 蒂姆·库克在库比蒂诺发布了 iPhone 15。"
+实体：
+- 公司：苹果
+- 人物：蒂姆·库克
+- 产品：iPhone 15
+- 地点：库比蒂诺
 
-Text: "The European Union fined Google €4.34 billion in 2018."
-Entities:
-- ORGANIZATION: European Union
-- COMPANY: Google
-- MONEY: €4.34 billion
-- DATE: 2018
+文本："欧盟在 2018 年对谷歌处以 43.4 亿欧元罚款。"
+实体：
+- 组织：欧盟
+- 公司：谷歌
+- 金额：43.4 亿欧元
+- 日期：2018
 
-Now extract from:
-Text: "Elon Musk's SpaceX launched 23 Starlink satellites from Cape Canaveral on December 3rd."
-Entities:`} />
+现在提取：
+文本："埃隆·马斯克的 SpaceX 于 12 月 3 日从卡纳维拉尔角发射了 23 颗星链卫星。"
+实体：`} />
 
-### Structured Data Extraction
+### 结构化数据提取
 
-Extracting structured data from natural language requires examples showing how to handle missing fields, implicit information, and varying input formats.
+从自然语言中提取结构化数据需要示例来展示如何处理缺失字段、隐含信息和不同的输入格式。
 
-<TryIt compact prompt={`Extract meeting details into structured format.
+<TryIt compact prompt={`将会议详情提取为结构化格式。
 
-Email: "Let's meet tomorrow at 3pm in Conference Room B to discuss the Q4 budget. Please bring your laptop."
+邮件："我们明天下午 3 点在 B 会议室见面，讨论第四季度预算。请带上你的笔记本电脑。"
 
-Meeting:
-- Date: [tomorrow's date]
-- Time: 3:00 PM
-- Location: Conference Room B
-- Topic: Q4 budget discussion
-- Requirements: Bring laptop
+会议：
+- 日期：[明天的日期]
+- 时间：下午 3:00
+- 地点：B 会议室
+- 主题：第四季度预算讨论
+- 要求：携带笔记本电脑
 
-Email: "Team sync moved to Friday 10am, we'll use Zoom instead. Link in calendar invite. 30 minutes max."
+邮件："团队同步会改到周五上午 10 点，我们改用 Zoom。链接在日历邀请中。最多 30 分钟。"
 
-Meeting:
-- Date: Friday
-- Time: 10:00 AM
-- Location: Zoom (virtual)
-- Topic: Team sync
-- Duration: 30 minutes
+会议：
+- 日期：周五
+- 时间：上午 10:00
+- 地点：Zoom（线上）
+- 主题：团队同步
+- 时长：30 分钟
 
-Now extract from:
-Email: "Can we do a quick call Monday morning around 9:30 to go over the client presentation? I'll send a Teams link."
+现在提取：
+邮件："周一早上 9:30 左右能打个简短电话讨论客户演示文稿吗？我会发一个 Teams 链接。"
 
-Meeting:`} />
+会议：`} />
 
-## Advanced Few-Shot Techniques
+## 高级 Few-Shot 技术
 
-Beyond basic few-shot, several techniques can improve results for complex tasks.
+除了基本的 few-shot，还有几种技术可以改善复杂任务的结果。
 
-### Diverse Examples
+### 多样化示例
 
-Diversity in examples is more valuable than quantity. Cover different scenarios, edge cases, and potential ambiguities rather than showing similar examples repeatedly.
+示例的多样性比数量更有价值。涵盖不同的场景、边缘情况和潜在的歧义，而不是重复展示相似的示例。
 
-<TryIt compact prompt={`Respond to customer complaints.
+<TryIt compact prompt={`回应客户投诉。
 
-Example 1 (Product Issue):
-Customer: "My order arrived damaged."
-Response: "I sincerely apologize for the damaged delivery. I'll immediately send a replacement at no charge. You don't need to return the damaged item. May I confirm your shipping address?"
+示例 1（产品问题）：
+客户："我的订单收到时已损坏。"
+回应："对于损坏的配送，我深表歉意。我会立即免费为您发送替换品。您无需退回损坏的物品。可以确认一下您的收货地址吗？"
 
-Example 2 (Service Issue):
-Customer: "I've been on hold for 2 hours!"
-Response: "I'm very sorry for the long wait time. That's unacceptable. I'm here now and will personally ensure your issue is resolved. What can I help you with today?"
+示例 2（服务问题）：
+客户："我等了 2 个小时！"
+回应："对于长时间的等待，我非常抱歉。这是不可接受的。我现在在这里，将亲自确保您的问题得到解决。今天有什么可以帮您的？"
 
-Example 3 (Billing Issue):
-Customer: "You charged me twice for the same order!"
-Response: "I apologize for this billing error. I've verified the duplicate charge and initiated a refund of $XX.XX to your original payment method. You should see it within 3-5 business days."
+示例 3（账单问题）：
+客户："你们对同一订单扣了我两次款！"
+回应："对于这个账单错误，我深表歉意。我已验证了重复扣款，并已向您的原始付款方式发起退款 XX.XX 元。您应该在 3-5 个工作日内看到退款。"
 
-Now respond to:
-Customer: "The product doesn't match what was shown on the website."
-Response:`} />
+现在回应：
+客户："产品和网站上展示的不一样。"
+回应：`} />
 
-### Negative Examples
+### 反面示例
 
-<Callout type="tip" title="Contrastive Learning">
-Showing "good" vs "bad" examples is called contrastive learning. It helps the model understand not just what you want, but what to avoid. This is especially useful for style and quality judgments.
+<Callout type="tip" title="对比学习">
+展示"好"与"坏"示例被称为对比学习。它帮助模型理解的不仅是你想要什么，还有要避免什么。这对于风格和质量判断特别有用。
 </Callout>
 
-Sometimes showing what *not* to do is as valuable as showing correct examples. Negative examples help the model understand boundaries and avoid common mistakes.
+有时展示*不该做什么*和展示正确示例一样有价值。反面示例帮助模型理解边界并避免常见错误。
 
-<TryIt compact prompt={`Write concise email subject lines.
+<TryIt compact prompt={`撰写简洁的邮件主题行。
 
-Good: "Q3 Report Ready for Review"
-Bad: "Hey, I finished that report thing we talked about"
+好："第三季度报告已准备好供审阅"
+坏："嘿，我完成了我们讨论的那个报告"
 
-Good: "Action Required: Approve PTO by Friday"
-Bad: "I need you to do something for me please read this"
+好："需采取行动：请在周五前批准休假申请"
+坏："我需要你帮我做点事，请阅读这个"
 
-Good: "Meeting Rescheduled: Project Sync → Thursday 2pm"
-Bad: "Change of plans!!!!!"
+好："会议改期：项目同步 → 周四下午 2 点"
+坏："计划有变！！！！！"
 
-Now write a subject line for:
-Email about: Requesting feedback on a proposal draft
-Subject:`} />
+现在为以下内容撰写主题行：
+邮件关于：请求对提案草稿的反馈
+主题：`} />
 
-### Edge Case Examples
+### 边缘情况示例
 
-Edge cases often determine whether a solution works in production. Including unusual inputs in your examples prevents the model from failing on real-world data that doesn't fit the "happy path."
+边缘情况通常决定解决方案在生产环境中是否有效。在示例中包含异常输入可以防止模型在不符合"正常路径"的真实数据上失败。
 
-<TryIt compact prompt={`Parse names into structured format.
+<TryIt compact prompt={`将姓名解析为结构化格式。
 
-Input: "John Smith"
-Output: {"first": "John", "last": "Smith", "middle": null, "suffix": null}
+输入："John Smith"
+输出：{"first": "John", "last": "Smith", "middle": null, "suffix": null}
 
-Input: "Mary Jane Watson-Parker"
-Output: {"first": "Mary", "middle": "Jane", "last": "Watson-Parker", "suffix": null}
+输入："Mary Jane Watson-Parker"
+输出：{"first": "Mary", "middle": "Jane", "last": "Watson-Parker", "suffix": null}
 
-Input: "Dr. Martin Luther King Jr."
-Output: {"prefix": "Dr.", "first": "Martin", "middle": "Luther", "last": "King", "suffix": "Jr."}
+输入："Dr. Martin Luther King Jr."
+输出：{"prefix": "Dr.", "first": "Martin", "middle": "Luther", "last": "King", "suffix": "Jr."}
 
-Input: "Madonna"
-Output: {"first": "Madonna", "last": null, "middle": null, "suffix": null, "mononym": true}
+输入："Madonna"
+输出：{"first": "Madonna", "last": null, "middle": null, "suffix": null, "mononym": true}
 
-Now parse:
-Input: "Sir Patrick Stewart III"
-Output:`} />
+现在解析：
+输入："Sir Patrick Stewart III"
+输出：`} />
 
-## How Many Examples?
+## 需要多少示例？
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Simple classification</span>
+    <span className="font-semibold min-w-40">简单分类</span>
     <span className="text-primary font-mono">2-3</span>
-    <span className="text-muted-foreground">One per category minimum</span>
+    <span className="text-muted-foreground">每个类别至少一个</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Complex formatting</span>
+    <span className="font-semibold min-w-40">复杂格式化</span>
     <span className="text-primary font-mono">3-5</span>
-    <span className="text-muted-foreground">Show variations</span>
+    <span className="text-muted-foreground">展示变化</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Nuanced style</span>
+    <span className="font-semibold min-w-40">细微风格</span>
     <span className="text-primary font-mono">4-6</span>
-    <span className="text-muted-foreground">Capture full range</span>
+    <span className="text-muted-foreground">涵盖完整范围</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Edge cases</span>
+    <span className="font-semibold min-w-40">边缘情况</span>
     <span className="text-primary font-mono">1-2</span>
-    <span className="text-muted-foreground">Alongside normal examples</span>
+    <span className="text-muted-foreground">与正常示例一起</span>
   </div>
 </div>
 
-## Example Quality Matters
+## 示例质量很重要
 
 <Compare 
   before={{ 
-    label: "Bad Examples", 
-    content: `"Nice product" → Good
-"Nice service" → Good
-"Nice price" → Good
+    label: "差的示例", 
+    content: `"产品不错" → 好
+"服务不错" → 好
+"价格不错" → 好
 
-✗ All too similar
-✗ Same word repeated
-✗ No edge cases shown` 
+✗ 全都太相似
+✗ 相同词汇重复
+✗ 没有边缘情况` 
   }}
   after={{ 
-    label: "Good Examples", 
-    content: `"Exceeded expectations!" → Positive
-"Broken on arrival" → Negative
-"Works fine, nothing special" → Neutral
-"Great quality but overpriced" → Mixed
+    label: "好的示例", 
+    content: `"超出预期！" → 正面
+"收到时就坏了" → 负面
+"用着还行，没什么特别" → 中性
+"质量很好但太贵" → 混合
 
-✓ Diverse scenarios
-✓ Clear boundaries
-✓ Covers edge cases` 
+✓ 场景多样
+✓ 边界清晰
+✓ 涵盖边缘情况` 
   }}
 />
 
-## Combining Few-Shot with Other Techniques
+## 将 Few-Shot 与其他技术结合
 
-Few-shot learning combines powerfully with other prompting techniques. The examples provide the "what" while other techniques can add context, reasoning, or structure.
+Few-shot learning 可以与其他提示技术强力结合。示例提供了"做什么"，而其他技术可以添加上下文、推理或结构。
 
-### Few-Shot + Role
+### Few-Shot + 角色
 
-Adding a role gives the model context for *why* it's doing the task, which can improve quality and consistency.
+添加角色为模型提供了*为什么*执行任务的上下文，这可以提高质量和一致性。
 
 ```
-You are a legal contract reviewer.
+你是一名法律合同审查员。
 
-[examples of contract clause analysis]
+[合同条款分析示例]
 
-Now analyze: [new clause]
+现在分析：[新条款]
 ```
 
 ### Few-Shot + CoT
 
-Combining few-shot with Chain of Thought shows not just *what* answer to give, but *how* to reason through to that answer. This is powerful for tasks requiring judgment.
+将 few-shot 与思维链（Chain of Thought）结合，不仅展示*给出什么*答案，还展示*如何*推理得出答案。这对于需要判断的任务非常有效。
 
 ```
-Classify and explain reasoning.
+分类并解释推理过程。
 
-Review: "Great features but overpriced"
-Thinking: The review mentions positive aspects ("great features") 
-but also a significant negative ("overpriced"). The negative seems 
-to outweigh the positive based on the "but" conjunction.
-Classification: Mixed-Negative
+评论："功能很棒但太贵了"
+思考：评论提到了正面方面（"功能很棒"）
+但也有明显的负面方面（"太贵了"）。根据"但"
+这个连接词，负面似乎超过了正面。
+分类：混合偏负面
 
-[more examples with reasoning]
+[更多带推理的示例]
 
-Now classify with reasoning:
-Review: "Exactly what I needed, arrived faster than expected"
+现在带推理分类：
+评论："正是我需要的，到货比预期更快"
 ```
 
-## Summary
+## 总结
 
-<Callout type="tip" title="Key Takeaways">
-Few-shot learning teaches through demonstration and is often more effective than instructions alone. Use 2-5 diverse, correct examples and combine with other techniques for best results.
+<Callout type="tip" title="关键要点">
+Few-shot learning 通过示范进行教学，通常比单纯的指令更有效。使用 2-5 个多样、正确的示例，并与其他技术结合以获得最佳效果。
 </Callout>
 
 <Quiz 
-  question="How many examples should you typically provide in few-shot learning?"
+  question="在 few-shot learning 中通常应该提供多少示例？"
   options={[
-    "As many as possible (10+)",
-    "Just 1 example is always enough",
-    "2-5 diverse, correct examples",
-    "Examples aren't necessary if instructions are clear"
+    "尽可能多（10+）",
+    "只需 1 个示例就足够",
+    "2-5 个多样、正确的示例",
+    "如果指令清晰，不需要示例"
   ]}
   correctIndex={2}
-  explanation="2-5 diverse, correct examples typically work best. Too few may not capture the pattern, while too many waste tokens and may confuse the model. Quality and diversity matter more than quantity."
+  explanation="2-5 个多样、正确的示例通常效果最好。太少可能无法捕捉模式，而太多会浪费 token 并可能使模型困惑。质量和多样性比数量更重要。"
 />
 
-In the next chapter, we'll explore iterative refinement: the art of improving prompts through successive attempts.
+在下一章中，我们将探讨迭代优化：通过连续尝试改进提示的艺术。

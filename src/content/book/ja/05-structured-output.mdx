@@ -1,108 +1,108 @@
-Getting consistent, well-formatted output is essential for production applications and efficient workflows. This chapter covers techniques for controlling exactly how AI models format their responses.
+一貫性があり、適切にフォーマットされた出力を得ることは、本番アプリケーションや効率的なワークフローにとって不可欠です。この章では、AIモデルがレスポンスをどのようにフォーマットするかを正確に制御するテクニックを解説します。
 
-<Callout type="info" title="From Prose to Data">
-Structured output transforms AI responses from freeform text into actionable, parseable data.
+<Callout type="info" title="散文からデータへ">
+構造化出力は、AIのレスポンスを自由形式のテキストから、アクション可能でパース可能なデータに変換します。
 </Callout>
 
-## Why Structure Matters
+## 構造化が重要な理由
 
 <StructuredOutputDemo />
 
-## Basic Formatting Techniques
+## 基本的なフォーマット技法
 
-### Lists
+### リスト
 
-Lists are perfect for step-by-step instructions, ranked items, or collections of related points. They're easy to scan and parse. Use **numbered lists** when order matters (steps, rankings) and **bullet points** for unordered collections.
-
-<TryIt 
-  compact
-  title="List Formatting"
-  prompt={`Provide 5 tips for better sleep.
-
-Format: Numbered list with a brief explanation for each.
-Each tip should be bold, followed by a dash and explanation.`}
-/>
-
-<Callout type="tip" title="List Best Practices">
-Specify the exact number of items you want, whether to include explanations, and if items should be bold or have a specific structure.
-</Callout>
-
-### Tables
-
-Tables excel at comparing multiple items across the same dimensions. They're ideal for feature comparisons, data summaries, and any information with consistent attributes. Always define your column headers explicitly.
+リストは、段階的な手順、ランク付けされた項目、または関連するポイントの集まりに最適です。スキャンしやすく、パースも簡単です。順序が重要な場合（手順、ランキング）は**番号付きリスト**を使用し、順序のないコレクションには**箇条書き**を使用します。
 
 <TryIt 
   compact
-  title="Table Formatting"
-  prompt={`Compare the top 4 Python web frameworks.
+  title="リストのフォーマット"
+  prompt={`より良い睡眠のための5つのヒントを教えてください。
 
-Format as a markdown table with columns:
-| Framework | Best For | Learning Curve | Performance |`}
+フォーマット：各項目に簡単な説明を付けた番号付きリスト。
+各ヒントは太字にし、その後にダッシュと説明を付けてください。`}
 />
 
-<Callout type="tip" title="Table Best Practices">
-Specify column names, expected data types (text, numbers, ratings), and how many rows you need. For complex comparisons, limit to 4-6 columns for readability.
+<Callout type="tip" title="リストのベストプラクティス">
+欲しい項目の正確な数、説明を含めるかどうか、項目を太字にするか特定の構造にするかを指定してください。
 </Callout>
 
-### Headers and Sections
+### テーブル
 
-Headers create a clear document structure, making long responses scannable and organized. Use them for reports, analyses, or any multi-part response. Hierarchical headers (##, ###) show relationships between sections.
+テーブルは、複数の項目を同じ観点で比較するのに優れています。機能比較、データの要約、一貫した属性を持つあらゆる情報に最適です。列のヘッダーは常に明示的に定義してください。
 
-```
-Analyze this business proposal.
+<TryIt 
+  compact
+  title="テーブルのフォーマット"
+  prompt={`Pythonの主要なWebフレームワーク4つを比較してください。
 
-Structure your response with these sections:
-## Executive Summary
-## Strengths
-## Weaknesses
-## Recommendations
-## Risk Assessment
-```
+以下の列を持つMarkdownテーブルとしてフォーマットしてください：
+| フレームワーク | 最適な用途 | 学習曲線 | パフォーマンス |`}
+/>
 
-<Callout type="tip" title="Section Best Practices">
-List your sections in the order you want them. For consistency, specify what each section should contain (e.g., "Executive Summary: 2-3 sentences only").
+<Callout type="tip" title="テーブルのベストプラクティス">
+列名、期待するデータ型（テキスト、数値、評価）、必要な行数を指定してください。複雑な比較の場合、読みやすさのために4〜6列に制限することをお勧めします。
 </Callout>
 
-### Emphasis with Uppercase Directives
+### 見出しとセクション
 
-Uppercase words act as strong signals to the model, emphasizing critical constraints or requirements. Use them sparingly for maximum impact—overuse dilutes their effectiveness.
+見出しは明確な文書構造を作成し、長いレスポンスをスキャンしやすく整理します。レポート、分析、または複数のパートからなるレスポンスに使用してください。階層的な見出し（##、###）はセクション間の関係を示します。
 
-**Common Uppercase Directives:**
+```
+このビジネス提案を分析してください。
+
+以下のセクションでレスポンスを構成してください：
+## エグゼクティブサマリー
+## 強み
+## 弱み
+## 推奨事項
+## リスク評価
+```
+
+<Callout type="tip" title="セクションのベストプラクティス">
+セクションを希望する順序でリストしてください。一貫性のために、各セクションに何を含めるべきかを指定してください（例：「エグゼクティブサマリー：2〜3文のみ」）。
+</Callout>
+
+### 大文字指示による強調
+
+大文字の単語は、重要な制約や要件を強調するモデルへの強いシグナルとして機能します。最大の効果を得るために控えめに使用してください—使いすぎると効果が薄れます。
+
+**一般的な大文字指示：**
 
 <InfoGrid items={[
-  { label: "NEVER", description: "Absolute prohibition: \"NEVER include personal opinions\"", color: "red" },
-  { label: "ALWAYS", description: "Mandatory requirement: \"ALWAYS cite sources\"", color: "green" },
-  { label: "IMPORTANT", description: "Critical instruction: \"IMPORTANT: Keep responses under 100 words\"", color: "amber" },
-  { label: "DO NOT", description: "Strong prohibition: \"DO NOT make up statistics\"", color: "red" },
-  { label: "MUST", description: "Required action: \"Output MUST be valid JSON\"", color: "blue" },
-  { label: "ONLY", description: "Restriction: \"Return ONLY the code, no explanations\"", color: "purple" },
+  { label: "NEVER", description: "絶対禁止：「NEVER include personal opinions」（個人的な意見を含めないでください）", color: "red" },
+  { label: "ALWAYS", description: "必須要件：「ALWAYS cite sources」（常に出典を引用してください）", color: "green" },
+  { label: "IMPORTANT", description: "重要な指示：「IMPORTANT: Keep responses under 100 words」（重要：回答は100語以内に）", color: "amber" },
+  { label: "DO NOT", description: "強い禁止：「DO NOT make up statistics」（統計を捏造しないでください）", color: "red" },
+  { label: "MUST", description: "必須アクション：「Output MUST be valid JSON」（出力は有効なJSONでなければなりません）", color: "blue" },
+  { label: "ONLY", description: "制限：「Return ONLY the code, no explanations」（コードのみを返し、説明は不要）", color: "purple" },
 ]} />
 
 ```
-Summarize this article.
+この記事を要約してください。
 
-IMPORTANT: Keep the summary under 100 words.
-NEVER add information not present in the original.
-ALWAYS maintain the original tone and perspective.
-DO NOT include your own opinions or analysis.
+IMPORTANT: 要約は100語以内にしてください。
+NEVER 元の記事にない情報を追加しないでください。
+ALWAYS 元のトーンと視点を維持してください。
+DO NOT あなた自身の意見や分析を含めないでください。
 ```
 
-<Callout type="warning" title="Use Sparingly">
-If everything is uppercase or marked as critical, nothing stands out. Reserve these directives for genuinely important constraints.
+<Callout type="warning" title="控えめに使用する">
+すべてが大文字であったり重要としてマークされていたりすると、何も目立たなくなります。これらの指示は本当に重要な制約のために取っておいてください。
 </Callout>
 
-## JSON Output
+## JSON出力
 
-JSON (JavaScript Object Notation) is the most popular format for structured AI output. It's machine-readable, widely supported by programming languages, and perfect for APIs, databases, and automation workflows. The key to reliable JSON is providing a clear schema.
+JSON（JavaScript Object Notation）は、構造化されたAI出力のための最も人気のあるフォーマットです。機械可読で、プログラミング言語で広くサポートされており、API、データベース、自動化ワークフローに最適です。信頼性の高いJSONの鍵は、明確なスキーマを提供することです。
 
-### Basic JSON Request
+### 基本的なJSONリクエスト
 
-Start with a template showing the exact structure you want. Include field names, data types, and example values. This acts as a contract the model will follow.
+求める正確な構造を示すテンプレートから始めます。フィールド名、データ型、例の値を含めてください。これはモデルが従う契約として機能します。
 
 <TryIt 
-  title="JSON Extraction"
-  description="Extract structured data from unstructured text."
-  prompt={`Extract information from this text and return as JSON:
+  title="JSONの抽出"
+  description="非構造化テキストから構造化データを抽出します。"
+  prompt={`このテキストから情報を抽出し、JSONとして返してください：
 
 {
     "company_name": "string",
@@ -112,15 +112,15 @@ Start with a template showing the exact structure you want. Include field names,
     "industry": "string"
 }
 
-Text: "Apple Inc., founded in 1976, is headquartered in Cupertino, California. The technology giant employs approximately 164,000 people worldwide."`}
+テキスト：「Apple Inc.は1976年に設立され、カリフォルニア州クパチーノに本社を置いています。このテクノロジー大手は、世界中で約164,000人の従業員を雇用しています。」`}
 />
 
-### Complex JSON Structures
+### 複雑なJSON構造
 
-For nested data, use hierarchical JSON with objects inside objects, arrays of objects, and mixed types. Define each level clearly and use TypeScript-style annotations (`"positive" | "negative"`) to constrain values.
+ネストされたデータには、オブジェクト内のオブジェクト、オブジェクトの配列、混合型を持つ階層的なJSONを使用します。各レベルを明確に定義し、TypeScriptスタイルの注釈（`"positive" | "negative"`）を使用して値を制約します。
 
 ```
-Analyze this product review and return JSON:
+この製品レビューを分析し、JSONを返してください：
 
 {
   "review_id": "string (generate unique)",
@@ -142,81 +142,81 @@ Analyze this product review and return JSON:
   "key_phrases": ["string array of notable phrases"]
 }
 
-Return ONLY valid JSON, no additional text.
+有効なJSONのみを返してください。追加のテキストは不要です。
 
-Review: "[review text]"
+レビュー：「[review text]」
 ```
 
-### Ensuring Valid JSON
+### 有効なJSONを確保する
 
-Models sometimes add explanatory text or markdown formatting around JSON. Prevent this with explicit instructions about output format. You can request raw JSON or JSON inside code blocks—choose based on your parsing needs.
+モデルは、JSONの周りに説明テキストやMarkdownフォーマットを追加することがあります。出力フォーマットについての明示的な指示でこれを防ぎます。生のJSONまたはコードブロック内のJSONをリクエストできます—パースのニーズに基づいて選択してください。
 
-Add explicit instructions:
+明示的な指示を追加します：
 
 ```
 IMPORTANT:
-- Return ONLY the JSON object, no markdown code blocks
-- Ensure all strings are properly escaped
-- Use null for missing values, not undefined
-- Validate that the output is parseable JSON
+- JSONオブジェクトのみを返し、Markdownコードブロックは不要です
+- すべての文字列が適切にエスケープされていることを確認してください
+- 欠損値にはundefinedではなくnullを使用してください
+- 出力がパース可能なJSONであることを検証してください
 ```
 
-Or request code blocks by asking the model to wrap its output:
+または、モデルに出力をラップするよう依頼してコードブロックをリクエストします：
 
 ````
-Return the result as a JSON code block:
+結果をJSONコードブロックとして返してください：
 ```json
 { ... }
 ```
 ````
 
-## YAML Output
+## YAML出力
 
-YAML is more human-readable than JSON, using indentation instead of brackets. It's the standard for configuration files (Docker, Kubernetes, GitHub Actions) and works well when the output will be read by humans or used in DevOps contexts. YAML is sensitive to indentation, so be specific about formatting requirements.
+YAMLはJSONよりも人間が読みやすく、ブラケットの代わりにインデントを使用します。設定ファイル（Docker、Kubernetes、GitHub Actions）の標準であり、出力が人間によって読まれる場合やDevOpsコンテキストで使用される場合に適しています。YAMLはインデントに敏感なので、フォーマット要件について具体的に指定してください。
 
 <TryIt 
   compact
-  title="YAML Generation"
-  prompt={`Generate a GitHub Actions workflow for a Node.js project.
+  title="YAMLの生成"
+  prompt={`Node.jsプロジェクト用のGitHub Actionsワークフローを生成してください。
 
-Return as valid YAML:
-- Include: install, lint, test, build stages
-- Use Node.js 18
-- Cache npm dependencies
-- Run on push to main and pull requests`}
+有効なYAMLとして返してください：
+- 含める内容：install、lint、test、buildステージ
+- Node.js 18を使用
+- npm依存関係をキャッシュ
+- mainへのプッシュとプルリクエストで実行`}
 />
 
-## XML Output
+## XML出力
 
-XML is still required for many enterprise systems, SOAP APIs, and legacy integrations. It's more verbose than JSON but offers features like attributes, namespaces, and CDATA sections for complex data. Specify element names, nesting structure, and where to use attributes vs. child elements.
-
-```
-Convert this data to XML format:
-
-Requirements:
-- Root element: <catalog>
-- Each item in <book> element
-- Include attributes where appropriate
-- Use CDATA for description text
-
-Data: [book data]
-```
-
-## Custom Formats
-
-Sometimes standard formats don't fit your needs. You can define any custom format by providing a clear template. Custom formats work well for reports, logs, or domain-specific outputs that will be read by humans.
-
-### Structured Analysis Format
-
-Use delimiters (===, ---, [SECTION]) to create scannable documents with clear boundaries between sections. This format is great for code reviews, audits, and analyses.
+XMLは、多くのエンタープライズシステム、SOAP API、レガシー統合で依然として必要です。JSONよりも冗長ですが、属性、名前空間、複雑なデータ用のCDATAセクションなどの機能を提供します。要素名、ネスト構造、属性と子要素のどちらを使用するかを指定してください。
 
 ```
-Analyze this code using this exact format:
+このデータをXMLフォーマットに変換してください：
+
+要件：
+- ルート要素：<catalog>
+- 各アイテムを<book>要素に
+- 適切な場所で属性を含める
+- 説明テキストにはCDATAを使用
+
+データ：[book data]
+```
+
+## カスタムフォーマット
+
+標準フォーマットがニーズに合わないこともあります。明確なテンプレートを提供することで、任意のカスタムフォーマットを定義できます。カスタムフォーマットは、人間が読むレポート、ログ、またはドメイン固有の出力に適しています。
+
+### 構造化分析フォーマット
+
+区切り文字（===、---、[SECTION]）を使用して、セクション間に明確な境界を持つスキャン可能なドキュメントを作成します。このフォーマットは、コードレビュー、監査、分析に最適です。
+
+```
+このコードを正確に以下のフォーマットで分析してください：
 
 === CODE ANALYSIS ===
 
 [SUMMARY]
-One paragraph overview
+1段落の概要
 
 [ISSUES]
 • CRITICAL: [issue] — [file:line]
@@ -235,12 +235,12 @@ Test Coverage: [estimated %]
 === END ANALYSIS ===
 ```
 
-### Fill-in-the-Blank Format
+### 空欄補充フォーマット
 
-Templates with blanks (___) guide the model to fill in specific fields while maintaining exact formatting. This approach is excellent for forms, briefs, and standardized documents where consistency matters.
+空欄（___）のあるテンプレートは、正確なフォーマットを維持しながら特定のフィールドを埋めるようモデルを導きます。このアプローチは、一貫性が重要なフォーム、ブリーフ、標準化されたドキュメントに優れています。
 
 ```
-Complete this template for the given product:
+与えられた製品についてこのテンプレートを完成させてください：
 
 PRODUCT BRIEF
 ─────────────
@@ -254,87 +254,87 @@ Key Features:
   3. _______________
 Differentiator: _______________
 
-Product: [product description]
+製品：[product description]
 ```
 
-## Typed Responses
+## 型付きレスポンス
 
-Typed responses define categories or entity types that the model should recognize and label. This technique is essential for Named Entity Recognition (NER), classification tasks, and any extraction where you need to categorize information consistently. Define your types clearly with examples.
+型付きレスポンスは、モデルが認識してラベル付けすべきカテゴリまたはエンティティタイプを定義します。このテクニックは、固有表現認識（NER）、分類タスク、および情報を一貫してカテゴリ分けする必要があるあらゆる抽出に不可欠です。例を含めてタイプを明確に定義してください。
 
 <TryIt 
   compact
-  title="Entity Extraction"
-  prompt={`Extract entities from this text.
+  title="エンティティ抽出"
+  prompt={`このテキストからエンティティを抽出してください。
 
-Entity Types:
-- PERSON: Full names of people
-- ORG: Organization/company names
-- LOCATION: Cities, countries, addresses
-- DATE: Dates in ISO format (YYYY-MM-DD)
-- MONEY: Monetary amounts with currency
+エンティティタイプ：
+- PERSON：人物のフルネーム
+- ORG：組織/会社名
+- LOCATION：都市、国、住所
+- DATE：ISOフォーマットの日付（YYYY-MM-DD）
+- MONEY：通貨付きの金額
 
-Format each as: [TYPE]: [value]
+各エンティティを以下のフォーマットで：[TYPE]: [value]
 
-Text: "Tim Cook announced that Apple will invest $1 billion in a new Austin facility by December 2024."`}
+テキスト：「Tim CookはAppleが2024年12月までにオースティンの新施設に10億ドルを投資すると発表しました。」`}
 />
 
-## Multi-Part Structured Responses
+## 複数パートの構造化レスポンス
 
-When you need comprehensive output covering multiple aspects, define distinct parts with clear boundaries. Specify exactly what goes in each part—format, length, and content type. This prevents the model from blending sections or omitting parts.
+複数の側面をカバーする包括的な出力が必要な場合、明確な境界を持つ異なるパートを定義します。各パートに何を入れるか—フォーマット、長さ、コンテンツタイプを正確に指定します。これにより、モデルがセクションを混ぜたり、パートを省略したりすることを防ぎます。
 
 ```
-Research this topic and provide:
+このトピックをリサーチし、以下を提供してください：
 
 ### PART 1: EXECUTIVE SUMMARY
-[2-3 sentence overview]
+[2〜3文の概要]
 
 ### PART 2: KEY FINDINGS
-[Exactly 5 bullet points]
+[正確に5つの箇条書き]
 
 ### PART 3: DATA TABLE
 | Metric | Value | Source |
 |--------|-------|--------|
-[Include 5 rows minimum]
+[最低5行を含める]
 
 ### PART 4: RECOMMENDATIONS
-[Numbered list of 3 actionable recommendations]
+[3つの実行可能な推奨事項の番号付きリスト]
 
 ### PART 5: FURTHER READING
-[3 suggested resources with brief descriptions]
+[簡単な説明付きの3つの推奨リソース]
 ```
 
-## Conditional Formatting
+## 条件付きフォーマット
 
-Conditional formatting lets you define different output formats based on the input's characteristics. This is powerful for classification, triage, and routing systems where the response format should vary based on what the model detects. Use clear if/then logic with explicit output templates for each case.
+条件付きフォーマットでは、入力の特性に基づいて異なる出力フォーマットを定義できます。これは、レスポンスフォーマットがモデルが検出した内容に基づいて変わるべき分類、トリアージ、ルーティングシステムに強力です。各ケースに対して明示的な出力テンプレートを持つ明確なif/thenロジックを使用してください。
 
 <TryIt 
   compact
-  title="Ticket Classification"
-  prompt={`Classify this support ticket.
+  title="チケット分類"
+  prompt={`このサポートチケットを分類してください。
 
-If URGENT (system down, security issue, data loss):
-  Return: 🔴 URGENT | [Category] | [Suggested Action]
+URGENT（システムダウン、セキュリティ問題、データ損失）の場合：
+  返す：🔴 URGENT | [Category] | [Suggested Action]
 
-If HIGH (affects multiple users, revenue impact):
-  Return: 🟠 HIGH | [Category] | [Suggested Action]
+HIGH（複数のユーザーに影響、収益への影響）の場合：
+  返す：🟠 HIGH | [Category] | [Suggested Action]
 
-If MEDIUM (single user affected, workaround exists):
-  Return: 🟡 MEDIUM | [Category] | [Suggested Action]
+MEDIUM（単一ユーザーに影響、回避策あり）の場合：
+  返す：🟡 MEDIUM | [Category] | [Suggested Action]
 
-If LOW (questions, feature requests):
-  Return: 🟢 LOW | [Category] | [Suggested Action]
+LOW（質問、機能リクエスト）の場合：
+  返す：🟢 LOW | [Category] | [Suggested Action]
 
-Ticket: "I can't login to my account. I've tried resetting my password twice but still getting an error. This is blocking my entire team from accessing the dashboard."`}
+チケット：「アカウントにログインできません。パスワードを2回リセットしようとしましたが、まだエラーが出ています。これにより、チーム全体がダッシュボードにアクセスできなくなっています。」`}
 />
 
-## Arrays and Lists in JSON
+## JSONにおける配列とリスト
 
-Extracting multiple items into arrays requires careful schema definition. Specify the array structure, what each item should contain, and how to handle edge cases (empty arrays, single items). Including a count field helps verify completeness.
+複数の項目を配列に抽出するには、慎重なスキーマ定義が必要です。配列構造、各項目に何を含めるべきか、エッジケース（空の配列、単一項目）の処理方法を指定します。カウントフィールドを含めると、完全性の検証に役立ちます。
 
 ```
-Extract all action items from this meeting transcript.
+この会議の議事録からすべてのアクションアイテムを抽出してください。
 
-Return as JSON array:
+JSON配列として返してください：
 {
   "action_items": [
     {
@@ -348,32 +348,32 @@ Return as JSON array:
   "total_count": number
 }
 
-Transcript: "[meeting transcript]"
+議事録：「[meeting transcript]」
 ```
 
-## Validation Instructions
+## バリデーション指示
 
-Self-validation prompts the model to check its own output before responding. This catches common issues like missing sections, placeholder text, or constraint violations. The model will iterate internally to fix problems, improving output quality without additional API calls.
+自己バリデーションは、モデルに応答する前に自身の出力をチェックするよう促します。これにより、欠落セクション、プレースホルダーテキスト、制約違反などの一般的な問題を検出できます。モデルは問題を修正するために内部で反復し、追加のAPI呼び出しなしに出力品質を向上させます。
 
 ```
-Generate the report, then:
+レポートを生成し、その後：
 
 VALIDATION CHECKLIST:
-□ All required sections present
-□ No placeholder text remaining
-□ All statistics include sources
-□ Word count within 500-700 words
-□ Conclusion ties back to introduction
+□ 必要なセクションがすべて存在する
+□ プレースホルダーテキストが残っていない
+□ すべての統計に出典が含まれている
+□ 語数が500〜700語以内
+□ 結論が導入部に結びついている
 
-If any check fails, fix before responding.
+チェックに失敗した場合、応答前に修正してください。
 ```
 
-## Handling Optional Fields
+## オプションフィールドの処理
 
-Real-world data often has missing values. Explicitly instruct the model on how to handle optional fields—using `null` is cleaner than empty strings and easier to process programmatically. Also prevent "hallucination" of missing data by emphasizing that the model should never invent information.
+実世界のデータには、欠損値がよくあります。オプションフィールドの処理方法についてモデルに明示的に指示してください—`null`を使用することは空文字列よりもクリーンで、プログラム的に処理しやすいです。また、欠落データの「幻覚」を防ぐために、モデルが情報を捏造してはならないことを強調してください。
 
 ```
-Extract contact information. Use null for missing fields.
+連絡先情報を抽出してください。欠落フィールドにはnullを使用してください。
 
 {
   "name": "string (required)",
@@ -385,27 +385,27 @@ Extract contact information. Use null for missing fields.
 }
 
 IMPORTANT: 
-- Never invent information not in the source
-- Use null, not empty strings, for missing data
-- Phone numbers in E.164 format if possible
+- ソースにない情報を捏造しないでください
+- 欠落データには空文字列ではなくnullを使用してください
+- 可能な場合、電話番号はE.164フォーマットで
 ```
 
-## Summary
+## まとめ
 
-<Callout type="tip" title="Key Techniques">
-Be explicit about format, use examples, specify types, handle edge cases with null values, and ask the model to validate its own output.
+<Callout type="tip" title="主要テクニック">
+フォーマットを明示的に指定し、例を使用し、タイプを指定し、エッジケースをnull値で処理し、モデルに自身の出力を検証するよう依頼してください。
 </Callout>
 
 <Quiz 
-  question="What's the main advantage of structured output over unstructured text?"
+  question="構造化出力の非構造化テキストに対する主な利点は何ですか？"
   options={[
-    "It uses fewer tokens",
-    "It's easier for the AI to generate",
-    "It can be parsed programmatically and validated",
-    "It always produces correct information"
+    "トークンの使用量が少ない",
+    "AIが生成しやすい",
+    "プログラムでパースおよび検証できる",
+    "常に正しい情報を生成する"
   ]}
   correctIndex={2}
-  explanation="Structured outputs like JSON can be parsed by code, compared across queries, integrated into workflows, and validated for completeness—things that are difficult or impossible with freeform text."
+  explanation="JSONなどの構造化出力は、コードでパースでき、クエリ間で比較でき、ワークフローに統合でき、完全性を検証できます—これらは自由形式のテキストでは困難または不可能なことです。"
 />
 
-Structured outputs are essential for building reliable AI-powered applications. In the next chapter, we'll explore chain-of-thought prompting for complex reasoning tasks.
+構造化出力は、信頼性の高いAI搭載アプリケーションを構築するために不可欠です。次の章では、複雑な推論タスクのためのチェーン・オブ・ソート・プロンプティングを探求します。

@@ -1,345 +1,345 @@
-AI is a powerful tool for both teaching and learning. This chapter covers prompts for educational contexts—from personalized tutoring to curriculum development.
+AIは教育と学習の両方において強力なツールです。この章では、個別指導からカリキュラム開発まで、教育場面で使えるプロンプトを解説します。
 
-<Callout type="info" title="AI as Learning Partner">
-AI excels as a patient, adaptive tutor that can explain concepts multiple ways, generate unlimited practice problems, and provide instant feedback—available 24/7.
+<Callout type="info" title="学習パートナーとしてのAI">
+AIは、概念を複数の方法で説明し、無限の練習問題を生成し、即座にフィードバックを提供できる、忍耐強く適応力のあるチューターとして優れています。24時間いつでも利用可能です。
 </Callout>
 
-## Personalized Learning
+## パーソナライズド学習
 
-### Do's and Don'ts: Learning Prompts
+### 学習プロンプトのDo's and Don'ts
 
 <Compare 
-  before={{ label: "❌ Passive request", content: "Explain quantum physics to me." }}
-  after={{ label: "✓ Context-rich request", content: "Explain quantum superposition to me.\n\nMy background: I understand basic chemistry and classical physics.\nLearning style: I learn best through analogies and examples.\nExplain with a simple analogy, then the core concept, then a practical example. Check my understanding with a question." }}
+  before={{ label: "❌ 受動的なリクエスト", content: "量子物理学について説明してください。" }}
+  after={{ label: "✓ コンテキストが豊富なリクエスト", content: "量子の重ね合わせについて説明してください。\n\n私の背景：基礎的な化学と古典物理学を理解しています。\n学習スタイル：類推と例を通じて最もよく学べます。\n簡単な類推、次に核心的な概念、そして実践的な例で説明してください。最後に理解度を確認する質問をしてください。" }}
 />
 
-### Concept Explanation
+### 概念の説明
 
-<TryIt compact prompt={`Explain [concept] to me.
+<TryIt compact prompt={`[概念]について説明してください。
 
-My background:
-- Current level: [beginner/intermediate/advanced]
-- Related knowledge: [what I already know]
-- Learning style: [visual/examples/theoretical]
+私の背景：
+- 現在のレベル：[初級/中級/上級]
+- 関連知識：[すでに知っていること]
+- 学習スタイル：[視覚的/例示/理論的]
 
-Explain with:
-1. Simple analogy to something familiar
-2. Core concept in plain language
-3. How it connects to what I know
-4. A practical example
-5. Common misconceptions to avoid
+以下の形式で説明してください：
+1. 身近なものへの簡単な類推
+2. 平易な言葉での核心的な概念
+3. 私の知識との関連付け
+4. 実践的な例
+5. 避けるべき一般的な誤解
 
-Then check my understanding with a question.`} />
+最後に理解度を確認する質問をしてください。`} />
 
-### Adaptive Tutoring
+### 適応型チュータリング
 
-<TryIt compact prompt={`You are my tutor for \${subject:calculus}. Teach me \${topic:derivatives} adaptively.
+<TryIt compact prompt={`あなたは\${subject:微積分}の私のチューターです。\${topic:導関数}を適応的に教えてください。
 
-Start with a diagnostic question to assess my level.
-Based on my response:
-- If correct: Move to more advanced aspects
-- If partially correct: Clarify the gap, then continue
-- If incorrect: Step back and build foundation
+まず診断的な質問で私のレベルを評価してください。
+私の回答に基づいて：
+- 正解の場合：より発展的な内容に進む
+- 部分的に正解の場合：ギャップを明確にしてから続ける
+- 不正解の場合：一歩戻って基礎を構築する
 
-After each explanation:
-- Check understanding with a question
-- Adjust difficulty based on my answers
-- Provide encouragement and track progress`} />
+各説明の後に：
+- 質問で理解度を確認する
+- 私の回答に基づいて難易度を調整する
+- 励ましを提供し進捗を追跡する`} />
 
-### Learning Path Creation
+### 学習パスの作成
 
-<TryIt compact prompt={`Create a learning path for \${goal:becoming a web developer}.
+<TryIt compact prompt={`\${goal:ウェブ開発者になる}ための学習パスを作成してください。
 
-My situation:
-- Current skill level: \${skillLevel:complete beginner}
-- Time available: \${timeAvailable:10 hours per week}
-- Target timeline: \${timeline:6 months}
-- Learning preferences: \${preferences:projects and tutorials}
+私の状況：
+- 現在のスキルレベル：\${skillLevel:完全な初心者}
+- 利用可能な時間：\${timeAvailable:週10時間}
+- 目標期間：\${timeline:6ヶ月}
+- 学習の好み：\${preferences:プロジェクトとチュートリアル}
 
-Provide:
-1. Prerequisites check (what I need first)
-2. Milestone breakdown (phases with goals)
-3. Resources for each phase (free when possible)
-4. Practice projects at each stage
-5. Assessment criteria (how to know I'm ready to advance)`} />
+以下を提供してください：
+1. 前提条件の確認（最初に必要なもの）
+2. マイルストーンの分解（目標を含むフェーズ）
+3. 各フェーズのリソース（可能な限り無料のもの）
+4. 各段階での練習プロジェクト
+5. 評価基準（進む準備ができているかの判断方法）`} />
 
-## Study Assistance
+## 学習支援
 
-<Callout type="tip" title="Active Learning Principle">
-Don't just read AI explanations passively. Ask it to quiz you, generate problems, and check your understanding. **Active recall beats passive review.**
+<Callout type="tip" title="アクティブラーニングの原則">
+AIの説明を受動的に読むだけではいけません。クイズを出してもらい、問題を生成してもらい、理解度をチェックしてもらいましょう。**能動的な想起は受動的な復習に勝ります。**
 </Callout>
 
-### Summary Generation
+### 要約の生成
 
-<TryIt compact prompt={`Summarize this \${contentType:chapter} for study purposes.
+<TryIt compact prompt={`この\${contentType:章}を学習用に要約してください。
 
-Content:
-\${content:paste your content here}
+内容：
+\${content:ここにコンテンツを貼り付けてください}
 
-Provide:
-1. **Key Concepts** (5-7 main ideas)
-2. **Important Terms** (with brief definitions)
-3. **Relationships** (how concepts connect)
-4. **Study Questions** (to test understanding)
-5. **Memory Aids** (mnemonics or associations)
+以下を提供してください：
+1. **重要な概念**（5〜7つの主要なアイデア）
+2. **重要な用語**（簡潔な定義付き）
+3. **関係性**（概念同士のつながり）
+4. **学習用の質問**（理解度をテストするため）
+5. **記憶の補助**（語呂合わせや連想）
 
-Format for easy review and memorization.`} />
+復習と暗記がしやすい形式でフォーマットしてください。`} />
 
-### Flashcard Generation
+### フラッシュカードの生成
 
-<TryIt compact prompt={`Create flashcards for studying \${topic:World War II}.
+<TryIt compact prompt={`\${topic:第二次世界大戦}を学習するためのフラッシュカードを作成してください。
 
-Source material:
-\${content:paste your study material here}
+ソース資料：
+\${content:ここに学習資料を貼り付けてください}
 
-Format each card:
-Front: Question or term
-Back: Answer or definition
-Hint: Optional memory aid
+各カードのフォーマット：
+表面：質問または用語
+裏面：答えまたは定義
+ヒント：オプションの記憶補助
 
-Categories to cover:
-- Definitions (key terms)
-- Concepts (main ideas)
-- Relationships (how things connect)
-- Applications (real-world uses)
+カバーするカテゴリ：
+- 定義（重要な用語）
+- 概念（主要なアイデア）
+- 関係性（物事のつながり）
+- 応用（実世界での使用）
 
-Generate \${numberOfCards:20} cards, balanced across categories.`} />
+カテゴリ全体でバランスの取れた\${numberOfCards:20}枚のカードを生成してください。`} />
 
-### Practice Problems
+### 練習問題
 
-<TryIt compact prompt={`Generate practice problems for \${topic:quadratic equations}.
+<TryIt compact prompt={`\${topic:二次方程式}の練習問題を生成してください。
 
-Difficulty levels:
-- 3 Basic (test fundamental understanding)
-- 3 Intermediate (require application)
-- 2 Advanced (require synthesis/analysis)
+難易度レベル：
+- 3問 基本（基礎的な理解をテスト）
+- 3問 中級（応用が必要）
+- 2問 上級（統合/分析が必要）
 
-For each problem:
-1. Clear problem statement
-2. Space for student work
-3. Hints available on request
-4. Detailed solution with explanation
+各問題について：
+1. 明確な問題文
+2. 解答スペース
+3. リクエストに応じてヒントを提供
+4. 説明付きの詳細な解答
 
-Include variety: \${problemTypes:calculation, conceptual, application}`} />
+バラエティを含める：\${problemTypes:計算、概念、応用}`} />
 
-## Teaching Tools
+## 教育ツール
 
-### Lesson Plan Creation
+### 授業計画の作成
 
-<TryIt compact prompt={`Create a lesson plan for teaching \${topic:photosynthesis}.
+<TryIt compact prompt={`\${topic:光合成}を教えるための授業計画を作成してください。
 
-Context:
-- Grade/Level: \${audience:8th grade science}
-- Class duration: \${duration:50 minutes}
-- Class size: \${classSize:25 students}
-- Prior knowledge: \${prerequisites:basic cell structure}
+コンテキスト：
+- 学年/レベル：\${audience:中学2年生 理科}
+- 授業時間：\${duration:50分}
+- クラスサイズ：\${classSize:25人}
+- 前提知識：\${prerequisites:基本的な細胞構造}
 
-Include:
-1. **Learning Objectives** (SMART format)
-2. **Opening Hook** (5 min) - engagement activity
-3. **Instruction** (15-20 min) - core content delivery
-4. **Guided Practice** (10 min) - work with students
-5. **Independent Practice** (10 min) - students work alone
-6. **Assessment** (5 min) - check understanding
-7. **Closure** - summarize and preview
+以下を含めてください：
+1. **学習目標**（SMART形式）
+2. **導入フック**（5分）- 興味を引く活動
+3. **指導**（15〜20分）- 中心的な内容の提供
+4. **ガイド付き練習**（10分）- 生徒と一緒に取り組む
+5. **独立練習**（10分）- 生徒が一人で取り組む
+6. **評価**（5分）- 理解度の確認
+7. **まとめ** - 要約と次回の予告
 
-Materials needed: list
-Differentiation strategies: for various learners`} />
+必要な教材：リスト
+差別化戦略：様々な学習者向け`} />
 
-### Assignment Design
+### 課題設計
 
-<TryIt compact prompt={`Design an assignment for \${learningObjective:analyzing primary sources}.
+<TryIt compact prompt={`\${learningObjective:一次資料の分析}のための課題を設計してください。
 
-Parameters:
-- Course: \${course:AP US History}
-- Due in: \${dueIn:2 weeks}
-- Individual/Group: \${grouping:individual}
-- Weight: \${weight:15% of grade}
+パラメータ：
+- コース：\${course:APアメリカ史}
+- 提出期限：\${dueIn:2週間}
+- 個人/グループ：\${grouping:個人}
+- 配点：\${weight:成績の15%}
 
-Include:
-1. Clear instructions
-2. Grading rubric with criteria
-3. Example of expected quality
-4. Submission requirements
-5. Academic integrity reminders
+以下を含めてください：
+1. 明確な指示
+2. 基準付きの評価ルーブリック
+3. 期待される品質の例
+4. 提出要件
+5. 学術的誠実性のリマインダー
 
-The assignment should:
-- Assess \${skills:critical thinking and source evaluation}
-- Allow for \${allowFor:analysis and interpretation}
-- Be completable in approximately \${hours:8 hours}`} />
+課題は以下を満たすこと：
+- \${skills:批判的思考とソース評価}を評価する
+- \${allowFor:分析と解釈}を可能にする
+- 約\${hours:8時間}で完了可能`} />
 
-### Quiz Generation
+### クイズの生成
 
-<TryIt compact prompt={`Create a quiz on \${topic:the American Revolution}.
+<TryIt compact prompt={`\${topic:アメリカ独立革命}に関するクイズを作成してください。
 
-Format:
-- [X] Multiple choice questions (4 options each)
-- [X] True/False questions
-- [X] Short answer questions
-- [X] One essay question
+形式：
+- [X] 多肢選択問題（各4つの選択肢）
+- [X] 正誤問題
+- [X] 短答問題
+- [X] 論述問題1問
 
-Specifications:
-- Cover all key learning objectives
-- Range from recall to analysis
-- Include answer key with explanations
-- Time estimate: \${timeEstimate:30 minutes}
-- Point values for each section`} />
+仕様：
+- すべての重要な学習目標をカバー
+- 記憶から分析まで幅広く出題
+- 説明付きの解答を含む
+- 所要時間の目安：\${timeEstimate:30分}
+- 各セクションの配点`} />
 
-## Specialized Learning Contexts
+## 特化した学習コンテキスト
 
-### Language Learning
+### 語学学習
 
-<TryIt compact prompt={`Help me learn \${language:Spanish}.
+<TryIt compact prompt={`\${language:スペイン語}の学習を手伝ってください。
 
-Current level: \${currentLevel:A2 - elementary}
-Native language: \${nativeLanguage:English}
-Goals: \${goals:conversation for travel}
+現在のレベル：\${currentLevel:A2 - 初級}
+母国語：\${nativeLanguage:日本語}
+目標：\${goals:旅行での会話}
 
-Today's lesson: \${focusArea:ordering food at restaurants}
+今日のレッスン：\${focusArea:レストランでの注文}
 
-Include:
-1. New vocabulary (5-10 words) with:
-   - Pronunciation guide
-   - Example sentences
-   - Common usage notes
-2. Grammar point with clear explanation
-3. Practice exercises
-4. Cultural context note
-5. Conversation practice scenario`} />
+以下を含めてください：
+1. 新しい語彙（5〜10語）：
+   - 発音ガイド
+   - 例文
+   - 一般的な使用法のメモ
+2. 文法ポイントと明確な説明
+3. 練習問題
+4. 文化的背景のメモ
+5. 会話練習シナリオ`} />
 
-### Skill Development
+### スキル開発
 
-<TryIt compact prompt={`I want to learn \${skill:guitar}. Be my coach.
+<TryIt compact prompt={`\${skill:ギター}を学びたいです。私のコーチになってください。
 
-My current level: \${currentLevel:complete beginner}
-Goal: \${goal:play 5 songs by ear}
-Practice time available: \${practiceTime:30 minutes per day}
+現在のレベル：\${currentLevel:完全な初心者}
+目標：\${goal:5曲を耳コピで弾く}
+練習可能時間：\${practiceTime:1日30分}
 
-Provide:
-1. Assessment of starting point
-2. Breakdown of sub-skills needed
-3. Practice routine (specific exercises)
-4. Progress markers (how to measure improvement)
-5. Common plateaus and how to overcome them
-6. First week's practice plan in detail`} />
+以下を提供してください：
+1. 出発点の評価
+2. 必要なサブスキルの分解
+3. 練習ルーティン（具体的なエクササイズ）
+4. 進捗マーカー（上達の測定方法）
+5. 一般的なプラトーとその克服方法
+6. 最初の1週間の詳細な練習計画`} />
 
-### Exam Preparation
+### 試験対策
 
-<TryIt compact prompt={`Help me prepare for \${examName:the GRE}.
+<TryIt compact prompt={`\${examName:GRE}の準備を手伝ってください。
 
-Exam format: \${examFormat:Verbal, Quantitative, Writing sections}
-Time until exam: \${timeUntilExam:8 weeks}
-My weak areas: \${weakAreas:reading comprehension, geometry}
-Target score: \${targetScore:320+}
+試験形式：\${examFormat:言語、数量、ライティングセクション}
+試験までの期間：\${timeUntilExam:8週間}
+弱点：\${weakAreas:読解、幾何学}
+目標スコア：\${targetScore:320以上}
 
-Create a study plan:
-1. Topics to cover (prioritized)
-2. Daily study schedule
-3. Practice test strategy
-4. Key formulas/facts to memorize
-5. Test-taking tips specific to this exam
-6. Day-before and day-of recommendations`} />
+学習計画を作成してください：
+1. カバーするトピック（優先順位付き）
+2. 毎日の学習スケジュール
+3. 模擬試験の戦略
+4. 暗記すべき重要な公式/事実
+5. この試験に特化した受験のコツ
+6. 試験前日と当日の推奨事項`} />
 
-## Prompt Templates from prompts.chat
+## prompts.chatからのプロンプトテンプレート
 
-### Act as a Socratic Tutor
+### ソクラテス式チューターとして振る舞う
 
-<TryIt compact prompt={`I want you to act as a Socratic tutor. You will help me learn by asking probing questions rather than giving direct answers. When I ask about a topic, respond with questions that guide me to discover the answer myself. If I'm stuck, provide hints but not solutions. Help me develop critical thinking skills.`} />
+<TryIt compact prompt={`あなたにはソクラテス式チューターとして振る舞ってほしいです。直接的な答えを与えるのではなく、探究的な質問をすることで私の学習を助けてください。私がトピックについて質問したら、私が自分で答えを発見できるよう導く質問で応答してください。行き詰まったらヒントを提供しますが、解答は与えないでください。批判的思考スキルの開発を助けてください。`} />
 
-### Act as an Educational Content Creator
+### 教育コンテンツクリエイターとして振る舞う
 
-<TryIt compact prompt={`I want you to act as an educational content creator. You will create engaging, accurate educational materials for \${subject:biology}. Make complex topics accessible without oversimplifying. Use analogies, examples, and visual descriptions. Include knowledge checks and encourage active learning.`} />
+<TryIt compact prompt={`あなたには教育コンテンツクリエイターとして振る舞ってほしいです。\${subject:生物学}のための魅力的で正確な教育教材を作成してください。複雑なトピックを単純化しすぎずにわかりやすくしてください。類推、例、視覚的な説明を使用してください。知識チェックを含め、能動的な学習を促してください。`} />
 
-### Act as a Study Buddy
+### 勉強仲間として振る舞う
 
-<TryIt compact prompt={`I want you to act as my study buddy. We're studying \${subject:organic chemistry} together. Quiz me on concepts, discuss ideas, help me work through problems, and keep me motivated. Be encouraging but also challenge me to think deeper. Let's make studying interactive and effective.`} />
+<TryIt compact prompt={`あなたには私の勉強仲間として振る舞ってほしいです。私たちは一緒に\${subject:有機化学}を勉強しています。概念についてクイズを出し、アイデアを議論し、問題を解く手助けをし、モチベーションを維持させてください。励ましてくれる一方で、より深く考えるよう挑戦させてください。学習をインタラクティブで効果的なものにしましょう。`} />
 
-## Accessibility in Education
+## 教育におけるアクセシビリティ
 
-### Content Adaptation
+### コンテンツの適応
 
-<TryIt compact prompt={`Adapt this educational content for \${accessibilityNeed:dyslexia-friendly format}:
+<TryIt compact prompt={`この教育コンテンツを\${accessibilityNeed:ディスレクシアに配慮した形式}に適応させてください：
 
-Original content:
-\${content:paste your content here}
+元のコンテンツ：
+\${content:ここにコンテンツを貼り付けてください}
 
-Adaptation needed:
-- [ ] Simplified language (lower reading level)
-- [ ] Visual descriptions (for text-to-speech)
-- [ ] Structured format (for cognitive accessibility)
-- [ ] Extended time considerations
-- [ ] Alternative explanations
+必要な適応：
+- [ ] 簡略化された言語（読解レベルを下げる）
+- [ ] 視覚的な説明（テキスト読み上げ用）
+- [ ] 構造化されたフォーマット（認知的アクセシビリティ用）
+- [ ] 延長時間の考慮
+- [ ] 代替的な説明
 
-Maintain:
-- All key learning objectives
-- Accuracy of content
-- Assessment equivalence`} />
+維持するもの：
+- すべての重要な学習目標
+- コンテンツの正確性
+- 評価の同等性`} />
 
-### Multiple Modalities
+### 複数のモダリティ
 
-<TryIt compact prompt={`Present \${concept:photosynthesis} in multiple ways:
+<TryIt compact prompt={`\${concept:光合成}を複数の方法で提示してください：
 
-1. **Text explanation** (clear prose)
-2. **Visual description** (describe a diagram)
-3. **Analogy** (relate to everyday experience)
-4. **Story/Narrative** (embed in a scenario)
-5. **Q&A format** (question and answer)
+1. **テキストによる説明**（明確な散文）
+2. **視覚的な説明**（図の描写）
+3. **類推**（日常体験との関連付け）
+4. **ストーリー/ナラティブ**（シナリオに埋め込む）
+5. **Q&A形式**（質問と回答）
 
-This allows learners to engage with their preferred style.`} />
+これにより、学習者は好みのスタイルで取り組むことができます。`} />
 
-## Assessment & Feedback
+## 評価とフィードバック
 
-### Providing Feedback
+### フィードバックの提供
 
-<TryIt compact prompt={`Provide educational feedback on this student work:
+<TryIt compact prompt={`この生徒の作品に教育的なフィードバックを提供してください：
 
-Assignment: \${assignment:5-paragraph essay on climate change}
-Student submission: \${work:paste student work here}
-Rubric: \${rubric:thesis clarity, evidence, organization, grammar}
+課題：\${assignment:気候変動に関する5段落のエッセイ}
+生徒の提出物：\${work:ここに生徒の作品を貼り付けてください}
+ルーブリック：\${rubric:論旨の明確さ、証拠、構成、文法}
 
-Feedback format:
-1. **Strengths** - What they did well (specific)
-2. **Areas for improvement** - What needs work (constructive)
-3. **Suggestions** - How to improve (actionable)
-4. **Grade/Score** - Based on rubric
-5. **Encouragement** - Motivational closing
+フィードバック形式：
+1. **強み** - 良くできた点（具体的に）
+2. **改善点** - 改善が必要な点（建設的に）
+3. **提案** - 改善方法（実行可能に）
+4. **評点/スコア** - ルーブリックに基づく
+5. **励まし** - モチベーションを高める締めくくり
 
-Tone: Supportive, specific, growth-oriented`} />
+トーン：支持的、具体的、成長志向`} />
 
-### Self-Assessment Prompts
+### 自己評価プロンプト
 
-<TryIt compact prompt={`Help me assess my understanding of \${topic:the French Revolution}.
+<TryIt compact prompt={`\${topic:フランス革命}についての私の理解度を評価する手助けをしてください。
 
-Ask me 5 questions that test:
-1. Basic recall
-2. Understanding
-3. Application
-4. Analysis
-5. Synthesis/Creation
+以下をテストする5つの質問をしてください：
+1. 基本的な記憶
+2. 理解
+3. 応用
+4. 分析
+5. 統合/創造
 
-After each answer, tell me:
-- What I demonstrated understanding of
-- What I should review
-- How to deepen my knowledge
+各回答の後に、以下を教えてください：
+- 私が理解を示したこと
+- 復習すべきこと
+- 知識を深める方法
 
-Be honest but encouraging.`} />
+正直に、でも励ましてください。`} />
 
-## Summary
+## まとめ
 
-<Callout type="tip" title="Key Techniques">
-Adapt to the learner's level, break complex topics into steps, include active practice (not just explanation), provide varied approaches, check understanding regularly, and give constructive feedback.
+<Callout type="tip" title="重要なテクニック">
+学習者のレベルに適応し、複雑なトピックをステップに分解し、能動的な練習を含め（説明だけでなく）、多様なアプローチを提供し、定期的に理解度を確認し、建設的なフィードバックを与えましょう。
 </Callout>
 
 <Quiz 
-  question="What's the most effective way to use AI for learning?"
+  question="AIを学習に活用する最も効果的な方法は何ですか？"
   options={[
-    "Read AI explanations passively like a textbook",
-    "Ask AI to quiz you and generate practice problems",
-    "Only use AI for homework answers",
-    "Avoid AI for learning entirely"
+    "教科書のようにAIの説明を受動的に読む",
+    "AIにクイズを出してもらい練習問題を生成してもらう",
+    "宿題の答えを得るためだけにAIを使う",
+    "学習にはAIを完全に避ける"
   ]}
   correctIndex={1}
-  explanation="Active recall beats passive review. Have AI quiz you, generate problems, and check your understanding—this builds stronger memory than just reading explanations."
+  explanation="能動的な想起は受動的な復習に勝ります。AIにクイズを出してもらい、問題を生成してもらい、理解度をチェックしてもらいましょう。これにより、説明を読むだけよりも強い記憶が構築されます。"
 />
 
-AI is a patient, always-available learning partner—use it to supplement, not replace, human instruction.
+AIは忍耐強く、いつでも利用可能な学習パートナーです。人間の指導を置き換えるのではなく、補完するために活用しましょう。

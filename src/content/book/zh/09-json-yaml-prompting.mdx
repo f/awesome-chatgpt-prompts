@@ -1,27 +1,27 @@
-Structured data formats like JSON and YAML are essential for building applications that consume AI outputs programmatically. This chapter covers techniques for reliable structured output generation.
+JSON 和 YAML 等结构化数据格式对于构建以编程方式消费 AI 输出的应用程序至关重要。本章涵盖可靠结构化输出生成的技术。
 
-<Callout type="info" title="From Text to Data">
-JSON and YAML transform AI outputs from freeform text into structured, type-safe data that code can consume directly.
+<Callout type="info" title="从文本到数据">
+JSON 和 YAML 将 AI 输出从自由格式文本转换为代码可以直接消费的结构化、类型安全的数据。
 </Callout>
 
-## Why Structured Formats?
+## 为什么需要结构化格式？
 
 <JsonYamlDemo />
 
-## JSON Prompting Basics
+## JSON 提示基础
 
-JSON (JavaScript Object Notation) is the most common format for programmatic AI outputs. Its strict syntax makes it easy to parse, but also means small errors can break your entire pipeline.
+JSON（JavaScript Object Notation）是程序化 AI 输出最常见的格式。其严格的语法使其易于解析，但也意味着小错误可能会破坏整个管道。
 
-### Do's and Don'ts: Requesting JSON
+### 该做与不该做：请求 JSON
 
 <Compare 
-  before={{ label: "❌ Don't: Vague request", content: "Give me the user info as JSON." }}
-  after={{ label: "✓ Do: Show the schema", content: "Extract user info as JSON matching this schema:\n\n{\n  \"name\": \"string\",\n  \"age\": number,\n  \"email\": \"string\"\n}\n\nReturn ONLY valid JSON, no markdown." }}
+  before={{ label: "❌ 不要：模糊的请求", content: "Give me the user info as JSON." }}
+  after={{ label: "✓ 要：展示 schema", content: "Extract user info as JSON matching this schema:\n\n{\n  \"name\": \"string\",\n  \"age\": number,\n  \"email\": \"string\"\n}\n\nReturn ONLY valid JSON, no markdown." }}
 />
 
-### Simple JSON Output
+### 简单 JSON 输出
 
-Start with a schema showing the expected structure. The model will fill in values based on the input text.
+从展示预期结构的 schema 开始。模型将根据输入文本填充值。
 
 ```
 Extract the following information as JSON:
@@ -35,7 +35,7 @@ Extract the following information as JSON:
 Text: "Contact John Smith, 34 years old, at john@example.com"
 ```
 
-Output:
+输出：
 ```json
 {
   "name": "John Smith",
@@ -44,9 +44,9 @@ Output:
 }
 ```
 
-### Nested JSON Structures
+### 嵌套 JSON 结构
 
-Real-world data often has nested relationships. Define each level of your schema clearly, especially for arrays of objects.
+现实世界的数据通常具有嵌套关系。清晰地定义 schema 的每个层级，特别是对象数组。
 
 ```
 Parse this order into JSON:
@@ -71,13 +71,13 @@ Order: "Order #12345 for Jane Doe (jane@email.com): 2x Widget ($10 each),
 1x Gadget ($25). Total: $45"
 ```
 
-### Ensuring Valid JSON
+### 确保有效的 JSON
 
-<Callout type="warning" title="Common Failure Point">
-Models often wrap JSON in markdown code blocks or add explanatory text. Be explicit about wanting raw JSON only.
+<Callout type="warning" title="常见失败点">
+模型经常将 JSON 包装在 markdown 代码块中或添加解释性文本。明确表示只需要原始 JSON。
 </Callout>
 
-Add explicit instructions:
+添加明确的指令：
 
 ```
 CRITICAL: Return ONLY valid JSON. No markdown, no explanation, 
@@ -88,13 +88,13 @@ Ensure all strings are properly quoted and escaped.
 Numbers should not be quoted.
 ```
 
-## YAML Prompting Basics
+## YAML 提示基础
 
-YAML is more human-readable than JSON and supports comments. It's the standard for configuration files, especially in DevOps (Docker, Kubernetes, GitHub Actions).
+YAML 比 JSON 更易于人类阅读，并支持注释。它是配置文件的标准，特别是在 DevOps 领域（Docker、Kubernetes、GitHub Actions）。
 
-### Simple YAML Output
+### 简单 YAML 输出
 
-YAML uses indentation instead of braces. Provide a template showing the expected structure.
+YAML 使用缩进而不是花括号。提供一个展示预期结构的模板。
 
 ```
 Generate a configuration file in YAML format:
@@ -110,7 +110,7 @@ database:
 Requirements: Production server on port 443 with SSL, PostgreSQL database
 ```
 
-Output:
+输出：
 ```yaml
 server:
   host: "0.0.0.0"
@@ -121,9 +121,9 @@ database:
   connection_string: "postgresql://user:pass@localhost:5432/prod"
 ```
 
-### Complex YAML Structures
+### 复杂 YAML 结构
 
-For complex configurations, be specific about requirements. The model knows common patterns for tools like GitHub Actions, Docker Compose, and Kubernetes.
+对于复杂配置，要具体说明需求。模型了解 GitHub Actions、Docker Compose 和 Kubernetes 等工具的常见模式。
 
 ```
 Generate a GitHub Actions workflow in YAML:
@@ -135,17 +135,17 @@ Requirements:
 - Cache npm dependencies
 ```
 
-## Type Definitions in Prompts
+## 提示中的类型定义
 
-Type definitions give the model a precise contract for output structure. They're more explicit than examples and easier to validate programmatically.
+类型定义为模型提供了输出结构的精确契约。它们比示例更明确，也更容易以编程方式验证。
 
-### Using TypeScript-like Types
+### 使用类似 TypeScript 的类型
 
-TypeScript interfaces are familiar to developers and precisely describe optional fields, union types, and arrays. The prompts.chat platform uses this approach for structured prompts.
+TypeScript 接口对开发人员来说很熟悉，可以精确描述可选字段、联合类型和数组。prompts.chat 平台使用这种方法来处理结构化提示。
 
 <TryIt 
-  title="TypeScript Interface Extraction"
-  description="Use a TypeScript interface to extract structured data."
+  title="TypeScript 接口提取"
+  description="使用 TypeScript 接口提取结构化数据。"
   prompt={`Extract data according to this type definition:
 
 interface ChatPersona {
@@ -162,13 +162,13 @@ Return as JSON matching this interface.
 Description: "A senior software engineer named Alex who reviews code. They're analytical and thorough, with expertise in backend systems and databases. Professional but approachable tone."`}
 />
 
-### JSON Schema Definition
+### JSON Schema 定义
 
-<Callout type="info" title="Industry Standard">
-JSON Schema is a formal specification for describing JSON structure. It's supported by many validation libraries and API tools.
+<Callout type="info" title="行业标准">
+JSON Schema 是描述 JSON 结构的正式规范。它被许多验证库和 API 工具支持。
 </Callout>
 
-JSON Schema provides constraints like min/max values, required fields, and regex patterns:
+JSON Schema 提供约束，如最小/最大值、必填字段和正则表达式模式：
 
 ```
 Extract data according to this JSON Schema:
@@ -197,13 +197,13 @@ Book: "1984 by George Orwell (1949) - A dystopian masterpiece.
 Genres: Science Fiction, Political Fiction. Rated 4.8/5"
 ```
 
-## Handling Arrays
+## 处理数组
 
-Arrays require special attention. Specify whether you need a fixed number of items or a variable-length list, and how to handle empty cases.
+数组需要特别注意。指定你需要固定数量的项还是可变长度的列表，以及如何处理空的情况。
 
-### Fixed-Length Arrays
+### 固定长度数组
 
-When you need exactly N items, state it explicitly. The model will ensure the array has the right length.
+当你需要恰好 N 个项时，明确说明。模型将确保数组具有正确的长度。
 
 ```
 Extract exactly 3 key points as JSON:
@@ -219,9 +219,9 @@ Extract exactly 3 key points as JSON:
 Article: [article text]
 ```
 
-### Variable-Length Arrays
+### 可变长度数组
 
-For variable-length arrays, specify what to do when there are zero items. Including a count field helps verify extraction completeness.
+对于可变长度数组，指定当没有项时该怎么做。包含计数字段有助于验证提取的完整性。
 
 ```
 Extract all mentioned people as JSON:
@@ -241,20 +241,20 @@ If no people are mentioned, return empty array.
 Text: [text]
 ```
 
-## Enum Values and Constraints
+## 枚举值和约束
 
-Enums restrict values to a predefined set. This is crucial for classification tasks and anywhere you need consistent, predictable outputs.
+枚举将值限制在预定义的集合中。这对于分类任务以及任何需要一致、可预测输出的地方都至关重要。
 
-### Do's and Don'ts: Enum Values
+### 该做与不该做：枚举值
 
 <Compare 
-  before={{ label: "❌ Don't: Open-ended categories", content: "Classify this text into a category.\n\n{\n  \"category\": \"string\"\n}" }}
-  after={{ label: "✓ Do: Restrict to valid values", content: "Classify this text. Category MUST be exactly one of:\n- \"technical\"\n- \"business\"\n- \"creative\"\n- \"personal\"\n\n{\n  \"category\": \"one of the values above\"\n}" }}
+  before={{ label: "❌ 不要：开放式类别", content: "Classify this text into a category.\n\n{\n  \"category\": \"string\"\n}" }}
+  after={{ label: "✓ 要：限制为有效值", content: "Classify this text. Category MUST be exactly one of:\n- \"technical\"\n- \"business\"\n- \"creative\"\n- \"personal\"\n\n{\n  \"category\": \"one of the values above\"\n}" }}
 />
 
-### String Enums
+### 字符串枚举
 
-List allowed values explicitly. Use "MUST be one of" language to enforce strict matching.
+明确列出允许的值。使用"必须是其中之一"的语言来强制严格匹配。
 
 ```
 Classify this text. The category MUST be one of these exact values:
@@ -273,9 +273,9 @@ Return JSON:
 Text: [text to classify]
 ```
 
-### Validated Numbers
+### 验证数字
 
-Numeric constraints prevent out-of-range values. Specify the type (integer vs float) and valid range.
+数值约束防止超出范围的值。指定类型（整数与浮点数）和有效范围。
 
 ```
 Rate these aspects. Each score MUST be an integer from 1 to 5.
@@ -290,20 +290,20 @@ Rate these aspects. Each score MUST be an integer from 1 to 5.
 Review: [review text]
 ```
 
-## Handling Missing Data
+## 处理缺失数据
 
-Real-world text often lacks some information. Define how the model should handle missing data to avoid hallucinated values.
+现实世界的文本通常缺少某些信息。定义模型应如何处理缺失数据，以避免虚构的值。
 
-### Do's and Don'ts: Missing Information
+### 该做与不该做：缺失信息
 
 <Compare 
-  before={{ label: "❌ Don't: Let AI guess", content: "Extract all company details as JSON:\n{\n  \"revenue\": number,\n  \"employees\": number\n}" }}
-  after={{ label: "✓ Do: Explicitly allow null", content: "Extract company details. Use null for any field NOT explicitly mentioned. Do NOT invent or estimate values.\n\n{\n  \"revenue\": \"number or null\",\n  \"employees\": \"number or null\"\n}" }}
+  before={{ label: "❌ 不要：让 AI 猜测", content: "Extract all company details as JSON:\n{\n  \"revenue\": number,\n  \"employees\": number\n}" }}
+  after={{ label: "✓ 要：明确允许 null", content: "Extract company details. Use null for any field NOT explicitly mentioned. Do NOT invent or estimate values.\n\n{\n  \"revenue\": \"number or null\",\n  \"employees\": \"number or null\"\n}" }}
 />
 
-### Null Values
+### Null 值
 
-Explicitly allow null and instruct the model not to invent information. This is safer than having the model guess.
+明确允许 null 并指示模型不要编造信息。这比让模型猜测更安全。
 
 ```
 Extract information. Use null for any field that cannot be 
@@ -320,7 +320,7 @@ determined from the text. Do NOT invent information.
 Text: "Apple, headquartered in Cupertino, was founded in 1976."
 ```
 
-Output:
+输出：
 ```json
 {
   "company": "Apple",
@@ -331,9 +331,9 @@ Output:
 }
 ```
 
-### Default Values
+### 默认值
 
-When defaults make sense, specify them in the schema. This is common for configuration extraction.
+当默认值有意义时，在 schema 中指定它们。这在配置提取中很常见。
 
 ```
 Extract settings with these defaults if not specified:
@@ -348,13 +348,13 @@ Extract settings with these defaults if not specified:
 User preferences: "I want dark mode and larger text (18px)"
 ```
 
-## Multi-Object Responses
+## 多对象响应
 
-Often you need to extract multiple items from a single input. Define the array structure and any sorting/grouping requirements.
+通常你需要从单个输入中提取多个项。定义数组结构以及任何排序/分组要求。
 
-### Array of Objects
+### 对象数组
 
-For lists of similar items, define the object schema once and specify it's an array.
+对于相似项的列表，定义一次对象 schema 并指定它是一个数组。
 
 ```
 Parse this list into JSON array:
@@ -373,9 +373,9 @@ Todo list:
 - Review PR #123 (medium, due Friday)
 ```
 
-### Grouped Objects
+### 分组对象
 
-Grouping tasks require categorization logic. The model will sort items into the categories you define.
+分组任务需要分类逻辑。模型会将项目排序到你定义的类别中。
 
 ```
 Categorize these items into JSON:
@@ -389,20 +389,20 @@ Categorize these items into JSON:
 Items: apple, carrot, bread, banana, broccoli, milk, orange, spinach
 ```
 
-## YAML for Configuration Generation
+## YAML 用于配置生成
 
-YAML shines for DevOps configurations. The model knows standard patterns for common tools and can generate production-ready configs.
+YAML 在 DevOps 配置中表现出色。模型了解常见工具的标准模式，可以生成生产就绪的配置。
 
-### Do's and Don'ts: YAML Configs
+### 该做与不该做：YAML 配置
 
 <Compare 
-  before={{ label: "❌ Don't: Vague requirements", content: "Generate a docker-compose file for my app." }}
-  after={{ label: "✓ Do: Specify components and needs", content: "Generate docker-compose.yml for:\n- Node.js app (port 3000)\n- PostgreSQL database\n- Redis cache\n\nInclude: health checks, volume persistence, environment from .env file" }}
+  before={{ label: "❌ 不要：模糊的需求", content: "Generate a docker-compose file for my app." }}
+  after={{ label: "✓ 要：指定组件和需求", content: "Generate docker-compose.yml for:\n- Node.js app (port 3000)\n- PostgreSQL database\n- Redis cache\n\nInclude: health checks, volume persistence, environment from .env file" }}
 />
 
 ### Docker Compose
 
-Specify the services you need and any special requirements. The model will handle the YAML syntax and best practices.
+指定你需要的服务和任何特殊要求。模型将处理 YAML 语法和最佳实践。
 
 ```
 Generate a docker-compose.yml for:
@@ -418,9 +418,9 @@ Include:
 - Network isolation
 ```
 
-### Kubernetes Manifests
+### Kubernetes 清单
 
-Kubernetes manifests are verbose but follow predictable patterns. Provide the key parameters and the model will generate compliant YAML.
+Kubernetes 清单很冗长，但遵循可预测的模式。提供关键参数，模型将生成符合规范的 YAML。
 
 ```
 Generate Kubernetes deployment YAML:
@@ -436,13 +436,13 @@ Deployment:
 Also generate matching Service (ClusterIP, port 8080)
 ```
 
-## Validation and Error Handling
+## 验证和错误处理
 
-For production systems, build validation into your prompts. This catches errors before they propagate through your pipeline.
+对于生产系统，在提示中内置验证。这可以在错误传播到管道之前捕获它们。
 
-### Self-Validation Prompt
+### 自我验证提示
 
-Ask the model to validate its own output against rules you specify. This catches format errors and invalid values.
+要求模型根据你指定的规则验证自己的输出。这可以捕获格式错误和无效值。
 
 ```
 Extract data as JSON, then validate your output.
@@ -464,9 +464,9 @@ If validation fails, fix the issues before responding.
 Text: [contact information]
 ```
 
-### Error Response Format
+### 错误响应格式
 
-Define separate success and error formats. This makes programmatic handling much easier.
+定义单独的成功和错误格式。这使程序化处理变得更加容易。
 
 ```
 Attempt to extract data. If extraction fails, return error format:
@@ -485,34 +485,34 @@ Error format:
 }
 ```
 
-## JSON vs YAML: When to Use Which
+## JSON vs YAML：何时使用哪个
 
 <div className="my-4 grid md:grid-cols-2 gap-4">
   <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-800">
-    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">Use JSON When</div>
+    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">使用 JSON 的场景</div>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Programmatic parsing needed</p>
-      <p className="m-0!">API responses</p>
-      <p className="m-0!">Strict type requirements</p>
-      <p className="m-0!">JavaScript/Web integration</p>
-      <p className="m-0!">Compact representation</p>
+      <p className="m-0!">需要程序化解析</p>
+      <p className="m-0!">API 响应</p>
+      <p className="m-0!">严格的类型要求</p>
+      <p className="m-0!">JavaScript/Web 集成</p>
+      <p className="m-0!">紧凑的表示</p>
     </div>
   </div>
   <div className="p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg border border-purple-200 dark:border-purple-800">
-    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Use YAML When</div>
+    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">使用 YAML 的场景</div>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Human readability matters</p>
-      <p className="m-0!">Configuration files</p>
-      <p className="m-0!">Comments are needed</p>
-      <p className="m-0!">DevOps/Infrastructure</p>
-      <p className="m-0!">Deep nested structures</p>
+      <p className="m-0!">人类可读性很重要</p>
+      <p className="m-0!">配置文件</p>
+      <p className="m-0!">需要注释</p>
+      <p className="m-0!">DevOps/基础设施</p>
+      <p className="m-0!">深层嵌套结构</p>
     </div>
   </div>
 </div>
 
-## Prompts.chat Structured Prompts
+## Prompts.chat 结构化提示
 
-On prompts.chat, you can create prompts with structured output formats:
+在 prompts.chat 上，你可以创建具有结构化输出格式的提示：
 
 ```
 When creating a prompt on prompts.chat, you can specify:
@@ -527,37 +527,37 @@ The platform will:
 - Support template variables in your schema
 ```
 
-## Common Pitfalls
+## 常见陷阱
 
-<Callout type="warning" title="Debug These First">
-These three issues cause most JSON parsing failures. Check for them when your code can't parse AI output.
+<Callout type="warning" title="首先调试这些">
+这三个问题导致了大多数 JSON 解析失败。当你的代码无法解析 AI 输出时，检查它们。
 </Callout>
 
-### 1. Markdown Code Blocks
+### 1. Markdown 代码块
 
-**Problem:** Model wraps JSON in ```json blocks
+**问题：** 模型将 JSON 包装在 ```json 代码块中
 
-**Solution:** 
+**解决方案：** 
 ```
 Return ONLY the JSON object. Do not wrap in markdown code blocks.
 Do not include ```json or ``` markers.
 ```
 
-### 2. Trailing Commas
+### 2. 尾随逗号
 
-**Problem:** Invalid JSON due to trailing commas
+**问题：** 由于尾随逗号导致无效 JSON
 
-**Solution:**
+**解决方案：**
 ```
 Ensure valid JSON syntax. No trailing commas after the last 
 element in arrays or objects.
 ```
 
-### 3. Unescaped Strings
+### 3. 未转义的字符串
 
-**Problem:** Quotes or special characters break JSON
+**问题：** 引号或特殊字符破坏 JSON
 
-**Solution:**
+**解决方案：**
 ```
 Properly escape special characters in strings:
 - \" for quotes
@@ -565,22 +565,22 @@ Properly escape special characters in strings:
 - \n for newlines
 ```
 
-## Summary
+## 总结
 
-<Callout type="tip" title="Key Techniques">
-Define schemas explicitly using TypeScript interfaces or JSON Schema. Specify types and constraints, handle nulls and defaults, request self-validation, and choose the right format for your use case.
+<Callout type="tip" title="关键技术">
+使用 TypeScript 接口或 JSON Schema 明确定义 schema。指定类型和约束，处理 null 和默认值，请求自我验证，并为你的用例选择正确的格式。
 </Callout>
 
 <Quiz 
-  question="When should you prefer YAML over JSON for AI outputs?"
+  question="什么时候应该优先选择 YAML 而不是 JSON 作为 AI 输出？"
   options={[
-    "When building REST APIs",
-    "When the output needs to be human-readable and may include comments",
-    "When working with JavaScript applications",
-    "When you need the most compact representation"
+    "构建 REST API 时",
+    "当输出需要人类可读并可能包含注释时",
+    "使用 JavaScript 应用程序时",
+    "当你需要最紧凑的表示时"
   ]}
   correctIndex={1}
-  explanation="YAML is preferred when human readability matters, such as configuration files, DevOps manifests, and documentation. It also supports comments, unlike JSON."
+  explanation="当人类可读性很重要时，如配置文件、DevOps 清单和文档，YAML 是首选。它还支持注释，而 JSON 不支持。"
 />
 
-This completes Part II on techniques. In Part III, we'll explore practical applications across different domains.
+第二部分关于技术的内容到此结束。在第三部分中，我们将探索不同领域的实际应用。

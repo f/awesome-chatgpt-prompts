@@ -1,23 +1,23 @@
-Chain of Thought (CoT) prompting is a technique that dramatically improves AI performance on complex reasoning tasks by asking the model to show its work step by step.
+Chain of Thought（CoT）プロンプティングは、AIにステップバイステップで思考過程を示すよう求めることで、複雑な推論タスクにおけるAIのパフォーマンスを劇的に向上させる手法です。
 
-<Callout type="info" title="Show Your Work">
-Just like a math teacher asking students to show their work, CoT prompting asks the AI to make its reasoning visible.
+<Callout type="info" title="途中式を見せる">
+数学の先生が生徒に途中式を書くよう求めるのと同じように、CoTプロンプティングはAIに推論過程を可視化するよう求めます。
 </Callout>
 
-## The Problem CoT Solves
+## CoTが解決する問題
 
-AI models can struggle with multi-step reasoning when asked to jump directly to an answer.
+AIモデルは、直接答えを出すよう求められると、複数のステップを必要とする推論で苦戦することがあります。
 
 <Compare 
-  before={{ label: "Direct Answer (Often Wrong)", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nAnswer: $14 ❌" }}
-  after={{ label: "Chain of Thought (Correct)", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nLet's work through this step by step:\n1. Regular price per apple: $2\n2. Number of apples: 7\n3. Since 7 ≥ 5, the discount applies\n4. Regular total: 7 × $2 = $14\n5. Discount: 20% of $14 = $2.80\n6. Final price: $14 - $2.80 = $11.20\n\nAnswer: $11.20 ✓" }}
+  before={{ label: "直接回答（しばしば間違い）", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nAnswer: $14 ❌" }}
+  after={{ label: "Chain of Thought（正解）", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nLet's work through this step by step:\n1. Regular price per apple: $2\n2. Number of apples: 7\n3. Since 7 ≥ 5, the discount applies\n4. Regular total: 7 × $2 = $14\n5. Discount: 20% of $14 = $2.80\n6. Final price: $14 - $2.80 = $11.20\n\nAnswer: $11.20 ✓" }}
 />
 
-## Basic CoT Prompts
+## 基本的なCoTプロンプト
 
-### Simple Trigger Phrases
+### シンプルなトリガーフレーズ
 
-Add one of these to your prompts:
+以下のいずれかをプロンプトに追加してください：
 
 <div className="my-4 grid gap-2">
   <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Let's think step by step."</div>
@@ -27,11 +27,11 @@ Add one of these to your prompts:
   <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Explain your thought process."</div>
 </div>
 
-### Explicit Step Request
+### 明示的なステップ要求
 
 <TryIt 
-  title="Try Chain of Thought"
-  description="Ask the AI to solve a problem step by step."
+  title="Chain of Thoughtを試す"
+  description="AIに問題をステップバイステップで解くよう依頼します。"
   prompt={`Solve this problem:
 
 A car rental costs $40 per day plus $0.25 per mile. If someone rents a car for 3 days and drives 200 miles, what is the total cost?
@@ -44,13 +44,13 @@ Before giving your final answer:
 5. Verify your answer`}
 />
 
-## Zero-Shot vs Few-Shot CoT
+## Zero-Shot CoT vs Few-Shot CoT
 
-There are two main approaches to Chain of Thought prompting, each with different trade-offs between simplicity and control.
+Chain of Thoughtプロンプティングには2つの主要なアプローチがあり、それぞれシンプルさとコントロールの間で異なるトレードオフがあります。
 
 ### Zero-Shot CoT
 
-The simplest approach—just add a trigger phrase and let the model figure out how to reason. No examples needed. This works surprisingly well for many problems, though you have less control over the reasoning format.
+最もシンプルなアプローチで、トリガーフレーズを追加するだけでモデルに推論方法を任せます。例は不要です。多くの問題で驚くほどうまく機能しますが、推論形式のコントロールは限られます。
 
 <TryIt 
   compact
@@ -60,7 +60,7 @@ The simplest approach—just add a trigger phrase and let the model figure out h
 Let's think step by step.`}
 />
 
-**Example Output:**
+**出力例：**
 ```
 Let's think step by step.
 - John starts with 3 apples
@@ -73,7 +73,7 @@ Answer: 6 apples
 
 ### Few-Shot CoT
 
-For more consistent results, show the model exactly how you want it to reason by providing worked examples. This gives you control over the reasoning style, format, and level of detail. The model will mimic your demonstrated pattern.
+より一貫した結果を得るには、解いた例を示してモデルに推論方法を教えます。これにより、推論スタイル、形式、詳細度をコントロールできます。モデルはあなたが示したパターンを模倣します。
 
 <TryIt 
   compact
@@ -101,7 +101,7 @@ Now solve:
 Q: A store sells notebooks for $3 each. If you buy 10 or more, you get 25% off. How much do 12 notebooks cost?`}
 />
 
-**Example Output:**
+**出力例：**
 ```
 A: Let's work through this:
 - Regular price: $3, Quantity: 12
@@ -111,23 +111,23 @@ A: Let's work through this:
 - Final price: $36 - $9 = $27
 ```
 
-## Structured CoT Formats
+## 構造化されたCoT形式
 
-For consistent, reproducible reasoning, use structured formats with named steps. These frameworks ensure the model doesn't skip important stages and makes outputs easier to parse and verify.
+一貫性があり再現可能な推論のために、名前付きステップを持つ構造化された形式を使用します。これらのフレームワークにより、モデルが重要な段階をスキップすることを防ぎ、出力の解析と検証が容易になります。
 
-### The BREAK Format
+### BREAK形式
 
-A memorable acronym that guides the model through a complete problem-solving cycle, from understanding to verification.
+問題の理解から検証まで、完全な問題解決サイクルを通じてモデルをガイドする覚えやすい頭文字です。
 
 <BREAKFramework />
 
-### The Reasoning Template
+### 推論テンプレート
 
-A more formal structure that separates inputs, goals, and execution. Excellent for technical problems where you need clear documentation of the solution process.
+入力、目標、実行を分離する、より形式的な構造です。解決プロセスの明確な文書化が必要な技術的問題に最適です。
 
 <TryIt 
   compact
-  title="Reasoning Template"
+  title="推論テンプレート"
   prompt={`Use this template to solve the problem:
 
 GIVEN: [List known information]
@@ -143,7 +143,7 @@ ANSWER: [Final answer]
 Problem: A car uses 8 liters of fuel per 100 km. If the tank holds 45 liters and fuel costs $1.50 per liter, how much does it cost to drive 300 km?`}
 />
 
-**Example Output:**
+**出力例：**
 ```
 GIVEN: 8L/100km, tank 45L, $1.50/L, drive 300km
 GOAL: Calculate fuel cost
@@ -155,23 +155,23 @@ VERIFICATION: 24L < 45L tank ✓
 ANSWER: $36
 ```
 
-## CoT for Different Problem Types
+## 問題タイプ別のCoT
 
-Different problem types benefit from different CoT approaches. Here are patterns optimized for common scenarios.
+異なる問題タイプには異なるCoTアプローチが効果的です。以下は一般的なシナリオに最適化されたパターンです。
 
-### Mathematical Reasoning
+### 数学的推論
 
-Math problems benefit most from CoT because each step builds on the previous one. Errors compound, so showing work helps catch mistakes early. The model should clearly label each calculation.
+数学の問題は各ステップが前のステップに基づいて構築されるため、CoTの恩恵を最も受けます。エラーは積み重なるため、途中式を見せることで早期にミスを発見できます。モデルは各計算を明確にラベル付けする必要があります。
 
 <TryIt 
   compact
-  title="Math with CoT"
+  title="CoTを使った数学"
   prompt={`A company's revenue was $1.2M in Q1. It grew 15% in Q2, declined 10% in Q3, and grew 25% in Q4. What was the total annual revenue?
 
 Think through each quarter, showing your calculations clearly.`}
 />
 
-**Example Output:**
+**出力例：**
 ```
 Q1: $1,200,000 (given)
 Q2: $1,200,000 × 1.15 = $1,380,000
@@ -181,13 +181,13 @@ Q4: $1,242,000 × 1.25 = $1,552,500
 Total: $5,374,500
 ```
 
-### Logical Reasoning
+### 論理的推論
 
-Logic puzzles require systematic elimination and hypothesis testing. CoT helps the model track constraints, test possibilities, and verify that all conditions are satisfied. The key is methodical exploration rather than guessing.
+論理パズルには体系的な消去法と仮説検証が必要です。CoTはモデルが制約を追跡し、可能性をテストし、すべての条件が満たされていることを検証するのに役立ちます。重要なのは推測ではなく、方法的な探索です。
 
 <TryIt 
   compact
-  title="Logic Puzzle"
+  title="論理パズル"
   prompt={`Three friends—Alice, Bob, and Carol—each have different pets (cat, dog, fish) and different jobs (teacher, engineer, doctor).
 
 Clues:
@@ -199,7 +199,7 @@ Clues:
 Who has which pet and job? Reason through this systematically, testing hypotheses and verifying against all clues.`}
 />
 
-**Example Output:**
+**出力例：**
 ```
 From clue 3: Bob = teacher
 → Alice and Carol are engineer/doctor
@@ -213,13 +213,13 @@ Verify: All 4 clues satisfied ✓
 Answer: Alice (doctor, fish), Bob (teacher, cat), Carol (engineer, dog)
 ```
 
-### Code Debugging
+### コードデバッグ
 
-Debugging benefits from CoT because it forces the model to trace execution rather than guess at bugs. By walking through the code with concrete values, the actual behavior becomes visible and discrepancies with expected behavior are exposed.
+デバッグはCoTの恩恵を受けます。なぜなら、モデルにバグを推測するのではなく実行をトレースさせるからです。具体的な値でコードを追跡することで、実際の動作が可視化され、期待される動作との不一致が明らかになります。
 
 <TryIt 
   compact
-  title="Debug with CoT"
+  title="CoTでデバッグ"
   prompt={`This function should return the sum of even numbers in a list, but it's returning wrong values. Debug step by step by tracing through with the input [2, 3, 4, 6]:
 
 def sum_evens(numbers):
@@ -232,7 +232,7 @@ def sum_evens(numbers):
 Trace each step, find the bug, and provide the fix.`}
 />
 
-**Example Output:**
+**出力例：**
 ```
 Trace [2, 3, 4, 6]:
 n=2: total += 1 → 1 (wait, adding 1 not n!)
@@ -245,9 +245,9 @@ Expected: 12, Got: 3
 Fix: Change to "total += n"
 ```
 
-## Self-Consistency with CoT
+## CoTとSelf-Consistency
 
-For critical problems, don't rely on a single reasoning path. Generate multiple independent solutions and compare results. If different approaches converge on the same answer, confidence is high. Disagreement signals the need for careful review.
+重要な問題では、単一の推論パスに頼らないでください。複数の独立した解決策を生成し、結果を比較します。異なるアプローチが同じ答えに収束すれば、信頼性が高いです。不一致は慎重なレビューが必要であることを示します。
 
 <TryIt 
   compact
@@ -263,7 +263,7 @@ Approach 3: Logical reasoning
 Then compare and give your final answer.`}
 />
 
-**Example Output:**
+**出力例：**
 ```
 Approach 1 (Algebra): c + w = 30, 2c + 4w = 74 → c=23, w=7
 Approach 2 (Guess): Try 23/7 → 46 + 28 = 74 ✓
@@ -272,13 +272,13 @@ Approach 3 (Logic): 30 chickens = 60 legs, need 14 more → 7 cows
 All agree: 23 chickens, 7 cows
 ```
 
-## CoT for Decision Making
+## 意思決定のためのCoT
 
-Decisions involve weighing trade-offs across multiple dimensions. CoT ensures all relevant factors are considered systematically rather than jumping to conclusions. This structured approach also documents the reasoning for future reference.
+意思決定には複数の次元にわたるトレードオフの評価が含まれます。CoTは、結論に飛びつくのではなく、関連するすべての要因が体系的に考慮されることを保証します。この構造化されたアプローチは、将来の参照のために推論を文書化することにも役立ちます。
 
 <TryIt 
   compact
-  title="Decision Analysis"
+  title="意思決定分析"
   prompt={`Should we adopt microservices architecture for our application?
 
 Context:
@@ -294,7 +294,7 @@ Think through this systematically:
 4. Give a recommendation with reasoning`}
 />
 
-**Example Output:**
+**出力例：**
 ```
 FACTORS:
 - Team size (5): Too small for microservices ❌
@@ -308,56 +308,56 @@ RECOMMENDATION: Stay monolith, use clear module
 boundaries to ease future transition.
 ```
 
-## When to Use CoT
+## CoTを使うべき場面
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Use CoT For</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> CoTを使う場面</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">**Math problems** — Reduces calculation errors</p>
-      <p className="m-0!">**Logic puzzles** — Prevents skipped steps</p>
-      <p className="m-0!">**Complex analysis** — Organizes thinking</p>
-      <p className="m-0!">**Code debugging** — Traces execution</p>
-      <p className="m-0!">**Decision making** — Weighs trade-offs</p>
+      <p className="m-0!">**数学の問題** — 計算ミスを減らす</p>
+      <p className="m-0!">**論理パズル** — ステップの飛ばしを防ぐ</p>
+      <p className="m-0!">**複雑な分析** — 思考を整理する</p>
+      <p className="m-0!">**コードデバッグ** — 実行をトレースする</p>
+      <p className="m-0!">**意思決定** — トレードオフを評価する</p>
     </div>
   </div>
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Skip CoT For</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> CoTを使わない場面</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">**Simple Q&A** — Unnecessary overhead</p>
-      <p className="m-0!">**Creative writing** — Can constrain creativity</p>
-      <p className="m-0!">**Factual lookups** — No reasoning needed</p>
-      <p className="m-0!">**Translation** — Direct task</p>
-      <p className="m-0!">**Summarization** — Usually straightforward</p>
+      <p className="m-0!">**シンプルなQ&A** — 不要なオーバーヘッド</p>
+      <p className="m-0!">**クリエイティブライティング** — 創造性を制限する可能性</p>
+      <p className="m-0!">**事実の検索** — 推論不要</p>
+      <p className="m-0!">**翻訳** — 直接的なタスク</p>
+      <p className="m-0!">**要約** — 通常は簡単</p>
     </div>
   </div>
 </div>
 
-## CoT Limitations
+## CoTの限界
 
-While powerful, Chain of Thought isn't a silver bullet. Understanding its limitations helps you apply it appropriately.
+強力ではありますが、Chain of Thoughtは万能ではありません。その限界を理解することで、適切に適用できます。
 
-1. **Increased token usage** — More output means higher costs
-2. **Not always needed** — Simple tasks don't benefit
-3. **Can be verbose** — May need to ask for conciseness
-4. **Reasoning can be flawed** — CoT doesn't guarantee correctness
+1. **トークン使用量の増加** — より多くの出力はより高いコストを意味する
+2. **常に必要とは限らない** — シンプルなタスクでは恩恵がない
+3. **冗長になる可能性** — 簡潔さを求める必要がある場合も
+4. **推論が誤っている可能性** — CoTは正確性を保証しない
 
-## Summary
+## まとめ
 
-<Callout type="tip" title="Key Takeaways">
-CoT dramatically improves complex reasoning by making implicit steps explicit. Use it for math, logic, analysis, and debugging. Trade-off: better accuracy for more tokens.
+<Callout type="tip" title="重要なポイント">
+CoTは暗黙的なステップを明示的にすることで、複雑な推論を劇的に改善します。数学、論理、分析、デバッグに使用してください。トレードオフ：より多くのトークンでより高い精度。
 </Callout>
 
 <Quiz 
-  question="When should you NOT use Chain of Thought prompting?"
+  question="Chain of Thoughtプロンプティングを使うべきでないのはいつですか？"
   options={[
-    "Math problems requiring multiple steps",
-    "Simple factual questions like 'What is the capital of France?'",
-    "Debugging code with complex logic",
-    "Analyzing a business decision"
+    "複数のステップを必要とする数学の問題",
+    "「フランスの首都はどこ？」のようなシンプルな事実質問",
+    "複雑なロジックを持つコードのデバッグ",
+    "ビジネスの意思決定の分析"
   ]}
   correctIndex={1}
-  explanation="Chain of Thought adds unnecessary overhead for simple Q&A. It's best reserved for complex reasoning tasks like math, logic puzzles, code debugging, and analysis where showing work improves accuracy."
+  explanation="Chain of Thoughtはシンプルなq&aには不要なオーバーヘッドを追加します。数学、論理パズル、コードデバッグ、分析のような、途中式を見せることで精度が向上する複雑な推論タスクに最適です。"
 />
 
-In the next chapter, we'll explore few-shot learning—teaching the model through examples.
+次の章では、few-shot learning（例を通じてモデルに教える手法）を探求します。

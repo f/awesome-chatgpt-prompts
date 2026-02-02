@@ -1,171 +1,171 @@
-For most of history, computers worked with one type of data at a time: text in one program, images in another, audio somewhere else. But humans don't experience the world this way. We see, hear, read, and speak simultaneously, combining all these inputs to understand our environment.
+歴史の大部分において、コンピュータは一度に一種類のデータしか扱えませんでした。あるプログラムではテキスト、別のプログラムでは画像、また別の場所では音声というように。しかし、人間は世界をこのように体験していません。私たちは視覚、聴覚、読解、会話を同時に行い、これらすべての入力を組み合わせて環境を理解しています。
 
-**Multimodal AI** changes everything. These models can process multiple types of information together—analyzing an image while reading your question about it, or generating images from your text descriptions. This chapter teaches you how to communicate effectively with these powerful systems.
+**マルチモーダルAI**はすべてを変えます。これらのモデルは複数の種類の情報を同時に処理できます—画像を分析しながらその画像に関するあなたの質問を読んだり、テキストの説明から画像を生成したりできます。この章では、これらの強力なシステムと効果的にコミュニケーションする方法を学びます。
 
-<Callout type="info" title="What Does Multimodal Mean?">
-"Multi" means many, and "modal" refers to modes or types of data. A multimodal model can work with multiple modalities: text, images, audio, video, or even code. Instead of separate tools for each type, one model understands them all together.
+<Callout type="info" title="マルチモーダルとは何か？">
+「マルチ」は多数を意味し、「モーダル」はモードまたはデータの種類を指します。マルチモーダルモデルは複数のモダリティ（テキスト、画像、音声、動画、さらにはコード）を扱うことができます。各タイプごとに別々のツールを使う代わりに、1つのモデルがそれらすべてを一緒に理解します。
 </Callout>
 
-## Why Multimodal Matters
+## なぜマルチモーダルが重要なのか
 
-Traditional AI required you to describe everything in words. Want to ask about an image? You'd have to describe it first. Want to analyze a document? You'd need to transcribe it manually. Multimodal models eliminate these barriers.
+従来のAIでは、すべてを言葉で説明する必要がありました。画像について質問したい場合は、まずそれを説明しなければなりませんでした。文書を分析したい場合は、手動で文字起こしする必要がありました。マルチモーダルモデルはこれらの障壁を取り除きます。
 
 <InfoGrid items={[
-  { label: "See and Understand", description: "Upload an image and ask questions about it directly—no description needed", example: "\"What's wrong with this circuit diagram?\"", color: "blue" },
-  { label: "Create from Words", description: "Describe what you want and generate images, audio, or video", example: "\"A sunset over mountains in watercolor style\"", color: "purple" },
-  { label: "Combine Everything", description: "Mix text, images, and other media in a single conversation", example: "\"Compare these two designs and tell me which is better for mobile\"", color: "green" },
-  { label: "Analyze Documents", description: "Extract information from photos of documents, receipts, or screenshots", example: "\"Extract all the line items from this invoice photo\"", color: "amber" }
+  { label: "見て理解する", description: "画像をアップロードして直接質問できます—説明は不要です", example: "「この回路図の何がおかしいですか？」", color: "blue" },
+  { label: "言葉から創造する", description: "欲しいものを説明して画像、音声、動画を生成します", example: "「水彩画スタイルで山々に沈む夕日」", color: "purple" },
+  { label: "すべてを組み合わせる", description: "テキスト、画像、その他のメディアを1つの会話で混在させます", example: "「この2つのデザインを比較して、モバイル向けにどちらが良いか教えてください」", color: "green" },
+  { label: "文書を分析する", description: "文書、レシート、スクリーンショットの写真から情報を抽出します", example: "「この請求書の写真からすべての明細項目を抽出してください」", color: "amber" }
 ]} />
 
-## Why Prompting Matters Even More for Multimodal
+## なぜマルチモーダルではプロンプティングがより重要なのか
 
-With text-only models, the AI receives exactly what you type. But with multimodal models, the AI must interpret visual or audio information—and interpretation requires guidance.
+テキストのみのモデルでは、AIはあなたが入力したものを正確に受け取ります。しかし、マルチモーダルモデルでは、AIは視覚情報や音声情報を解釈しなければなりません—そして解釈にはガイダンスが必要です。
 
 <Compare 
-  before={{ label: "Vague multimodal prompt", content: "What do you see in this image?\n\n[image of a complex dashboard]" }}
-  after={{ label: "Guided multimodal prompt", content: "This is a screenshot of our analytics dashboard. Focus on:\n1. The conversion rate graph in the top-right\n2. Any error indicators or warnings\n3. Whether the data looks normal or anomalous\n\n[image of a complex dashboard]" }}
+  before={{ label: "曖昧なマルチモーダルプロンプト", content: "この画像に何が見えますか？\n\n[複雑なダッシュボードの画像]" }}
+  after={{ label: "ガイド付きマルチモーダルプロンプト", content: "これは私たちの分析ダッシュボードのスクリーンショットです。以下に焦点を当ててください：\n1. 右上のコンバージョン率グラフ\n2. エラー表示や警告があるか\n3. データが正常か異常か\n\n[複雑なダッシュボードの画像]" }}
 />
 
-**Without guidance**, the model might describe colors, layout, or irrelevant details. **With guidance**, it focuses on what actually matters to you.
+**ガイダンスなし**では、モデルは色、レイアウト、または無関係な詳細を説明するかもしれません。**ガイダンスあり**では、あなたにとって本当に重要なことに焦点を当てます。
 
-<Callout type="warning" title="The Interpretation Gap">
-When you look at an image, you instantly know what's important based on your context and goals. The AI doesn't have this context unless you provide it. A photo of a crack in a wall could be: a structural engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets it.
+<Callout type="warning" title="解釈のギャップ">
+画像を見るとき、あなたはコンテキストと目標に基づいて、何が重要かを即座に判断します。AIはあなたがコンテキストを提供しない限り、このコンテキストを持っていません。壁のひび割れの写真は、構造工学上の懸念、芸術的なテクスチャ、または無関係な背景のいずれかになり得ます。あなたのプロンプトがAIの解釈方法を決定します。
 </Callout>
 
-## The Multimodal Landscape
+## マルチモーダルの現状
 
-Different models have different capabilities. Here's what's available in 2025:
+異なるモデルには異なる能力があります。2025年時点で利用可能なものは以下の通りです：
 
-### Understanding Models (Input → Analysis)
+### 理解モデル（入力 → 分析）
 
-These models accept various media types and produce text analysis or responses.
-
-<InfoGrid items={[
-  { label: "GPT-4o / GPT-5", description: "Text + Images + Audio → Text. OpenAI's flagship with 128K context, strong creative and reasoning abilities, reduced hallucination rates.", color: "green" },
-  { label: "Claude 4 Sonnet/Opus", description: "Text + Images → Text. Anthropic's safety-focused model with advanced reasoning, excellent for coding and complex multi-step tasks.", color: "purple" },
-  { label: "Gemini 2.5", description: "Text + Images + Audio + Video → Text. Google's model with 1M token context, self-fact-checking, fast processing for coding and research.", color: "blue" },
-  { label: "LLaMA 4 Scout", description: "Text + Images + Video → Text. Meta's open-source model with massive 10M token context for long documents and codebases.", color: "cyan" },
-  { label: "Grok 4", description: "Text + Images → Text. xAI's model with real-time data access and social media integration for up-to-date responses.", color: "red" }
-]} />
-
-### Generation Models (Text → Media)
-
-These models create images, audio, or video from text descriptions.
+これらのモデルは様々なメディアタイプを受け入れ、テキスト分析や応答を生成します。
 
 <InfoGrid items={[
-  { label: "DALL-E 3", description: "Text → Images. OpenAI's image generator with high accuracy to prompt descriptions.", color: "amber" },
-  { label: "Midjourney", description: "Text + Images → Images. Known for artistic quality, style control, and aesthetic outputs.", color: "pink" },
-  { label: "Sora", description: "Text → Video. OpenAI's video generation model for creating clips from descriptions.", color: "red" },
-  { label: "Whisper", description: "Audio → Text. OpenAI's speech-to-text with high accuracy across languages.", color: "cyan" }
+  { label: "GPT-4o / GPT-5", description: "テキスト + 画像 + 音声 → テキスト。128Kコンテキストを持つOpenAIのフラッグシップモデル。強力な創造性と推論能力、幻覚率の低減。", color: "green" },
+  { label: "Claude 4 Sonnet/Opus", description: "テキスト + 画像 → テキスト。高度な推論を持つAnthropicの安全性重視モデル。コーディングや複雑なマルチステップタスクに優れています。", color: "purple" },
+  { label: "Gemini 2.5", description: "テキスト + 画像 + 音声 + 動画 → テキスト。100万トークンコンテキストを持つGoogleのモデル。自己ファクトチェック、コーディングと研究向けの高速処理。", color: "blue" },
+  { label: "LLaMA 4 Scout", description: "テキスト + 画像 + 動画 → テキスト。長い文書やコードベース向けの1000万トークンコンテキストを持つMetaのオープンソースモデル。", color: "cyan" },
+  { label: "Grok 4", description: "テキスト + 画像 → テキスト。リアルタイムデータアクセスとソーシャルメディア統合を持つxAIのモデル。最新の応答が可能。", color: "red" }
 ]} />
 
-<Callout type="info" title="Rapid Evolution">
-The multimodal landscape changes quickly. New models launch frequently, and existing models gain capabilities through updates. Always check the latest documentation for current features and limitations.
+### 生成モデル（テキスト → メディア）
+
+これらのモデルはテキストの説明から画像、音声、動画を作成します。
+
+<InfoGrid items={[
+  { label: "DALL-E 3", description: "テキスト → 画像。プロンプトの説明に高い精度を持つOpenAIの画像生成ツール。", color: "amber" },
+  { label: "Midjourney", description: "テキスト + 画像 → 画像。芸術的な品質、スタイルコントロール、美的な出力で知られています。", color: "pink" },
+  { label: "Sora", description: "テキスト → 動画。説明からクリップを作成するOpenAIの動画生成モデル。", color: "red" },
+  { label: "Whisper", description: "音声 → テキスト。多言語で高精度を持つOpenAIの音声認識。", color: "cyan" }
+]} />
+
+<Callout type="info" title="急速な進化">
+マルチモーダルの状況は急速に変化しています。新しいモデルが頻繁にリリースされ、既存のモデルもアップデートを通じて機能を獲得しています。現在の機能と制限については、常に最新のドキュメントを確認してください。
 </Callout>
 
-## Image Understanding Prompts
+## 画像理解プロンプト
 
-The most common multimodal use case is asking AI to analyze images. The key is providing context about what you need.
+最も一般的なマルチモーダルのユースケースは、AIに画像を分析してもらうことです。重要なのは、何が必要かについてのコンテキストを提供することです。
 
-### Basic Image Analysis
+### 基本的な画像分析
 
-Start with a clear request structure. Tell the model what aspects to focus on.
+明確なリクエスト構造から始めましょう。モデルにどの側面に焦点を当てるべきか伝えてください。
 
 <TryIt 
-  title="Structured Image Analysis"
-  description="This prompt provides a clear framework for image analysis. The model knows exactly what information you need."
-  prompt={`Analyze this image and describe:
+  title="構造化された画像分析"
+  description="このプロンプトは画像分析のための明確なフレームワークを提供します。モデルはどの情報が必要かを正確に把握します。"
+  prompt={`この画像を分析して以下を説明してください：
 
-1. **Main Subject**: What is the primary focus of this image?
-2. **Setting**: Where does this appear to be? (indoor/outdoor, location type)
-3. **Mood**: What emotional tone or atmosphere does it convey?
-4. **Text Content**: Any visible text, signs, or labels?
-5. **Notable Details**: What might someone miss at first glance?
-6. **Technical Quality**: How is the lighting, focus, and composition?
+1. **主要な被写体**：この画像の主な焦点は何ですか？
+2. **設定**：これはどこのようですか？（屋内/屋外、場所のタイプ）
+3. **雰囲気**：どのような感情的なトーンや雰囲気を伝えていますか？
+4. **テキストコンテンツ**：見える文字、看板、ラベルはありますか？
+5. **注目すべき詳細**：一目では見落としそうなものは何ですか？
+6. **技術的な品質**：照明、フォーカス、構図はどうですか？
 
-[Paste or describe the image you want to analyze]
+[分析したい画像を貼り付けるか説明してください]
 
-Image description or URL: \${imageDescription}`}
+画像の説明またはURL：\${imageDescription}`}
 />
 
-### Structured Output for Images
+### 画像の構造化出力
 
-When you need to process image analysis programmatically, request JSON output.
+画像分析をプログラム的に処理する必要がある場合は、JSON出力をリクエストしてください。
 
 <TryIt 
-  title="JSON Image Analysis"
-  description="Get structured data from image analysis that's easy to parse and use in applications."
-  prompt={`Analyze this image and return a JSON object with the following structure:
+  title="JSON画像分析"
+  description="画像分析から構造化されたデータを取得し、アプリケーションで簡単に解析して使用できます。"
+  prompt={`この画像を分析して、以下の構造でJSONオブジェクトを返してください：
 
 {
-  "summary": "One sentence description",
-  "objects": ["List of main objects visible"],
+  "summary": "1文での説明",
+  "objects": ["見える主なオブジェクトのリスト"],
   "people": {
-    "count": "number or 'none'",
-    "activities": ["What they're doing, if any"]
+    "count": "数または'none'",
+    "activities": ["何をしているか（いる場合）"]
   },
-  "text_detected": ["Any text visible in the image"],
+  "text_detected": ["画像内に見えるテキスト"],
   "colors": {
-    "dominant": ["Top 3 colors"],
-    "mood": "Warm/Cool/Neutral"
+    "dominant": ["上位3色"],
+    "mood": "暖色/寒色/ニュートラル"
   },
   "setting": {
-    "type": "indoor/outdoor/unknown",
-    "description": "More specific location description"
+    "type": "屋内/屋外/不明",
+    "description": "より具体的な場所の説明"
   },
   "technical": {
-    "quality": "high/medium/low",
-    "lighting": "Description of lighting",
-    "composition": "Description of framing/composition"
+    "quality": "高/中/低",
+    "lighting": "照明の説明",
+    "composition": "フレーミング/構図の説明"
   },
-  "confidence": "high/medium/low"
+  "confidence": "高/中/低"
 }
 
-Image to analyze: \${imageDescription}`}
+分析する画像：\${imageDescription}`}
 />
 
-### Comparative Analysis
+### 比較分析
 
-Comparing multiple images requires clear labeling and specific comparison criteria.
+複数の画像を比較するには、明確なラベル付けと具体的な比較基準が必要です。
 
 <TryIt 
-  title="Image Comparison"
-  description="Compare two or more images with specific criteria that matter to your decision."
-  prompt={`Compare these images for \${purpose}:
+  title="画像比較"
+  description="あなたの決定に重要な具体的な基準で2つ以上の画像を比較します。"
+  prompt={`\${purpose}のためにこれらの画像を比較してください：
 
-**Image A**: \${imageA}
-**Image B**: \${imageB}
+**画像A**：\${imageA}
+**画像B**：\${imageB}
 
-Analyze each image on these criteria:
-1. \${criterion1} (importance: high)
-2. \${criterion2} (importance: medium)  
-3. \${criterion3} (importance: low)
+以下の基準で各画像を分析してください：
+1. \${criterion1}（重要度：高）
+2. \${criterion2}（重要度：中）
+3. \${criterion3}（重要度：低）
 
-Provide:
-- Side-by-side comparison for each criterion
-- Strengths and weaknesses of each
-- Clear recommendation with reasoning
-- Any concerns or caveats`}
+以下を提供してください：
+- 各基準の並列比較
+- それぞれの強みと弱み
+- 理由を添えた明確な推奨
+- 懸念事項や注意点`}
 />
 
-## Document and Screenshot Analysis
+## 文書とスクリーンショットの分析
 
-One of the most practical applications of multimodal AI is analyzing documents, screenshots, and UI elements. This saves hours of manual transcription and review.
+マルチモーダルAIの最も実用的な応用の1つは、文書、スクリーンショット、UI要素の分析です。これにより、手動での文字起こしやレビューに費やす時間を大幅に節約できます。
 
-### Document Extraction
+### 文書の抽出
 
-Scanned documents, photos of receipts, and PDFs as images can all be processed. The key is telling the model what type of document it is and what information you need.
+スキャンした文書、レシートの写真、画像としてのPDFはすべて処理できます。重要なのは、どのタイプの文書であり、どの情報が必要かをモデルに伝えることです。
 
 <TryIt 
-  title="Document Data Extractor"
-  description="Extract structured data from photos of documents, receipts, invoices, or forms."
-  prompt={`This is a photo/scan of a \${documentType}.
+  title="文書データ抽出ツール"
+  description="文書、レシート、請求書、フォームの写真から構造化されたデータを抽出します。"
+  prompt={`これは\${documentType}の写真/スキャンです。
 
-Extract all information into structured JSON format:
+すべての情報を構造化されたJSON形式で抽出してください：
 
 {
-  "document_type": "detected type",
-  "date": "if present",
+  "document_type": "検出されたタイプ",
+  "date": "存在する場合",
   "key_fields": {
     "field_name": "value"
   },
@@ -177,489 +177,489 @@ Extract all information into structured JSON format:
     "tax": "",
     "total": ""
   },
-  "handwritten_notes": ["any handwritten text"],
-  "unclear_sections": ["areas that were hard to read"],
-  "confidence": "high/medium/low"
+  "handwritten_notes": ["手書きのテキスト"],
+  "unclear_sections": ["読みにくかった部分"],
+  "confidence": "高/中/低"
 }
 
-IMPORTANT: If any text is unclear, note it in "unclear_sections" rather than guessing. Mark confidence as "low" if significant portions were hard to read.
+重要：テキストが不明確な場合は、推測せずに「unclear_sections」に記載してください。重要な部分が読みにくかった場合は、confidenceを「低」にしてください。
 
-Document description: \${documentDescription}`}
+文書の説明：\${documentDescription}`}
 />
 
-### Screenshot and UI Analysis
+### スクリーンショットとUI分析
 
-Screenshots are goldmines for debugging, UX review, and documentation. Guide the AI to focus on what matters.
+スクリーンショットは、デバッグ、UXレビュー、ドキュメント作成の宝庫です。重要なことに焦点を当てるようAIを導いてください。
 
 <TryIt 
-  title="UI/UX Screenshot Analyzer"
-  description="Get detailed analysis of screenshots for debugging, UX review, or documentation."
-  prompt={`This is a screenshot of \${applicationName}.
+  title="UI/UXスクリーンショット分析ツール"
+  description="デバッグ、UXレビュー、ドキュメント作成のためのスクリーンショットの詳細分析を取得します。"
+  prompt={`これは\${applicationName}のスクリーンショットです。
 
-Analyze this interface:
+このインターフェースを分析してください：
 
-**Identification**
-- What screen/page/state is this?
-- What is the user likely trying to accomplish here?
+**識別**
+- これはどの画面/ページ/状態ですか？
+- ユーザーはここで何を達成しようとしていると思われますか？
 
-**UI Elements**
-- Key interactive elements (buttons, forms, menus)
-- Current state (anything selected, filled in, or expanded?)
-- Any error messages, warnings, or notifications?
+**UI要素**
+- 主なインタラクティブ要素（ボタン、フォーム、メニュー）
+- 現在の状態（選択、入力、展開されているものは？）
+- エラーメッセージ、警告、通知はありますか？
 
-**UX Assessment**
-- Is the layout clear and intuitive?
-- Any confusing elements or unclear labels?
-- Accessibility concerns (contrast, text size, etc.)?
+**UX評価**
+- レイアウトは明確で直感的ですか？
+- 混乱を招く要素や不明確なラベルはありますか？
+- アクセシビリティの懸念（コントラスト、テキストサイズなど）は？
 
-**Issues Detected**
-- Visual bugs or misalignments?
-- Truncated text or overflow issues?
-- Inconsistent styling?
+**検出された問題**
+- 視覚的なバグやズレは？
+- 切り詰められたテキストやオーバーフローの問題は？
+- 一貫性のないスタイリングは？
 
-Screenshot description: \${screenshotDescription}`}
+スクリーンショットの説明：\${screenshotDescription}`}
 />
 
-### Error Message Analysis
+### エラーメッセージの分析
 
-When you encounter an error, a screenshot often contains more context than copying the error text alone.
+エラーに遭遇した場合、スクリーンショットにはエラーテキストをコピーするだけよりも多くのコンテキストが含まれていることがよくあります。
 
 <TryIt 
-  title="Error Diagnosis from Screenshot"
-  description="Get plain-language explanations and fixes for error messages in screenshots."
-  prompt={`I'm seeing this error in \${context}.
+  title="スクリーンショットからのエラー診断"
+  description="スクリーンショット内のエラーメッセージについて、わかりやすい説明と修正方法を取得します。"
+  prompt={`\${context}でこのエラーが表示されています。
 
-[Describe or paste the error message/screenshot]
-Error details: \${errorDetails}
+[エラーメッセージ/スクリーンショットを説明または貼り付けてください]
+エラーの詳細：\${errorDetails}
 
-Please provide:
+以下を提供してください：
 
-1. **Plain Language Explanation**: What does this error actually mean?
+1. **わかりやすい説明**：このエラーは実際に何を意味していますか？
 
-2. **Likely Causes** (ranked by probability):
-   - Most likely: 
-   - Also possible:
-   - Less common:
+2. **考えられる原因**（可能性順）：
+   - 最も可能性が高い：
+   - その他の可能性：
+   - まれなケース：
 
-3. **Step-by-Step Fix**:
-   - First, try...
-   - If that doesn't work...
-   - As a last resort...
+3. **ステップバイステップの修正**：
+   - まず、試してみてください...
+   - それでもうまくいかない場合は...
+   - 最後の手段として...
 
-4. **Prevention**: How to avoid this error in the future
+4. **予防**：将来このエラーを避ける方法
 
-5. **Red Flags**: When this error might indicate a more serious problem`}
+5. **警告サイン**：このエラーがより深刻な問題を示している可能性がある場合`}
 />
 
-## Image Generation Prompts
+## 画像生成プロンプト
 
-Generating images from text descriptions is an art form. The more specific and structured your prompt, the closer the result will match your vision.
+テキストの説明から画像を生成することは一種の芸術です。プロンプトがより具体的で構造化されているほど、結果はあなたのビジョンに近づきます。
 
-### The Anatomy of an Image Prompt
+### 画像プロンプトの構造
 
-Effective image generation prompts have several components:
+効果的な画像生成プロンプトにはいくつかの構成要素があります：
 
 <InfoGrid items={[
-  { label: "Subject", description: "What is the main focus of the image?", example: "A golden retriever playing in autumn leaves", color: "blue" },
-  { label: "Style", description: "What artistic style or medium?", example: "Watercolor painting, digital art, photorealistic", color: "purple" },
-  { label: "Composition", description: "How is the scene arranged?", example: "Close-up portrait, wide landscape, bird's eye view", color: "green" },
-  { label: "Lighting", description: "What's the light source and quality?", example: "Soft morning light, dramatic shadows, neon glow", color: "amber" },
-  { label: "Mood", description: "What feeling should it evoke?", example: "Peaceful, energetic, mysterious, nostalgic", color: "pink" },
-  { label: "Details", description: "Specific elements to include or avoid", example: "Include: flowers. Avoid: text, watermarks", color: "cyan" }
+  { label: "被写体", description: "画像の主な焦点は何ですか？", example: "秋の落ち葉で遊ぶゴールデンレトリバー", color: "blue" },
+  { label: "スタイル", description: "どのような芸術的スタイルや媒体ですか？", example: "水彩画、デジタルアート、フォトリアリスティック", color: "purple" },
+  { label: "構図", description: "シーンはどのように配置されていますか？", example: "クローズアップポートレート、広角風景、俯瞰図", color: "green" },
+  { label: "照明", description: "光源と質はどのようなものですか？", example: "柔らかい朝の光、ドラマチックな影、ネオンの輝き", color: "amber" },
+  { label: "雰囲気", description: "どのような感情を呼び起こすべきですか？", example: "穏やか、エネルギッシュ、神秘的、ノスタルジック", color: "pink" },
+  { label: "詳細", description: "含めるまたは避ける特定の要素", example: "含める：花。避ける：テキスト、ウォーターマーク", color: "cyan" }
 ]} />
 
-### Basic Image Generation
+### 基本的な画像生成
 
 <TryIt 
-  title="Structured Image Prompt"
-  description="Use this template to create detailed, specific image generation prompts."
-  prompt={`Create an image with these specifications:
+  title="構造化された画像プロンプト"
+  description="このテンプレートを使用して、詳細で具体的な画像生成プロンプトを作成します。"
+  prompt={`以下の仕様で画像を作成してください：
 
-**Subject**: \${subject}
+**被写体**：\${subject}
 
-**Style**: \${style}
-**Medium**: \${medium} (e.g., oil painting, digital art, photograph)
+**スタイル**：\${style}
+**媒体**：\${medium}（例：油絵、デジタルアート、写真）
 
-**Composition**:
-- Framing: \${framing} (close-up, medium shot, wide angle)
-- Perspective: \${perspective} (eye level, low angle, overhead)
-- Focus: \${focusArea}
+**構図**：
+- フレーミング：\${framing}（クローズアップ、ミディアムショット、広角）
+- 視点：\${perspective}（目線、ローアングル、俯瞰）
+- フォーカス：\${focusArea}
 
-**Lighting**:
-- Source: \${lightSource}
-- Quality: \${lightQuality} (soft, harsh, diffused)
-- Time of day: \${timeOfDay}
+**照明**：
+- 光源：\${lightSource}
+- 質：\${lightQuality}（柔らかい、硬い、拡散）
+- 時間帯：\${timeOfDay}
 
-**Color Palette**: \${colors}
+**カラーパレット**：\${colors}
 
-**Mood/Atmosphere**: \${mood}
+**雰囲気**：\${mood}
 
-**Must Include**: \${includeElements}
-**Must Avoid**: \${avoidElements}
+**必ず含める**：\${includeElements}
+**必ず避ける**：\${avoidElements}
 
-**Technical**: \${aspectRatio} aspect ratio, high quality`}
+**技術的**：\${aspectRatio}アスペクト比、高品質`}
 />
 
-### Scene Building
+### シーン構築
 
-For complex scenes, describe layers from foreground to background.
+複雑なシーンでは、前景から背景へとレイヤーを説明します。
 
 <TryIt 
-  title="Layered Scene Description"
-  description="Build complex scenes by describing what appears in each layer of depth."
-  prompt={`Generate a detailed scene:
+  title="レイヤー化されたシーン説明"
+  description="各深度レイヤーに何が表示されるかを説明して、複雑なシーンを構築します。"
+  prompt={`詳細なシーンを生成してください：
 
-**Setting**: \${setting}
+**設定**：\${setting}
 
-**Foreground** (closest to viewer):
+**前景**（視聴者に最も近い）：
 \${foreground}
 
-**Middle Ground** (main action area):
+**中景**（メインアクションエリア）：
 \${middleGround}
 
-**Background** (distant elements):
+**背景**（遠くの要素）：
 \${background}
 
-**Atmospheric Details**:
-- Weather/Air: \${weather}
-- Lighting: \${lighting}
-- Time: \${timeOfDay}
+**雰囲気の詳細**：
+- 天気/空気：\${weather}
+- 照明：\${lighting}
+- 時間：\${timeOfDay}
 
-**Style**: \${artisticStyle}
-**Mood**: \${mood}
-**Color Palette**: \${colors}
+**スタイル**：\${artisticStyle}
+**雰囲気**：\${mood}
+**カラーパレット**：\${colors}
 
-Additional details to include: \${additionalDetails}`}
+含める追加の詳細：\${additionalDetails}`}
 />
 
-## Audio Prompting
+## 音声プロンプティング
 
-Audio processing opens up transcription, analysis, and understanding of spoken content. The key is providing context about what the audio contains.
+音声処理により、文字起こし、分析、話された内容の理解が可能になります。重要なのは、音声に何が含まれているかについてのコンテキストを提供することです。
 
-### Enhanced Transcription
+### 強化された文字起こし
 
-Basic transcription is just the start. With good prompts, you can get speaker identification, timestamps, and domain-specific accuracy.
+基本的な文字起こしは始まりに過ぎません。良いプロンプトがあれば、話者の識別、タイムスタンプ、ドメイン固有の精度を得ることができます。
 
 <TryIt 
-  title="Smart Transcription"
-  description="Get accurate transcriptions with speaker labels, timestamps, and handling of unclear sections."
-  prompt={`Transcribe this audio recording.
+  title="スマート文字起こし"
+  description="話者ラベル、タイムスタンプ、不明確なセクションの処理を含む正確な文字起こしを取得します。"
+  prompt={`この音声録音を文字起こししてください。
 
-**Context**: \${recordingType} (meeting, interview, podcast, lecture, etc.)
-**Expected Speakers**: \${speakerCount} (\${speakerRoles})
-**Domain**: \${domain} (technical terms to expect: \${technicalTerms})
+**コンテキスト**：\${recordingType}（会議、インタビュー、ポッドキャスト、講義など）
+**予想される話者**：\${speakerCount}人（\${speakerRoles}）
+**ドメイン**：\${domain}（予想される専門用語：\${technicalTerms}）
 
-**Output Format**:
-[00:00] **Speaker 1 (Name/Role)**: Transcribed text here.
-[00:15] **Speaker 2 (Name/Role)**: Their response here.
+**出力形式**：
+[00:00] **話者1（名前/役割）**：ここに文字起こしされたテキスト。
+[00:15] **話者2（名前/役割）**：ここに返答。
 
-**Instructions**:
-- Include timestamps at natural breaks (every 30-60 seconds or at speaker changes)
-- Mark unclear sections as [inaudible] or [unclear: best guess?]
-- Note non-speech sounds in brackets: [laughter], [phone ringing], [long pause]
-- Preserve filler words only if they're meaningful (um, uh can be removed)
-- Flag any action items or decisions with → symbol
+**指示**：
+- 自然な区切り（30-60秒ごとまたは話者の変更時）でタイムスタンプを含める
+- 不明確なセクションは[聞き取れない]または[不明確：推測？]としてマークする
+- 非音声の音を括弧で記載：[笑い声]、[電話の着信音]、[長い沈黙]
+- 意味がある場合のみフィラーワードを保持（えー、うーは削除可能）
+- アクションアイテムや決定事項は→記号でフラグを付ける
 
-Audio description: \${audioDescription}`}
+音声の説明：\${audioDescription}`}
 />
 
-### Audio Content Analysis
+### 音声コンテンツ分析
 
-Beyond transcription, AI can analyze the content, tone, and key moments in audio.
+文字起こし以外にも、AIは音声のコンテンツ、トーン、重要な瞬間を分析できます。
 
 <TryIt 
-  title="Audio Content Analyzer"
-  description="Get a comprehensive analysis of audio content including summary, key moments, and sentiment."
-  prompt={`Analyze this audio recording:
+  title="音声コンテンツ分析ツール"
+  description="要約、重要な瞬間、感情を含む音声コンテンツの包括的な分析を取得します。"
+  prompt={`この音声録音を分析してください：
 
-Audio description: \${audioDescription}
+音声の説明：\${audioDescription}
 
-Provide:
+以下を提供してください：
 
-**1. Executive Summary** (2-3 sentences)
-What is this recording about? What's the main takeaway?
+**1. エグゼクティブサマリー**（2-3文）
+この録音は何についてですか？主な要点は何ですか？
 
-**2. Speakers**
-- How many distinct speakers?
-- Characteristics (if discernible): tone, speaking style, expertise level
+**2. 話者**
+- 何人の異なる話者がいますか？
+- 特徴（識別可能な場合）：トーン、話し方、専門レベル
 
-**3. Content Breakdown**
-- Main topics discussed (with approximate timestamps)
-- Key points made
-- Questions raised
+**3. コンテンツの内訳**
+- 議論された主なトピック（おおよそのタイムスタンプ付き）
+- 主なポイント
+- 提起された質問
 
-**4. Emotional Analysis**
-- Overall tone (formal, casual, tense, friendly)
-- Notable emotional moments
-- Energy level throughout
+**4. 感情分析**
+- 全体的なトーン（フォーマル、カジュアル、緊張、フレンドリー）
+- 注目すべき感情的な瞬間
+- 全体を通じてのエネルギーレベル
 
-**5. Actionable Items**
-- Decisions made
-- Action items mentioned
-- Follow-ups needed
+**5. アクション項目**
+- 下された決定
+- 言及されたアクションアイテム
+- 必要なフォローアップ
 
-**6. Notable Quotes**
-Pull out 2-3 significant quotes with timestamps
+**6. 注目すべき引用**
+タイムスタンプ付きで2-3の重要な引用を抜粋
 
-**7. Audio Quality**
-- Overall clarity
-- Any issues (background noise, interruptions, technical problems)`}
+**7. 音声品質**
+- 全体的な明瞭さ
+- 問題点（背景ノイズ、中断、技術的な問題）`}
 />
 
-## Video Prompting
+## 動画プロンプティング
 
-Video combines visual and audio analysis over time. The challenge is guiding the AI to focus on the relevant aspects across the entire duration.
+動画は視覚と音声の分析を時間を通じて組み合わせます。課題は、全体の長さにわたって関連する側面に焦点を当てるようAIを導くことです。
 
-### Video Understanding
+### 動画の理解
 
 <TryIt 
-  title="Comprehensive Video Analysis"
-  description="Get a structured breakdown of video content including timeline, visual elements, and key moments."
-  prompt={`Analyze this video: \${videoDescription}
+  title="包括的な動画分析"
+  description="タイムライン、視覚要素、重要な瞬間を含む動画コンテンツの構造化された内訳を取得します。"
+  prompt={`この動画を分析してください：\${videoDescription}
 
-Provide a comprehensive analysis:
+包括的な分析を提供してください：
 
-**1. Overview** (2-3 sentences)
-What is this video about? What's the main message or purpose?
+**1. 概要**（2-3文）
+この動画は何についてですか？主なメッセージや目的は何ですか？
 
-**2. Timeline of Key Moments**
-| Timestamp | Event | Significance |
-|-----------|-------|--------------|
+**2. 重要な瞬間のタイムライン**
+| タイムスタンプ | イベント | 重要性 |
+|---------------|---------|--------|
 | 0:00 | ... | ... |
 
-**3. Visual Analysis**
-- Setting/Location: Where does this take place?
-- People: Who appears? What are they doing?
-- Objects: Key items or props featured
-- Visual style: Quality, editing, graphics used
+**3. 視覚分析**
+- 設定/場所：これはどこで撮影されていますか？
+- 人物：誰が登場しますか？何をしていますか？
+- オブジェクト：主なアイテムや小道具
+- 視覚スタイル：品質、編集、使用されているグラフィックス
 
-**4. Audio Analysis**
-- Speech: Main points made (if any dialogue)
-- Music: Type, mood, how it's used
-- Sound effects: Notable audio elements
+**4. 音声分析**
+- 音声：主なポイント（対話がある場合）
+- 音楽：タイプ、雰囲気、どのように使用されているか
+- 効果音：注目すべき音声要素
 
-**5. Production Quality**
-- Video quality and editing
-- Pacing and structure
-- Effectiveness for its purpose
+**5. 制作品質**
+- 動画の品質と編集
+- ペースと構成
+- 目的に対する効果
 
-**6. Target Audience**
-Who is this video made for? Does it serve them well?
+**6. ターゲットオーディエンス**
+この動画は誰のために作られていますか？彼らに適切に提供されていますか？
 
-**7. Key Takeaways**
-What should a viewer remember from this video?`}
+**7. 主な要点**
+視聴者はこの動画から何を覚えておくべきですか？`}
 />
 
-### Video Content Extraction
+### 動画コンテンツの抽出
 
-For specific information extraction from videos, be precise about what you need.
+動画から特定の情報を抽出するには、必要なものについて正確に指定してください。
 
 <TryIt 
-  title="Video Data Extractor"
-  description="Extract specific information from videos with timestamps and structured output."
-  prompt={`Extract specific information from this video:
+  title="動画データ抽出ツール"
+  description="タイムスタンプと構造化された出力で動画から特定の情報を抽出します。"
+  prompt={`この動画から特定の情報を抽出してください：
 
-Video type: \${videoType}
-Video description: \${videoDescription}
+動画タイプ：\${videoType}
+動画の説明：\${videoDescription}
 
-**Information to Extract**:
+**抽出する情報**：
 1. \${extractItem1}
 2. \${extractItem2}
 3. \${extractItem3}
 
-**Output Format**:
+**出力形式**：
 {
-  "video_summary": "Brief description",
-  "duration": "estimated length",
+  "video_summary": "簡単な説明",
+  "duration": "推定の長さ",
   "extracted_data": [
     {
       "timestamp": "MM:SS",
-      "item": "What was found",
-      "details": "Additional context",
-      "confidence": "high/medium/low"
+      "item": "見つかったもの",
+      "details": "追加のコンテキスト",
+      "confidence": "高/中/低"
     }
   ],
-  "items_not_found": ["List anything requested but not present"],
-  "additional_observations": "Anything relevant not explicitly requested"
+  "items_not_found": ["リクエストされたが存在しなかったもののリスト"],
+  "additional_observations": "明示的にリクエストされていないが関連するもの"
 }`}
 />
 
-## Multimodal Combinations
+## マルチモーダルの組み合わせ
 
-The real power of multimodal AI emerges when you combine different types of input. These combinations enable analysis that would be impossible with any single modality.
+マルチモーダルAIの真の力は、異なるタイプの入力を組み合わせるときに発揮されます。これらの組み合わせにより、単一のモダリティでは不可能だった分析が可能になります。
 
-### Image + Text Verification
+### 画像 + テキストの検証
 
-Check if images and their descriptions match—essential for e-commerce, content moderation, and quality assurance.
+画像とその説明が一致するかどうかを確認します—Eコマース、コンテンツモデレーション、品質保証に不可欠です。
 
 <TryIt 
-  title="Image-Text Alignment Checker"
-  description="Verify that images accurately represent their text descriptions and vice versa."
-  prompt={`Analyze this image and its accompanying text for alignment:
+  title="画像とテキストの整合性チェッカー"
+  description="画像がテキストの説明を正確に表しているか、またその逆を検証します。"
+  prompt={`この画像と付随するテキストの整合性を分析してください：
 
-**Image**: \${imageDescription}
-**Text Description**: "\${textDescription}"
+**画像**：\${imageDescription}
+**テキストの説明**：「\${textDescription}」
 
-Evaluate:
+評価：
 
-**1. Accuracy Match**
-- Does the image show what the text describes?
-- Score: [1-10] with explanation
+**1. 精度の一致**
+- 画像はテキストが説明しているものを示していますか？
+- スコア：[1-10] 説明付き
 
-**2. Text Claims vs. Visual Reality**
-| Claim in Text | Visible in Image? | Notes |
-|---------------|-------------------|-------|
-| ... | Yes/No/Partial | ... |
+**2. テキストの主張 vs 視覚的な現実**
+| テキストの主張 | 画像で見えますか？ | 備考 |
+|---------------|-------------------|------|
+| ... | はい/いいえ/部分的 | ... |
 
-**3. Visual Elements Not Mentioned**
-What's visible in the image but not described in the text?
+**3. 言及されていない視覚要素**
+画像には見えるがテキストで説明されていないものは何ですか？
 
-**4. Text Claims Not Visible**
-What's described in text but can't be verified from the image?
+**4. 見えないテキストの主張**
+テキストで説明されているが画像から確認できないものは何ですか？
 
-**5. Recommendations**
-- For the text: [improvements to match image]
-- For the image: [improvements to match text]
+**5. 推奨事項**
+- テキストについて：[画像に合わせる改善点]
+- 画像について：[テキストに合わせる改善点]
 
-**6. Overall Assessment**
-Is this image-text pair trustworthy for \${purpose}?`}
+**6. 総合評価**
+この画像とテキストのペアは\${purpose}として信頼できますか？`}
 />
 
-### Screenshot + Code Debugging
+### スクリーンショット + コードのデバッグ
 
-One of the most powerful combinations for developers: seeing the visual bug alongside the code.
+開発者にとって最も強力な組み合わせの1つ：視覚的なバグとコードを同時に見ることができます。
 
 <TryIt 
-  title="Visual Bug Debugger"
-  description="Debug UI issues by analyzing both the visual output and the source code together."
-  prompt={`I have a UI bug. Here's what I see and my code:
+  title="ビジュアルバグデバッガー"
+  description="視覚的な出力とソースコードの両方を一緒に分析してUIの問題をデバッグします。"
+  prompt={`UIのバグがあります。見えているものとコードは以下の通りです：
 
-**Screenshot Description**: \${screenshotDescription}
-**What's Wrong**: \${bugDescription}
-**Expected Behavior**: \${expectedBehavior}
+**スクリーンショットの説明**：\${screenshotDescription}
+**問題点**：\${bugDescription}
+**期待される動作**：\${expectedBehavior}
 
-**Relevant Code**:
+**関連するコード**：
 \`\`\`\${language}
 \${code}
 \`\`\`
 
-Please help me:
+以下を教えてください：
 
-**1. Root Cause Analysis**
-- What in the code is causing this visual issue?
-- Which specific line(s) are responsible?
+**1. 根本原因の分析**
+- コードのどの部分がこの視覚的な問題を引き起こしていますか？
+- 具体的にどの行が原因ですか？
 
-**2. Explanation**
-- Why does this code produce this visual result?
-- What's the underlying mechanism?
+**2. 説明**
+- なぜこのコードがこの視覚的な結果を生成するのですか？
+- 根底にあるメカニズムは何ですか？
 
-**3. The Fix**
+**3. 修正**
 \`\`\`\${language}
-// Corrected code here
+// 修正されたコードをここに
 \`\`\`
 
-**4. Prevention**
-- How to avoid this type of bug in the future
-- Any related issues to check for`}
+**4. 予防**
+- 将来このタイプのバグを避ける方法
+- チェックすべき関連する問題`}
 />
 
-### Multi-Image Decision Making
+### 複数画像の意思決定
 
-When choosing between options, structured comparison helps make better decisions.
+オプションを選択する際、構造化された比較がより良い決定を下すのに役立ちます。
 
 <TryIt 
-  title="Visual Option Comparator"
-  description="Compare multiple images systematically against your criteria to make informed decisions."
-  prompt={`I'm choosing between these options for \${purpose}:
+  title="ビジュアルオプション比較ツール"
+  description="基準に対して複数の画像を体系的に比較し、情報に基づいた決定を下します。"
+  prompt={`\${purpose}のためにこれらのオプションから選択しています：
 
-**Option A**: \${optionA}
-**Option B**: \${optionB}
-**Option C**: \${optionC}
+**オプションA**：\${optionA}
+**オプションB**：\${optionB}
+**オプションC**：\${optionC}
 
-**My Criteria** (in order of importance):
-1. \${criterion1} (weight: high)
-2. \${criterion2} (weight: medium)
-3. \${criterion3} (weight: low)
+**私の基準**（重要度順）：
+1. \${criterion1}（重み：高）
+2. \${criterion2}（重み：中）
+3. \${criterion3}（重み：低）
 
-Provide:
+以下を提供してください：
 
-**Comparison Matrix**
-| Criterion | Option A | Option B | Option C |
-|-----------|----------|----------|----------|
-| \${criterion1} | Score + notes | ... | ... |
+**比較マトリックス**
+| 基準 | オプションA | オプションB | オプションC |
+|------|------------|------------|------------|
+| \${criterion1} | スコア + 備考 | ... | ... |
 | \${criterion2} | ... | ... | ... |
 | \${criterion3} | ... | ... | ... |
 
-**Weighted Scores**
-- Option A: X/10
-- Option B: X/10
-- Option C: X/10
+**加重スコア**
+- オプションA：X/10
+- オプションB：X/10
+- オプションC：X/10
 
-**Recommendation**
-Based on your stated priorities, I recommend [Option] because...
+**推奨**
+あなたの述べた優先順位に基づいて、[オプション]を推奨します。なぜなら...
 
-**Caveats**
-- If [condition], consider [alternative] instead
-- Watch out for [potential issue]`}
+**注意事項**
+- [条件]の場合は、代わりに[代替案]を検討してください
+- [潜在的な問題]に注意してください`}
 />
 
-## Best Practices for Multimodal Prompts
+## マルチモーダルプロンプトのベストプラクティス
 
-Getting great results from multimodal AI requires understanding both its capabilities and limitations.
+マルチモーダルAIから素晴らしい結果を得るには、その能力と限界の両方を理解する必要があります。
 
-### What Makes Multimodal Prompts Effective
-
-<InfoGrid items={[
-  { label: "Provide Context", description: "Tell the model what the media is and why you're analyzing it", example: "\"This is a product photo for our e-commerce site...\"", color: "green" },
-  { label: "Be Specific", description: "Ask about particular elements rather than general impressions", example: "\"Focus on the pricing table in the top-right corner\"", color: "green" },
-  { label: "Reference Locations", description: "Point to specific areas using spatial language", example: "\"In the bottom-left quadrant...\"", color: "green" },
-  { label: "State Your Goal", description: "Explain what you'll use the analysis for", example: "\"I need to decide if this image works for our mobile app\"", color: "green" }
-]} />
-
-### Common Pitfalls to Avoid
+### マルチモーダルプロンプトを効果的にするもの
 
 <InfoGrid items={[
-  { label: "Assuming Perfect Vision", description: "Models may miss small details, especially in low-resolution images", example: "Don't ask about 8pt text in a compressed screenshot", color: "red" },
-  { label: "Expecting Perfect OCR", description: "Handwriting, unusual fonts, and complex layouts can cause errors", example: "Verify extracted text from receipts and forms", color: "red" },
-  { label: "Ignoring Content Policies", description: "Models have restrictions on certain types of content", example: "Won't identify specific individuals or analyze inappropriate content", color: "red" },
-  { label: "Skipping Verification", description: "Always verify critical information extracted from media", example: "Double-check numbers, dates, and names from document extraction", color: "red" }
+  { label: "コンテキストを提供する", description: "メディアが何であり、なぜ分析しているのかをモデルに伝えます", example: "「これはEコマースサイト用の商品写真です...」", color: "green" },
+  { label: "具体的にする", description: "一般的な印象ではなく、特定の要素について尋ねます", example: "「右上の価格表に焦点を当ててください」", color: "green" },
+  { label: "場所を参照する", description: "空間的な言葉を使って特定のエリアを指し示します", example: "「左下の象限に...」", color: "green" },
+  { label: "目標を述べる", description: "分析を何に使用するかを説明します", example: "「この画像がモバイルアプリに適しているかどうかを判断する必要があります」", color: "green" }
 ]} />
 
-### Handling Limitations Gracefully
+### 避けるべき一般的な落とし穴
+
+<InfoGrid items={[
+  { label: "完璧な視覚を仮定する", description: "モデルは小さな詳細を見逃す可能性があります。特に低解像度の画像では", example: "圧縮されたスクリーンショットの8ptテキストについて尋ねないでください", color: "red" },
+  { label: "完璧なOCRを期待する", description: "手書き、珍しいフォント、複雑なレイアウトはエラーを引き起こす可能性があります", example: "レシートやフォームから抽出したテキストを確認してください", color: "red" },
+  { label: "コンテンツポリシーを無視する", description: "モデルには特定のタイプのコンテンツに対する制限があります", example: "特定の個人を識別したり、不適切なコンテンツを分析したりしません", color: "red" },
+  { label: "検証をスキップする", description: "メディアから抽出した重要な情報は常に検証してください", example: "文書抽出からの数字、日付、名前を再確認してください", color: "red" }
+]} />
+
+### 制限をうまく処理する
 
 <TryIt 
-  title="Uncertainty-Aware Image Analysis"
-  description="This prompt explicitly handles cases where the model can't see clearly or is uncertain."
-  prompt={`Analyze this image: \${imageDescription}
+  title="不確実性を考慮した画像分析"
+  description="このプロンプトは、モデルがはっきり見えない場合や不確実な場合を明示的に処理します。"
+  prompt={`この画像を分析してください：\${imageDescription}
 
-**Instructions for Handling Uncertainty**:
+**不確実性を処理するための指示**：
 
-IF YOU CAN'T SEE SOMETHING CLEARLY:
-- Don't guess or make up details
-- Say: "I can see [what's visible] but cannot clearly make out [unclear element]"
-- Suggest what additional information would help
+何かがはっきり見えない場合：
+- 詳細を推測したり作り上げたりしないでください
+- 「[見えるもの]は見えますが、[不明確な要素]ははっきり認識できません」と言ってください
+- どのような追加情報があれば役立つか提案してください
 
-IF CONTENT SEEMS RESTRICTED:
-- Explain what you can and cannot analyze
-- Focus on permitted aspects of the analysis
+コンテンツが制限されているように見える場合：
+- 何を分析でき、何を分析できないか説明してください
+- 分析の許可された側面に焦点を当ててください
 
-IF ASKED ABOUT PEOPLE:
-- Describe actions, positions, and general characteristics
-- Do not attempt to identify specific individuals
-- Focus on: number of people, activities, expressions, attire
+人物について尋ねられた場合：
+- 行動、位置、一般的な特徴を説明してください
+- 特定の個人を識別しようとしないでください
+- 焦点を当てる：人数、活動、表情、服装
 
-**Your Analysis**:
-[Proceed with analysis, applying these guidelines]`}
+**あなたの分析**：
+[これらのガイドラインを適用して分析を進めてください]`}
 />
 
 <Quiz 
-  question="Why does prompting matter MORE for multimodal models than for text-only models?"
+  question="なぜテキストのみのモデルよりもマルチモーダルモデルの方がプロンプティングがより重要なのですか？"
   options={[
-    "Multimodal models are less intelligent and need more help",
-    "Images and audio are inherently ambiguous—the AI needs context to know what aspects matter",
-    "Multimodal models can only process one type of input at a time",
-    "Text prompts don't work with multimodal models"
+    "マルチモーダルモデルは知能が低く、より多くの助けが必要だから",
+    "画像と音声は本質的に曖昧であり、AIはどの側面が重要かを知るためにコンテキストが必要だから",
+    "マルチモーダルモデルは一度に1種類の入力しか処理できないから",
+    "テキストプロンプトはマルチモーダルモデルでは機能しないから"
   ]}
   correctIndex={1}
-  explanation="When you look at an image, you instantly know what's important based on your goals. The AI doesn't have this context—a photo of a wall crack could be an engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets and focuses on the media you provide."
+  explanation="画像を見るとき、あなたは目標に基づいて何が重要かを即座に判断します。AIはこのコンテキストを持っていません—壁のひび割れの写真は、工学的な懸念、芸術的なテクスチャ、または無関係な背景のいずれかになり得ます。あなたのプロンプトが、AIが提供されたメディアをどのように解釈し、焦点を当てるかを決定します。"
 />

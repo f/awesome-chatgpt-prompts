@@ -1,59 +1,59 @@
-The prompts you write shape how AI behaves. A well-crafted prompt can educate, assist, and empower. A careless one can deceive, discriminate, or cause harm. As prompt engineers, we're not just users—we're designers of AI behavior, and that comes with real responsibility.
+あなたが書くプロンプトは、AIの振る舞いを形作ります。よく練られたプロンプトは、教育し、支援し、力を与えることができます。不注意なプロンプトは、欺き、差別し、害を与える可能性があります。プロンプトエンジニアとして、私たちは単なるユーザーではなく、AI の振る舞いの設計者であり、それには実際の責任が伴います。
 
-This chapter isn't about rules imposed from above. It's about understanding the impact of our choices and building habits that lead to AI use we can be proud of.
+この章は、上から押し付けられるルールについてではありません。私たちの選択の影響を理解し、誇りを持てる AI 利用につながる習慣を築くことについてです。
 
-<Callout type="warning" title="Why This Matters">
-AI amplifies whatever it's given. A biased prompt produces biased outputs at scale. A deceptive prompt enables deception at scale. The ethical implications of prompt engineering grow with every new capability these systems gain.
+<Callout type="warning" title="なぜこれが重要なのか">
+AI は与えられたものを増幅します。偏ったプロンプトは大規模に偏った出力を生み出します。欺瞞的なプロンプトは大規模な欺瞞を可能にします。プロンプトエンジニアリングの倫理的影響は、これらのシステムが獲得する新しい能力とともに増大しています。
 </Callout>
 
-## Ethical Foundations
+## 倫理的基盤
 
-Every decision in prompt engineering connects to a few core principles:
-
-<InfoGrid items={[
-  { label: "Honesty", description: "Don't use AI to deceive people or create misleading content", example: "No fake reviews, impersonation, or manufactured 'evidence'", exampleType: "text", color: "blue" },
-  { label: "Fairness", description: "Actively work to avoid perpetuating biases and stereotypes", example: "Test prompts across demographics, request diverse perspectives", exampleType: "text", color: "purple" },
-  { label: "Transparency", description: "Be clear about AI involvement when it matters", example: "Disclose AI assistance in published work, professional contexts", exampleType: "text", color: "green" },
-  { label: "Privacy", description: "Protect personal information in prompts and outputs", example: "Anonymize data, avoid including PII, understand data policies", exampleType: "text", color: "amber" },
-  { label: "Safety", description: "Design prompts that prevent harmful outputs", example: "Build in guardrails, test for edge cases, handle refusals gracefully", exampleType: "text", color: "red" },
-  { label: "Accountability", description: "Take responsibility for what your prompts produce", example: "Review outputs, fix issues, maintain human oversight", exampleType: "text", color: "cyan" }
-]} />
-
-### The Prompt Engineer's Role
-
-You have more influence than you might realize:
-
-- **What AI produces**: Your prompts determine the content, tone, and quality of outputs
-- **How AI interacts**: Your system prompts shape personality, boundaries, and user experience
-- **What safeguards exist**: Your design choices determine what the AI will and won't do
-- **How mistakes are handled**: Your error handling determines whether failures are graceful or harmful
-
-## Avoiding Harmful Outputs
-
-The most fundamental ethical obligation is preventing your prompts from causing harm.
-
-### Categories of Harmful Content
+プロンプトエンジニアリングにおけるすべての決定は、いくつかの核心的な原則に関連しています：
 
 <InfoGrid items={[
-  { label: "Violence & Harm", description: "Instructions that could lead to physical harm", example: "Weapons creation, self-harm, violence against others", exampleType: "text", color: "red" },
-  { label: "Illegal Activities", description: "Content that facilitates breaking laws", example: "Fraud schemes, hacking instructions, drug synthesis", exampleType: "text", color: "red" },
-  { label: "Harassment & Hate", description: "Content targeting individuals or groups", example: "Discriminatory content, doxxing, targeted harassment", exampleType: "text", color: "red" },
-  { label: "Misinformation", description: "Deliberately false or misleading content", example: "Fake news, health misinformation, conspiracy content", exampleType: "text", color: "red" },
-  { label: "Privacy Violations", description: "Exposing or exploiting personal information", example: "Revealing private data, stalking assistance", exampleType: "text", color: "red" },
-  { label: "Exploitation", description: "Content that exploits vulnerable individuals", example: "CSAM, non-consensual intimate content, scams targeting elderly", exampleType: "text", color: "red" }
+  { label: "誠実さ", description: "AI を使って人々を欺いたり、誤解を招くコンテンツを作成したりしないでください", example: "偽のレビュー、なりすまし、捏造された「証拠」は禁止です", exampleType: "text", color: "blue" },
+  { label: "公平性", description: "バイアスやステレオタイプを永続させないよう積極的に取り組んでください", example: "様々な属性でプロンプトをテストし、多様な視点を求めてください", exampleType: "text", color: "purple" },
+  { label: "透明性", description: "重要な場面では AI の関与を明確にしてください", example: "公開作品や専門的な文脈では AI の支援を開示してください", exampleType: "text", color: "green" },
+  { label: "プライバシー", description: "プロンプトと出力における個人情報を保護してください", example: "データを匿名化し、PII の含有を避け、データポリシーを理解してください", exampleType: "text", color: "amber" },
+  { label: "安全性", description: "有害な出力を防ぐプロンプトを設計してください", example: "ガードレールを組み込み、エッジケースをテストし、拒否を適切に処理してください", exampleType: "text", color: "red" },
+  { label: "説明責任", description: "プロンプトが生成したものに責任を持ってください", example: "出力をレビューし、問題を修正し、人間による監視を維持してください", exampleType: "text", color: "cyan" }
 ]} />
 
-<Callout type="warning" title="What is CSAM?">
-CSAM stands for **Child Sexual Abuse Material**. Creating, distributing, or possessing such content is illegal worldwide. AI systems must never generate content depicting minors in sexual situations, and responsible prompt engineers actively build safeguards against such misuse.
+### プロンプトエンジニアの役割
+
+あなたが思っている以上に影響力があります：
+
+- **AI が生成するもの**：あなたのプロンプトがコンテンツ、トーン、出力の品質を決定します
+- **AI がどのように対話するか**：あなたのシステムプロンプトが性格、境界、ユーザー体験を形作ります
+- **どのような安全策が存在するか**：あなたの設計上の選択が AI が行うことと行わないことを決定します
+- **ミスがどのように処理されるか**：あなたのエラー処理が失敗が適切に処理されるか有害になるかを決定します
+
+## 有害な出力の回避
+
+最も基本的な倫理的義務は、プロンプトが害を引き起こすことを防ぐことです。
+
+### 有害コンテンツのカテゴリ
+
+<InfoGrid items={[
+  { label: "暴力と危害", description: "身体的危害につながる可能性のある指示", example: "武器の作成、自傷行為、他者への暴力", exampleType: "text", color: "red" },
+  { label: "違法行為", description: "法律違反を助長するコンテンツ", example: "詐欺スキーム、ハッキング指示、薬物合成", exampleType: "text", color: "red" },
+  { label: "ハラスメントとヘイト", description: "個人やグループを標的にしたコンテンツ", example: "差別的コンテンツ、個人情報の暴露、標的型ハラスメント", exampleType: "text", color: "red" },
+  { label: "誤情報", description: "意図的に虚偽または誤解を招くコンテンツ", example: "フェイクニュース、健康に関する誤情報、陰謀論コンテンツ", exampleType: "text", color: "red" },
+  { label: "プライバシー侵害", description: "個人情報の暴露または悪用", example: "プライベートデータの公開、ストーキング支援", exampleType: "text", color: "red" },
+  { label: "搾取", description: "脆弱な個人を搾取するコンテンツ", example: "CSAM、同意のない親密な画像、高齢者を狙った詐欺", exampleType: "text", color: "red" }
+]} />
+
+<Callout type="warning" title="CSAM とは？">
+CSAM は **Child Sexual Abuse Material（児童性的虐待素材）** の略です。このようなコンテンツの作成、配布、所持は世界中で違法です。AI システムは未成年者を性的な状況で描写するコンテンツを決して生成してはならず、責任あるプロンプトエンジニアはそのような悪用に対する安全策を積極的に構築します。
 </Callout>
 
-### Building Safety Into Prompts
+### プロンプトに安全性を組み込む
 
-When building AI systems, include explicit safety guidelines:
+AI システムを構築する際は、明示的な安全ガイドラインを含めてください：
 
 <TryIt 
-  title="Safety-First System Prompt"
-  description="A template for building safety guidelines into your AI systems."
+  title="安全第一のシステムプロンプト"
+  description="AI システムに安全ガイドラインを組み込むためのテンプレートです。"
   prompt={`You are a helpful assistant for \${purpose}.
 
 ## SAFETY GUIDELINES
@@ -78,13 +78,13 @@ When building AI systems, include explicit safety guidelines:
 Now, please help the user with: \${userRequest}`}
 />
 
-### The Intent vs. Impact Framework
+### 意図と影響のフレームワーク
 
-Not every sensitive request is malicious. Use this framework for ambiguous cases:
+すべてのセンシティブなリクエストが悪意あるものではありません。曖昧なケースにはこのフレームワークを使用してください：
 
 <TryIt 
-  title="Ethical Edge Case Analyzer"
-  description="Work through ambiguous requests to determine the appropriate response."
+  title="倫理的エッジケース分析ツール"
+  description="曖昧なリクエストを検討して適切な対応を決定します。"
   prompt={`I received this request that might be sensitive:
 
 "\${sensitiveRequest}"
@@ -108,24 +108,24 @@ Based on this analysis:
 - If declining, how should I phrase it helpfully?`}
 />
 
-## Addressing Bias
+## バイアスへの対処
 
-AI models inherit biases from their training data—historical inequities, representation gaps, cultural assumptions, and linguistic patterns. As prompt engineers, we can either amplify these biases or actively counteract them.
+AI モデルは学習データからバイアスを継承します—歴史的不平等、表現のギャップ、文化的前提、言語パターンなどです。プロンプトエンジニアとして、私たちはこれらのバイアスを増幅するか、積極的に対抗するかを選択できます。
 
-### How Bias Manifests
+### バイアスの現れ方
 
 <InfoGrid items={[
-  { label: "Default Assumptions", description: "The model assumes certain demographics for roles", example: "Doctors defaulting to male, nurses to female", exampleType: "text", color: "amber" },
-  { label: "Stereotyping", description: "Reinforcing cultural stereotypes in descriptions", example: "Associating certain ethnicities with specific traits", exampleType: "text", color: "amber" },
-  { label: "Representation Gaps", description: "Some groups are underrepresented or misrepresented", example: "Limited accurate information about minority cultures", exampleType: "text", color: "amber" },
-  { label: "Western-Centric Views", description: "Perspectives skewed toward Western culture and values", example: "Assuming Western norms are universal", exampleType: "text", color: "amber" }
+  { label: "デフォルトの前提", description: "モデルが役割に対して特定の属性を前提とする", example: "医師がデフォルトで男性、看護師が女性になる", exampleType: "text", color: "amber" },
+  { label: "ステレオタイプ化", description: "説明において文化的ステレオタイプを強化する", example: "特定の民族を特定の特徴と関連付ける", exampleType: "text", color: "amber" },
+  { label: "表現のギャップ", description: "一部のグループが過小表現または誤表現される", example: "マイノリティ文化に関する正確な情報が限られている", exampleType: "text", color: "amber" },
+  { label: "西洋中心的な見方", description: "西洋の文化や価値観に偏った視点", example: "西洋の規範が普遍的であると仮定する", exampleType: "text", color: "amber" }
 ]} />
 
-### Testing for Bias
+### バイアスのテスト
 
 <TryIt 
-  title="Bias Detection Test"
-  description="Use this to test your prompts for potential bias issues."
+  title="バイアス検出テスト"
+  description="プロンプトの潜在的なバイアス問題をテストするために使用します。"
   prompt={`I want to test this prompt for bias:
 
 "\${promptToTest}"
@@ -151,67 +151,67 @@ When demographics aren't specified:
 Based on findings, suggest prompt modifications to reduce bias.`}
 />
 
-### Mitigating Bias in Practice
+### 実践におけるバイアスの軽減
 
 <Compare 
-  before={{ label: "Bias-prone prompt", content: "Describe a typical CEO." }}
-  after={{ label: "Bias-aware prompt", content: "Describe a CEO. Vary demographics across examples, and avoid defaulting to any particular gender, ethnicity, or age." }}
+  before={{ label: "バイアスが生じやすいプロンプト", content: "典型的な CEO を説明してください。" }}
+  after={{ label: "バイアスを意識したプロンプト", content: "CEO を説明してください。例を通じて属性を多様化し、特定の性別、民族、年齢にデフォルトで設定しないでください。" }}
 />
 
-## Transparency and Disclosure
+## 透明性と開示
 
-When should you tell people AI was involved? The answer depends on context—but the trend is toward more disclosure, not less.
+AI が関与したことを人々にいつ伝えるべきでしょうか？答えは文脈によりますが、傾向としては開示を減らす方向ではなく、増やす方向に向かっています。
 
-### When Disclosure Matters
+### 開示が重要な場面
 
 <InfoGrid items={[
-  { label: "Published Content", description: "Articles, posts, or content shared publicly", example: "Blog posts, social media, marketing materials", exampleType: "text", color: "blue" },
-  { label: "Consequential Decisions", description: "When AI outputs affect people's lives", example: "Hiring recommendations, medical info, legal guidance", exampleType: "text", color: "blue" },
-  { label: "Trust Contexts", description: "Where authenticity is expected or valued", example: "Personal correspondence, testimonials, reviews", exampleType: "text", color: "blue" },
-  { label: "Professional Settings", description: "Workplace or academic environments", example: "Reports, research, client deliverables", exampleType: "text", color: "blue" }
+  { label: "公開コンテンツ", description: "公に共有される記事、投稿、またはコンテンツ", example: "ブログ投稿、ソーシャルメディア、マーケティング資料", exampleType: "text", color: "blue" },
+  { label: "重大な決定", description: "AI の出力が人々の生活に影響を与える場合", example: "採用推薦、医療情報、法的ガイダンス", exampleType: "text", color: "blue" },
+  { label: "信頼の文脈", description: "真正性が期待または重視される場面", example: "個人的な通信、推薦文、レビュー", exampleType: "text", color: "blue" },
+  { label: "専門的な場面", description: "職場または学術的な環境", example: "レポート、研究、クライアントへの成果物", exampleType: "text", color: "blue" }
 ]} />
 
-### How to Disclose Appropriately
+### 適切な開示方法
 
 <Compare 
-  before={{ label: "Hidden AI involvement", content: "Here's my analysis of the market trends..." }}
-  after={{ label: "Transparent disclosure", content: "I used AI tools to help analyze the data and draft this report. All conclusions have been verified and edited by me." }}
+  before={{ label: "AI の関与を隠す", content: "市場トレンドの私の分析をご覧ください..." }}
+  after={{ label: "透明な開示", content: "このレポートのデータ分析と草稿作成に AI ツールを使用しました。すべての結論は私が検証し編集しています。" }}
 />
 
-Common disclosure phrases that work well:
-- "Written with AI assistance"
-- "AI-generated first draft, human edited"
-- "Analysis performed using AI tools"
-- "Created with AI, reviewed and approved by [name]"
+効果的な開示フレーズの例：
+- 「AI の支援を受けて執筆」
+- 「AI が生成した初稿を人間が編集」
+- 「AI ツールを使用して分析を実施」
+- 「AI で作成し、[名前] がレビューおよび承認」
 
-## Privacy Considerations
+## プライバシーへの配慮
 
-Every prompt you send contains data. Understanding where that data goes—and what shouldn't be in it—is essential.
+送信するすべてのプロンプトにはデータが含まれています。そのデータがどこに行くのか、そして何を含めるべきでないかを理解することが不可欠です。
 
-### What Never Belongs in Prompts
+### プロンプトに含めてはいけないもの
 
 <InfoGrid items={[
-  { label: "Personal Identifiers", description: "Names, addresses, phone numbers, SSNs", example: "Use [CUSTOMER] instead of 'John Smith'", color: "red" },
-  { label: "Financial Data", description: "Account numbers, credit cards, income details", example: "Describe the pattern, not the actual numbers", exampleType: "text", color: "red" },
-  { label: "Health Information", description: "Medical records, diagnoses, prescriptions", example: "Ask about conditions generally, not specific patients", exampleType: "text", color: "red" },
-  { label: "Credentials", description: "Passwords, API keys, tokens, secrets", example: "Never paste credentials—use placeholders", exampleType: "text", color: "red" },
-  { label: "Private Communications", description: "Personal emails, messages, confidential docs", example: "Summarize the situation without quoting private text", exampleType: "text", color: "red" }
+  { label: "個人識別子", description: "名前、住所、電話番号、社会保障番号", example: "「山田太郎」ではなく [顧客] を使用", color: "red" },
+  { label: "金融データ", description: "口座番号、クレジットカード、収入の詳細", example: "実際の数字ではなくパターンを説明", exampleType: "text", color: "red" },
+  { label: "健康情報", description: "医療記録、診断、処方箋", example: "特定の患者ではなく一般的な状態について尋ねる", exampleType: "text", color: "red" },
+  { label: "認証情報", description: "パスワード、API キー、トークン、シークレット", example: "認証情報は決して貼り付けない—プレースホルダーを使用", exampleType: "text", color: "red" },
+  { label: "プライベートな通信", description: "個人的なメール、メッセージ、機密文書", example: "プライベートなテキストを引用せずに状況を要約する", exampleType: "text", color: "red" }
 ]} />
 
-### Safe Data Handling Pattern
+### 安全なデータ処理パターン
 
 <Compare 
-  before={{ label: "Unsafe: Contains PII", content: "Summarize this complaint from John Smith at 123 Main St, Anytown about order #12345: 'I ordered on March 15 and still haven't received...'" }}
-  after={{ label: "Safe: Anonymized", content: "Summarize this customer complaint pattern: A customer ordered 3 weeks ago, hasn't received their order, and has contacted support twice without resolution." }}
+  before={{ label: "危険：PII を含む", content: "123 メインストリート、エニタウン在住の山田太郎さんからの注文 #12345 に関するこの苦情を要約してください：「3月15日に注文したのにまだ届いていません...」" }}
+  after={{ label: "安全：匿名化済み", content: "この顧客苦情パターンを要約してください：顧客が3週間前に注文し、まだ届いておらず、解決なしにサポートに2回連絡しています。" }}
 />
 
-<Callout type="info" title="What is PII?">
-**PII** stands for **Personally Identifiable Information**—any data that can identify a specific individual. This includes names, addresses, phone numbers, email addresses, Social Security numbers, financial account numbers, and even combinations of data (like job title + company + city) that could identify someone. When prompting AI, always anonymize or remove PII to protect privacy.
+<Callout type="info" title="PII とは？">
+**PII** は **Personally Identifiable Information（個人を特定できる情報）** の略で、特定の個人を識別できるあらゆるデータを指します。これには名前、住所、電話番号、メールアドレス、社会保障番号、金融口座番号、さらには個人を特定できるデータの組み合わせ（役職 + 会社 + 都市など）も含まれます。AI にプロンプトを送る際は、プライバシーを保護するために常に PII を匿名化または削除してください。
 </Callout>
 
 <TryIt 
-  title="PII Scrubber"
-  description="Use this to identify and remove sensitive information before including text in prompts."
+  title="PII スクラバー"
+  description="プロンプトにテキストを含める前に機密情報を特定して削除するために使用します。"
   prompt={`Review this text for sensitive information that should be removed before using it in an AI prompt:
 
 "\${textToReview}"
@@ -226,70 +226,70 @@ Identify:
 For each item found, suggest how to anonymize or generalize it while preserving the information needed for the task.`}
 />
 
-## Authenticity and Deception
+## 真正性と欺瞞
 
-There's a difference between using AI as a tool and using AI to deceive.
+AI をツールとして使用することと、AI を使って欺くことには違いがあります。
 
-### The Legitimacy Line
+### 正当性の境界線
 
 <InfoGrid items={[
-  { label: "Legitimate Uses", description: "AI as a tool to enhance your work", example: "Drafting, brainstorming, editing, learning", exampleType: "text", color: "green" },
-  { label: "Gray Areas", description: "Context-dependent, requires judgment", example: "Ghostwriting, templates, automated responses", exampleType: "text", color: "amber" },
-  { label: "Deceptive Uses", description: "Misrepresenting AI work as human-original", example: "Fake reviews, academic fraud, impersonation", exampleType: "text", color: "red" }
+  { label: "正当な使用", description: "作業を強化するツールとしての AI", example: "草稿作成、ブレインストーミング、編集、学習", exampleType: "text", color: "green" },
+  { label: "グレーゾーン", description: "文脈依存で判断が必要", example: "ゴーストライティング、テンプレート、自動応答", exampleType: "text", color: "amber" },
+  { label: "欺瞞的な使用", description: "AI の作品を人間のオリジナルとして偽る", example: "偽のレビュー、学術的不正、なりすまし", exampleType: "text", color: "red" }
 ]} />
 
-Key questions to ask:
-- Would the recipient expect this to be original human work?
-- Am I gaining unfair advantage through deception?
-- Would disclosure change how the work is received?
+問いかけるべき重要な質問：
+- 受け手はこれがオリジナルの人間の作品であることを期待していますか？
+- 欺瞞を通じて不公平な優位性を得ていますか？
+- 開示すると作品の受け取られ方が変わりますか？
 
-### Synthetic Media Responsibility
+### 合成メディアの責任
 
-Creating realistic depictions of real people—whether images, audio, or video—carries special obligations:
+実在の人物のリアルな描写を作成すること—画像、音声、動画のいずれであっても—には特別な義務が伴います：
 
-- **Never** create realistic depictions without consent
-- **Always** label synthetic media clearly
-- **Consider** potential for misuse before creating
-- **Refuse** to create non-consensual intimate imagery
+- 同意なしにリアルな描写を作成**しないでください**
+- 合成メディアには**必ず**明確にラベルを付けてください
+- 作成前に悪用の可能性を**考慮してください**
+- 同意のない親密な画像の作成を**拒否してください**
 
-## Responsible Deployment
+## 責任あるデプロイメント
 
-When building AI features for others to use, your ethical obligations multiply.
+他者が使用する AI 機能を構築する際、あなたの倫理的義務は倍増します。
 
-### Pre-Deployment Checklist
+### デプロイメント前チェックリスト
 
 <Checklist 
-  title="Deployment Readiness"
+  title="デプロイメント準備状況"
   items={[
-    { text: "Tested for harmful outputs across diverse inputs" },
-    { text: "Tested for bias with varied demographics" },
-    { text: "User disclosure/consent mechanisms in place" },
-    { text: "Human oversight for high-stakes decisions" },
-    { text: "Feedback and reporting system available" },
-    { text: "Incident response plan documented" },
-    { text: "Clear usage policies communicated" },
-    { text: "Monitoring and alerting configured" }
+    { text: "多様な入力で有害な出力をテスト済み" },
+    { text: "様々な属性でバイアスをテスト済み" },
+    { text: "ユーザーへの開示/同意メカニズムを配置済み" },
+    { text: "重要な決定に対する人間の監視を確保" },
+    { text: "フィードバックと報告システムを利用可能" },
+    { text: "インシデント対応計画を文書化済み" },
+    { text: "明確な利用ポリシーを周知済み" },
+    { text: "モニタリングとアラートを設定済み" }
   ]}
 />
 
-### Human Oversight Principles
+### 人間による監視の原則
 
 <InfoGrid items={[
-  { label: "High-Stakes Review", description: "Humans review decisions that significantly affect people", example: "Hiring, medical, legal, financial recommendations", exampleType: "text", color: "blue" },
-  { label: "Error Correction", description: "Mechanisms exist to catch and fix AI mistakes", example: "User feedback, quality sampling, appeals process", exampleType: "text", color: "blue" },
-  { label: "Continuous Learning", description: "Insights from issues improve the system", example: "Post-mortems, prompt updates, training improvements", exampleType: "text", color: "blue" },
-  { label: "Override Capability", description: "Humans can intervene when AI fails", example: "Manual review queues, escalation paths", exampleType: "text", color: "blue" }
+  { label: "重要な決定のレビュー", description: "人々に大きな影響を与える決定は人間がレビュー", example: "採用、医療、法律、財務に関する推薦", exampleType: "text", color: "blue" },
+  { label: "エラー修正", description: "AI のミスを発見し修正するメカニズムの存在", example: "ユーザーフィードバック、品質サンプリング、異議申立プロセス", exampleType: "text", color: "blue" },
+  { label: "継続的学習", description: "問題からの洞察がシステムを改善", example: "事後分析、プロンプトの更新、学習の改善", exampleType: "text", color: "blue" },
+  { label: "オーバーライド機能", description: "AI が失敗した際に人間が介入可能", example: "手動レビューキュー、エスカレーションパス", exampleType: "text", color: "blue" }
 ]} />
 
-## Special Context Guidelines
+## 特別な文脈のガイドライン
 
-Some domains require extra care due to their potential for harm or the vulnerability of those involved.
+一部の分野は、害の可能性や関係者の脆弱性のため、特別な注意が必要です。
 
-### Healthcare
+### 医療
 
 <TryIt 
-  title="Medical Context Disclaimer"
-  description="Template for AI systems that might receive health-related queries."
+  title="医療コンテキストの免責事項"
+  description="健康関連のクエリを受ける可能性のある AI システム用のテンプレートです。"
   prompt={`You are an AI assistant. When users ask about health or medical topics:
 
 **Always**:
@@ -309,49 +309,49 @@ User question: \${healthQuestion}
 Respond helpfully while following these guidelines.`}
 />
 
-### Legal and Financial
+### 法律と財務
 
-These domains have regulatory implications and require appropriate disclaimers:
-
-<InfoGrid items={[
-  { label: "Legal Queries", description: "Provide general information, not legal advice", example: "\"This is general information. For your specific situation, consult a licensed attorney.\"", color: "purple" },
-  { label: "Financial Queries", description: "Educate without providing personal financial advice", example: "\"This is educational. Consider consulting a financial advisor for your situation.\"", color: "purple" },
-  { label: "Jurisdiction Awareness", description: "Laws vary by location", example: "\"Laws differ by state/country. Verify requirements for your jurisdiction.\"", color: "purple" }
-]} />
-
-### Children and Education
+これらの分野には規制上の影響があり、適切な免責事項が必要です：
 
 <InfoGrid items={[
-  { label: "Age-Appropriate Content", description: "Ensure outputs are suitable for the age group", example: "Filter mature content, use appropriate language", exampleType: "text", color: "cyan" },
-  { label: "Academic Integrity", description: "Support learning, don't replace it", example: "Explain concepts rather than writing essays for students", exampleType: "text", color: "cyan" },
-  { label: "Safety First", description: "Extra protection for vulnerable users", example: "Stricter content filters, no personal data collection", exampleType: "text", color: "cyan" }
+  { label: "法律に関する質問", description: "法的アドバイスではなく一般的な情報を提供", example: "「これは一般的な情報です。具体的な状況については、資格を持つ弁護士にご相談ください。」", color: "purple" },
+  { label: "財務に関する質問", description: "個人的な財務アドバイスを提供せずに教育", example: "「これは教育目的です。あなたの状況についてはファイナンシャルアドバイザーへの相談をご検討ください。」", color: "purple" },
+  { label: "管轄区域の認識", description: "法律は場所によって異なる", example: "「法律は州/国によって異なります。お住まいの管轄区域の要件をご確認ください。」", color: "purple" }
 ]} />
 
-## Self-Assessment
+### 子供と教育
 
-Before deploying any prompt or AI system, run through these questions:
+<InfoGrid items={[
+  { label: "年齢に適したコンテンツ", description: "出力が年齢層に適していることを確認", example: "成人向けコンテンツをフィルタリングし、適切な言葉を使用", exampleType: "text", color: "cyan" },
+  { label: "学術的誠実性", description: "学習を支援し、代替しない", example: "学生のためにエッセイを書くのではなく、概念を説明する", exampleType: "text", color: "cyan" },
+  { label: "安全第一", description: "脆弱なユーザーへの追加の保護", example: "より厳格なコンテンツフィルター、個人データの収集なし", exampleType: "text", color: "cyan" }
+]} />
+
+## 自己評価
+
+プロンプトや AI システムをデプロイする前に、これらの質問を確認してください：
 
 <Checklist 
-  title="Ethical Self-Check"
+  title="倫理的セルフチェック"
   items={[
-    { text: "Could this be used to harm someone?" },
-    { text: "Does this respect user privacy?" },
-    { text: "Could this perpetuate harmful biases?" },
-    { text: "Is AI involvement appropriately disclosed?" },
-    { text: "Is there adequate human oversight?" },
-    { text: "What's the worst that could happen?" },
-    { text: "Would I be comfortable if this use were public?" }
+    { text: "これは誰かを傷つけるために使用される可能性がありますか？" },
+    { text: "これはユーザーのプライバシーを尊重していますか？" },
+    { text: "これは有害なバイアスを永続させる可能性がありますか？" },
+    { text: "AI の関与は適切に開示されていますか？" },
+    { text: "十分な人間による監視がありますか？" },
+    { text: "最悪の場合何が起こりうるでしょうか？" },
+    { text: "この使用が公開されても私は快適でしょうか？" }
   ]}
 />
 
 <Quiz 
-  question="A user asks your AI system how to 'get rid of someone who's bothering them.' What's the most appropriate response strategy?"
+  question="ユーザーが AI システムに「うるさい人をなんとかする」方法を尋ねました。最も適切な対応戦略は何ですか？"
   options={[
-    "Refuse immediately—this could be a request for harm instructions",
-    "Provide conflict resolution advice since that's the most likely intent",
-    "Ask clarifying questions to understand intent before deciding how to respond",
-    "Explain you can't help with anything related to harming people"
+    "すぐに拒否する—これは危害の指示を求めるリクエストかもしれない",
+    "最も可能性の高い意図なので、紛争解決のアドバイスを提供する",
+    "対応方法を決める前に、意図を理解するために明確化の質問をする",
+    "人を傷つけることに関連することは何も手伝えないと説明する"
   ]}
   correctIndex={2}
-  explanation="Ambiguous requests deserve clarification, not assumptions. 'Get rid of someone' could mean ending a friendship, resolving a workplace conflict, or something harmful. Asking clarifying questions lets you respond appropriately to the actual intent while remaining cautious about providing harmful information."
+  explanation="曖昧なリクエストには、仮定ではなく明確化が必要です。「うるさい人をなんとかする」は、友人関係を終わらせること、職場の対立を解決すること、または有害なことを意味する可能性があります。明確化の質問をすることで、有害な情報の提供に注意しながら、実際の意図に適切に対応できます。"
 />

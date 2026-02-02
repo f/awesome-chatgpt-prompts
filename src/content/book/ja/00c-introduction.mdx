@@ -1,130 +1,130 @@
-Welcome to **The Interactive Book of Prompting**, your guide to communicating effectively with AI.
+**インタラクティブ・プロンプティングの本**へようこそ。AIと効果的にコミュニケーションするためのガイドです。
 
-<Callout type="info" title="What You'll Learn">
-By the end of this book, you'll understand how AI works, how to write better prompts, and how to use these skills for writing, coding, research, and creative projects.
+<Callout type="info" title="この本で学べること">
+この本を読み終える頃には、AIがどのように動作するか、より良いプロンプトの書き方、そしてこれらのスキルを文章作成、コーディング、リサーチ、クリエイティブなプロジェクトに活用する方法を理解できるようになります。
 </Callout>
 
-<Callout type="tip" title="This Is an Interactive Book">
-Unlike traditional books, this guide is fully interactive. You'll find live demos, clickable examples, and "Try It" buttons throughout that let you test prompts instantly. Learning by doing makes complex concepts much easier to understand.
+<Callout type="tip" title="この本はインタラクティブです">
+従来の本とは異なり、このガイドは完全にインタラクティブです。ライブデモ、クリック可能な例、そしてプロンプトをすぐにテストできる「試してみる」ボタンが随所にあります。実際に手を動かして学ぶことで、複雑な概念もずっと理解しやすくなります。
 </Callout>
 
-## What is Prompt Engineering?
+## プロンプトエンジニアリングとは？
 
-Prompt engineering is the skill of writing good instructions for AI. When you type something to ChatGPT, Claude, Gemini, or other AI tools, that's called a "prompt." The better your prompt, the better the answer you get.
+プロンプトエンジニアリングとは、AIに対して良い指示を書くスキルです。ChatGPT、Claude、Gemini、その他のAIツールに何かを入力するとき、それを「プロンプト」と呼びます。プロンプトが良いほど、より良い回答が得られます。
 
-Think of it like this: AI is a powerful helper that takes your words very literally. It will do exactly what you ask. The trick is learning how to ask for exactly what you want.
+こう考えてみてください：AIはあなたの言葉を非常に忠実に受け取る強力なアシスタントです。あなたが求めたことを正確に実行します。コツは、自分が望むことを正確に伝える方法を学ぶことです。
 
 <Compare 
-  before={{ label: "Simple Prompt", content: "Write about dogs" }}
-  after={{ label: "Engineered Prompt", content: "Write a 200-word informative paragraph about the history of dog domestication, suitable for a middle school science textbook, with an engaging opening hook." }}
+  before={{ label: "シンプルなプロンプト", content: "犬について書いて" }}
+  after={{ label: "工夫されたプロンプト", content: "犬の家畜化の歴史について、中学校の理科の教科書に適した200語程度の説明的な段落を書いてください。興味を引く導入から始めてください。" }}
 />
 
-The difference in output quality between these two prompts can be dramatic.
+この2つのプロンプトの出力品質の違いは劇的になることがあります。
 
 <TryIt 
-  prompt="Write a 200-word informative paragraph about the history of dog domestication, suitable for a middle school science textbook, with an engaging opening hook."
-  description="Try this engineered prompt and compare the result to simply asking 'Write about dogs'."
+  prompt="犬の家畜化の歴史について、中学校の理科の教科書に適した200語程度の説明的な段落を書いてください。興味を引く導入から始めてください。"
+  description="この工夫されたプロンプトを試して、単に「犬について書いて」と聞いた場合の結果と比較してみてください。"
 />
 
-## How Prompt Engineering Has Evolved
+## プロンプトエンジニアリングの進化
 
-In just three years since ChatGPT launched, prompt engineering has evolved dramatically alongside the technology itself. What started as simply "writing better questions" has grown into something much broader.
+ChatGPTがローンチしてからわずか3年で、プロンプトエンジニアリングは技術そのものと共に劇的に進化しました。「より良い質問を書く」というシンプルなものから始まり、今ではずっと幅広いものへと成長しています。
 
-Today, we understand that your prompt is just **one part of a larger context**. Modern AI systems work with multiple types of data simultaneously:
+今日では、プロンプトは**より大きなコンテキストの一部に過ぎない**ことが分かっています。現代のAIシステムは、複数の種類のデータを同時に処理しています：
 
-- **System prompts** that define the AI's behavior
-- **Conversation history** from previous messages
-- **Retrieved documents** pulled from databases (RAG)
-- **Tool definitions** that let AI take actions
-- **User preferences** and settings
-- **Your actual prompt** - the question you're asking right now
+- **システムプロンプト** - AIの振る舞いを定義するもの
+- **会話履歴** - 以前のメッセージから
+- **取得されたドキュメント** - データベースから取得（RAG）
+- **ツール定義** - AIがアクションを実行できるようにするもの
+- **ユーザー設定** - 好みや設定
+- **あなたの実際のプロンプト** - 今まさに聞いている質問
 
-This shift from "prompt engineering" to "context engineering" reflects how we now think about AI interactions. Your prompt matters, but so does everything else the AI sees. The best results come from carefully managing all these pieces together.
+「プロンプトエンジニアリング」から「コンテキストエンジニアリング」へのこの変化は、AIとのやり取りについての考え方の変化を反映しています。プロンプトは重要ですが、AIが見る他のすべてのものも同様に重要です。最良の結果は、これらすべての要素を慎重に管理することで得られます。
 
-We'll explore these concepts in depth throughout this book, especially in the [Context Engineering](/book/20-context-engineering) chapter.
+これらの概念については、この本全体を通じて、特に[コンテキストエンジニアリング](/book/20-context-engineering)の章で詳しく探求します。
 
-## Why Does Prompt Engineering Matter?
+## なぜプロンプトエンジニアリングが重要なのか？
 
-### 1. Getting Better Answers
+### 1. より良い回答を得る
 
-AI tools are incredibly capable, but they need clear instructions to unlock their full potential. The same AI that gives a mediocre response to a vague question can produce brilliant work when prompted correctly.
+AIツールは非常に高い能力を持っていますが、その潜在能力を最大限に引き出すには明確な指示が必要です。曖昧な質問に対して平凡な回答を返すAIでも、適切にプロンプトを与えれば素晴らしい成果を生み出すことができます。
 
 <Compare 
-  before={{ label: "Vague Prompt", content: "Help me with my resume" }}
-  after={{ label: "Engineered Prompt", content: "Review my resume for a senior software engineer position. Focus on: 1) Impact metrics, 2) Technical skills section, 3) ATS optimization. Suggest specific improvements with examples." }}
+  before={{ label: "曖昧なプロンプト", content: "履歴書を手伝って" }}
+  after={{ label: "工夫されたプロンプト", content: "シニアソフトウェアエンジニアのポジション向けに私の履歴書をレビューしてください。以下に焦点を当ててください：1) インパクトの指標、2) 技術スキルのセクション、3) ATS最適化。具体的な改善点を例と共に提案してください。" }}
 />
 
-### 2. Saving Time and Money
+### 2. 時間とコストの節約
 
-A well-crafted prompt gets results in one try instead of multiple back-and-forth exchanges. This matters even more when you're paying per token or working with rate limits. A 5-minute investment in writing a good prompt can save hours of iteration.
+よく練られたプロンプトは、何度もやり取りを重ねる代わりに1回で結果を得られます。トークンごとに課金される場合やレート制限がある場合、これは特に重要です。良いプロンプトを書くための5分の投資が、何時間もの修正作業を節約することができます。
 
-### 3. Getting Consistent, Reproducible Results
+### 3. 一貫性のある再現可能な結果を得る
 
-Good prompts produce predictable outputs. This is critical for:
-- **Business workflows** where you need the same quality every time
-- **Automation** where prompts run without human review
-- **Teams** where multiple people need similar results
+良いプロンプトは予測可能な出力を生み出します。これは以下の場合に重要です：
+- **ビジネスワークフロー** - 毎回同じ品質が必要な場合
+- **自動化** - 人間のレビューなしでプロンプトが実行される場合
+- **チーム** - 複数の人が同様の結果を必要とする場合
 
-### 4. Unlocking Advanced Capabilities
+### 4. 高度な機能を引き出す
 
-Many powerful AI features only work when you know how to ask:
-- **Chain-of-thought reasoning** for complex problems
-- **Structured output** for data extraction
-- **Role-playing** for specialized expertise
-- **Few-shot learning** for custom tasks
+多くの強力なAI機能は、適切な聞き方を知っている場合にのみ機能します：
+- **Chain-of-thought推論** - 複雑な問題向け
+- **構造化された出力** - データ抽出向け
+- **ロールプレイ** - 専門的な知識向け
+- **Few-shot学習** - カスタムタスク向け
 
-Without prompt engineering knowledge, you're only using a fraction of what AI can do.
+プロンプトエンジニアリングの知識がなければ、AIができることのほんの一部しか使っていないことになります。
 
-### 5. Staying Safe and Avoiding Pitfalls
+### 5. 安全を保ち、落とし穴を避ける
 
-Good prompting helps you:
-- Avoid hallucinations by asking for sources and verification
-- Get balanced perspectives instead of one-sided answers
-- Prevent the AI from making assumptions you didn't intend
-- Keep sensitive information out of your prompts
+良いプロンプティングは以下に役立ちます：
+- 出典や検証を求めることでハルシネーションを避ける
+- 一方的な回答ではなくバランスの取れた視点を得る
+- 意図しない仮定をAIがすることを防ぐ
+- センシティブな情報をプロンプトに含めないようにする
 
-### 6. Future-Proofing Your Skills
+### 6. スキルの将来性を確保する
 
-As AI becomes more integrated into work and life, prompt engineering becomes a fundamental literacy. The principles you learn here apply across all AI tools—ChatGPT, Claude, Gemini, image generators, and future models we haven't seen yet.
+AIが仕事や生活により統合されるにつれて、プロンプトエンジニアリングは基本的なリテラシーになります。ここで学ぶ原則は、ChatGPT、Claude、Gemini、画像生成AI、そしてまだ見ぬ将来のモデルなど、すべてのAIツールに適用できます。
 
-## Who Is This Book For?
+## この本は誰のためのものか？
 
-This book is for everyone:
+この本はすべての人のためのものです：
 
-- **Beginners** who want to learn how to use AI tools better
-- **Students** working on homework, research, or creative projects
-- **Writers and creators** using AI for their work
-- **Developers** building apps with AI
-- **Business people** who want to use AI at work
-- **Anyone curious** about getting more out of AI assistants
+- **初心者** - AIツールをより上手に使いたい方
+- **学生** - 宿題、研究、クリエイティブなプロジェクトに取り組む方
+- **ライターやクリエイター** - 仕事にAIを使う方
+- **開発者** - AIを使ったアプリを構築する方
+- **ビジネスパーソン** - 仕事でAIを使いたい方
+- **興味がある方** - AIアシスタントをもっと活用したいすべての方
 
-## How This Book Is Organized
+## この本の構成
 
 <BookPartsNav />
 
-Plus an **Appendix** with templates, troubleshooting help, glossary, and extra resources.
+さらに、テンプレート、トラブルシューティングのヘルプ、用語集、追加リソースを含む**付録**があります。
 
-## A Note on AI Models
+## AIモデルについての注意
 
-This book mostly uses examples from ChatGPT (since it's the most popular), but the ideas work with any AI tool like Claude, Gemini, or others. We'll mention when something only works with specific AI models.
+この本では主にChatGPT（最も人気があるため）の例を使用していますが、ここで紹介するアイデアはClaude、Gemini、その他のAIツールでも機能します。特定のAIモデルでのみ機能する場合は、その旨を記載します。
 
-AI is changing fast. What works today might be replaced by something better tomorrow. That's why this book focuses on core ideas that will stay useful no matter which AI you use.
+AIは急速に変化しています。今日うまくいくことが、明日にはより良いものに置き換わるかもしれません。だからこそ、この本ではどのAIを使っても役立つ核となるアイデアに焦点を当てています。
 
-## Let's Begin
+## さあ、始めましょう
 
-Writing good prompts is a skill that gets better with practice. As you read this book:
+良いプロンプトを書くことは、練習を重ねるほど上達するスキルです。この本を読み進める際には：
 
-1. **Try things** - Test the examples, change them, see what happens
-2. **Keep trying** - Don't expect perfect results on your first attempt
-3. **Take notes** - Write down what works and what doesn't
-4. **Share** - Add your discoveries to [prompts.chat](https://prompts.chat)
+1. **試してみる** - 例をテストし、変更を加え、何が起こるか見てみましょう
+2. **挑戦し続ける** - 最初の試みで完璧な結果を期待しないでください
+3. **メモを取る** - うまくいったことと、いかなかったことを書き留めましょう
+4. **共有する** - あなたの発見を[prompts.chat](https://prompts.chat)に追加しましょう
 
-<Callout type="tip" title="Practice Makes Perfect">
-The best way to learn is by doing. Every chapter has examples you can try right away. Don't just read. Try it yourself!
+<Callout type="tip" title="練習あるのみ">
+学ぶ最良の方法は実践することです。すべての章にすぐに試せる例があります。読むだけでなく、自分で試してみてください！
 </Callout>
 
-Ready to transform how you work with AI? Turn the page and let's get started.
+AIとの働き方を変革する準備はできましたか？ページをめくって、始めましょう。
 
 ---
 
-*This book is part of the [Awesome ChatGPT Prompts](https://github.com/f/prompts.chat) project and is licensed under CC0 1.0 Universal (Public Domain).*
+*この本は[Awesome ChatGPT Prompts](https://github.com/f/prompts.chat)プロジェクトの一部であり、CC0 1.0 Universal（パブリックドメイン）でライセンスされています。*
