@@ -1,30 +1,30 @@
-Structured data formats like JSON and YAML are essential for building applications that consume AI outputs programmatically. This chapter covers techniques for reliable structured output generation.
+فرمت‌های داده ساختاریافته مانند JSON و YAML برای ساخت برنامه‌هایی که خروجی‌های هوش مصنوعی را به صورت برنامه‌ای مصرف می‌کنند ضروری هستند. این فصل تکنیک‌هایی برای تولید قابل اعتماد خروجی ساختاریافته را پوشش می‌دهد.
 
-<Callout type="info" title="From Text to Data">
-JSON and YAML transform AI outputs from freeform text into structured, type-safe data that code can consume directly.
+<Callout type="info" title="از متن به داده">
+JSON و YAML خروجی‌های هوش مصنوعی را از متن آزاد به داده‌های ساختاریافته و type-safe تبدیل می‌کنند که کد می‌تواند مستقیماً مصرف کند.
 </Callout>
 
-## Why Structured Formats?
+## چرا فرمت‌های ساختاریافته؟
 
 <JsonYamlDemo />
 
-## JSON Prompting Basics
+## مبانی پرامپت‌نویسی JSON
 
-JSON (JavaScript Object Notation) is the most common format for programmatic AI outputs. Its strict syntax makes it easy to parse, but also means small errors can break your entire pipeline.
+JSON (JavaScript Object Notation) رایج‌ترین فرمت برای خروجی‌های برنامه‌ای هوش مصنوعی است. سینتکس دقیق آن تجزیه را آسان می‌کند، اما همچنین به این معنی است که خطاهای کوچک می‌توانند کل خط لوله شما را خراب کنند.
 
-### Do's and Don'ts: Requesting JSON
+### بایدها و نبایدها: درخواست JSON
 
 <Compare 
-  before={{ label: "❌ Don't: Vague request", content: "Give me the user info as JSON." }}
-  after={{ label: "✓ Do: Show the schema", content: "Extract user info as JSON matching this schema:\n\n{\n  \"name\": \"string\",\n  \"age\": number,\n  \"email\": \"string\"\n}\n\nReturn ONLY valid JSON, no markdown." }}
+  before={{ label: "❌ نکنید: درخواست مبهم", content: "اطلاعات کاربر را به صورت JSON به من بده." }}
+  after={{ label: "✓ بکنید: اسکیما را نشان دهید", content: "اطلاعات کاربر را به صورت JSON مطابق این اسکیما استخراج کن:\n\n{\n  \"name\": \"string\",\n  \"age\": number,\n  \"email\": \"string\"\n}\n\nفقط JSON معتبر برگردان، بدون markdown." }}
 />
 
-### Simple JSON Output
+### خروجی ساده JSON
 
-Start with a schema showing the expected structure. The model will fill in values based on the input text.
+با یک اسکیما شروع کنید که ساختار مورد انتظار را نشان می‌دهد. مدل مقادیر را بر اساس متن ورودی پر می‌کند.
 
 ```
-Extract the following information as JSON:
+اطلاعات زیر را به صورت JSON استخراج کن:
 
 {
   "name": "string",
@@ -35,7 +35,7 @@ Extract the following information as JSON:
 Text: "Contact John Smith, 34 years old, at john@example.com"
 ```
 
-Output:
+خروجی:
 ```json
 {
   "name": "John Smith",
@@ -44,12 +44,12 @@ Output:
 }
 ```
 
-### Nested JSON Structures
+### ساختارهای تودرتوی JSON
 
-Real-world data often has nested relationships. Define each level of your schema clearly, especially for arrays of objects.
+داده‌های دنیای واقعی اغلب روابط تودرتو دارند. هر سطح از اسکیمای خود را به وضوح تعریف کنید، به خصوص برای آرایه‌های اشیاء.
 
 ```
-Parse this order into JSON:
+این سفارش را به JSON تبدیل کن:
 
 {
   "order_id": "string",
@@ -71,33 +71,33 @@ Order: "Order #12345 for Jane Doe (jane@email.com): 2x Widget ($10 each),
 1x Gadget ($25). Total: $45"
 ```
 
-### Ensuring Valid JSON
+### اطمینان از JSON معتبر
 
-<Callout type="warning" title="Common Failure Point">
-Models often wrap JSON in markdown code blocks or add explanatory text. Be explicit about wanting raw JSON only.
+<Callout type="warning" title="نقطه شکست رایج">
+مدل‌ها اغلب JSON را در بلوک‌های کد markdown قرار می‌دهند یا متن توضیحی اضافه می‌کنند. صریحاً بگویید که فقط JSON خام می‌خواهید.
 </Callout>
 
-Add explicit instructions:
+دستورالعمل‌های صریح اضافه کنید:
 
 ```
-CRITICAL: Return ONLY valid JSON. No markdown, no explanation, 
-no additional text before or after the JSON object.
+مهم: فقط JSON معتبر برگردان. بدون markdown، بدون توضیح،
+بدون متن اضافی قبل یا بعد از شیء JSON.
 
-If a field cannot be determined, use null.
-Ensure all strings are properly quoted and escaped.
-Numbers should not be quoted.
+اگر یک فیلد قابل تعیین نیست، از null استفاده کن.
+اطمینان حاصل کن که همه رشته‌ها به درستی نقل‌قول و escape شده‌اند.
+اعداد نباید نقل‌قول شوند.
 ```
 
-## YAML Prompting Basics
+## مبانی پرامپت‌نویسی YAML
 
-YAML is more human-readable than JSON and supports comments. It's the standard for configuration files, especially in DevOps (Docker, Kubernetes, GitHub Actions).
+YAML نسبت به JSON برای انسان خواناتر است و از نظرات پشتیبانی می‌کند. این استاندارد برای فایل‌های پیکربندی است، به خصوص در DevOps (Docker، Kubernetes، GitHub Actions).
 
-### Simple YAML Output
+### خروجی ساده YAML
 
-YAML uses indentation instead of braces. Provide a template showing the expected structure.
+YAML به جای آکولاد از تورفتگی استفاده می‌کند. یک قالب ارائه دهید که ساختار مورد انتظار را نشان دهد.
 
 ```
-Generate a configuration file in YAML format:
+یک فایل پیکربندی در فرمت YAML تولید کن:
 
 server:
   host: string
@@ -107,10 +107,10 @@ database:
   type: string
   connection_string: string
 
-Requirements: Production server on port 443 with SSL, PostgreSQL database
+الزامات: سرور Production روی پورت 443 با SSL، پایگاه داده PostgreSQL
 ```
 
-Output:
+خروجی:
 ```yaml
 server:
   host: "0.0.0.0"
@@ -121,31 +121,31 @@ database:
   connection_string: "postgresql://user:pass@localhost:5432/prod"
 ```
 
-### Complex YAML Structures
+### ساختارهای پیچیده YAML
 
-For complex configurations, be specific about requirements. The model knows common patterns for tools like GitHub Actions, Docker Compose, and Kubernetes.
+برای پیکربندی‌های پیچیده، در مورد الزامات دقیق باشید. مدل الگوهای رایج برای ابزارهایی مانند GitHub Actions، Docker Compose و Kubernetes را می‌شناسد.
 
 ```
-Generate a GitHub Actions workflow in YAML:
+یک GitHub Actions workflow در YAML تولید کن:
 
-Requirements:
-- Trigger on push to main and pull requests
-- Run on Ubuntu latest
-- Steps: checkout, setup Node 18, install dependencies, run tests
-- Cache npm dependencies
+الزامات:
+- راه‌اندازی با push به main و pull request‌ها
+- اجرا روی Ubuntu latest
+- مراحل: checkout، راه‌اندازی Node 18، نصب وابستگی‌ها، اجرای تست‌ها
+- کش کردن وابستگی‌های npm
 ```
 
-## Type Definitions in Prompts
+## تعریف تایپ در پرامپت‌ها
 
-Type definitions give the model a precise contract for output structure. They're more explicit than examples and easier to validate programmatically.
+تعریف‌های تایپ یک قرارداد دقیق برای ساختار خروجی به مدل می‌دهند. آن‌ها نسبت به مثال‌ها صریح‌تر هستند و اعتبارسنجی برنامه‌ای آن‌ها آسان‌تر است.
 
-### Using TypeScript-like Types
+### استفاده از تایپ‌های شبیه TypeScript
 
-TypeScript interfaces are familiar to developers and precisely describe optional fields, union types, and arrays. The prompts.chat platform uses this approach for structured prompts.
+رابط‌های TypeScript برای توسعه‌دهندگان آشنا هستند و فیلدهای اختیاری، تایپ‌های union و آرایه‌ها را دقیقاً توصیف می‌کنند. پلتفرم prompts.chat از این رویکرد برای پرامپت‌های ساختاریافته استفاده می‌کند.
 
 <TryIt 
-  title="TypeScript Interface Extraction"
-  description="Use a TypeScript interface to extract structured data."
+  title="استخراج رابط TypeScript"
+  description="از یک رابط TypeScript برای استخراج داده‌های ساختاریافته استفاده کنید."
   prompt={`Extract data according to this type definition:
 
 interface ChatPersona {
@@ -162,16 +162,16 @@ Return as JSON matching this interface.
 Description: "A senior software engineer named Alex who reviews code. They're analytical and thorough, with expertise in backend systems and databases. Professional but approachable tone."`}
 />
 
-### JSON Schema Definition
+### تعریف JSON Schema
 
-<Callout type="info" title="Industry Standard">
-JSON Schema is a formal specification for describing JSON structure. It's supported by many validation libraries and API tools.
+<Callout type="info" title="استاندارد صنعتی">
+JSON Schema یک مشخصات رسمی برای توصیف ساختار JSON است. توسط بسیاری از کتابخانه‌های اعتبارسنجی و ابزارهای API پشتیبانی می‌شود.
 </Callout>
 
-JSON Schema provides constraints like min/max values, required fields, and regex patterns:
+JSON Schema محدودیت‌هایی مانند مقادیر حداقل/حداکثر، فیلدهای الزامی و الگوهای regex ارائه می‌دهد:
 
 ```
-Extract data according to this JSON Schema:
+داده‌ها را طبق این JSON Schema استخراج کن:
 
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -197,88 +197,88 @@ Book: "1984 by George Orwell (1949) - A dystopian masterpiece.
 Genres: Science Fiction, Political Fiction. Rated 4.8/5"
 ```
 
-## Handling Arrays
+## کار با آرایه‌ها
 
-Arrays require special attention. Specify whether you need a fixed number of items or a variable-length list, and how to handle empty cases.
+آرایه‌ها نیاز به توجه ویژه دارند. مشخص کنید که آیا به تعداد ثابتی از آیتم‌ها نیاز دارید یا یک لیست با طول متغیر، و چگونه موارد خالی را مدیریت کنید.
 
-### Fixed-Length Arrays
+### آرایه‌های با طول ثابت
 
-When you need exactly N items, state it explicitly. The model will ensure the array has the right length.
+وقتی دقیقاً به N آیتم نیاز دارید، صریحاً بگویید. مدل اطمینان حاصل می‌کند که آرایه طول صحیح دارد.
 
 ```
-Extract exactly 3 key points as JSON:
+دقیقاً 3 نکته کلیدی را به صورت JSON استخراج کن:
 
 {
   "key_points": [
-    "string (first point)",
-    "string (second point)", 
-    "string (third point)"
+    "string (نکته اول)",
+    "string (نکته دوم)", 
+    "string (نکته سوم)"
   ]
 }
 
-Article: [article text]
+Article: [متن مقاله]
 ```
 
-### Variable-Length Arrays
+### آرایه‌های با طول متغیر
 
-For variable-length arrays, specify what to do when there are zero items. Including a count field helps verify extraction completeness.
+برای آرایه‌های با طول متغیر، مشخص کنید که وقتی صفر آیتم وجود دارد چه کاری انجام شود. شامل کردن یک فیلد شمارش به تأیید کامل بودن استخراج کمک می‌کند.
 
 ```
-Extract all mentioned people as JSON:
+همه افراد ذکر شده را به صورت JSON استخراج کن:
 
 {
   "people": [
     {
       "name": "string",
-      "role": "string or null if not mentioned"
+      "role": "string یا null اگر ذکر نشده"
     }
   ],
   "count": number
 }
 
-If no people are mentioned, return empty array.
+اگر هیچ فردی ذکر نشده، آرایه خالی برگردان.
 
-Text: [text]
+Text: [متن]
 ```
 
-## Enum Values and Constraints
+## مقادیر Enum و محدودیت‌ها
 
-Enums restrict values to a predefined set. This is crucial for classification tasks and anywhere you need consistent, predictable outputs.
+Enum‌ها مقادیر را به یک مجموعه از پیش تعریف شده محدود می‌کنند. این برای وظایف طبقه‌بندی و هر جایی که به خروجی‌های سازگار و قابل پیش‌بینی نیاز دارید حیاتی است.
 
-### Do's and Don'ts: Enum Values
+### بایدها و نبایدها: مقادیر Enum
 
 <Compare 
-  before={{ label: "❌ Don't: Open-ended categories", content: "Classify this text into a category.\n\n{\n  \"category\": \"string\"\n}" }}
-  after={{ label: "✓ Do: Restrict to valid values", content: "Classify this text. Category MUST be exactly one of:\n- \"technical\"\n- \"business\"\n- \"creative\"\n- \"personal\"\n\n{\n  \"category\": \"one of the values above\"\n}" }}
+  before={{ label: "❌ نکنید: دسته‌های باز", content: "این متن را در یک دسته‌بندی طبقه‌بندی کن.\n\n{\n  \"category\": \"string\"\n}" }}
+  after={{ label: "✓ بکنید: به مقادیر معتبر محدود کن", content: "این متن را طبقه‌بندی کن. دسته‌بندی باید دقیقاً یکی از این‌ها باشد:\n- \"technical\"\n- \"business\"\n- \"creative\"\n- \"personal\"\n\n{\n  \"category\": \"یکی از مقادیر بالا\"\n}" }}
 />
 
-### String Enums
+### Enum‌های رشته‌ای
 
-List allowed values explicitly. Use "MUST be one of" language to enforce strict matching.
+مقادیر مجاز را صریحاً لیست کنید. از زبان "باید یکی از این‌ها باشد" برای اجرای تطابق دقیق استفاده کنید.
 
 ```
-Classify this text. The category MUST be one of these exact values:
+این متن را طبقه‌بندی کن. دسته‌بندی باید یکی از این مقادیر دقیق باشد:
 - "technical"
 - "business" 
 - "creative"
 - "personal"
 
-Return JSON:
+JSON برگردان:
 {
-  "text": "original text (truncated to 50 chars)",
-  "category": "one of the enum values above",
-  "confidence": number between 0 and 1
+  "text": "متن اصلی (کوتاه شده به 50 کاراکتر)",
+  "category": "یکی از مقادیر enum بالا",
+  "confidence": عدد بین 0 و 1
 }
 
-Text: [text to classify]
+Text: [متن برای طبقه‌بندی]
 ```
 
-### Validated Numbers
+### اعداد اعتبارسنجی شده
 
-Numeric constraints prevent out-of-range values. Specify the type (integer vs float) and valid range.
+محدودیت‌های عددی از مقادیر خارج از محدوده جلوگیری می‌کنند. تایپ (integer در مقابل float) و محدوده معتبر را مشخص کنید.
 
 ```
-Rate these aspects. Each score MUST be an integer from 1 to 5.
+این جنبه‌ها را امتیاز بده. هر امتیاز باید یک عدد صحیح از 1 تا 5 باشد.
 
 {
   "quality": 1-5,
@@ -287,40 +287,40 @@ Rate these aspects. Each score MUST be an integer from 1 to 5.
   "overall": 1-5
 }
 
-Review: [review text]
+Review: [متن بازخورد]
 ```
 
-## Handling Missing Data
+## مدیریت داده‌های گمشده
 
-Real-world text often lacks some information. Define how the model should handle missing data to avoid hallucinated values.
+متن دنیای واقعی اغلب برخی اطلاعات را ندارد. تعریف کنید که مدل چگونه باید داده‌های گمشده را مدیریت کند تا از مقادیر ساختگی جلوگیری شود.
 
-### Do's and Don'ts: Missing Information
+### بایدها و نبایدها: اطلاعات گمشده
 
 <Compare 
-  before={{ label: "❌ Don't: Let AI guess", content: "Extract all company details as JSON:\n{\n  \"revenue\": number,\n  \"employees\": number\n}" }}
-  after={{ label: "✓ Do: Explicitly allow null", content: "Extract company details. Use null for any field NOT explicitly mentioned. Do NOT invent or estimate values.\n\n{\n  \"revenue\": \"number or null\",\n  \"employees\": \"number or null\"\n}" }}
+  before={{ label: "❌ نکنید: بگذار AI حدس بزند", content: "همه جزئیات شرکت را به صورت JSON استخراج کن:\n{\n  \"revenue\": number,\n  \"employees\": number\n}" }}
+  after={{ label: "✓ بکنید: صریحاً null را مجاز کن", content: "جزئیات شرکت را استخراج کن. برای هر فیلدی که صریحاً ذکر نشده از null استفاده کن. مقادیر را اختراع نکن یا تخمین نزن.\n\n{\n  \"revenue\": \"number یا null\",\n  \"employees\": \"number یا null\"\n}" }}
 />
 
-### Null Values
+### مقادیر Null
 
-Explicitly allow null and instruct the model not to invent information. This is safer than having the model guess.
+صریحاً null را مجاز کنید و به مدل دستور دهید که اطلاعات اختراع نکند. این امن‌تر از حدس زدن مدل است.
 
 ```
-Extract information. Use null for any field that cannot be 
-determined from the text. Do NOT invent information.
+اطلاعات را استخراج کن. برای هر فیلدی که نمی‌توان از متن تعیین کرد
+از null استفاده کن. اطلاعات اختراع نکن.
 
 {
-  "company": "string or null",
-  "revenue": "number or null",
-  "employees": "number or null",
-  "founded": "number (year) or null",
-  "headquarters": "string or null"
+  "company": "string یا null",
+  "revenue": "number یا null",
+  "employees": "number یا null",
+  "founded": "number (سال) یا null",
+  "headquarters": "string یا null"
 }
 
 Text: "Apple, headquartered in Cupertino, was founded in 1976."
 ```
 
-Output:
+خروجی:
 ```json
 {
   "company": "Apple",
@@ -331,39 +331,39 @@ Output:
 }
 ```
 
-### Default Values
+### مقادیر پیش‌فرض
 
-When defaults make sense, specify them in the schema. This is common for configuration extraction.
+وقتی مقادیر پیش‌فرض منطقی هستند، آن‌ها را در اسکیما مشخص کنید. این برای استخراج پیکربندی رایج است.
 
 ```
-Extract settings with these defaults if not specified:
+تنظیمات را با این پیش‌فرض‌ها استخراج کن اگر مشخص نشده:
 
 {
-  "theme": "light" (default) | "dark",
-  "language": "en" (default) | other ISO code,
-  "notifications": true (default) | false,
-  "fontSize": 14 (default) | number
+  "theme": "light" (پیش‌فرض) | "dark",
+  "language": "en" (پیش‌فرض) | کد ISO دیگر,
+  "notifications": true (پیش‌فرض) | false,
+  "fontSize": 14 (پیش‌فرض) | number
 }
 
 User preferences: "I want dark mode and larger text (18px)"
 ```
 
-## Multi-Object Responses
+## پاسخ‌های چند شیئی
 
-Often you need to extract multiple items from a single input. Define the array structure and any sorting/grouping requirements.
+اغلب نیاز دارید چندین آیتم را از یک ورودی واحد استخراج کنید. ساختار آرایه و هرگونه الزامات مرتب‌سازی/گروه‌بندی را تعریف کنید.
 
-### Array of Objects
+### آرایه‌ای از اشیاء
 
-For lists of similar items, define the object schema once and specify it's an array.
+برای لیست‌هایی از آیتم‌های مشابه، اسکیمای شیء را یک بار تعریف کنید و مشخص کنید که یک آرایه است.
 
 ```
-Parse this list into JSON array:
+این لیست را به آرایه JSON تبدیل کن:
 
 [
   {
     "task": "string",
     "priority": "high" | "medium" | "low",
-    "due": "ISO date string or null"
+    "due": "رشته تاریخ ISO یا null"
   }
 ]
 
@@ -373,214 +373,214 @@ Todo list:
 - Review PR #123 (medium, due Friday)
 ```
 
-### Grouped Objects
+### اشیاء گروه‌بندی شده
 
-Grouping tasks require categorization logic. The model will sort items into the categories you define.
+وظایف گروه‌بندی نیاز به منطق دسته‌بندی دارند. مدل آیتم‌ها را در دسته‌هایی که تعریف می‌کنید مرتب می‌کند.
 
 ```
-Categorize these items into JSON:
+این آیتم‌ها را به JSON دسته‌بندی کن:
 
 {
-  "fruits": ["string array"],
-  "vegetables": ["string array"],
-  "other": ["string array"]
+  "fruits": ["آرایه رشته‌ای"],
+  "vegetables": ["آرایه رشته‌ای"],
+  "other": ["آرایه رشته‌ای"]
 }
 
 Items: apple, carrot, bread, banana, broccoli, milk, orange, spinach
 ```
 
-## YAML for Configuration Generation
+## YAML برای تولید پیکربندی
 
-YAML shines for DevOps configurations. The model knows standard patterns for common tools and can generate production-ready configs.
+YAML برای پیکربندی‌های DevOps می‌درخشد. مدل الگوهای استاندارد برای ابزارهای رایج را می‌شناسد و می‌تواند پیکربندی‌های آماده تولید تولید کند.
 
-### Do's and Don'ts: YAML Configs
+### بایدها و نبایدها: پیکربندی‌های YAML
 
 <Compare 
-  before={{ label: "❌ Don't: Vague requirements", content: "Generate a docker-compose file for my app." }}
-  after={{ label: "✓ Do: Specify components and needs", content: "Generate docker-compose.yml for:\n- Node.js app (port 3000)\n- PostgreSQL database\n- Redis cache\n\nInclude: health checks, volume persistence, environment from .env file" }}
+  before={{ label: "❌ نکنید: الزامات مبهم", content: "یک فایل docker-compose برای برنامه‌ام تولید کن." }}
+  after={{ label: "✓ بکنید: اجزا و نیازها را مشخص کن", content: "docker-compose.yml تولید کن برای:\n- برنامه Node.js (پورت 3000)\n- پایگاه داده PostgreSQL\n- کش Redis\n\nشامل: health check‌ها، ذخیره‌سازی volume، محیط از فایل .env" }}
 />
 
 ### Docker Compose
 
-Specify the services you need and any special requirements. The model will handle the YAML syntax and best practices.
+سرویس‌هایی که نیاز دارید و هرگونه الزامات خاص را مشخص کنید. مدل سینتکس YAML و بهترین شیوه‌ها را مدیریت می‌کند.
 
 ```
-Generate a docker-compose.yml for:
-- Node.js app on port 3000
-- PostgreSQL database
-- Redis cache
-- Nginx reverse proxy
+docker-compose.yml تولید کن برای:
+- برنامه Node.js روی پورت 3000
+- پایگاه داده PostgreSQL
+- کش Redis
+- پروکسی معکوس Nginx
 
-Include:
-- Health checks
-- Volume persistence
-- Environment variables from .env file
-- Network isolation
+شامل:
+- Health check‌ها
+- ذخیره‌سازی Volume
+- متغیرهای محیطی از فایل .env
+- جداسازی شبکه
 ```
 
-### Kubernetes Manifests
+### Manifest‌های Kubernetes
 
-Kubernetes manifests are verbose but follow predictable patterns. Provide the key parameters and the model will generate compliant YAML.
+Manifest‌های Kubernetes طولانی هستند اما از الگوهای قابل پیش‌بینی پیروی می‌کنند. پارامترهای کلیدی را ارائه دهید و مدل YAML سازگار تولید می‌کند.
 
 ```
-Generate Kubernetes deployment YAML:
+YAML deployment برای Kubernetes تولید کن:
 
 Deployment:
 - Name: api-server
 - Image: myapp:v1.2.3
 - Replicas: 3
-- Resources: 256Mi memory, 250m CPU (requests)
-- Health checks: /health endpoint
-- Environment from ConfigMap: api-config
+- Resources: 256Mi حافظه، 250m CPU (درخواست‌ها)
+- Health check‌ها: endpoint /health
+- Environment از ConfigMap: api-config
 
-Also generate matching Service (ClusterIP, port 8080)
+همچنین Service متناظر تولید کن (ClusterIP، پورت 8080)
 ```
 
-## Validation and Error Handling
+## اعتبارسنجی و مدیریت خطا
 
-For production systems, build validation into your prompts. This catches errors before they propagate through your pipeline.
+برای سیستم‌های تولیدی، اعتبارسنجی را در پرامپت‌های خود بسازید. این خطاها را قبل از انتشار در خط لوله شما می‌گیرد.
 
-### Self-Validation Prompt
+### پرامپت خود-اعتبارسنجی
 
-Ask the model to validate its own output against rules you specify. This catches format errors and invalid values.
+از مدل بخواهید خروجی خود را در برابر قوانینی که مشخص می‌کنید اعتبارسنجی کند. این خطاهای فرمت و مقادیر نامعتبر را می‌گیرد.
 
 ```
-Extract data as JSON, then validate your output.
+داده‌ها را به صورت JSON استخراج کن، سپس خروجی خود را اعتبارسنجی کن.
 
 Schema:
 {
-  "email": "valid email format",
-  "phone": "E.164 format (+1234567890)",
-  "date": "ISO 8601 format (YYYY-MM-DD)"
+  "email": "فرمت ایمیل معتبر",
+  "phone": "فرمت E.164 (+1234567890)",
+  "date": "فرمت ISO 8601 (YYYY-MM-DD)"
 }
 
-After generating JSON, check:
-1. Email contains @ and valid domain
-2. Phone starts with + and contains only digits
-3. Date is valid and parseable
+بعد از تولید JSON، بررسی کن:
+1. ایمیل شامل @ و دامنه معتبر باشد
+2. تلفن با + شروع شود و فقط ارقام داشته باشد
+3. تاریخ معتبر و قابل تجزیه باشد
 
-If validation fails, fix the issues before responding.
+اگر اعتبارسنجی شکست خورد، مشکلات را قبل از پاسخ دادن رفع کن.
 
-Text: [contact information]
+Text: [اطلاعات تماس]
 ```
 
-### Error Response Format
+### فرمت پاسخ خطا
 
-Define separate success and error formats. This makes programmatic handling much easier.
+فرمت‌های موفقیت و خطای جداگانه تعریف کنید. این مدیریت برنامه‌ای را بسیار آسان‌تر می‌کند.
 
 ```
-Attempt to extract data. If extraction fails, return error format:
+سعی کن داده‌ها را استخراج کنی. اگر استخراج شکست خورد، فرمت خطا برگردان:
 
-Success format:
+فرمت موفقیت:
 {
   "success": true,
-  "data": { ... extracted data ... }
+  "data": { ... داده‌های استخراج شده ... }
 }
 
-Error format:
+فرمت خطا:
 {
   "success": false,
-  "error": "description of what went wrong",
-  "partial_data": { ... any data that could be extracted ... }
+  "error": "توضیح اینکه چه مشکلی پیش آمد",
+  "partial_data": { ... هر داده‌ای که می‌توان استخراج کرد ... }
 }
 ```
 
-## JSON vs YAML: When to Use Which
+## JSON در مقابل YAML: چه زمانی از کدام استفاده کنیم
 
 <div className="my-4 grid md:grid-cols-2 gap-4">
   <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-800">
-    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">Use JSON When</div>
+    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">از JSON استفاده کنید وقتی</div>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Programmatic parsing needed</p>
-      <p className="m-0!">API responses</p>
-      <p className="m-0!">Strict type requirements</p>
-      <p className="m-0!">JavaScript/Web integration</p>
-      <p className="m-0!">Compact representation</p>
+      <p className="m-0!">تجزیه برنامه‌ای لازم است</p>
+      <p className="m-0!">پاسخ‌های API</p>
+      <p className="m-0!">الزامات تایپ دقیق</p>
+      <p className="m-0!">یکپارچه‌سازی JavaScript/Web</p>
+      <p className="m-0!">نمایش فشرده</p>
     </div>
   </div>
   <div className="p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg border border-purple-200 dark:border-purple-800">
-    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Use YAML When</div>
+    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">از YAML استفاده کنید وقتی</div>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Human readability matters</p>
-      <p className="m-0!">Configuration files</p>
-      <p className="m-0!">Comments are needed</p>
-      <p className="m-0!">DevOps/Infrastructure</p>
-      <p className="m-0!">Deep nested structures</p>
+      <p className="m-0!">خوانایی انسانی مهم است</p>
+      <p className="m-0!">فایل‌های پیکربندی</p>
+      <p className="m-0!">نظرات مورد نیاز است</p>
+      <p className="m-0!">DevOps/زیرساخت</p>
+      <p className="m-0!">ساختارهای تودرتوی عمیق</p>
     </div>
   </div>
 </div>
 
-## Prompts.chat Structured Prompts
+## پرامپت‌های ساختاریافته prompts.chat
 
-On prompts.chat, you can create prompts with structured output formats:
+در prompts.chat، می‌توانید پرامپت‌هایی با فرمت‌های خروجی ساختاریافته ایجاد کنید:
 
 ```
-When creating a prompt on prompts.chat, you can specify:
+هنگام ایجاد پرامپت در prompts.chat، می‌توانید مشخص کنید:
 
 Type: STRUCTURED
-Format: JSON or YAML
+Format: JSON یا YAML
 
-The platform will:
-- Validate outputs against your schema
-- Provide syntax highlighting
-- Enable easy copying of structured output
-- Support template variables in your schema
+پلتفرم:
+- خروجی‌ها را در برابر اسکیمای شما اعتبارسنجی می‌کند
+- برجسته‌سازی سینتکس ارائه می‌دهد
+- کپی آسان خروجی ساختاریافته را فعال می‌کند
+- از متغیرهای قالب در اسکیمای شما پشتیبانی می‌کند
 ```
 
-## Common Pitfalls
+## دام‌های رایج
 
-<Callout type="warning" title="Debug These First">
-These three issues cause most JSON parsing failures. Check for them when your code can't parse AI output.
+<Callout type="warning" title="این‌ها را اول اشکال‌زدایی کنید">
+این سه مشکل بیشتر خطاهای تجزیه JSON را ایجاد می‌کنند. وقتی کد شما نمی‌تواند خروجی هوش مصنوعی را تجزیه کند، این‌ها را بررسی کنید.
 </Callout>
 
-### 1. Markdown Code Blocks
+### 1. بلوک‌های کد Markdown
 
-**Problem:** Model wraps JSON in ```json blocks
+**مشکل:** مدل JSON را در بلوک‌های ```json قرار می‌دهد
 
-**Solution:** 
+**راه‌حل:** 
 ```
-Return ONLY the JSON object. Do not wrap in markdown code blocks.
-Do not include ```json or ``` markers.
-```
-
-### 2. Trailing Commas
-
-**Problem:** Invalid JSON due to trailing commas
-
-**Solution:**
-```
-Ensure valid JSON syntax. No trailing commas after the last 
-element in arrays or objects.
+فقط شیء JSON را برگردان. در بلوک‌های کد markdown قرار نده.
+نشانگرهای ```json یا ``` را شامل نکن.
 ```
 
-### 3. Unescaped Strings
+### 2. کاماهای انتهایی
 
-**Problem:** Quotes or special characters break JSON
+**مشکل:** JSON نامعتبر به دلیل کاماهای انتهایی
 
-**Solution:**
+**راه‌حل:**
 ```
-Properly escape special characters in strings:
-- \" for quotes
-- \\ for backslashes
-- \n for newlines
+سینتکس JSON معتبر را تضمین کن. کامای انتهایی بعد از آخرین
+عنصر در آرایه‌ها یا اشیاء نباشد.
 ```
 
-## Summary
+### 3. رشته‌های Escape نشده
 
-<Callout type="tip" title="Key Techniques">
-Define schemas explicitly using TypeScript interfaces or JSON Schema. Specify types and constraints, handle nulls and defaults, request self-validation, and choose the right format for your use case.
+**مشکل:** نقل‌قول‌ها یا کاراکترهای خاص JSON را خراب می‌کنند
+
+**راه‌حل:**
+```
+کاراکترهای خاص در رشته‌ها را به درستی escape کن:
+- \" برای نقل‌قول‌ها
+- \\ برای بک‌اسلش‌ها
+- \n برای خطوط جدید
+```
+
+## خلاصه
+
+<Callout type="tip" title="تکنیک‌های کلیدی">
+اسکیماها را صریحاً با استفاده از رابط‌های TypeScript یا JSON Schema تعریف کنید. تایپ‌ها و محدودیت‌ها را مشخص کنید، null‌ها و پیش‌فرض‌ها را مدیریت کنید، خود-اعتبارسنجی درخواست کنید، و فرمت مناسب برای مورد استفاده خود را انتخاب کنید.
 </Callout>
 
 <Quiz 
-  question="When should you prefer YAML over JSON for AI outputs?"
+  question="چه زمانی باید YAML را به JSON ترجیح دهید برای خروجی‌های هوش مصنوعی؟"
   options={[
-    "When building REST APIs",
-    "When the output needs to be human-readable and may include comments",
-    "When working with JavaScript applications",
-    "When you need the most compact representation"
+    "هنگام ساخت REST API‌ها",
+    "وقتی خروجی باید برای انسان خوانا باشد و ممکن است شامل نظرات باشد",
+    "هنگام کار با برنامه‌های JavaScript",
+    "وقتی به فشرده‌ترین نمایش نیاز دارید"
   ]}
   correctIndex={1}
-  explanation="YAML is preferred when human readability matters, such as configuration files, DevOps manifests, and documentation. It also supports comments, unlike JSON."
+  explanation="YAML زمانی ترجیح داده می‌شود که خوانایی انسانی مهم باشد، مانند فایل‌های پیکربندی، manifest‌های DevOps و مستندات. همچنین برخلاف JSON از نظرات پشتیبانی می‌کند."
 />
 
-This completes Part II on techniques. In Part III, we'll explore practical applications across different domains.
+این بخش دوم درباره تکنیک‌ها را تکمیل می‌کند. در بخش سوم، کاربردهای عملی در حوزه‌های مختلف را بررسی خواهیم کرد.

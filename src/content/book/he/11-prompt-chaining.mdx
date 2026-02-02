@@ -1,200 +1,200 @@
-Prompt chaining breaks complex tasks into sequences of simpler prompts, where each step's output feeds into the next. This technique dramatically improves reliability and enables sophisticated workflows that would be impossible with a single prompt.
+שרשור פרומפטים מפרק משימות מורכבות לרצפים של פרומפטים פשוטים יותר, כאשר הפלט של כל שלב מוזן לשלב הבא. טכניקה זו משפרת באופן דרמטי את האמינות ומאפשרת תהליכי עבודה מתוחכמים שהיו בלתי אפשריים עם פרומפט יחיד.
 
-<Callout type="tip" title="Think Assembly Lines">
-Just like a factory assembly line breaks manufacturing into specialized stations, prompt chaining breaks AI tasks into specialized steps. Each step does one thing well, and the combined output is far better than trying to do everything at once.
+<Callout type="tip" title="חשבו על קווי ייצור">
+בדיוק כמו שקו ייצור במפעל מפרק את התהליך לתחנות מתמחות, שרשור פרומפטים מפרק משימות AI לשלבים מתמחים. כל שלב עושה דבר אחד היטב, והפלט המשולב טוב בהרבה מניסיון לעשות הכל בבת אחת.
 </Callout>
 
-## Why Chain Prompts?
+## למה לשרשר פרומפטים?
 
-Single prompts struggle with complex tasks because they try to do too much at once. The AI has to simultaneously understand, analyze, plan, and generate, which leads to errors and inconsistencies.
+פרומפטים בודדים מתקשים עם משימות מורכבות מכיוון שהם מנסים לעשות יותר מדי בבת אחת. ה-AI צריך בו-זמנית להבין, לנתח, לתכנן וליצור, מה שמוביל לשגיאות וחוסר עקביות.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Single Prompt Struggles</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> פרומפט בודד מתקשה</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Multi-step reasoning gets confused</p>
-      <p className="m-0!">Different "modes" of thinking clash</p>
-      <p className="m-0!">Complex outputs lack consistency</p>
-      <p className="m-0!">No opportunity for quality control</p>
+      <p className="m-0!">חשיבה רב-שלבית מתבלבלת</p>
+      <p className="m-0!">"מצבי" חשיבה שונים מתנגשים</p>
+      <p className="m-0!">פלטים מורכבים חסרי עקביות</p>
+      <p className="m-0!">אין הזדמנות לבקרת איכות</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Chaining Solves This</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> שרשור פותר זאת</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Each step focuses on one task</p>
-      <p className="m-0!">Specialized prompts for each mode</p>
-      <p className="m-0!">Validate between steps</p>
-      <p className="m-0!">Debug and improve individual steps</p>
+      <p className="m-0!">כל שלב מתמקד במשימה אחת</p>
+      <p className="m-0!">פרומפטים מתמחים לכל מצב</p>
+      <p className="m-0!">אימות בין שלבים</p>
+      <p className="m-0!">דיבוג ושיפור שלבים בודדים</p>
     </div>
   </div>
 </div>
 
-## Basic Chaining Pattern
+## תבנית שרשור בסיסית
 
-The simplest chain passes output from one prompt directly to the next. Each step has a clear, focused purpose.
+השרשרת הפשוטה ביותר מעבירה פלט מפרומפט אחד ישירות לבא אחריו. לכל שלב יש מטרה ברורה וממוקדת.
 
 <div className="my-6 flex items-center justify-center gap-3 p-6 bg-muted/30 rounded-lg overflow-x-auto">
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Prompt 1</p>
-      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">(Extract)</p>
+      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">פרומפט 1</p>
+      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">(חילוץ)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Input</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">קלט</p>
   </div>
   <div className="text-blue-400 dark:text-blue-500">→</div>
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Prompt 2</p>
-      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">(Analyze)</p>
+      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">פרומפט 2</p>
+      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">(ניתוח)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Intermediate</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">ביניים</p>
   </div>
   <div className="text-purple-400 dark:text-purple-500">→</div>
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Prompt 3</p>
-      <p className="text-xs text-green-600 dark:text-green-400 m-0!">(Generate)</p>
+      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">פרומפט 3</p>
+      <p className="text-xs text-green-600 dark:text-green-400 m-0!">(יצירה)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Output</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">פלט</p>
   </div>
 </div>
 
-<Callout type="info" title="The ETG Pattern">
-The most common chain pattern is **Extract → Transform → Generate**. First extract raw data, then reshape it for your purpose, then generate the final output. This pattern works for almost any content task.
+<Callout type="info" title="תבנית ETG">
+תבנית השרשרת הנפוצה ביותר היא **חילוץ → המרה → יצירה**. קודם מחלצים נתונים גולמיים, אחר כך מעצבים אותם מחדש למטרתכם, ואז יוצרים את הפלט הסופי. תבנית זו עובדת כמעט לכל משימת תוכן.
 </Callout>
 
-## Chain Types
+## סוגי שרשראות
 
-Different tasks require different chain architectures. Choose the pattern that matches your workflow.
+משימות שונות דורשות ארכיטקטורות שרשרת שונות. בחרו את התבנית שמתאימה לתהליך העבודה שלכם.
 
 <ChainFlowDemo />
 
-### Sequential Chain
+### שרשרת רציפה
 
-The most straightforward pattern: each step depends on the previous. Think of it as a relay race where each runner passes the baton to the next.
+התבנית הישירה ביותר: כל שלב תלוי בקודמו. חשבו על זה כמו מרוץ שליחים שבו כל רץ מעביר את השרביט לבא אחריו.
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Step 1: Extract", prompt: "Extract all dates, names, and numbers from: [text]", output: '{ dates: ["2024-01-15", "2024-02-20"], names: ["John Smith", "Acme Corp"], numbers: [15000, 42] }' },
-    { step: "Step 2: Analyze", prompt: "Given this extracted data: [step1_output], identify relationships and patterns.", output: '{ patterns: ["Monthly meetings scheduled"], relationships: ["John Smith works at Acme Corp"] }' },
-    { step: "Step 3: Generate", prompt: "Using these patterns: [step2_output], write a summary report highlighting the most significant findings.", output: "Summary Report: Analysis of the document reveals a business relationship between John Smith and Acme Corp, with scheduled monthly meetings..." }
+    { step: "שלב 1: חילוץ", prompt: "חלץ את כל התאריכים, השמות והמספרים מ: [text]", output: '{ dates: ["2024-01-15", "2024-02-20"], names: ["John Smith", "Acme Corp"], numbers: [15000, 42] }' },
+    { step: "שלב 2: ניתוח", prompt: "בהינתן הנתונים המחולצים הללו: [step1_output], זהה קשרים ודפוסים.", output: '{ patterns: ["פגישות חודשיות מתוכננות"], relationships: ["John Smith עובד ב-Acme Corp"] }' },
+    { step: "שלב 3: יצירה", prompt: "באמצעות דפוסים אלה: [step2_output], כתוב דוח סיכום המדגיש את הממצאים המשמעותיים ביותר.", output: "דוח סיכום: ניתוח המסמך מגלה קשר עסקי בין John Smith ו-Acme Corp, עם פגישות חודשיות מתוכננות..." }
   ]}
 />
 
-### Parallel Chain
+### שרשרת מקבילית
 
-When you need multiple perspectives on the same input, run prompts in parallel and merge results. This is faster than sequential chains and provides richer analysis.
+כאשר אתם צריכים מספר נקודות מבט על אותו קלט, הריצו פרומפטים במקביל ומזגו תוצאות. זה מהיר יותר משרשראות רציפות ומספק ניתוח עשיר יותר.
 
 <ChainExample 
   type="parallel"
   steps={[
-    { step: "Input", prompt: "Product review text", output: '"I love these earbuds! The battery lasts forever and the display on the case is so convenient. Perfect for my daily commute."' },
-    { step: "Branch A: Sentiment", prompt: "Analyze sentiment: [text]", output: '{ sentiment: "positive", score: 0.85 }' },
-    { step: "Branch B: Features", prompt: "Extract features mentioned: [text]", output: '{ features: ["battery", "display"] }' },
-    { step: "Branch C: Persona", prompt: "Identify user persona: [text]", output: '{ persona: "commuter" }' },
-    { step: "Merge", prompt: "Combine analyses into unified report", output: "Unified Report: Positive review from a commuter highlighting battery and display." }
+    { step: "קלט", prompt: "טקסט ביקורת מוצר", output: '"אני אוהב את האוזניות האלה! הסוללה מחזיקה לנצח והתצוגה על הנרתיק כל כך נוחה. מושלם לנסיעות היומיות שלי."' },
+    { step: "ענף A: סנטימנט", prompt: "נתח סנטימנט: [text]", output: '{ sentiment: "חיובי", score: 0.85 }' },
+    { step: "ענף B: תכונות", prompt: "חלץ תכונות שהוזכרו: [text]", output: '{ features: ["סוללה", "תצוגה"] }' },
+    { step: "ענף C: פרסונה", prompt: "זהה פרסונת משתמש: [text]", output: '{ persona: "נוסע" }' },
+    { step: "מיזוג", prompt: "שלב ניתוחים לדוח מאוחד", output: "דוח מאוחד: ביקורת חיובית מנוסע המדגיש סוללה ותצוגה." }
   ]}
 />
 
-### Conditional Chain
+### שרשרת מותנית
 
-Route inputs through different paths based on classification. This is like a decision tree where the AI first categorizes the input, then handles each category differently.
+נתבו קלטים דרך נתיבים שונים בהתבסס על סיווג. זה כמו עץ החלטות שבו ה-AI קודם מסווג את הקלט, ואז מטפל בכל קטגוריה בצורה שונה.
 
 <ChainExample 
   type="conditional"
   steps={[
-    { step: "Classify Input", prompt: "Classify this customer message as: complaint, question, feedback, or other.\n\nMessage: [text]", output: '{ classification: "complaint", confidence: 0.92 }' },
-    { step: "Route: Question (skipped)", prompt: "Identify what information is needed", output: "Skipped - input classified as complaint" },
-    { step: "Route: Complaint", prompt: "Identify the issue and severity: [text]", output: '{ issue: "delayed shipping", severity: "medium" }' },
-    { step: "Generate Response", prompt: "Generate empathetic response with resolution: [analysis]", output: "Dear Customer, We sincerely apologize for the delay. Your order has been expedited..." }
+    { step: "סיווג קלט", prompt: "סווג הודעת לקוח זו כ: תלונה, שאלה, משוב, או אחר.\n\nהודעה: [text]", output: '{ classification: "תלונה", confidence: 0.92 }' },
+    { step: "נתיב: שאלה (דילוג)", prompt: "זהה איזה מידע נדרש", output: "דילוג - קלט סווג כתלונה" },
+    { step: "נתיב: תלונה", prompt: "זהה את הבעיה והחומרה: [text]", output: '{ issue: "עיכוב במשלוח", severity: "בינוני" }' },
+    { step: "יצירת תגובה", prompt: "צור תגובה אמפתית עם פתרון: [analysis]", output: "לקוח יקר, אנו מתנצלים בכנות על העיכוב. ההזמנה שלך הוחשה..." }
   ]}
 />
 
-### Iterative Chain
+### שרשרת איטרטיבית
 
-Keep refining output until it meets quality standards. The AI generates, evaluates, and improves in a loop until satisfied or max iterations reached.
+המשיכו לשפר פלט עד שהוא עומד בסטנדרטים של איכות. ה-AI יוצר, מעריך ומשפר בלולאה עד לשביעות רצון או הגעה למקסימום איטרציות.
 
-<Callout type="warning" title="Set Iteration Limits">
-Always set a maximum number of iterations (typically 3-5) to prevent infinite loops and control costs. The law of diminishing returns applies: most improvement happens in the first 2-3 iterations.
+<Callout type="warning" title="הגדירו מגבלות איטרציה">
+תמיד הגדירו מספר מקסימלי של איטרציות (בדרך כלל 3-5) כדי למנוע לולאות אינסופיות ולשלוט בעלויות. חוק התשואה הפוחתת חל: רוב השיפור קורה ב-2-3 האיטרציות הראשונות.
 </Callout>
 
 <ChainExample 
   type="iterative"
   steps={[
-    { step: "Generate Draft", prompt: "Write a product description for: [wireless earbuds]", output: "These wireless earbuds offer good sound quality and comfortable fit for everyday use." },
-    { step: "Evaluate (Score: 5)", prompt: "Rate this description 1-10 on: clarity, persuasiveness, accuracy.\n\nDescription: [current_draft]", output: '{ score: 5, improvements: ["Add specific features", "Include emotional benefits", "Mention battery life", "Add call-to-action"] }' },
-    { step: "Improve Draft", prompt: "Improve this description based on this feedback:\n\nCurrent: [current_draft]\nFeedback: [improvements]", output: "Experience crystal-clear audio with our premium wireless earbuds. Featuring 30-hour battery life, active noise cancellation, and an ergonomic design that stays comfortable all day. Perfect for music lovers and professionals alike. Order now and transform your listening experience." },
-    { step: "Evaluate (Score: 8)", prompt: "Rate this description 1-10 on: clarity, persuasiveness, accuracy.\n\nDescription: [improved_draft]", output: '{ score: 8, improvements: ["Minor: Could add warranty info"] }\n\n✓ Score >= 8: EXIT LOOP' }
+    { step: "יצירת טיוטה", prompt: "כתוב תיאור מוצר עבור: [אוזניות אלחוטיות]", output: "אוזניות אלחוטיות אלה מציעות איכות צליל טובה והתאמה נוחה לשימוש יומיומי." },
+    { step: "הערכה (ציון: 5)", prompt: "דרג תיאור זה 1-10 על: בהירות, שכנוע, דיוק.\n\nתיאור: [current_draft]", output: '{ score: 5, improvements: ["הוסף תכונות ספציפיות", "כלול יתרונות רגשיים", "ציין חיי סוללה", "הוסף קריאה לפעולה"] }' },
+    { step: "שיפור טיוטה", prompt: "שפר תיאור זה על סמך משוב זה:\n\nנוכחי: [current_draft]\nמשוב: [improvements]", output: "חוו צליל צלול כבדולח עם האוזניות האלחוטיות הפרימיום שלנו. כולל חיי סוללה של 30 שעות, ביטול רעשים אקטיבי ועיצוב ארגונומי שנשאר נוח כל היום. מושלם לחובבי מוזיקה ואנשי מקצוע כאחד. הזמינו עכשיו ושנו את חווית ההאזנה שלכם." },
+    { step: "הערכה (ציון: 8)", prompt: "דרג תיאור זה 1-10 על: בהירות, שכנוע, דיוק.\n\nתיאור: [improved_draft]", output: '{ score: 8, improvements: ["מינורי: אפשר להוסיף מידע על אחריות"] }\n\n✓ ציון >= 8: יציאה מהלולאה' }
   ]}
 />
 
-## Common Chain Patterns
+## תבניות שרשרת נפוצות
 
-These battle-tested patterns solve common problems. Use them as starting points and adapt to your needs.
+תבניות מוכחות אלה פותרות בעיות נפוצות. השתמשו בהן כנקודות התחלה והתאימו לצרכים שלכם.
 
-### Extract → Transform → Generate
+### חילוץ → המרה → יצירה
 
-The workhorse of content processing. Pull data out, reshape it, then create something new.
+סוס העבודה של עיבוד תוכן. משכו נתונים החוצה, עצבו אותם מחדש, ואז צרו משהו חדש.
 
 <div className="mb-4 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
-  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">Document summarization, report generation, content repurposing, data-to-narrative conversion</p>
+  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">הכי מתאים ל</p>
+  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">סיכום מסמכים, יצירת דוחות, שימוש חוזר בתוכן, המרת נתונים לנרטיב</p>
 </div>
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Extract", prompt: "From this document, extract:\n- Main topic\n- Key arguments (list)\n- Supporting evidence (list)\n- Conclusions\nReturn as JSON.", output: '{ "topic": "Climate change impacts", "arguments": ["Rising temperatures", "Sea level rise"], "evidence": ["NASA data", "IPCC reports"], "conclusions": ["Urgent action needed"] }' },
-    { step: "Transform", prompt: "Reorganize this information for [business executives]:\n[extracted_data]\nFocus on: economic implications\nRemove: technical jargon", output: '{ "summary": "Climate risks to business", "key_points": ["Supply chain disruption", "Insurance costs rising"], "action_items": ["Assess vulnerabilities", "Plan adaptations"] }' },
-    { step: "Generate", prompt: "Using this restructured information, write a [executive brief]:\n[transformed_data]\nTone: professional\nLength: 200 words", output: "Executive Brief: Climate change presents significant operational risks to our business. Key concerns include supply chain disruptions from extreme weather events and rising insurance premiums. We recommend immediate assessment of facility vulnerabilities and development of adaptation strategies..." }
+    { step: "חילוץ", prompt: "מהמסמך הזה, חלץ:\n- נושא מרכזי\n- טיעונים עיקריים (רשימה)\n- ראיות תומכות (רשימה)\n- מסקנות\nהחזר כ-JSON.", output: '{ "topic": "השפעות שינויי אקלים", "arguments": ["עליית טמפרטורות", "עליית מפלס הים"], "evidence": ["נתוני NASA", "דוחות IPCC"], "conclusions": ["נדרשת פעולה דחופה"] }' },
+    { step: "המרה", prompt: "ארגן מחדש מידע זה עבור [מנהלים עסקיים]:\n[extracted_data]\nהתמקד ב: השלכות כלכליות\nהסר: ז'רגון טכני", output: '{ "summary": "סיכוני אקלים לעסקים", "key_points": ["שיבוש שרשרת אספקה", "עלויות ביטוח עולות"], "action_items": ["הערכת פגיעויות", "תכנון התאמות"] }' },
+    { step: "יצירה", prompt: "באמצעות מידע מבני זה, כתוב [תקציר למנהלים]:\n[transformed_data]\nטון: מקצועי\nאורך: 200 מילים", output: "תקציר למנהלים: שינויי אקלים מציגים סיכונים תפעוליים משמעותיים לעסק שלנו. חששות מרכזיים כוללים שיבושים בשרשרת האספקה מאירועי מזג אוויר קיצוניים ועליית פרמיות ביטוח. אנו ממליצים על הערכה מיידית של פגיעויות מתקנים ופיתוח אסטרטגיות התאמה..." }
   ]}
 />
 
-### Analyze → Plan → Execute
+### ניתוח → תכנון → ביצוע
 
-Perfect for code refactoring, project planning, or any task where you need to understand before acting.
+מושלם לרפקטורינג של קוד, תכנון פרויקטים, או כל משימה שבה צריך להבין לפני שפועלים.
 
 <div className="mb-4 p-3 rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-800">
-  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">Code refactoring, project planning, troubleshooting, strategic decision-making, complex problem solving</p>
+  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">הכי מתאים ל</p>
+  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">רפקטורינג קוד, תכנון פרויקטים, פתרון בעיות, קבלת החלטות אסטרטגיות, פתרון בעיות מורכבות</p>
 </div>
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Analyze", prompt: "Analyze this codebase structure and identify:\n- Architecture pattern\n- Main components\n- Dependencies\n- Potential issues\n[code]", output: '{ "pattern": "MVC", "components": ["UserController", "AuthService", "Database"], "dependencies": ["express", "mongoose"], "issues": ["No input validation", "Hardcoded secrets"] }' },
-    { step: "Plan", prompt: "Based on this analysis, create a refactoring plan:\n[analysis_output]\nGoal: improve security\nConstraints: no breaking changes", output: '{ "steps": ["1. Add input validation middleware", "2. Move secrets to env vars", "3. Add rate limiting"], "priority": "high", "estimated_time": "4 hours" }' },
-    { step: "Execute", prompt: "Implement step 1 of this plan:\n[plan_output]\nShow the refactored code with explanations.", output: "// Added validation middleware\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Invalid email' });\n  }\n  next();\n};" }
+    { step: "ניתוח", prompt: "נתח את מבנה בסיס הקוד הזה וזהה:\n- תבנית ארכיטקטורה\n- רכיבים עיקריים\n- תלויות\n- בעיות פוטנציאליות\n[code]", output: '{ "pattern": "MVC", "components": ["UserController", "AuthService", "Database"], "dependencies": ["express", "mongoose"], "issues": ["אין אימות קלט", "סודות מקודדים קשיח"] }' },
+    { step: "תכנון", prompt: "בהתבסס על ניתוח זה, צור תוכנית רפקטורינג:\n[analysis_output]\nמטרה: שיפור אבטחה\nאילוצים: ללא שינויים שוברים", output: '{ "steps": ["1. הוסף middleware לאימות קלט", "2. העבר סודות למשתני סביבה", "3. הוסף הגבלת קצב"], "priority": "גבוהה", "estimated_time": "4 שעות" }' },
+    { step: "ביצוע", prompt: "יישם שלב 1 מתוכנית זו:\n[plan_output]\nהצג את הקוד המשופר עם הסברים.", output: "// נוסף middleware לאימות\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Invalid email' });\n  }\n  next();\n};" }
   ]}
 />
 
-### Generate → Critique → Refine
+### יצירה → ביקורת → שיפור
 
-The self-improvement loop. Generate content, have the AI evaluate it critically, then improve based on that feedback. This mimics how professional writers and editors work together.
+לולאת השיפור העצמי. יוצרים תוכן, גורמים ל-AI להעריך אותו באופן ביקורתי, ואז משפרים על סמך המשוב. זה מחקה את האופן שבו כותבים ועורכים מקצועיים עובדים יחד.
 
 <div className="mb-4 p-3 rounded-lg bg-green-50/50 dark:bg-green-950/20 border border-green-200 dark:border-green-800">
-  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-green-600 dark:text-green-400 m-0!">Marketing copy, creative writing, email drafts, presentations, any content that benefits from revision</p>
+  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">הכי מתאים ל</p>
+  <p className="text-sm text-green-600 dark:text-green-400 m-0!">קופי שיווקי, כתיבה יצירתית, טיוטות אימייל, מצגות, כל תוכן שמרוויח משכתוב</p>
 </div>
 
 <ChainExample 
   type="iterative"
   steps={[
-    { step: "Generate", prompt: "Write a marketing email for [fitness app] targeting [busy professionals].", output: "Subject: Get Fit Fast!\n\nHey there! Our app helps you exercise. Download it today and start your fitness journey. Thanks!" },
-    { step: "Critique", prompt: "As a marketing expert, critique this email:\n[generated_email]\nEvaluate: subject line, hook, value proposition, CTA, tone\nScore each 1-10.", output: '{ "subject_line": 4, "hook": 3, "value_proposition": 2, "cta": 5, "tone": 4, "feedback": "Too generic, no specific benefits, weak urgency" }' },
-    { step: "Refine", prompt: "Rewrite the email addressing this feedback:\nOriginal: [generated_email]\nCritique: [critique_output]\nFocus on the lowest-scored elements.", output: "Subject: 15-Min Workouts for Your Lunch Break\n\nBusy schedule? We get it. Our app delivers science-backed workouts designed for professionals who have zero time to waste. Join 50,000+ executives who transformed their health in just 15 minutes a day. Start your free trial now—your future self will thank you." },
-    { step: "Final Score", prompt: "Re-evaluate the refined email.", output: '{ "subject_line": 8, "hook": 8, "value_proposition": 9, "cta": 8, "tone": 9, "improvement": "+23 points total" }' }
+    { step: "יצירה", prompt: "כתוב אימייל שיווקי עבור [אפליקציית כושר] המיועד ל[אנשי מקצוע עסוקים].", output: "נושא: התאמן מהר!\n\nהיי! האפליקציה שלנו עוזרת לך להתאמן. הורד אותה היום והתחל את מסע הכושר שלך. תודה!" },
+    { step: "ביקורת", prompt: "כמומחה שיווק, בקר אימייל זה:\n[generated_email]\nהעריך: שורת נושא, פתיח, הצעת ערך, קריאה לפעולה, טון\nדרג כל אחד 1-10.", output: '{ "subject_line": 4, "hook": 3, "value_proposition": 2, "cta": 5, "tone": 4, "feedback": "גנרי מדי, אין יתרונות ספציפיים, דחיפות חלשה" }' },
+    { step: "שיפור", prompt: "כתוב מחדש את האימייל תוך התייחסות למשוב זה:\nמקורי: [generated_email]\nביקורת: [critique_output]\nהתמקד באלמנטים עם הציון הנמוך ביותר.", output: "נושא: אימוני 15 דקות להפסקת הצהריים שלך\n\nלוח זמנים צפוף? אנחנו מבינים. האפליקציה שלנו מספקת אימונים מבוססי מדע שתוכננו עבור אנשי מקצוע שאין להם זמן לבזבז. הצטרפו ל-50,000+ מנהלים בכירים ששינו את הבריאות שלהם ב-15 דקות ביום בלבד. התחילו את תקופת הניסיון החינמית עכשיו - העצמי העתידי שלכם יודה לכם." },
+    { step: "ציון סופי", prompt: "העריכו מחדש את האימייל המשופר.", output: '{ "subject_line": 8, "hook": 8, "value_proposition": 9, "cta": 8, "tone": 9, "improvement": "+23 נקודות סה״כ" }' }
   ]}
 />
 
-## Implementing Chains
+## יישום שרשראות
 
-You can implement chains manually for experimentation, or programmatically for production systems. Start simple and add complexity as needed.
+אתם יכולים ליישם שרשראות ידנית לניסויים, או באופן תכנותי למערכות ייצור. התחילו בפשטות והוסיפו מורכבות לפי הצורך.
 
-### Manual Chaining
+### שרשור ידני
 
-The copy-paste approach is perfect for prototyping and experimentation. Run each prompt manually, examine the output, and paste it into the next prompt.
+גישת ההעתק-הדבק מושלמת לפרוטוטייפינג וניסויים. הריצו כל פרומפט ידנית, בדקו את הפלט, והדביקו אותו לפרומפט הבא.
 
 <CodeEditor 
   language="python"
@@ -205,9 +205,9 @@ step2_output = call_ai("Analyze relationships: " + step1_output)
 final_output = call_ai("Generate report: " + step2_output)`}
 />
 
-### Programmatic Chaining
+### שרשור תכנותי
 
-For production systems, automate the chain with code. This enables error handling, logging, and integration with your application.
+עבור מערכות ייצור, הפכו את השרשרת לאוטומטית עם קוד. זה מאפשר טיפול בשגיאות, לוגים ואינטגרציה עם האפליקציה שלכם.
 
 <CodeEditor 
   language="python"
@@ -241,9 +241,9 @@ For production systems, automate the chain with code. This enables error handlin
     }`}
 />
 
-### Using Chain Templates
+### שימוש בתבניות שרשרת
 
-Define chains as configuration files for reusability and easy modification. This separates prompt logic from application code.
+הגדירו שרשראות כקבצי קונפיגורציה לשימוש חוזר ושינוי קל. זה מפריד בין הלוגיקה של הפרומפטים לקוד האפליקציה.
 
 <CodeEditor 
   language="yaml"
@@ -270,110 +270,110 @@ steps:
       Format: 3 paragraphs, business tone`}
 />
 
-## Error Handling in Chains
+## טיפול בשגיאות בשרשראות
 
-Chains can fail at any step. Build in validation, retries, and fallbacks to make your chains robust.
+שרשראות יכולות להיכשל בכל שלב. בנו אימות, ניסיונות חוזרים וחלופות כדי להפוך את השרשראות שלכם לחסינות.
 
 <ChainErrorDemo />
 
-<Callout type="warning" title="Garbage In, Garbage Out">
-If one step produces bad output, every following step will be affected. Always validate critical intermediate results before passing them forward.
+<Callout type="warning" title="זבל נכנס, זבל יוצא">
+אם שלב אחד מייצר פלט גרוע, כל שלב שאחריו יושפע. תמיד אמתו תוצאות ביניים קריטיות לפני שמעבירים אותן הלאה.
 </Callout>
 
-### Validation Between Steps
+### אימות בין שלבים
 
-Add a validation step after any step that produces structured data. This catches errors early before they cascade.
+הוסיפו שלב אימות אחרי כל שלב שמייצר נתונים מובנים. זה תופס שגיאות מוקדם לפני שהן מתגלגלות.
 
 <ValidationDemo />
 
-### Fallback Chains
+### שרשראות גיבוי
 
-When your primary approach fails, have a simpler backup ready. Trade capability for reliability.
+כאשר הגישה העיקרית שלכם נכשלת, יש לכם גיבוי פשוט יותר מוכן. מחליפים יכולת באמינות.
 
 <FallbackDemo />
 
-## Chain Optimization
+## אופטימיזציה של שרשראות
 
-Once your chain works, optimize for speed, cost, and reliability. These often trade off against each other.
+ברגע שהשרשרת שלכם עובדת, בצעו אופטימיזציה למהירות, עלות ואמינות. אלה לעתים קרובות מתחלפים זה בזה.
 
 <div className="my-6 grid md:grid-cols-3 gap-4">
   <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
-    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Reducing Latency</p>
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">הפחתת זמן תגובה</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Parallelize independent steps</p>
-      <p className="m-0!">Cache intermediate results</p>
-      <p className="m-0!">Use smaller models for simple steps</p>
-      <p className="m-0!">Batch similar operations</p>
+      <p className="m-0!">הקבילו שלבים עצמאיים</p>
+      <p className="m-0!">שמרו תוצאות ביניים במטמון</p>
+      <p className="m-0!">השתמשו במודלים קטנים לשלבים פשוטים</p>
+      <p className="m-0!">אגדו פעולות דומות</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Reducing Cost</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">הפחתת עלות</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Use cheaper models for classification</p>
-      <p className="m-0!">Limit iterations in loops</p>
-      <p className="m-0!">Short-circuit when possible</p>
-      <p className="m-0!">Cache repeated queries</p>
+      <p className="m-0!">השתמשו במודלים זולים יותר לסיווג</p>
+      <p className="m-0!">הגבילו איטרציות בלולאות</p>
+      <p className="m-0!">קצרו כשאפשר</p>
+      <p className="m-0!">שמרו שאילתות חוזרות במטמון</p>
     </div>
   </div>
   <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
-    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Improving Reliability</p>
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">שיפור אמינות</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Add validation between steps</p>
-      <p className="m-0!">Include retry logic</p>
-      <p className="m-0!">Log intermediate results</p>
-      <p className="m-0!">Implement fallback paths</p>
+      <p className="m-0!">הוסיפו אימות בין שלבים</p>
+      <p className="m-0!">כללו לוגיקת ניסיון חוזר</p>
+      <p className="m-0!">תעדו תוצאות ביניים</p>
+      <p className="m-0!">יישמו נתיבי גיבוי</p>
     </div>
   </div>
 </div>
 
-## Real-World Chain Example
+## דוגמה לשרשרת מהעולם האמיתי
 
-Let's walk through a complete production chain. This content pipeline transforms a raw idea into a polished article package.
+בואו נעבור על שרשרת ייצור מלאה. צינור תוכן זה הופך רעיון גולמי לחבילת מאמר מלוטשת.
 
-### Content Pipeline Chain
+### שרשרת צינור תוכן
 
 <ContentPipelineDemo />
 
-## Summary
+## סיכום
 
-Prompt chaining transforms what AI can accomplish by breaking impossible tasks into achievable steps.
+שרשור פרומפטים משנה את מה ש-AI יכול להשיג על ידי פירוק משימות בלתי אפשריות לשלבים ברי השגה.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
-    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">Chaining Enables</p>
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">שרשור מאפשר</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Complex multi-step workflows</p>
-      <p className="m-0!">Higher quality through specialization</p>
-      <p className="m-0!">Better error handling and validation</p>
-      <p className="m-0!">Modular, reusable prompt components</p>
+      <p className="m-0!">תהליכי עבודה מורכבים רב-שלביים</p>
+      <p className="m-0!">איכות גבוהה יותר דרך התמחות</p>
+      <p className="m-0!">טיפול טוב יותר בשגיאות ואימות</p>
+      <p className="m-0!">רכיבי פרומפט מודולריים לשימוש חוזר</p>
     </div>
   </div>
   <div className="border rounded-lg bg-cyan-50/50 dark:bg-cyan-950/20 border-cyan-200 dark:border-cyan-900 p-4">
-    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Key Principles</p>
+    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">עקרונות מפתח</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Break complex tasks into simple steps</p>
-      <p className="m-0!">Design clear interfaces between steps</p>
-      <p className="m-0!">Validate intermediate outputs</p>
-      <p className="m-0!">Build in error handling and fallbacks</p>
-      <p className="m-0!">Optimize for your constraints</p>
+      <p className="m-0!">פרקו משימות מורכבות לשלבים פשוטים</p>
+      <p className="m-0!">תכננו ממשקים ברורים בין שלבים</p>
+      <p className="m-0!">אמתו פלטי ביניים</p>
+      <p className="m-0!">בנו טיפול בשגיאות וחלופות</p>
+      <p className="m-0!">בצעו אופטימיזציה לאילוצים שלכם</p>
     </div>
   </div>
 </div>
 
-<Callout type="tip" title="Start Simple">
-Begin with a 2-3 step sequential chain. Get it working reliably before adding complexity. Most tasks don't need elaborate chain architectures.
+<Callout type="tip" title="התחילו בפשטות">
+התחילו עם שרשרת רציפה של 2-3 שלבים. גרמו לה לעבוד באופן אמין לפני שמוסיפים מורכבות. רוב המשימות לא צריכות ארכיטקטורות שרשרת מורכבות.
 </Callout>
 
 <Quiz 
-  question="What is the main advantage of prompt chaining over a single complex prompt?"
+  question="מהו היתרון העיקרי של שרשור פרומפטים על פני פרומפט מורכב יחיד?"
   options={[
-    "It uses fewer tokens overall",
-    "It's faster to execute",
-    "Each step can specialize, improving quality and enabling error handling",
-    "It requires less planning"
+    "זה משתמש בפחות טוקנים בסך הכל",
+    "זה מהיר יותר לביצוע",
+    "כל שלב יכול להתמחות, מה שמשפר איכות ומאפשר טיפול בשגיאות",
+    "זה דורש פחות תכנון"
   ]}
   correctIndex={2}
-  explanation="Prompt chaining breaks complex tasks into specialized steps. Each step can focus on one thing well, intermediate results can be validated, errors can be caught and retried, and the overall quality improves through specialization."
+  explanation="שרשור פרומפטים מפרק משימות מורכבות לשלבים מתמחים. כל שלב יכול להתמקד בדבר אחד היטב, תוצאות ביניים יכולות להיות מאומתות, שגיאות יכולות להיתפס ולקבל ניסיון חוזר, והאיכות הכוללת משתפרת דרך התמחות."
 />
 
-In the next chapter, we'll explore multimodal prompting: working with images, audio, and other non-text content.
+בפרק הבא, נחקור פרומפטים מולטימודליים: עבודה עם תמונות, אודיו ותוכן לא-טקסטואלי אחר.

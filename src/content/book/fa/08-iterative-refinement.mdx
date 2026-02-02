@@ -1,55 +1,55 @@
-Prompt engineering is rarely a one-shot process. The best prompts emerge through iteration—testing, observing, and refining until you achieve the desired results.
+مهندسی پرامپت به‌ندرت یک فرآیند یک‌مرحله‌ای است. بهترین پرامپت‌ها از طریق تکرار پدید می‌آیند—آزمایش، مشاهده و اصلاح تا زمانی که به نتایج مطلوب برسید.
 
-<Callout type="info" title="First Draft, Not Final Draft">
-Think of your first prompt as a rough draft. Even experienced prompt engineers rarely nail it on the first try.
+<Callout type="info" title="پیش‌نویس اول، نه نسخه نهایی">
+پرامپت اول خود را به عنوان یک پیش‌نویس اولیه در نظر بگیرید. حتی مهندسان پرامپت باتجربه نیز به‌ندرت در اولین تلاش به نتیجه مطلوب می‌رسند.
 </Callout>
 
-## The Iteration Cycle
+## چرخه تکرار
 
-Effective prompt refinement follows a predictable cycle: write, test, analyze, and improve. Each iteration brings you closer to a prompt that reliably produces the results you need.
+اصلاح مؤثر پرامپت از یک چرخه قابل پیش‌بینی پیروی می‌کند: نوشتن، آزمایش، تحلیل و بهبود. هر تکرار شما را به پرامپتی نزدیک‌تر می‌کند که به‌طور قابل اعتماد نتایج مورد نیاز شما را تولید می‌کند.
 
 <IterativeRefinementDemo />
 
-## Common Refinement Patterns
+## الگوهای رایج اصلاح
 
-Most prompt failures fall into a handful of categories. Learning to recognize these patterns lets you quickly diagnose and fix issues without starting from scratch.
+بیشتر شکست‌های پرامپت در چند دسته مشخص قرار می‌گیرند. یادگیری تشخیص این الگوها به شما امکان می‌دهد مشکلات را سریعاً تشخیص داده و بدون شروع از ابتدا برطرف کنید.
 
-### Problem: Output Too Long
+### مشکل: خروجی بیش از حد طولانی
 
-One of the most common issues. Without explicit constraints, models tend to be thorough rather than concise.
+یکی از رایج‌ترین مشکلات. بدون محدودیت‌های صریح، مدل‌ها تمایل دارند جامع باشند نه مختصر.
 
 <DiffView 
   before="Explain how photosynthesis works."
   after={`Explain how photosynthesis works in 3-4 sentences suitable for a 10-year-old.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="اصلی"
+  afterLabel="اصلاح‌شده"
 />
 
-### Problem: Output Too Vague
+### مشکل: خروجی بیش از حد مبهم
 
-Vague prompts produce vague outputs. The model can't read your mind about what "better" means or which aspects matter most to you.
+پرامپت‌های مبهم، خروجی‌های مبهم تولید می‌کنند. مدل نمی‌تواند ذهن شما را بخواند که منظور شما از «بهتر» چیست یا کدام جنبه‌ها برای شما اهمیت بیشتری دارند.
 
 <DiffView 
   before="Give me tips for better presentations."
   after={`Give me 5 specific, actionable tips for improving technical presentations to non-technical stakeholders. For each tip, include a concrete example.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="اصلی"
+  afterLabel="اصلاح‌شده"
 />
 
-### Problem: Wrong Tone
+### مشکل: لحن نامناسب
 
-Tone is subjective and varies by context. What sounds "professional" to the model might not match your organization's voice or the relationship with your recipient.
+لحن ذهنی است و بر اساس زمینه متفاوت است. آنچه برای مدل «حرفه‌ای» به نظر می‌رسد ممکن است با صدای سازمان شما یا رابطه شما با مخاطب مطابقت نداشته باشد.
 
 <DiffView 
   before="Write an apology email for missing a deadline."
   after={`Write a professional but warm apology email for missing a project deadline. The tone should be accountable without being overly apologetic. Include a concrete plan to prevent future delays.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="اصلی"
+  afterLabel="اصلاح‌شده"
 />
 
-### Problem: Missing Key Information
+### مشکل: فقدان اطلاعات کلیدی
 
-Open-ended requests get open-ended responses. If you need specific types of feedback, you must ask for them explicitly.
+درخواست‌های باز، پاسخ‌های باز دریافت می‌کنند. اگر به انواع خاصی از بازخورد نیاز دارید، باید صراحتاً آن‌ها را بخواهید.
 
 <DiffView 
   before="Review this code."
@@ -62,13 +62,13 @@ Open-ended requests get open-ended responses. If you need specific types of feed
 For each issue found, explain the problem and suggest a fix.
 
 [code]`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="اصلی"
+  afterLabel="اصلاح‌شده"
 />
 
-### Problem: Inconsistent Format
+### مشکل: قالب ناهماهنگ
 
-Without a template, the model will structure each response differently, making comparison difficult and automation impossible.
+بدون یک الگو، مدل هر پاسخ را به شکل متفاوتی ساختار می‌دهد که مقایسه را دشوار و اتوماسیون را غیرممکن می‌سازد.
 
 <DiffView 
   before="Analyze these three products."
@@ -82,59 +82,59 @@ Without a template, the model will structure each response differently, making c
 **Rating:** X/10
 
 [products]`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="اصلی"
+  afterLabel="اصلاح‌شده"
 />
 
-## Systematic Refinement Approach
+## رویکرد اصلاح سیستماتیک
 
-Random changes waste time. A systematic approach helps you identify problems quickly and fix them efficiently.
+تغییرات تصادفی وقت را هدر می‌دهند. یک رویکرد سیستماتیک به شما کمک می‌کند مشکلات را سریعاً شناسایی کرده و به‌طور کارآمد برطرف کنید.
 
-### Step 1: Diagnose the Issue
+### مرحله ۱: تشخیص مشکل
 
-Before changing anything, identify what's actually wrong. Use this diagnostic table to map symptoms to solutions:
+قبل از تغییر هر چیزی، مشخص کنید که واقعاً چه چیزی اشتباه است. از این جدول تشخیصی برای نگاشت علائم به راه‌حل‌ها استفاده کنید:
 
 <div className="my-4 grid gap-2">
   <div className="grid grid-cols-3 gap-2 p-3 bg-muted/50 rounded-lg text-sm">
-    <span className="font-semibold">Symptom</span>
-    <span className="font-semibold">Likely Cause</span>
-    <span className="font-semibold">Solution</span>
+    <span className="font-semibold">علامت</span>
+    <span className="font-semibold">علت احتمالی</span>
+    <span className="font-semibold">راه‌حل</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Too long</span>
-    <span className="text-muted-foreground">No length constraint</span>
-    <span className="text-green-600 dark:text-green-400">Add word/sentence limits</span>
+    <span>بیش از حد طولانی</span>
+    <span className="text-muted-foreground">بدون محدودیت طول</span>
+    <span className="text-green-600 dark:text-green-400">افزودن محدودیت کلمه/جمله</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Too short</span>
-    <span className="text-muted-foreground">Lacks detail request</span>
-    <span className="text-green-600 dark:text-green-400">Ask for elaboration</span>
+    <span>بیش از حد کوتاه</span>
+    <span className="text-muted-foreground">فاقد درخواست جزئیات</span>
+    <span className="text-green-600 dark:text-green-400">درخواست توضیح بیشتر</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Off-topic</span>
-    <span className="text-muted-foreground">Vague instructions</span>
-    <span className="text-green-600 dark:text-green-400">Be more specific</span>
+    <span>خارج از موضوع</span>
+    <span className="text-muted-foreground">دستورالعمل‌های مبهم</span>
+    <span className="text-green-600 dark:text-green-400">دقیق‌تر باشید</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Wrong format</span>
-    <span className="text-muted-foreground">Format not specified</span>
-    <span className="text-green-600 dark:text-green-400">Define exact structure</span>
+    <span>قالب نادرست</span>
+    <span className="text-muted-foreground">قالب مشخص نشده</span>
+    <span className="text-green-600 dark:text-green-400">ساختار دقیق را تعریف کنید</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Wrong tone</span>
-    <span className="text-muted-foreground">Audience not clear</span>
-    <span className="text-green-600 dark:text-green-400">Specify audience/style</span>
+    <span>لحن نادرست</span>
+    <span className="text-muted-foreground">مخاطب مشخص نیست</span>
+    <span className="text-green-600 dark:text-green-400">مخاطب/سبک را مشخص کنید</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Inconsistent</span>
-    <span className="text-muted-foreground">No examples provided</span>
-    <span className="text-green-600 dark:text-green-400">Add few-shot examples</span>
+    <span>ناهماهنگ</span>
+    <span className="text-muted-foreground">بدون مثال</span>
+    <span className="text-green-600 dark:text-green-400">مثال‌های few-shot اضافه کنید</span>
   </div>
 </div>
 
-### Step 2: Make Targeted Changes
+### مرحله ۲: اعمال تغییرات هدفمند
 
-Resist the urge to rewrite everything. Changing multiple variables at once makes it impossible to know what helped and what hurt. Make one change, test it, then proceed:
+از وسوسه بازنویسی همه چیز مقاومت کنید. تغییر چندین متغیر همزمان غیرممکن می‌سازد که بدانید چه چیزی کمک کرد و چه چیزی آسیب رساند. یک تغییر انجام دهید، آن را آزمایش کنید، سپس ادامه دهید:
 
 ```
 Iteration 1: Add length constraint
@@ -143,9 +143,9 @@ Iteration 3: Add example
 Iteration 4: Refine tone instructions
 ```
 
-### Step 3: Document What Works
+### مرحله ۳: مستندسازی آنچه کار می‌کند
 
-Prompt engineering knowledge is easily lost. Keep a log of what you tried and why. This saves time when you revisit the prompt later or face similar challenges:
+دانش مهندسی پرامپت به راحتی از دست می‌رود. گزارشی از آنچه امتحان کردید و چرا نگه دارید. این کار زمانی که بعداً به پرامپت برگردید یا با چالش‌های مشابه روبرو شوید، در وقت صرفه‌جویی می‌کند:
 
 ```markdown
 ## Prompt: Customer Email Response
@@ -167,25 +167,25 @@ Show empathy first."
 Tone: Friendly, professional, empathetic but not groveling."
 ```
 
-## Real-World Iteration Example
+## مثال تکرار در دنیای واقعی
 
-Let's walk through a complete iteration cycle to see how each refinement builds on the last. Notice how each version addresses specific shortcomings of the previous one.
+بیایید یک چرخه تکرار کامل را مرور کنیم تا ببینیم چگونه هر اصلاح بر اساس قبلی ساخته می‌شود. توجه کنید که چگونه هر نسخه نقاط ضعف خاص نسخه قبلی را برطرف می‌کند.
 
-### Task: Generate Product Names
+### وظیفه: تولید نام‌های محصول
 
 <VersionDiff versions={[
   {
-    label: "Version 1",
+    label: "نسخه ۱",
     content: "Generate names for a new productivity app.",
-    note: "Too generic, no context"
+    note: "بیش از حد عمومی، بدون زمینه"
   },
   {
-    label: "Version 2",
+    label: "نسخه ۲",
     content: `Generate names for a new productivity app. The app uses AI to automatically schedule your tasks based on energy levels and calendar availability.`,
-    note: "Added context, still generic"
+    note: "زمینه اضافه شد، هنوز عمومی است"
   },
   {
-    label: "Version 3",
+    label: "نسخه ۳",
     content: `Generate 10 unique, memorable names for a productivity app with these characteristics:
 - Uses AI to schedule tasks based on energy levels
 - Target audience: busy professionals aged 25-40
@@ -193,10 +193,10 @@ Let's walk through a complete iteration cycle to see how each refinement builds 
 - Avoid: generic words like "pro", "smart", "AI", "task"
 
 For each name, explain why it works.`,
-    note: "Added constraints and reasoning"
+    note: "محدودیت‌ها و استدلال اضافه شد"
   },
   {
-    label: "Version 4 (final)",
+    label: "نسخه ۴ (نهایی)",
     content: `Generate 10 unique, memorable names for a productivity app.
 
 Context:
@@ -212,61 +212,61 @@ Requirements:
 
 Format:
 Name | Pronunciation | Why It Works | Domain Availability Guess`,
-    note: "Structured format, specific requirements"
+    note: "قالب ساختارمند، الزامات مشخص"
   }
 ]} />
 
-## Refinement Strategies by Task Type
+## استراتژی‌های اصلاح بر اساس نوع وظیفه
 
-Different tasks fail in predictable ways. Knowing the common failure modes helps you diagnose and fix issues faster.
+وظایف مختلف به شیوه‌های قابل پیش‌بینی شکست می‌خورند. دانستن حالات شکست رایج به شما کمک می‌کند مشکلات را سریع‌تر تشخیص داده و برطرف کنید.
 
-### For Content Generation
+### برای تولید محتوا
 
-Content generation often produces generic, off-target, or poorly formatted output. The fix usually involves being more specific about constraints, providing concrete examples, or defining your brand voice explicitly.
-
-<InfoGrid items={[
-  { icon: "target", title: "Too Generic", description: "Add specific constraints and context", example: "\"Write about dogs\" → \"Write about golden retrievers for first-time owners, focusing on training and exercise needs\"" },
-  { icon: "scissors", title: "Too Long", description: "Set word/paragraph limits", example: "Add: \"Keep response under 150 words\" or \"Maximum 3 paragraphs\"" },
-  { icon: "palette", title: "Wrong Style", description: "Provide style examples", example: "\"Write in the style of this example: [paste sample text]\"" },
-  { icon: "megaphone", title: "Off-Brand", description: "Include brand voice guidelines", example: "\"Use friendly, casual tone. Avoid jargon. Address reader as 'you'.\"" }
-]} />
-
-### For Code Generation
-
-Code output can fail technically (syntax errors, wrong language features) or architecturally (poor patterns, missing cases). Technical issues need version/environment specifics; architectural issues need design guidance.
+تولید محتوا اغلب خروجی عمومی، خارج از هدف یا با قالب ضعیف تولید می‌کند. راه‌حل معمولاً شامل دقیق‌تر بودن در مورد محدودیت‌ها، ارائه مثال‌های ملموس یا تعریف صریح صدای برند شماست.
 
 <InfoGrid items={[
-  { icon: "code", title: "Syntax Errors", description: "Specify language version", example: "\"Use Python 3.11+ syntax with type hints\" or \"ES2022 JavaScript\"" },
-  { icon: "git-branch", title: "Wrong Approach", description: "Describe preferred patterns", example: "\"Use functional approach, avoid classes\" or \"Follow repository pattern\"" },
-  { icon: "shield", title: "Missing Edge Cases", description: "List scenarios to handle", example: "\"Handle: empty input, null values, network timeouts, invalid formats\"" },
-  { icon: "tag", title: "Poor Naming", description: "Include naming conventions", example: "\"Use camelCase for variables, PascalCase for classes, UPPER_SNAKE for constants\"" }
+  { icon: "target", title: "بیش از حد عمومی", description: "محدودیت‌ها و زمینه خاص اضافه کنید", example: "\"Write about dogs\" → \"Write about golden retrievers for first-time owners, focusing on training and exercise needs\"" },
+  { icon: "scissors", title: "بیش از حد طولانی", description: "محدودیت کلمه/پاراگراف تعیین کنید", example: "Add: \"Keep response under 150 words\" or \"Maximum 3 paragraphs\"" },
+  { icon: "palette", title: "سبک نادرست", description: "مثال‌های سبک ارائه دهید", example: "\"Write in the style of this example: [paste sample text]\"" },
+  { icon: "megaphone", title: "خارج از برند", description: "راهنمای صدای برند را شامل کنید", example: "\"Use friendly, casual tone. Avoid jargon. Address reader as 'you'.\"" }
 ]} />
 
-### For Analysis
+### برای تولید کد
 
-Analysis tasks often produce surface-level or unstructured results. Guide the model with specific frameworks (SWOT, Porter's Five Forces), request multiple viewpoints, or provide a template for the output structure.
+خروجی کد می‌تواند از نظر فنی (خطاهای نحوی، ویژگی‌های زبان نادرست) یا از نظر معماری (الگوهای ضعیف، موارد از قلم‌افتاده) شکست بخورد. مشکلات فنی نیاز به مشخصات نسخه/محیط دارند؛ مشکلات معماری نیاز به راهنمای طراحی دارند.
 
 <InfoGrid items={[
-  { icon: "layers", title: "Too Shallow", description: "Ask for specific frameworks", example: "\"Analyze using SWOT framework\" or \"Apply Porter's Five Forces\"" },
-  { icon: "scale", title: "Biased", description: "Request multiple perspectives", example: "\"Present arguments for and against\" or \"Include skeptic's viewpoint\"" },
-  { icon: "database", title: "Missing Data", description: "Specify what to analyze", example: "\"Focus on: market size, growth rate, key players, entry barriers\"" },
-  { icon: "layout", title: "Unstructured", description: "Provide analysis template", example: "\"Format as: Summary → Key Findings → Implications → Recommendations\"" }
+  { icon: "code", title: "خطاهای نحوی", description: "نسخه زبان را مشخص کنید", example: "\"Use Python 3.11+ syntax with type hints\" or \"ES2022 JavaScript\"" },
+  { icon: "git-branch", title: "رویکرد نادرست", description: "الگوهای ترجیحی را توصیف کنید", example: "\"Use functional approach, avoid classes\" or \"Follow repository pattern\"" },
+  { icon: "shield", title: "موارد لبه از قلم‌افتاده", description: "سناریوهای قابل مدیریت را فهرست کنید", example: "\"Handle: empty input, null values, network timeouts, invalid formats\"" },
+  { icon: "tag", title: "نام‌گذاری ضعیف", description: "قراردادهای نام‌گذاری را شامل کنید", example: "\"Use camelCase for variables, PascalCase for classes, UPPER_SNAKE for constants\"" }
 ]} />
 
-### For Q&A
+### برای تحلیل
 
-Question-answering can be too terse or too verbose, and may lack confidence indicators or sources. Specify the detail level you need and whether you want citations or uncertainty expressed.
+وظایف تحلیلی اغلب نتایج سطحی یا بدون ساختار تولید می‌کنند. مدل را با چارچوب‌های خاص (SWOT، پنج نیروی پورتر) هدایت کنید، چندین دیدگاه درخواست کنید، یا یک الگو برای ساختار خروجی ارائه دهید.
 
 <InfoGrid items={[
-  { icon: "plus", title: "Too Short", description: "Ask for elaboration", example: "\"Explain in detail with examples\" or \"Elaborate on each point\"" },
-  { icon: "minus", title: "Too Long", description: "Request concise answer", example: "\"Answer in 2-3 sentences\" or \"Give me the TL;DR\"" },
-  { icon: "help-circle", title: "Uncertain", description: "Ask for confidence level", example: "\"Rate your confidence 1-10\" or \"Note any assumptions made\"" },
-  { icon: "link", title: "Unsourced", description: "Request citations", example: "\"Cite sources for claims\" or \"Include references where possible\"" }
+  { icon: "layers", title: "بیش از حد سطحی", description: "چارچوب‌های خاص بخواهید", example: "\"Analyze using SWOT framework\" or \"Apply Porter's Five Forces\"" },
+  { icon: "scale", title: "جانبدارانه", description: "چندین دیدگاه درخواست کنید", example: "\"Present arguments for and against\" or \"Include skeptic's viewpoint\"" },
+  { icon: "database", title: "داده‌های مفقود", description: "مشخص کنید چه چیزی باید تحلیل شود", example: "\"Focus on: market size, growth rate, key players, entry barriers\"" },
+  { icon: "layout", title: "بدون ساختار", description: "الگوی تحلیل ارائه دهید", example: "\"Format as: Summary → Key Findings → Implications → Recommendations\"" }
 ]} />
 
-## The Feedback Loop Technique
+### برای پرسش و پاسخ
 
-Here's a meta-technique: use the model itself to help improve your prompts. Share what you tried, what you got, and what you wanted. The model can often suggest improvements you hadn't considered.
+پاسخ به سؤال می‌تواند بیش از حد مختصر یا بیش از حد طولانی باشد، و ممکن است فاقد نشانگرهای اطمینان یا منابع باشد. سطح جزئیات مورد نیاز خود را مشخص کنید و اینکه آیا می‌خواهید ارجاعات یا عدم قطعیت بیان شود.
+
+<InfoGrid items={[
+  { icon: "plus", title: "بیش از حد کوتاه", description: "توضیح بیشتر بخواهید", example: "\"Explain in detail with examples\" or \"Elaborate on each point\"" },
+  { icon: "minus", title: "بیش از حد طولانی", description: "پاسخ مختصر درخواست کنید", example: "\"Answer in 2-3 sentences\" or \"Give me the TL;DR\"" },
+  { icon: "help-circle", title: "نامطمئن", description: "سطح اطمینان بخواهید", example: "\"Rate your confidence 1-10\" or \"Note any assumptions made\"" },
+  { icon: "link", title: "بدون منبع", description: "ارجاعات درخواست کنید", example: "\"Cite sources for claims\" or \"Include references where possible\"" }
+]} />
+
+## تکنیک حلقه بازخورد
+
+در اینجا یک تکنیک فرا وجود دارد: از خود مدل برای کمک به بهبود پرامپت‌های خود استفاده کنید. آنچه امتحان کردید، آنچه دریافت کردید و آنچه می‌خواستید را به اشتراک بگذارید. مدل اغلب می‌تواند بهبودهایی را پیشنهاد دهد که شما به آن‌ها فکر نکرده بودید.
 
 ```
 I used this prompt:
@@ -279,9 +279,9 @@ I wanted something more [describe gap]. How should I modify
 my prompt to get better results?
 ```
 
-## A/B Testing Prompts
+## تست A/B پرامپت‌ها
 
-For prompts that will be used repeatedly or at scale, don't just pick the first one that works. Test variations to find the most reliable and highest-quality approach.
+برای پرامپت‌هایی که به‌طور مکرر یا در مقیاس استفاده می‌شوند، فقط اولین موردی که کار می‌کند را انتخاب نکنید. تغییرات را آزمایش کنید تا قابل‌اعتمادترین و باکیفیت‌ترین رویکرد را پیدا کنید.
 
 ```
 Prompt A: "Summarize this article in 3 bullet points."
@@ -289,45 +289,45 @@ Prompt B: "Extract the 3 most important insights from this article."
 Prompt C: "What are the key takeaways from this article? List 3."
 ```
 
-Run each multiple times, compare:
-- Consistency of output
-- Quality of information
-- Relevance to your needs
+هر کدام را چندین بار اجرا کنید، مقایسه کنید:
+- هماهنگی خروجی
+- کیفیت اطلاعات
+- ارتباط با نیازهای شما
 
-## When to Stop Iterating
+## چه زمانی تکرار را متوقف کنیم
 
-Perfection is the enemy of good enough. Know when your prompt is ready for use and when you're just polishing for diminishing returns.
+کمال دشمن کافی خوب است. بدانید چه زمانی پرامپت شما آماده استفاده است و چه زمانی فقط برای بازده کاهشی صیقل می‌دهید.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Ready to Ship</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> آماده انتشار</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Output consistently meets requirements</p>
-      <p className="m-0!">Edge cases are handled appropriately</p>
-      <p className="m-0!">Format is reliable and parseable</p>
-      <p className="m-0!">Further improvements show diminishing returns</p>
+      <p className="m-0!">خروجی به‌طور مداوم الزامات را برآورده می‌کند</p>
+      <p className="m-0!">موارد لبه به‌درستی مدیریت می‌شوند</p>
+      <p className="m-0!">قالب قابل اعتماد و قابل تجزیه است</p>
+      <p className="m-0!">بهبودهای بیشتر بازده کاهشی نشان می‌دهند</p>
     </div>
   </div>
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Keep Iterating</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> به تکرار ادامه دهید</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Output is inconsistent across runs</p>
-      <p className="m-0!">Edge cases cause failures</p>
-      <p className="m-0!">Critical requirements are missed</p>
-      <p className="m-0!">You haven't tested enough variations</p>
+      <p className="m-0!">خروجی در اجراهای مختلف ناهماهنگ است</p>
+      <p className="m-0!">موارد لبه باعث شکست می‌شوند</p>
+      <p className="m-0!">الزامات حیاتی از قلم افتاده‌اند</p>
+      <p className="m-0!">تغییرات کافی آزمایش نکرده‌اید</p>
     </div>
   </div>
 </div>
 
-## Version Control for Prompts
+## کنترل نسخه برای پرامپت‌ها
 
-Prompts are code. For any prompt used in production, treat it with the same rigor: version control, changelogs, and the ability to roll back if something breaks.
+پرامپت‌ها کد هستند. برای هر پرامپتی که در تولید استفاده می‌شود، با همان دقت برخورد کنید: کنترل نسخه، گزارش تغییرات، و امکان بازگشت اگر چیزی خراب شد.
 
-<Callout type="tip" title="Built-in Versioning">
-prompts.chat includes automatic version history for your prompts. Every edit is saved, so you can compare versions and restore previous iterations with one click.
+<Callout type="tip" title="نسخه‌بندی داخلی">
+prompts.chat شامل تاریخچه نسخه خودکار برای پرامپت‌های شماست. هر ویرایش ذخیره می‌شود، بنابراین می‌توانید نسخه‌ها را مقایسه کرده و تکرارهای قبلی را با یک کلیک بازیابی کنید.
 </Callout>
 
-For self-managed prompts, use a folder structure:
+برای پرامپت‌های خودمدیریت، از ساختار پوشه استفاده کنید:
 
 ```
 prompts/
@@ -339,30 +339,30 @@ prompts/
 └── changelog.md    # Document changes
 ```
 
-## Summary
+## خلاصه
 
-<Callout type="tip" title="Key Takeaways">
-Start simple, observe carefully, change one thing at a time, document what works, and know when to stop. The best prompts aren't written—they're discovered through systematic iteration.
+<Callout type="tip" title="نکات کلیدی">
+ساده شروع کنید، با دقت مشاهده کنید، یک چیز را در هر بار تغییر دهید، آنچه کار می‌کند را مستند کنید، و بدانید چه زمانی متوقف شوید. بهترین پرامپت‌ها نوشته نمی‌شوند—از طریق تکرار سیستماتیک کشف می‌شوند.
 </Callout>
 
 <Quiz 
-  question="What's the best approach when refining a prompt that's producing wrong results?"
+  question="بهترین رویکرد هنگام اصلاح پرامپتی که نتایج نادرست تولید می‌کند چیست؟"
   options={[
-    "Rewrite the entire prompt from scratch",
-    "Add more examples until it works",
-    "Change one thing at a time and test each change",
-    "Make the prompt as long as possible"
+    "بازنویسی کامل پرامپت از ابتدا",
+    "افزودن مثال‌های بیشتر تا کار کند",
+    "تغییر یک چیز در هر بار و آزمایش هر تغییر",
+    "تا حد امکان طولانی کردن پرامپت"
   ]}
   correctIndex={2}
-  explanation="Changing one thing at a time lets you isolate what works and what doesn't. If you change multiple things at once, you won't know which change fixed the problem or which made it worse."
+  explanation="تغییر یک چیز در هر بار به شما امکان می‌دهد آنچه کار می‌کند و آنچه کار نمی‌کند را جدا کنید. اگر چندین چیز را همزمان تغییر دهید، نخواهید دانست کدام تغییر مشکل را برطرف کرد یا کدام آن را بدتر کرد."
 />
 
-## Practice: Improve This Prompt
+## تمرین: این پرامپت را بهبود دهید
 
-Try improving this weak prompt yourself. Edit it, then use AI to compare your version with the original:
+سعی کنید خودتان این پرامپت ضعیف را بهبود دهید. آن را ویرایش کنید، سپس از هوش مصنوعی برای مقایسه نسخه خود با نسخه اصلی استفاده کنید:
 
 <BeforeAfterEditor
-  title="Refine This Email Prompt"
+  title="اصلاح این پرامپت ایمیل"
   badPrompt="Write an email."
   idealPrompt={`You are a professional business writer.
 
@@ -381,7 +381,7 @@ Requirements:
 - Keep under 150 words
 
 Format: Subject line + email body`}
-  task="Transform this vague email prompt into something that will produce a professional, effective result."
+  task="این پرامپت ایمیل مبهم را به چیزی تبدیل کنید که نتیجه‌ای حرفه‌ای و مؤثر تولید کند."
 />
 
-In the next chapter, we'll explore JSON and YAML prompting for structured data applications.
+در فصل بعد، پرامپت‌نویسی با JSON و YAML را برای کاربردهای داده‌های ساختاریافته بررسی خواهیم کرد.

@@ -164,165 +164,165 @@ Pitch: \${pitch}`} />
 
 Δημιούργησε πρόγραμμα σπουδών για: \${topic}`} />
 
-## The Role Stack Technique
+## Η Τεχνική Στοίβας Ρόλων
 
-For complex tasks, combine multiple role aspects into a single, layered identity. This technique stacks expertise, audience awareness, and style guidelines to create highly specialized responses.
+Για πολύπλοκες εργασίες, συνδυάστε πολλαπλές πτυχές ρόλων σε μια ενιαία, πολυεπίπεδη ταυτότητα. Αυτή η τεχνική στοιβάζει τεχνογνωσία, επίγνωση κοινού, και κατευθυντήριες γραμμές στυλ για να δημιουργήσει εξαιρετικά εξειδικευμένες απαντήσεις.
 
-This example layers three elements: domain expertise (API documentation), audience (junior developers), and style guide (Google's conventions). Each layer constrains the output further.
+Αυτό το παράδειγμα στοιβάζει τρία στοιχεία: τεχνογνωσία τομέα (τεκμηρίωση API), κοινό (junior developers), και οδηγό στυλ (συμβάσεις της Google). Κάθε επίπεδο περιορίζει περαιτέρω την έξοδο.
 
-<TryIt compact prompt={`You are a technical writer with expertise in API documentation. You write for developers who are new to REST APIs. Follow the Google developer documentation style guide: use second person ("you"), active voice, present tense, and keep sentences under 26 words.
+<TryIt compact prompt={`Είσαι technical writer με τεχνογνωσία στην τεκμηρίωση API. Γράφεις για developers που είναι νέοι στα REST APIs. Ακολούθησε τον οδηγό στυλ τεκμηρίωσης της Google: χρησιμοποίησε δεύτερο πρόσωπο ("εσύ"), ενεργητική φωνή, ενεστώτα, και κράτα τις προτάσεις κάτω από 26 λέξεις.
 
-Document: \${apiEndpoint}`} />
+Τεκμηρίωσε: \${apiEndpoint}`} />
 
-## Roles for Different Tasks
+## Ρόλοι για Διαφορετικές Εργασίες
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Code review</span>
-    <span className="text-muted-foreground">Senior developer + mentor</span>
+    <span className="font-semibold min-w-40">Αναθεώρηση κώδικα</span>
+    <span className="text-muted-foreground">Senior developer + μέντορας</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Writing feedback</span>
-    <span className="text-muted-foreground">Editor + target audience member</span>
+    <span className="font-semibold min-w-40">Ανατροφοδότηση γραφής</span>
+    <span className="text-muted-foreground">Επιμελητής + μέλος κοινού-στόχου</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Business strategy</span>
-    <span className="text-muted-foreground">Consultant + industry expert</span>
+    <span className="font-semibold min-w-40">Επιχειρησιακή στρατηγική</span>
+    <span className="text-muted-foreground">Σύμβουλος + ειδικός κλάδου</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Learning new topic</span>
-    <span className="text-muted-foreground">Patient teacher + practitioner</span>
+    <span className="font-semibold min-w-40">Μάθηση νέου θέματος</span>
+    <span className="text-muted-foreground">Υπομονετικός δάσκαλος + επαγγελματίας</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Creative writing</span>
-    <span className="text-muted-foreground">Specific genre author</span>
+    <span className="font-semibold min-w-40">Δημιουργική γραφή</span>
+    <span className="text-muted-foreground">Συγκεκριμένος συγγραφέας είδους</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Technical explanation</span>
-    <span className="text-muted-foreground">Expert + communicator</span>
+    <span className="font-semibold min-w-40">Τεχνική εξήγηση</span>
+    <span className="text-muted-foreground">Ειδικός + επικοινωνιολόγος</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Problem-solving</span>
-    <span className="text-muted-foreground">Domain specialist + generalist</span>
+    <span className="font-semibold min-w-40">Επίλυση προβλημάτων</span>
+    <span className="text-muted-foreground">Ειδικός τομέα + γενικός</span>
   </div>
 </div>
 
-## Anti-Patterns to Avoid
+## Αντι-μοτίβα προς Αποφυγή
 
-### Overly Generic Roles
-
-<Compare 
-  before={{ label: "Weak", content: "You are a helpful assistant." }}
-  after={{ label: "Better", content: "You are a helpful assistant specializing in Python development, particularly web applications with Flask and Django." }}
-/>
-
-### Conflicting Roles
+### Υπερβολικά Γενικοί Ρόλοι
 
 <Compare 
-  before={{ label: "Problematic", content: "You are a creative writer who always follows strict templates." }}
-  after={{ label: "Better", content: "You are a creative writer who works within established story structures while adding original elements." }}
+  before={{ label: "Αδύναμο", content: "Είσαι ένας βοηθητικός βοηθός." }}
+  after={{ label: "Καλύτερο", content: "Είσαι ένας βοηθητικός βοηθός ειδικευμένος στην ανάπτυξη Python, ιδιαίτερα σε web εφαρμογές με Flask και Django." }}
 />
 
-### Unrealistic Expertise
+### Αντικρουόμενοι Ρόλοι
 
 <Compare 
-  before={{ label: "Problematic", content: "You are an expert in everything." }}
-  after={{ label: "Better", content: "You are a T-shaped professional: deep expertise in machine learning with broad knowledge of software engineering practices." }}
+  before={{ label: "Προβληματικό", content: "Είσαι δημιουργικός συγγραφέας που πάντα ακολουθεί αυστηρά templates." }}
+  after={{ label: "Καλύτερο", content: "Είσαι δημιουργικός συγγραφέας που δουλεύει εντός καθιερωμένων δομών ιστορίας προσθέτοντας παράλληλα πρωτότυπα στοιχεία." }}
 />
 
-## Real-World Prompt Examples
+### Μη Ρεαλιστική Τεχνογνωσία
 
-### Technical Documentation
+<Compare 
+  before={{ label: "Προβληματικό", content: "Είσαι ειδικός σε όλα." }}
+  after={{ label: "Καλύτερο", content: "Είσαι επαγγελματίας σχήματος-Τ: βαθιά τεχνογνωσία στη μηχανική μάθηση με ευρεία γνώση πρακτικών software engineering." }}
+/>
+
+## Παραδείγματα Prompts από τον Πραγματικό Κόσμο
+
+### Τεχνική Τεκμηρίωση
 
 <TryIt 
-  title="Technical Writer Role"
-  description="Try this technical documentation prompt with your own API endpoint."
-  prompt={`You are a senior technical writer at a developer tools company. You have 10 years of experience writing API documentation, SDK guides, and developer tutorials.
+  title="Ρόλος Technical Writer"
+  description="Δοκιμάστε αυτό το prompt τεχνικής τεκμηρίωσης με το δικό σας API endpoint."
+  prompt={`Είσαι senior technical writer σε εταιρεία εργαλείων developer. Έχεις 10 χρόνια εμπειρία γράφοντας τεκμηρίωση API, οδηγούς SDK, και tutorials για developers.
 
-Your documentation style:
-- Clear, scannable structure with headers and code examples
-- Explains the "why" alongside the "how"
-- Anticipates common questions and edge cases
-- Uses consistent terminology defined in a glossary
-- Includes working code examples that users can copy-paste
+Το στυλ τεκμηρίωσής σου:
+- Σαφής, σαρώσιμη δομή με επικεφαλίδες και παραδείγματα κώδικα
+- Εξηγεί το "γιατί" παράλληλα με το "πώς"
+- Προβλέπει συνηθισμένες ερωτήσεις και ακραίες περιπτώσεις
+- Χρησιμοποιεί συνεπή ορολογία καθορισμένη σε γλωσσάρι
+- Περιλαμβάνει λειτουργικά παραδείγματα κώδικα που οι χρήστες μπορούν να αντιγράψουν-επικολλήσουν
 
-Document this API endpoint: GET /api/users/:id - Returns user profile data`}
+Τεκμηρίωσε αυτό το API endpoint: GET /api/users/:id - Επιστρέφει δεδομένα προφίλ χρήστη`}
 />
 
-### Creative Writing
+### Δημιουργική Γραφή
 
 <TryIt 
-  title="Novelist Role"
-  description="This role combines genre expertise with specific stylistic traits."
-  prompt={`You are a novelist who writes in the style of literary fiction with elements of magical realism. Your prose is known for:
-- Lyrical but accessible language
-- Deep psychological character portraits
-- Subtle magical elements woven into everyday settings
-- Themes of memory, identity, and transformation
+  title="Ρόλος Μυθιστοριογράφου"
+  description="Αυτός ο ρόλος συνδυάζει τεχνογνωσία είδους με συγκεκριμένα στυλιστικά χαρακτηριστικά."
+  prompt={`Είσαι μυθιστοριογράφος που γράφει στο στυλ της λογοτεχνικής μυθοπλασίας με στοιχεία μαγικού ρεαλισμού. Η πρόζα σου είναι γνωστή για:
+- Λυρική αλλά προσβάσιμη γλώσσα
+- Βαθιά ψυχολογικά πορτρέτα χαρακτήρων
+- Λεπτά μαγικά στοιχεία υφασμένα σε καθημερινά σκηνικά
+- Θέματα μνήμης, ταυτότητας, και μεταμόρφωσης
 
-Write the opening scene of a story about a librarian who discovers that books in her library are slowly changing their endings.`}
+Γράψε την εναρκτήρια σκηνή μιας ιστορίας για μια βιβλιοθηκάριο που ανακαλύπτει ότι τα βιβλία στη βιβλιοθήκη της αλλάζουν σιγά-σιγά τα τέλη τους.`}
 />
 
-### Business Communication
+### Επιχειρηματική Επικοινωνία
 
 <TryIt 
-  title="Executive Coach Role"
-  description="This role helps with sensitive business communications."
-  prompt={`You are an executive communications coach who has worked with Fortune 500 CEOs. You help leaders communicate complex ideas simply and build trust with their teams.
+  title="Ρόλος Executive Coach"
+  description="Αυτός ο ρόλος βοηθά με ευαίσθητες επιχειρηματικές επικοινωνίες."
+  prompt={`Είσαι coach επικοινωνίας στελεχών που έχει δουλέψει με CEOs του Fortune 500. Βοηθάς ηγέτες να επικοινωνούν πολύπλοκες ιδέες απλά και να χτίζουν εμπιστοσύνη με τις ομάδες τους.
 
-Review this message for a team meeting about budget cuts. Suggest improvements that:
-- Acknowledge the difficulty while maintaining confidence
-- Are transparent without creating panic  
-- Show empathy while being professional
-- Include clear next steps
+Αξιολόγησε αυτό το μήνυμα για συνάντηση ομάδας σχετικά με περικοπές προϋπολογισμού. Πρότεινε βελτιώσεις που:
+- Αναγνωρίζουν τη δυσκολία διατηρώντας εμπιστοσύνη
+- Είναι διαφανείς χωρίς να δημιουργούν πανικό
+- Δείχνουν ενσυναίσθηση ενώ είναι επαγγελματικές
+- Περιλαμβάνουν σαφή επόμενα βήματα
 
-Draft message: "Due to budget constraints, we need to reduce project scope. Some initiatives will be paused."`}
+Προσχέδιο μηνύματος: "Λόγω περιορισμών προϋπολογισμού, χρειάζεται να μειώσουμε το εύρος του project. Κάποιες πρωτοβουλίες θα παγώσουν."`}
 />
 
-## Combining Roles with Other Techniques
+## Συνδυασμός Ρόλων με Άλλες Τεχνικές
 
-Roles work even better when combined with other prompting techniques:
+Οι ρόλοι λειτουργούν ακόμα καλύτερα όταν συνδυάζονται με άλλες τεχνικές prompting:
 
-### Role + Few-Shot
+### Ρόλος + Few-Shot
 
-Combine a role with an example to show exactly how the role should respond. The example teaches tone and format while the role provides context and expertise.
+Συνδυάστε έναν ρόλο με ένα παράδειγμα για να δείξετε ακριβώς πώς πρέπει να απαντήσει ο ρόλος. Το παράδειγμα διδάσκει τόνο και μορφή ενώ ο ρόλος παρέχει πλαίσιο και τεχνογνωσία.
 
-<TryIt compact prompt={`You are a customer support specialist trained to de-escalate angry customers.
+<TryIt compact prompt={`Είσαι ειδικός υποστήριξης πελατών εκπαιδευμένος να αποκλιμακώνει θυμωμένους πελάτες.
 
-Example response to angry customer:
-Customer: "This is ridiculous! I've been waiting 2 weeks!"
-You: "I completely understand your frustration, and I apologize for the delay. Let me look into this right now and find out exactly where your order is. Can I have your order number?"
+Παράδειγμα απάντησης σε θυμωμένο πελάτη:
+Πελάτης: "Αυτό είναι γελοίο! Περιμένω 2 εβδομάδες!"
+Εσύ: "Καταλαβαίνω απόλυτα την απογοήτευσή σας, και ζητώ συγγνώμη για την καθυστέρηση. Επιτρέψτε μου να το ελέγξω αμέσως τώρα και να βρω ακριβώς πού είναι η παραγγελία σας. Μπορώ να έχω τον αριθμό παραγγελίας σας;"
 
-Now respond to:
-Customer: "\${customerMessage}"`} />
+Τώρα απάντησε σε:
+Πελάτης: "\${customerMessage}"`} />
 
-### Role + Chain of Thought
+### Ρόλος + Chain of Thought
 
-The detective role naturally encourages step-by-step reasoning. Combining roles with chain-of-thought produces more transparent, verifiable problem-solving.
+Ο ρόλος ντετέκτιβ ενθαρρύνει φυσικά τη βήμα-βήμα σκέψη. Ο συνδυασμός ρόλων με chain-of-thought παράγει πιο διαφανή, επαληθεύσιμη επίλυση προβλημάτων.
 
-<TryIt compact prompt={`You are a detective solving a logic puzzle. Think through each clue methodically, stating your reasoning at each step.
+<TryIt compact prompt={`Είσαι ντετέκτιβ που λύνει ένα λογικό παζλ. Σκέψου μεθοδικά κάθε στοιχείο, δηλώνοντας τον συλλογισμό σου σε κάθε βήμα.
 
-Clues:
+Στοιχεία:
 \${clues}
 
-Solve step by step, explaining your deductions.`} />
+Λύσε βήμα-βήμα, εξηγώντας τα συμπεράσματά σου.`} />
 
-## Summary
+## Σύνοψη
 
-<Callout type="info" title="Key Takeaways">
-Role-based prompting is powerful because it focuses the model's vast knowledge, sets expectations for tone and style, provides implicit context, and makes outputs more consistent.
+<Callout type="info" title="Βασικά Συμπεράσματα">
+Το role-based prompting είναι ισχυρό επειδή εστιάζει την τεράστια γνώση του μοντέλου, θέτει προσδοκίες για τόνο και στυλ, παρέχει σιωπηρό πλαίσιο, και κάνει τις εξόδους πιο συνεπείς.
 </Callout>
 
 <Quiz 
-  question="What makes a role-based prompt more effective?"
+  question="Τι κάνει ένα role-based prompt πιο αποτελεσματικό;"
   options={[
-    "Using generic role titles like 'expert'",
-    "Adding specific expertise, experience, and perspective details",
-    "Keeping the role description as short as possible",
-    "Asking the AI to switch roles frequently"
+    "Χρήση γενικών τίτλων ρόλων όπως 'ειδικός'",
+    "Προσθήκη συγκεκριμένων λεπτομερειών τεχνογνωσίας, εμπειρίας, και προοπτικής",
+    "Διατήρηση της περιγραφής ρόλου όσο πιο σύντομη γίνεται",
+    "Ζητώντας από την AI να αλλάζει ρόλους συχνά"
   ]}
   correctIndex={1}
-  explanation="The more detailed and realistic the role, the better the results. Specificity helps the model understand exactly what knowledge, tone, and perspective to apply."
+  explanation="Όσο πιο λεπτομερής και ρεαλιστικός ο ρόλος, τόσο καλύτερα τα αποτελέσματα. Η εξειδίκευση βοηθά το μοντέλο να καταλάβει ακριβώς ποια γνώση, τόνο, και προοπτική να εφαρμόσει."
 />
 
-The key is **specificity**: the more detailed and realistic the role, the better the results. In the next chapter, we'll explore how to get consistent, structured outputs from your prompts.
+Το κλειδί είναι η **εξειδίκευση**: όσο πιο λεπτομερής και ρεαλιστικός ο ρόλος, τόσο καλύτερα τα αποτελέσματα. Στο επόμενο κεφάλαιο, θα εξερευνήσουμε πώς να παίρνουμε συνεπείς, δομημένες εξόδους από τα prompts μας.

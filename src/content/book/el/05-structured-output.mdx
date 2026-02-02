@@ -1,108 +1,108 @@
-Getting consistent, well-formatted output is essential for production applications and efficient workflows. This chapter covers techniques for controlling exactly how AI models format their responses.
+Η απόκτηση συνεπούς, καλά μορφοποιημένης εξόδου είναι απαραίτητη για εφαρμογές παραγωγής και αποδοτικές ροές εργασίας. Αυτό το κεφάλαιο καλύπτει τεχνικές για τον έλεγχο του ακριβώς πώς τα μοντέλα AI μορφοποιούν τις απαντήσεις τους.
 
-<Callout type="info" title="From Prose to Data">
-Structured output transforms AI responses from freeform text into actionable, parseable data.
+<Callout type="info" title="Από Πεζό Λόγο σε Δεδομένα">
+Η δομημένη έξοδος μετατρέπει τις απαντήσεις AI από ελεύθερο κείμενο σε πρακτικά, αναλύσιμα δεδομένα.
 </Callout>
 
-## Why Structure Matters
+## Γιατί Έχει Σημασία η Δομή
 
 <StructuredOutputDemo />
 
-## Basic Formatting Techniques
+## Βασικές Τεχνικές Μορφοποίησης
 
-### Lists
+### Λίστες
 
-Lists are perfect for step-by-step instructions, ranked items, or collections of related points. They're easy to scan and parse. Use **numbered lists** when order matters (steps, rankings) and **bullet points** for unordered collections.
-
-<TryIt 
-  compact
-  title="List Formatting"
-  prompt={`Provide 5 tips for better sleep.
-
-Format: Numbered list with a brief explanation for each.
-Each tip should be bold, followed by a dash and explanation.`}
-/>
-
-<Callout type="tip" title="List Best Practices">
-Specify the exact number of items you want, whether to include explanations, and if items should be bold or have a specific structure.
-</Callout>
-
-### Tables
-
-Tables excel at comparing multiple items across the same dimensions. They're ideal for feature comparisons, data summaries, and any information with consistent attributes. Always define your column headers explicitly.
+Οι λίστες είναι τέλειες για οδηγίες βήμα-βήμα, κατατεταγμένα στοιχεία, ή συλλογές σχετικών σημείων. Είναι εύκολο να σαρωθούν και να αναλυθούν. Χρησιμοποιήστε **αριθμημένες λίστες** όταν η σειρά έχει σημασία (βήματα, κατατάξεις) και **κουκκίδες** για μη ταξινομημένες συλλογές.
 
 <TryIt 
   compact
-  title="Table Formatting"
-  prompt={`Compare the top 4 Python web frameworks.
+  title="Μορφοποίηση Λίστας"
+  prompt={`Δώσε 5 συμβουλές για καλύτερο ύπνο.
 
-Format as a markdown table with columns:
-| Framework | Best For | Learning Curve | Performance |`}
+Μορφή: Αριθμημένη λίστα με σύντομη εξήγηση για κάθε μία.
+Κάθε συμβουλή πρέπει να είναι έντονη, ακολουθούμενη από παύλα και εξήγηση.`}
 />
 
-<Callout type="tip" title="Table Best Practices">
-Specify column names, expected data types (text, numbers, ratings), and how many rows you need. For complex comparisons, limit to 4-6 columns for readability.
+<Callout type="tip" title="Βέλτιστες Πρακτικές Λίστας">
+Καθορίστε τον ακριβή αριθμό στοιχείων που θέλετε, αν θα συμπεριλάβετε εξηγήσεις, και αν τα στοιχεία πρέπει να είναι έντονα ή να έχουν συγκεκριμένη δομή.
 </Callout>
 
-### Headers and Sections
+### Πίνακες
 
-Headers create a clear document structure, making long responses scannable and organized. Use them for reports, analyses, or any multi-part response. Hierarchical headers (##, ###) show relationships between sections.
+Οι πίνακες υπερέχουν στη σύγκριση πολλαπλών στοιχείων στις ίδιες διαστάσεις. Είναι ιδανικοί για συγκρίσεις χαρακτηριστικών, περιλήψεις δεδομένων, και οποιαδήποτε πληροφορία με συνεπή χαρακτηριστικά. Πάντα ορίζετε τις επικεφαλίδες στηλών ρητά.
 
-```
-Analyze this business proposal.
+<TryIt 
+  compact
+  title="Μορφοποίηση Πίνακα"
+  prompt={`Σύγκρινε τα κορυφαία 4 Python web frameworks.
 
-Structure your response with these sections:
-## Executive Summary
-## Strengths
-## Weaknesses
-## Recommendations
-## Risk Assessment
-```
+Μορφοποίησε ως πίνακα markdown με στήλες:
+| Framework | Καλύτερο Για | Καμπύλη Μάθησης | Απόδοση |`}
+/>
 
-<Callout type="tip" title="Section Best Practices">
-List your sections in the order you want them. For consistency, specify what each section should contain (e.g., "Executive Summary: 2-3 sentences only").
+<Callout type="tip" title="Βέλτιστες Πρακτικές Πίνακα">
+Καθορίστε ονόματα στηλών, αναμενόμενους τύπους δεδομένων (κείμενο, αριθμούς, βαθμολογίες), και πόσες σειρές χρειάζεστε. Για πολύπλοκες συγκρίσεις, περιορίστε σε 4-6 στήλες για αναγνωσιμότητα.
 </Callout>
 
-### Emphasis with Uppercase Directives
+### Επικεφαλίδες και Ενότητες
 
-Uppercase words act as strong signals to the model, emphasizing critical constraints or requirements. Use them sparingly for maximum impact—overuse dilutes their effectiveness.
+Οι επικεφαλίδες δημιουργούν σαφή δομή εγγράφου, κάνοντας τις μεγάλες απαντήσεις σαρώσιμες και οργανωμένες. Χρησιμοποιήστε τες για αναφορές, αναλύσεις, ή οποιαδήποτε απάντηση πολλαπλών μερών. Οι ιεραρχικές επικεφαλίδες (##, ###) δείχνουν σχέσεις μεταξύ ενοτήτων.
 
-**Common Uppercase Directives:**
+```
+Ανάλυσε αυτή την επιχειρηματική πρόταση.
+
+Δόμησε την απάντησή σου με αυτές τις ενότητες:
+## Εκτελεστική Σύνοψη
+## Δυνατά Σημεία
+## Αδυναμίες
+## Συστάσεις
+## Αξιολόγηση Κινδύνου
+```
+
+<Callout type="tip" title="Βέλτιστες Πρακτικές Ενοτήτων">
+Κατονομάστε τις ενότητές σας στη σειρά που τις θέλετε. Για συνέπεια, καθορίστε τι πρέπει να περιέχει κάθε ενότητα (π.χ., "Εκτελεστική Σύνοψη: μόνο 2-3 προτάσεις").
+</Callout>
+
+### Έμφαση με Οδηγίες Κεφαλαίων
+
+Οι λέξεις με κεφαλαία λειτουργούν ως ισχυρά σήματα στο μοντέλο, τονίζοντας κρίσιμους περιορισμούς ή απαιτήσεις. Χρησιμοποιήστε τες με φειδώ για μέγιστο αντίκτυπο—η υπερβολική χρήση αραιώνει την αποτελεσματικότητά τους.
+
+**Κοινές Οδηγίες Κεφαλαίων:**
 
 <InfoGrid items={[
-  { label: "NEVER", description: "Absolute prohibition: \"NEVER include personal opinions\"", color: "red" },
-  { label: "ALWAYS", description: "Mandatory requirement: \"ALWAYS cite sources\"", color: "green" },
-  { label: "IMPORTANT", description: "Critical instruction: \"IMPORTANT: Keep responses under 100 words\"", color: "amber" },
-  { label: "DO NOT", description: "Strong prohibition: \"DO NOT make up statistics\"", color: "red" },
-  { label: "MUST", description: "Required action: \"Output MUST be valid JSON\"", color: "blue" },
-  { label: "ONLY", description: "Restriction: \"Return ONLY the code, no explanations\"", color: "purple" },
+  { label: "ΠΟΤΕ", description: "Απόλυτη απαγόρευση: \"ΠΟΤΕ μην συμπεριλαμβάνεις προσωπικές απόψεις\"", color: "red" },
+  { label: "ΠΑΝΤΑ", description: "Υποχρεωτική απαίτηση: \"ΠΑΝΤΑ αναφέρε πηγές\"", color: "green" },
+  { label: "ΣΗΜΑΝΤΙΚΟ", description: "Κρίσιμη οδηγία: \"ΣΗΜΑΝΤΙΚΟ: Κράτα τις απαντήσεις κάτω από 100 λέξεις\"", color: "amber" },
+  { label: "ΜΗΝ", description: "Ισχυρή απαγόρευση: \"ΜΗΝ επινοείς στατιστικά\"", color: "red" },
+  { label: "ΠΡΕΠΕΙ", description: "Απαιτούμενη ενέργεια: \"Η έξοδος ΠΡΕΠΕΙ να είναι έγκυρο JSON\"", color: "blue" },
+  { label: "ΜΟΝΟ", description: "Περιορισμός: \"Επέστρεψε ΜΟΝΟ τον κώδικα, χωρίς εξηγήσεις\"", color: "purple" },
 ]} />
 
 ```
-Summarize this article.
+Συνόψισε αυτό το άρθρο.
 
-IMPORTANT: Keep the summary under 100 words.
-NEVER add information not present in the original.
-ALWAYS maintain the original tone and perspective.
-DO NOT include your own opinions or analysis.
+ΣΗΜΑΝΤΙΚΟ: Κράτα τη σύνοψη κάτω από 100 λέξεις.
+ΠΟΤΕ μην προσθέτεις πληροφορίες που δεν υπάρχουν στο πρωτότυπο.
+ΠΑΝΤΑ διατήρησε τον αρχικό τόνο και προοπτική.
+ΜΗΝ συμπεριλαμβάνεις τις δικές σου απόψεις ή ανάλυση.
 ```
 
-<Callout type="warning" title="Use Sparingly">
-If everything is uppercase or marked as critical, nothing stands out. Reserve these directives for genuinely important constraints.
+<Callout type="warning" title="Χρησιμοποίησε με Φειδώ">
+Αν όλα είναι με κεφαλαία ή επισημασμένα ως κρίσιμα, τίποτα δεν ξεχωρίζει. Κράτησε αυτές τις οδηγίες για πραγματικά σημαντικούς περιορισμούς.
 </Callout>
 
-## JSON Output
+## Έξοδος JSON
 
-JSON (JavaScript Object Notation) is the most popular format for structured AI output. It's machine-readable, widely supported by programming languages, and perfect for APIs, databases, and automation workflows. The key to reliable JSON is providing a clear schema.
+Το JSON (JavaScript Object Notation) είναι η πιο δημοφιλής μορφή για δομημένη έξοδο AI. Είναι αναγνώσιμο από μηχανές, ευρέως υποστηριζόμενο από γλώσσες προγραμματισμού, και τέλειο για APIs, βάσεις δεδομένων, και ροές εργασίας αυτοματισμού. Το κλειδί για αξιόπιστο JSON είναι η παροχή σαφούς schema.
 
-### Basic JSON Request
+### Βασικό Αίτημα JSON
 
-Start with a template showing the exact structure you want. Include field names, data types, and example values. This acts as a contract the model will follow.
+Ξεκινήστε με ένα template που δείχνει την ακριβή δομή που θέλετε. Συμπεριλάβετε ονόματα πεδίων, τύπους δεδομένων, και παραδείγματα τιμών. Αυτό λειτουργεί ως συμβόλαιο που θα ακολουθήσει το μοντέλο.
 
 <TryIt 
-  title="JSON Extraction"
-  description="Extract structured data from unstructured text."
-  prompt={`Extract information from this text and return as JSON:
+  title="Εξαγωγή JSON"
+  description="Εξαγάγετε δομημένα δεδομένα από μη δομημένο κείμενο."
+  prompt={`Εξαγάγε πληροφορίες από αυτό το κείμενο και επέστρεψε ως JSON:
 
 {
     "company_name": "string",
@@ -112,170 +112,170 @@ Start with a template showing the exact structure you want. Include field names,
     "industry": "string"
 }
 
-Text: "Apple Inc., founded in 1976, is headquartered in Cupertino, California. The technology giant employs approximately 164,000 people worldwide."`}
+Κείμενο: "Η Apple Inc., που ιδρύθηκε το 1976, έχει έδρα στο Cupertino της Καλιφόρνια. Ο τεχνολογικός κολοσσός απασχολεί περίπου 164.000 άτομα παγκοσμίως."`}
 />
 
-### Complex JSON Structures
+### Πολύπλοκες Δομές JSON
 
-For nested data, use hierarchical JSON with objects inside objects, arrays of objects, and mixed types. Define each level clearly and use TypeScript-style annotations (`"positive" | "negative"`) to constrain values.
+Για ένθετα δεδομένα, χρησιμοποιήστε ιεραρχικό JSON με αντικείμενα μέσα σε αντικείμενα, πίνακες αντικειμένων, και μικτούς τύπους. Ορίστε κάθε επίπεδο ξεκάθαρα και χρησιμοποιήστε annotations τύπου TypeScript (`"positive" | "negative"`) για να περιορίσετε τιμές.
 
 ```
-Analyze this product review and return JSON:
+Ανάλυσε αυτή την κριτική προϊόντος και επέστρεψε JSON:
 
 {
-  "review_id": "string (generate unique)",
+  "review_id": "string (δημιούργησε μοναδικό)",
   "sentiment": {
     "overall": "positive" | "negative" | "mixed" | "neutral",
     "score": 0.0-1.0
   },
   "aspects": [
     {
-      "aspect": "string (e.g., 'price', 'quality')",
+      "aspect": "string (π.χ., 'τιμή', 'ποιότητα')",
       "sentiment": "positive" | "negative" | "neutral",
-      "mentions": ["exact quotes from review"]
+      "mentions": ["ακριβή αποσπάσματα από κριτική"]
     }
   ],
   "purchase_intent": {
     "would_recommend": boolean,
     "confidence": 0.0-1.0
   },
-  "key_phrases": ["string array of notable phrases"]
+  "key_phrases": ["string array αξιοσημείωτων φράσεων"]
 }
 
-Return ONLY valid JSON, no additional text.
+Επέστρεψε ΜΟΝΟ έγκυρο JSON, χωρίς επιπλέον κείμενο.
 
-Review: "[review text]"
+Κριτική: "[κείμενο κριτικής]"
 ```
 
-### Ensuring Valid JSON
+### Εξασφάλιση Έγκυρου JSON
 
-Models sometimes add explanatory text or markdown formatting around JSON. Prevent this with explicit instructions about output format. You can request raw JSON or JSON inside code blocks—choose based on your parsing needs.
+Τα μοντέλα μερικές φορές προσθέτουν επεξηγηματικό κείμενο ή μορφοποίηση markdown γύρω από το JSON. Αποτρέψτε αυτό με ρητές οδηγίες για τη μορφή εξόδου. Μπορείτε να ζητήσετε raw JSON ή JSON μέσα σε code blocks—επιλέξτε βάσει των αναγκών ανάλυσής σας.
 
-Add explicit instructions:
+Προσθέστε ρητές οδηγίες:
 
 ```
-IMPORTANT:
-- Return ONLY the JSON object, no markdown code blocks
-- Ensure all strings are properly escaped
-- Use null for missing values, not undefined
-- Validate that the output is parseable JSON
+ΣΗΜΑΝΤΙΚΟ:
+- Επέστρεψε ΜΟΝΟ το αντικείμενο JSON, χωρίς markdown code blocks
+- Βεβαιώσου ότι όλα τα strings είναι σωστά escaped
+- Χρησιμοποίησε null για ελλείπουσες τιμές, όχι undefined
+- Επαλήθευσε ότι η έξοδος είναι αναλύσιμο JSON
 ```
 
-Or request code blocks by asking the model to wrap its output:
+Ή ζητήστε code blocks ζητώντας από το μοντέλο να περιτυλίξει την έξοδό του:
 
 ````
-Return the result as a JSON code block:
+Επέστρεψε το αποτέλεσμα ως JSON code block:
 ```json
 { ... }
 ```
 ````
 
-## YAML Output
+## Έξοδος YAML
 
-YAML is more human-readable than JSON, using indentation instead of brackets. It's the standard for configuration files (Docker, Kubernetes, GitHub Actions) and works well when the output will be read by humans or used in DevOps contexts. YAML is sensitive to indentation, so be specific about formatting requirements.
+Το YAML είναι πιο αναγνώσιμο από ανθρώπους από το JSON, χρησιμοποιώντας εσοχή αντί για αγκύλες. Είναι το standard για αρχεία διαμόρφωσης (Docker, Kubernetes, GitHub Actions) και λειτουργεί καλά όταν η έξοδος θα διαβαστεί από ανθρώπους ή θα χρησιμοποιηθεί σε DevOps πλαίσια. Το YAML είναι ευαίσθητο στην εσοχή, οπότε να είστε συγκεκριμένοι για τις απαιτήσεις μορφοποίησης.
 
 <TryIt 
   compact
-  title="YAML Generation"
-  prompt={`Generate a GitHub Actions workflow for a Node.js project.
+  title="Δημιουργία YAML"
+  prompt={`Δημιούργησε ένα GitHub Actions workflow για ένα Node.js project.
 
-Return as valid YAML:
-- Include: install, lint, test, build stages
-- Use Node.js 18
+Επέστρεψε ως έγκυρο YAML:
+- Συμπερίλαβε: install, lint, test, build στάδια
+- Χρησιμοποίησε Node.js 18
 - Cache npm dependencies
-- Run on push to main and pull requests`}
+- Εκτέλεση σε push στο main και pull requests`}
 />
 
-## XML Output
+## Έξοδος XML
 
-XML is still required for many enterprise systems, SOAP APIs, and legacy integrations. It's more verbose than JSON but offers features like attributes, namespaces, and CDATA sections for complex data. Specify element names, nesting structure, and where to use attributes vs. child elements.
+Το XML απαιτείται ακόμα για πολλά enterprise συστήματα, SOAP APIs, και legacy ενσωματώσεις. Είναι πιο εκτενές από το JSON αλλά προσφέρει χαρακτηριστικά όπως attributes, namespaces, και CDATA sections για πολύπλοκα δεδομένα. Καθορίστε ονόματα στοιχείων, δομή ένθεσης, και πού να χρησιμοποιήσετε attributes έναντι child elements.
 
 ```
-Convert this data to XML format:
+Μετάτρεψε αυτά τα δεδομένα σε μορφή XML:
 
-Requirements:
+Απαιτήσεις:
 - Root element: <catalog>
-- Each item in <book> element
-- Include attributes where appropriate
-- Use CDATA for description text
+- Κάθε στοιχείο σε <book> element
+- Συμπερίλαβε attributes όπου ενδείκνυται
+- Χρησιμοποίησε CDATA για κείμενο περιγραφής
 
-Data: [book data]
+Δεδομένα: [δεδομένα βιβλίου]
 ```
 
-## Custom Formats
+## Προσαρμοσμένες Μορφές
 
-Sometimes standard formats don't fit your needs. You can define any custom format by providing a clear template. Custom formats work well for reports, logs, or domain-specific outputs that will be read by humans.
+Μερικές φορές οι standard μορφές δεν ταιριάζουν στις ανάγκες σας. Μπορείτε να ορίσετε οποιαδήποτε προσαρμοσμένη μορφή παρέχοντας ένα σαφές template. Οι προσαρμοσμένες μορφές λειτουργούν καλά για αναφορές, logs, ή εξόδους ειδικού τομέα που θα διαβαστούν από ανθρώπους.
 
-### Structured Analysis Format
+### Μορφή Δομημένης Ανάλυσης
 
-Use delimiters (===, ---, [SECTION]) to create scannable documents with clear boundaries between sections. This format is great for code reviews, audits, and analyses.
-
-```
-Analyze this code using this exact format:
-
-=== CODE ANALYSIS ===
-
-[SUMMARY]
-One paragraph overview
-
-[ISSUES]
-• CRITICAL: [issue] — [file:line]
-• WARNING: [issue] — [file:line]  
-• INFO: [issue] — [file:line]
-
-[METRICS]
-Complexity: [Low/Medium/High]
-Maintainability: [score]/10
-Test Coverage: [estimated %]
-
-[RECOMMENDATIONS]
-1. [Priority 1 recommendation]
-2. [Priority 2 recommendation]
-
-=== END ANALYSIS ===
-```
-
-### Fill-in-the-Blank Format
-
-Templates with blanks (___) guide the model to fill in specific fields while maintaining exact formatting. This approach is excellent for forms, briefs, and standardized documents where consistency matters.
+Χρησιμοποιήστε διαχωριστές (===, ---, [SECTION]) για να δημιουργήσετε σαρώσιμα έγγραφα με σαφή όρια μεταξύ ενοτήτων. Αυτή η μορφή είναι εξαιρετική για αναθεωρήσεις κώδικα, ελέγχους, και αναλύσεις.
 
 ```
-Complete this template for the given product:
+Ανάλυσε αυτόν τον κώδικα χρησιμοποιώντας αυτή την ακριβή μορφή:
+
+=== ΑΝΑΛΥΣΗ ΚΩΔΙΚΑ ===
+
+[ΣΥΝΟΨΗ]
+Μία παράγραφος επισκόπηση
+
+[ΠΡΟΒΛΗΜΑΤΑ]
+• ΚΡΙΣΙΜΟ: [πρόβλημα] — [αρχείο:γραμμή]
+• ΠΡΟΕΙΔΟΠΟΙΗΣΗ: [πρόβλημα] — [αρχείο:γραμμή]  
+• ΠΛΗΡΟΦΟΡΙΑ: [πρόβλημα] — [αρχείο:γραμμή]
+
+[ΜΕΤΡΙΚΕΣ]
+Πολυπλοκότητα: [Χαμηλή/Μέση/Υψηλή]
+Συντηρησιμότητα: [βαθμολογία]/10
+Κάλυψη Δοκιμών: [εκτιμώμενο %]
+
+[ΣΥΣΤΑΣΕΙΣ]
+1. [Σύσταση προτεραιότητας 1]
+2. [Σύσταση προτεραιότητας 2]
+
+=== ΤΕΛΟΣ ΑΝΑΛΥΣΗΣ ===
+```
+
+### Μορφή Συμπλήρωσης Κενών
+
+Τα templates με κενά (___) καθοδηγούν το μοντέλο να συμπληρώσει συγκεκριμένα πεδία διατηρώντας ακριβή μορφοποίηση. Αυτή η προσέγγιση είναι εξαιρετική για φόρμες, briefs, και τυποποιημένα έγγραφα όπου η συνέπεια έχει σημασία.
+
+```
+Συμπλήρωσε αυτό το template για το δοσμένο προϊόν:
 
 PRODUCT BRIEF
 ─────────────
-Name: _______________
+Όνομα: _______________
 Tagline: _______________
-Target User: _______________
-Problem Solved: _______________
-Key Features:
+Χρήστης-Στόχος: _______________
+Πρόβλημα που Λύνει: _______________
+Βασικά Χαρακτηριστικά:
   1. _______________
   2. _______________
   3. _______________
-Differentiator: _______________
+Διαφοροποίηση: _______________
 
-Product: [product description]
+Προϊόν: [περιγραφή προϊόντος]
 ```
 
-## Typed Responses
+## Τυποποιημένες Απαντήσεις
 
-Typed responses define categories or entity types that the model should recognize and label. This technique is essential for Named Entity Recognition (NER), classification tasks, and any extraction where you need to categorize information consistently. Define your types clearly with examples.
+Οι τυποποιημένες απαντήσεις ορίζουν κατηγορίες ή τύπους οντοτήτων που πρέπει να αναγνωρίσει και να επισημάνει το μοντέλο. Αυτή η τεχνική είναι απαραίτητη για Named Entity Recognition (NER), εργασίες ταξινόμησης, και οποιαδήποτε εξαγωγή όπου χρειάζεται να κατηγοριοποιήσετε πληροφορίες συνεπώς. Ορίστε τους τύπους σας ξεκάθαρα με παραδείγματα.
 
 <TryIt 
   compact
-  title="Entity Extraction"
-  prompt={`Extract entities from this text.
+  title="Εξαγωγή Οντοτήτων"
+  prompt={`Εξαγάγε οντότητες από αυτό το κείμενο.
 
-Entity Types:
-- PERSON: Full names of people
-- ORG: Organization/company names
-- LOCATION: Cities, countries, addresses
-- DATE: Dates in ISO format (YYYY-MM-DD)
-- MONEY: Monetary amounts with currency
+Τύποι Οντοτήτων:
+- ΠΡΟΣΩΠΟ: Πλήρη ονόματα ατόμων
+- ΟΡΓΑΝΙΣΜΟΣ: Ονόματα οργανισμών/εταιρειών
+- ΤΟΠΟΘΕΣΙΑ: Πόλεις, χώρες, διευθύνσεις
+- ΗΜΕΡΟΜΗΝΙΑ: Ημερομηνίες σε μορφή ISO (YYYY-MM-DD)
+- ΧΡΗΜΑΤΑ: Χρηματικά ποσά με νόμισμα
 
-Format each as: [TYPE]: [value]
+Μορφοποίησε κάθε μία ως: [ΤΥΠΟΣ]: [τιμή]
 
-Text: "Tim Cook announced that Apple will invest $1 billion in a new Austin facility by December 2024."`}
+Κείμενο: "Ο Tim Cook ανακοίνωσε ότι η Apple θα επενδύσει 1 δισεκατομμύριο δολάρια σε νέα εγκατάσταση στο Austin μέχρι τον Δεκέμβριο 2024."`}
 />
 
 ## Multi-Part Structured Responses

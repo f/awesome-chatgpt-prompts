@@ -1,27 +1,27 @@
-Structured data formats like JSON and YAML are essential for building applications that consume AI outputs programmatically. This chapter covers techniques for reliable structured output generation.
+פורמטים של נתונים מובנים כמו JSON ו-YAML הם חיוניים לבניית יישומים שצורכים פלטי AI באופן תכנותי. פרק זה מכסה טכניקות ליצירת פלט מובנה אמין.
 
-<Callout type="info" title="From Text to Data">
-JSON and YAML transform AI outputs from freeform text into structured, type-safe data that code can consume directly.
+<Callout type="info" title="מטקסט לנתונים">
+JSON ו-YAML הופכים פלטי AI מטקסט חופשי לנתונים מובנים ובטוחי-טיפוסים שקוד יכול לצרוך ישירות.
 </Callout>
 
-## Why Structured Formats?
+## למה פורמטים מובנים?
 
 <JsonYamlDemo />
 
-## JSON Prompting Basics
+## יסודות הנחיית JSON
 
-JSON (JavaScript Object Notation) is the most common format for programmatic AI outputs. Its strict syntax makes it easy to parse, but also means small errors can break your entire pipeline.
+JSON (JavaScript Object Notation) הוא הפורמט הנפוץ ביותר לפלטי AI תכנותיים. התחביר הקפדני שלו מקל על הניתוח, אך גם אומר ששגיאות קטנות יכולות לשבור את כל הצינור שלכם.
 
-### Do's and Don'ts: Requesting JSON
+### מה כן ומה לא: בקשת JSON
 
 <Compare 
-  before={{ label: "❌ Don't: Vague request", content: "Give me the user info as JSON." }}
-  after={{ label: "✓ Do: Show the schema", content: "Extract user info as JSON matching this schema:\n\n{\n  \"name\": \"string\",\n  \"age\": number,\n  \"email\": \"string\"\n}\n\nReturn ONLY valid JSON, no markdown." }}
+  before={{ label: "❌ לא: בקשה מעורפלת", content: "תן לי את פרטי המשתמש כ-JSON." }}
+  after={{ label: "✓ כן: הצג את הסכמה", content: "חלץ פרטי משתמש כ-JSON התואם לסכמה זו:\n\n{\n  \"name\": \"string\",\n  \"age\": number,\n  \"email\": \"string\"\n}\n\nהחזר רק JSON תקין, ללא markdown." }}
 />
 
-### Simple JSON Output
+### פלט JSON פשוט
 
-Start with a schema showing the expected structure. The model will fill in values based on the input text.
+התחילו עם סכמה המציגה את המבנה הצפוי. המודל ימלא ערכים על בסיס טקסט הקלט.
 
 ```
 Extract the following information as JSON:
@@ -35,7 +35,7 @@ Extract the following information as JSON:
 Text: "Contact John Smith, 34 years old, at john@example.com"
 ```
 
-Output:
+פלט:
 ```json
 {
   "name": "John Smith",
@@ -44,9 +44,9 @@ Output:
 }
 ```
 
-### Nested JSON Structures
+### מבני JSON מקוננים
 
-Real-world data often has nested relationships. Define each level of your schema clearly, especially for arrays of objects.
+נתונים מהעולם האמיתי לעתים קרובות כוללים קשרים מקוננים. הגדירו כל רמה בסכמה שלכם בבירור, במיוחד עבור מערכים של אובייקטים.
 
 ```
 Parse this order into JSON:
@@ -71,13 +71,13 @@ Order: "Order #12345 for Jane Doe (jane@email.com): 2x Widget ($10 each),
 1x Gadget ($25). Total: $45"
 ```
 
-### Ensuring Valid JSON
+### הבטחת JSON תקין
 
-<Callout type="warning" title="Common Failure Point">
-Models often wrap JSON in markdown code blocks or add explanatory text. Be explicit about wanting raw JSON only.
+<Callout type="warning" title="נקודת כשל נפוצה">
+מודלים לעתים קרובות עוטפים JSON בבלוקי קוד של markdown או מוסיפים טקסט הסברתי. היו מפורשים לגבי הרצון ב-JSON גולמי בלבד.
 </Callout>
 
-Add explicit instructions:
+הוסיפו הוראות מפורשות:
 
 ```
 CRITICAL: Return ONLY valid JSON. No markdown, no explanation, 
@@ -88,13 +88,13 @@ Ensure all strings are properly quoted and escaped.
 Numbers should not be quoted.
 ```
 
-## YAML Prompting Basics
+## יסודות הנחיית YAML
 
-YAML is more human-readable than JSON and supports comments. It's the standard for configuration files, especially in DevOps (Docker, Kubernetes, GitHub Actions).
+YAML קריא יותר לבני אדם מ-JSON ותומך בהערות. הוא הסטנדרט לקבצי תצורה, במיוחד ב-DevOps (Docker, Kubernetes, GitHub Actions).
 
-### Simple YAML Output
+### פלט YAML פשוט
 
-YAML uses indentation instead of braces. Provide a template showing the expected structure.
+YAML משתמש בהזחה במקום סוגריים מסולסלים. ספקו תבנית המציגה את המבנה הצפוי.
 
 ```
 Generate a configuration file in YAML format:
@@ -110,7 +110,7 @@ database:
 Requirements: Production server on port 443 with SSL, PostgreSQL database
 ```
 
-Output:
+פלט:
 ```yaml
 server:
   host: "0.0.0.0"
@@ -121,9 +121,9 @@ database:
   connection_string: "postgresql://user:pass@localhost:5432/prod"
 ```
 
-### Complex YAML Structures
+### מבני YAML מורכבים
 
-For complex configurations, be specific about requirements. The model knows common patterns for tools like GitHub Actions, Docker Compose, and Kubernetes.
+לתצורות מורכבות, היו ספציפיים לגבי הדרישות. המודל מכיר דפוסים נפוצים לכלים כמו GitHub Actions, Docker Compose ו-Kubernetes.
 
 ```
 Generate a GitHub Actions workflow in YAML:
@@ -135,17 +135,17 @@ Requirements:
 - Cache npm dependencies
 ```
 
-## Type Definitions in Prompts
+## הגדרות טיפוסים בהנחיות
 
-Type definitions give the model a precise contract for output structure. They're more explicit than examples and easier to validate programmatically.
+הגדרות טיפוסים נותנות למודל חוזה מדויק למבנה הפלט. הן יותר מפורשות מדוגמאות וקלות יותר לאימות תכנותי.
 
-### Using TypeScript-like Types
+### שימוש בטיפוסים בסגנון TypeScript
 
-TypeScript interfaces are familiar to developers and precisely describe optional fields, union types, and arrays. The prompts.chat platform uses this approach for structured prompts.
+ממשקי TypeScript מוכרים למפתחים ומתארים במדויק שדות אופציונליים, טיפוסי union ומערכים. פלטפורמת prompts.chat משתמשת בגישה זו להנחיות מובנות.
 
 <TryIt 
-  title="TypeScript Interface Extraction"
-  description="Use a TypeScript interface to extract structured data."
+  title="חילוץ עם ממשק TypeScript"
+  description="השתמשו בממשק TypeScript לחילוץ נתונים מובנים."
   prompt={`Extract data according to this type definition:
 
 interface ChatPersona {
@@ -162,13 +162,13 @@ Return as JSON matching this interface.
 Description: "A senior software engineer named Alex who reviews code. They're analytical and thorough, with expertise in backend systems and databases. Professional but approachable tone."`}
 />
 
-### JSON Schema Definition
+### הגדרת JSON Schema
 
-<Callout type="info" title="Industry Standard">
-JSON Schema is a formal specification for describing JSON structure. It's supported by many validation libraries and API tools.
+<Callout type="info" title="סטנדרט תעשייתי">
+JSON Schema היא מפרט פורמלי לתיאור מבנה JSON. היא נתמכת על ידי ספריות אימות וכלי API רבים.
 </Callout>
 
-JSON Schema provides constraints like min/max values, required fields, and regex patterns:
+JSON Schema מספקת אילוצים כמו ערכי מינימום/מקסימום, שדות חובה ותבניות regex:
 
 ```
 Extract data according to this JSON Schema:
@@ -197,13 +197,13 @@ Book: "1984 by George Orwell (1949) - A dystopian masterpiece.
 Genres: Science Fiction, Political Fiction. Rated 4.8/5"
 ```
 
-## Handling Arrays
+## טיפול במערכים
 
-Arrays require special attention. Specify whether you need a fixed number of items or a variable-length list, and how to handle empty cases.
+מערכים דורשים תשומת לב מיוחדת. ציינו האם אתם צריכים מספר קבוע של פריטים או רשימה באורך משתנה, וכיצד לטפל במקרים ריקים.
 
-### Fixed-Length Arrays
+### מערכים באורך קבוע
 
-When you need exactly N items, state it explicitly. The model will ensure the array has the right length.
+כשאתם צריכים בדיוק N פריטים, ציינו זאת במפורש. המודל יוודא שלמערך יש את האורך הנכון.
 
 ```
 Extract exactly 3 key points as JSON:
@@ -219,9 +219,9 @@ Extract exactly 3 key points as JSON:
 Article: [article text]
 ```
 
-### Variable-Length Arrays
+### מערכים באורך משתנה
 
-For variable-length arrays, specify what to do when there are zero items. Including a count field helps verify extraction completeness.
+למערכים באורך משתנה, ציינו מה לעשות כשאין פריטים. הכללת שדה ספירה עוזרת לאמת את שלמות החילוץ.
 
 ```
 Extract all mentioned people as JSON:
@@ -241,20 +241,20 @@ If no people are mentioned, return empty array.
 Text: [text]
 ```
 
-## Enum Values and Constraints
+## ערכי Enum ואילוצים
 
-Enums restrict values to a predefined set. This is crucial for classification tasks and anywhere you need consistent, predictable outputs.
+Enums מגבילים ערכים לקבוצה מוגדרת מראש. זה קריטי למשימות סיווג ובכל מקום שבו אתם צריכים פלטים עקביים וניתנים לחיזוי.
 
-### Do's and Don'ts: Enum Values
+### מה כן ומה לא: ערכי Enum
 
 <Compare 
-  before={{ label: "❌ Don't: Open-ended categories", content: "Classify this text into a category.\n\n{\n  \"category\": \"string\"\n}" }}
-  after={{ label: "✓ Do: Restrict to valid values", content: "Classify this text. Category MUST be exactly one of:\n- \"technical\"\n- \"business\"\n- \"creative\"\n- \"personal\"\n\n{\n  \"category\": \"one of the values above\"\n}" }}
+  before={{ label: "❌ לא: קטגוריות פתוחות", content: "סווג את הטקסט הזה לקטגוריה.\n\n{\n  \"category\": \"string\"\n}" }}
+  after={{ label: "✓ כן: הגבל לערכים תקינים", content: "סווג את הטקסט הזה. הקטגוריה חייבת להיות בדיוק אחת מ:\n- \"technical\"\n- \"business\"\n- \"creative\"\n- \"personal\"\n\n{\n  \"category\": \"אחד מהערכים למעלה\"\n}" }}
 />
 
-### String Enums
+### Enums של מחרוזות
 
-List allowed values explicitly. Use "MUST be one of" language to enforce strict matching.
+רשמו ערכים מותרים במפורש. השתמשו בשפת "חייב להיות אחד מ" לאכיפת התאמה קפדנית.
 
 ```
 Classify this text. The category MUST be one of these exact values:
@@ -273,9 +273,9 @@ Return JSON:
 Text: [text to classify]
 ```
 
-### Validated Numbers
+### מספרים מאומתים
 
-Numeric constraints prevent out-of-range values. Specify the type (integer vs float) and valid range.
+אילוצים מספריים מונעים ערכים מחוץ לטווח. ציינו את הטיפוס (integer לעומת float) והטווח התקין.
 
 ```
 Rate these aspects. Each score MUST be an integer from 1 to 5.
@@ -290,20 +290,20 @@ Rate these aspects. Each score MUST be an integer from 1 to 5.
 Review: [review text]
 ```
 
-## Handling Missing Data
+## טיפול בנתונים חסרים
 
-Real-world text often lacks some information. Define how the model should handle missing data to avoid hallucinated values.
+טקסט מהעולם האמיתי לעתים קרובות חסר מידע מסוים. הגדירו כיצד המודל צריך לטפל בנתונים חסרים כדי למנוע ערכים מומצאים.
 
-### Do's and Don'ts: Missing Information
+### מה כן ומה לא: מידע חסר
 
 <Compare 
-  before={{ label: "❌ Don't: Let AI guess", content: "Extract all company details as JSON:\n{\n  \"revenue\": number,\n  \"employees\": number\n}" }}
-  after={{ label: "✓ Do: Explicitly allow null", content: "Extract company details. Use null for any field NOT explicitly mentioned. Do NOT invent or estimate values.\n\n{\n  \"revenue\": \"number or null\",\n  \"employees\": \"number or null\"\n}" }}
+  before={{ label: "❌ לא: לתת ל-AI לנחש", content: "חלץ את כל פרטי החברה כ-JSON:\n{\n  \"revenue\": number,\n  \"employees\": number\n}" }}
+  after={{ label: "✓ כן: לאפשר null במפורש", content: "חלץ פרטי חברה. השתמש ב-null עבור כל שדה שאינו מוזכר במפורש. אל תמציא או תעריך ערכים.\n\n{\n  \"revenue\": \"number or null\",\n  \"employees\": \"number or null\"\n}" }}
 />
 
-### Null Values
+### ערכי Null
 
-Explicitly allow null and instruct the model not to invent information. This is safer than having the model guess.
+אפשרו null במפורש והורו למודל לא להמציא מידע. זה בטוח יותר מלתת למודל לנחש.
 
 ```
 Extract information. Use null for any field that cannot be 
@@ -320,7 +320,7 @@ determined from the text. Do NOT invent information.
 Text: "Apple, headquartered in Cupertino, was founded in 1976."
 ```
 
-Output:
+פלט:
 ```json
 {
   "company": "Apple",
@@ -331,9 +331,9 @@ Output:
 }
 ```
 
-### Default Values
+### ערכי ברירת מחדל
 
-When defaults make sense, specify them in the schema. This is common for configuration extraction.
+כאשר ברירות מחדל הגיוניות, ציינו אותן בסכמה. זה נפוץ לחילוץ תצורות.
 
 ```
 Extract settings with these defaults if not specified:
@@ -348,13 +348,13 @@ Extract settings with these defaults if not specified:
 User preferences: "I want dark mode and larger text (18px)"
 ```
 
-## Multi-Object Responses
+## תגובות מרובות-אובייקטים
 
-Often you need to extract multiple items from a single input. Define the array structure and any sorting/grouping requirements.
+לעתים קרובות אתם צריכים לחלץ פריטים מרובים מקלט יחיד. הגדירו את מבנה המערך וכל דרישות מיון/קיבוץ.
 
-### Array of Objects
+### מערך של אובייקטים
 
-For lists of similar items, define the object schema once and specify it's an array.
+לרשימות של פריטים דומים, הגדירו את סכמת האובייקט פעם אחת וציינו שזה מערך.
 
 ```
 Parse this list into JSON array:
@@ -373,9 +373,9 @@ Todo list:
 - Review PR #123 (medium, due Friday)
 ```
 
-### Grouped Objects
+### אובייקטים מקובצים
 
-Grouping tasks require categorization logic. The model will sort items into the categories you define.
+משימות קיבוץ דורשות לוגיקת קטגוריזציה. המודל ימיין פריטים לקטגוריות שהגדרתם.
 
 ```
 Categorize these items into JSON:
@@ -389,20 +389,20 @@ Categorize these items into JSON:
 Items: apple, carrot, bread, banana, broccoli, milk, orange, spinach
 ```
 
-## YAML for Configuration Generation
+## YAML ליצירת תצורות
 
-YAML shines for DevOps configurations. The model knows standard patterns for common tools and can generate production-ready configs.
+YAML מצטיין בתצורות DevOps. המודל מכיר דפוסים סטנדרטיים לכלים נפוצים ויכול ליצור תצורות מוכנות לייצור.
 
-### Do's and Don'ts: YAML Configs
+### מה כן ומה לא: תצורות YAML
 
 <Compare 
-  before={{ label: "❌ Don't: Vague requirements", content: "Generate a docker-compose file for my app." }}
-  after={{ label: "✓ Do: Specify components and needs", content: "Generate docker-compose.yml for:\n- Node.js app (port 3000)\n- PostgreSQL database\n- Redis cache\n\nInclude: health checks, volume persistence, environment from .env file" }}
+  before={{ label: "❌ לא: דרישות מעורפלות", content: "צור קובץ docker-compose ליישום שלי." }}
+  after={{ label: "✓ כן: ציין רכיבים וצרכים", content: "צור docker-compose.yml עבור:\n- יישום Node.js (פורט 3000)\n- מסד נתונים PostgreSQL\n- מטמון Redis\n\nכלול: בדיקות תקינות, אחסון מתמיד, סביבה מקובץ .env" }}
 />
 
 ### Docker Compose
 
-Specify the services you need and any special requirements. The model will handle the YAML syntax and best practices.
+ציינו את השירותים שאתם צריכים וכל דרישות מיוחדות. המודל יטפל בתחביר YAML ובשיטות עבודה מומלצות.
 
 ```
 Generate a docker-compose.yml for:
@@ -418,9 +418,9 @@ Include:
 - Network isolation
 ```
 
-### Kubernetes Manifests
+### Manifests של Kubernetes
 
-Kubernetes manifests are verbose but follow predictable patterns. Provide the key parameters and the model will generate compliant YAML.
+Manifests של Kubernetes הם מפורטים אך עוקבים אחר דפוסים צפויים. ספקו את הפרמטרים המרכזיים והמודל ייצור YAML תואם.
 
 ```
 Generate Kubernetes deployment YAML:
@@ -436,13 +436,13 @@ Deployment:
 Also generate matching Service (ClusterIP, port 8080)
 ```
 
-## Validation and Error Handling
+## אימות וטיפול בשגיאות
 
-For production systems, build validation into your prompts. This catches errors before they propagate through your pipeline.
+למערכות ייצור, בנו אימות לתוך ההנחיות שלכם. זה תופס שגיאות לפני שהן מתפשטות בצינור שלכם.
 
-### Self-Validation Prompt
+### הנחיית אימות עצמי
 
-Ask the model to validate its own output against rules you specify. This catches format errors and invalid values.
+בקשו מהמודל לאמת את הפלט שלו מול כללים שאתם מציינים. זה תופס שגיאות פורמט וערכים לא תקינים.
 
 ```
 Extract data as JSON, then validate your output.
@@ -464,9 +464,9 @@ If validation fails, fix the issues before responding.
 Text: [contact information]
 ```
 
-### Error Response Format
+### פורמט תגובת שגיאה
 
-Define separate success and error formats. This makes programmatic handling much easier.
+הגדירו פורמטים נפרדים להצלחה ושגיאה. זה מקל בהרבה על הטיפול התכנותי.
 
 ```
 Attempt to extract data. If extraction fails, return error format:
@@ -485,34 +485,34 @@ Error format:
 }
 ```
 
-## JSON vs YAML: When to Use Which
+## JSON לעומת YAML: מתי להשתמש במה
 
 <div className="my-4 grid md:grid-cols-2 gap-4">
   <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-800">
-    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">Use JSON When</div>
+    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">השתמשו ב-JSON כאשר</div>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Programmatic parsing needed</p>
-      <p className="m-0!">API responses</p>
-      <p className="m-0!">Strict type requirements</p>
-      <p className="m-0!">JavaScript/Web integration</p>
-      <p className="m-0!">Compact representation</p>
+      <p className="m-0!">נדרש ניתוח תכנותי</p>
+      <p className="m-0!">תגובות API</p>
+      <p className="m-0!">דרישות טיפוסים קפדניות</p>
+      <p className="m-0!">אינטגרציה עם JavaScript/Web</p>
+      <p className="m-0!">ייצוג קומפקטי</p>
     </div>
   </div>
   <div className="p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg border border-purple-200 dark:border-purple-800">
-    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Use YAML When</div>
+    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">השתמשו ב-YAML כאשר</div>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Human readability matters</p>
-      <p className="m-0!">Configuration files</p>
-      <p className="m-0!">Comments are needed</p>
-      <p className="m-0!">DevOps/Infrastructure</p>
-      <p className="m-0!">Deep nested structures</p>
+      <p className="m-0!">קריאות אנושית חשובה</p>
+      <p className="m-0!">קבצי תצורה</p>
+      <p className="m-0!">נדרשות הערות</p>
+      <p className="m-0!">DevOps/תשתית</p>
+      <p className="m-0!">מבנים מקוננים עמוקים</p>
     </div>
   </div>
 </div>
 
-## Prompts.chat Structured Prompts
+## הנחיות מובנות ב-Prompts.chat
 
-On prompts.chat, you can create prompts with structured output formats:
+ב-prompts.chat, אתם יכולים ליצור הנחיות עם פורמטים של פלט מובנה:
 
 ```
 When creating a prompt on prompts.chat, you can specify:
@@ -527,37 +527,37 @@ The platform will:
 - Support template variables in your schema
 ```
 
-## Common Pitfalls
+## מלכודות נפוצות
 
-<Callout type="warning" title="Debug These First">
-These three issues cause most JSON parsing failures. Check for them when your code can't parse AI output.
+<Callout type="warning" title="בדקו את אלה קודם">
+שלוש הבעיות האלה גורמות לרוב כשלי ניתוח JSON. חפשו אותן כשהקוד שלכם לא מצליח לנתח פלט AI.
 </Callout>
 
-### 1. Markdown Code Blocks
+### 1. בלוקי קוד של Markdown
 
-**Problem:** Model wraps JSON in ```json blocks
+**בעיה:** המודל עוטף JSON בבלוקי ```json
 
-**Solution:** 
+**פתרון:** 
 ```
 Return ONLY the JSON object. Do not wrap in markdown code blocks.
 Do not include ```json or ``` markers.
 ```
 
-### 2. Trailing Commas
+### 2. פסיקים מסיימים
 
-**Problem:** Invalid JSON due to trailing commas
+**בעיה:** JSON לא תקין בגלל פסיקים מסיימים
 
-**Solution:**
+**פתרון:**
 ```
 Ensure valid JSON syntax. No trailing commas after the last 
 element in arrays or objects.
 ```
 
-### 3. Unescaped Strings
+### 3. מחרוזות לא מוברחות
 
-**Problem:** Quotes or special characters break JSON
+**בעיה:** מרכאות או תווים מיוחדים שוברים JSON
 
-**Solution:**
+**פתרון:**
 ```
 Properly escape special characters in strings:
 - \" for quotes
@@ -565,22 +565,22 @@ Properly escape special characters in strings:
 - \n for newlines
 ```
 
-## Summary
+## סיכום
 
-<Callout type="tip" title="Key Techniques">
-Define schemas explicitly using TypeScript interfaces or JSON Schema. Specify types and constraints, handle nulls and defaults, request self-validation, and choose the right format for your use case.
+<Callout type="tip" title="טכניקות מפתח">
+הגדירו סכמות במפורש באמצעות ממשקי TypeScript או JSON Schema. ציינו טיפוסים ואילוצים, טפלו ב-nulls וברירות מחדל, בקשו אימות עצמי, ובחרו את הפורמט הנכון לשימוש שלכם.
 </Callout>
 
 <Quiz 
-  question="When should you prefer YAML over JSON for AI outputs?"
+  question="מתי עדיף להעדיף YAML על פני JSON לפלטי AI?"
   options={[
-    "When building REST APIs",
-    "When the output needs to be human-readable and may include comments",
-    "When working with JavaScript applications",
-    "When you need the most compact representation"
+    "כשבונים REST APIs",
+    "כשהפלט צריך להיות קריא לבני אדם ועשוי לכלול הערות",
+    "כשעובדים עם יישומי JavaScript",
+    "כשצריכים את הייצוג הכי קומפקטי"
   ]}
   correctIndex={1}
-  explanation="YAML is preferred when human readability matters, such as configuration files, DevOps manifests, and documentation. It also supports comments, unlike JSON."
+  explanation="YAML מועדף כאשר קריאות אנושית חשובה, כמו בקבצי תצורה, manifests של DevOps ותיעוד. הוא גם תומך בהערות, בניגוד ל-JSON."
 />
 
-This completes Part II on techniques. In Part III, we'll explore practical applications across different domains.
+זה משלים את חלק II על טכניקות. בחלק III, נחקור יישומים מעשיים בתחומים שונים.
