@@ -47,8 +47,8 @@ export default async function OGImage({ params }: { params: Promise<{ username: 
   }
   const username = decodedUsername.slice(1);
 
-  const user = await db.user.findUnique({
-    where: { username },
+  const user = await db.user.findFirst({
+    where: { username: { equals: username, mode: "insensitive" } },
     select: {
       id: true,
       name: true,
