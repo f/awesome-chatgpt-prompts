@@ -8,6 +8,7 @@ vi.mock("@/lib/db", () => ({
   db: {
     user: {
       findUnique: vi.fn(),
+      findFirst: vi.fn(),
       create: vi.fn(),
     },
   },
@@ -41,6 +42,7 @@ describe("POST /api/auth/register", () => {
     });
     // Default: no existing users
     vi.mocked(db.user.findUnique).mockResolvedValue(null);
+    vi.mocked(db.user.findFirst).mockResolvedValue(null);
   });
 
   describe("validation", () => {
@@ -180,16 +182,9 @@ describe("POST /api/auth/register", () => {
     });
 
     it("should return 400 when username already exists", async () => {
-      // Mock: email check passes, username check finds existing user
-      vi.mocked(db.user.findUnique).mockImplementation(async (args) => {
-        if (args?.where?.email) {
-          return null;
-        }
-        if (args?.where?.username) {
-          return { id: "1", username: "testuser" } as never;
-        }
-        return null;
-      });
+      // Mock: email check passes, username check (case-insensitive via findFirst) finds existing user
+      vi.mocked(db.user.findUnique).mockResolvedValue(null);
+      vi.mocked(db.user.findFirst).mockResolvedValue({ id: "1", username: "testuser" } as never);
 
       const request = createRequest({
         name: "Test User",
@@ -209,6 +204,7 @@ describe("POST /api/auth/register", () => {
   describe("successful registration", () => {
     it("should create user and return user data", async () => {
       vi.mocked(db.user.findUnique).mockResolvedValue(null);
+      vi.mocked(db.user.findFirst).mockResolvedValue(null);
       vi.mocked(db.user.create).mockResolvedValue({
         id: "user-123",
         name: "Test User",
@@ -244,6 +240,7 @@ describe("POST /api/auth/register", () => {
 
     it("should accept valid username with underscores", async () => {
       vi.mocked(db.user.findUnique).mockResolvedValue(null);
+      vi.mocked(db.user.findFirst).mockResolvedValue(null);
       vi.mocked(db.user.create).mockResolvedValue({
         id: "user-123",
         name: "Test User",
