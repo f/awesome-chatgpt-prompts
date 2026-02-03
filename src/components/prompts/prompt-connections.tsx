@@ -794,6 +794,7 @@ function FlowGraph({ nodes, edges, currentPromptId, currentUserId, isAdmin, onNo
   return (
     <div ref={containerRef} className="relative">
       <svg ref={svgRef} className="w-full" />
+      {/* eslint-disable-next-line react-hooks/refs -- Container dimensions needed for tooltip positioning */}
       {hoveredNode && (() => {
           // Calculate position with viewport awareness
           const tooltipWidth = 320;

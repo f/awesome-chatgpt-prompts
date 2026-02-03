@@ -55,7 +55,7 @@ function parseSimpleYaml(content: string): Record<string, unknown> {
   const lines = content.split('\n');
   
   let currentKey: string | null = null;
-  let currentValue: unknown = null;
+  const _currentValue: unknown = null; // Placeholder for future use
   let inArray = false;
   let inMultiline = false;
   let multilineContent = '';

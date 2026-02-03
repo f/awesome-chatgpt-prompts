@@ -32,7 +32,6 @@ import {
   validateFilename,
   suggestFilename,
   DEFAULT_SKILL_FILE,
-  DEFAULT_SKILL_CONTENT,
   type SkillFile,
 } from "@/lib/skill-files";
 
@@ -357,6 +356,7 @@ export function SkillEditor({ value, onChange, className }: SkillEditorProps) {
 
     // Only update if the value changed externally
     if (value !== currentSerialized) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional sync from external prop
       setFiles(parsed);
       // Ensure active file exists
       if (!parsed.some((f) => f.filename === activeFile)) {
@@ -372,7 +372,7 @@ export function SkillEditor({ value, onChange, className }: SkillEditorProps) {
 
   // File icon based on extension
   const getFileIcon = (filename: string) => {
-    const ext = filename.split(".").pop()?.toLowerCase();
+    const _ext = filename.split(".").pop()?.toLowerCase();
     // Could add more specific icons here
     return <File className="h-4 w-4 text-muted-foreground" />;
   };

@@ -11,7 +11,7 @@ import { z } from "zod";
 import { db } from "@/lib/db";
 import { isValidApiKeyFormat } from "@/lib/api-key";
 import { improvePrompt } from "@/lib/ai/improve-prompt";
-import { parseSkillFiles, serializeSkillFiles, DEFAULT_SKILL_FILE, DEFAULT_SKILL_CONTENT } from "@/lib/skill-files";
+import { parseSkillFiles, serializeSkillFiles, DEFAULT_SKILL_FILE } from "@/lib/skill-files";
 
 interface AuthenticatedUser {
   id: string;

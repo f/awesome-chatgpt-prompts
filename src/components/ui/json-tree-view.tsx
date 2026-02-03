@@ -2,10 +2,8 @@
 
 import { useState, useMemo, useCallback, useEffect } from "react";
 import type React from "react";
-import { ChevronRight, ChevronDown, ChevronsDown, ChevronsUp } from "lucide-react";
+import { ChevronRight, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { useTranslations } from "next-intl";
 
 interface JsonNode {
   key: string | null;
@@ -14,17 +12,46 @@ interface JsonNode {
   path: string;
 }
 
+// Pure helper function - defined outside component to avoid recreation
+const getNodeType = (value: unknown): JsonNode["type"] => {
+  if (value === null) return "null";
+  if (Array.isArray(value)) return "array";
+  if (typeof value === "object") return "object";
+  return typeof value as "string" | "number" | "boolean";
+};
+
+// Recursive helper function - defined outside component
+const collectExpandablePaths = (value: unknown, path: string, maxDepth: number, depth: number = 0): string[] => {
+  const paths: string[] = [];
+  const type = getNodeType(value);
+
+  if ((type === "object" || type === "array") && depth < maxDepth) {
+    paths.push(path);
+
+    if (type === "array") {
+      (value as unknown[]).forEach((item, index) => {
+        paths.push(...collectExpandablePaths(item, `${path}.${index}`, maxDepth, depth + 1));
+      });
+    } else {
+      Object.entries(value as Record<string, unknown>).forEach(([k, v]) => {
+        paths.push(...collectExpandablePaths(v, `${path}.${k}`, maxDepth, depth + 1));
+      });
+    }
+  }
+
+  return paths;
+};
+
 interface JsonTreeViewProps {
   data: unknown;
   className?: string;
   fontSize?: "xs" | "sm" | "base";
   maxDepth?: number;
-  onExpandAll?: React.MutableRefObject<(() => void) | undefined>;
-  onCollapseAll?: React.MutableRefObject<(() => void) | undefined>;
+  onExpandAllRef?: React.MutableRefObject<(() => void) | undefined>;
+  onCollapseAllRef?: React.MutableRefObject<(() => void) | undefined>;
 }
 
-function JsonTreeView({ data, className, fontSize = "xs", maxDepth = 10, onExpandAll, onCollapseAll }: JsonTreeViewProps) {
-  const t = useTranslations("common");
+function JsonTreeView({ data, className, fontSize = "xs", maxDepth = 10, onExpandAllRef, onCollapseAllRef }: JsonTreeViewProps) {
   const [expandedPaths, setExpandedPaths] = useState<Set<string>>(new Set(["root"]));
 
   const togglePath = (path: string) => {
@@ -39,38 +66,9 @@ function JsonTreeView({ data, className, fontSize = "xs", maxDepth = 10, onExpan
     });
   };
 
-  const getNodeType = (value: unknown): JsonNode["type"] => {
-    if (value === null) return "null";
-    if (Array.isArray(value)) return "array";
-    if (typeof value === "object") return "object";
-    return typeof value as "string" | "number" | "boolean";
-  };
-
-  // Collect all expandable paths recursively
-  const collectExpandablePaths = useCallback((value: unknown, path: string, depth: number = 0): string[] => {
-    const paths: string[] = [];
-    const type = getNodeType(value);
-    
-    if ((type === "object" || type === "array") && depth < maxDepth) {
-      paths.push(path);
-      
-      if (type === "array") {
-        (value as unknown[]).forEach((item, index) => {
-          paths.push(...collectExpandablePaths(item, `${path}.${index}`, depth + 1));
-        });
-      } else {
-        Object.entries(value as Record<string, unknown>).forEach(([k, v]) => {
-          paths.push(...collectExpandablePaths(v, `${path}.${k}`, depth + 1));
-        });
-      }
-    }
-    
-    return paths;
-  }, [maxDepth, getNodeType]);
-
   const allExpandablePaths = useMemo(() => {
-    return collectExpandablePaths(data, "root");
-  }, [data, collectExpandablePaths]);
+    return collectExpandablePaths(data, "root", maxDepth);
+  }, [data, maxDepth]);
 
   const expandAll = useCallback(() => {
     setExpandedPaths(new Set(allExpandablePaths));
@@ -109,7 +107,7 @@ function JsonTreeView({ data, className, fontSize = "xs", maxDepth = 10, onExpan
     }
   };
 
-  const renderNode = (node: JsonNode, depth: number = 0, isLast: boolean = true): React.ReactNode => {
+  const renderNode = (node: JsonNode, depth: number = 0, _isLast: boolean = true): React.ReactNode => {
     const { key, value, type, path } = node;
     const isExpanded = expandedPaths.has(path);
     const isComplex = type === "object" || type === "array";
@@ -239,13 +237,13 @@ function JsonTreeView({ data, className, fontSize = "xs", maxDepth = 10, onExpan
 
   // Expose expand/collapse functions via useEffect
   useEffect(() => {
-    if (onExpandAll) {
-      onExpandAll.current = expandAll;
+    if (onExpandAllRef) {
+      onExpandAllRef.current = expandAll;
     }
-    if (onCollapseAll) {
-      onCollapseAll.current = collapseAll;
+    if (onCollapseAllRef) {
+      onCollapseAllRef.current = collapseAll;
     }
-  }, [expandAll, collapseAll, onExpandAll, onCollapseAll]);
+  }, [expandAll, collapseAll, onExpandAllRef, onCollapseAllRef]);
 
   return (
     <div
@@ -264,18 +262,18 @@ function JsonTreeView({ data, className, fontSize = "xs", maxDepth = 10, onExpan
   );
 }
 
-export function JsonTreeViewWrapper({ 
-  content, 
-  className, 
+export function JsonTreeViewWrapper({
+  content,
+  className,
   fontSize = "xs",
-  onExpandAll,
-  onCollapseAll
-}: { 
-  content: string; 
-  className?: string; 
+  onExpandAllRef,
+  onCollapseAllRef
+}: {
+  content: string;
+  className?: string;
   fontSize?: "xs" | "sm" | "base";
-  onExpandAll?: React.MutableRefObject<(() => void) | undefined>;
-  onCollapseAll?: React.MutableRefObject<(() => void) | undefined>;
+  onExpandAllRef?: React.MutableRefObject<(() => void) | undefined>;
+  onCollapseAllRef?: React.MutableRefObject<(() => void) | undefined>;
 }) {
   const parsedData = useMemo(() => {
     try {
@@ -294,12 +292,12 @@ export function JsonTreeViewWrapper({
   }
 
   return (
-    <JsonTreeView 
-      data={parsedData} 
-      className={className} 
+    <JsonTreeView
+      data={parsedData}
+      className={className}
       fontSize={fontSize}
-      onExpandAll={onExpandAll}
-      onCollapseAll={onCollapseAll}
+      onExpandAllRef={onExpandAllRef}
+      onCollapseAllRef={onCollapseAllRef}
     />
   );
 }

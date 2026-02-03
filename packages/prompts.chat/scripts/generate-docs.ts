@@ -39,6 +39,7 @@ function getJSDocComment(node: ts.Node, sourceFile: ts.SourceFile): { descriptio
   const examples: string[] = [];
   let description: string | undefined;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TypeScript AST doesn't expose jsDoc in types
   const jsDocNodes = (node as any).jsDoc as ts.JSDoc[] | undefined;
   if (jsDocNodes && jsDocNodes.length > 0) {
     const jsDoc = jsDocNodes[0];

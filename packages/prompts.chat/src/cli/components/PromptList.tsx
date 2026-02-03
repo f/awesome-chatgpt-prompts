@@ -220,7 +220,7 @@ export function PromptList({
     return (
       <Box flexDirection="column" height={terminalHeight} padding={1}>
         <Text color="red">Error: {error}</Text>
-        <Text dimColor>Press 'r' to retry, 'q' to quit</Text>
+        <Text dimColor>Press &apos;r&apos; to retry, &apos;q&apos; to quit</Text>
       </Box>
     );
   }

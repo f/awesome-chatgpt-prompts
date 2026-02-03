@@ -101,12 +101,12 @@ export function CodeView({ content, language = "json", className, maxLines, font
         </div>
       )}
       {viewMode === "tree" && isValidJson ? (
-        <JsonTreeViewWrapper 
-          content={content} 
-          className={className} 
+        <JsonTreeViewWrapper
+          content={content}
+          className={className}
           fontSize={fontSize}
-          onExpandAll={expandAllRef}
-          onCollapseAll={collapseAllRef}
+          onExpandAllRef={expandAllRef}
+          onCollapseAllRef={collapseAllRef}
         />
       ) : (
         <pre suppressHydrationWarning className={cn("font-mono bg-muted rounded p-2", preview ? "overflow-hidden" : "overflow-y-auto max-h-[500px]", {

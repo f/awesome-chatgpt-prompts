@@ -3,7 +3,6 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { db } from "@/lib/db";
 import { getConfig } from "@/lib/config";
 import { initializePlugins, getAuthPlugin } from "@/lib/plugins";
-import type { User } from "@prisma/client";
 import type { Adapter, AdapterUser } from "next-auth/adapters";
 
 // Initialize plugins before use

@@ -2,9 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
-import { formatDistanceToNow } from "@/lib/date";
 import { getPromptUrl } from "@/lib/urls";
 import { ArrowBigUp, Lock, Copy, ImageIcon, Download, Play, BadgeCheck, Volume2, Link2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -91,7 +89,7 @@ export interface PromptCardProps {
 export function PromptCard({ prompt, showPinButton = false, isPinned = false }: PromptCardProps) {
   const t = useTranslations("prompts");
   const tCommon = useTranslations("common");
-  const locale = useLocale();
+  const _locale = useLocale();
   const outgoingCount = prompt._count?.outgoingConnections || 0;
   const incomingCount = prompt._count?.incomingConnections || 0;
   const isFlowStart = outgoingCount > 0 && incomingCount === 0;
@@ -104,7 +102,7 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
   const isVideo = prompt.type === "VIDEO";
   const hasMediaBackground = prompt.type === "IMAGE" || isVideo || (isStructuredInput && !!prompt.mediaUrl && !isAudio);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [_isVisible, setIsVisible] = useState(false);
 
   // Autoplay video when visible in viewport
   useEffect(() => {

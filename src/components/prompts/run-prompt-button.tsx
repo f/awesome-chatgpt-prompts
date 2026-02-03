@@ -316,6 +316,7 @@ export function RunPromptButton({
       if (url.startsWith("http://") || url.startsWith("https://")) {
         window.open(url, "_blank");
       } else {
+        // eslint-disable-next-line react-hooks/immutability -- Valid browser navigation for custom URL schemes
         window.location.href = url;
       }
       analyticsPrompt.run(promptId, platform.name);
