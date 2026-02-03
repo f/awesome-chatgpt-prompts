@@ -61409,3 +61409,16 @@ Variables:
 
 </details>
 
+<details>
+<summary><strong>جنایی</strong></summary>
+
+## جنایی
+
+Contributed by [@rfanfalah00@gmail.com](https://github.com/rfanfalah00@gmail.com)
+
+```md
+A serious man in a denim jacket standing in a dark urban setting with flashing emergency lights behind him, cinematic lighting, dramatic atmosphere, Persian-English bilingual film poster style
+```
+
+</details>
+
