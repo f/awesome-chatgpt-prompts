@@ -799,7 +799,10 @@
     "likes": "좋아요",
     "noLikes": "아직 좋아요한 프롬프트가 없습니다",
     "noLikesOwner": "아직 프롬프트에 좋아요를 하지 않았습니다",
-    "getVerified": "인증 받기"
+    "getVerified": "인증 받기",
+    "examples": "예제",
+    "noExamples": "아직 공유된 예제가 없습니다",
+    "noExamplesOwner": "아직 예제를 공유하지 않았습니다"
   },
   "subscription": {
     "subscribe": "구독",

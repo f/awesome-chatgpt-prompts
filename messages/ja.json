@@ -799,7 +799,10 @@
     "likes": "いいね",
     "noLikes": "いいねしたプロンプトはまだありません",
     "noLikesOwner": "まだプロンプトにいいねしていません",
-    "getVerified": "認証を取得"
+    "getVerified": "認証を取得",
+    "examples": "例",
+    "noExamples": "まだ例が共有されていません",
+    "noExamplesOwner": "まだ例を共有していません"
   },
   "subscription": {
     "subscribe": "購読",

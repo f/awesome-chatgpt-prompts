@@ -799,7 +799,10 @@
     "likes": "J'aime",
     "noLikes": "Pas encore de prompts aimés",
     "noLikesOwner": "Vous n'avez encore aimé aucun prompt",
-    "getVerified": "Se faire vérifier"
+    "getVerified": "Se faire vérifier",
+    "examples": "Exemples",
+    "noExamples": "Aucun exemple partagé pour le moment",
+    "noExamplesOwner": "Vous n'avez pas encore partagé d'exemple"
   },
   "subscription": {
     "subscribe": "S'abonner",

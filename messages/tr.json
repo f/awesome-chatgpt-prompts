@@ -799,7 +799,10 @@
     "likes": "Beğeniler",
     "noLikes": "Henüz beğenilen prompt yok",
     "noLikesOwner": "Henüz hiçbir promptu beğenmediniz",
-    "getVerified": "Doğrulanmış Ol"
+    "getVerified": "Doğrulanmış Ol",
+    "examples": "Örnekler",
+    "noExamples": "Henüz paylaşılan örnek yok",
+    "noExamplesOwner": "Henüz örnek paylaşmadınız"
   },
   "subscription": {
     "subscribe": "Abone Ol",
