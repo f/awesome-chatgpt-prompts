@@ -61367,3 +61367,16 @@ Variables:
 
 </details>
 
+<details>
+<summary><strong>Family picture </strong></summary>
+
+## Family picture 
+
+Contributed by [@rodj3881@gmail.com](https://github.com/rodj3881@gmail.com)
+
+```md
+Create a prompt to create family picture in a studio with customized arrangement of the family members 
+```
+
+</details>
+
