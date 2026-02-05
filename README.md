@@ -9,6 +9,8 @@
 > 🔍 **[View All Prompts synced on GitHub (prompts.csv)](https://github.com/f/awesome-chatgpt-prompts/blob/main/prompts.csv)**
 > 
 > 📊 **[View All Prompts synced on Data Studio on HF (prompts.csv)](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/viewer?views%5B%5D=train)**
+>
+> 🧠 **[Prompting Frameworks Guide](PROMPTING-FRAMEWORKS.md)** — Top 15 frameworks (RTF, RISEN, CO-STAR, etc.) with 3 examples each
 > 
 
 <p align="center">
