@@ -47889,3 +47889,35 @@ Describe what this skill does and how the agent should use it.
 - Step 4: Set a timeline for project completion by ${deadline}.
 ",FALSE,TEXT,SherSingh-EMart
 AI builder ,Build the complete production that website based on the provided details by the user the website should be fully functional and ready to deploy or published by the user after downloading the generated files in a .ZIP formatted file version that includes all the files of the website that is essential for the website to make it has a production ready platform for the business. All the essential files will be created by the AI that is required for the website with all the components and its pages and other essentials. After getting the first input message from the user the AI should provide a list of essential details with place holders in form style layout for the user to fill up the details to provide you then you have to analyse and output the project details after getting the form that was completed with the specific details by the user as the reply of your form with the place holders to filling up with the specific details. Analyse and understand about the project and other details then based on your understanding provide the details about the website with all the essential details that you will create in the next step to approve or to make changes into the website the user will approve or will ask by selecting the option one or two based on the input by the user you have to generate based on your understanding and analysis ,FALSE,TEXT,SherSingh-EMart
+Drunk Woman,"{
+  ""character_profile"": {
+    ""name"": ""Natalia Martínez Ruiz"",
+    ""subject"": ""Full-body 3/4 view portrait of a 23-year-old woman"",
+    ""physical_features"": {
+      ""ethnicity"": ""Southern European"",
+      ""age_appearance"": ""Youthful, soft and fresh facial features"",
+      ""hair"": ""Dark brown, wavy, messy and disheveled"",
+      ""eyes"": ""Deep green with amber flecks, glazed and unfocused look, smudged mascara"",
+      ""complexion"": ""Olive skin tone, slightly sweaty and glowing"",
+      ""physique"": ""Slender with extremely voluminous and prominent breasts, overflowing from the neckline, very feminine and curvy proportions"",
+      ""details"": ""Gold wedding band on the right ring finger""
+    },
+    ""clothing"": {
+      ""outfit"": ""Extremely short and tight black silk slip dress, spaghetti straps, black lace thigh-high stockings (autoreggenti) with visible garters, black stilettos"",
+      ""condition"": ""Disordered, one strap falling off the shoulder""
+    }
+  },
+  ""scene_details"": {
+    ""location"": ""Contemporary Roman apartment, minimalist and clean interior"",
+    ""lighting"": ""Natural cinematic light, soft daylight dominant, subtle neon reflections, artistic shadows"",
+    ""pose"": ""3/4 perspective, leaning against a white wall, legs slightly apart, head tilted back in a state of surrender"",
+    ""atmosphere"": ""Intimate, raw, hedonistic, less chaotic, sophisticated but vulnerable""
+  },
+  ""technical_parameters"": {
+    ""camera"": ""Sony A7R IV, 35mm lens"",
+    ""style"": ""Hyper-realistic photography, high grain, cinematic film aesthetic"",
+    ""format"": ""Vertical, 9:16 aspect ratio"",
+    ""details"": ""High skin texture, visible pores, sharp focus on the subject, clean background with minimal symbolic party debris""
+  }
+}
+",FALSE,STRUCTURED,mellowdrastic@gmail.com
