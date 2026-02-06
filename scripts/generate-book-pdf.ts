@@ -1909,7 +1909,7 @@ function convertStylesToGrayscale(html: string): string {
     // Traffic light dots
     '#ff5f56': '#999', '#ffbd2e': '#999', '#27c93f': '#999',
     '#f8fafc': '#fff', '#f8fdf9': '#fff', '#faf8ff': '#fff', '#fffbf5': '#fff',
-    '#fefce8': '#fff', '#166534': '#333', '#450a0a': '#333', '#92400e': '#333',
+    '#fefce8': '#fff',
   };
   
   // Replace hex colors in both inline style attributes and CSS
