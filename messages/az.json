@@ -2240,8 +2240,12 @@
       "toggleContextBlocks": "Kontekst bloklarını açın/bağlayın və birləşdirmələrini izləyin. Token sayına diqqət yetirin!",
       "overContextLimit": "Kontekst limitini aşdı! Bəzi məzmun kəsiləcək.",
       "enableContextBlocksToBuild": "Prompt qurmaq üçün bəzi kontekst bloklarını aktiv edin",
-      "testContext": "Konteksti Test Et"
-    }
+      "testContext": "Konteksti Test Et",
+      "links": "Keçidlər"
+    },
+    "printTitle": "Prompting Kitabı",
+    "printSubtitle": "Aydın və Effektiv Promptlar Yaratmaq üçün Bələdçi",
+    "downloadPdf": "PDF olaraq yüklə"
   },
   "userExamples": {
     "addMyExample": "Nümunəmi Əlavə Et",

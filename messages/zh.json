@@ -2228,8 +2228,12 @@
       "toggleContextBlocks": "切换上下文块查看它们如何组合。注意token计数！",
       "overContextLimit": "超出上下文限制！部分内容将被截断。",
       "enableContextBlocksToBuild": "启用一些上下文块来构建提示词",
-      "testContext": "测试上下文"
-    }
+      "testContext": "测试上下文",
+      "links": "链接"
+    },
+    "printTitle": "提示词工程之书",
+    "printSubtitle": "创建清晰有效提示词的指南",
+    "downloadPdf": "下载PDF版"
   },
   "userExamples": {
     "addMyExample": "添加我的示例",

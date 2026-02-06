@@ -2226,8 +2226,12 @@
       "toggleContextBlocks": "بدّل كتل السياق لترى كيف تتجمع. لاحظ عدد الرموز!",
       "overContextLimit": "تجاوز حد السياق! سيتم اقتطاع بعض المحتوى.",
       "enableContextBlocksToBuild": "فعّل بعض كتل السياق لبناء أمر",
-      "testContext": "اختبار السياق"
-    }
+      "testContext": "اختبار السياق",
+      "links": "روابط"
+    },
+    "printTitle": "كتاب هندسة الأوامر",
+    "printSubtitle": "دليل لإنشاء أوامر واضحة وفعالة",
+    "downloadPdf": "تحميل كملف PDF"
   },
   "userExamples": {
     "addMyExample": "إضافة مثالي",

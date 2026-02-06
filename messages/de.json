@@ -2240,8 +2240,12 @@
       "toggleContextBlocks": "Schalten Sie Kontextblöcke ein/aus, um zu sehen, wie sie sich kombinieren. Achten Sie auf die Token-Anzahl!",
       "overContextLimit": "Kontextlimit überschritten! Einige Inhalte werden gekürzt.",
       "enableContextBlocksToBuild": "Aktivieren Sie einige Kontextblöcke, um einen Prompt zu erstellen",
-      "testContext": "Kontext Testen"
-    }
+      "testContext": "Kontext Testen",
+      "links": "Links"
+    },
+    "printTitle": "Das Prompting-Buch",
+    "printSubtitle": "Ein Leitfaden zur Erstellung Klarer und Effektiver Prompts",
+    "downloadPdf": "Als PDF herunterladen"
   },
   "userExamples": {
     "addMyExample": "Mein Beispiel Hinzufügen",

@@ -2224,8 +2224,12 @@
       "toggleContextBlocks": "החלף בלוקי הקשר כדי לראות איך הם משתלבים. עקוב אחרי ספירת הטוקנים!",
       "overContextLimit": "חריגה ממגבלת ההקשר! חלק מהתוכן ייחתך.",
       "enableContextBlocksToBuild": "הפעל בלוקי הקשר כדי לבנות פרומפט",
-      "testContext": "בדוק הקשר"
-    }
+      "testContext": "בדוק הקשר",
+      "links": "קישורים"
+    },
+    "printTitle": "ספר הפרומפטינג",
+    "printSubtitle": "מדריך ליצירת פרומפטים ברורים ויעילים",
+    "downloadPdf": "הורד כ-PDF"
   },
   "userExamples": {
     "addMyExample": "הוסף את הדוגמה שלי",

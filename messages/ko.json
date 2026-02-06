@@ -2228,8 +2228,12 @@
       "toggleContextBlocks": "컨텍스트 블록을 토글하여 어떻게 결합되는지 확인하세요. 토큰 수에 주목하세요!",
       "overContextLimit": "컨텍스트 한도 초과! 일부 콘텐츠가 잘립니다.",
       "enableContextBlocksToBuild": "프롬프트를 구축하려면 컨텍스트 블록을 활성화하세요",
-      "testContext": "컨텍스트 테스트"
-    }
+      "testContext": "컨텍스트 테스트",
+      "links": "링크"
+    },
+    "printTitle": "프롬프팅 북",
+    "printSubtitle": "명확하고 효과적인 프롬프트를 만들기 위한 가이드",
+    "downloadPdf": "PDF 다운로드"
   },
   "userExamples": {
     "addMyExample": "내 예제 추가",

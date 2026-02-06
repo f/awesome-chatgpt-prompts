@@ -2228,8 +2228,12 @@
       "toggleContextBlocks": "コンテキストブロックを切り替えて組み合わせを確認。トークン数に注意！",
       "overContextLimit": "コンテキスト制限を超えました！一部のコンテンツが切り捨てられます。",
       "enableContextBlocksToBuild": "コンテキストブロックを有効にしてプロンプトを構築",
-      "testContext": "コンテキストをテスト"
-    }
+      "testContext": "コンテキストをテスト",
+      "links": "リンク"
+    },
+    "printTitle": "プロンプティングブック",
+    "printSubtitle": "明確で効果的なプロンプトを作成するためのガイド",
+    "downloadPdf": "PDFでダウンロード"
   },
   "userExamples": {
     "addMyExample": "私の例を追加",

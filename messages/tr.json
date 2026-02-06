@@ -2239,8 +2239,12 @@
       "toggleContextBlocks": "Bağlam bloklarını açıp kapatarak nasıl birleştiklerini görün. Token sayısını takip edin!",
       "overContextLimit": "Bağlam limiti aşıldı! Bazı içerikler kırpılacak.",
       "enableContextBlocksToBuild": "Bir prompt oluşturmak için bazı bağlam bloklarını etkinleştirin",
-      "testContext": "Bağlamı Test Et"
-    }
+      "testContext": "Bağlamı Test Et",
+      "links": "Bağlantılar"
+    },
+    "printTitle": "Prompt Kitabı",
+    "printSubtitle": "Net ve Etkili Promptlar Hazırlamak için Bir Rehber",
+    "downloadPdf": "Kitabı PDF olarak indir"
   },
   "userExamples": {
     "addMyExample": "Örneğimi Ekle",

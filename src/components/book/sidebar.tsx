@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { parts } from "@/lib/book/chapters";
-import { Book, Bookmark, List, Search, X, Globe, Heart } from "lucide-react";
+import { Book, Bookmark, List, Search, X, Globe, Heart, Download } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -249,6 +249,7 @@ export function BookSidebar() {
   const [searchQuery, setSearchQuery] = useState("");
   const { bookmark, saveBookmark } = useBookmark();
   const t = useTranslations("book");
+  const locale = useLocale();
   
   return (
     <>
@@ -264,6 +265,16 @@ export function BookSidebar() {
           >
             <Heart className="h-3 w-3" />
             {t("donate")}
+          </a>
+
+          {/* Download PDF button */}
+          <a
+            href={`/book-pdf/book-${locale}-print.pdf`}
+            download
+            className="flex items-center justify-center gap-1.5 w-full mb-3 px-3 py-1.5 text-xs rounded-md border border-muted-foreground/20 bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+          >
+            <Download className="h-3 w-3" />
+            {t("downloadPdf")}
           </a>
 
           {/* Header with title and search */}

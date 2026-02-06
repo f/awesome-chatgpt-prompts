@@ -2224,8 +2224,12 @@
       "toggleContextBlocks": "بلوک‌های زمینه را تغییر دهید تا ببینید چگونه ترکیب می‌شوند. تعداد توکن‌ها را ببینید!",
       "overContextLimit": "از محدودیت زمینه فراتر رفت! برخی محتوا قطع می‌شود.",
       "enableContextBlocksToBuild": "بلوک‌های زمینه را فعال کنید تا یک پرامپت بسازید",
-      "testContext": "آزمایش زمینه"
-    }
+      "testContext": "آزمایش زمینه",
+      "links": "لینک‌ها"
+    },
+    "printTitle": "کتاب پرامپت‌نویسی",
+    "printSubtitle": "راهنمای ایجاد پرامپت‌های واضح و مؤثر",
+    "downloadPdf": "دانلود PDF"
   },
   "userExamples": {
     "addMyExample": "افزودن مثال من",

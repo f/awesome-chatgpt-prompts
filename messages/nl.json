@@ -2231,8 +2231,12 @@
       "toggleContextBlocks": "Schakel contextblokken om te zien hoe ze combineren. Let op de token-telling!",
       "overContextLimit": "Context limiet overschreden! Sommige content wordt afgekapt.",
       "enableContextBlocksToBuild": "Schakel contextblokken in om een prompt te bouwen",
-      "testContext": "Test Context"
-    }
+      "testContext": "Test Context",
+      "links": "Links"
+    },
+    "printTitle": "Het Prompting Boek",
+    "printSubtitle": "Een Gids voor het Maken van Duidelijke en Effectieve Prompts",
+    "downloadPdf": "Downloaden als PDF"
   },
   "userExamples": {
     "addMyExample": "Voeg Mijn Voorbeeld Toe",

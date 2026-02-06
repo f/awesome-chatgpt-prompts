@@ -2231,8 +2231,12 @@
       "toggleContextBlocks": "Εναλλαγή blocks context για να δείτε πώς συνδυάζονται. Παρακολουθήστε την καταμέτρηση tokens!",
       "overContextLimit": "Υπέρβαση ορίου context! Κάποιο περιεχόμενο θα περικοπεί.",
       "enableContextBlocksToBuild": "Ενεργοποιήστε blocks context για να δημιουργήσετε ένα prompt",
-      "testContext": "Δοκιμή Context"
-    }
+      "testContext": "Δοκιμή Context",
+      "links": "Σύνδεσμοι"
+    },
+    "printTitle": "Το Βιβλίο του Prompting",
+    "printSubtitle": "Ένας Οδηγός για τη Δημιουργία Σαφών και Αποτελεσματικών Prompts",
+    "downloadPdf": "Λήψη ως PDF"
   },
   "userExamples": {
     "addMyExample": "Προσθήκη του Παραδείγματός μου",

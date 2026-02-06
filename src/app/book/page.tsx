@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Schoolbell } from "next/font/google";
-import { ArrowRight, BookOpen, Sparkles, Brain, Layers, Target, Lightbulb, Gamepad2 } from "lucide-react";
+import { ArrowRight, BookOpen, Sparkles, Brain, Layers, Target, Lightbulb, Gamepad2, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 import { PixelRobot } from "@/components/kids/elements/pixel-art";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { ContinueReadingButton } from "@/components/book/continue-reading";
 
 const kidsFont = Schoolbell({
@@ -114,6 +114,7 @@ const jsonLd = {
 
 export default async function BookHomePage() {
   const t = await getTranslations("book");
+  const locale = await getLocale();
   
   const highlights = [
     { icon: Brain, text: t("highlights.understanding") },
@@ -214,6 +215,12 @@ export default async function BookHomePage() {
           <Link href="/book/01-understanding-ai-models">
             {t("skipToChapter1")}
           </Link>
+        </Button>
+        <Button asChild variant="outline" size="lg">
+          <a href={`/book-pdf/book-${locale}-print.pdf`} download>
+            <Download className="mr-2 h-4 w-4" />
+            {t("downloadPdf")}
+          </a>
         </Button>
       </div>
 

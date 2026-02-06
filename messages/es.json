@@ -2243,8 +2243,12 @@
       "toggleContextBlocks": "Activa/desactiva bloques de contexto para ver cómo se combinan. ¡Observa el conteo de tokens!",
       "overContextLimit": "¡Límite de contexto excedido! Algunos contenidos serán truncados.",
       "enableContextBlocksToBuild": "Habilita algunos bloques de contexto para construir un prompt",
-      "testContext": "Probar Contexto"
-    }
+      "testContext": "Probar Contexto",
+      "links": "Enlaces"
+    },
+    "printTitle": "El Libro del Prompting",
+    "printSubtitle": "Una Guía para Crear Prompts Claros y Efectivos",
+    "downloadPdf": "Descargar como PDF"
   },
   "userExamples": {
     "addMyExample": "Añadir Mi Ejemplo",

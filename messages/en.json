@@ -2244,8 +2244,12 @@
       "toggleContextBlocks": "Toggle context blocks on/off to see how they combine. Watch the token count!",
       "overContextLimit": "Over context limit! Some content will be truncated.",
       "enableContextBlocksToBuild": "Enable some context blocks to build a prompt",
-      "testContext": "Test Context"
-    }
+      "testContext": "Test Context",
+      "links": "Links"
+    },
+    "printTitle": "The Prompting Book",
+    "printSubtitle": "A Guide to Crafting Clear and Effective Prompts",
+    "downloadPdf": "Download as PDF"
   },
   "userExamples": {
     "addMyExample": "Add My Example",
