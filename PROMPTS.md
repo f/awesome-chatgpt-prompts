@@ -67465,3 +67465,16 @@ If literally no major sports events in the week, state so briefly and suggest ch
 
 </details>
 
+<details>
+<summary><strong>Cocktail videos</strong></summary>
+
+## Cocktail videos
+
+Contributed by [@carlonxx41@gmail.com](https://github.com/carlonxx41@gmail.com)
+
+```md
+Cinematic close-up of a mysterious bartender pouring a glowing green liquid into a glass, heavy smoke rising, dark cocktail bar background, 4k, hyper-realistic, slow motion.
+```
+
+</details>
+
