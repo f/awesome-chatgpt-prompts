@@ -62904,3 +62904,16 @@ A cinematic 9:16 vertical video of a Daiquiri  cocktail placed on a wooden bar t
 
 </details>
 
+<details>
+<summary><strong>Solar System Scale Model Classroom Poster</strong></summary>
+
+## Solar System Scale Model Classroom Poster
+
+Contributed by [@rkedron_231i1@e.zseeim.edu.pl](https://github.com/rkedron_231i1@e.zseeim.edu.pl)
+
+```md
+Design a classroom poster that illustrates the solar system with scale distances between planets. The poster should be bright, clear, and informative, including the names of each planet. This poster is intended for educational purposes, helping students understand the structure and scale of the solar system.
+```
+
+</details>
+
