@@ -10,7 +10,7 @@ export interface WidgetContext {
     type?: string;
     category?: string;
     categorySlug?: string;
-    tag?: string;
+    tag?: string; 
     sort?: string;
   };
   page?: number;

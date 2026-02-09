@@ -81,6 +81,8 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
     router.push("/prompts");
   };
 
+  const selectedTags = currentFilters.tag ? currentFilters.tag.split(",").filter(Boolean) : [];
+
   const hasFilters = currentFilters.q || currentFilters.type || currentFilters.category || currentFilters.tag || currentFilters.sort;
 
   const activeFilterCount = [currentFilters.type, currentFilters.category, currentFilters.tag, currentFilters.sort && currentFilters.sort !== "newest"].filter(Boolean).length;
@@ -318,25 +320,34 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
             />
           </div>
           <div className="flex flex-wrap gap-1 max-h-48 overflow-y-auto">
-            {filteredTags.filter((tag) => tag.id && tag.slug).map((tag) => (
-              <button
-                key={tag.id}
-                className="px-2 py-0.5 text-[11px] rounded border transition-colors"
-                style={
-                  currentFilters.tag === tag.slug
-                    ? { backgroundColor: tag.color, color: "white", borderColor: tag.color }
-                    : { borderColor: tag.color + "40", color: tag.color }
-                }
-                onClick={() => {
-                  if (currentFilters.tag !== tag.slug) {
-                    analyticsSearch.filter("tag", tag.slug);
+            {filteredTags.filter((tag) => tag.id && tag.slug).map((tag) => {
+              const isSelected = selectedTags.includes(tag.slug);
+              return (
+                <button
+                  key={tag.id}
+                  className="px-2 py-0.5 text-[11px] rounded border transition-colors"
+                  style={
+                    isSelected
+                      ? { backgroundColor: tag.color, color: "white", borderColor: tag.color }
+                      : { borderColor: tag.color + "40", color: tag.color }
                   }
-                  updateFilter("tag", currentFilters.tag === tag.slug ? null : tag.slug);
-                }}
-              >
-                {tag.name}
-              </button>
-            ))}
+                  onClick={() => {
+                    let newTags: string[];
+                    if (isSelected) {
+                      // Remove tag
+                      newTags = selectedTags.filter(t => t !== tag.slug);
+                    } else {
+                      // Add tag
+                      newTags = [...selectedTags, tag.slug];
+                      analyticsSearch.filter("tag", tag.slug);
+                    }
+                    updateFilter("tag", newTags.length > 0 ? newTags.join(",") : null);
+                  }}
+                >
+                  {tag.name}
+                </button>
+              );
+            })}
             {filteredTags.length === 0 && tagSearch && (
               <span className="text-xs text-muted-foreground">{t("search.noResults")}</span>
             )}
