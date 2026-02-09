@@ -233,7 +233,6 @@ export function validateEnvironment(): void {
   const required = [
     'DATABASE_URL',
     'NEXTAUTH_SECRET',
-    'NEXTAUTH_URL',
   ];
 
   const missing = required.filter(key => !process.env[key]);
@@ -246,6 +245,7 @@ export function validateEnvironment(): void {
 
   // Warn about optional but recommended variables
   const recommended = [
+    'NEXTAUTH_URL',
     'OPENAI_API_KEY',
     'GOOGLE_ANALYTICS_ID',
   ];

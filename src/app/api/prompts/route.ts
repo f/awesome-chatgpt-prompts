@@ -431,13 +431,13 @@ export async function GET(request: Request) {
     ]);
 
     // Transform to include voteCount and contributorCount, exclude internal fields
-    const prompts = promptsRaw.map((promptRaw: any) => {
-      const { embedding, isPrivate, isUnlisted, unlistedAt, deletedAt, ...p } = promptRaw;
+    const prompts = promptsRaw.map((promptRaw) => {
+      const { isPrivate, isUnlisted, unlistedAt, deletedAt, ...rest } = promptRaw as typeof promptsRaw[number];
       return {
-        ...p,
-        voteCount: p._count.votes,
-        contributorCount: p._count.contributors,
-        contributors: p.contributors,
+        ...rest,
+        voteCount: rest._count.votes,
+        contributorCount: rest._count.contributors,
+        contributors: rest.contributors,
       };
     });
 
