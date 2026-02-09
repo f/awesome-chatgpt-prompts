@@ -1,3 +1,5 @@
+import { logger } from "@/lib/logger";
+
 export interface BrandingConfig {
   name: string;
   logo: string;
@@ -252,8 +254,8 @@ export function validateEnvironment(): void {
 
   const missingRecommended = recommended.filter(key => !process.env[key]);
   if (missingRecommended.length > 0) {
-    console.warn(
-      `Warning: Optional environment variables not set: ${missingRecommended.join(', ')}. ` +
+    logger.warn(
+      `Optional environment variables not set: ${missingRecommended.join(', ')}. ` +
       `Some features may be limited.`
     );
   }

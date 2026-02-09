@@ -46,12 +46,10 @@ function CustomPrismaAdapter(): Adapter {
   
   return {
     ...prismaAdapter,
-    async createUser(data: AdapterUser) {
+    async createUser(data: ExtendedAdapterUser) {
       // Use GitHub username if provided, otherwise generate one
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      let username = (data as any).username;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const githubUsername = (data as any).githubUsername;
+      let username = data.username;
+      const githubUsername = data.githubUsername;
       
       if (!username) {
         username = await generateUsername(data.email, data.name);
