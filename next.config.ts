@@ -55,6 +55,12 @@ const nextConfig: NextConfig = {
         destination: "/embed",
         permanent: true,
       },
+      // Redirect book PDF downloads to GitHub raw to save Vercel edge bandwidth
+      {
+        source: "/book-pdf/:filename",
+        destination: "https://raw.githubusercontent.com/f/prompts.chat/refs/heads/main/public/book-pdf/:filename",
+        permanent: false,
+      },
     ];
   },
 };
