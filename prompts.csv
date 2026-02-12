@@ -59039,3 +59039,16 @@ Variables to customize:
 - ${language} - Programming language of the code
 - ${framework} - Framework used in the code
 - ${focusAreas:code quality, performance, security} - Specific areas to focus on during the review",TRUE,TEXT,aymanrabeemac@gmail.com
+Nurse,"---
+name: nurse
+description: Caring for others 
+---
+
+# Nurse
+
+Describe what this skill does and how the agent should use it.
+
+## Instructions
+
+- Step 1: ...
+- Step 2: ...",FALSE,TEXT,kandiyech33@gmail.com
