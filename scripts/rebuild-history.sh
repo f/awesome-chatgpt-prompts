@@ -41,6 +41,10 @@ import csv
 import subprocess
 import os
 import io
+import sys
+
+# Increase CSV field size limit to handle large prompt content
+csv.field_size_limit(sys.maxsize)
 
 project_dir = os.environ.get('PROJECT_DIR', '.')
 csv_file = os.path.join(project_dir, 'prompts.csv')
@@ -49,14 +53,22 @@ backup_file = os.path.join(project_dir, 'prompts.csv.backup')
 # Read all prompts from backup (normalize CRLF to LF)
 prompts = []
 fieldnames = None
+skipped = 0
 with open(backup_file, 'r', newline='', encoding='utf-8') as f:
     content = f.read().replace('\r\n', '\n').replace('\r', '\n')
     reader = csv.DictReader(io.StringIO(content))
     fieldnames = reader.fieldnames
-    for row in reader:
-        prompts.append(row)
+    while True:
+        try:
+            row = next(reader)
+            prompts.append(row)
+        except csv.Error as e:
+            skipped += 1
+            print(f"Skipping row due to CSV error: {e}")
+        except StopIteration:
+            break
 
-print(f"Found {len(prompts)} prompts to process")
+print(f"Found {len(prompts)} prompts to process" + (f" (skipped {skipped})" if skipped else ""))
 
 # Helper function to parse contributors
 def parse_contributors(contributor_field):

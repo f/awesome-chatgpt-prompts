@@ -40,6 +40,10 @@ import csv
 import subprocess
 import os
 import io
+import sys
+
+# Increase CSV field size limit to handle large prompt content
+csv.field_size_limit(sys.maxsize)
 
 project_dir = os.environ.get('PROJECT_DIR', '.')
 csv_file = os.path.join(project_dir, 'prompts.csv')
@@ -48,28 +52,41 @@ remote_csv = os.path.join(project_dir, 'prompts.csv.remote')
 # Read existing local prompts (by act title as key)
 local_prompts = {}
 fieldnames = None
+skipped_local = 0
 with open(csv_file, 'r', newline='', encoding='utf-8') as f:
     # Normalize CRLF to LF
     content = f.read().replace('\r\n', '\n').replace('\r', '\n')
     reader = csv.DictReader(io.StringIO(content))
     fieldnames = reader.fieldnames
     for row in reader:
-        act = row.get('act', '').strip()
-        if act:
-            local_prompts[act] = row
+        try:
+            act = row.get('act', '').strip()
+            if act:
+                local_prompts[act] = row
+        except csv.Error as e:
+            skipped_local += 1
+            print(f"Skipping local row due to CSV error: {e}")
 
-print(f"Found {len(local_prompts)} existing local prompts")
+print(f"Found {len(local_prompts)} existing local prompts" + (f" (skipped {skipped_local})" if skipped_local else ""))
 
 # Read remote prompts (normalize CRLF to LF)
 remote_prompts = []
+skipped_remote = 0
 with open(remote_csv, 'r', newline='', encoding='utf-8') as f:
     content = f.read().replace('\r\n', '\n').replace('\r', '\n')
     reader = csv.DictReader(io.StringIO(content))
     remote_fieldnames = reader.fieldnames
-    for row in reader:
-        remote_prompts.append(row)
+    while True:
+        try:
+            row = next(reader)
+            remote_prompts.append(row)
+        except csv.Error as e:
+            skipped_remote += 1
+            print(f"Skipping remote row due to CSV error: {e}")
+        except StopIteration:
+            break
 
-print(f"Found {len(remote_prompts)} remote prompts")
+print(f"Found {len(remote_prompts)} remote prompts" + (f" (skipped {skipped_remote})" if skipped_remote else ""))
 
 # Use remote fieldnames if local is empty
 if not fieldnames:
