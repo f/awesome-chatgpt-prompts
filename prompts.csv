@@ -59270,3 +59270,9 @@ Analyze the text below step by step. If the text is very short (<150 words), not
 [PASTE THE EMAIL BODY HERE]
 ",FALSE,TEXT,thanos0000@gmail.com
 Studio Portrait with Cinematic Lighting and Bold Color Background,"Ultra-realistic cinematic studio portrait of a stylish man wearing thin round metal eyeglasses, minimal navy blazer over a black crew-neck shirt. Shot from a slightly low angle with confident, thoughtful expressions and subtle pose variations. Dramatic warm orange–red gradient background, bold color contrast. Soft key light from the front with warm rim lighting sculpting the jawline and cheekbones, deep shadows for a moody editorial feel. Natural skin texture, sharp facial details, realistic hair strands, premium DSLR look, shallow depth of field, 85mm lens aesthetic, fashion editorial photography, modern intellectual vibe, high contrast, ultra-high resolution.",FALSE,TEXT,semihkislar
+National Architecture Dioramas,"“Create an isometric miniature 3D diorama representing the iconic architecture of ${country_name} through ${famous_structure}. Use a 45° top-down view.
+
+Apply clean soft textures and realistic PBR materials.
+Lighting feels balanced and natural. The raised base includes nearby streets, landscape features, and cultural details linked to the structure. Add tiny stylized locals and visitors with heavy facial details.
+
+Background stays solid ${background_color}. Top center text shows ${country_name} in bold. Second line shows ${structure_name}. Place a minimal architecture icon below. Text color adjusts for contrast.”",FALSE,TEXT,semihkislar
