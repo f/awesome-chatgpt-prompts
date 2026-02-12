@@ -73944,3 +73944,16 @@ Stay in character. No apologies about style. No meta comments about language. No
 
 </details>
 
+<details>
+<summary><strong>Professional Image Enhancement for Clarity and Quality</strong></summary>
+
+## Professional Image Enhancement for Clarity and Quality
+
+Contributed by [@turhancan97](https://github.com/turhancan97)
+
+```md
+Enhance the provided uploaded image by improving its clarity, quality, and overall visual impact while preserving its core design elements. Ensure that the completed image is suitable for display in professional and digital contexts.
+```
+
+</details>
+
