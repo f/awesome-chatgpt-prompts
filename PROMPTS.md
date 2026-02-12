@@ -73218,3 +73218,16 @@ Ama bizi farklı yerlere götürür.
 
 </details>
 
+<details>
+<summary><strong>Dog fun</strong></summary>
+
+## Dog fun
+
+Contributed by [@drezdev7@gmail.com](https://github.com/drezdev7@gmail.com)
+
+```md
+A cinematic 9:16 vertical video in a Pixar-style tone of a joyful group of cartoonish dogs playing golf on a bright, colorful golf course. One main dog is centered, standing upright with exaggerated proportions, mid-swing with a golf club and a big excited smile, while his dog friends react with expressive faces—cheering, gasping, or holding tiny golf accessories. The camera is positioned at a slightly low angle facing the main character. Smooth, playful character animation with subtle squash-and-stretch. Warm, vibrant lighting, soft shadows, and rich saturated colors. Background slightly blurred with stylized trees and clouds. Smooth slow zoom in. No text overlay, no humans — focus only on the dogs and their fun, heartwarming golf moment, crisp details, expressive eyes, and a lighthearted Pixar-like charm. Duration: 10 seconds.
+```
+
+</details>
+
