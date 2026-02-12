@@ -73359,3 +73359,16 @@ codex exec "I'm working on a coding problem... [problem]"
 
 </details>
 
+<details>
+<summary><strong>Minecraft image</strong></summary>
+
+## Minecraft image
+
+Contributed by [@matthew.growth.ng@gmail.com](https://github.com/matthew.growth.ng@gmail.com)
+
+```md
+I want to make a ultra realistic minecraf character out of an image, the character should have all the characteristics of the person in the eg. Skin color and outfit leave out the background intact the finished result shouldn't come with a background 
+```
+
+</details>
+
