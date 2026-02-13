@@ -244,6 +244,12 @@ Use prompts.chat as an MCP server in your AI tools.
 
 ---
 
+## 🔗 More Prompt Resources
+
+- **[Taskade AI Prompt Templates](https://taskade.com/prompts)** — 700+ ready-to-use AI prompt templates for project management, marketing, engineering, design, and more. Build custom AI agents with prompt systems.
+
+---
+
 ## 📜 License
 
 **[CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/)** — Copy, modify, distribute, and use freely. No attribution required.
