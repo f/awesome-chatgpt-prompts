@@ -162,6 +162,9 @@ Use prompts.chat as an MCP server in your AI tools.
 
 📖 [MCP Documentation](https://prompts.chat/docs/api)
 
+### Observability
+For tracing and evaluation of LLM and agent workflows, you can connect your MCP-based stack to [Opik](https://github.com/comet-ml/opik).
+
 ---
 
 ## 💖 Sponsors
