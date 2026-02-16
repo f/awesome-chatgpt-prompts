@@ -75585,3 +75585,16 @@ Contributed by [@GemoCrypto](https://github.com/GemoCrypto)
 
 </details>
 
+<details>
+<summary><strong>Draft PR to Ready to Review PR</strong></summary>
+
+## Draft PR to Ready to Review PR
+
+Contributed by [@GitBuntu](https://github.com/GitBuntu)
+
+```md
+How do I transition a draft PR to a ready to review to allow my team to review it before merging it into the main branch?
+```
+
+</details>
+
