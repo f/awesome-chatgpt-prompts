@@ -60610,3 +60610,32 @@ The Solar Priestess of Amun,"{
 }",FALSE,STRUCTURED,ersinkoc
 Profile pic rebuild,"A professional, high-resolution profile photo, maintaining the exact facial structure, identity, and key features of the person in the input image. The subject is framed from the chest up, with ample headroom. The person looks directly at the camera. They are styled for a professional photo studio shoot, wearing a premium smart casual blazer in a subtle charcoal gray. The background is a solid '#1A1A1A' neutral studio color. Shot from a high angle with bright and airy soft, diffused studio lighting, gently illuminating the face and creating a subtle catchlight in the eyes, conveying a sense of clarity. Captured on an 85mm f/1.8 lens with a shallow depth of field, exquisite focus on the eyes, and beautiful, soft bokeh. Observe crisp detail on the fabric texture of the blazer, individual strands of hair, and natural, realistic skin texture. The atmosphere exudes confidence, professionalism, and approachability. Clean and bright cinematic color grading with subtle warmth and balanced tones, ensuring a polished and contemporary feel.",FALSE,TEXT,GemoCrypto
 Morning coffee,"Create a hyper-realistic exploded vertical infographic composition of a morning coffee. At the top, a glossy coffee crema splash frozen mid-air with tiny bubbles and droplets. Below it, a rich dark espresso liquid layer, followed by scattered roasted coffee beans with visible texture and oil shine. Underneath, fine sugar crystals gently floating, and at the bottom a minimal ceramic coffee cup base. Pure white background, soft studio lighting, subtle shadows under each floating element, ultra-sharp focus, DSLR macro photography, clean infographic text labels with thin pointer lines, premium lifestyle aesthetic, 8K quality.",FALSE,TEXT,GemoCrypto
+Young woman with bikini,"{
+  ""image_prompt"": {
+    ""subject"": {
+      ""description"": ""Young woman with shoulder-length blonde hair."",
+      ""face"": ""Neutral expression, looking directly up at the camera.""
+    },
+    ""clothing"": {
+      ""top"": ""Black string bikini top with gold O-ring hardware."",
+      ""bottom"": ""Matching black string bikini bottoms with gold O-ring hardware."",
+      ""accessories"": ""A small gold pendant necklace and a belly button piercing."",
+      ""style"": ""Two-piece black bikini set with metallic details.""
+    },
+    ""pose"": {
+      ""action"": ""Sitting upright on the edge of a lounge chair."",
+      ""hands"": ""Arms resting behind her back on the chair."",
+      ""angle"": ""High-angle, full-portrait view.""
+    },
+    ""environment"": {
+      ""location"": ""Outdoor patio."",
+      ""foreground"": ""Grey mesh lounge chair."",
+      ""background"": ""Textured stone pavers and green bushes.""
+    },
+    ""technical_details"": {
+      ""lighting"": ""Bright, direct natural sunlight creating sharp shadows."",
+      ""medium"": ""High-resolution photograph."",
+      ""style"": ""Realistic, clear, detailed photo.""
+    }
+  }
+}",FALSE,TEXT,GemoCrypto
