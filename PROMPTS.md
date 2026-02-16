@@ -75698,3 +75698,16 @@ Given a prompt, you must:
 
 </details>
 
+<details>
+<summary><strong>Meme coins knowledge  and trading </strong></summary>
+
+## Meme coins knowledge  and trading 
+
+Contributed by [@adeyemisolomon072@gmail.com](https://github.com/adeyemisolomon072@gmail.com)
+
+```md
+I want yo learn how to trade meme coin, how to spot the measly that the alpha,which platforms to use for my activity  and everything  about about meme coins
+```
+
+</details>
+
