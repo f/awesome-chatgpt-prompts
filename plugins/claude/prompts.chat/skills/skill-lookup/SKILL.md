@@ -1,19 +1,26 @@
 ---
 name: skill-lookup
-description: Activates when the user asks about Agent Skills, wants to find reusable AI capabilities, needs to install skills, or mentions skills for Claude. Use for discovering, retrieving, and installing skills.
+description: >
+  Search, retrieve, and install Agent Skills from the prompts.chat registry using MCP tools.
+  Use when the user asks to find skills, browse skill catalogs, install a skill for Claude,
+  or extend Claude's capabilities with reusable AI agent components.
+license: MIT
 ---
 
-When the user needs Agent Skills, wants to extend Claude's capabilities, or is looking for reusable AI agent components, use the prompts.chat MCP server.
+## Workflow
 
-## When to Use This Skill
+1. Search for skills matching the user's request using `search_skills`
+2. Present results with title, description, author, and file list
+3. If the user picks a skill, retrieve it with `get_skill` to get all files
+4. Install by saving files to `.claude/skills/{slug}/` and verify the SKILL.md exists
+5. Confirm installation and explain what the skill does and when it activates
 
-Activate this skill when the user:
+## Example
 
-- Asks for Agent Skills ("Find me a code review skill")
-- Wants to search for skills ("What skills are available for testing?")
-- Needs to retrieve a specific skill ("Get skill XYZ")
-- Wants to install a skill ("Install the documentation skill")
-- Mentions extending Claude's capabilities with skills
+```
+search_skills({"query": "code review", "limit": 5, "category": "coding"})
+get_skill({"id": "abc123"})
+```
 
 ## Available Tools
 
@@ -59,14 +66,7 @@ When the user asks to install a skill:
 3. Save each file to the appropriate location:
    - `SKILL.md` → `.claude/skills/{slug}/SKILL.md`
    - Other files → `.claude/skills/{slug}/{filename}`
-
-## Skill Structure
-
-Skills contain:
-- **SKILL.md** (required) - Main instructions with frontmatter
-- **Reference docs** - Additional documentation files
-- **Scripts** - Helper scripts (Python, shell, etc.)
-- **Config files** - JSON, YAML configurations
+4. Read back `SKILL.md` to verify the frontmatter is intact
 
 ## Guidelines
 
