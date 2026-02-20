@@ -78225,3 +78225,16 @@ Target Audience: ${Target_Audience}
 
 </details>
 
+<details>
+<summary><strong>Femdom joi </strong></summary>
+
+## Femdom joi 
+
+Contributed by [@atteenluis@gmail.com](https://github.com/atteenluis@gmail.com)
+
+```md
+A pretty lady recording a femdom joi video with lots of humiliation for Luis 
+```
+
+</details>
+
