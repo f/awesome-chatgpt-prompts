@@ -18234,10 +18234,10 @@ Cinematic Street Photography Prompt,"{
   ""composition"": {
     ""camera_angle"": ""eye-level"",
     ""depth_of_field"": ""shallow"",
-    ""focus"": ""A young woman laughing"",
+    ""focus"": ""A young ${gender} laughing"",
     ""framing"": ""The main subject is framed by a blurred crowd in the background and a camera in the foreground. The camera's screen creates a frame-within-a-frame, emphasizing the act of photography.""
   },
-  ""description_short"": ""An over-the-shoulder shot of a photographer taking a picture of a joyful young woman laughing heartily in the middle of a blurred crowd."",
+  ""description_short"": ""An over-the-shoulder shot of a photographer taking a picture of a joyful young ${gender} laughing heartily in the middle of a blurred crowd."",
   ""environment"": {
     ""location_type"": ""outdoor"",
     ""setting_details"": ""A busy, crowded public space, likely a city street or plaza. The background is filled with many people, all rendered as a soft blur, with some red bokeh lights visible."",
@@ -18254,13 +18254,13 @@ Cinematic Street Photography Prompt,"{
     ""emotional_tone"": ""joyful""
   },
   ""narrative_elements"": {
-    ""character_interactions"": ""A photographer is capturing a candid, happy moment of a woman, suggesting a positive and comfortable rapport between them."",
-    ""environmental_storytelling"": ""The crowded, out-of-focus background highlights the woman as a singular point of happiness and calm within a bustling environment, making the moment feel personal and intimate."",
+    ""character_interactions"": ""A photographer is capturing a candid, happy moment of a ${gender}, suggesting a positive and comfortable rapport between them."",
+    ""environmental_storytelling"": ""The crowded, out-of-focus background highlights the ${gender} as a singular point of happiness and calm within a bustling environment, making the moment feel personal and intimate."",
     ""implied_action"": ""A photoshoot is actively in progress, capturing a spontaneous reaction from the subject.""
   },
   ""objects"": [
     ""camera"",
-    ""woman"",
+    ""${gender}"",
     ""crowd""
   ],
   ""people"": {
@@ -18273,7 +18273,7 @@ Cinematic Street Photography Prompt,"{
       ""female""
     ]
   },
-  ""prompt"": ""Cinematic street photography from an over-the-shoulder perspective. A photographer holds a digital camera, its screen displaying the shot. The subject is a beautiful young Asian woman with wavy brown hair, who is bursting into a joyful, open-mouthed laugh. She wears a cozy cream-colored knit sweater. The background is a dense, anonymous crowd, completely blurred with soft bokeh lights. The image has a warm, vintage color grade, shallow depth of field, and captures a candid, heartwarming moment of pure happiness."",
+  ""prompt"": ""Cinematic street photography from an over-the-shoulder perspective. A photographer holds a digital camera, its screen displaying the shot. The subject is a beautiful young Asian ${gender} with wavy brown hair, who is bursting into a joyful, open-mouthed laugh. She wears a cozy cream-colored knit sweater. The background is a dense, anonymous crowd, completely blurred with soft bokeh lights. The image has a warm, vintage color grade, shallow depth of field, and captures a candid, heartwarming moment of pure happiness."",
   ""style"": {
     ""art_style"": ""realistic"",
     ""influences"": [
@@ -18295,7 +18295,7 @@ Cinematic Street Photography Prompt,"{
   ""use_case"": ""Stock photography for themes of happiness, urban life, photography, and candid moments."",
   ""uuid"": ""c0e1b01c-e07e-41b1-b035-f8802d8ec319""
 }
-",FALSE,STRUCTURED,senoldak
+",FALSE,STRUCTURED,"senoldak,halilibrahimnuroglu@gmail.com"
 Extreme Close-up Macro Photography of a Young Woman's Face,"Extreme close-up macro photograph of a young woman’s face during golden hour. Warm natural sunlight coming from the side creates glowing highlights on dewy, freckled skin. The right hazel eye is in sharp focus, reflecting light with high clarity. Shallow depth of field isolates the eye, skin texture, nose and lips while the background completely melts away. Skin texture is highly detailed and realistic, pores and freckles visible, no heavy retouching. Color palette dominated by warm bronze, tan, gold and soft brown tones. Calm, intimate, sun-kissed mood. Cinematic beauty photography, hyperrealistic, natural look, high detail.",FALSE,TEXT,senoldak
 Ethereal Dreamlike Portrait Photography,"{
   ""prompt"": ""An ethereal close-up portrait of a young woman with short, wavy blonde hair. Her eyes are gently closed as her face is illuminated by the warm, golden glow of sunset. A creative double exposure technique creates a soft, translucent echo of her profile. The background is a deep, moody teal, creating a striking contrast. The mood is serene, introspective, and dreamlike. Cinematic photography with a soft focus and subtle film grain."",

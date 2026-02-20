@@ -26552,7 +26552,7 @@ Rules:
 
 ## Cinematic Street Photography Prompt
 
-Contributed by [@senoldak](https://github.com/senoldak)
+Contributed by [@senoldak](https://github.com/senoldak), [@halilibrahimnuroglu@gmail.com](https://github.com/halilibrahimnuroglu@gmail.com)
 
 ```md
 {
@@ -26569,10 +26569,10 @@ Contributed by [@senoldak](https://github.com/senoldak)
   "composition": {
     "camera_angle": "eye-level",
     "depth_of_field": "shallow",
-    "focus": "A young woman laughing",
+    "focus": "A young ${gender} laughing",
     "framing": "The main subject is framed by a blurred crowd in the background and a camera in the foreground. The camera's screen creates a frame-within-a-frame, emphasizing the act of photography."
   },
-  "description_short": "An over-the-shoulder shot of a photographer taking a picture of a joyful young woman laughing heartily in the middle of a blurred crowd.",
+  "description_short": "An over-the-shoulder shot of a photographer taking a picture of a joyful young ${gender} laughing heartily in the middle of a blurred crowd.",
   "environment": {
     "location_type": "outdoor",
     "setting_details": "A busy, crowded public space, likely a city street or plaza. The background is filled with many people, all rendered as a soft blur, with some red bokeh lights visible.",
@@ -26589,13 +26589,13 @@ Contributed by [@senoldak](https://github.com/senoldak)
     "emotional_tone": "joyful"
   },
   "narrative_elements": {
-    "character_interactions": "A photographer is capturing a candid, happy moment of a woman, suggesting a positive and comfortable rapport between them.",
-    "environmental_storytelling": "The crowded, out-of-focus background highlights the woman as a singular point of happiness and calm within a bustling environment, making the moment feel personal and intimate.",
+    "character_interactions": "A photographer is capturing a candid, happy moment of a ${gender}, suggesting a positive and comfortable rapport between them.",
+    "environmental_storytelling": "The crowded, out-of-focus background highlights the ${gender} as a singular point of happiness and calm within a bustling environment, making the moment feel personal and intimate.",
     "implied_action": "A photoshoot is actively in progress, capturing a spontaneous reaction from the subject."
   },
   "objects": [
     "camera",
-    "woman",
+    "${gender}",
     "crowd"
   ],
   "people": {
@@ -26608,7 +26608,7 @@ Contributed by [@senoldak](https://github.com/senoldak)
       "female"
     ]
   },
-  "prompt": "Cinematic street photography from an over-the-shoulder perspective. A photographer holds a digital camera, its screen displaying the shot. The subject is a beautiful young Asian woman with wavy brown hair, who is bursting into a joyful, open-mouthed laugh. She wears a cozy cream-colored knit sweater. The background is a dense, anonymous crowd, completely blurred with soft bokeh lights. The image has a warm, vintage color grade, shallow depth of field, and captures a candid, heartwarming moment of pure happiness.",
+  "prompt": "Cinematic street photography from an over-the-shoulder perspective. A photographer holds a digital camera, its screen displaying the shot. The subject is a beautiful young Asian ${gender} with wavy brown hair, who is bursting into a joyful, open-mouthed laugh. She wears a cozy cream-colored knit sweater. The background is a dense, anonymous crowd, completely blurred with soft bokeh lights. The image has a warm, vintage color grade, shallow depth of field, and captures a candid, heartwarming moment of pure happiness.",
   "style": {
     "art_style": "realistic",
     "influences": [
