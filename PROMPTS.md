@@ -79076,3 +79076,16 @@ Use these placeholders if the user provides them, otherwise fallback to defaults
 
 </details>
 
+<details>
+<summary><strong>Photo shoot for branding </strong></summary>
+
+## Photo shoot for branding 
+
+Contributed by [@nouveautravell@gmail.com](https://github.com/nouveautravell@gmail.com)
+
+```md
+"Generate a cinematic, low-angle shot of a high-fashion subject against a luxurious backdrop, showcasing impeccable street style with designer labels, prominently featuring Gucci elegance, and natural glow skin tone."
+```
+
+</details>
+
