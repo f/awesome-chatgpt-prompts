@@ -109,9 +109,9 @@ else
     cd "$APP_DIR"
 fi
 
-# Start PostgreSQL
-echo "▶ Starting PostgreSQL..."
-/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf --start postgresql &
+# Start supervisord (manages PostgreSQL and Next.js)
+echo "▶ Starting services..."
+/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf &
 SUPERVISOR_PID=$!
 
 # Wait for PostgreSQL
@@ -149,6 +149,24 @@ if [ ! -f "$SEED_MARKER" ]; then
         echo "⚠ Seeding skipped"
     fi
 fi
+
+# Wait for supervisord socket to be ready
+echo "▶ Waiting for supervisord..."
+for i in $(seq 1 30); do
+    if supervisorctl -c /etc/supervisor/conf.d/supervisord.conf status >/dev/null 2>&1; then
+        echo "✓ Supervisord is ready"
+        break
+    fi
+    if [ $i -eq 30 ]; then
+        echo "✗ Supervisord failed to start"
+        exit 1
+    fi
+    sleep 1
+done
+
+# Start Next.js
+echo "▶ Starting Next.js..."
+supervisorctl -c /etc/supervisor/conf.d/supervisord.conf start nextjs
 
 echo ""
 echo "╔═══════════════════════════════════════════════════════════════╗"
