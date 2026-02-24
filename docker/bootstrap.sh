@@ -109,7 +109,7 @@ else
     cd "$APP_DIR"
 fi
 
-# Start supervisor (manages PostgreSQL and Next.js)
+# Start supervisord (manages PostgreSQL and Next.js)
 echo "▶ Starting services..."
 /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf &
 SUPERVISOR_PID=$!
@@ -130,8 +130,13 @@ done
 
 # Run migrations
 echo "▶ Running database migrations..."
+cd "$APP_DIR"
 npx prisma migrate deploy
 echo "✓ Migrations complete"
+
+# Start Next.js
+echo "▶ Starting Next.js..."
+/usr/bin/supervisorctl -c /etc/supervisor/conf.d/supervisord.conf start nextjs
 
 # Seed on first run only
 SEED_MARKER="/data/.seeded"
@@ -144,6 +149,24 @@ if [ ! -f "$SEED_MARKER" ]; then
         echo "⚠ Seeding skipped"
     fi
 fi
+
+# Wait for supervisord socket to be ready
+echo "▶ Waiting for supervisord..."
+for i in $(seq 1 30); do
+    if supervisorctl -c /etc/supervisor/conf.d/supervisord.conf status >/dev/null 2>&1; then
+        echo "✓ Supervisord is ready"
+        break
+    fi
+    if [ $i -eq 30 ]; then
+        echo "✗ Supervisord failed to start"
+        exit 1
+    fi
+    sleep 1
+done
+
+# Start Next.js
+echo "▶ Starting Next.js..."
+supervisorctl -c /etc/supervisor/conf.d/supervisord.conf start nextjs
 
 echo ""
 echo "╔═══════════════════════════════════════════════════════════════╗"
