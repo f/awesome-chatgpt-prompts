@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivThumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/image_thumbnail" />
+
+        <!-- Gradient overlay at the bottom for file name visibility -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/gradient_overlay" />
+
+        <!-- Image name at the bottom -->
+        <TextView
+            android:id="@+id/tvImageName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:padding="8dp"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2" />
+
+        <!-- Remove button (X) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRemove"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="6dp"
+            app:icon="@drawable/ic_close"
+            app:iconSize="16dp"
+            app:iconPadding="0dp"
+            android:padding="0dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
+            android:backgroundTint="#CC000000"
+            app:iconTint="@android:color/white"
+            android:contentDescription="@string/remove_image" />
+
+    </FrameLayout>
+
+</com.google.android.material.card.MaterialCardView>

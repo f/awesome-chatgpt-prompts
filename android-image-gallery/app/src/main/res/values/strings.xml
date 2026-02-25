@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">גלריית תמונות</string>
+    <string name="pick_images">בחר תמונות</string>
+    <string name="clear_all">נקה הכל</string>
+    <string name="empty_state_title">אין תמונות</string>
+    <string name="empty_state_subtitle">לחץ על הכפתור למטה כדי לבחור תמונות מהגלריה</string>
+    <string name="image_thumbnail">תמונה ממוזערת</string>
+    <string name="remove_image">הסר תמונה</string>
+    <string name="no_images_placeholder">אין תמונות להצגה</string>
+    <string name="full_image">תמונה מלאה</string>
+    <string name="images_selected">%d תמונות נבחרו</string>
+    <string name="one_image_selected">תמונה אחת נבחרה</string>
+    <string name="permission_required">נדרשת הרשאה לגישה לתמונות</string>
+    <string name="permission_denied">ההרשאה נדחתה. אנא אפשר גישה בהגדרות</string>
+    <string name="open_settings">פתח הגדרות</string>
+    <string name="cancel">ביטול</string>
+</resources>
