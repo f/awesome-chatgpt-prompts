@@ -83116,3 +83116,16 @@ Re-scan the document. For each claim, give me the exact quote that supports it, 
 
 </details>
 
+<details>
+<summary><strong>trial</strong></summary>
+
+## trial
+
+Contributed by [@mkukaljane@gmail.com](https://github.com/mkukaljane@gmail.com)
+
+```md
+"Generate a video: Documentary style cinematic sequence showing the evolution of cars from vintage 1920s automobile to modern electric vehicle charging at sunset, photorealistic, dramatic lighting"
+```
+
+</details>
+
