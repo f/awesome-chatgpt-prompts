@@ -81356,3 +81356,16 @@ A detailed vector illustration of a traditional Balinese Barong Ket mask with a 
 
 </details>
 
+<details>
+<summary><strong>Barong 2</strong></summary>
+
+## Barong 2
+
+Contributed by [@kakekgaek65@gmail.com](https://github.com/kakekgaek65@gmail.com)
+
+```md
+Abstract geometric vector of a Barong head focusing on sharp fangs and an intricate crown. Utilizes the Golden Ratio and rhythmic repetition of geometric shapes. Combines Batik Megamendung organic curves with sharp Bauhaus lines. Sophisticated indigo and copper color palette. Verified: 100% vector, editable paths, no raster effects, no brand logos.
+```
+
+</details>
+
