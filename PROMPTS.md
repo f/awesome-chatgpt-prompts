@@ -81343,3 +81343,16 @@ A high-concept digital art piece for a wallpaper, where traditional Javanese sha
 
 </details>
 
+<details>
+<summary><strong>Barong 1</strong></summary>
+
+## Barong 1
+
+Contributed by [@kakekgaek65@gmail.com](https://github.com/kakekgaek65@gmail.com)
+
+```md
+A detailed vector illustration of a traditional Balinese Barong Ket mask with a fierce expression, bulging eyes, and prominent tusks. Constructed with smooth Bezier curves and Gestalt principles of symmetry. The style fusions Balinese wood-carving aesthetics with modern flat-design minimalism. Colors include crimson, gold, and obsidian black. Verified: Scalable SVG, clean paths, no text, no trademarks
+```
+
+</details>
+
