@@ -83191,3 +83191,38 @@ Prioritize remediation based on severity and exposure
 
 </details>
 
+<details>
+<summary><strong>want to analyze security issues and vulnerabilities and fixes</strong></summary>
+
+## want to analyze security issues and vulnerabilities and fixes
+
+Contributed by [@abhinavme1004@gmail.com](https://github.com/abhinavme1004@gmail.com)
+
+```md
+Intelligent Vulnerability Triage
+Analyze GHAS alerts across repositories
+
+Identify dependency vs base image root causes
+
+Detect repeated vulnerability patterns
+
+Prioritize remediation based on severity and exposure
+
+Safe Upgrade Recommendations
+AI helped evaluate:
+
+Compatible dependency versions
+
+Breaking change risks
+
+Runtime impact across services
+
+Required code adjustments after upgrades
+
+This significantly reduced trial-and-error upgrades.
+
+
+```
+
+</details>
+
