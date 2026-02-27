@@ -83392,3 +83392,16 @@ Crisp, clean, scalable vector-style portrait.
 
 </details>
 
+<details>
+<summary><strong>KIDS DRESS DESIGN</strong></summary>
+
+## KIDS DRESS DESIGN
+
+Contributed by [@ssdmalinda@gmail.com](https://github.com/ssdmalinda@gmail.com)
+
+```md
+Full Body, Full-bodied, Beautifully Kids, New Fashions, Random clothes, Random Kids, Moderns New Styles, soft focus, depth of field, 8k photo, HDR, professional lighting, taken with Canon EOS R5, DSLR, 75mm lens
+```
+
+</details>
+
