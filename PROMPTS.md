@@ -83344,3 +83344,16 @@ Photorealistic iPhone selfie-style shot in alpine mountains. Bright clear daylig
 
 </details>
 
+<details>
+<summary><strong>Ultra Realistic Cinematic Portrait</strong></summary>
+
+## Ultra Realistic Cinematic Portrait
+
+Contributed by [@halilibrahimnuroglu@gmail.com](https://github.com/halilibrahimnuroglu@gmail.com)
+
+```md
+Ultra realistic cinematic portrait of a referance photo, centered composition, head and shoulders framing, direct eye contact, serious neutral expression, short slightly messy dark hair, light stubble beard, wearing a black shirt and black textured jacket with zipper details, dramatic red rim lighting from both sides, soft frontal key light, deep black background, high contrast, low-key lighting, sharp focus, 85mm lens, shallow depth of field, studio photography, ultra detailed skin texture, 8k resolution
+```
+
+</details>
+
