@@ -67269,3 +67269,12 @@ Camp Planner,"{
   }
 }",FALSE,STRUCTURED,yigitdemiralp06@gmail.com
 Test,I’m tired of using Claude Code to build my code because of tokens limits can Ollama build code scripts agentic workflow?,FALSE,TEXT,BuiltByPhil
+Analyze code scanning security issues and dependency updates if vulnerable,"this is for repo
+Analyze code scanning security issues and dependency updates if vulnerable
+Analyze GHAS alerts across repositories
+
+Identify dependency vs base image root causes
+
+Detect repeated vulnerability patterns
+
+Prioritize remediation based on severity and exposure",TRUE,TEXT,abhinavme1004@gmail.com

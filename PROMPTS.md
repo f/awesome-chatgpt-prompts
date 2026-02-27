@@ -83170,3 +83170,24 @@ I’m tired of using Claude Code to build my code because of tokens limits can O
 
 </details>
 
+<details>
+<summary><strong>Analyze code scanning security issues and dependency updates if vulnerable</strong></summary>
+
+## Analyze code scanning security issues and dependency updates if vulnerable
+
+Contributed by [@abhinavme1004@gmail.com](https://github.com/abhinavme1004@gmail.com)
+
+```md
+this is for repo
+Analyze code scanning security issues and dependency updates if vulnerable
+Analyze GHAS alerts across repositories
+
+Identify dependency vs base image root causes
+
+Detect repeated vulnerability patterns
+
+Prioritize remediation based on severity and exposure
+```
+
+</details>
+
