@@ -1,8 +1,8 @@
 // This file configures the initialization of Sentry on the server.
 // The config you add here will be used whenever the server handles a request.
-// https://docs.sentry.io/platforms/javascript/guides/nextjs/
+// https://docs.sentry.io/platforms/javascript/guides/node/
 
-import * as Sentry from "@sentry/nextjs";
+import * as Sentry from "@sentry/node";
 
 Sentry.init({
   dsn: "https://9c2eb3b4441745efad28a908001c30bf@o4510673866063872.ingest.de.sentry.io/4510673871306832",
@@ -17,6 +17,6 @@ Sentry.init({
   enableLogs: true,
 
   // Enable sending user PII (Personally Identifiable Information)
-  // https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/options/#sendDefaultPii
+  // https://docs.sentry.io/platforms/javascript/guides/node/configuration/options/#sendDefaultPii
   sendDefaultPii: true,
 });
