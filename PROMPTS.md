@@ -83709,3 +83709,16 @@ Variables:
 
 </details>
 
+<details>
+<summary><strong>change home page desgin for blog and documentation platorm </strong></summary>
+
+## change home page desgin for blog and documentation platorm 
+
+Contributed by [@kowsik.al23@bitsathy.ac.in](https://github.com/kowsik.al23@bitsathy.ac.in)
+
+```md
+change home page desgin which contain header bar,tags,blog cards and docs card , give better ui design
+```
+
+</details>
+
