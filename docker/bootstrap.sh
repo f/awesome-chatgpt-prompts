@@ -87,16 +87,10 @@ if [ ! -f "$BUILD_MARKER" ]; then
     npx prisma generate
     echo "✓ Prisma client generated"
     
-    # Build Next.js
-    echo "▶ Building Next.js application (this may take a few minutes)..."
+    # Build with VineXT
+    echo "▶ Building application with VineXT (this may take a few minutes)..."
     npm run build
     echo "✓ Build complete"
-    
-    # Copy static files for standalone mode
-    echo "▶ Copying static assets..."
-    cp -r .next/static .next/standalone/.next/
-    cp -r public .next/standalone/
-    echo "✓ Static assets copied"
     
     # Mark as built
     touch "$BUILD_MARKER"
@@ -109,7 +103,7 @@ else
     cd "$APP_DIR"
 fi
 
-# Start supervisord (manages PostgreSQL and Next.js)
+# Start supervisord (manages PostgreSQL and VineXT app)
 echo "▶ Starting services..."
 /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf &
 SUPERVISOR_PID=$!
@@ -134,9 +128,9 @@ cd "$APP_DIR"
 npx prisma migrate deploy
 echo "✓ Migrations complete"
 
-# Start Next.js
-echo "▶ Starting Next.js..."
-/usr/bin/supervisorctl -c /etc/supervisor/conf.d/supervisord.conf start nextjs
+# Start VineXT app
+echo "▶ Starting application..."
+/usr/bin/supervisorctl -c /etc/supervisor/conf.d/supervisord.conf start app
 
 # Seed on first run only
 SEED_MARKER="/data/.seeded"
@@ -164,14 +158,14 @@ for i in $(seq 1 30); do
     sleep 1
 done
 
-# Start Next.js
-echo "▶ Starting Next.js..."
-supervisorctl -c /etc/supervisor/conf.d/supervisord.conf start nextjs
+# Start VineXT app
+echo "▶ Starting application..."
+supervisorctl -c /etc/supervisor/conf.d/supervisord.conf start app
 
 echo ""
 echo "╔═══════════════════════════════════════════════════════════════╗"
 echo "║                                                               ║"
-echo "║   ✅ prompts.chat is running!                                 ║"
+echo "║   prompts.chat is running!                                    ║"
 echo "║                                                               ║"
 echo "║   🌐 Open http://localhost:${PORT:-80} in your browser            ║"
 echo "║                                                               ║"

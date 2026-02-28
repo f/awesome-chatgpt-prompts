@@ -6,6 +6,7 @@ npm-debug.log*
 .next
 out
 dist
+.vinext
 
 # Git
 .git
@@ -26,11 +27,13 @@ dist
 
 # Docker
 docker-compose*.yml
-Dockerfile*
+compose.yml
+Dockerfile
 
 # Development files
 .github
 .claude
+.claude-plugin
 packages
 *.md
 !README.md
@@ -49,3 +52,7 @@ logs
 
 # Prisma
 prisma/migrations/**/migration_lock.toml
+
+# Cloudflare
+wrangler.jsonc
+.wrangler
