@@ -83904,3 +83904,16 @@ Contributed by [@kenicodes](https://github.com/kenicodes)
 
 </details>
 
+<details>
+<summary><strong>chicks hatch</strong></summary>
+
+## chicks hatch
+
+Contributed by [@kakekgaek65@gmail.com](https://github.com/kakekgaek65@gmail.com)
+
+```md
+Extreme close-up of a cracking chicken egg on straw, hyper-detailed shell texture. Newly hatched featherless chick, wet and wrinkled pink skin. 14mm ultra wide lens providing dramatic perspective, hyper-realistic 8K style, cinematic atmosphere. --ar 9:16. 
+```
+
+</details>
+
