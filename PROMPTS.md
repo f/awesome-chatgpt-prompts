@@ -83917,3 +83917,16 @@ Extreme close-up of a cracking chicken egg on straw, hyper-detailed shell textur
 
 </details>
 
+<details>
+<summary><strong>Wickedsmaht.fun</strong></summary>
+
+## Wickedsmaht.fun
+
+Contributed by [@thirdspider0xx0-bit](https://github.com/thirdspider0xx0-bit)
+
+```md
+Solona token launchpad for spl and sol2020 tokens with the metadata, bonding curve, migrate after through apps amm. Remixing the idea of pump.fun and virtuals but creating an AI agent ran DAO where token holders create agents and add them to the core decision making and voting, creating buybacks with no human governance just AI Agents. Also a gamified up vs down predictions integration for funding native token, development and app, airdrops, and 10percent to team 
+```
+
+</details>
+
