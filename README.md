@@ -164,6 +164,12 @@ Use prompts.chat as an MCP server in your AI tools.
 
 ---
 
+## 🔗 Related Resources
+
+- **[Prompt Guide](https://prompt-guide.com)** — Free, gamified prompt engineering platform with 300+ curated prompts, 30+ AI agent workflows, interactive exercises with AI evaluation, and a glossary. Available in English and French.
+
+---
+
 ## 💖 Sponsors
 
 <p align="center">
