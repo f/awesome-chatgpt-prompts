@@ -84575,3 +84575,16 @@ Abstract portrait of a young Indonesian man, blending contemporary aesthetics wi
 
 </details>
 
+<details>
+<summary><strong>Girls</strong></summary>
+
+## Girls
+
+Contributed by [@fdot7878@gmail.com](https://github.com/fdot7878@gmail.com)
+
+```md
+ultra realistic photo of beautiful young woman, natural skin texture, soft lighting, detailed face, 85mm lens, photorealistic, high detail, instagram model
+```
+
+</details>
+
