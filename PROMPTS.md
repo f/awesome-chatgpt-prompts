@@ -84284,3 +84284,16 @@ Contributed by [@ayoubelouardi3710@gmail.com](https://github.com/ayoubelouardi37
 
 </details>
 
+<details>
+<summary><strong>notebooklm_lecture_notes</strong></summary>
+
+## notebooklm_lecture_notes
+
+Contributed by [@zzfmvp@gmail.com](https://github.com/zzfmvp@gmail.com)
+
+```md
+Create a deck summarizing the content of each section; emphasize the key points; The target audience is professionals. Use a pure white background without any grid.
+```
+
+</details>
+
