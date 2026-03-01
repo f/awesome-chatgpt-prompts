@@ -1,6 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
+import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import {
   ElicitResultSchema,
   ListPromptsRequestSchema,
@@ -79,12 +79,6 @@ function extractVariables(content: string): ExtractedVariable[] {
   }
   return variables;
 }
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
 
 interface ServerOptions {
   categories?: string[];
@@ -1320,104 +1314,80 @@ function createServer(options: ServerOptions = {}) {
   return server;
 }
 
-async function parseBody(req: NextApiRequest): Promise<unknown> {
-  return new Promise((resolve, reject) => {
-    let body = "";
-    req.on("data", (chunk) => (body += chunk));
-    req.on("end", () => {
-      try {
-        resolve(JSON.parse(body));
-      } catch {
-        resolve(body);
-      }
-    });
-    req.on("error", reject);
+export async function GET() {
+  return NextResponse.json({
+    name: "prompts-chat",
+    version: "1.0.0",
+    description: "MCP server for prompts.chat - Search and discover AI prompts",
+    protocol: "Model Context Protocol (MCP)",
+    capabilities: {
+      tools: true,
+      prompts: true,
+    },
+    tools: [
+      {
+        name: "search_prompts",
+        description: "Search for AI prompts by keyword.",
+      },
+      {
+        name: "get_prompt",
+        description: "Get a prompt by ID with variable elicitation support.",
+      },
+      {
+        name: "save_prompt",
+        description: "Save a new prompt (requires API key authentication).",
+      },
+      {
+        name: "improve_prompt",
+        description: "Transform a basic prompt into a well-structured, comprehensive prompt using AI.",
+      },
+      {
+        name: "save_skill",
+        description: "Save a new Agent Skill with multiple files (requires API key authentication).",
+      },
+      {
+        name: "add_file_to_skill",
+        description: "Add a file to an existing Agent Skill (requires API key authentication).",
+      },
+      {
+        name: "update_skill_file",
+        description: "Update an existing file in an Agent Skill (requires API key authentication).",
+      },
+      {
+        name: "remove_file_from_skill",
+        description: "Remove a file from an Agent Skill (requires API key authentication).",
+      },
+      {
+        name: "get_skill",
+        description: "Get an Agent Skill by ID with all its files.",
+      },
+      {
+        name: "search_skills",
+        description: "Search for Agent Skills by keyword.",
+      },
+    ],
+    prompts: {
+      description: "All public prompts are available as MCP prompts. Use prompts/list to browse and prompts/get to retrieve with variable substitution.",
+      usage: "Access via slash commands in MCP clients (e.g., /prompt-id)",
+    },
+    endpoint: "/api/mcp",
   });
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === "GET") {
-    return res.status(200).json({
-      name: "prompts-chat",
-      version: "1.0.0",
-      description: "MCP server for prompts.chat - Search and discover AI prompts",
-      protocol: "Model Context Protocol (MCP)",
-      capabilities: {
-        tools: true,
-        prompts: true,
-      },
-      tools: [
-        {
-          name: "search_prompts",
-          description: "Search for AI prompts by keyword.",
-        },
-        {
-          name: "get_prompt",
-          description: "Get a prompt by ID with variable elicitation support.",
-        },
-        {
-          name: "save_prompt",
-          description: "Save a new prompt (requires API key authentication).",
-        },
-        {
-          name: "improve_prompt",
-          description: "Transform a basic prompt into a well-structured, comprehensive prompt using AI.",
-        },
-        {
-          name: "save_skill",
-          description: "Save a new Agent Skill with multiple files (requires API key authentication).",
-        },
-        {
-          name: "add_file_to_skill",
-          description: "Add a file to an existing Agent Skill (requires API key authentication).",
-        },
-        {
-          name: "update_skill_file",
-          description: "Update an existing file in an Agent Skill (requires API key authentication).",
-        },
-        {
-          name: "remove_file_from_skill",
-          description: "Remove a file from an Agent Skill (requires API key authentication).",
-        },
-        {
-          name: "get_skill",
-          description: "Get an Agent Skill by ID with all its files.",
-        },
-        {
-          name: "search_skills",
-          description: "Search for Agent Skills by keyword.",
-        },
-      ],
-      prompts: {
-        description: "All public prompts are available as MCP prompts. Use prompts/list to browse and prompts/get to retrieve with variable substitution.",
-        usage: "Access via slash commands in MCP clients (e.g., /prompt-id)",
-      },
-      endpoint: "/api/mcp",
-    });
-  }
+export async function DELETE() {
+  return new Response(null, { status: 204 });
+}
 
-  if (req.method === "DELETE") {
-    return res.status(204).end();
-  }
-
-  if (req.method !== "POST") {
-    return res.status(405).json({
-      jsonrpc: "2.0",
-      error: { code: -32000, message: "Method not allowed" },
-      id: null,
-    });
-  }
-
-  // Parse query parameters for filtering
-  const url = new URL(req.url || "", `http://${req.headers.host}`);
+export async function POST(request: NextRequest) {
+  const url = new URL(request.url);
   const categoriesParam = url.searchParams.get("categories");
   const tagsParam = url.searchParams.get("tags");
   const usersParam = url.searchParams.get("users");
 
   // Extract API key from PROMPTS_API_KEY header or query parameter
-  const apiKeyHeader = req.headers["prompts_api_key"] || req.headers["prompts-api-key"];
+  const apiKeyHeader = request.headers.get("prompts_api_key") || request.headers.get("prompts-api-key");
   const apiKeyParam = url.searchParams.get("api_key");
-  const apiKey = (Array.isArray(apiKeyHeader) ? apiKeyHeader[0] : apiKeyHeader) || apiKeyParam;
+  const apiKey = apiKeyHeader || apiKeyParam;
 
   // Authenticate user if API key is provided
   const authenticatedUser = await authenticateApiKey(apiKey);
@@ -1436,28 +1406,53 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const server = createServer(serverOptions);
 
   try {
-    const transport = new StreamableHTTPServerTransport({
+    const transport = new WebStandardStreamableHTTPServerTransport({
       sessionIdGenerator: undefined,
     });
 
     await server.connect(transport);
 
-    const body = await parseBody(req);
+    const response = await transport.handleRequest(request);
 
-    await transport.handleRequest(req, res, body);
+    // Clean up after the response is consumed
+    if (response.body) {
+      const originalBody = response.body;
+      const { readable, writable } = new TransformStream();
+      const writer = writable.getWriter();
+      const reader = originalBody.getReader();
 
-    res.on("close", () => {
-      transport.close();
-      server.close();
-    });
+      (async () => {
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            await writer.write(value);
+          }
+        } finally {
+          await writer.close();
+          transport.close();
+          server.close();
+        }
+      })();
+
+      return new Response(readable, {
+        status: response.status,
+        headers: response.headers,
+      });
+    }
+
+    transport.close();
+    server.close();
+    return response;
   } catch (error) {
     console.error("MCP error:", error);
-    if (!res.headersSent) {
-      res.status(500).json({
+    return NextResponse.json(
+      {
         jsonrpc: "2.0",
         error: { code: -32603, message: "Internal server error" },
         id: null,
-      });
-    }
+      },
+      { status: 500 }
+    );
   }
 }
