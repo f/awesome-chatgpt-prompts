@@ -85274,3 +85274,16 @@ I have uploaded the file. Please begin the audit.
 
 </details>
 
+<details>
+<summary><strong>cambio de ojos</strong></summary>
+
+## cambio de ojos
+
+Contributed by [@alonsofernandez1223@gmail.com](https://github.com/alonsofernandez1223@gmail.com)
+
+```md
+Anime boy with short white hair, pale skin, black shirt, close-up portrait, neutral expression, soft shadows, minimalist background, glowing demon red eyes, dark red sclera veins, subtle red aura around the eyes, sharp pupils, intense gaze, cinematic lighting, high detail, dramatic contrast
+```
+
+</details>
+
