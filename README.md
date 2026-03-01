@@ -121,6 +121,7 @@ The setup wizard configures branding, theme, authentication (GitHub/Google/Azure
 ---
 
 ## 🔌 Integrations
+- [Anchor Browser](https://anchorbrowser.io) - Browser infrastructure for AI agents
 
 ### CLI
 ```bash
