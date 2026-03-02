@@ -1,0 +1,84 @@
+services:
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: prompts_chat
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@db:5432/prompts_chat?schema=public"
+      NEXTAUTH_URL: "http://localhost:3000"
+      NEXTAUTH_SECRET: "dev-secret-change-in-production"
+      NODE_ENV: development
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./prisma:/app/prisma
+      - ./messages:/app/messages
+      - ./prompts.config.ts:/app/prompts.config.ts
+      - ./next.config.ts:/app/next.config.ts
+      - ./vite.config.ts:/app/vite.config.ts
+      - ./tsconfig.json:/app/tsconfig.json
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+        - action: sync
+          path: ./public
+          target: /app/public
+        - action: sync
+          path: ./messages
+          target: /app/messages
+        - action: rebuild
+          path: ./package.json
+        - action: rebuild
+          path: ./vite.config.ts
+        - action: rebuild
+          path: ./next.config.ts
+        - action: rebuild
+          path: ./prisma/schema.prisma
+
+  app-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@db:5432/prompts_chat?schema=public"
+      NEXTAUTH_URL: "http://localhost:3000"
+      NEXTAUTH_SECRET: "dev-secret-change-in-production"
+      NODE_ENV: production
+    depends_on:
+      db:
+        condition: service_healthy
+    profiles:
+      - production
+
+volumes:
+  pgdata:

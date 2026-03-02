@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "prompts-chat",
+  "compatibility_date": "2025-01-01",
+  "node_compat": true,
+  "vars": {
+    "NEXTAUTH_URL": "https://prompts.chat",
+    "NODE_ENV": "production"
+  }
+  // Secrets must be set via CLI:
+  //   wrangler secret put DATABASE_URL
+  //   wrangler secret put NEXTAUTH_SECRET
+  //   wrangler secret put CRON_SECRET
+  //   wrangler secret put GITHUB_CLIENT_ID
+  //   wrangler secret put GITHUB_CLIENT_SECRET
+  //   wrangler secret put OPENAI_API_KEY
+}
