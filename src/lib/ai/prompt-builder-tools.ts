@@ -5,7 +5,7 @@ export interface PromptBuilderState {
   title: string;
   description: string;
   content: string;
-  type: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED";
+  type: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "TASTE";
   structuredFormat?: "JSON" | "YAML";
   categoryId?: string;
   tagIds: string[];

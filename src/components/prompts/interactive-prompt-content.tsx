@@ -267,18 +267,19 @@ export function InteractivePromptContent({
     setTranslatedContent(translated);
   }, []);
 
-  // Check if this is a SKILL type prompt
+  // Check if this is a SKILL or TASTE type prompt
   const isSkill = promptType === "SKILL";
+  const isTaste = promptType === "TASTE";
 
   // If no variables, render simple content
   if (variables.length === 0) {
-    if (isSkill) {
-      // SKILL type: render with Monaco editor (read-only markdown)
+    if (isSkill || isTaste) {
+      // SKILL/TASTE type: render with Monaco editor (read-only markdown)
       return (
         <div className={className}>
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-1">
-              {title && <h3 className="text-base font-semibold">{title}</h3>}
+              <h3 className="text-base font-semibold">{isTaste ? "taste.md" : (title || "SKILL.md")}</h3>
               <TranslateButton
                 content={content}
                 onTranslate={handleTranslate}

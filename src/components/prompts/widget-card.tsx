@@ -102,7 +102,7 @@ export function WidgetCard({ prompt }: WidgetCardProps) {
 
       {/* Content Preview */}
       <div className="relative flex-1 mb-3 min-h-0">
-        <pre className="text-xs text-muted-foreground bg-muted p-2 rounded overflow-hidden font-mono h-full whitespace-pre-wrap break-words line-clamp-10">
+        <pre className="text-xs text-muted-foreground bg-muted p-2 rounded overflow-y-auto font-mono whitespace-pre-wrap break-words max-h-48">
           {prompt.content}
         </pre>
       </div>

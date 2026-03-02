@@ -39,6 +39,7 @@
     "promptmasters": "Promptmasters",
     "prompts": "Prompts",
     "skills": "Habilidades",
+    "tastes": "Tastes",
     "workflows": "Fluxos de trabalho",
     "categories": "Categorias",
     "tags": "Tags",
@@ -107,7 +108,9 @@
     "title": "Prompts",
     "create": "Criar Prompt",
     "createSkill": "Criar Habilidade",
+    "createTaste": "Criar Taste",
     "skillsDescription": "Habilidades de Agente são prompts multi-arquivo que dão aos agentes de IA capacidades especializadas. Incluem instruções, configurações e arquivos de suporte que podem ser usados com Claude, Cursor, Windsurf e outros assistentes de codificação de IA.",
+    "tastesDescription": "Tastes são arquivos markdown individuais que definem seu estilo de codificação e preferências. Ajudam os agentes de codificação de IA a aprender como você escreve código, para que possam corresponder às suas convenções, padrões e gosto.",
     "createInfo": "Esta plataforma não executa prompts — é uma biblioteca comunitária para compartilhar e descobrir prompts de IA. Crie seu prompt aqui, e outros poderão copiá-lo e usá-lo em suas ferramentas de IA favoritas como ChatGPT, Claude, Gemini ou qualquer outro LLM. A comunidade também pode comentar seus prompts e sugerir melhorias através de solicitações de alteração.",
     "hfDataStudio": {
       "button": "HF Data Studio",
@@ -189,7 +192,8 @@
       "audio": "Áudio",
       "structured": "Estruturado",
       "document": "Documento",
-      "skill": "Habilidade"
+      "skill": "Habilidade",
+      "taste": "Taste"
     },
     "inputType": "Prompt do Usuário",
     "outputType": "Resposta da IA",
@@ -199,7 +203,8 @@
     "inputTypes": {
       "text": "Prompt de Texto",
       "structured": "Estruturado (JSON/YAML)",
-      "skill": "Habilidade (Agent Skills)"
+      "skill": "Habilidade (Agent Skills)",
+      "taste": "Taste (Coding Taste)"
     },
     "outputTypes": {
       "text": "Texto",

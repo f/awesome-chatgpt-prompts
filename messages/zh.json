@@ -39,6 +39,7 @@
     "promptmasters": "Promptmasters",
     "prompts": "提示词",
     "skills": "技能",
+    "tastes": "Tastes",
     "workflows": "工作流程",
     "categories": "分类",
     "tags": "标签",
@@ -107,7 +108,9 @@
     "title": "提示词",
     "create": "创建提示词",
     "createSkill": "创建技能",
+    "createTaste": "创建 Taste",
     "skillsDescription": "智能体技能是多文件提示词，可为AI智能体提供专业能力。它们包含指令、配置和支持文件，可与Claude、Cursor、Windsurf及其他AI编程助手配合使用。",
+    "tastesDescription": "Tastes 是定义你编码风格和偏好的单个 markdown 文件。它们帮助 AI 编码代理学习你的代码编写方式，从而匹配你的惯例、模式和品味。",
     "createInfo": "本平台不运行或执行提示词——这是一个社区驱动的AI提示词分享和发现库。在这里创建您的提示词，其他人可以复制并在他们喜欢的AI工具中使用，如ChatGPT、Claude、Gemini或任何其他LLM。社区还可以评论您的提示词，并通过变更请求提出改进建议。",
     "hfDataStudio": {
       "button": "HF 数据工作室",
@@ -189,7 +192,8 @@
       "audio": "音频",
       "structured": "结构化",
       "document": "文档",
-      "skill": "技能"
+      "skill": "技能",
+      "taste": "Taste"
     },
     "inputType": "用户提示词",
     "outputType": "AI 响应",
@@ -199,7 +203,8 @@
     "inputTypes": {
       "text": "文本提示词",
       "structured": "结构化 (JSON/YAML)",
-      "skill": "技能 (Agent Skills)"
+      "skill": "技能 (Agent Skills)",
+      "taste": "Taste (Coding Taste)"
     },
     "outputTypes": {
       "text": "文本",

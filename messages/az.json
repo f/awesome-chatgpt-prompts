@@ -39,6 +39,7 @@
     "promptmasters": "Promptmasterlər",
     "prompts": "Promptlar",
     "skills": "Bacarıqlar",
+    "tastes": "Tastes",
     "workflows": "İş axınları",
     "categories": "Kateqoriyalar",
     "tags": "Etiketlər",
@@ -107,7 +108,9 @@
     "title": "Promptlar",
     "create": "Prompt Yarat",
     "createSkill": "Bacarıq Yarat",
+    "createTaste": "Taste Yarat",
     "skillsDescription": "Agent Bacarıqları AI agentlərinə xüsusi qabiliyyətlər verən çox fayllı promptlardır. Claude, Cursor, Windsurf və digər AI kodlaşdırma köməkçiləri ilə istifadə edilə bilən təlimatlar, konfiqurasiyalar və dəstəkləyici fayllar daxildir.",
+    "tastesDescription": "Tastes kodlaşdırma tərzinizi və üstünlüklərinizi müəyyən edən tək markdown fayllarıdır. AI kodlaşdırma agentlərinə kodunuzu necə yazdığınızı öyrənməyə kömək edir, beləliklə onlar sizin konvensiyalarınızı, nümunələrinizi və zövqünüzü uyğunlaşdıra bilərlər.",
     "createInfo": "Bu platforma promptları işlətmir — süni intellekt promptlarını paylaşmaq və kəşf etmək üçün icma tərəfindən idarə olunan bir kitabxanadır. Promptunuzu burada yaradın və başqaları onu ChatGPT, Claude, Gemini və ya hər hansı digər LLM kimi üstünlük verdikləri AI alətlərində kopyalayıb istifadə edə bilərlər.",
     "hfDataStudio": {
       "button": "HF Data Studio",
@@ -189,7 +192,8 @@
       "audio": "Audio",
       "structured": "Strukturlaşdırılmış",
       "document": "Sənəd",
-      "skill": "Bacarıq"
+      "skill": "Bacarıq",
+      "taste": "Taste"
     },
     "inputType": "İstifadəçi Promptu",
     "outputType": "AI Cavabı",
@@ -199,7 +203,8 @@
     "inputTypes": {
       "text": "Mətn Promptu",
       "structured": "Strukturlaşdırılmış (JSON/YAML)",
-      "skill": "Bacarıq (Agent Bacarıqları)"
+      "skill": "Bacarıq (Agent Bacarıqları)",
+      "taste": "Taste (Coding Taste)"
     },
     "outputTypes": {
       "text": "Mətn",

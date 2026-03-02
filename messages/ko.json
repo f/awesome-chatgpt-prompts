@@ -39,6 +39,7 @@
     "promptmasters": "프롬프트마스터",
     "prompts": "프롬프트",
     "skills": "스킬",
+    "tastes": "Tastes",
     "workflows": "워크플로우",
     "categories": "카테고리",
     "tags": "태그",
@@ -107,7 +108,9 @@
     "title": "프롬프트",
     "create": "프롬프트 만들기",
     "createSkill": "스킬 만들기",
+    "createTaste": "Taste 만들기",
     "skillsDescription": "에이전트 스킬은 AI 에이전트에게 전문 기능을 제공하는 멀티 파일 프롬프트입니다. Claude, Cursor, Windsurf 및 기타 AI 코딩 어시스턴트와 함께 사용할 수 있는 지침, 구성 및 지원 파일이 포함되어 있습니다.",
+    "tastesDescription": "Tastes는 코딩 스타일과 선호도를 정의하는 단일 마크다운 파일입니다. AI 코딩 에이전트가 코드 작성 방식을 학습하여 규칙, 패턴 및 취향에 맞출 수 있도록 도와줍니다.",
     "createInfo": "이 플랫폼은 프롬프트를 실행하지 않습니다 — AI 프롬프트를 공유하고 발견하는 커뮤니티 라이브러리입니다. 여기서 프롬프트를 만들면 다른 사용자들이 ChatGPT, Claude, Gemini 등 선호하는 AI 도구에서 복사하여 사용할 수 있습니다. 커뮤니티는 프롬프트에 댓글을 달고 변경 요청을 통해 개선 사항을 제안할 수도 있습니다.",
     "hfDataStudio": {
       "button": "HF 데이터 스튜디오",
@@ -189,7 +192,8 @@
       "audio": "오디오",
       "structured": "구조화",
       "document": "문서",
-      "skill": "스킬"
+      "skill": "스킬",
+      "taste": "Taste"
     },
     "inputType": "사용자 프롬프트",
     "outputType": "AI 응답",
@@ -199,7 +203,8 @@
     "inputTypes": {
       "text": "텍스트 프롬프트",
       "structured": "구조화 (JSON/YAML)",
-      "skill": "스킬 (Agent Skills)"
+      "skill": "스킬 (Agent Skills)",
+      "taste": "Taste (Coding Taste)"
     },
     "outputTypes": {
       "text": "텍스트",

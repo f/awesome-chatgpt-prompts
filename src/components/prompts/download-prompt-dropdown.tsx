@@ -24,6 +24,7 @@ export function DownloadPromptDropdown({ promptId, promptSlug, promptType }: Dow
   const [copiedFormat, setCopiedFormat] = useState<"md" | "yml" | null>(null);
   
   const isSkill = promptType === "SKILL";
+  const isTaste = promptType === "TASTE";
 
   const getFileName = (format: "md" | "yml") => {
     const base = promptSlug ? `${promptId}_${promptSlug}` : promptId;
@@ -97,12 +98,45 @@ export function DownloadPromptDropdown({ promptId, promptSlug, promptType }: Dow
     }
   };
 
+  const handleDownloadTasteMd = async () => {
+    const url = `/api/prompts/${promptSlug ? `${promptId}_${promptSlug}` : promptId}/raw`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Failed to fetch");
+      const content = await response.text();
+      
+      const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+      const downloadUrl = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = downloadUrl;
+      a.download = "taste.md";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(downloadUrl);
+      
+      toast.success(t("downloadStarted"));
+    } catch {
+      toast.error(t("downloadFailed"));
+    }
+  };
+
   // For SKILL type, show a simple button that downloads .skill zip
   if (isSkill) {
     return (
       <Button variant="ghost" size="sm" onClick={handleDownloadSkill}>
         <Download className="h-4 w-4 mr-1" />
         {t("downloadSkill")}
+      </Button>
+    );
+  }
+
+  // For TASTE type, show a simple button that downloads taste.md
+  if (isTaste) {
+    return (
+      <Button variant="ghost" size="sm" onClick={handleDownloadTasteMd}>
+        <Download className="h-4 w-4 mr-1" />
+        taste.md
       </Button>
     );
   }

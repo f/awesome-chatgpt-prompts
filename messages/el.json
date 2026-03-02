@@ -39,6 +39,7 @@
     "promptmasters": "Promptmasters",
     "prompts": "Prompts",
     "skills": "Δεξιότητες",
+    "tastes": "Tastes",
     "workflows": "Ροές εργασίας",
     "categories": "Κατηγορίες",
     "tags": "Ετικέτες",
@@ -107,7 +108,9 @@
     "title": "Prompts",
     "create": "Δημιουργία Prompt",
     "createSkill": "Δημιουργία Δεξιότητας",
+    "createTaste": "Δημιουργία Taste",
     "skillsDescription": "Οι Δεξιότητες Πράκτορα είναι prompts πολλαπλών αρχείων που δίνουν στους AI πράκτορες εξειδικευμένες δυνατότητες. Περιλαμβάνουν οδηγίες, ρυθμίσεις και υποστηρικτικά αρχεία που μπορούν να χρησιμοποιηθούν με Claude, Cursor, Windsurf και άλλους βοηθούς προγραμματισμού AI.",
+    "tastesDescription": "Τα Tastes είναι μεμονωμένα αρχεία markdown που ορίζουν το στυλ κωδικοποίησης και τις προτιμήσεις σας. Βοηθούν τους πράκτορες κωδικοποίησης AI να μάθουν πώς γράφετε κώδικα, ώστε να ταιριάζουν τις συμβάσεις, τα μοτίβα και το γούστο σας.",
     "createInfo": "Αυτή η πλατφόρμα δεν εκτελεί prompts — είναι μια κοινοτική βιβλιοθήκη για την κοινοποίηση και ανακάλυψη AI prompts. Δημιουργήστε το prompt σας εδώ και άλλοι μπορούν να το αντιγράψουν και να το χρησιμοποιήσουν στα αγαπημένα τους εργαλεία AI όπως ChatGPT, Claude, Gemini ή οποιοδήποτε άλλο LLM. Η κοινότητα μπορεί επίσης να σχολιάσει τα prompts σας και να προτείνει βελτιώσεις μέσω αιτημάτων αλλαγής.",
     "hfDataStudio": {
       "button": "HF Data Studio",
@@ -189,7 +192,8 @@
       "audio": "Ήχος",
       "structured": "Δομημένο",
       "document": "Έγγραφο",
-      "skill": "Δεξιότητα"
+      "skill": "Δεξιότητα",
+      "taste": "Taste"
     },
     "inputType": "Prompt χρήστη",
     "outputType": "Απάντηση AI",
@@ -199,7 +203,8 @@
     "inputTypes": {
       "text": "Prompt κειμένου",
       "structured": "Δομημένο (JSON/YAML)",
-      "skill": "Δεξιότητα (Agent Skills)"
+      "skill": "Δεξιότητα (Agent Skills)",
+      "taste": "Taste (Coding Taste)"
     },
     "outputTypes": {
       "text": "Κείμενο",

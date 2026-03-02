@@ -57,6 +57,11 @@ Provide your review in a clear, actionable format with specific line references 
       shouldInject: (context) => {
         const { filters } = context;
         
+        // Don't inject on the skills page
+        if (filters?.type === "SKILL") {
+          return false;
+        }
+        
         // Inject when no filters are active
         if (!filters?.q && !filters?.category && !filters?.tag) {
           return true;

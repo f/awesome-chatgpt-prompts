@@ -39,6 +39,7 @@
     "promptmasters": "מאסטרים",
     "prompts": "פרומפטים",
     "skills": "כישורים",
+    "tastes": "Tastes",
     "workflows": "תהליכי עבודה",
     "categories": "קטגוריות",
     "tags": "תגיות",
@@ -107,7 +108,9 @@
     "title": "פרומפטים",
     "create": "יצירת פרומפט",
     "createSkill": "יצירת מיומנות",
+    "createTaste": "יצירת Taste",
     "skillsDescription": "מיומנויות סוכן הן פרומפטים מרובי קבצים שמעניקים לסוכני AI יכולות מתמחות. הן כוללות הוראות, הגדרות וקבצי תמיכה שניתן להשתמש בהם עם Claude, Cursor, Windsurf ועוזרי קידוד AI אחרים.",
+    "tastesDescription": "Tastes הם קבצי markdown בודדים שמגדירים את סגנון הקידוד וההעדפות שלך. הם עוזרים לסוכני קידוד AI ללמוד איך אתה כותב קוד, כך שיוכלו להתאים למוסכמות, לדפוסים ולטעם שלך.",
     "createInfo": "פלטפורמה זו לא מריצה פרומפטים — היא ספרייה קהילתית לשיתוף וגילוי פרומפטים של AI. צור את הפרומפט שלך כאן, ואחרים יוכלו להעתיק ולהשתמש בו בכלי ה-AI המועדפים עליהם כמו ChatGPT, Claude, Gemini או כל LLM אחר. הקהילה יכולה גם להגיב על הפרומפטים שלך ולהציע שיפורים דרך בקשות שינוי.",
     "hfDataStudio": {
       "button": "HF Data Studio",
@@ -189,7 +192,8 @@
       "audio": "אודיו",
       "structured": "מובנה",
       "document": "מסמך",
-      "skill": "מיומנות"
+      "skill": "מיומנות",
+      "taste": "Taste"
     },
     "inputType": "פרומפט משתמש",
     "outputType": "תגובת AI",
@@ -199,7 +203,8 @@
     "inputTypes": {
       "text": "פרומפט טקסט",
       "structured": "מובנה (JSON/YAML)",
-      "skill": "מיומנות (Agent Skills)"
+      "skill": "מיומנות (Agent Skills)",
+      "taste": "Taste (Coding Taste)"
     },
     "outputTypes": {
       "text": "טקסט",

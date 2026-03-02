@@ -409,6 +409,7 @@ enum PromptType {
   AUDIO
   STRUCTURED
   SKILL
+  TASTE
 }
 
 enum StructuredFormat {

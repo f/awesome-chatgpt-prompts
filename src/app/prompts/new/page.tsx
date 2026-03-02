@@ -18,7 +18,7 @@ interface PageProps {
     prompt?: string; 
     title?: string; 
     content?: string;
-    type?: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO";
+    type?: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "SKILL" | "TASTE";
     format?: "JSON" | "YAML";
   }>;
 }

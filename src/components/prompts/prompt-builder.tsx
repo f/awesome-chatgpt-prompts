@@ -14,7 +14,7 @@ interface PromptBuilderState {
   title: string;
   description: string;
   content: string;
-  type: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "SKILL"; // Output type or SKILL
+  type: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "SKILL" | "TASTE"; // Output type, SKILL, or TASTE
   structuredFormat?: "JSON" | "YAML"; // Input type indicator
   categoryId?: string;
   tagIds: string[];

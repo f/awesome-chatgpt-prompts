@@ -39,6 +39,7 @@
     "promptmasters": "Promptmasters",
     "prompts": "Prompts",
     "skills": "Fähigkeiten",
+    "tastes": "Tastes",
     "workflows": "Workflows",
     "categories": "Kategorien",
     "tags": "Tags",
@@ -107,7 +108,9 @@
     "title": "Prompts",
     "create": "Prompt erstellen",
     "createSkill": "Skill erstellen",
+    "createTaste": "Taste erstellen",
     "skillsDescription": "Agent Skills sind Multi-Datei-Prompts, die KI-Agenten spezialisierte Fähigkeiten verleihen. Sie enthalten Anweisungen, Konfigurationen und unterstützende Dateien, die mit Claude, Cursor, Windsurf und anderen KI-Coding-Assistenten verwendet werden können.",
+    "tastesDescription": "Tastes sind einzelne Markdown-Dateien, die Ihren Codierstil und Ihre Vorlieben definieren. Sie helfen KI-Coding-Agenten zu lernen, wie Sie Code schreiben, damit sie Ihre Konventionen, Muster und Ihren Geschmack übernehmen können.",
     "createInfo": "Diese Plattform führt keine Prompts aus — sie ist eine community-gesteuerte Bibliothek zum Teilen und Entdecken von KI-Prompts. Erstellen Sie hier Ihren Prompt, und andere können ihn kopieren und in ihren bevorzugten KI-Tools wie ChatGPT, Claude, Gemini oder anderen LLMs verwenden. Die Community kann auch Ihre Prompts kommentieren und Verbesserungen durch Änderungsanfragen vorschlagen.",
     "hfDataStudio": {
       "button": "HF Data Studio",
@@ -189,7 +192,8 @@
       "audio": "Audio",
       "structured": "Strukturiert",
       "document": "Dokument",
-      "skill": "Skill"
+      "skill": "Skill",
+      "taste": "Taste"
     },
     "inputType": "Benutzer-Prompt",
     "outputType": "KI-Antwort",
@@ -199,7 +203,8 @@
     "inputTypes": {
       "text": "Text-Prompt",
       "structured": "Strukturiert (JSON/YAML)",
-      "skill": "Skill (Agent Skills)"
+      "skill": "Skill (Agent Skills)",
+      "taste": "Taste (Coding Taste)"
     },
     "outputTypes": {
       "text": "Text",

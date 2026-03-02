@@ -122,6 +122,11 @@ export const textreamWidget: WidgetPlugin = {
       shouldInject: (context) => {
         const { filters } = context;
         
+        // Don't inject on the skills page
+        if (filters?.type === "SKILL") {
+          return false;
+        }
+        
         // Show when no filters active
         if (!filters?.q && !filters?.category && !filters?.tag) {
           return true;

@@ -214,6 +214,13 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                     {t("nav.skills")}
                   </Link>
                   <Link 
+                    href="/tastes" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                  >
+                    {t("nav.tastes")}
+                  </Link>
+                  <Link 
                     href="/workflows" 
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
@@ -370,13 +377,19 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
           </Link>
           <Link
             href="/skills"
-            className="px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
+            className="hidden xl:block px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
           >
             {t("nav.skills")}
           </Link>
           <Link
+            href="/tastes"
+            className="hidden xl:block px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
+          >
+            {t("nav.tastes")}
+          </Link>
+          <Link
             href="/workflows"
-            className="px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
+            className="hidden xl:block px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
           >
             {t("nav.workflows")}
           </Link>
@@ -399,7 +412,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
           >
             {t("nav.promptmasters")}
           </Link>
-          {/* Three-dot dropdown for Categories, Tags, Promptmasters on md screens */}
+          {/* Three-dot dropdown for collapsed nav items */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="2xl:hidden h-8 w-8">
@@ -408,6 +421,22 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
+              <DropdownMenuItem asChild className="xl:hidden">
+                <Link href="/skills">
+                  {t("nav.skills")}
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="xl:hidden">
+                <Link href="/tastes">
+                  {t("nav.tastes")}
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="xl:hidden">
+                <Link href="/workflows">
+                  {t("nav.workflows")}
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator className="xl:hidden" />
               <DropdownMenuItem asChild>
                 <Link href="/categories">
                   {t("nav.categories")}
