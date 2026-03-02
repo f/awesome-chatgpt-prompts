@@ -44,8 +44,8 @@ npx taste pull username/project-name`,
       shouldInject: (context) => {
         const { filters } = context;
         
-        // Only inject on the skills page (type=SKILL)
-        if (filters?.type === "SKILL") {
+        // Only inject on the skills and tastes pages
+        if (filters?.type === "SKILL" || filters?.type === "TASTE") {
           return true;
         }
         
