@@ -219,12 +219,12 @@ Use prompts.chat as an MCP server in your AI tools.
       <img height="28" alt="Each Labs" src="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/eachlabs.png">
     </picture>
   </a>&nbsp;&nbsp;
-  <!-- Warp (py-2) -->
-  <a href="https://warp.dev/?utm_source=prompts.chat">
+  <!-- CommandCode (py-1) -->
+  <a href="https://commandcode.ai/?utm_source=prompts.chat">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/warp-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/warp.svg">
-      <img height="25" alt="Warp" src="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/warp.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/commandcode-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/commandcode.svg">
+      <img height="30" alt="CommandCode" src="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/commandcode.svg">
     </picture>
   </a>
 </p>
