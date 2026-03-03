@@ -9,18 +9,18 @@ export interface Platform {
 
 // Image generation platforms (Mitte.ai)
 export const imagePlatforms: Platform[] = [
-  { id: "mitte-nano-banana", name: "Mitte.ai - Nano Banana", baseUrl: "https://mitte.ai?model=nano-banana", sponsor: true },
-  { id: "mitte-nano-banana-pro", name: "Mitte.ai - Nano Banana Pro", baseUrl: "https://mitte.ai?model=nano-banana-pro", sponsor: true },
-  { id: "mitte-flux-2-flex", name: "Mitte.ai - Flux 2 Flex", baseUrl: "https://mitte.ai?model=flux-2-flex", sponsor: true },
-  { id: "mitte-flux-2", name: "Mitte.ai - Flux 2", baseUrl: "https://mitte.ai?model=flux-2", sponsor: true },
+  { id: "mitte-nano-banana", name: "Mitte.ai - Nano Banana", baseUrl: "https://mitte.ai?model=nano-banana", sponsor: false },
+  { id: "mitte-nano-banana-pro", name: "Mitte.ai - Nano Banana Pro", baseUrl: "https://mitte.ai?model=nano-banana-pro", sponsor: false },
+  { id: "mitte-flux-2-flex", name: "Mitte.ai - Flux 2 Flex", baseUrl: "https://mitte.ai?model=flux-2-flex", sponsor: false },
+  { id: "mitte-flux-2", name: "Mitte.ai - Flux 2", baseUrl: "https://mitte.ai?model=flux-2", sponsor: false },
 ];
 
 // Video generation platforms (Mitte.ai)
 export const videoPlatforms: Platform[] = [
-  { id: "mitte-veo-31", name: "Mitte.ai - Veo 3.1", baseUrl: "https://mitte.ai?model=veo-31", sponsor: true },
-  { id: "mitte-kling-26", name: "Mitte.ai - Kling 2.6", baseUrl: "https://mitte.ai?model=kling-26", sponsor: true },
-  { id: "mitte-sora-2", name: "Mitte.ai - Sora 2", baseUrl: "https://mitte.ai?model=sora-2", sponsor: true },
-  { id: "mitte-remotion", name: "Mitte.ai - Remotion", baseUrl: "https://mitte.ai?model=remotion", sponsor: true },
+  { id: "mitte-veo-31", name: "Mitte.ai - Veo 3.1", baseUrl: "https://mitte.ai?model=veo-31", sponsor: false },
+  { id: "mitte-kling-26", name: "Mitte.ai - Kling 2.6", baseUrl: "https://mitte.ai?model=kling-26", sponsor: false },
+  { id: "mitte-sora-2", name: "Mitte.ai - Sora 2", baseUrl: "https://mitte.ai?model=sora-2", sponsor: false },
+  { id: "mitte-remotion", name: "Mitte.ai - Remotion", baseUrl: "https://mitte.ai?model=remotion", sponsor: false },
 ];
 
 export const codePlatforms: Platform[] = [

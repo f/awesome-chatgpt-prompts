@@ -219,24 +219,10 @@ export const codePlatforms: Platform[] = [
 ];
 
 // Image generation platforms
-export const imagePlatforms: Platform[] = [
-  {
-    id: "mitte-image",
-    name: "Mitte.ai (Image)",
-    baseUrl: "https://mitte.ai",
-    supportsQuerystring: true,
-  },
-];
+export const imagePlatforms: Platform[] = [];
 
 // Video generation platforms
-export const videoPlatforms: Platform[] = [
-  {
-    id: "mitte-video",
-    name: "Mitte.ai (Video)",
-    baseUrl: "https://mitte.ai",
-    supportsQuerystring: true,
-  },
-];
+export const videoPlatforms: Platform[] = [];
 
 export function buildUrl(
   platformId: string,
