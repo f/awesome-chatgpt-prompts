@@ -85486,3 +85486,16 @@ Generate a ${aspect_ratio:16:9} aspect ratio image that effectively communicates
 
 </details>
 
+<details>
+<summary><strong>National safety week</strong></summary>
+
+## National safety week
+
+Contributed by [@marrigangu@gmail.com](https://github.com/marrigangu@gmail.com)
+
+```md
+On the occasion of national safety week 2026 write a safety script which engage the employee and peoples create awareness on safety by following safety guidelines in steel industry 
+```
+
+</details>
+
