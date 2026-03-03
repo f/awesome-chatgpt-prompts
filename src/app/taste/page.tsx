@@ -8,7 +8,7 @@ import { InfinitePromptList } from "@/components/prompts/infinite-prompt-list";
 import { db } from "@/lib/db";
 
 export const metadata: Metadata = {
-  title: "Tastes",
+  title: "Taste",
   description: "Browse and discover coding taste profiles",
 };
 
@@ -98,7 +98,7 @@ function getCachedTastes(
         total: totalCount,
       };
     },
-    ["tastes", cacheKey],
+    ["taste", cacheKey],
     { tags: ["prompts"] }
   )();
 }
