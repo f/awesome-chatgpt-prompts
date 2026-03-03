@@ -214,11 +214,11 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                     {t("nav.skills")}
                   </Link>
                   <Link 
-                    href="/tastes" 
+                    href="/taste" 
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
                   >
-                    {t("nav.tastes")}
+                    {t("nav.taste")}
                   </Link>
                   <Link 
                     href="/workflows" 
@@ -382,10 +382,10 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
             {t("nav.skills")}
           </Link>
           <Link
-            href="/tastes"
+            href="/taste"
             className="hidden xl:block px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
           >
-            {t("nav.tastes")}
+            {t("nav.taste")}
           </Link>
           <Link
             href="/workflows"
@@ -427,8 +427,8 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="xl:hidden">
-                <Link href="/tastes">
-                  {t("nav.tastes")}
+                <Link href="/taste">
+                  {t("nav.taste")}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="xl:hidden">
