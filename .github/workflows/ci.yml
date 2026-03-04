@@ -31,5 +31,8 @@ jobs:
       - name: Run linter
         run: npm run lint
 
+      - name: Validate prompts.csv
+        run: npm run validate:csv -- --json
+
       - name: Run tests
         run: npm test
