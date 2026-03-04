@@ -162,6 +162,11 @@ Use prompts.chat as an MCP server in your AI tools.
 
 📖 [MCP Documentation](https://prompts.chat/docs/api)
 
+### Featured MCP Servers
+Add powerful data sources to your AI tools with these MCP servers:
+
+- **[ProofBets](https://github.com/proofbets/proofbets-mcp)** — 13 tools for crypto casino data, bonus verification, EV calculation, and P2P prediction market comparisons (Polymarket, Kalshi, Azuro)
+
 ---
 
 ## 💖 Sponsors
