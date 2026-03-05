@@ -84148,7 +84148,18 @@ Contributed by [@ayoubelouardi3710@gmail.com](https://github.com/ayoubelouardi37
   "model": "veo-3.1",
   "task": "image_to_video_360_product_rotation",
 
-  "objective": "Generate a photorealistic, silent, 360-degree rotation video from the provided front and back images of the exact same product. Preserve 100% of the original product identity without modification, addition, removal, or hallucination. The product must appear naturally filled internally using ghost mannequin volume reconstruction, while remaining completely faithful to the original images. Output must contain absolutely no audio.",
+  "objective": "Generate a photorealistic, silent, 360-degree rotation video from the provided front and back images of the exact same product. Preserve 100% of the original product identity without modification, addition, removal, or hallucination. The product must appear naturally filled internally using ghost mannequin volume reconstruction, while remaining completely faithful to the original images. The garment must appear professionally ironed, perfectly smooth, crisp, and retail-ready while preserving all original details. Output must contain absolutely no audio.",
+
+  "garment_condition_global_rule": {
+    "all_clothing_must_be_ironed": true,
+    "appearance": "perfectly pressed, crisp, smooth, structured, premium retail presentation",
+    "no_new_wrinkles": true,
+    "no_random_fabric_folding": true,
+    "maintain_original_wrinkle_data_if_present": true,
+    "no_artificial_wrinkle_generation": true,
+    "clean_finish": true,
+    "brand_new_look": true
+  },
 
   "input": {
     "type": "multi_image",
@@ -84299,7 +84310,9 @@ Contributed by [@ayoubelouardi3710@gmail.com](https://github.com/ayoubelouardi37
     "texture_source": "input_images_only",
     "no_texture_generation": true,
     "no_creative_interpretation": true,
-    "no_artificial_enhancement": true
+    "no_artificial_enhancement": true,
+    "fabric_finish": "smooth_pressed_clean",
+    "retail_presentation_standard": "premium_ecommerce_ready"
   },
 
   "audio": {
@@ -84340,7 +84353,10 @@ Contributed by [@ayoubelouardi3710@gmail.com](https://github.com/ayoubelouardi37
     "DO NOT modify structure",
     "DO NOT change proportions",
     "DO NOT stylize",
-    "DO NOT hallucinate"
+    "DO NOT hallucinate",
+    "NO new wrinkles",
+    "NO messy fabric folds",
+    "MUST appear professionally ironed"
   ],
 
   "negative_prompt": [
@@ -84355,7 +84371,11 @@ Contributed by [@ayoubelouardi3710@gmail.com](https://github.com/ayoubelouardi37
     "different fabric",
     "shape morphing",
     "geometry distortion",
-    "creative reinterpretation"
+    "creative reinterpretation",
+    "wrinkled fabric",
+    "messy folds",
+    "creased clothing",
+    "unpressed garment"
   ]
 }
 ```
