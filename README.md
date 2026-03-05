@@ -120,6 +120,48 @@ The setup wizard configures branding, theme, authentication (GitHub/Google/Azure
 
 ---
 
+## ⚡ Prompt-as-a-Service API
+
+Execute any prompt programmatically via REST API. Every public TEXT/STRUCTURED prompt gets its own executable endpoint.
+
+```bash
+curl -X POST "https://prompts.chat/api/run/PROMPT_ID" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer pchat_YOUR_API_KEY" \
+  -d '{"variables": {"topic": "AI safety"}}'
+```
+
+**Response:**
+```json
+{
+  "result": "Generated text...",
+  "model": "gpt-4o-mini",
+  "prompt_id": "abc123",
+  "usage": { "credits_remaining": 2 }
+}
+```
+
+**Features:**
+- Variable substitution (`${variable}` and `${variable:default}` syntax)
+- API key authentication (generate in account settings)
+- Credit-based rate limiting (resets daily)
+- Interactive playground at `/prompts/{id}/playground` with cURL, Python, and JavaScript snippets
+- Prompt info endpoint: `GET /api/run/{id}/info`
+
+---
+
+## 🔀 Version History & Prompt Diff
+
+Track every change to a prompt with a Git-like version history.
+
+- **Timeline view** at `/prompts/{id}/versions` — visual changelog with author, timestamp, and change notes
+- **Inline diffs** — expandable word-level diffs between consecutive versions (additions in green, deletions in red)
+- **Version compare** — pick any two versions to compare side-by-side
+- **Change Requests** — community members can propose edits (like Pull Requests for prompts)
+- **Diff stats** — estimated token count for additions/deletions
+
+---
+
 ## 🔌 Integrations
 
 ### CLI
