@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations, getLocale } from "next-intl/server";
 import { formatDistanceToNow } from "@/lib/date";
-import { Clock, Edit, History, GitPullRequest, Check, X, Users, ImageIcon, Video, FileText, Shield, Trash2, Cpu, Terminal, Wrench } from "lucide-react";
+import { Clock, Edit, History, GitPullRequest, Check, X, Users, ImageIcon, Video, FileText, Shield, Trash2, Cpu, Terminal, Wrench, Code } from "lucide-react";
 import { AnimatedDate } from "@/components/ui/animated-date";
 import { ShareDropdown } from "@/components/prompts/share-dropdown";
 import { auth } from "@/lib/auth";
@@ -530,6 +530,14 @@ export default async function PromptPage({ params }: PromptPageProps) {
                   </Link>
                 </Button>
               )}
+              {config.features.mcp && (prompt.type === "TEXT" || prompt.type === "STRUCTURED") && (
+                <Button variant="outline" size="sm" asChild>
+                  <Link href={`/prompts/${id}/playground`}>
+                    <Code className="h-4 w-4 mr-1.5" />
+                    API
+                  </Link>
+                </Button>
+              )}
             </div>
           </div>
         </div>
@@ -706,7 +714,14 @@ export default async function PromptPage({ params }: PromptPageProps) {
         <TabsContent value="versions" className="mt-0">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-base font-semibold">{t("versionHistory")}</h3>
+              <div className="flex items-center gap-3">
+                <h3 className="text-base font-semibold">{t("versionHistory")}</h3>
+                <Button variant="ghost" size="sm" asChild className="text-xs">
+                  <Link href={`/prompts/${id}/versions`}>
+                    {t("viewFullHistory")}
+                  </Link>
+                </Button>
+              </div>
               <div className="flex items-center gap-2">
                 <VersionCompareModal 
                   versions={prompt.versions} 

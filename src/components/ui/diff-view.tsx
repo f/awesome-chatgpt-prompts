@@ -18,7 +18,7 @@ interface WordDiff {
 }
 
 // Word-by-word diff using LCS algorithm
-function computeWordDiff(original: string, modified: string): WordDiff[] {
+export function computeWordDiff(original: string, modified: string): WordDiff[] {
   // Tokenize into words while preserving whitespace/newlines
   const tokenize = (str: string): string[] => {
     const tokens: string[] = [];
@@ -215,6 +215,21 @@ function CodeDiffContent({ wordDiff, language }: { wordDiff: WordDiff[]; languag
       ))}
     </div>
   );
+}
+
+/**
+ * Compute diff stats (estimated token additions/deletions) between two strings
+ */
+export function getDiffStats(original: string, modified: string): { additions: number; deletions: number } {
+  const wordDiff = computeWordDiff(original, modified);
+  let additions = 0;
+  let deletions = 0;
+  const estimateTokens = (text: string) => Math.ceil(text.replace(/\s/g, "").length / 4);
+  wordDiff.forEach((item) => {
+    if (item.type === "added") additions += estimateTokens(item.text);
+    if (item.type === "removed") deletions += estimateTokens(item.text);
+  });
+  return { additions, deletions };
 }
 
 // Side by side diff view

@@ -232,6 +232,7 @@
     "comparing": "Comparing",
     "selectVersionsToCompare": "Select versions to compare",
     "compareWithCurrent": "Compare with current",
+    "viewFullHistory": "View full history",
     "changeRequests": "Change Requests",
     "createChangeRequest": "Propose Changes",
     "viewCount": "Views",
@@ -987,6 +988,30 @@
   "diff": {
     "tokens": "tokens",
     "noChanges": "No changes"
+  },
+  "versionHistory": {
+    "title": "Version History",
+    "versionSingular": "version",
+    "versionPlural": "versions",
+    "openChangeRequests": "Open Change Requests",
+    "liveVersion": "Currently live",
+    "initialVersion": "Initial version"
+  },
+  "playground": {
+    "title": "API Playground",
+    "description": "Execute this prompt programmatically via the API. Use your API key to authenticate requests.",
+    "endpoint": "Endpoint",
+    "variables": "Variables",
+    "run": "Run",
+    "running": "Running...",
+    "response": "Response",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "codeSnippets": "Code Snippets",
+    "apiKeyRequired": "You need an API key to run prompts. Generate one in your account settings.",
+    "loginRequired": "You must be logged in to run prompts via the API.",
+    "runError": "Failed to execute prompt. Please try again.",
+    "unsupportedType": "This prompt type cannot be executed via the API. Only TEXT and STRUCTURED prompts are supported."
   },
   "notFound": {
     "title": "Page Not Found",

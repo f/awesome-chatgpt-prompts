@@ -45,6 +45,7 @@ export interface FeaturesConfig {
   aiGeneration?: boolean;
   mcp?: boolean;
   comments?: boolean;
+  promptApi?: boolean;
 }
 
 export interface Sponsor {
@@ -155,6 +156,7 @@ function applyEnvOverrides(config: PromptsConfig): PromptsConfig {
       aiGeneration: envBool('PCHAT_FEATURE_AI_GENERATION', config.features.aiGeneration ?? false),
       mcp: envBool('PCHAT_FEATURE_MCP', config.features.mcp ?? false),
       comments: envBool('PCHAT_FEATURE_COMMENTS', config.features.comments ?? true),
+      promptApi: envBool('PCHAT_FEATURE_PROMPT_API', config.features.promptApi ?? false),
     },
     homepage: env.PCHAT_NAME ? {
       // If custom branding via env, use clone branding mode

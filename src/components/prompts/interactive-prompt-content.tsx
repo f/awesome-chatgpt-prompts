@@ -15,11 +15,7 @@ import { CodeView } from "@/components/ui/code-view";
 import { CodeEditor } from "@/components/ui/code-editor";
 import { prettifyJson } from "@/lib/format";
 
-interface Variable {
-  name: string;
-  defaultValue: string;
-  fullMatch: string;
-}
+import { parseVariables, getUniqueVariables } from "@/lib/prompt-variables";
 
 interface InteractivePromptContentProps {
   content: string;
@@ -37,34 +33,6 @@ interface InteractivePromptContentProps {
   shareTitle?: string;
   promptTitle?: string;
   promptDescription?: string;
-}
-
-// Parse ${variablename:defaultvalue} or ${variablename} patterns
-function parseVariables(content: string): Variable[] {
-  const regex = /\$\{([^:}]+)(?::([^}]*))?\}/g;
-  const variables: Variable[] = [];
-  let match;
-
-  while ((match = regex.exec(content)) !== null) {
-    variables.push({
-      name: match[1].trim(),
-      defaultValue: (match[2] ?? "").trim(),
-      fullMatch: match[0],
-    });
-  }
-
-  return variables;
-}
-
-// Get unique variable names with their default values
-function getUniqueVariables(variables: Variable[]): { name: string; defaultValue: string }[] {
-  const seen = new Map<string, string>();
-  for (const variable of variables) {
-    if (!seen.has(variable.name)) {
-      seen.set(variable.name, variable.defaultValue);
-    }
-  }
-  return Array.from(seen.entries()).map(([name, defaultValue]) => ({ name, defaultValue }));
 }
 
 // Contenteditable span component

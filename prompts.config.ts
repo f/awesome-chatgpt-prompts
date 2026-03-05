@@ -64,6 +64,8 @@ export default defineConfig({
     mcp: true,
     // Enable comments on prompts
     comments: true,
+    // Enable Prompt-as-a-Service API (execute prompts via REST API)
+    promptApi: true,
   },
 
   // Homepage customization
