@@ -46,5 +46,8 @@ next-env.d.ts
 /src/generated/prisma
 /src/app/sponsors
 
+# validation reports
+.validation/
+
 # Sentry Config File
 .env.sentry-build-plugin
