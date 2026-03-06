@@ -134,10 +134,6 @@ cd "$APP_DIR"
 npx prisma migrate deploy
 echo "✓ Migrations complete"
 
-# Start Next.js
-echo "▶ Starting Next.js..."
-/usr/bin/supervisorctl -c /etc/supervisor/conf.d/supervisord.conf start nextjs
-
 # Seed on first run only
 SEED_MARKER="/data/.seeded"
 if [ ! -f "$SEED_MARKER" ]; then
