@@ -87844,3 +87844,16 @@ Variables:
 
 </details>
 
+<details>
+<summary><strong>One-Shot Copy-Paste Version with Proper Formatting</strong></summary>
+
+## One-Shot Copy-Paste Version with Proper Formatting
+
+Contributed by [@maxhayim](https://github.com/maxhayim)
+
+```md
+I need to copy and paste it all on shot with all correct formatting and as a single block, do not write text outside the box. Include all codes formatting.
+```
+
+</details>
+
