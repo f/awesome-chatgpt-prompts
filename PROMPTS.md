@@ -61742,38 +61742,33 @@ Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail
 Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
 
 ```md
-<!-- Universal Job Fit Evaluation Prompt – Fully Generic & Shareable -->
-<!-- Author: Scott M -->
-<!-- Version: 1.3 -->
-<!-- Last Modified: 2026-02-04 -->
+# Universal Job Fit Evaluation Prompt – Fully Generic & Shareable
+# Author: Scott M
+# Version: 1.6
+# Last Modified: 2026-03-06
+
+## Changelog
+- **v1.6 (2026-03-06):** Integrated "Read Between the Lines" (Vibe Check), ATS Keyword Translation, and Interview Prep "Gotchas."
+- **v1.5 (2026-03-04):** Added "User Action Advice" for blocked URLs. Restored visible author headers.
+- **v1.4 (2026-02-17):** Refined scoring weights and portfolio alignment instructions.
+- **v1.3 (2026-02-04):** Added Anchor Skill list and confidence levels.
 
 ## Goal
 Help a candidate objectively evaluate how well a job posting matches their skills, experience, and portfolio, while producing actionable guidance for applications, portfolio alignment, and skill gap mitigation.
 
-This prompt is designed to be:
-- Profession-agnostic
-- Shareable
-- Resume- and portfolio-aware
-- Explicit about assumptions and fallbacks
+---
+
+## Pre-Evaluation Checklist (User: please provide these)
+- [ ] Step 0: Candidate Priorities (Remote? Salary? Tech stack?)
+- [ ] Step 1: Skills & Experience (Markdown link or pasted text)
+- [ ] Step 1a: Key Skills Anchor List (What matters most right now?)
+- [ ] Step 2: Portfolio links/descriptions
+- [ ] Job Posting: URL or full text
 
 ---
 
-## Pre-Evaluation Checklist (User: please confirm these are provided before proceeding)
-- [ ] Step 0: Candidate Priorities customized
-- [ ] Step 1: Skills & Experience source (markdown link or pasted content)
-- [ ] Step 1a: Key Skills Anchor List (optional but strongly recommended if focusing on specific areas)
-- [ ] Step 2: Portfolio links/descriptions (optional but recommended)
-- [ ] Job Posting: URL or full text inserted below
-
-If any are missing, the evaluation may have reduced confidence.
-
----
-
-## Step 0: Candidate Priorities (Evaluate With These in Mind)
-<!-- These priorities should influence scoring, weighting, and commentary -->
-<!-- ←←← CUSTOMIZE THIS SECTION →→→ -->
-
-- Highest priority roles or domains:
+## Step 0: Candidate Priorities
+- Roles/Domains:
 - Location preference (remote / hybrid / city / region):
 - Compensation expectations or constraints:
 - Non-negotiables (e.g., on-call, travel, clearance, tech stack):
@@ -61781,134 +61776,68 @@ If any are missing, the evaluation may have reduced confidence.
 
 ---
 
-## Step 1: Skills & Experience Source (Primary Reference)
-
-### Preferred: Skills & Experience Markdown File
-Provide access to a structured markdown file describing the candidate.
-
-**Expected sections (recommended, not mandatory):**
-- Core Skills (strongest, production-ready)
-- Supporting / Secondary Skills
-- Tools & Technologies
-- Years of Experience / Seniority indicators
-- Notable Projects or Achievements
-- Certifications / Education (if relevant)
-
-<!-- INSERT ONE OR MORE METHODS BELOW -->
-
-<!-- Option A – Direct link(s) to a markdown file -->
-<!-- Example: https://raw.githubusercontent.com/username/skills-summary/main/Skills_Experience.md -->
-
-<!-- Option B – Paste the full markdown content directly here -->
-<!-- ←←← PASTE SKILLS & EXPERIENCE MARKDOWN HERE →→→ -->
-
+## Step 1 & 1a: Skills, Experience, & Focus Areas
 ---
 
-## Step 1a: Key Skills to Explicitly Evaluate (Anchor List)
-<!-- Use this to force evaluation of specific skills, even if the resume is broad -->
-<!-- Especially useful for career pivots or skill-building phases -->
-
-<!-- Example:
-- Python (data analysis, automation)
-- Cloud security (AWS, IAM, threat modeling)
-- Technical writing for non-technical audiences
--->
-
-<!-- ←←← INSERT KEY SKILLS / EXPERIENCE FOCUS AREAS HERE →→→ -->
-
+## Step 2: Portfolio / Work Samples
 ---
 
-## Step 2 (Optional but Recommended): Portfolio / Work Samples
-<!-- Provide access the same way as skills: links or pasted descriptions -->
-<!-- Examples:
-- Portfolio site
-- GitHub repos
-- Case study PDFs
-- Design files, demos, videos
--->
+## URL Access & Fallback Protocol
 
-<!-- ←←← INSERT PORTFOLIO LINKS OR DESCRIPTIONS HERE →→→ -->
-
----
-
-## Fallback Rule (Do Not Remove)
-If any provided links are broken, empty, or inaccessible, display:
-
-"⚠️ One or more reference files inaccessible – proceeding with conversation history, attached resumes, and any portfolio details already shared."
-
-Then continue with available information. If critical sections are missing, note reduced confidence in the output.
+**If a provided URL is broken, empty, or blocked by a paywall/login:**
+1. **Internal Search:** Attempt to find the job details via LinkedIn, Indeed, or the company’s career page.
+2. **Warn:** If data is still missing, display: "⚠️ Inaccessible Source: I cannot read the data at the provided URL."
+3. **User Action Advice:** If I cannot access the posting, please try the following:
+   - **Direct Paste:** Copy the full job description text from your browser and paste it here.
+   - **File Upload:** Save the webpage as a PDF or take a screenshot and upload the file.
+   - **Print to PDF:** Use "Print to PDF" in your browser to generate a clean document of the JD.
 
 ---
 
 ## Task: Job Fit Evaluation
 
-Analyze the provided job posting (URL or full text) against:
-- Skills & Experience Markdown
-- Key Skills Anchor List
-- Portfolio (when applicable)
-- Candidate Priorities
+Analyze the **Job Posting** against the **Candidate Info** provided above.
 
 ### Scoring Instructions
-For each section, assign a percentage match calculated as:
-- Approximate proportion of listed job requirements / duties / qualifications that are demonstrably met by the candidate’s provided skills, experience, portfolio, and anchor list (e.g., 4 out of 5 key duties align → ~80%).
-- Use semantic alignment, not just keyword matching.
-- Provide 2–3 concise sentences explaining key alignments and gaps.
+For each section, assign a percentage match. Use semantic alignment, not just keyword matching.
 
-Sections to score:
-- Responsibilities / Key Duties
-- Required Qualifications / Experience
-- Preferred Qualifications (if listed)
-- Skills / Technologies / Education / Certifications
+**Default Weighting:**
+- Responsibilities: 30%
+- Required Qualifications: 30%
+- Skills / Technologies / Edu: 25%
+- Preferred Qualifications: 15%
 
-**Default Weighting (unless overridden):**
-- Responsibilities:          30%
-- Required Qualifications:   30%
-- Skills / Technologies:     25%
-- Preferred Qualifications:  15%
-
-Explain any adjustment to weighting if role seniority, domain, or candidate priorities warrant it (e.g., heavy emphasis on seniority might increase Required Qualifications weight).
+### Specific Analysis Requirements
+1. **Read Between the Lines:** Identify "hidden" requirements or red flags (e.g., signs of burnout culture, vague scope, or unstated seniority).
+2. **ATS Translation:** List 5-10 specific keywords from the JD that are missing from the candidate's markdown but represent experience they likely have.
+3. **Interview Prep "Gotchas":** Identify the 3 toughest questions a recruiter will likely ask based on the candidate's specific gaps or "weakest" match areas.
 
 ---
 
 ## Output Requirements
-
-Provide:
-- Overall Fit Percentage (weighted average of section scores)
-- Confidence Level: High / Medium / Low  
-  (based on completeness of provided candidate info: High = full markdown + portfolio + priorities; Medium = partial; Low = minimal info)
-- 2–4 tailored application recommendations
-- Portfolio-Specific Guidance (when relevant): Tie each recommendation to a specific skill gap or requirement + a concrete portfolio action  
-  Example: “This JD emphasizes X; your Project Y demonstrates this partially. Expand the case study to highlight Z to close the gap.”
-
----
-
-## Additional Commentary
-Call out any visible:
-- Location constraints
-- Salary range mismatches
-- Remote/hybrid policies
-- Clearance, travel, or on-call expectations
-- Cultural or structural deal-breakers
+- **Overall Fit Percentage** (Weighted average)
+- **Confidence Level** (High/Medium/Low based on info completeness)
+- **Vibe Check:** Summary of the "Read Between the Lines" analysis.
+- **Top 3 Alignments:** Specific areas where the candidate is a perfect match.
+- **Top 3 Gaps:** Missing skills or experience with advice on how to mitigate them.
+- **Portfolio-Specific Guidance:** Connect a specific job requirement to a concrete portfolio action.
+- **Additional Commentary:** Flag location, salary, or culture mismatches.
 
 ---
 
-## Final Summary Table (Use This Exact Format)
+### Final Summary Table (Use This Exact Format)
 
-| Section                        | Match % | Key Alignments & Gaps                              | Confidence |
-|--------------------------------|---------|----------------------------------------------------|------------|
-| Responsibilities               | XX%     |                                                    |            |
-| Required Qualifications        | XX%     |                                                    |            |
-| Preferred Qualifications       | XX%     |                                                    |            |
-| Skills / Technologies / Edu    | XX%     |                                                    |            |
-| **Overall Fit**                | **XX%** |                                                    | **High/Medium/Low** |
+| Section | Match % | Key Alignments & Gaps | Confidence |
+| :--- | :--- | :--- | :--- |
+| Responsibilities | XX% | | |
+| Required Qualifications | XX% | | |
+| Preferred Qualifications | XX% | | |
+| Skills / Technologies / Edu | XX% | | |
+| **Overall Fit** | **XX%** | | **High/Med/Low** |
 
 ---
 
-## Job Posting
-<!-- INSERT JOB URL OR FULL JOB DESCRIPTION HERE -->
-
-If the job URL is inaccessible, search LinkedIn, Indeed, Glassdoor, or the company’s career page for the current version of the role and note that you did so.
-
+## Job Posting Source
 ```
 
 </details>
