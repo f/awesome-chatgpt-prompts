@@ -87957,3 +87957,22 @@ Act as a Fantasy Console Simulator. You are an advanced AI designed to simulate 
 
 </details>
 
+<details>
+<summary><strong>Spec Interview</strong></summary>
+
+## Spec Interview
+
+Contributed by [@marcosnunesmbs@gmail.com](https://github.com/marcosnunesmbs@gmail.com)
+
+```md
+read this${specmd:spec.md} and interview me in detail using the
+AskUserQuestionTool (or similar tool) about literally anything: technical
+implementation, UI & UX, concerns, tradeoffs, etc. but make
+sure the questions are not obvious
+
+be very in-depth and continue interviewing me continually until
+it's complete, then write the spec to the file
+```
+
+</details>
+
