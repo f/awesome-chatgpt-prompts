@@ -72617,3 +72617,73 @@ Wholesome Lifestyle Product Photography for Garment Showcase,"{
   },
   ""polite_closing_note"": ""Would you kindly generate this image with the highest possible fidelity and attention to detail? Thank you so very much for your care in rendering the fabric texture, the warm domestic atmosphere, and the wholesome, respectful portrayal of the subject. Your attention to each specification is sincerely appreciated.""
 }",FALSE,STRUCTURED,"rhieskhiez@gmail.com,rhieskhiez.creative@gmail.com"
+Professional Portrait Photography Guide,"{
+  ""prompt_request"": {
+    ""style"": ""professional portrait photography"",
+    ""composition"": {
+      ""orientation"": ""vertical"",
+      ""aspect_ratio"": ""9:16"",
+      ""shot_type"": ""portrait"",
+      ""framing"": ""upper body to waist""
+    },
+    ""subject"": {
+      ""gender"": ""female"",
+      ""physique"": ""curvy"",
+      ""athletic_note"": ""non-athletic build"",
+      ""hair"": {
+        ""color"": ""brown"",
+        ""style"": ""long, flowing, loose waves"",
+        ""headwear"": ""none, no headscarf""
+      },
+      ""expression"": ""warm, inviting, gentle natural smile"",
+      ""eyes"": ""bright and expressive"",
+      ""makeup"": ""subtle, natural"",
+      ""skin"": ""natural texture with soft realistic lighting"",
+      ""pose"": {
+        ""style"": ""relaxed and candid"",
+        ""hand_position_1"": ""one hand raised slightly"",
+        ""hand_position_2"": ""other hand resting gently on hip"",
+        ""demeanor"": ""dignified, non-provocative""
+      }
+    },
+    ""wardrobe"": {
+      ""base_layer"": {
+        ""garment"": ""tube crop top"",
+        ""position"": ""worn underneath apron"",
+        ""style_note"": ""tasteful and modest""
+      },
+      ""outer_layer"": {
+        ""garment"": ""light blue apron"",
+        ""details"": ""single front pocket, tied elegantly around waist"",
+        ""straps"": ""resting naturally on shoulders"",
+        ""fabric_specification"": ""190 GSM, 82% Polyester 18% Spandex, 4-way stretch"",
+        ""appearance"": ""refined with slight sheen""
+      },
+      ""overall_style"": ""elegant, professional, respectful""
+    },
+    ""lighting"": {
+      ""quality"": ""soft and natural"",
+      ""type"": ""golden-hour window light"",
+      ""effect"": ""gentle shadows, natural depth and dimension"",
+      ""purpose"": ""highlighting graceful features beautifully""
+    },
+    ""background"": {
+      ""setting"": ""kitchen or café environment"",
+      ""treatment"": ""softly blurred (bokeh)"",
+      ""color_palette"": ""warm, welcoming tones""
+    },
+    ""camera_specs"": {
+      ""camera_body"": ""Canon EOS R5"",
+      ""lens"": ""85mm portrait lens"",
+      ""aperture"": ""f/1.8"",
+      ""depth_of_field"": ""shallow"",
+      ""resolution"": ""8K quality, high resolution""
+    },
+    ""post_processing"": {
+      ""color_grading"": ""natural"",
+      ""quality"": ""photorealistic, 8K clarity""
+    },
+    ""overall_aesthetic"": ""sophisticated, respectful, professional composition"",
+    ""content_guidelines"": ""tasteful, dignified, modest, no sexual or provocative elements""
+  }
+}",FALSE,STRUCTURED,"rhieskhiez@gmail.com,rhieskhiez.creative@gmail.com"
