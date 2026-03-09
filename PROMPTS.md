@@ -89610,3 +89610,78 @@ Contributed by [@rhieskhiez@gmail.com](https://github.com/rhieskhiez@gmail.com),
 
 </details>
 
+<details>
+<summary><strong>Elegant and Serene Portrait Photography Prompt</strong></summary>
+
+## Elegant and Serene Portrait Photography Prompt
+
+Contributed by [@rhieskhiez@gmail.com](https://github.com/rhieskhiez@gmail.com), [@rhieskhiez.creative@gmail.com](https://github.com/rhieskhiez.creative@gmail.com)
+
+```md
+{
+  "prompt": {
+    "subject": {
+      "type": "close-up portrait",
+      "person": {
+        "description": "woman",
+        "hair": {
+          "color": "dark brown",
+          "texture": "wavy",
+          "style": "flowing, natural"
+        },
+        "head_covering": "none",
+        "physique": "curvy, natural body type",
+        "expression": "graceful, serene"
+      },
+      "clothing": {
+        "garment": "elegant black top with decorative center button detailing",
+        "fabric_specifications": {
+          "weight": "190 GSM",
+          "composition": "82% Polyester, 18% Spandex",
+          "features": "4-way stretch"
+        },
+        "style_note": "tasteful, non-provocative design"
+      },
+      "makeup": {
+        "style": "soft, natural makeup"
+      },
+      "accessories": {
+        "earrings": "small hoop earrings",
+        "necklace": "delicate necklace"
+      }
+    },
+    "background": {
+      "appearance": "warm, softly blurred",
+      "color_palette": "earthy tones",
+      "effect": "gentle and inviting atmosphere"
+    },
+    "lighting": {
+      "type": "natural, flattering light",
+      "quality": "soft, warm"
+    },
+    "mood": {
+      "attributes": ["graceful", "elegant", "serene", "inviting", "tasteful", "refined"]
+    },
+    "composition": {
+      "shot_type": "close-up (CU)",
+      "orientation": "vertical",
+      "aspect_ratio": "9:16",
+      "framing": "focused on subject with gentle background blur"
+    },
+    "style": {
+      "tone": "respectful and refined",
+      "content_rating": "appropriate, non-provocative, non-sexual",
+      "aesthetic": "natural elegance"
+    }
+  },
+  "technical_parameters": {
+    "model": "gpt-image-1.5-high-fidelity",
+    "aspect_ratio": "9:16",
+    "quality": "high-fidelity",
+    "focus": "close-up portrait"
+  }
+}
+```
+
+</details>
+
