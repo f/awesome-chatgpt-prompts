@@ -114,9 +114,19 @@ echo "▶ Starting services..."
 /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf &
 SUPERVISOR_PID=$!
 
+# Fail fast if supervisord dies during any startup phase
+check_supervisord_alive() {
+    if ! kill -0 "$SUPERVISOR_PID" 2>/dev/null; then
+        echo "✗ Supervisord process died"
+        cat /var/log/supervisor/supervisord.log 2>/dev/null || true
+        exit 1
+    fi
+}
+
 # Wait for PostgreSQL
 echo "▶ Waiting for PostgreSQL..."
 for i in $(seq 1 30); do
+    check_supervisord_alive
     if $PGBIN/pg_isready -h localhost -p 5432 >/dev/null 2>&1; then
         echo "✓ PostgreSQL is ready"
         break
@@ -149,12 +159,7 @@ fi
 # Wait for supervisord socket to be ready
 echo "▶ Waiting for supervisord..."
 for i in $(seq 1 30); do
-    # Check if supervisord process is running
-    if ! kill -0 $SUPERVISOR_PID 2>/dev/null; then
-        echo "✗ Supervisord process died"
-        cat /var/log/supervisor/supervisord.log 2>/dev/null || true
-        exit 1
-    fi
+    check_supervisord_alive
     
     # Check if socket exists and supervisorctl responds (status may be non-zero if a program is stopped)
     if [ -S /var/run/supervisor.sock ]; then
@@ -187,7 +192,7 @@ echo "╔═══════════════════════�
 echo "║                                                               ║"
 echo "║   ✅ prompts.chat is running!                                 ║"
 echo "║                                                               ║"
-echo "║   🌐 Open http://localhost:${PORT:-80} in your browser            ║"
+echo "║   🌐 Open http://localhost:${PORT:-80} in your browser        ║"
 echo "║                                                               ║"
 echo "╚═══════════════════════════════════════════════════════════════╝"
 echo ""
