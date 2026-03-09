@@ -173,7 +173,7 @@ for i in $(seq 1 30); do
         echo "✗ Supervisord failed to start"
         echo "Debug info:"
         echo "  Socket exists: $([ -S /var/run/supervisor.sock ] && echo yes || echo no)"
-        echo "  Supervisord PID: $SUPERVISOR_PID (running: $(kill -0 $SUPERVISOR_PID 2>/dev/null && echo yes || echo no))"
+        echo "  Supervisord PID: $SUPERVISOR_PID (running: $(kill -0 "$SUPERVISOR_PID" 2>/dev/null && echo yes || echo no))"
         echo "Supervisorctl status output:"
         supervisorctl -s unix:///var/run/supervisor.sock status || true
         echo "Supervisord log:"
