@@ -149,12 +149,30 @@ fi
 # Wait for supervisord socket to be ready
 echo "▶ Waiting for supervisord..."
 for i in $(seq 1 30); do
-    if supervisorctl -c /etc/supervisor/conf.d/supervisord.conf status >/dev/null 2>&1; then
-        echo "✓ Supervisord is ready"
-        break
+    # Check if supervisord process is running
+    if ! kill -0 $SUPERVISOR_PID 2>/dev/null; then
+        echo "✗ Supervisord process died"
+        cat /var/log/supervisor/supervisord.log 2>/dev/null || true
+        exit 1
+    fi
+    
+    # Check if socket exists and supervisorctl responds (status may be non-zero if a program is stopped)
+    if [ -S /var/run/supervisor.sock ]; then
+        STATUS_OUTPUT=$(supervisorctl -s unix:///var/run/supervisor.sock status 2>/dev/null || true)
+        if [ -n "$STATUS_OUTPUT" ]; then
+            echo "✓ Supervisord is ready"
+            break
+        fi
     fi
     if [ $i -eq 30 ]; then
         echo "✗ Supervisord failed to start"
+        echo "Debug info:"
+        echo "  Socket exists: $([ -S /var/run/supervisor.sock ] && echo yes || echo no)"
+        echo "  Supervisord PID: $SUPERVISOR_PID (running: $(kill -0 $SUPERVISOR_PID 2>/dev/null && echo yes || echo no))"
+        echo "Supervisorctl status output:"
+        supervisorctl -s unix:///var/run/supervisor.sock status || true
+        echo "Supervisord log:"
+        cat /var/log/supervisor/supervisord.log 2>/dev/null || echo "  No log file found"
         exit 1
     fi
     sleep 1
