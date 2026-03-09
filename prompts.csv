@@ -72751,3 +72751,55 @@ Elegant and Serene Portrait Photography Prompt,"{
   }
 }",FALSE,STRUCTURED,"rhieskhiez@gmail.com,rhieskhiez.creative@gmail.com"
 Confident Woman with Wavy Hair in Casual Attire,"An image of a woman with voluminous wavy hair, standing confidently and smiling at the camera. She is wearing a black crop top, and high-waisted denim shorts. Her right hand rests on her hip, and her left arm is relaxed at her side. The setting is simple, with soft lighting that highlights her friendly demeanor and casual style.",FALSE,TEXT,"rhieskhiez@gmail.com,rhieskhiez.creative@gmail.com"
+High-Fidelity Portrait of a Young Blonde Woman,"{
+  ""prompt"": {
+    ""subject"": {
+      ""type"": ""close-up portrait"",
+      ""person"": {
+        ""description"": ""young woman"",
+        ""hair"": {
+          ""color"": ""blonde"",
+          ""length"": ""long"",
+          ""style"": ""high ponytail""
+        },
+        ""head_covering"": ""none"",
+        ""physique"": ""curvy, natural body type"",
+        ""expression"": ""warm, friendly smile"",
+        ""pose"": ""turned slightly to the side, looking at camera""
+      },
+      ""clothing"": {
+        ""garment"": ""white spaghetti strap tank top"",
+        ""fabric_specifications"": {
+          ""weight"": ""190 GSM"",
+          ""composition"": ""82% Polyester, 18% Spandex"",
+          ""features"": ""4-way stretch""
+        }
+      }
+    },
+    ""background"": {
+      ""element"": ""textured teal wall""
+    },
+    ""lighting"": {
+      ""type"": ""soft, natural lighting"",
+      ""effect"": ""gently illuminates facial features and shoulders"",
+      ""quality"": ""warm, flattering""
+    },
+    ""mood"": {
+      ""attributes"": [""lively"", ""casual"", ""confident"", ""welcoming"", ""comfortable"", ""everyday elegance""]
+    },
+    ""composition"": {
+      ""shot_type"": ""close-up (CU)"",
+      ""orientation"": ""vertical"",
+      ""aspect_ratio"": ""9:16""
+    },
+    ""style"": {
+      ""tone"": ""respectful and tasteful"",
+      ""content_rating"": ""appropriate, non-provocative, non-sexual""
+    }
+  },
+  ""technical_parameters"": {
+    ""model"": ""gpt-image-1.5-high-fidelity"",
+    ""aspect_ratio"": ""9:16"",
+    ""quality"": ""high-fidelity""
+  }
+}",FALSE,STRUCTURED,"rhieskhiez@gmail.com,rhieskhiez.creative@gmail.com"
