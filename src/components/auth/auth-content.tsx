@@ -9,6 +9,8 @@ interface AuthContentProps {
   providers: string[];
   mode: "login" | "register";
   useCloneBranding?: boolean;
+  providerDisplayNames?: Record<string, string>;
+  providerLogos?: Record<string, string>;
 }
 
 const providerNames: Record<string, string> = {
@@ -19,7 +21,7 @@ const providerNames: Record<string, string> = {
   credentials: "Email",
 };
 
-export function AuthContent({ providers, mode, useCloneBranding = false }: AuthContentProps) {
+export function AuthContent({ providers, mode, useCloneBranding = false, providerDisplayNames, providerLogos }: AuthContentProps) {
   const t = useTranslations("auth");
   const hasCredentials = providers.includes("credentials");
   const oauthProviders = providers.filter((p) => p !== "credentials");
@@ -34,7 +36,8 @@ export function AuthContent({ providers, mode, useCloneBranding = false }: AuthC
             <OAuthButton
               key={provider}
               provider={provider}
-              providerName={providerNames[provider] || provider}
+              providerName={providerDisplayNames?.[provider] || providerNames[provider] || provider}
+              iconUrl={providerLogos?.[provider]}
             />
           ))}
           {hasGitHub && !useCloneBranding && (

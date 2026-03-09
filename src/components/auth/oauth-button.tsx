@@ -10,6 +10,7 @@ import { analyticsAuth } from "@/lib/analytics";
 interface OAuthButtonProps {
   provider: string;
   providerName: string;
+  iconUrl?: string;
 }
 
 const providerIcons: Record<string, React.ReactNode> = {
@@ -38,7 +39,7 @@ const providerIcons: Record<string, React.ReactNode> = {
   ),
 };
 
-export function OAuthButton({ provider, providerName }: OAuthButtonProps) {
+export function OAuthButton({ provider, providerName, iconUrl }: OAuthButtonProps) {
   const t = useTranslations("auth");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -63,6 +64,9 @@ export function OAuthButton({ provider, providerName }: OAuthButtonProps) {
     >
       {isLoading ? (
         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+      ) : iconUrl ? (
+        /* eslint-disable-next-line @next/next/no-img-element */
+        <img src={iconUrl} alt={providerName} className="mr-2 h-4 w-4 object-contain" />
       ) : (
         <span className="mr-2">{providerIcons[provider]}</span>
       )}

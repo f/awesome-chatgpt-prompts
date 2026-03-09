@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { getConfig } from "@/lib/config";
+import { getConfiguredProviderIds, getProviderMetadata } from "@/lib/auth/provider-metadata";
 import { AuthContent } from "@/components/auth/auth-content";
 
 export const metadata: Metadata = {
@@ -9,24 +10,14 @@ export const metadata: Metadata = {
   description: "Login to your account",
 };
 
-// Helper to get providers from config (supports both old `provider` and new `providers` array)
-function getProviders(config: Awaited<ReturnType<typeof getConfig>>): string[] {
-  if (config.auth.providers && config.auth.providers.length > 0) {
-    return config.auth.providers;
-  }
-  if (config.auth.provider) {
-    return [config.auth.provider];
-  }
-  return ["credentials"];
-}
-
 export default async function LoginPage() {
   const t = await getTranslations("auth");
   const config = await getConfig();
-  const providers = getProviders(config);
+  const providers = getConfiguredProviderIds(config);
   const hasCredentials = providers.includes("credentials");
   const hasOnlyCredentials = providers.length === 1 && hasCredentials;
   const useCloneBranding = config.homepage?.useCloneBranding ?? false;
+  const { displayNames, logos } = getProviderMetadata(providers);
 
   return (
     <div className="container flex min-h-[calc(100vh-6rem)] flex-col items-center justify-center py-8">
@@ -38,7 +29,7 @@ export default async function LoginPage() {
           </p>
         </div>
         <div className="border rounded-lg p-4">
-          <AuthContent providers={providers} mode="login" useCloneBranding={useCloneBranding} />
+          <AuthContent providers={providers} mode="login" useCloneBranding={useCloneBranding} providerDisplayNames={displayNames} providerLogos={logos} />
         </div>
         {hasCredentials && (
           <p className="text-center text-xs text-muted-foreground">
