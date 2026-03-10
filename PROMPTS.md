@@ -93015,3 +93015,17 @@ These are critical because they affect performance, scalability, and outages.
 
 </details>
 
+<details>
+<summary><strong>Operating systems </strong></summary>
+
+## Operating systems 
+
+Contributed by [@swenzy511@gmail.com](https://github.com/swenzy511@gmail.com)
+
+```md
+I want a detailed course module, with simple explanations and done comprehensively.
+Sources should be from the Operating Systems Concepts by Abraham Shartschartz
+```
+
+</details>
+
