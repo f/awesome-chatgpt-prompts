@@ -94663,3 +94663,78 @@ Contributed by [@rhieskhiez.creative@gmail.com](https://github.com/rhieskhiez.cr
 
 </details>
 
+<details>
+<summary><strong>Elegant Professional in a Luxurious Setting</strong></summary>
+
+## Elegant Professional in a Luxurious Setting
+
+Contributed by [@rhieskhiez.creative@gmail.com](https://github.com/rhieskhiez.creative@gmail.com), [@rhieskhiez@gmail.com](https://github.com/rhieskhiez@gmail.com)
+
+```md
+{
+  "image_specifications": {
+    "style": "realistic photograph",
+    "composition": "vertical",
+    "aspect_ratio": "9:16",
+    "shot_type": "medium close-up (MCU)",
+    "lighting": {
+      "type": "golden hour natural light",
+      "direction": "broad lighting",
+      "quality": "intense warm illumination through windows"
+    }
+  },
+  "subject": {
+    "demographic": {
+      "nationality": "Indonesian",
+      "age_group": "young adult",
+      "gender": "woman",
+      "profession": "professional service staff"
+    },
+    "physical_attributes": {
+      "body_type": "petite curvy physique",
+      "hair_color": "blonde",
+      "hair_style": "Hollywood waves"
+    },
+    "makeup": {
+      "style": "sun-kissed bronze",
+      "lips": "glossy finish",
+      "expression": "warm genuine smile"
+    },
+    "pose": "seated in dignified posture"
+  },
+  "attire": {
+    "garments": {
+      "top": "pastel pink spaghetti strap tank top",
+      "bottom": "pastel pink short skirt"
+    },
+    "fabric_specifications": {
+      "weight": "190 GSM",
+      "composition": "82% Polyester, 18% Spandex",
+      "features": "4-way stretch"
+    },
+    "fit": "elegant and well-fitted",
+    "accessories": {
+      "badge": "golden rectangular badge on left chest",
+      "scarf": "silky scarf around neck"
+    },
+    "excluded_items": {
+      "headwear": "none",
+      "eyewear": "none",
+      "handwear": "none"
+    }
+  },
+  "setting": {
+    "location": "corridor of pink private jet",
+    "interior_style": "sophisticated luxury",
+    "atmosphere": "professional and elegant"
+  },
+  "content_guidelines": {
+    "tone": "respectful and professional",
+    "exclusions": "no sexual or provocative elements",
+    "presentation": "dignified and tasteful"
+  }
+}
+```
+
+</details>
+
