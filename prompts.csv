@@ -76029,3 +76029,45 @@ Query Requirement or Existing Query:
 
 Sample Data (optional but recommended):
 [PASTE SAMPLE ROWS IF AVAILABLE]",TRUE,TEXT,sivasaiyadav8143
+Serene Indonesian Student in Nature,"{
+  ""model"": ""gpt-image-1.5-high-fidelity"",
+  ""aspect_ratio"": ""9:16"",
+  ""resolution"": ""1024x1792"",
+  ""prompt"": {
+    ""subject"": {
+      ""description"": ""A young Indonesian female student with a petite, naturally curvy physique"",
+      ""pose"": ""Lying comfortably on a lush green grass field"",
+      ""expression"": ""Calm, relaxed, and peaceful expression"",
+      ""hair"": ""Natural dark hair, worn loose"",
+      ""headwear"": ""No headscarf or head covering""
+    },
+    ""clothing"": {
+      ""top"": ""Modest spaghetti strap tank top"",
+      ""bottom"": ""Short skirt with appropriate, non-provocative length"",
+      ""fabric"": ""Made from 190 GSM, 82% Polyester and 18% Spandex, 4-way stretch material"",
+      ""style_notes"": ""Clothing should appear casual, neat, and appropriate, without any sexualized or provocative elements""
+    },
+    ""body_type"": ""Petite and naturally curvy physique, non-athletic build"",
+    ""nationality"": ""Indonesian"",
+    ""environment"": {
+      ""location"": ""Open grass field in a natural outdoor setting"",
+      ""lighting"": ""Soft natural daylight"",
+      ""atmosphere"": ""Peaceful, wholesome, and serene""
+    },
+    ""composition"": {
+      ""orientation"": ""Vertical composition"",
+      ""framing"": ""Full-body framing within 9:16 aspect ratio"",
+      ""focus"": ""Subject clearly in focus with softly blurred natural background""
+    },
+    ""style"": {
+      ""photorealism"": ""High-fidelity, realistic details"",
+      ""color_tone"": ""Natural color grading"",
+      ""quality"": ""Sharp details, professional photography style""
+    },
+    ""safety_constraints"": [
+      ""No sexual or provocative elements"",
+      ""No suggestive poses or expressions"",
+      ""Respectful and modest presentation""
+    ]
+  }
+}",FALSE,STRUCTURED,"rhieskhiez@gmail.com,rhieskhiez.creative@gmail.com"
