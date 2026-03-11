@@ -94451,3 +94451,58 @@ List the folder and file structure you will create.
 
 </details>
 
+<details>
+<summary><strong>Photorealistic Indonesian Woman in Ted Talk Style</strong></summary>
+
+## Photorealistic Indonesian Woman in Ted Talk Style
+
+Contributed by [@rhieskhiez.creative@gmail.com](https://github.com/rhieskhiez.creative@gmail.com), [@rhieskhiez@gmail.com](https://github.com/rhieskhiez@gmail.com)
+
+```md
+{
+  "scene_description": "A photorealistic medium close-up (MCU) shot of a woman giving a speech at an important event in Ted Talk style",
+  "subject": {
+    "demographics": {
+      "nationality": "Indonesian",
+      "hair_color": "blonde",
+      "skin_tone": "tan"
+    },
+    "body_type": "petite curvy physique",
+    "action": "sitting on a clear stool and holding a microphone with a smile, talking to the camera or audience not pictured",
+    "expression": "smiling, engaging"
+  },
+  "clothing": {
+    "dress": {
+      "style": "spaghetti strap short dress",
+      "color": "white",
+      "fabric": {
+        "weight": "190 GSM",
+        "composition": "82% Polyester, 18% Spandex",
+        "stretch": "4-way stretch"
+      }
+    },
+    "footwear": {
+      "type": "close toed heels",
+      "color": "black"
+    }
+  },
+  "props": {
+    "seating": "clear stool",
+    "equipment": "microphone"
+  },
+  "photography": {
+    "shot_type": "medium close-up (MCU)",
+    "style": "photorealistic"
+  },
+  "atmosphere": {
+    "event_type": "important event, Ted Talk style",
+    "mood": "classy and professional"
+  },
+  "audience": {
+    "visibility": "not pictured"
+  }
+}
+```
+
+</details>
+
