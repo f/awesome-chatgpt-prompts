@@ -94126,3 +94126,79 @@ Contributed by [@rhieskhiez.creative@gmail.com](https://github.com/rhieskhiez.cr
 
 </details>
 
+<details>
+<summary><strong>Serene Indonesian Portrait in Kitchen</strong></summary>
+
+## Serene Indonesian Portrait in Kitchen
+
+Contributed by [@rhieskhiez.creative@gmail.com](https://github.com/rhieskhiez.creative@gmail.com), [@rhieskhiez@gmail.com](https://github.com/rhieskhiez@gmail.com)
+
+```md
+{
+  "prompt_configuration": {
+    "model": "gpt-image-1.5-high-fidelity",
+    "aspect_ratio": "9:16",
+    "composition": "vertical"
+  },
+  "subject": {
+    "type": "portrait",
+    "shot_type": "close-up",
+    "demographic": {
+      "gender": "woman",
+      "age_range": "young adult",
+      "nationality": "Indonesian",
+      "body_type": "petite curvy physique"
+    },
+    "pose": {
+      "position": "seated",
+      "location": "kitchen",
+      "angle": "side view"
+    },
+    "action": "looking at phone with a gentle smile",
+    "expression": "warm, happy, genuine smile"
+  },
+  "attire": {
+    "top": {
+      "style": "spaghetti strap tank top",
+      "fit": "modest and tasteful"
+    },
+    "bottom": {
+      "style": "short skirt",
+      "fit": "elegant drape"
+    },
+    "fabric_specifications": {
+      "weight": "190 GSM",
+      "composition": "82% Polyester, 18% Spandex",
+      "properties": "4-way stretch"
+    },
+    "exclusions": [
+      "no headwear",
+      "no eyewear"
+    ]
+  },
+  "lighting": {
+    "type": "soft natural light",
+    "effect": "illuminating face beautifully",
+    "mood": "serene and welcoming"
+  },
+  "camera_settings": {
+    "camera": "Canon EOS R5",
+    "aperture": "F2",
+    "iso": "100",
+    "depth_of_field": "shallow with creamy bokeh"
+  },
+  "style_notes": {
+    "atmosphere": "authentic everyday moment",
+    "artistic_approach": "artistic sensibility",
+    "content_guidelines": "tasteful, non-provocative, respectful presentation"
+  },
+  "quality_parameters": {
+    "detail_level": "high detail",
+    "realism": "photorealistic",
+    "professionalism": "professional photography quality"
+  }
+}
+```
+
+</details>
+
