@@ -94506,3 +94506,69 @@ Contributed by [@rhieskhiez.creative@gmail.com](https://github.com/rhieskhiez.cr
 
 </details>
 
+<details>
+<summary><strong>TED Talk Presentation Design</strong></summary>
+
+## TED Talk Presentation Design
+
+Contributed by [@rhieskhiez.creative@gmail.com](https://github.com/rhieskhiez.creative@gmail.com), [@rhieskhiez@gmail.com](https://github.com/rhieskhiez@gmail.com)
+
+```md
+{
+  "scene": {
+    "type": "professional_speaking_event",
+    "style": "TED_talk",
+    "setting": "important_event",
+    "atmosphere": "classy_and_professional"
+  },
+  "subject": {
+    "person": {
+      "nationality": "Indonesian",
+      "gender": "female",
+      "hair": {
+        "color": "blonde"
+      },
+      "skin": {
+        "tone": "tan"
+      },
+      "body_type": "petite_curvy_physique"
+    }
+  },
+  "clothing": {
+    "dress": {
+      "type": "spaghetti_strap_short_dress",
+      "color": "white",
+      "fabric": {
+        "weight": "190_GSM",
+        "composition": {
+          "polyester": "82%",
+          "spandex": "18%"
+        },
+        "properties": "4-way_stretch"
+      }
+    },
+    "footwear": {
+      "type": "close_toed_heels",
+      "color": "black"
+    }
+  },
+  "pose_and_action": {
+    "position": "sitting",
+    "furniture": "clear_stool",
+    "holding": "microphone",
+    "facial_expression": "smile",
+    "activity": "talking_to_camera_or_audience",
+    "action": "giving_a_speech"
+  },
+  "camera": {
+    "shot_type": "full_body_shot",
+    "style": "photorealistic"
+  },
+  "additional_elements": {
+    "audience": "not_pictured"
+  }
+}
+```
+
+</details>
+
