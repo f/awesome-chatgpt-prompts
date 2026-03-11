@@ -93406,3 +93406,64 @@ Contributed by [@rhieskhiez@gmail.com](https://github.com/rhieskhiez@gmail.com),
 
 </details>
 
+<details>
+<summary><strong>Cinematic Fashion Portrait Photography</strong></summary>
+
+## Cinematic Fashion Portrait Photography
+
+Contributed by [@rhieskhiez@gmail.com](https://github.com/rhieskhiez@gmail.com), [@rhieskhiez.creative@gmail.com](https://github.com/rhieskhiez.creative@gmail.com)
+
+```md
+{
+  "image_specifications": {
+    "aspect_ratio": "9:16",
+    "orientation": "vertical",
+    "quality": "high-fidelity",
+    "style": "cinematic commercial photography"
+  },
+  "subject": {
+    "description": "graceful Indonesian woman",
+    "body_type": "petite curvy physique",
+    "nationality": "Indonesian",
+    "headwear": "no headscarf",
+    "expression": "peaceful, content, and refreshed",
+    "pose": "standing elegantly"
+  },
+  "clothing": {
+    "top": "spaghetti strap tank top",
+    "bottom": "short skirt",
+    "fabric_specifications": {
+      "weight": "190 GSM",
+      "composition": "82% Polyester, 18% Spandex",
+      "features": "4-way stretch material"
+    },
+    "style_note": "tasteful and elegant"
+  },
+  "setting": {
+    "location": "luxury balcony",
+    "background": "iconic Miami skyline",
+    "time_of_day": "golden hour sunset",
+    "atmosphere": "sophisticated and serene"
+  },
+  "lighting": {
+    "type": "warm ambient lighting",
+    "effect": "golden hour glow",
+    "bokeh": "professional background blur"
+  },
+  "technical_details": {
+    "lens": "35mm",
+    "quality": "ultra-realistic",
+    "grade": "commercial-level photography",
+    "color_grading": "cinematic"
+  },
+  "mood_and_focus": {
+    "primary_emotion": "peaceful contentment",
+    "themes": ["sophisticated elegance", "achievement", "natural beauty", "serene confidence"],
+    "aesthetic": "breathtaking Miami sunset ambiance",
+    "content_rating": "respectful and tasteful, non-provocative"
+  }
+}
+```
+
+</details>
+
