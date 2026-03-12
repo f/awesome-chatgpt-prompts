@@ -71266,47 +71266,6 @@ Spanish girl in nightclub,"{
   ""action"": ""image_generation"",
   ""action_input"": ""A full-body photo, vertical format 9:16 AR of Natalia, a 23-year-old Spanish woman with long wavy dark brown hair and green eyes. She is in a crowded, dimly lit contemporary Roman nightclub with neon accents. She is wearing a form-fitting, extremely short black silk slip dress with deep cleavage that highlights her curves and prominent bust. Heeled sandals at her feet. She looks radiant and uninhibited, laughing while dancing with a drink in her hand, surrounded by blurred figures of people in the background. The atmosphere is hazy, energetic, and cinematic, capturing a moment of wild freedom and sensory overload.""
 }",FALSE,STRUCTURED,mellowdrastic@gmail.com
-Ultra-realistic cinematic studio portrait featuring a stylish woman with a curvy physique,"{
-  ""prompt_request"": {
-    ""style"": ""ultra-realistic cinematic studio portrait"",
-    ""composition"": {
-      ""orientation"": ""vertical"",
-      ""aspect_ratio"": ""9:16"",
-      ""shot_type"": ""close-up (CU)"",
-      ""camera_angle"": ""slightly low angle""
-    },
-    ""subject"": {
-      ""gender"": ""female"",
-      ""physique"": ""curvy"",
-      ""accessories"": ""thin round metal eyeglasses"",
-      ""hair"": ""natural realistic strands, no headscarf"",
-      ""expression"": ""confident, thoughtful with subtle pose variations""
-    },
-    ""wardrobe"": {
-      ""garment"": ""white spaghetti strap micro mini dress"",
-      ""fabric_specification"": ""190 GSM, 82% Polyester 18% Spandex, 4-way stretch"",
-      ""style_note"": ""elegant and tasteful, non-provocative""
-    },
-    ""lighting"": {
-      ""primary"": ""soft key light from the front"",
-      ""secondary"": ""warm rim lighting gently sculpting jawline and cheekbones"",
-      ""mood"": ""deep shadows for sophisticated editorial feel""
-    },
-    ""background"": {
-      ""type"": ""dramatic warm orange-red gradient"",
-      ""effect"": ""bold color contrast""
-    },
-    ""photography_specs"": {
-      ""lens_aesthetic"": ""85mm"",
-      ""depth_of_field"": ""shallow"",
-      ""quality"": ""premium DSLR look"",
-      ""resolution"": ""ultra-high resolution"",
-      ""contrast"": ""high contrast""
-    },
-    ""overall_vibe"": ""fashion editorial photography, modern elegant vibe, sophisticated and refined composition"",
-    ""content_guidelines"": ""tasteful, respectful, no sexual or provocative elements""
-  }
-}",FALSE,STRUCTURED,"rhieskhiez@gmail.com,rhieskhiez.creative@gmail.com"
 Portrait of Indonesian Elegance,"{
   ""prompt"": {
     ""subject"": {
