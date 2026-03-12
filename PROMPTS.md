@@ -88368,19 +88368,6 @@ Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail
 </details>
 
 <details>
-<summary><strong>Confident Woman with Wavy Hair in Casual Attire</strong></summary>
-
-## Confident Woman with Wavy Hair in Casual Attire
-
-Contributed by [@rhieskhiez@gmail.com](https://github.com/rhieskhiez@gmail.com), [@rhieskhiez.creative@gmail.com](https://github.com/rhieskhiez.creative@gmail.com)
-
-```md
-An image of a woman with voluminous wavy hair, standing confidently and smiling at the camera. She is wearing a black crop top, and high-waisted denim shorts. Her right hand rests on her hip, and her left arm is relaxed at her side. The setting is simple, with soft lighting that highlights her friendly demeanor and casual style.
-```
-
-</details>
-
-<details>
 <summary><strong>High-Fidelity Portrait of a Young Blonde Woman</strong></summary>
 
 ## High-Fidelity Portrait of a Young Blonde Woman
