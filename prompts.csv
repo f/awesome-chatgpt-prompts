@@ -71266,69 +71266,6 @@ Spanish girl in nightclub,"{
   ""action"": ""image_generation"",
   ""action_input"": ""A full-body photo, vertical format 9:16 AR of Natalia, a 23-year-old Spanish woman with long wavy dark brown hair and green eyes. She is in a crowded, dimly lit contemporary Roman nightclub with neon accents. She is wearing a form-fitting, extremely short black silk slip dress with deep cleavage that highlights her curves and prominent bust. Heeled sandals at her feet. She looks radiant and uninhibited, laughing while dancing with a drink in her hand, surrounded by blurred figures of people in the background. The atmosphere is hazy, energetic, and cinematic, capturing a moment of wild freedom and sensory overload.""
 }",FALSE,STRUCTURED,mellowdrastic@gmail.com
-Elegant and Serene Portrait Photography Prompt,"{
-  ""prompt"": {
-    ""subject"": {
-      ""type"": ""close-up portrait"",
-      ""person"": {
-        ""description"": ""woman"",
-        ""hair"": {
-          ""color"": ""dark brown"",
-          ""texture"": ""wavy"",
-          ""style"": ""flowing, natural""
-        },
-        ""head_covering"": ""none"",
-        ""physique"": ""curvy, natural body type"",
-        ""expression"": ""graceful, serene""
-      },
-      ""clothing"": {
-        ""garment"": ""elegant black top with decorative center button detailing"",
-        ""fabric_specifications"": {
-          ""weight"": ""190 GSM"",
-          ""composition"": ""82% Polyester, 18% Spandex"",
-          ""features"": ""4-way stretch""
-        },
-        ""style_note"": ""tasteful, non-provocative design""
-      },
-      ""makeup"": {
-        ""style"": ""soft, natural makeup""
-      },
-      ""accessories"": {
-        ""earrings"": ""small hoop earrings"",
-        ""necklace"": ""delicate necklace""
-      }
-    },
-    ""background"": {
-      ""appearance"": ""warm, softly blurred"",
-      ""color_palette"": ""earthy tones"",
-      ""effect"": ""gentle and inviting atmosphere""
-    },
-    ""lighting"": {
-      ""type"": ""natural, flattering light"",
-      ""quality"": ""soft, warm""
-    },
-    ""mood"": {
-      ""attributes"": [""graceful"", ""elegant"", ""serene"", ""inviting"", ""tasteful"", ""refined""]
-    },
-    ""composition"": {
-      ""shot_type"": ""close-up (CU)"",
-      ""orientation"": ""vertical"",
-      ""aspect_ratio"": ""9:16"",
-      ""framing"": ""focused on subject with gentle background blur""
-    },
-    ""style"": {
-      ""tone"": ""respectful and refined"",
-      ""content_rating"": ""appropriate, non-provocative, non-sexual"",
-      ""aesthetic"": ""natural elegance""
-    }
-  },
-  ""technical_parameters"": {
-    ""model"": ""gpt-image-1.5-high-fidelity"",
-    ""aspect_ratio"": ""9:16"",
-    ""quality"": ""high-fidelity"",
-    ""focus"": ""close-up portrait""
-  }
-}",FALSE,STRUCTURED,"rhieskhiez@gmail.com,rhieskhiez.creative@gmail.com"
 Confident Woman with Wavy Hair in Casual Attire,"An image of a woman with voluminous wavy hair, standing confidently and smiling at the camera. She is wearing a black crop top, and high-waisted denim shorts. Her right hand rests on her hip, and her left arm is relaxed at her side. The setting is simple, with soft lighting that highlights her friendly demeanor and casual style.",FALSE,TEXT,"rhieskhiez@gmail.com,rhieskhiez.creative@gmail.com"
 High-Fidelity Portrait of a Young Blonde Woman,"{
   ""prompt"": {
