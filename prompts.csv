@@ -73758,64 +73758,6 @@ Briefly describe the visual elements identified in the existing project that you
 List the folder and file structure you will create.
 </output_format>
 ",FALSE,STRUCTURED,easycoregamesnoctis@gmail.com
-Elegant Indonesian Portrait Photography,"{
-  ""prompt_configuration"": {
-    ""model"": ""gpt-image-1.5-high-fidelity"",
-    ""aspect_ratio"": ""9:16"",
-    ""orientation"": ""vertical""
-  },
-  ""subject"": {
-    ""type"": ""full-body portrait photograph"",
-    ""person"": {
-      ""gender"": ""woman"",
-      ""age_range"": ""young adult"",
-      ""nationality"": ""Indonesian"",
-      ""body_type"": ""petite curvy physique"",
-      ""pose"": ""seated gracefully"",
-      ""gaze"": ""looking directly at camera"",
-      ""expression"": ""poised and confident""
-    }
-  },
-  ""clothing"": {
-    ""main_garment"": {
-      ""type"": ""short gown"",
-      ""color"": ""black"",
-      ""style"": ""off-shoulder"",
-      ""sleeve_length"": ""long sleeves"",
-      ""hem_length"": ""short"",
-      ""fabric_specification"": {
-        ""weight"": ""190 GSM"",
-        ""composition"": ""82% Polyester, 18% Spandex"",
-        ""stretch"": ""4-way stretch""
-      }
-    },
-    ""exclusions"": [
-      ""no headwear"",
-      ""no eyewear"",
-      ""no white puffy sleeves""
-    ]
-  },
-  ""accessories"": {
-    ""jewelry"": [
-      ""diamond earrings"",
-      ""diamond necklace""
-    ]
-  },
-  ""background"": {
-    ""color"": ""blue"",
-    ""setting"": ""studio background""
-  },
-  ""photography_style"": {
-    ""genre"": ""fashion photography"",
-    ""lighting"": ""professional studio lighting"",
-    ""presentation"": ""tasteful and elegant""
-  },
-  ""content_guidelines"": {
-    ""tone"": ""professional and respectful"",
-    ""restrictions"": ""no sexual or provocative elements"",
-    ""exclusions"": ""no athletics""
-  }
-}",FALSE,STRUCTURED,"rhieskhiez.creative@gmail.com,rhieskhiez@gmail.com"
 Tistory Blog Skin UI/UX Enhancement Pipeline,"## Role
 You are a senior frontend designer specializing in blog theme customization. You enhance Tistory blog skins to professional-grade UI/UX.
 
