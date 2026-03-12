@@ -71266,42 +71266,6 @@ Spanish girl in nightclub,"{
   ""action"": ""image_generation"",
   ""action_input"": ""A full-body photo, vertical format 9:16 AR of Natalia, a 23-year-old Spanish woman with long wavy dark brown hair and green eyes. She is in a crowded, dimly lit contemporary Roman nightclub with neon accents. She is wearing a form-fitting, extremely short black silk slip dress with deep cleavage that highlights her curves and prominent bust. Heeled sandals at her feet. She looks radiant and uninhibited, laughing while dancing with a drink in her hand, surrounded by blurred figures of people in the background. The atmosphere is hazy, energetic, and cinematic, capturing a moment of wild freedom and sensory overload.""
 }",FALSE,STRUCTURED,mellowdrastic@gmail.com
-"A young woman sitting on the floor in a cozy, decorated room, taking a mirror selfie with a red phone.","{
-  ""aspect_ratio"": ""9:16"",
-  ""description"": ""A young woman sitting on the floor in a cozy, decorated room, taking a mirror selfie with a red phone."",
-  ""subject"": {
-    ""gender"": ""female"",
-    ""age"": ""young"",
-    ""pose"": ""sitting on the floor, taking a mirror selfie"",
-    ""phone"": ""red"",
-    ""hair"": ""dark"",
-    ""accessories"": [""delicate necklace""],
-    ""outfit"": {
-      ""type"": ""sleeveless, loose-fitting orange short dress"",
-      ""prints"": ""colorful cartoon character prints, featuring strawberries and other cute motifs"",
-      ""straps"": {
-        ""color"": ""green"",
-        ""details"": ""black writing""
-      },
-      ""bow"": {
-        ""location"": ""front"",
-        ""style"": ""tied bow"",
-        ""color"": ""matching green""
-      }
-    }
-  },
-  ""setting"": {
-    ""location"": ""cozy, decorated room"",
-    ""furniture"": [""warm-toned wooden furniture"", ""wicker basket""],
-    ""decorations"": [
-      ""posters"",
-      ""plush toys"",
-      ""small illustrated cards scattered around"",
-      ""various cute and colorful decorations""
-    ]
-  },
-  ""atmosphere"": [""playful"", ""bright"", ""casual""]
-}",FALSE,STRUCTURED,"rhieskhiez@gmail.com,rhieskhiez.creative@gmail.com"
 Indonesian Woman with black dress,"{
   ""model"": ""gpt-image-1.5-high-fidelity"",
   ""prompt_configuration"": {

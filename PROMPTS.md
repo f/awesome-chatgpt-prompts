@@ -88368,54 +88368,6 @@ Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail
 </details>
 
 <details>
-<summary><strong>A young woman sitting on the floor in a cozy, decorated room, taking a mirror selfie with a red phone.</strong></summary>
-
-## A young woman sitting on the floor in a cozy, decorated room, taking a mirror selfie with a red phone.
-
-Contributed by [@rhieskhiez@gmail.com](https://github.com/rhieskhiez@gmail.com), [@rhieskhiez.creative@gmail.com](https://github.com/rhieskhiez.creative@gmail.com)
-
-```md
-{
-  "aspect_ratio": "9:16",
-  "description": "A young woman sitting on the floor in a cozy, decorated room, taking a mirror selfie with a red phone.",
-  "subject": {
-    "gender": "female",
-    "age": "young",
-    "pose": "sitting on the floor, taking a mirror selfie",
-    "phone": "red",
-    "hair": "dark",
-    "accessories": ["delicate necklace"],
-    "outfit": {
-      "type": "sleeveless, loose-fitting orange short dress",
-      "prints": "colorful cartoon character prints, featuring strawberries and other cute motifs",
-      "straps": {
-        "color": "green",
-        "details": "black writing"
-      },
-      "bow": {
-        "location": "front",
-        "style": "tied bow",
-        "color": "matching green"
-      }
-    }
-  },
-  "setting": {
-    "location": "cozy, decorated room",
-    "furniture": ["warm-toned wooden furniture", "wicker basket"],
-    "decorations": [
-      "posters",
-      "plush toys",
-      "small illustrated cards scattered around",
-      "various cute and colorful decorations"
-    ]
-  },
-  "atmosphere": ["playful", "bright", "casual"]
-}
-```
-
-</details>
-
-<details>
 <summary><strong>Indonesian Woman with black dress</strong></summary>
 
 ## Indonesian Woman with black dress
