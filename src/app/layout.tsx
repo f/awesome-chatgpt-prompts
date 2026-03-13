@@ -181,6 +181,9 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={isRtl ? "rtl" : "ltr"} suppressHydrationWarning className={themeClasses} style={themeStyles}>
       <head>
+        {process.env.GOOGLE_ADSENSE_ACCOUNT && (
+          <meta name="google-adsense-account" content={process.env.GOOGLE_ADSENSE_ACCOUNT} />
+        )}
         <WebsiteStructuredData />
       </head>
       <body className={`${fontClasses} antialiased`}>
