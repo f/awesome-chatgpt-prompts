@@ -3,6 +3,7 @@ import { coderabbitWidget } from "./coderabbit";
 import { bookWidget } from "./book";
 import { textreamWidget } from "./textream";
 import { commandcodeWidget } from "./commandcode";
+import { ezoicWidget } from "./ezoic";
 
 export * from "./types";
 
@@ -12,6 +13,7 @@ const widgetPlugins: WidgetPlugin[] = [
   bookWidget,
   textreamWidget,
   commandcodeWidget,
+  ...(process.env.EZOIC_ENABLED === "true" ? [ezoicWidget] : []),
 ];
 
 /**

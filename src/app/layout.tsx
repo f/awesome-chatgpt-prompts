@@ -7,6 +7,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CookieConsentBanner } from "@/components/layout/cookie-consent";
 import { Analytics } from "@/components/layout/analytics";
+import { EzoicAds } from "@/components/layout/ezoic-ads";
 import { WebsiteStructuredData } from "@/components/seo/structured-data";
 import { AppBanner } from "@/components/layout/app-banner";
 import { LocaleDetector } from "@/components/providers/locale-detector";
@@ -186,6 +187,7 @@ export default async function RootLayout({
         {process.env.GOOGLE_ANALYTICS_ID && (
           <Analytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
         )}
+        {process.env.EZOIC_ENABLED === "true" && <EzoicAds />}
         <Providers locale={locale} messages={messages} theme={config.theme} branding={{ ...config.branding, useCloneBranding: config.homepage?.useCloneBranding }}>
           {isEmbedRoute || isKidsRoute ? (
             children
