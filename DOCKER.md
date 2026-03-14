@@ -186,7 +186,7 @@ Build and run locally:
 
 ```bash
 docker build -f docker/Dockerfile -t prompts.chat .
-docker run -p 4444:3000 -v prompts-data:/data prompts.chat
+docker run --name prompts_library -p 4444:3000 -v prompts-data:/data prompts.chat
 ```
 
 ## Health Check
