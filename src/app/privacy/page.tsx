@@ -97,6 +97,27 @@ export default function PrivacyPage() {
           </p>
         </section>
 
+        {process.env.EZOIC_ENABLED === "true" && (
+          <section className="space-y-3">
+            <h2 className="text-lg font-semibold">Advertising & Ezoic</h2>
+            <p className="text-muted-foreground">
+              We use Ezoic to provide personalized ads and analytics on this site. Ezoic and its partners 
+              may collect and use data about your visit to this and other websites to provide relevant 
+              advertisements. For full details on how Ezoic and its partners use your information, including 
+              a list of known cookies used on this site, please see the{" "}
+              <a
+                href="http://g.ezoic.net/privacy/prompts.chat"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-foreground"
+              >
+                Ezoic privacy disclosures
+              </a>.
+            </p>
+            <span id="ezoic-privacy-policy-embed"></span>
+          </section>
+        )}
+
         <section className="space-y-3">
           <h2 className="text-lg font-semibold">Your Rights & CC0 License</h2>
           <p className="text-muted-foreground">
