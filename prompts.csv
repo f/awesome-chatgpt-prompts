@@ -75032,3 +75032,10 @@ Constraints:
 - Use the frontend-design skill for design quality
 
 Show me the component. I'll review before moving to the next page.",FALSE,TEXT,gokbeyinac
+Iteration & Polish,"Review the current ${page} against these criteria:
+- Does the hero section create a clear emotional reaction in <3 seconds?
+- Is the typography hierarchy clear at every breakpoint?
+- Are interactions purposeful or decorative?
+- Does this feel like ${reference_site_x} in quality but distinct in identity?
+
+Suggest 3 specific improvements with reasoning, then implement them.",FALSE,TEXT,gokbeyinac
