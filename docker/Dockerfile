@@ -31,7 +31,8 @@ RUN mkdir -p /data/postgres /data/app && chown -R postgres:postgres /data/postgr
 # Copy bootstrap scripts
 COPY docker/bootstrap.sh /bootstrap.sh
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-RUN chmod +x /bootstrap.sh
+# Fix Windows CRLF so /bootstrap.sh can run in Linux containers.
+RUN sed -i 's/\r$//' /bootstrap.sh && chmod +x /bootstrap.sh
 
 # Environment defaults
 ENV NODE_ENV=production
