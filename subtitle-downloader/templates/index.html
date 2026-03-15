@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subtitle Downloader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 Subtitle Downloader</h1>
+            <p class="subtitle">Download subtitles for your favorite TV shows</p>
+        </header>
+
+        <main>
+            <div class="search-section">
+                <form id="searchForm" class="search-form">
+                    <div class="form-group">
+                        <label for="seriesName">Series/Show Name</label>
+                        <input
+                            type="text"
+                            id="seriesName"
+                            name="seriesName"
+                            placeholder="e.g., Breaking Bad"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="seasonEpisode">Season & Episode</label>
+                            <input
+                                type="text"
+                                id="seasonEpisode"
+                                name="seasonEpisode"
+                                placeholder="e.g., S01E01 or 1x1"
+                                required
+                            >
+                            <small>Format: S01E05 or 1x5</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="language">Language</label>
+                            <select id="language" name="language" required>
+                                <option value="">Select Language</option>
+                                <option value="English">English</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="French">French</option>
+                                <option value="German">German</option>
+                                <option value="Italian">Italian</option>
+                                <option value="Portuguese">Portuguese</option>
+                                <option value="Russian">Russian</option>
+                                <option value="Japanese">Japanese</option>
+                                <option value="Korean">Korean</option>
+                                <option value="Chinese">Chinese</option>
+                                <option value="Dutch">Dutch</option>
+                                <option value="Polish">Polish</option>
+                                <option value="Turkish">Turkish</option>
+                                <option value="Greek">Greek</option>
+                                <option value="Swedish">Swedish</option>
+                                <option value="Norwegian">Norwegian</option>
+                                <option value="Danish">Danish</option>
+                                <option value="Finnish">Finnish</option>
+                                <option value="Arabic">Arabic</option>
+                                <option value="Hebrew">Hebrew</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="search-btn" id="searchBtn">
+                        <span class="btn-text">Search Subtitles</span>
+                        <span class="btn-spinner" style="display: none;">⏳</span>
+                    </button>
+                </form>
+            </div>
+
+            <div id="errorContainer" class="error-container" style="display: none;">
+                <div class="error-message" id="errorMessage"></div>
+                <button class="error-close" onclick="document.getElementById('errorContainer').style.display='none'">✕</button>
+            </div>
+
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <h2>Available Subtitles</h2>
+                <div id="resultsList" class="results-list"></div>
+            </div>
+
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No subtitles found. Try different search terms or language.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Subtitle Downloader | Powered by OpenSubtitles</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
