@@ -52,6 +52,9 @@ export function PromptList({
   const headerLines = 3;
   const footerLines = 2;
   const listHeight = Math.max(terminalHeight - headerLines - footerLines, 5);
+  // Category view: header + "All Categories" + footer + margins = 4 reserved
+  const categoryReservedLines = 4 + (isSearchingCategories ? 1 : 0);
+  const categoryListHeight = Math.max(terminalHeight - categoryReservedLines, 5);
   const perPage = listHeight;
 
   useEffect(() => {
@@ -214,6 +217,10 @@ export function PromptList({
     ? categories.filter(c => c.name.toLowerCase().includes(categorySearchQuery.toLowerCase()))
     : categories;
 
+  // Category viewport scrolling - calculate which items to show
+  const categoryTotalItems = categorySearchQuery ? filteredCategories.length : filteredCategories.length + 1;
+  const categoryScrollOffset = Math.max(0, Math.min(categoryIndex - categoryListHeight + 2, Math.max(0, categoryTotalItems - categoryListHeight)));
+
   const maxTitleLength = terminalWidth - 30;
 
   if (error) {
@@ -288,7 +295,7 @@ export function PromptList({
             </Box>
           ) : (
             <>
-              {!categorySearchQuery && (
+              {!categorySearchQuery && categoryScrollOffset === 0 && (
                 <Box>
                   <Text color={categoryIndex === 0 ? 'cyan' : undefined}>
                     {categoryIndex === 0 ? '❯ ' : '  '}
@@ -298,8 +305,14 @@ export function PromptList({
                   </Text>
                 </Box>
               )}
-              {filteredCategories.slice(0, listHeight - 1).map((cat, index) => {
-                const adjustedIndex = categorySearchQuery ? index : index + 1;
+              {filteredCategories.slice(
+                categorySearchQuery ? categoryScrollOffset : Math.max(0, categoryScrollOffset - 1),
+                categorySearchQuery ? categoryScrollOffset + categoryListHeight : (categoryScrollOffset === 0 ? categoryListHeight - 1 : categoryScrollOffset - 1 + categoryListHeight)
+              ).map((cat, index) => {
+                const actualIndex = categoryScrollOffset + index;
+                // When All Categories is visible (scrollOffset=0), categories are at positions 1+ so add 1
+                // When scrolled out, positions match actualIndex directly
+                const adjustedIndex = categorySearchQuery || categoryScrollOffset > 0 ? actualIndex : actualIndex + 1;
                 return (
                   <Box key={cat.id}>
                     <Text color={adjustedIndex === categoryIndex ? 'cyan' : undefined}>
