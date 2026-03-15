@@ -309,8 +309,12 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const page = parseInt(searchParams.get("page") || "1");
-    const perPage = parseInt(searchParams.get("perPage") || "24");
+    const requestedPage = parseInt(searchParams.get("page") || "1");
+    const requestedPerPage = parseInt(searchParams.get("perPage") || "24");
+    
+    // Cap pagination to prevent database overload
+    const page = Math.max(1, requestedPage);
+    const perPage = Math.min(Math.max(1, requestedPerPage), 100);
     const type = searchParams.get("type");
     const categoryId = searchParams.get("category");
     const tag = searchParams.get("tag");
