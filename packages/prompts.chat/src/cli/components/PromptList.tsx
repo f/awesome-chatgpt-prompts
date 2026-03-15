@@ -19,6 +19,14 @@ interface PromptListProps {
 
 type ViewMode = 'list' | 'categories';
 
+/**
+ * Renders the interactive CLI prompt browser with searchable prompt and category views,
+ * keyboard navigation, and pagination support.
+ *
+ * @param props - Component props including selection handlers, search state, pagination,
+ * and category filters used to drive prompt list interactions.
+ * @returns The PromptList Ink UI tree for list and category browsing modes.
+ */
 export function PromptList({ 
   onSelect, 
   onQuit, 
@@ -218,8 +226,13 @@ export function PromptList({
     : categories;
 
   // Category viewport scrolling - calculate which items to show
+  const isCategorySearchActive = Boolean(categorySearchQuery);
   const categoryTotalItems = categorySearchQuery ? filteredCategories.length : filteredCategories.length + 1;
   const categoryScrollOffset = Math.max(0, Math.min(categoryIndex - categoryListHeight + 2, Math.max(0, categoryTotalItems - categoryListHeight)));
+  const sliceStart = isCategorySearchActive ? categoryScrollOffset : Math.max(0, categoryScrollOffset - 1);
+  const sliceEnd = isCategorySearchActive
+    ? categoryScrollOffset + categoryListHeight
+    : (categoryScrollOffset === 0 ? categoryListHeight - 1 : categoryScrollOffset - 1 + categoryListHeight);
 
   const maxTitleLength = terminalWidth - 30;
 
@@ -305,14 +318,11 @@ export function PromptList({
                   </Text>
                 </Box>
               )}
-              {filteredCategories.slice(
-                categorySearchQuery ? categoryScrollOffset : Math.max(0, categoryScrollOffset - 1),
-                categorySearchQuery ? categoryScrollOffset + categoryListHeight : (categoryScrollOffset === 0 ? categoryListHeight - 1 : categoryScrollOffset - 1 + categoryListHeight)
-              ).map((cat, index) => {
-                const actualIndex = categoryScrollOffset + index;
+              {filteredCategories.slice(sliceStart, sliceEnd).map((cat, index) => {
+                const actualIndex = (isCategorySearchActive ? sliceStart : categoryScrollOffset) + index;
                 // When All Categories is visible (scrollOffset=0), categories are at positions 1+ so add 1
                 // When scrolled out, positions match actualIndex directly
-                const adjustedIndex = categorySearchQuery || categoryScrollOffset > 0 ? actualIndex : actualIndex + 1;
+                const adjustedIndex = isCategorySearchActive || categoryScrollOffset > 0 ? actualIndex : actualIndex + 1;
                 return (
                   <Box key={cat.id}>
                     <Text color={adjustedIndex === categoryIndex ? 'cyan' : undefined}>
