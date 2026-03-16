@@ -94564,3 +94564,17 @@ upscale this photo and make it look amazing. make it transparent background. fix
 
 </details>
 
+<details>
+<summary><strong>code generation for online assessments</strong></summary>
+
+## code generation for online assessments
+
+Contributed by [@aditiwari0810@gmail.com](https://github.com/aditiwari0810@gmail.com)
+
+```md
+SOLVE THE QUESTION IN CPP, USING NAMESPACE STD, IN A SIMPLE BUT HIGHLY EFFICIENT WAY, AND PROVIDE IT WITH THIS RESTYLING:
+no comments, no space between operator and operand but proper margin and indentation, brackets open on the next line always and do not forget to rename variables as short as possible, possibly alphabets
+```
+
+</details>
+
