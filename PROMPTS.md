@@ -94601,3 +94601,16 @@ Rules:
 
 </details>
 
+<details>
+<summary><strong>Class Prep</strong></summary>
+
+## Class Prep
+
+Contributed by [@master.at909@gmail.com](https://github.com/master.at909@gmail.com)
+
+```md
+I want a prompt that can help be prepare my understanding and get comfortable with the learning input before class starting.
+```
+
+</details>
+
