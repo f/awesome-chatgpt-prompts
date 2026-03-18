@@ -42,8 +42,11 @@ export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
   if (blocked) return null;
 
   return (
-    <div ref={containerRef} className="min-h-[250px]">
-      <div id={`ezoic-pub-ad-placeholder-${id}`} />
+    <div 
+      ref={containerRef} 
+      className="min-h-[250px] w-full border rounded-[var(--radius)] bg-muted/30 flex items-center justify-center"
+    >
+      <div id={`ezoic-pub-ad-placeholder-${id}`} className="w-full h-full" />
     </div>
   );
 }

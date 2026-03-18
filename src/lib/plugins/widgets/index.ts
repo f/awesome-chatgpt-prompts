@@ -13,7 +13,7 @@ const widgetPlugins: WidgetPlugin[] = [
   bookWidget,
   textreamWidget,
   commandcodeWidget,
-  ...(process.env.EZOIC_ENABLED === "true" ? [ezoicWidget] : []),
+  ezoicWidget,
 ];
 
 /**
