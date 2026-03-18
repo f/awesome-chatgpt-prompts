@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { runEzoic } from "@/lib/ezoic";
@@ -18,10 +18,17 @@ declare global {
 
 export function EzoicAds() {
   const pathname = usePathname();
+  const isFirstRender = useRef(true);
 
   // Re-trigger ads on SPA route changes
-  // Per Ezoic docs: destroyPlaceholders first, then showAds in next frame
+  // Per Ezoic docs: destroyPlaceholders first, then showAds in next frame.
+  // Skip the first render to avoid racing with individual EzoicPlaceholder
+  // components that call showAds(id) on mount.
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     runEzoic(() => {
       window.ezstandalone?.destroyPlaceholders();
       requestAnimationFrame(() => {
