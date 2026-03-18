@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { runEzoic } from "@/lib/ezoic";
 
 interface EzoicPlaceholderProps {
@@ -8,6 +9,7 @@ interface EzoicPlaceholderProps {
 }
 
 export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
+  const t = useTranslations("common");
   const [isRendered, setIsRendered] = useState(false);
 
   useEffect(() => {
@@ -32,8 +34,15 @@ export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
   }, [id]);
 
   return (
-    <div className="ezoic-ad-container max-w-full overflow-hidden">
-      {isRendered && <div id={`ezoic-pub-ad-placeholder-${id}`} />}
+    <div className="ezoic-ad-container border rounded-[var(--radius)] overflow-hidden flex flex-col">
+      <div className="px-3 py-1.5 border-b bg-muted/50">
+        <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
+          {t("ad")}
+        </span>
+      </div>
+      <div className="max-w-full overflow-hidden">
+        {isRendered && <div id={`ezoic-pub-ad-placeholder-${id}`} />}
+      </div>
     </div>
   );
 }
