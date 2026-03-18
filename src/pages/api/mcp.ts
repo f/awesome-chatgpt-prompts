@@ -12,6 +12,7 @@ import { db } from "@/lib/db";
 import { isValidApiKeyFormat } from "@/lib/api-key";
 import { improvePrompt } from "@/lib/ai/improve-prompt";
 import { parseSkillFiles, serializeSkillFiles, DEFAULT_SKILL_FILE } from "@/lib/skill-files";
+import appConfig from "@/../prompts.config";
 
 interface AuthenticatedUser {
   id: string;
@@ -1336,6 +1337,10 @@ async function parseBody(req: NextApiRequest): Promise<unknown> {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (!appConfig.features.mcp) {
+    return res.status(404).json({ error: "MCP is not enabled" });
+  }
+
   if (req.method === "GET") {
     return res.status(200).json({
       name: "prompts-chat",
