@@ -32,7 +32,7 @@ export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
   }, [id]);
 
   return (
-    <div className="ezoic-ad-container">
+    <div className="ezoic-ad-container max-w-full overflow-hidden">
       {isRendered && <div id={`ezoic-pub-ad-placeholder-${id}`} />}
     </div>
   );
