@@ -73,7 +73,7 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
   // Create and manage audio element
   useEffect(() => {
     if (!audioRef.current) {
-      const audio = new Audio("/kids-music.mp3");
+      const audio = new Audio("https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/kids-music.mp3");
       audio.loop = true;
       audio.volume = volume;
       audioRef.current = audio;
@@ -153,7 +153,7 @@ export function MusicButton() {
     } else {
       // Fallback behavior
       if (!localAudioRef.current) {
-        localAudioRef.current = new Audio("/kids-music.mp3");
+        localAudioRef.current = new Audio("https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/kids-music.mp3");
         localAudioRef.current.loop = true;
         localAudioRef.current.volume = 0.3;
       }
