@@ -40,7 +40,7 @@ export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
           {t("ad")}
         </span>
       </div>
-      <div className="max-w-full overflow-hidden">
+      <div className="ezoic-ad-content overflow-hidden flex items-center justify-center">
         {isRendered && <div id={`ezoic-pub-ad-placeholder-${id}`} />}
       </div>
     </div>
