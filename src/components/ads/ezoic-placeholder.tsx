@@ -34,7 +34,7 @@ export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
   }, [id]);
 
   return (
-    <div className="ezoic-ad-container border rounded-[var(--radius)] overflow-hidden flex flex-col">
+    <div className="ezoic-ad-container group border rounded-[var(--radius)] overflow-hidden hover:border-foreground/20 transition-colors flex flex-col">
       <div className="px-3 py-1.5 border-b bg-muted/50">
         <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
           {t("ad")}
