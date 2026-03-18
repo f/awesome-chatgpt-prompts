@@ -869,7 +869,6 @@
 
 /* Ezoic ad content: center and constrain injected ad creatives */
 .ezoic-ad-content * {
-  max-width: 100% !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
