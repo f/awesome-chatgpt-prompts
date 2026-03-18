@@ -9,10 +9,10 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { RunPromptButton } from "@/components/prompts/run-prompt-button";
 import { analyticsWidget } from "@/lib/analytics";
-import type { WidgetPrompt } from "@/lib/plugins/widgets";
+import type { InjectedWidget } from "@/lib/plugins/widgets";
 
 export interface WidgetCardProps {
-  prompt: WidgetPrompt;
+  prompt: InjectedWidget;
 }
 
 export function WidgetCard({ prompt }: WidgetCardProps) {
@@ -22,7 +22,7 @@ export function WidgetCard({ prompt }: WidgetCardProps) {
 
   // If widget has a custom render function, use it
   if (prompt.render) {
-    return <>{prompt.render()}</>;
+    return <>{prompt.render(prompt.instanceIndex)}</>;
   }
 
   const copyToClipboard = async () => {

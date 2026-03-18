@@ -1,52 +1,39 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { runEzoic } from "@/lib/ezoic";
 
 interface EzoicPlaceholderProps {
   id: number;
 }
 
 export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [blocked, setBlocked] = useState(false);
+  const [isRendered, setIsRendered] = useState(false);
 
   useEffect(() => {
-    // Detect if Ezoic scripts were blocked by an ad blocker
-    if (!window.ezstandalone) {
-      setBlocked(true);
-      return;
-    }
+    // Render the placeholder div first, then tell Ezoic to fill it.
+    // This ensures the DOM element exists before showAds is called.
+    setIsRendered(true);
 
-    window.ezstandalone.cmd.push(function () {
-      window.ezstandalone!.showAds(id);
+    // Use requestAnimationFrame to guarantee the placeholder div
+    // is in the DOM before Ezoic tries to find it.
+    const rafId = requestAnimationFrame(() => {
+      runEzoic(() => {
+        window.ezstandalone?.showAds(id);
+      });
     });
 
-    // Check after a delay whether the placeholder actually received ad content
-    const timer = setTimeout(() => {
-      const el = containerRef.current;
-      if (el && el.offsetHeight === 0) {
-        setBlocked(true);
-      }
-    }, 3000);
-
     return () => {
-      clearTimeout(timer);
-      if (window.ezstandalone) {
-        window.ezstandalone.cmd.push(function () {
-          window.ezstandalone!.destroyPlaceholders(id);
-        });
-      }
+      cancelAnimationFrame(rafId);
+      runEzoic(() => {
+        window.ezstandalone?.destroyPlaceholders(id);
+      });
     };
   }, [id]);
 
-  if (blocked) return null;
-
   return (
-    <div 
-      ref={containerRef} 
-      className="min-h-[250px] w-full border rounded-[var(--radius)] bg-muted/30 flex items-center justify-center"
-    >
-      <div id={`ezoic-pub-ad-placeholder-${id}`} className="w-full h-full" />
+    <div className="ezoic-ad-container">
+      {isRendered && <div id={`ezoic-pub-ad-placeholder-${id}`} />}
     </div>
   );
 }
