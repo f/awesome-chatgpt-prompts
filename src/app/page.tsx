@@ -83,7 +83,7 @@ export default async function HomePage() {
                 playsInline
                 className="absolute top-1/2 -translate-y-1/2 end-0 w-full h-auto opacity-30 dark:opacity-15 dark:invert"
               >
-                <source src="/animation_compressed.mp4" type="video/mp4" />
+                <source src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/animation_compressed.mp4" type="video/mp4" />
               </video>
             </div>
             {/* Animated input overlay and clients */}
