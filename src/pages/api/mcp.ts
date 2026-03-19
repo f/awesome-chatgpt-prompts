@@ -220,12 +220,14 @@ function createServer(options: ServerOptions = {}) {
       });
     }
     // Fallback: lookup by slugified title (for prompts without stored slug)
+    // TODO: Backfill slug column for all existing prompts so this fallback can be removed
     if (!prompt) {
-      const allPrompts = await db.prompt.findMany({
-        where: promptFilter,
+      const unslugged = await db.prompt.findMany({
+        where: { ...promptFilter, slug: null },
         select: promptSelect,
+        take: 500,
       });
-      prompt = allPrompts.find((p) => slugify(p.title) === promptSlug) || null;
+      prompt = unslugged.find((p) => slugify(p.title) === promptSlug) || null;
     }
 
     if (!prompt) {
@@ -453,6 +455,10 @@ function createServer(options: ServerOptions = {}) {
               if (elicitResult.action === "accept" && elicitResult.content) {
                 let filledContent = prompt.content;
                 for (const [key, value] of Object.entries(elicitResult.content)) {
+                  // Skip keys that don't match valid variable name format (ReDoS prevention)
+                  if (!/^[a-zA-Z_][a-zA-Z0-9_\s]*$/.test(key)) {
+                    continue;
+                  }
                   // Replace ${key} or ${key:default} patterns
                   filledContent = filledContent.replace(
                     new RegExp(`\\$\\{${key}(?::[^}]*)?\\}`, "g"),
