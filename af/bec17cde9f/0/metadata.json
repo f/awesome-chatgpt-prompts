@@ -1,0 +1,34 @@
+{
+  "cli_version": "0.4.4",
+  "checkpoint_id": "afbec17cde9f",
+  "session_id": "161a699e-f62c-4087-8a96-ef1103acdb77",
+  "strategy": "manual-commit",
+  "created_at": "2026-03-19T22:12:55.885368Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".claude/settings.local.json",
+    "src/components/ads/ezoic-ad.tsx",
+    "src/components/ads/ezoic-placeholder.tsx",
+    "src/components/layout/ezoic-ads.tsx"
+  ],
+  "agent": "Claude Code",
+  "transcript_identifier_at_start": "e6e46629-cfa6-4c4f-9da3-3795c9236769",
+  "token_usage": {
+    "input_tokens": 17,
+    "cache_creation_tokens": 54086,
+    "cache_read_tokens": 363034,
+    "output_tokens": 13656,
+    "api_call_count": 13
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-03-19T22:12:55.821729Z",
+    "agent_lines": 25,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 25,
+    "agent_percentage": 100
+  },
+  "transcript_path": ".claude/projects/-Users-fka-Code-awesome-chatgpt-prompts/161a699e-f62c-4087-8a96-ef1103acdb77.jsonl"
+}

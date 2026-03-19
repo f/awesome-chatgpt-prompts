@@ -1,0 +1,29 @@
+{
+  "cli_version": "0.4.4",
+  "checkpoint_id": "afbec17cde9f",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".claude/settings.local.json",
+    "src/components/ads/ezoic-ad.tsx",
+    "src/components/ads/ezoic-placeholder.tsx",
+    "src/components/layout/ezoic-ads.tsx"
+  ],
+  "sessions": [
+    {
+      "metadata": "/af/bec17cde9f/0/metadata.json",
+      "transcript": "/af/bec17cde9f/0/full.jsonl",
+      "context": "/af/bec17cde9f/0/context.md",
+      "content_hash": "/af/bec17cde9f/0/content_hash.txt",
+      "prompt": "/af/bec17cde9f/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 17,
+    "cache_creation_tokens": 54086,
+    "cache_read_tokens": 363034,
+    "output_tokens": 13656,
+    "api_call_count": 13
+  }
+}
