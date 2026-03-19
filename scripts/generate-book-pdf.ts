@@ -49,8 +49,8 @@ const DEFAULT_FONT_STACKS: FontStacks = {
 const LOCALE_FONT_STACKS: Partial<Record<string, Partial<FontStacks>>> = {
   zh: {
     serif: `'Songti SC', 'STSong', 'Noto Serif CJK SC', 'Source Han Serif SC', serif`,
-    sans: `'PingFang SC', 'Hiragino Sans GB', 'Noto Sans CJK SC', 'Noto Sans SC', 'Source Han Sans SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif`,
-    mono: `'Noto Sans Mono CJK SC', 'Source Han Mono SC', 'Noto Sans CJK SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'SF Mono', 'Monaco', 'Menlo', 'Cascadia Mono', monospace`,
+    sans: `'Hiragino Sans GB', 'Noto Sans CJK SC', 'Noto Sans SC', 'Source Han Sans SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif`,
+    mono: `'Noto Sans Mono CJK SC', 'Source Han Mono SC', 'Noto Sans CJK SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'SF Mono', 'Monaco', 'Menlo', 'Cascadia Mono', monospace`,
   },
   ja: {
     serif: `'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif CJK JP', 'Source Han Serif JP', serif`,
@@ -2184,7 +2184,7 @@ function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, mess
   const isCjk = ['zh', 'ja', 'ko'].includes(locale);
   const fonts = getFontStacks(locale);
   const headingFont = isCjk ? fonts.serif : fonts.sans;
-  const promptFont = isCjk ? fonts.serif : fonts.mono;
+  const promptFont = isCjk ? fonts.sans : fonts.mono;
   
   // Helper to translate part name
   const translatePart = (partName: string): string => {
