@@ -8,8 +8,10 @@ interface EzoicAdProps {
 
 /**
  * Client-only wrapper for EzoicPlaceholder.
- * The placeholder div is always rendered so it's in the DOM when
- * Ezoic's showAds() runs — no deferred mounting needed.
+ * Renders the placeholder div after mount so it's in the DOM
+ * when Ezoic's showAds() runs.
+ *
+ * @see https://docs.ezoic.com/docs/ezoicadsadvanced/nextjs/
  */
 export function EzoicAd({ id }: EzoicAdProps) {
   return <EzoicPlaceholder id={id} />;
