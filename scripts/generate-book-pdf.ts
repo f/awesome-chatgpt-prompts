@@ -34,18 +34,27 @@ const TRIM_HEIGHT = '9in';
 const BLEED_WIDTH = '6.25in';  // 6 + 0.125*2
 const BLEED_HEIGHT = '9.25in'; // 9 + 0.125*2
 
+/**
+ * Interface representing a set of font families for different typographic roles.
+ */
 interface FontStacks {
   serif: string;
   sans: string;
   mono: string;
 }
 
+/**
+ * Default font stacks used for all locales unless overridden.
+ */
 const DEFAULT_FONT_STACKS: FontStacks = {
   serif: `'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, 'Times New Roman', serif`,
   sans: `'Helvetica Neue', Helvetica, Arial, sans-serif`,
   mono: `'SF Mono', 'Monaco', 'Menlo', 'Inconsolata', 'Fira Code', 'Consolas', monospace`,
 };
 
+/**
+ * Locale-specific font stack overrides to improve rendering for CJK and other languages.
+ */
 const LOCALE_FONT_STACKS: Partial<Record<string, Partial<FontStacks>>> = {
   zh: {
     serif: `'Songti SC', 'STSong', 'Noto Serif CJK SC', 'Source Han Serif SC', serif`,
@@ -2165,9 +2174,8 @@ function convertLinksToEndnotes(html: string, messages: Record<string, unknown> 
 }
 
 /**
- * Generate the HTML document for PDF
+ * Map part slugs to message keys for translation
  */
-// Map part slugs to message keys for translation
 const PART_TRANSLATION_KEYS: Record<string, string> = {
   'Introduction': 'introduction',
   'Foundations': 'foundations',
@@ -2178,6 +2186,15 @@ const PART_TRANSLATION_KEYS: Record<string, string> = {
   'Use Cases': 'useCases',
   'Conclusion': 'conclusion',
 };
+
+/**
+ * Generate the HTML document for PDF
+ * 
+ * @param chapters - The array of processed chapters to include.
+ * @param locale - The locale string.
+ * @param messages - Translation messages for the document metadata and labels.
+ * @returns The final HTML document as a string.
+ */
 
 function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, messages: Record<string, unknown> = {}): string {
   // Print version uses shorter printTitle, screen uses full title
