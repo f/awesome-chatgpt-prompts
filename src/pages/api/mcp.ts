@@ -205,17 +205,27 @@ function createServer(options: ServerOptions = {}) {
     const promptSlug = request.params.name;
     const args = request.params.arguments || {};
 
+    const promptSelect = { id: true, slug: true, title: true, description: true, content: true };
+
     // Try direct lookup by slug first
     let prompt = await db.prompt.findFirst({
       where: { ...promptFilter, slug: promptSlug },
-      select: { id: true, slug: true, title: true, description: true, content: true },
+      select: promptSelect,
     });
     // Fallback: lookup by id
     if (!prompt) {
       prompt = await db.prompt.findFirst({
         where: { ...promptFilter, id: promptSlug },
-        select: { id: true, slug: true, title: true, description: true, content: true },
+        select: promptSelect,
       });
+    }
+    // Fallback: lookup by slugified title (for prompts without stored slug)
+    if (!prompt) {
+      const allPrompts = await db.prompt.findMany({
+        where: promptFilter,
+        select: promptSelect,
+      });
+      prompt = allPrompts.find((p) => slugify(p.title) === promptSlug) || null;
     }
 
     if (!prompt) {
