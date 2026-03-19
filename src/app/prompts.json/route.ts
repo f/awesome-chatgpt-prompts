@@ -8,6 +8,8 @@ function getUserIdentifier(user: {
   return user.githubUsername || user.username;
 }
 
+export const revalidate = 3600;
+
 export async function GET() {
   try {
     const prompts = await db.prompt.findMany({
