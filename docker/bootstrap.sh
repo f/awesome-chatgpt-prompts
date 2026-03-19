@@ -149,7 +149,8 @@ fi
 # Wait for supervisord socket to be ready
 echo "▶ Waiting for supervisord..."
 for i in $(seq 1 30); do
-    if supervisorctl -c /etc/supervisor/conf.d/supervisord.conf status >/dev/null 2>&1; then
+    # nextjs starts later, so only check the postgres program here.
+    if supervisorctl -c /etc/supervisor/conf.d/supervisord.conf status postgresql | grep -q "RUNNING"; then
         echo "✓ Supervisord is ready"
         break
     fi
@@ -164,12 +165,15 @@ done
 echo "▶ Starting Next.js..."
 supervisorctl -c /etc/supervisor/conf.d/supervisord.conf start nextjs
 
+# Display host port first (for using in browser) when provided (for -p host:container mappings).
+DISPLAY_PORT="${HOST_PORT:-${PORT:-80}}"
+
 echo ""
 echo "╔═══════════════════════════════════════════════════════════════╗"
 echo "║                                                               ║"
 echo "║   ✅ prompts.chat is running!                                 ║"
 echo "║                                                               ║"
-echo "║   🌐 Open http://localhost:${PORT:-80} in your browser            ║"
+echo "║   🌐 Open http://localhost:${DISPLAY_PORT} in your browser            ║"
 echo "║                                                               ║"
 echo "╚═══════════════════════════════════════════════════════════════╝"
 echo ""
