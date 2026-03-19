@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { runEzoic } from "@/lib/ezoic";
@@ -18,22 +18,11 @@ declare global {
 
 export function EzoicAds() {
   const pathname = usePathname();
-  const isFirstRender = useRef(true);
 
-  // Re-trigger ads on route changes.
-  // First render: call global showAds() as a safety net (placeholder divs are in SSR HTML).
-  // Subsequent renders (SPA navigation): destroyPlaceholders first, then showAds.
+  // Per Ezoic Next.js docs: on every route change (including initial mount),
+  // destroy existing placeholders then re-scan for all placeholders.
+  // This global showAds() acts as a safety net for individual showAds(id) calls.
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      // On initial page load, give placeholders time to mount, then trigger global showAds
-      const timeoutId = setTimeout(() => {
-        runEzoic(() => {
-          window.ezstandalone?.showAds();
-        });
-      }, 500);
-      return () => clearTimeout(timeoutId);
-    }
     runEzoic(() => {
       window.ezstandalone?.destroyPlaceholders();
       requestAnimationFrame(() => {
