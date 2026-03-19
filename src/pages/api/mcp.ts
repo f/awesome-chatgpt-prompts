@@ -10,7 +10,6 @@ import {
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { isValidApiKeyFormat } from "@/lib/api-key";
-import { improvePrompt } from "@/lib/ai/improve-prompt";
 import { parseSkillFiles, serializeSkillFiles, DEFAULT_SKILL_FILE } from "@/lib/skill-files";
 import appConfig from "@/../prompts.config";
 
@@ -103,7 +102,7 @@ function createServer(options: ServerOptions = {}) {
     {
       capabilities: {
         prompts: { listChanged: false },
-        tools: {},
+        tools: { listChanged: false },
       },
     }
   );
@@ -206,24 +205,30 @@ function createServer(options: ServerOptions = {}) {
     const promptSlug = request.params.name;
     const args = request.params.arguments || {};
 
-    // Fetch all matching prompts and find by slug
-    const prompts = await db.prompt.findMany({
-      where: promptFilter,
-      select: {
-        id: true,
-        slug: true,
-        title: true,
-        description: true,
-        content: true,
-      },
-    });
+    const promptSelect = { id: true, slug: true, title: true, description: true, content: true };
 
-    // Find by slug field first, then by slugified title, then by id
-    const prompt = prompts.find((p) => 
-      p.slug === promptSlug || 
-      slugify(p.title) === promptSlug || 
-      p.id === promptSlug
-    );
+    // Try direct lookup by slug first
+    let prompt = await db.prompt.findFirst({
+      where: { ...promptFilter, slug: promptSlug },
+      select: promptSelect,
+    });
+    // Fallback: lookup by id
+    if (!prompt) {
+      prompt = await db.prompt.findFirst({
+        where: { ...promptFilter, id: promptSlug },
+        select: promptSelect,
+      });
+    }
+    // Fallback: lookup by slugified title (for prompts without stored slug)
+    // TODO: Backfill slug column for all existing prompts so this fallback can be removed
+    if (!prompt) {
+      const unslugged = await db.prompt.findMany({
+        where: { ...promptFilter, slug: null },
+        select: promptSelect,
+        take: 500,
+      });
+      prompt = unslugged.find((p) => slugify(p.title) === promptSlug) || null;
+    }
 
     if (!prompt) {
       throw new Error(`Prompt not found: ${promptSlug}`);
@@ -318,7 +323,6 @@ function createServer(options: ServerOptions = {}) {
             description: true,
             content: true,
             type: true,
-            structuredFormat: true,
             createdAt: true,
             author: { select: { username: true, name: true } },
             category: { select: { name: true, slug: true } },
@@ -332,9 +336,8 @@ function createServer(options: ServerOptions = {}) {
           slug: getPromptName(p),
           title: p.title,
           description: p.description,
-          content: p.content,
+          contentPreview: p.content.substring(0, 1000) + (p.content.length > 1000 ? '...' : ''),
           type: p.type,
-          structuredFormat: p.structuredFormat,
           author: p.author.name || p.author.username,
           category: p.category?.name || null,
           tags: p.tags.map((t) => t.tag.name),
@@ -346,7 +349,7 @@ function createServer(options: ServerOptions = {}) {
           content: [
             {
               type: "text" as const,
-              text: JSON.stringify({ query, count: results.length, prompts: results }, null, 2),
+              text: JSON.stringify({ query, count: results.length, prompts: results }),
             },
           ],
         };
@@ -368,9 +371,12 @@ function createServer(options: ServerOptions = {}) {
         "Get a prompt by ID and optionally fill in its variables. If the prompt contains template variables (like {{variable}}), you will be asked to provide values for them.",
       inputSchema: {
         id: z.string().describe("The ID of the prompt to retrieve"),
+        fill_variables: z.boolean().default(false).describe(
+          "If true and the prompt has template variables, triggers interactive variable filling. Default false — returns raw prompt with variable metadata."
+        ),
       },
     },
-    async ({ id }, extra) => {
+    async ({ id, fill_variables }, extra) => {
       try {
         const prompt = await db.prompt.findFirst({
           where: {
@@ -402,7 +408,7 @@ function createServer(options: ServerOptions = {}) {
 
         const variables = extractVariables(prompt.content);
 
-        if (variables.length > 0) {
+        if (fill_variables && variables.length > 0) {
           const properties: Record<string, PrimitiveSchemaDefinition> = {};
           const requiredFields: string[] = [];
           for (const variable of variables) {
@@ -436,73 +442,75 @@ function createServer(options: ServerOptions = {}) {
               },
               ElicitResultSchema
             );
-            
-            const timeoutPromise = new Promise<never>((_, reject) => 
-              setTimeout(() => reject(new Error("Elicitation timeout")), timeoutMs)
-            );
-            
-            const result = await Promise.race([elicitationPromise, timeoutPromise]);
 
-            if (result.action === "accept" && result.content) {
-              let filledContent = prompt.content;
-              for (const [key, value] of Object.entries(result.content)) {
-                // Replace ${key} or ${key:default} patterns
-                filledContent = filledContent.replace(
-                  new RegExp(`\\$\\{${key}(?::[^}]*)?\\}`, "g"),
-                  String(value)
-                );
+            let timeoutId: NodeJS.Timeout;
+            const timeoutPromise = new Promise<never>((_, reject) => {
+              timeoutId = setTimeout(() => reject(new Error("Elicitation timeout")), timeoutMs);
+            });
+
+            try {
+              const elicitResult = await Promise.race([elicitationPromise, timeoutPromise]);
+              clearTimeout(timeoutId!);
+
+              if (elicitResult.action === "accept" && elicitResult.content) {
+                let filledContent = prompt.content;
+                for (const [key, value] of Object.entries(elicitResult.content)) {
+                  // Skip keys that don't match valid variable name format (ReDoS prevention)
+                  if (!/^[a-zA-Z_][a-zA-Z0-9_\s]*$/.test(key)) {
+                    continue;
+                  }
+                  // Replace ${key} or ${key:default} patterns
+                  filledContent = filledContent.replace(
+                    new RegExp(`\\$\\{${key}(?::[^}]*)?\\}`, "g"),
+                    String(value)
+                  );
+                }
+
+                return {
+                  content: [
+                    {
+                      type: "text" as const,
+                      text: JSON.stringify({
+                          ...prompt,
+                          content: filledContent,
+                          originalContent: prompt.content,
+                          variables: elicitResult.content,
+                          author: prompt.author.name || prompt.author.username,
+                          category: prompt.category?.name || null,
+                          tags: prompt.tags.map((t) => t.tag.name),
+                          link: `https://prompts.chat/prompts/${prompt.id}_${getPromptName(prompt)}`,
+                        }),
+                    },
+                  ],
+                };
+              } else {
+                return {
+                  content: [
+                    {
+                      type: "text" as const,
+                      text: JSON.stringify({
+                          ...prompt,
+                          variablesRequired: variables,
+                          message: "User declined to provide variable values. Returning original prompt.",
+                          author: prompt.author.name || prompt.author.username,
+                          category: prompt.category?.name || null,
+                          tags: prompt.tags.map((t) => t.tag.name),
+                          link: `https://prompts.chat/prompts/${prompt.id}_${getPromptName(prompt)}`,
+                        }),
+                    },
+                  ],
+                };
               }
-
-              return {
-                content: [
-                  {
-                    type: "text" as const,
-                    text: JSON.stringify(
-                      {
-                        ...prompt,
-                        content: filledContent,
-                        originalContent: prompt.content,
-                        variables: result.content,
-                        author: prompt.author.name || prompt.author.username,
-                        category: prompt.category?.name || null,
-                        tags: prompt.tags.map((t) => t.tag.name),
-                        link: `https://prompts.chat/prompts/${prompt.id}_${getPromptName(prompt)}`,
-                      },
-                      null,
-                      2
-                    ),
-                  },
-                ],
-              };
-            } else {
-              return {
-                content: [
-                  {
-                    type: "text" as const,
-                    text: JSON.stringify(
-                      {
-                        ...prompt,
-                        variablesRequired: variables,
-                        message: "User declined to provide variable values. Returning original prompt.",
-                        author: prompt.author.name || prompt.author.username,
-                        category: prompt.category?.name || null,
-                        tags: prompt.tags.map((t) => t.tag.name),
-                        link: `https://prompts.chat/prompts/${prompt.id}_${getPromptName(prompt)}`,
-                      },
-                      null,
-                      2
-                    ),
-                  },
-                ],
-              };
+            } catch (e) {
+              clearTimeout(timeoutId!);
+              throw e;
             }
           } catch {
             return {
               content: [
                 {
                   type: "text" as const,
-                  text: JSON.stringify(
-                    {
+                  text: JSON.stringify({
                       ...prompt,
                       variablesRequired: variables,
                       message: "Elicitation not supported. Variables need to be filled manually.",
@@ -510,31 +518,41 @@ function createServer(options: ServerOptions = {}) {
                       category: prompt.category?.name || null,
                       tags: prompt.tags.map((t) => t.tag.name),
                       link: `https://prompts.chat/prompts/${prompt.id}_${getPromptName(prompt)}`,
-                    },
-                    null,
-                    2
-                  ),
+                    }),
                 },
               ],
             };
           }
+        } else if (variables.length > 0) {
+          // Return prompt with variable metadata, no timeout
+          return {
+            content: [{ type: "text" as const, text: JSON.stringify({
+              id: prompt.id,
+              slug: getPromptName(prompt),
+              title: prompt.title,
+              description: prompt.description,
+              content: prompt.content,
+              type: prompt.type,
+              author: prompt.author.name || prompt.author.username,
+              category: prompt.category?.name || null,
+              tags: prompt.tags.map((t) => t.tag.name),
+              variables: variables.map(v => ({ name: v.name, defaultValue: v.defaultValue })),
+              hint: "This prompt has template variables. Call get_prompt with fill_variables=true to fill them interactively.",
+            }) }],
+          };
         }
 
         return {
           content: [
             {
               type: "text" as const,
-              text: JSON.stringify(
-                {
+              text: JSON.stringify({
                   ...prompt,
                   author: prompt.author.name || prompt.author.username,
                   category: prompt.category?.name || null,
                   tags: prompt.tags.map((t) => t.tag.name),
                   link: `https://prompts.chat/prompts/${prompt.id}_${getPromptName(prompt)}`,
-                },
-                null,
-                2
-              ),
+                }),
             },
           ],
         };
@@ -639,8 +657,7 @@ function createServer(options: ServerOptions = {}) {
           content: [
             {
               type: "text" as const,
-              text: JSON.stringify(
-                {
+              text: JSON.stringify({
                   success: true,
                   prompt: {
                     ...prompt,
@@ -648,10 +665,7 @@ function createServer(options: ServerOptions = {}) {
                     category: prompt.category?.name || null,
                     link: prompt.isPrivate ? null : `https://prompts.chat/prompts/${prompt.id}_${getPromptName(prompt)}`,
                   },
-                },
-                null,
-                2
-              ),
+                }),
             },
           ],
         };
@@ -693,13 +707,14 @@ function createServer(options: ServerOptions = {}) {
       }
 
       try {
+        const { improvePrompt } = await import("@/lib/ai/improve-prompt");
         const result = await improvePrompt({ prompt, outputType, outputFormat });
 
         return {
           content: [
             {
               type: "text" as const,
-              text: JSON.stringify(result, null, 2),
+              text: JSON.stringify(result),
             },
           ],
         };
@@ -810,8 +825,7 @@ function createServer(options: ServerOptions = {}) {
           content: [
             {
               type: "text" as const,
-              text: JSON.stringify(
-                {
+              text: JSON.stringify({
                   success: true,
                   skill: {
                     ...skill,
@@ -820,10 +834,7 @@ function createServer(options: ServerOptions = {}) {
                     category: skill.category?.name || null,
                     link: skill.isPrivate ? null : `https://prompts.chat/prompts/${skill.id}_${getPromptName(skill)}`,
                   },
-                },
-                null,
-                2
-              ),
+                }),
             },
           ],
         };
@@ -910,17 +921,13 @@ function createServer(options: ServerOptions = {}) {
           content: [
             {
               type: "text" as const,
-              text: JSON.stringify(
-                {
+              text: JSON.stringify({
                   success: true,
                   message: `File '${filename}' added to skill`,
                   skillId,
                   files: files.map(f => f.filename),
                   link: `https://prompts.chat/prompts/${skill.id}_${getPromptName(skill)}`,
-                },
-                null,
-                2
-              ),
+                }),
             },
           ],
         };
@@ -1000,17 +1007,13 @@ function createServer(options: ServerOptions = {}) {
           content: [
             {
               type: "text" as const,
-              text: JSON.stringify(
-                {
+              text: JSON.stringify({
                   success: true,
                   message: `File '${filename}' updated in skill`,
                   skillId,
                   files: files.map(f => f.filename),
                   link: `https://prompts.chat/prompts/${skill.id}_${getPromptName(skill)}`,
-                },
-                null,
-                2
-              ),
+                }),
             },
           ],
         };
@@ -1096,17 +1099,13 @@ function createServer(options: ServerOptions = {}) {
           content: [
             {
               type: "text" as const,
-              text: JSON.stringify(
-                {
+              text: JSON.stringify({
                   success: true,
                   message: `File '${filename}' removed from skill`,
                   skillId,
                   files: updatedFiles.map(f => f.filename),
                   link: `https://prompts.chat/prompts/${skill.id}_${getPromptName(skill)}`,
-                },
-                null,
-                2
-              ),
+                }),
             },
           ],
         };
@@ -1181,8 +1180,7 @@ function createServer(options: ServerOptions = {}) {
           content: [
             {
               type: "text" as const,
-              text: JSON.stringify(
-                {
+              text: JSON.stringify({
                   id: skill.id,
                   slug: getPromptName(skill),
                   title: skill.title,
@@ -1199,10 +1197,7 @@ function createServer(options: ServerOptions = {}) {
                     content: f.content,
                   })),
                   link: skill.isPrivate ? null : `https://prompts.chat/prompts/${skill.id}_${getPromptName(skill)}`,
-                },
-                null,
-                2
-              ),
+                }),
             },
           ],
         };
@@ -1294,7 +1289,8 @@ function createServer(options: ServerOptions = {}) {
             category: s.category?.name || null,
             tags: s.tags.map((t) => t.tag.name),
             votes: s._count.votes,
-            files: files.map(f => f.filename),
+            fileNames: files.map(f => f.filename),
+            fileCount: files.length,
             createdAt: s.createdAt.toISOString(),
             link: `https://prompts.chat/prompts/${s.id}_${getPromptName(s)}`,
           };
@@ -1304,7 +1300,7 @@ function createServer(options: ServerOptions = {}) {
           content: [
             {
               type: "text" as const,
-              text: JSON.stringify({ query, count: results.length, skills: results }, null, 2),
+              text: JSON.stringify({ query, count: results.length, skills: results }),
             },
           ],
         };
@@ -1321,10 +1317,27 @@ function createServer(options: ServerOptions = {}) {
   return server;
 }
 
+class PayloadTooLargeError extends Error {
+  constructor() {
+    super("Body too large");
+    this.name = "PayloadTooLargeError";
+  }
+}
+
 async function parseBody(req: NextApiRequest): Promise<unknown> {
+  const MAX_BODY_SIZE = 1024 * 1024; // 1MB
   return new Promise((resolve, reject) => {
     let body = "";
-    req.on("data", (chunk) => (body += chunk));
+    let bytesReceived = 0;
+    req.on("data", (chunk: Buffer | string) => {
+      bytesReceived += Buffer.isBuffer(chunk) ? chunk.length : Buffer.byteLength(chunk);
+      body += chunk;
+      if (bytesReceived > MAX_BODY_SIZE) {
+        req.destroy();
+        reject(new PayloadTooLargeError());
+        return;
+      }
+    });
     req.on("end", () => {
       try {
         resolve(JSON.parse(body));
@@ -1342,6 +1355,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   if (req.method === "GET") {
+    res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400');
     return res.status(200).json({
       name: "prompts-chat",
       version: "1.0.0",
@@ -1458,11 +1472,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } catch (error) {
     console.error("MCP error:", error);
     if (!res.headersSent) {
-      res.status(500).json({
-        jsonrpc: "2.0",
-        error: { code: -32603, message: "Internal server error" },
-        id: null,
-      });
+      if (error instanceof PayloadTooLargeError) {
+        res.status(413).json({
+          jsonrpc: "2.0",
+          error: { code: -32600, message: "Payload too large. Maximum body size is 1MB." },
+          id: null,
+        });
+      } else {
+        res.status(500).json({
+          jsonrpc: "2.0",
+          error: { code: -32603, message: "Internal server error" },
+          id: null,
+        });
+      }
     }
   }
 }

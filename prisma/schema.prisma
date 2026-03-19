@@ -139,6 +139,8 @@ model Prompt {
   @@index([isPrivate])
   @@index([isFeatured])
   @@index([isUnlisted])
+  @@index([slug])
+  @@index([isPrivate, isUnlisted, deletedAt, createdAt(sort: Desc)])
   @@map("prompts")
 }
 
