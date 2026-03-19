@@ -1311,15 +1311,24 @@ function createServer(options: ServerOptions = {}) {
   return server;
 }
 
+class PayloadTooLargeError extends Error {
+  constructor() {
+    super("Body too large");
+    this.name = "PayloadTooLargeError";
+  }
+}
+
 async function parseBody(req: NextApiRequest): Promise<unknown> {
   const MAX_BODY_SIZE = 1024 * 1024; // 1MB
   return new Promise((resolve, reject) => {
     let body = "";
-    req.on("data", (chunk) => {
+    let bytesReceived = 0;
+    req.on("data", (chunk: Buffer | string) => {
+      bytesReceived += Buffer.isBuffer(chunk) ? chunk.length : Buffer.byteLength(chunk);
       body += chunk;
-      if (body.length > MAX_BODY_SIZE) {
+      if (bytesReceived > MAX_BODY_SIZE) {
         req.destroy();
-        reject(new Error("Body too large"));
+        reject(new PayloadTooLargeError());
         return;
       }
     });
@@ -1457,11 +1466,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } catch (error) {
     console.error("MCP error:", error);
     if (!res.headersSent) {
-      res.status(500).json({
-        jsonrpc: "2.0",
-        error: { code: -32603, message: "Internal server error" },
-        id: null,
-      });
+      if (error instanceof PayloadTooLargeError) {
+        res.status(413).json({
+          jsonrpc: "2.0",
+          error: { code: -32600, message: "Payload too large. Maximum body size is 1MB." },
+          id: null,
+        });
+      } else {
+        res.status(500).json({
+          jsonrpc: "2.0",
+          error: { code: -32603, message: "Internal server error" },
+          id: null,
+        });
+      }
     }
   }
 }
