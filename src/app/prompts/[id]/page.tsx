@@ -704,7 +704,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
           )}
 
           {/* Ad Placement */}
-          {process.env.EZOIC_ENABLED === "true" && <EzoicPlaceholder id={201} />}
+          {process.env.NEXT_PUBLIC_EZOIC_ENABLED === "true" && <EzoicPlaceholder id={201} />}
         </TabsContent>
 
         <TabsContent value="versions" className="mt-0">

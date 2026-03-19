@@ -159,7 +159,7 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
       )}
 
       {/* Ad Placement - after featured */}
-      {isHomepage && process.env.EZOIC_ENABLED === "true" && (
+      {isHomepage && process.env.NEXT_PUBLIC_EZOIC_ENABLED === "true" && (
         <section className="py-8 border-b">
           <div className="container max-w-2xl">
             <EzoicPlaceholder id={202} />
@@ -218,7 +218,7 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
       )}
 
       {/* Ad Placement - after latest */}
-      {isHomepage && process.env.EZOIC_ENABLED === "true" && (
+      {isHomepage && process.env.NEXT_PUBLIC_EZOIC_ENABLED === "true" && (
         <section className="py-8 border-b">
           <div className="container max-w-2xl">
             <EzoicPlaceholder id={203} />

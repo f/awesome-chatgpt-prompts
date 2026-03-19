@@ -23,7 +23,7 @@ export const ezoicWidget: WidgetPlugin = {
         repeatEvery: 12,
         maxCount: 20,
       },
-      shouldInject: () => process.env.EZOIC_ENABLED === "true",
+      shouldInject: () => process.env.NEXT_PUBLIC_EZOIC_ENABLED === "true",
       render: (instanceIndex: number) => (
         <EzoicPlaceholder id={EZOIC_FEED_BASE_ID + instanceIndex} />
       ),

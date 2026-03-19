@@ -97,7 +97,7 @@ export default function PrivacyPage() {
           </p>
         </section>
 
-        {process.env.EZOIC_ENABLED === "true" && (
+        {process.env.NEXT_PUBLIC_EZOIC_ENABLED === "true" && (
           <section className="space-y-3">
             <h2 className="text-lg font-semibold">Advertising & Ezoic</h2>
             <p className="text-muted-foreground">

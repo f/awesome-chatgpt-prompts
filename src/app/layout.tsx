@@ -190,7 +190,7 @@ export default async function RootLayout({
         {process.env.GOOGLE_ANALYTICS_ID && (
           <Analytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
         )}
-        {process.env.EZOIC_ENABLED === "true" && <EzoicAds />}
+        {process.env.NEXT_PUBLIC_EZOIC_ENABLED === "true" && <EzoicAds />}
         <Providers locale={locale} messages={messages} theme={config.theme} branding={{ ...config.branding, useCloneBranding: config.homepage?.useCloneBranding }}>
           {isEmbedRoute || isKidsRoute ? (
             children
