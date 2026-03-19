@@ -313,6 +313,24 @@ export default async function HomePage() {
                     />
                   </BuiltWithLink>
                   <span>by Cognition</span>
+                  <span className="mx-0.5">·</span>
+                  <span>hosted on</span>
+                  <Link href="https://vercel.com/oss" target="_blank" rel="noopener noreferrer" className="inline-flex items-center opacity-60 hover:opacity-100 transition-opacity">
+                    <Image
+                      src="/sponsors/vercel-oss.svg"
+                      alt="Vercel OSS Program"
+                      width={240}
+                      height={24}
+                      className="h-4.5 w-auto dark:hidden"
+                    />
+                    <Image
+                      src="/sponsors/vercel-oss-dark.svg"
+                      alt="Vercel OSS Program"
+                      width={240}
+                      height={24}
+                      className="h-4.5 w-auto hidden dark:block"
+                    />
+                  </Link>
                 </span>
               </div>
             )}
