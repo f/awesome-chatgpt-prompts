@@ -13,6 +13,7 @@ const CONTENT_PREVIEW_LENGTH = 500;
 const DEFAULT_LIMIT = 50;
 const MAX_LIMIT = 100;
 
+export const dynamic = "force-dynamic";
 export const revalidate = 3600;
 
 function generateETag(count: number, latestUpdatedAt: Date | null): string {

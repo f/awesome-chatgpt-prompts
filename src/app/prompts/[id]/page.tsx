@@ -32,7 +32,7 @@ import { AddToCollectionButton } from "@/components/prompts/add-to-collection-bu
 import { getConfig } from "@/lib/config";
 import { StructuredData } from "@/components/seo/structured-data";
 import { AI_MODELS } from "@/lib/works-best-with";
-import { EzoicPlaceholder } from "@/components/ads/ezoic-placeholder";
+import { EzoicAd } from "@/components/ads/ezoic-ad";
 
 interface PromptPageProps {
   params: Promise<{ id: string }>;
@@ -704,7 +704,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
           )}
 
           {/* Ad Placement */}
-          {process.env.NEXT_PUBLIC_EZOIC_ENABLED === "true" && <EzoicPlaceholder id={201} />}
+          {process.env.NEXT_PUBLIC_EZOIC_ENABLED === "true" && <EzoicAd id={201} />}
         </TabsContent>
 
         <TabsContent value="versions" className="mt-0">

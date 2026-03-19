@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Masonry } from "@/components/ui/masonry";
 import { PromptCard } from "@/components/prompts/prompt-card";
-import { EzoicPlaceholder } from "@/components/ads/ezoic-placeholder";
+import { EzoicAd } from "@/components/ads/ezoic-ad";
 
 interface DiscoveryPromptsProps {
   isHomepage?: boolean;
@@ -162,7 +162,7 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
       {isHomepage && process.env.NEXT_PUBLIC_EZOIC_ENABLED === "true" && (
         <section className="py-8 border-b">
           <div className="container max-w-2xl">
-            <EzoicPlaceholder id={202} />
+            <EzoicAd id={202} />
           </div>
         </section>
       )}
@@ -221,7 +221,7 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
       {isHomepage && process.env.NEXT_PUBLIC_EZOIC_ENABLED === "true" && (
         <section className="py-8 border-b">
           <div className="container max-w-2xl">
-            <EzoicPlaceholder id={203} />
+            <EzoicAd id={203} />
           </div>
         </section>
       )}
