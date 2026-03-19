@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { runEzoic } from "@/lib/ezoic";
 
@@ -10,18 +10,15 @@ interface EzoicPlaceholderProps {
 
 /**
  * Manages the lifecycle of a single Ezoic ad slot.
- * Renders the placeholder only after mount so the DOM element exists
- * when showAds() is called. Destroys the placeholder on unmount.
+ * The placeholder div is always in the DOM so Ezoic can find it
+ * when showAds() runs. Destroys the placeholder on unmount.
  *
  * @see https://docs.ezoic.com/docs/ezoicadsadvanced/nextjs/
  */
 export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
   const t = useTranslations("common");
-  const [isRendered, setIsRendered] = useState(false);
 
   useEffect(() => {
-    setIsRendered(true);
-
     runEzoic(() => {
       window.ezstandalone?.showAds(id);
     });
@@ -40,7 +37,7 @@ export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
           {t("ad")}
         </span>
       </div>
-      {isRendered && <div id={`ezoic-pub-ad-placeholder-${id}`} />}
+      <div id={`ezoic-pub-ad-placeholder-${id}`} />
     </div>
   );
 }
