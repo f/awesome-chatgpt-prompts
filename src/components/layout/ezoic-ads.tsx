@@ -25,10 +25,15 @@ export function EzoicAds() {
   useEffect(() => {
     runEzoic(() => {
       window.ezstandalone?.destroyPlaceholders();
-      requestAnimationFrame(() => {
+    });
+    // Delay the global showAds() to give React time to render all
+    // placeholder divs into the DOM after route change.
+    const timer = setTimeout(() => {
+      runEzoic(() => {
         window.ezstandalone?.showAds();
       });
-    });
+    }, 100);
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   return (
@@ -47,18 +52,20 @@ export function EzoicAds() {
         data-cfasync="false"
       />
 
+      {/* Ezoic init — must run before sa.min.js so the cmd queue exists */}
+      <Script id="ezoic-init" strategy="beforeInteractive">
+        {`
+          window.ezstandalone = window.ezstandalone || {};
+          window.ezstandalone.cmd = window.ezstandalone.cmd || [];
+        `}
+      </Script>
+
       {/* Ezoic Header Script */}
       <Script
         id="ezoic-sa"
         src="//www.ezojs.com/ezoic/sa.min.js"
         strategy="afterInteractive"
       />
-      <Script id="ezoic-init" strategy="afterInteractive">
-        {`
-          window.ezstandalone = window.ezstandalone || {};
-          window.ezstandalone.cmd = window.ezstandalone.cmd || [];
-        `}
-      </Script>
 
       {/* Ezoic Analytics */}
       <Script

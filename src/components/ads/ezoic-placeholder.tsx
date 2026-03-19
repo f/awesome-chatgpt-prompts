@@ -10,15 +10,16 @@ interface EzoicPlaceholderProps {
 
 export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
   const t = useTranslations("common");
-  const [isRendered, setIsRendered] = useState(false);
   const [hasAdContent, setHasAdContent] = useState(true);
   const placeholderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Per Ezoic Next.js docs: render the placeholder div first (via state),
-    // then call showAds(id). The global EzoicRouteHandler's showAds() call
-    // acts as a safety net to catch all placeholders.
-    setIsRendered(true);
+    // The placeholder div is always rendered (no conditional gating),
+    // so it's in the DOM when this effect runs. Call showAds(id) to
+    // tell Ezoic to fill it. The global EzoicAds route handler's
+    // showAds() call acts as an additional safety net.
+    const el = placeholderRef.current;
+
     runEzoic(() => {
       window.ezstandalone?.showAds(id);
     });
@@ -26,7 +27,6 @@ export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
     // Observe the placeholder for ad content injection by Ezoic.
     // If nothing is injected after a timeout, hide the container
     // to avoid showing an empty white card.
-    const el = document.getElementById(`ezoic-pub-ad-placeholder-${id}`);
     let observer: MutationObserver | undefined;
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
@@ -69,7 +69,7 @@ export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
         </span>
       </div>
       <div className="ezoic-ad-content overflow-hidden flex items-center justify-center">
-        {isRendered && <div id={`ezoic-pub-ad-placeholder-${id}`} ref={placeholderRef} />}
+        <div id={`ezoic-pub-ad-placeholder-${id}`} ref={placeholderRef} />
       </div>
     </div>
   );
