@@ -20,14 +20,19 @@ export function EzoicAds() {
   const pathname = usePathname();
   const isFirstRender = useRef(true);
 
-  // Re-trigger ads on SPA route changes
-  // Per Ezoic docs: destroyPlaceholders first, then showAds in next frame.
-  // Skip the first render to avoid racing with individual EzoicPlaceholder
-  // components that call showAds(id) on mount.
+  // Re-trigger ads on route changes.
+  // First render: call global showAds() as a safety net (placeholder divs are in SSR HTML).
+  // Subsequent renders (SPA navigation): destroyPlaceholders first, then showAds.
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
-      return;
+      // On initial page load, give placeholders time to mount, then trigger global showAds
+      const timeoutId = setTimeout(() => {
+        runEzoic(() => {
+          window.ezstandalone?.showAds();
+        });
+      }, 500);
+      return () => clearTimeout(timeoutId);
     }
     runEzoic(() => {
       window.ezstandalone?.destroyPlaceholders();

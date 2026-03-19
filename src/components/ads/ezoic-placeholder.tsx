@@ -10,17 +10,13 @@ interface EzoicPlaceholderProps {
 
 export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
   const t = useTranslations("common");
-  const [isRendered, setIsRendered] = useState(false);
   const [hasAdContent, setHasAdContent] = useState(true);
   const placeholderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Render the placeholder div first, then tell Ezoic to fill it.
-    // This ensures the DOM element exists before showAds is called.
-    setIsRendered(true);
-
-    // Use requestAnimationFrame to guarantee the placeholder div
-    // is in the DOM before Ezoic tries to find it.
+    // The placeholder div is always in the DOM (including SSR).
+    // Use requestAnimationFrame to ensure the DOM is fully committed
+    // before telling Ezoic to fill it.
     const rafId = requestAnimationFrame(() => {
       runEzoic(() => {
         window.ezstandalone?.showAds(id);
@@ -74,7 +70,7 @@ export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
         </span>
       </div>
       <div className="ezoic-ad-content overflow-hidden flex items-center justify-center">
-        {isRendered && <div id={`ezoic-pub-ad-placeholder-${id}`} ref={placeholderRef} />}
+        <div id={`ezoic-pub-ad-placeholder-${id}`} ref={placeholderRef} />
       </div>
     </div>
   );
