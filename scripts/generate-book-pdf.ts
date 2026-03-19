@@ -64,6 +64,13 @@ const LOCALE_FONT_STACKS: Partial<Record<string, Partial<FontStacks>>> = {
   },
 };
 
+/**
+ * Get the font stacks for a specific locale.
+ * Falls back to default font stacks if no locale-specific override exists.
+ * 
+ * @param locale - The locale string (e.g., 'en', 'zh', 'ja')
+ * @returns The FontStacks object containing serif, sans, and mono font families.
+ */
 function getFontStacks(locale: string): FontStacks {
   const overrides = LOCALE_FONT_STACKS[locale];
   return {
@@ -568,7 +575,7 @@ function transformMdxForPdf(content: string, locale: string, localeData?: Locale
     const blanks = extractArrayProp(match, 'blanks');
 
     // Replace {{id}} in template with labeled blanks
-    let rendered = template.replace(/\{\{(\w+)\}\}/g, (_, id) => {
+    const rendered = template.replace(/\{\{(\w+)\}\}/g, (_, id) => {
       const blank = blanks.find(b => b.id === id);
       const hint = blank?.correctAnswers || blank?.hint || '';
       if (hint) {
