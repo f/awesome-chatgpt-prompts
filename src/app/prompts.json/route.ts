@@ -142,7 +142,8 @@ export async function GET(request: NextRequest) {
       queryOptions.take = limit;
     }
 
-    const prompts = await db.prompt.findMany(queryOptions);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const prompts: any[] = await db.prompt.findMany(queryOptions);
 
     const includeFullContent = fullContent;
 
@@ -189,14 +190,14 @@ export async function GET(request: NextRequest) {
           identifier: getUserIdentifier(prompt.author),
           verified: prompt.author.verified,
         },
-        contributors: prompt.contributors.map((c) => ({
+        contributors: prompt.contributors.map((c: any) => ({
           username: c.username,
           name: c.name,
           avatar: c.avatar,
           identifier: getUserIdentifier(c),
           verified: c.verified,
         })),
-        tags: prompt.tags.map((pt) => ({
+        tags: prompt.tags.map((pt: any) => ({
           id: pt.tag.id,
           name: pt.tag.name,
           slug: pt.tag.slug,
