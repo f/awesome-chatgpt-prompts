@@ -1,0 +1,21 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"main": ".open-next/worker.js",
+	"name": "prompts-chat",
+	// Set compatibility date
+	"compatibility_date": "2026-03-18",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "2c6ef99cbde84baaac5edacc418eee72",
+			"localConnectionString": "postgresql://fka:postgres@localhost:5433/prompts_chat?schema=public"
+		}
+	]
+}

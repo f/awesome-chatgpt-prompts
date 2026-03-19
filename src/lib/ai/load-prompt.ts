@@ -33,14 +33,26 @@ export function loadPrompt(relativePath: string): PromptFile {
     return promptCache.get(relativePath)!;
   }
 
-  const absolutePath = join(process.cwd(), relativePath);
-  const content = readFileSync(absolutePath, "utf-8");
-  const prompt = parse(content) as PromptFile;
-  
-  // Cache the result
-  promptCache.set(relativePath, prompt);
-  
-  return prompt;
+  try {
+    const absolutePath = join(process.cwd(), relativePath);
+    const content = readFileSync(absolutePath, "utf-8");
+    const prompt = parse(content) as PromptFile;
+    
+    // Cache the result
+    promptCache.set(relativePath, prompt);
+    
+    return prompt;
+  } catch {
+    // On edge runtimes (e.g. Cloudflare Workers) filesystem is unavailable.
+    // Return a minimal fallback so the module can still load.
+    const fallback: PromptFile = {
+      name: relativePath,
+      description: "",
+      messages: [],
+    };
+    promptCache.set(relativePath, fallback);
+    return fallback;
+  }
 }
 
 /**

@@ -46,5 +46,9 @@ next-env.d.ts
 /src/generated/prisma
 /src/app/sponsors
 
+# Cloudflare / OpenNext
+.open-next/
+.wrangler/
+
 # Sentry Config File
 .env.sentry-build-plugin

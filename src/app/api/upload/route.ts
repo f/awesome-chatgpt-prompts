@@ -1,17 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { getStoragePlugin } from "@/lib/plugins/registry";
-import sharp from "sharp";
-
 const MAX_IMAGE_SIZE = 4 * 1024 * 1024; // 4MB for images
 const MAX_VIDEO_SIZE = 4 * 1024 * 1024; // 4MB for videos (Vercel serverless limit)
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp"];
 const ALLOWED_VIDEO_TYPES = ["video/mp4"];
 
 async function compressToJpg(buffer: Buffer): Promise<Buffer> {
-  return await sharp(buffer)
-    .jpeg({ quality: 90, mozjpeg: true })
-    .toBuffer();
+  try {
+    // Use turbopackIgnore to prevent Turbopack from tracing this native module
+    // sharp is unavailable on Cloudflare Workers and will gracefully fallback
+    const sharp = (await import(/* turbopackIgnore: true */ "sharp")).default;
+    return await sharp(buffer)
+      .jpeg({ quality: 90, mozjpeg: true })
+      .toBuffer();
+  } catch {
+    // sharp is not available (e.g. on Cloudflare Workers), return buffer as-is
+    return buffer;
+  }
 }
 
 export async function POST(request: NextRequest) {
