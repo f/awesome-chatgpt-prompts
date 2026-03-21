@@ -146,23 +146,27 @@ if [ ! -f "$SEED_MARKER" ]; then
     fi
 fi
 
-# Wait for supervisord socket to be ready
+# Wait for supervisord to be ready
 echo "▶ Waiting for supervisord..."
 for i in $(seq 1 30); do
-    if supervisorctl -c /etc/supervisor/conf.d/supervisord.conf status >/dev/null 2>&1; then
+    if kill -0 $SUPERVISOR_PID 2>/dev/null && [ -S /var/run/supervisor.sock ]; then
         echo "✓ Supervisord is ready"
         break
     fi
+    if ! kill -0 $SUPERVISOR_PID 2>/dev/null; then
+        echo "✗ Supervisord process died"
+        exit 1
+    fi
     if [ $i -eq 30 ]; then
-        echo "✗ Supervisord failed to start"
+        echo "✗ Supervisord socket not available after 30s"
         exit 1
     fi
     sleep 1
 done
 
-# Start Next.js
+# Start Next.js via supervisorctl
 echo "▶ Starting Next.js..."
-supervisorctl -c /etc/supervisor/conf.d/supervisord.conf start nextjs
+supervisorctl start nextjs
 
 echo ""
 echo "╔═══════════════════════════════════════════════════════════════╗"
