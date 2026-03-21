@@ -2,8 +2,9 @@ import { EzoicPlaceholder } from "@/components/ads/ezoic-placeholder";
 import type { WidgetPlugin } from "./types";
 
 // Placeholder IDs must match those created in the Ezoic dashboard.
-// Using a range of IDs to support repeat mode with unique placeholders.
-const EZOIC_FEED_PLACEHOLDER_ID = 101;
+// Each repeated instance uses a unique ID (101, 102, 103, ...) to avoid
+// "unpredictable ad behaviour" per Ezoic infinite scroll docs.
+const EZOIC_FEED_BASE_ID = 101;
 
 export const ezoicWidget: WidgetPlugin = {
   id: "ezoic",
@@ -20,10 +21,12 @@ export const ezoicWidget: WidgetPlugin = {
         position: 4,
         mode: "repeat",
         repeatEvery: 12,
-        maxCount: 5,
+        maxCount: 20,
       },
-      shouldInject: () => true,
-      render: () => <EzoicPlaceholder id={EZOIC_FEED_PLACEHOLDER_ID} />,
+      shouldInject: () => process.env.NEXT_PUBLIC_EZOIC_ENABLED === "true",
+      render: (instanceIndex: number) => (
+        <EzoicPlaceholder id={EZOIC_FEED_BASE_ID + instanceIndex} />
+      ),
     },
   ],
 };

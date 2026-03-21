@@ -802,3 +802,73 @@
   padding: 0;
 }
 
+/* Ezoic privacy policy container styling */
+#ezoic-privacy-policy-container {
+  margin-top: 1rem;
+  color: var(--muted-foreground);
+}
+
+#ezoic-privacy-policy-container h2,
+#ezoic-privacy-policy-container h3,
+#ezoic-privacy-policy-container h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--foreground);
+}
+
+#ezoic-privacy-policy-container p {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+#ezoic-privacy-policy-container a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+#ezoic-privacy-policy-container a:hover {
+  opacity: 0.8;
+}
+
+#ezoic-privacy-policy-container ul,
+#ezoic-privacy-policy-container ol {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  color: var(--muted-foreground);
+}
+
+#ezoic-privacy-policy-container li {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+#ezoic-privacy-policy-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+}
+
+#ezoic-privacy-policy-container th,
+#ezoic-privacy-policy-container td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+#ezoic-privacy-policy-container th {
+  background: var(--muted);
+  font-weight: 600;
+}
+
+/* Ezoic ad content: center and constrain injected ad creatives */
+.ezoic-ad-content * {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}

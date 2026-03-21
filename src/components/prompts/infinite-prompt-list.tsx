@@ -60,8 +60,14 @@ export function InfinitePromptList({
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(initialPrompts.length < initialTotal);
   const [hasError, setHasError] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const loaderRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
+
+  // Set mounted state after hydration
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Reset when new data arrives from server
   useEffect(() => {
@@ -187,7 +193,8 @@ export function InfinitePromptList({
   }
 
   // Inject widgets into the prompt list (widgets decide their own injection logic)
-  const itemsToRender = injectWidgets(prompts, { filters });
+  // Only inject after mount to prevent hydration mismatch
+  const itemsToRender = isMounted ? injectWidgets(prompts, { filters }) : prompts;
 
   return (
     <div className="space-y-4">

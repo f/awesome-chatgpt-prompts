@@ -83,7 +83,7 @@ export default async function HomePage() {
                 playsInline
                 className="absolute top-1/2 -translate-y-1/2 end-0 w-full h-auto opacity-30 dark:opacity-15 dark:invert"
               >
-                <source src="/animation_compressed.mp4" type="video/mp4" />
+                <source src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/animation_compressed.mp4" type="video/mp4" />
               </video>
             </div>
             {/* Animated input overlay and clients */}
@@ -313,6 +313,24 @@ export default async function HomePage() {
                     />
                   </BuiltWithLink>
                   <span>by Cognition</span>
+                  <span className="mx-0.5">·</span>
+                  <span>hosted on</span>
+                  <Link href="https://vercel.com/oss" target="_blank" rel="noopener noreferrer" className="inline-flex items-center opacity-60 hover:opacity-100 transition-opacity">
+                    <Image
+                      src="/sponsors/vercel-oss.svg"
+                      alt="Vercel OSS Program"
+                      width={240}
+                      height={24}
+                      className="h-4.5 w-auto dark:hidden"
+                    />
+                    <Image
+                      src="/sponsors/vercel-oss-dark.svg"
+                      alt="Vercel OSS Program"
+                      width={240}
+                      height={24}
+                      className="h-4.5 w-auto hidden dark:block"
+                    />
+                  </Link>
                 </span>
               </div>
             )}

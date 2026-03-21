@@ -1,4 +1,4 @@
-import type { WidgetPlugin, WidgetPrompt, WidgetContext } from "./types";
+import type { WidgetPlugin, WidgetPrompt, WidgetContext, InjectedWidget } from "./types";
 import { coderabbitWidget } from "./coderabbit";
 import { bookWidget } from "./book";
 import { textreamWidget } from "./textream";
@@ -13,7 +13,7 @@ const widgetPlugins: WidgetPlugin[] = [
   bookWidget,
   textreamWidget,
   commandcodeWidget,
-  ...(process.env.EZOIC_ENABLED === "true" ? [ezoicWidget] : []),
+  ezoicWidget,
 ];
 
 /**
@@ -96,7 +96,7 @@ function getWidgetInsertionPositions(
 export function injectWidgets<T>(
   items: T[],
   context: WidgetContext = {}
-): (T | (WidgetPrompt & { isWidget: true }))[] {
+): (T | InjectedWidget)[] {
   const widgetPrompts = getWidgetPrompts();
   
   if (widgetPrompts.length === 0 || items.length === 0) {
@@ -116,26 +116,29 @@ export function injectWidgets<T>(
     return items;
   }
 
-  // Collect all insertions: { position, widget }
-  const insertions: { position: number; widget: WidgetPrompt }[] = [];
+  // Collect all insertions: { position, widget, instanceIndex }
+  const insertions: { position: number; widget: WidgetPrompt; instanceIndex: number }[] = [];
   
   for (const widget of widgetsToInject) {
     const positions = getWidgetInsertionPositions(widget, items.length);
-    for (const position of positions) {
-      insertions.push({ position, widget });
+    for (let i = 0; i < positions.length; i++) {
+      insertions.push({ position: positions[i], widget, instanceIndex: i });
     }
   }
   
   // Sort insertions by position (ascending) for correct offset calculation
   insertions.sort((a, b) => a.position - b.position);
 
-  const result: (T | (WidgetPrompt & { isWidget: true }))[] = [...items];
+  const result: (T | InjectedWidget)[] = [...items];
   
   // Inject widgets at their calculated positions
   let offset = 0;
-  for (const { position, widget } of insertions) {
-    const insertAt = Math.min(position + offset, result.length);
-    result.splice(insertAt, 0, { ...widget, isWidget: true as const });
+  for (const insertion of insertions) {
+    const insertAt = Math.min(insertion.position + offset, result.length);
+    const instanceId = insertion.instanceIndex > 0
+      ? `${insertion.widget.id}-${insertion.instanceIndex}`
+      : insertion.widget.id;
+    result.splice(insertAt, 0, { ...insertion.widget, id: instanceId, instanceIndex: insertion.instanceIndex, isWidget: true as const });
     offset++;
   }
 

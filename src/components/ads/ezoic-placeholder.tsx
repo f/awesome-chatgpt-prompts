@@ -1,48 +1,42 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
+import { useTranslations } from "next-intl";
+import { runEzoic } from "@/lib/ezoic";
 
 interface EzoicPlaceholderProps {
   id: number;
 }
 
+/**
+ * Manages the lifecycle of a single Ezoic ad slot.
+ * The placeholder div is always in the DOM so Ezoic can find it
+ * when showAds() runs. Destroys the placeholder on unmount.
+ *
+ * @see https://docs.ezoic.com/docs/ezoicadsadvanced/nextjs/
+ */
 export function EzoicPlaceholder({ id }: EzoicPlaceholderProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [blocked, setBlocked] = useState(false);
+  const t = useTranslations("common");
 
   useEffect(() => {
-    // Detect if Ezoic scripts were blocked by an ad blocker
-    if (!window.ezstandalone) {
-      setBlocked(true);
-      return;
-    }
-
-    window.ezstandalone.cmd.push(function () {
-      window.ezstandalone!.showAds(id);
+    runEzoic(() => {
+      window.ezstandalone?.showAds(id);
     });
 
-    // Check after a delay whether the placeholder actually received ad content
-    const timer = setTimeout(() => {
-      const el = containerRef.current;
-      if (el && el.offsetHeight === 0) {
-        setBlocked(true);
-      }
-    }, 3000);
-
     return () => {
-      clearTimeout(timer);
-      if (window.ezstandalone) {
-        window.ezstandalone.cmd.push(function () {
-          window.ezstandalone!.destroyPlaceholders(id);
-        });
-      }
+      runEzoic(() => {
+        window.ezstandalone?.destroyPlaceholders(id);
+      });
     };
   }, [id]);
 
-  if (blocked) return null;
-
   return (
-    <div ref={containerRef} className="empty:hidden">
+    <div className="ezoic-ad-container my-2">
+      <div className="flex items-center justify-center">
+        <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground/50 select-none">
+          {t("ad")}
+        </span>
+      </div>
       <div id={`ezoic-pub-ad-placeholder-${id}`} />
     </div>
   );
