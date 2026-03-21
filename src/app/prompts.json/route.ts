@@ -191,14 +191,14 @@ export async function GET(request: NextRequest) {
           identifier: getUserIdentifier(prompt.author),
           verified: prompt.author.verified,
         },
-        contributors: prompt.contributors.map((c: any) => ({
+        contributors: prompt.contributors.map((c: { username: string; name: string | null; avatar: string | null; githubUsername: string | null; verified: boolean }) => ({
           username: c.username,
           name: c.name,
           avatar: c.avatar,
           identifier: getUserIdentifier(c),
           verified: c.verified,
         })),
-        tags: prompt.tags.map((pt: any) => ({
+        tags: prompt.tags.map((pt: { tag: { id: string; name: string; slug: string; color: string | null } }) => ({
           id: pt.tag.id,
           name: pt.tag.name,
           slug: pt.tag.slug,
