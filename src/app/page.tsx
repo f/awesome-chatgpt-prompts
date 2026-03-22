@@ -50,6 +50,16 @@ export default async function HomePage() {
   // Show landing page for all users
   return (
     <div className="flex flex-col">
+      {/* QA Testing Banner */}
+      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 px-4 text-center" data-testid="qa-test-banner">
+        <p className="text-sm font-medium">
+          🚀 New: AI-Powered Prompt Quality Scoring is now available!{" "}
+          <Link href="/settings" className="underline font-bold hover:text-purple-200">
+            Enable it in Settings
+          </Link>
+        </p>
+      </div>
+
       {/* Hero Section */}
       <section className="relative py-12 md:py-16 border-b overflow-hidden">
         {/* Background - Right Side */}
