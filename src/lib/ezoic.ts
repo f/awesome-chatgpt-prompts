@@ -8,6 +8,6 @@
 export function runEzoic(fn: () => void) {
   if (typeof window === "undefined") return;
   const ez = (window.ezstandalone ??= {} as NonNullable<typeof window.ezstandalone>);
-  ez!.cmd = ez!.cmd || [];
-  ez!.cmd.push(fn);
+  ez.cmd = ez.cmd || [];
+  ez.cmd.push(fn);
 }
