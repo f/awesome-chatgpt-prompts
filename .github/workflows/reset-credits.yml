@@ -14,7 +14,7 @@ jobs:
         run: |
           response=$(curl -s -w "\n%{http_code}" -X POST \
             "https://prompts.chat/api/cron/reset-credits" \
-            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}")
+            -H "Authorization: Bearer ${CRON_SECRET}")
           
           http_code=$(echo "$response" | tail -n1)
           body=$(echo "$response" | sed '$d')
@@ -28,3 +28,6 @@ jobs:
           fi
           
           echo "Credits reset successfully"
+
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
