@@ -142,7 +142,7 @@ export function UpvoteButton({
           onClick={handleVote}
           disabled={isLoading}
           className={cn(
-            "flex items-center gap-0.5 text-xs transition-colors",
+            "flex items-center gap-0.5 text-xs transition-colors cursor-pointer",
             isVoted ? "text-primary" : "text-muted-foreground hover:text-foreground"
           )}
         >
