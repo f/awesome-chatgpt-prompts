@@ -115,7 +115,7 @@ export function UpvoteButton({
           onClick={handleVote}
           disabled={isLoading}
           className={cn(
-            "flex flex-col items-center justify-center w-14 h-14 rounded-full border-2 transition-all",
+            "flex flex-col items-center justify-center w-14 h-14 rounded-full border-2 transition-all cursor-pointer",
             isVoted 
               ? "bg-primary text-primary-foreground border-primary" 
               : "bg-background text-muted-foreground border-border hover:border-primary hover:text-primary"

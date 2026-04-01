@@ -70,6 +70,7 @@ export function PromptDetail({ prompt, onBack, onCopy }: PromptDetailProps) {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [loadingImage, setLoadingImage] = useState(false);
 
+  const promptContent = prompt?.content ?? '';
   const terminalHeight = stdout?.rows || 24;
   const terminalWidth = stdout?.columns || 80;
   const headerLines = 8;
@@ -77,7 +78,7 @@ export function PromptDetail({ prompt, onBack, onCopy }: PromptDetailProps) {
   const contentHeight = Math.max(terminalHeight - headerLines - footerLines, 5);
 
   useEffect(() => {
-    const vars = extractVariables(prompt?.content ?? '');
+    const vars = extractVariables(promptContent);
     setVariables(vars);
     
     const defaults: Record<string, string> = {};
@@ -88,11 +89,11 @@ export function PromptDetail({ prompt, onBack, onCopy }: PromptDetailProps) {
   }, [prompt]);
 
   const contentLines = useMemo(() => {
-    if (!prompt?.content) return [];
+    if (!promptContent) return [];
     // Parse escape sequences like \n
-    const parsedContent = prompt.content.replace(/\\n/g, '\n');
+    const parsedContent = promptContent.replace(/\\n/g, '\n');
     return wrapText(parsedContent, terminalWidth - 6);
-  }, [prompt, terminalWidth]);
+  }, [promptContent, terminalWidth]);
 
   const maxScroll = Math.max(0, contentLines.length - contentHeight);
 
@@ -200,12 +201,12 @@ export function PromptDetail({ prompt, onBack, onCopy }: PromptDetailProps) {
         setCurrentVarIndex(0);
         setCurrentInput(variableValues[variables[0].name] || '');
       } else {
-        handleCopy(prompt.content);
+        handleCopy(promptContent);
       }
     }
 
     if (input === 'C' && prompt) {
-      handleCopy(prompt.content);
+      handleCopy(promptContent);
     }
 
     if (input === 'o' && prompt) {
@@ -322,7 +323,7 @@ export function PromptDetail({ prompt, onBack, onCopy }: PromptDetailProps) {
   if (viewMode === 'run') {
     return (
       <RunPrompt
-        content={prompt.content}
+        content={promptContent}
         title={prompt.title}
         description={prompt.description || undefined}
         promptType={prompt.type}
