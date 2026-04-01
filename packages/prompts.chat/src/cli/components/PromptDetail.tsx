@@ -86,7 +86,7 @@ export function PromptDetail({ prompt, onBack, onCopy }: PromptDetailProps) {
       if (v.defaultValue) defaults[v.name] = v.defaultValue;
     });
     setVariableValues(defaults);
-  }, [prompt]);
+  }, [promptContent]);
 
   const contentLines = useMemo(() => {
     if (!promptContent) return [];
@@ -276,7 +276,7 @@ export function PromptDetail({ prompt, onBack, onCopy }: PromptDetailProps) {
       setCurrentVarIndex(currentVarIndex + 1);
       setCurrentInput(newValues[variables[currentVarIndex + 1].name] || '');
     } else {
-      const compiled = compile(prompt!.content, newValues, { useDefaults: true });
+      const compiled = compile(promptContent, newValues, { useDefaults: true });
       
       if (viewMode === 'run-variables' && pendingPlatform) {
         if (runAction === 'copy') {
