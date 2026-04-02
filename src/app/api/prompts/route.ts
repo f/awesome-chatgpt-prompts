@@ -309,9 +309,13 @@ export async function POST(request: Request) {
 // List prompts (for API access)
 export async function GET(request: Request) {
   try {
-    // Rate-limit unauthenticated public API access
+    // Rate-limit unauthenticated public API access.
+    // Only use the rate-limit key when TRUST_PROXY is enabled and a proxy
+    // header is present.  Otherwise, fall back to a shared bucket so that
+    // the limiter cannot be bypassed by rotating client-controlled headers.
     const ip = getClientIp(request);
-    const rl = publicApiLimiter.check(ip);
+    const rlKey = ip.startsWith("fp:") || ip === "unknown" ? "shared-public-bucket" : ip;
+    const rl = publicApiLimiter.check(rlKey);
     if (!rl.allowed) {
       return NextResponse.json(
         { error: "rate_limit", message: "Too many requests. Please try again later." },
@@ -321,8 +325,9 @@ export async function GET(request: Request) {
 
     const { searchParams } = new URL(request.url);
     const MAX_PER_PAGE = 100;
+    const MAX_PAGE = 10000;
     const rawPage = parseInt(searchParams.get("page") || "", 10);
-    const page = Number.isNaN(rawPage) ? 1 : Math.max(1, rawPage);
+    const page = Number.isNaN(rawPage) ? 1 : Math.min(MAX_PAGE, Math.max(1, rawPage));
     const rawPerPage = parseInt(searchParams.get("perPage") || "", 10);
     const perPage = Number.isNaN(rawPerPage)
       ? 24
