@@ -8,7 +8,7 @@ import { generatePromptEmbedding, findAndSaveRelatedPrompts } from "@/lib/ai/emb
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
 import { isSimilarContent, normalizeContent } from "@/lib/similarity";
-import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
+import { publicApiLimiter, getClientIp } from "@/lib/rate-limit";
 
 const promptSchema = z.object({
   title: z.string().min(1).max(200),
@@ -311,11 +311,11 @@ export async function GET(request: Request) {
   try {
     // Rate-limit unauthenticated public API access
     const ip = getClientIp(request);
-    const rl = checkRateLimit(ip, { windowMs: 60_000, maxRequests: 60 });
+    const rl = publicApiLimiter.check(ip);
     if (!rl.allowed) {
       return NextResponse.json(
         { error: "rate_limit", message: "Too many requests. Please try again later." },
-        { status: 429, headers: { "Retry-After": String(Math.ceil(rl.retryAfterMs / 1000)) } }
+        { status: 429, headers: { "Retry-After": String(rl.retryAfterSeconds) } }
       );
     }
 
