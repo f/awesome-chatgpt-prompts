@@ -1,18 +1,15 @@
 /**
- * In-memory fixed-window rate limiter for public API endpoints.
+ * In-memory sliding window rate limiter.
  *
- * Uses a fixed-window counter per identifier (IP or API key): each window
- * tracks a `count` that resets when `resetAt` is reached. No external
- * dependencies (Redis, etc.) required — suitable for single-instance
- * self-hosted deploys.
+ * Each limiter instance tracks request timestamps per identifier (IP or API key)
+ * and rejects requests that exceed the configured window/max.
  *
- * For multi-instance production deployments, replace the store with an
- * Upstash Redis or similar backend.
+ * NOTE: This is per-process. In a multi-instance deployment, consider a
+ * Redis-backed implementation instead.
  */
 
 interface RateLimitEntry {
-  count: number;
-  resetAt: number;
+  timestamps: number[];
 }
 
 interface RateLimiterOptions {
@@ -26,22 +23,13 @@ export class RateLimiter {
   private store = new Map<string, RateLimitEntry>();
   private readonly max: number;
   private readonly windowMs: number;
+  // Cleanup stale entries every 60 s to prevent memory leaks
   private cleanupInterval: ReturnType<typeof setInterval>;
 
   constructor(opts: RateLimiterOptions) {
     this.max = opts.max;
     this.windowMs = opts.windowSeconds * 1000;
-
-    // Background cleanup — runs every 60s, does NOT block request path.
-    this.cleanupInterval = setInterval(() => {
-      const now = Date.now();
-      for (const [key, entry] of this.store) {
-        if (entry.resetAt <= now) {
-          this.store.delete(key);
-        }
-      }
-    }, 60_000);
-
+    this.cleanupInterval = setInterval(() => this.cleanup(), 60_000);
     // Allow the process to exit without waiting for the interval
     if (this.cleanupInterval.unref) {
       this.cleanupInterval.unref();
@@ -50,30 +38,41 @@ export class RateLimiter {
 
   /**
    * Check whether the given identifier is allowed to make a request.
-   * Uses a fixed-window counter: count resets when resetAt expires.
-   *
    * Returns `{ allowed: true, remaining }` or `{ allowed: false, retryAfterSeconds }`.
    */
-  check(
-    identifier: string
-  ): { allowed: true; remaining: number } | { allowed: false; retryAfterSeconds: number } {
+  check(identifier: string): { allowed: true; remaining: number } | { allowed: false; retryAfterSeconds: number } {
     const now = Date.now();
-    const entry = this.store.get(identifier);
+    const windowStart = now - this.windowMs;
 
-    if (!entry || entry.resetAt <= now) {
-      // New window
-      this.store.set(identifier, { count: 1, resetAt: now + this.windowMs });
-      return { allowed: true, remaining: this.max - 1 };
+    let entry = this.store.get(identifier);
+    if (!entry) {
+      entry = { timestamps: [] };
+      this.store.set(identifier, entry);
     }
 
-    entry.count++;
+    // Drop timestamps outside the current window
+    entry.timestamps = entry.timestamps.filter((t) => t > windowStart);
 
-    if (entry.count > this.max) {
-      const retryAfterMs = entry.resetAt - now;
+    if (entry.timestamps.length >= this.max) {
+      // Earliest timestamp that will leave the window
+      const oldest = entry.timestamps[0];
+      const retryAfterMs = oldest + this.windowMs - now;
       return { allowed: false, retryAfterSeconds: Math.ceil(retryAfterMs / 1000) };
     }
 
-    return { allowed: true, remaining: this.max - entry.count };
+    entry.timestamps.push(now);
+    return { allowed: true, remaining: this.max - entry.timestamps.length };
+  }
+
+  private cleanup() {
+    const now = Date.now();
+    const windowStart = now - this.windowMs;
+    for (const [key, entry] of this.store) {
+      entry.timestamps = entry.timestamps.filter((t) => t > windowStart);
+      if (entry.timestamps.length === 0) {
+        this.store.delete(key);
+      }
+    }
   }
 }
 
@@ -143,7 +142,6 @@ export function getClientIp(request: Request): string {
   const ua = request.headers.get("user-agent") || "";
   const al = request.headers.get("accept-language") || "";
   if (ua || al) {
-    // Simple hash for a short, stable identifier
     const raw = `${ua}|${al}`;
     let hash = 0;
     for (let i = 0; i < raw.length; i++) {
