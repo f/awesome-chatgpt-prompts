@@ -321,11 +321,12 @@ export async function GET(request: Request) {
 
     const { searchParams } = new URL(request.url);
     const MAX_PER_PAGE = 100;
-    const page = Math.max(1, parseInt(searchParams.get("page") || "1") || 1);
-    const perPage = Math.min(
-      MAX_PER_PAGE,
-      Math.max(1, parseInt(searchParams.get("perPage") || "24") || 24)
-    );
+    const rawPage = parseInt(searchParams.get("page") || "", 10);
+    const page = Number.isNaN(rawPage) ? 1 : Math.max(1, rawPage);
+    const rawPerPage = parseInt(searchParams.get("perPage") || "", 10);
+    const perPage = Number.isNaN(rawPerPage)
+      ? 24
+      : Math.min(MAX_PER_PAGE, Math.max(1, rawPerPage));
     const type = searchParams.get("type");
     const categoryId = searchParams.get("category");
     const tag = searchParams.get("tag");
