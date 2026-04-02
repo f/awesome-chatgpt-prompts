@@ -325,13 +325,20 @@ export async function GET(request: Request) {
 
     const { searchParams } = new URL(request.url);
     const MAX_PER_PAGE = 100;
-    const MAX_PAGE = 10000;
+    const MAX_OFFSET = 10_000;
     const rawPage = parseInt(searchParams.get("page") || "", 10);
-    const page = Number.isNaN(rawPage) ? 1 : Math.min(MAX_PAGE, Math.max(1, rawPage));
+    const page = Number.isNaN(rawPage) ? 1 : Math.max(1, rawPage);
     const rawPerPage = parseInt(searchParams.get("perPage") || "", 10);
     const perPage = Number.isNaN(rawPerPage)
       ? 24
       : Math.min(MAX_PER_PAGE, Math.max(1, rawPerPage));
+
+    if ((page - 1) * perPage > MAX_OFFSET) {
+      return NextResponse.json(
+        { error: "validation_error", message: "Requested page is too large" },
+        { status: 400 }
+      );
+    }
     const type = searchParams.get("type");
     const categoryId = searchParams.get("category");
     const tag = searchParams.get("tag");
