@@ -1,93 +1,76 @@
 /**
- * In-memory sliding window rate limiter.
+ * Lightweight in-memory rate limiter for public API endpoints.
  *
- * Each limiter instance tracks request timestamps per identifier (IP or API key)
- * and rejects requests that exceed the configured window/max.
+ * Uses a sliding-window counter per IP address. No external dependencies
+ * (Redis, etc.) required — suitable for single-instance self-hosted deploys.
  *
- * NOTE: This is per-process. In a multi-instance deployment, consider a
- * Redis-backed implementation instead.
+ * For multi-instance production deployments, replace the store with an
+ * Upstash Redis or similar backend.
  */
 
-interface RateLimitEntry {
-  timestamps: number[];
-}
+type RateLimitEntry = { count: number; resetAt: number };
 
-interface RateLimiterOptions {
-  /** Maximum number of requests allowed within the window. */
-  max: number;
-  /** Time window in seconds. */
-  windowSeconds: number;
-}
+const store = new Map<string, RateLimitEntry>();
 
-export class RateLimiter {
-  private store = new Map<string, RateLimitEntry>();
-  private readonly max: number;
-  private readonly windowMs: number;
-  // Cleanup stale entries every 60 s to prevent memory leaks
-  private cleanupInterval: ReturnType<typeof setInterval>;
+/** Default: 60 requests per 60-second window. */
+const DEFAULT_WINDOW_MS = 60_000;
+const DEFAULT_MAX_REQUESTS = 60;
 
-  constructor(opts: RateLimiterOptions) {
-    this.max = opts.max;
-    this.windowMs = opts.windowSeconds * 1000;
-    this.cleanupInterval = setInterval(() => this.cleanup(), 60_000);
-    // Allow the process to exit without waiting for the interval
-    if (this.cleanupInterval.unref) {
-      this.cleanupInterval.unref();
+/** Clean up stale entries every 5 minutes to prevent memory leaks. */
+const CLEANUP_INTERVAL_MS = 5 * 60_000;
+let lastCleanup = Date.now();
+
+/**
+ * Check whether the given `key` (typically an IP) has exceeded the rate limit.
+ *
+ * Returns `{ allowed: true }` if the request is permitted, or
+ * `{ allowed: false, retryAfterMs }` if the limit has been reached.
+ */
+export function checkRateLimit(
+  key: string,
+  opts: { windowMs?: number; maxRequests?: number } = {}
+): { allowed: true } | { allowed: false; retryAfterMs: number } {
+  const now = Date.now();
+  const windowMs = opts.windowMs ?? DEFAULT_WINDOW_MS;
+  const maxRequests = opts.maxRequests ?? DEFAULT_MAX_REQUESTS;
+
+  // Periodic cleanup
+  if (now - lastCleanup > CLEANUP_INTERVAL_MS) {
+    for (const [k, v] of store) {
+      if (v.resetAt <= now) store.delete(k);
     }
+    lastCleanup = now;
   }
 
-  /**
-   * Check whether the given identifier is allowed to make a request.
-   * Returns `{ allowed: true, remaining }` or `{ allowed: false, retryAfterSeconds }`.
-   */
-  check(identifier: string): { allowed: true; remaining: number } | { allowed: false; retryAfterSeconds: number } {
-    const now = Date.now();
-    const windowStart = now - this.windowMs;
+  const entry = store.get(key);
 
-    let entry = this.store.get(identifier);
-    if (!entry) {
-      entry = { timestamps: [] };
-      this.store.set(identifier, entry);
-    }
-
-    // Drop timestamps outside the current window
-    entry.timestamps = entry.timestamps.filter((t) => t > windowStart);
-
-    if (entry.timestamps.length >= this.max) {
-      // Earliest timestamp that will leave the window
-      const oldest = entry.timestamps[0];
-      const retryAfterMs = oldest + this.windowMs - now;
-      return { allowed: false, retryAfterSeconds: Math.ceil(retryAfterMs / 1000) };
-    }
-
-    entry.timestamps.push(now);
-    return { allowed: true, remaining: this.max - entry.timestamps.length };
+  if (!entry || entry.resetAt <= now) {
+    // New window
+    store.set(key, { count: 1, resetAt: now + windowMs });
+    return { allowed: true };
   }
 
-  private cleanup() {
-    const now = Date.now();
-    const windowStart = now - this.windowMs;
-    for (const [key, entry] of this.store) {
-      entry.timestamps = entry.timestamps.filter((t) => t > windowStart);
-      if (entry.timestamps.length === 0) {
-        this.store.delete(key);
-      }
-    }
+  entry.count++;
+
+  if (entry.count > maxRequests) {
+    return { allowed: false, retryAfterMs: entry.resetAt - now };
   }
+
+  return { allowed: true };
 }
 
-// ---------------------------------------------------------------------------
-// Pre-configured limiters for MCP tool calls
-// ---------------------------------------------------------------------------
-
-/** General MCP POST requests – 20 req / min per identifier */
-export const mcpGeneralLimiter = new RateLimiter({ max: 20, windowSeconds: 60 });
-
-/** tool calls (tools/call) – 10 req / min per identifier */
-export const mcpToolCallLimiter = new RateLimiter({ max: 10, windowSeconds: 60 });
-
-/** Write-mutation tools – 5 req / min per identifier */
-export const mcpWriteToolLimiter = new RateLimiter({ max: 5, windowSeconds: 60 });
-
-/** AI-powered tools (improve_prompt) – 2 req / min per identifier */
-export const mcpAiToolLimiter = new RateLimiter({ max: 2, windowSeconds: 60 });
+/**
+ * Extract a best-effort client IP from a Request object.
+ * Handles common reverse-proxy headers (X-Forwarded-For, X-Real-IP).
+ */
+export function getClientIp(request: Request): string {
+  const xff = request.headers.get("x-forwarded-for");
+  if (xff) {
+    // X-Forwarded-For may contain multiple IPs; the first is the original client.
+    return xff.split(",")[0].trim();
+  }
+  const realIp = request.headers.get("x-real-ip");
+  if (realIp) return realIp.trim();
+  // Fallback — will be the loopback in most server-side render contexts.
+  return "unknown";
+}

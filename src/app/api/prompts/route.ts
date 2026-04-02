@@ -8,6 +8,7 @@ import { generatePromptEmbedding, findAndSaveRelatedPrompts } from "@/lib/ai/emb
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
 import { isSimilarContent, normalizeContent } from "@/lib/similarity";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 const promptSchema = z.object({
   title: z.string().min(1).max(200),
@@ -308,9 +309,23 @@ export async function POST(request: Request) {
 // List prompts (for API access)
 export async function GET(request: Request) {
   try {
+    // Rate-limit unauthenticated public API access
+    const ip = getClientIp(request);
+    const rl = checkRateLimit(ip, { windowMs: 60_000, maxRequests: 60 });
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { error: "rate_limit", message: "Too many requests. Please try again later." },
+        { status: 429, headers: { "Retry-After": String(Math.ceil(rl.retryAfterMs / 1000)) } }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
-    const page = parseInt(searchParams.get("page") || "1");
-    const perPage = parseInt(searchParams.get("perPage") || "24");
+    const MAX_PER_PAGE = 100;
+    const page = Math.max(1, parseInt(searchParams.get("page") || "1") || 1);
+    const perPage = Math.min(
+      MAX_PER_PAGE,
+      Math.max(1, parseInt(searchParams.get("perPage") || "24") || 24)
+    );
     const type = searchParams.get("type");
     const categoryId = searchParams.get("category");
     const tag = searchParams.get("tag");
