@@ -9,6 +9,29 @@ import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
 import { isSimilarContent, normalizeContent } from "@/lib/similarity";
 
+const DEFAULT_PUBLIC_PROMPTS_PAGE = 1;
+const DEFAULT_PUBLIC_PROMPTS_PER_PAGE = 24;
+const MAX_PUBLIC_PROMPTS_PER_PAGE = 100;
+
+function parsePositiveInt(value: string | null, fallback: number): number {
+  if (!value) return fallback;
+  const parsed = Number.parseInt(value, 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+export function parsePublicPromptPagination(searchParams: URLSearchParams) {
+  const page = parsePositiveInt(searchParams.get("page"), DEFAULT_PUBLIC_PROMPTS_PAGE);
+  const requestedPerPage = parsePositiveInt(
+    searchParams.get("perPage"),
+    DEFAULT_PUBLIC_PROMPTS_PER_PAGE
+  );
+
+  return {
+    page,
+    perPage: Math.min(requestedPerPage, MAX_PUBLIC_PROMPTS_PER_PAGE),
+  };
+}
+
 const promptSchema = z.object({
   title: z.string().min(1).max(200),
   description: z.string().max(500).optional(),
@@ -309,8 +332,7 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const page = parseInt(searchParams.get("page") || "1");
-    const perPage = parseInt(searchParams.get("perPage") || "24");
+    const { page, perPage } = parsePublicPromptPagination(searchParams);
     const type = searchParams.get("type");
     const categoryId = searchParams.get("category");
     const tag = searchParams.get("tag");
