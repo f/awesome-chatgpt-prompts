@@ -11,24 +11,23 @@ import { isSimilarContent, normalizeContent } from "@/lib/similarity";
 
 const DEFAULT_PUBLIC_PROMPTS_PAGE = 1;
 const DEFAULT_PUBLIC_PROMPTS_PER_PAGE = 24;
+const MAX_PUBLIC_PROMPTS_PAGE = 10000;
 const MAX_PUBLIC_PROMPTS_PER_PAGE = 100;
 
-function parsePositiveInt(value: string | null, fallback: number): number {
-  if (!value) return fallback;
-  const parsed = Number.parseInt(value, 10);
-  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
-}
+const paginationSchema = z.object({
+  page: z.coerce.number().int().positive().max(MAX_PUBLIC_PROMPTS_PAGE).catch(DEFAULT_PUBLIC_PROMPTS_PAGE),
+  perPage: z.coerce.number().int().positive().max(MAX_PUBLIC_PROMPTS_PER_PAGE).catch(DEFAULT_PUBLIC_PROMPTS_PER_PAGE),
+});
 
 export function parsePublicPromptPagination(searchParams: URLSearchParams) {
-  const page = parsePositiveInt(searchParams.get("page"), DEFAULT_PUBLIC_PROMPTS_PAGE);
-  const requestedPerPage = parsePositiveInt(
-    searchParams.get("perPage"),
-    DEFAULT_PUBLIC_PROMPTS_PER_PAGE
-  );
+  const result = paginationSchema.parse({
+    page: searchParams.get("page"),
+    perPage: searchParams.get("perPage"),
+  });
 
   return {
-    page,
-    perPage: Math.min(requestedPerPage, MAX_PUBLIC_PROMPTS_PER_PAGE),
+    page: result.page,
+    perPage: result.perPage,
   };
 }
 
