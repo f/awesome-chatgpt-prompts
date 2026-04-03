@@ -7,12 +7,22 @@ describe("parsePublicPromptPagination", () => {
     expect(parsePublicPromptPagination(params)).toEqual({ page: 1, perPage: 24 });
   });
 
-  it("rejects malformed numeric strings by falling back to defaults", () => {
+  it("defaults malformed page values without discarding a valid perPage", () => {
+    const params = new URLSearchParams({ page: "2.5", perPage: "50" });
+    expect(parsePublicPromptPagination(params)).toEqual({ page: 1, perPage: 50 });
+  });
+
+  it("defaults malformed perPage values without discarding a valid page", () => {
+    const params = new URLSearchParams({ page: "2", perPage: "10abc" });
+    expect(parsePublicPromptPagination(params)).toEqual({ page: 2, perPage: 24 });
+  });
+
+  it("defaults fully malformed numeric strings", () => {
     const params = new URLSearchParams({ page: "2.5", perPage: "10abc" });
     expect(parsePublicPromptPagination(params)).toEqual({ page: 1, perPage: 24 });
   });
 
-  it("clamps oversized values via schema maxima", () => {
+  it("defaults oversized values via schema maxima", () => {
     const params = new URLSearchParams({ page: "1000000", perPage: "1000000" });
     expect(parsePublicPromptPagination(params)).toEqual({ page: 1, perPage: 24 });
   });
