@@ -305,12 +305,40 @@ export async function POST(request: Request) {
   }
 }
 
+// Parse and validate pagination parameters with clamping
+function parsePaginationParams(searchParams: URLSearchParams) {
+  const DEFAULT_PAGE = 1;
+  const DEFAULT_PER_PAGE = 24;
+  const MAX_PER_PAGE = 100;
+
+  // Parse page - must be a positive integer
+  const rawPage = searchParams.get("page");
+  let page = DEFAULT_PAGE;
+  if (rawPage !== null) {
+    const parsed = parseInt(rawPage);
+    if (!Number.isNaN(parsed) && parsed > 0) {
+      page = parsed;
+    }
+  }
+
+  // Parse perPage - must be a positive integer, clamped to max
+  const rawPerPage = searchParams.get("perPage");
+  let perPage = DEFAULT_PER_PAGE;
+  if (rawPerPage !== null) {
+    const parsed = parseInt(rawPerPage);
+    if (!Number.isNaN(parsed) && parsed > 0) {
+      perPage = Math.min(parsed, MAX_PER_PAGE);
+    }
+  }
+
+  return { page, perPage };
+}
+
 // List prompts (for API access)
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const page = parseInt(searchParams.get("page") || "1");
-    const perPage = parseInt(searchParams.get("perPage") || "24");
+    const { page, perPage } = parsePaginationParams(searchParams);
     const type = searchParams.get("type");
     const categoryId = searchParams.get("category");
     const tag = searchParams.get("tag");
