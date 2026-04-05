@@ -1,0 +1,19 @@
+name: Validate Skill
+on:
+  pull_request:
+    paths:
+      - 'SKILL.md'
+      - 'skill.json'
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashgraph-online/skill-publish@v1
+        with:
+          mode: validate
+          skill-dir: .
