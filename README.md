@@ -239,3 +239,6 @@ Use prompts.chat as an MCP server in your AI tools.
 ## 📜 License
 
 **[CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/)** — Copy, modify, distribute, and use freely. No attribution required.
+
+
+- [guardian-agent-prompts](https://github.com/milkomida77/guardian-agent-prompts) - Open-source multi-agent orchestrator with 57 specialized agents, anti-duplication registry, quality gates, and heartbeat monitoring. Production-tested across 10,000+ tasks.
