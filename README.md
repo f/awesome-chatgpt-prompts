@@ -137,7 +137,6 @@ npx prompts.chat
 
 ### Claude Code Agents
 
-- [guardian-agent-prompts](https://github.com/milkomida77/guardian-agent-prompts) - Open-source multi-agent orchestrator with 57 specialized agents, anti-duplication registry, quality gates, and heartbeat monitoring. Production-tested across 10,000+ tasks.
 ### MCP Server
 Use prompts.chat as an MCP server in your AI tools.
 
@@ -239,6 +238,11 @@ Use prompts.chat as an MCP server in your AI tools.
 </a>
 
 ---
+
+
+## 🔗 Related Projects
+
+- [guardian-agent-prompts](https://github.com/milkomida77/guardian-agent-prompts) - Open-source multi-agent orchestrator with 57 specialized agents, anti-duplication registry, quality gates, and heartbeat monitoring. Production-tested across 10,000+ tasks.
 
 ## 📜 License
 
