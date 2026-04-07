@@ -32,7 +32,7 @@ The RTF framework is the simplest and most versatile framework. It's the "jack-o
 
 ### Template
 
-```
+```text
 **Role:** [Who should the AI act as]
 **Task:** [What you want the AI to do]
 **Format:** [How the output should be structured]
@@ -40,7 +40,7 @@ The RTF framework is the simplest and most versatile framework. It's the "jack-o
 
 ### Example 1: Marketing Copy
 
-```
+```text
 **Role:** You are a senior copywriter at a top advertising agency with 15 years of experience in digital marketing.
 
 **Task:** Write a compelling product description for a new eco-friendly water bottle made from recycled ocean plastic.
@@ -50,7 +50,7 @@ The RTF framework is the simplest and most versatile framework. It's the "jack-o
 
 ### Example 2: Code Review
 
-```
+```text
 **Role:** You are a senior software engineer specializing in Python with expertise in clean code principles and security best practices.
 
 **Task:** Review the following Python function for potential bugs, security vulnerabilities, and performance issues.
@@ -64,7 +64,7 @@ The RTF framework is the simplest and most versatile framework. It's the "jack-o
 
 ### Example 3: Educational Content
 
-```
+```text
 **Role:** You are an experienced high school physics teacher known for making complex concepts accessible to students.
 
 **Task:** Explain quantum entanglement to a 16-year-old student who has basic knowledge of classical physics.
@@ -86,7 +86,7 @@ The RISEN framework ensures clarity and consistency by breaking down prompts int
 
 ### Template
 
-```
+```text
 **Role:** [Define the AI's expertise or persona]
 **Instruction:** [Clear, actionable steps using verbs]
 **Structure:** [Specify output format: list, table, paragraphs, etc.]
@@ -96,7 +96,7 @@ The RISEN framework ensures clarity and consistency by breaking down prompts int
 
 ### Example 1: Nutritional Planning
 
-```
+```text
 **Role:** You are a certified nutritionist with specialization in plant-based diets.
 
 **Instruction:** Create a 7-day meal plan for someone transitioning to a vegetarian diet who needs 2000 calories per day and has a nut allergy.
@@ -115,7 +115,7 @@ The RISEN framework ensures clarity and consistency by breaking down prompts int
 
 ### Example 2: Technical Documentation
 
-```
+```text
 **Role:** You are a technical writer with 10 years of experience documenting APIs for developer audiences.
 
 **Instruction:** Write documentation for a REST API endpoint that creates a new user account.
@@ -144,7 +144,7 @@ The RISEN framework ensures clarity and consistency by breaking down prompts int
 
 ### Example 3: Market Research Summary
 
-```
+```text
 **Role:** You are a market research analyst at a Fortune 500 consulting firm.
 
 **Instruction:** Analyze the electric vehicle market trends for 2025 and provide strategic recommendations for a traditional automaker.
@@ -177,7 +177,7 @@ Developed by GovTech Singapore's Data Science & AI team, CO-STAR reportedly won 
 
 ### Template
 
-```
+```text
 **Context:** [Background information about the situation]
 **Objective:** [The specific task or goal]
 **Style:** [Writing style to emulate]
@@ -188,7 +188,7 @@ Developed by GovTech Singapore's Data Science & AI team, CO-STAR reportedly won 
 
 ### Example 1: Non-Profit Email Campaign
 
-```
+```text
 **Context:** Our environmental non-profit just completed a beach cleanup that removed 5 tons of plastic from local coastlines. We have photos and volunteer testimonials. Our donor base includes 10,000 subscribers who have given previously.
 
 **Objective:** Write an email that celebrates the achievement and encourages additional donations for our next cleanup event.
@@ -208,7 +208,7 @@ Developed by GovTech Singapore's Data Science & AI team, CO-STAR reportedly won 
 
 ### Example 2: Internal Company Announcement
 
-```
+```text
 **Context:** Our tech company is implementing a 4-day work week pilot program starting next quarter. This affects 500 employees across 3 offices. The decision came after 6 months of research and employee surveys showing 78% support.
 
 **Objective:** Announce the pilot program and explain how it will work, addressing potential concerns proactively.
@@ -227,7 +227,7 @@ Developed by GovTech Singapore's Data Science & AI team, CO-STAR reportedly won 
 
 ### Example 3: Product Launch Blog Post
 
-```
+```text
 **Context:** We're launching a new AI-powered writing assistant that helps non-native English speakers improve their business emails. It costs $9.99/month and integrates with Gmail and Outlook. Beta testing showed 40% improvement in email clarity scores.
 
 **Objective:** Write a blog post announcing the product launch that drives sign-ups for the free trial.
@@ -255,7 +255,7 @@ CRISPE is excellent for testing creative angles, different variables, and gather
 
 ### Template
 
-```
+```text
 **Capacity & Role:** [The expertise and persona the AI should embody]
 **Insight:** [Background information and context]
 **Statement:** [The main task or question]
@@ -265,7 +265,7 @@ CRISPE is excellent for testing creative angles, different variables, and gather
 
 ### Example 1: Brand Tagline Creation
 
-```
+```text
 **Capacity & Role:** You are a creative director at a branding agency who has developed memorable taglines for Nike, Apple, and Airbnb.
 
 **Insight:** Our client is a sustainable fashion startup targeting Gen Z consumers. They use only recycled materials and pay fair wages. Their competitors include Patagonia, Everlane, and Reformation. Current brand perception is "ethical but boring."
@@ -285,7 +285,7 @@ For each, explain the strategic rationale in one sentence.
 
 ### Example 2: Video Script Concepts
 
-```
+```text
 **Capacity & Role:** You are a viral video producer who has created content with 100M+ views for brands like Dollar Shave Club and Old Spice.
 
 **Insight:** We're marketing a mobile app that helps people split bills at restaurants. Our target audience is 22-30 year olds who frequently dine out with friends. Pain points: awkwardness of asking for money, Venmo request fatigue, math anxiety.
@@ -303,7 +303,7 @@ Include a one-line hook, basic scene description, and suggested audio/music for 
 
 ### Example 3: Workshop Facilitation Design
 
-```
+```text
 **Capacity & Role:** You are an innovation consultant who has facilitated design thinking workshops for Google, IDEO, and Stanford d.school.
 
 **Insight:** A mid-size bank (2,000 employees) wants to improve their mobile banking app. They've never done user-centered design. Participants will include developers, product managers, and 2 executives. Workshop is 4 hours, in-person, with 15 participants.
@@ -329,7 +329,7 @@ APE is beginner-friendly and focuses on clarity of intent. It transforms vague r
 
 ### Template
 
-```
+```text
 **Action:** [The specific task—use strong action verbs]
 **Purpose:** [Why this task matters—the underlying goal]
 **Expectation:** [The desired outcome and format]
@@ -337,7 +337,7 @@ APE is beginner-friendly and focuses on clarity of intent. It transforms vague r
 
 ### Example 1: Meeting Summary
 
-```
+```text
 **Action:** Summarize the following meeting transcript, extracting key decisions and action items.
 
 **Purpose:** I need to share this with team members who couldn't attend and ensure nothing falls through the cracks.
@@ -351,7 +351,7 @@ Keep the entire summary under 300 words.
 
 ### Example 2: Resume Optimization
 
-```
+```text
 **Action:** Rewrite my resume bullet points to be more impactful using the STAR method (Situation, Task, Action, Result).
 
 **Purpose:** I'm applying for senior product manager roles at tech companies and need to better quantify my achievements.
@@ -366,7 +366,7 @@ Current bullet: "Managed a team and launched new features"
 
 ### Example 3: Competitive Analysis
 
-```
+```text
 **Action:** Analyze the pricing strategies of these three SaaS competitors: Notion, Coda, and Airtable.
 
 **Purpose:** We're launching a competing product and need to position our pricing competitively while maintaining profitability.
@@ -388,7 +388,7 @@ RACE is designed for obtaining responses that mimic the expertise, methodology, 
 
 ### Template
 
-```
+```text
 **Role:** [Specific professional identity with credentials]
 **Action:** [Detailed task description]
 **Context:** [Relevant background, constraints, and situation]
@@ -397,7 +397,7 @@ RACE is designed for obtaining responses that mimic the expertise, methodology, 
 
 ### Example 1: Legal Document Review
 
-```
+```text
 **Role:** You are a corporate attorney with 15 years of experience in SaaS contracts and data privacy law, including GDPR and CCPA compliance.
 
 **Action:** Review this Terms of Service agreement and identify potential legal risks and areas that need strengthening.
@@ -414,7 +414,7 @@ RACE is designed for obtaining responses that mimic the expertise, methodology, 
 
 ### Example 2: Financial Planning Advice
 
-```
+```text
 **Role:** You are a Certified Financial Planner (CFP) with expertise in retirement planning for high-income professionals in their 30s-40s.
 
 **Action:** Create a comprehensive financial planning framework for early retirement (target age 50).
@@ -433,7 +433,7 @@ RACE is designed for obtaining responses that mimic the expertise, methodology, 
 
 ### Example 3: Medical Research Synthesis
 
-```
+```text
 **Role:** You are a clinical researcher with a PhD in epidemiology and experience conducting systematic reviews for Cochrane.
 
 **Action:** Synthesize the current evidence on intermittent fasting for Type 2 diabetes management.
@@ -461,7 +461,7 @@ ROSES helps communicate problems and how you want them approached in a detailed 
 
 ### Template
 
-```
+```text
 **Role:** [Who is performing the action or whose perspective]
 **Objective:** [What you hope to achieve]
 **Scenario:** [The context or situation]
@@ -471,7 +471,7 @@ ROSES helps communicate problems and how you want them approached in a detailed 
 
 ### Example 1: Crisis Communication Plan
 
-```
+```text
 **Role:** You are a crisis communications director who has managed PR for Fortune 500 companies during product recalls, data breaches, and executive scandals.
 
 **Objective:** Develop a crisis communication response plan for a data breach that exposed 100,000 customer email addresses and hashed passwords.
@@ -492,7 +492,7 @@ ROSES helps communicate problems and how you want them approached in a detailed 
 
 ### Example 2: Product Launch Strategy
 
-```
+```text
 **Role:** You are a product marketing manager who has launched multiple successful B2B SaaS products from $0 to $10M ARR.
 
 **Objective:** Create a go-to-market strategy for a new AI-powered customer support tool targeting mid-market companies.
@@ -513,7 +513,7 @@ ROSES helps communicate problems and how you want them approached in a detailed 
 
 ### Example 3: Employee Onboarding Redesign
 
-```
+```text
 **Role:** You are a People Operations leader who has built onboarding programs at fast-growing startups that achieved 90%+ new hire satisfaction scores.
 
 **Objective:** Redesign our onboarding program to reduce time-to-productivity from 90 days to 60 days while improving new hire retention.
@@ -542,7 +542,7 @@ RASCEF provides comprehensive guidance for tasks requiring detailed, step-by-ste
 
 ### Template
 
-```
+```text
 **Role:** [AI's assumed identity or function]
 **Action:** [Task or objective to achieve]
 **Steps:** [Sequence of actions or guidelines]
@@ -553,7 +553,7 @@ RASCEF provides comprehensive guidance for tasks requiring detailed, step-by-ste
 
 ### Example 1: Standard Operating Procedure
 
-```
+```text
 **Role:** You are a process improvement specialist who creates SOPs for ISO 9001-certified manufacturing companies.
 
 **Action:** Write a Standard Operating Procedure for the customer complaint handling process.
@@ -584,7 +584,7 @@ RASCEF provides comprehensive guidance for tasks requiring detailed, step-by-ste
 
 ### Example 2: Technical Tutorial
 
-```
+```text
 **Role:** You are a senior DevOps engineer who writes tutorials for DigitalOcean and AWS documentation.
 
 **Action:** Write a tutorial for setting up a CI/CD pipeline using GitHub Actions for a Node.js application.
@@ -619,7 +619,7 @@ RASCEF provides comprehensive guidance for tasks requiring detailed, step-by-ste
 
 ### Example 3: Research Analysis Report
 
-```
+```text
 **Role:** You are a UX researcher who has conducted usability studies for Google, Meta, and Microsoft.
 
 **Action:** Analyze the following usability test results and provide actionable recommendations.
@@ -657,14 +657,14 @@ Chain of Thought prompting guides the AI through step-by-step reasoning, signifi
 ### Template
 
 **Zero-Shot CoT:**
-```
+```text
 [Your question or problem]
 
 Let's think through this step-by-step.
 ```
 
 **Few-Shot CoT:**
-```
+```text
 [Example problem 1]
 Let's solve this step by step:
 [Step-by-step reasoning]
@@ -681,7 +681,7 @@ Let's solve this step by step:
 
 ### Example 1: Business Decision Analysis (Zero-Shot)
 
-```
+```text
 We're deciding whether to build a feature in-house or buy a third-party solution.
 
 Build option: 3 engineers for 4 months, $150K fully-loaded cost per engineer, 20% risk of delay, ongoing maintenance of 0.5 engineer.
@@ -697,7 +697,7 @@ Let's think through this step-by-step, considering total cost of ownership, oppo
 
 ### Example 2: Debugging Logic (Few-Shot)
 
-```
+```text
 I'll show you how to debug code systematically, then you help me with my problem.
 
 **Example 1:**
@@ -734,7 +734,7 @@ Let's debug this step by step:
 
 ### Example 3: Strategic Planning (Zero-Shot)
 
-```
+```text
 Our startup has $500K runway remaining and 8 months of burn rate at current spending ($62.5K/month). We have 3 options:
 
 A) Continue current strategy: Growing 10% month-over-month, might reach profitability in 12 months
@@ -760,7 +760,7 @@ TAG focuses on what needs to be done and why, making it ideal for goal-driven re
 
 ### Template
 
-```
+```text
 **Task:** [What needs to be accomplished]
 **Action:** [Specific steps or approach to take]
 **Goal:** [The desired end result or outcome]
@@ -768,7 +768,7 @@ TAG focuses on what needs to be done and why, making it ideal for goal-driven re
 
 ### Example 1: Sales Email Sequence
 
-```
+```text
 **Task:** Create a 5-email nurture sequence for leads who downloaded our whitepaper on "AI in Supply Chain Management."
 
 **Action:**
@@ -783,7 +783,7 @@ TAG focuses on what needs to be done and why, making it ideal for goal-driven re
 
 ### Example 2: Content Repurposing
 
-```
+```text
 **Task:** Repurpose our 2,000-word blog post on "Remote Work Best Practices" into multiple content formats.
 
 **Action:**
@@ -803,7 +803,7 @@ All pieces should drive traffic back to the original blog post.
 
 ### Example 3: Competitive Response Strategy
 
-```
+```text
 **Task:** Develop a response strategy for a competitor's new feature announcement that directly targets our core value proposition.
 
 **Action:**
@@ -826,7 +826,7 @@ BAB frames problems in a before-and-after narrative, using the "Bridge" to expla
 
 ### Template
 
-```
+```text
 **Before:** [Current situation/problem/pain point]
 **After:** [Desired future state/solution achieved]
 **Bridge:** [How to get from Before to After—your solution]
@@ -834,7 +834,7 @@ BAB frames problems in a before-and-after narrative, using the "Bridge" to expla
 
 ### Example 1: Product Landing Page
 
-```
+```text
 Write landing page copy using the BAB framework:
 
 **Before:** Marketing teams spend 15+ hours per week manually creating reports from scattered data sources. They're always behind, executives are frustrated with outdated numbers, and strategic decisions are made on gut feeling instead of data.
@@ -848,7 +848,7 @@ Write 3 variations of this concept: one emphasizing time savings, one emphasizin
 
 ### Example 2: Case Study Narrative
 
-```
+```text
 Structure this customer success story using BAB:
 
 **Before:** Acme Corp's customer support team was drowning. 2,000 tickets per day, 72-hour average response time, CSAT score of 2.1/5. They'd tried hiring more agents (expensive, slow to train) and chatbots (customers hated them). The VP of Support was worried about her job.
@@ -862,7 +862,7 @@ Write this as a 600-word case study with a compelling narrative arc. Include a c
 
 ### Example 3: Change Management Communication
 
-```
+```text
 Help me communicate an unpopular policy change using BAB to build understanding and acceptance:
 
 **Before:** Our current unlimited PTO policy sounds great but creates real problems. Only 40% of employees take more than 2 weeks off. Managers feel awkward approving requests. High performers feel guilty taking time. Burnout is increasing—our engagement scores show it.
@@ -884,7 +884,7 @@ CARE emphasizes clarity and actionable insights with demonstrative examples.
 
 ### Template
 
-```
+```text
 **Context:** [Background information and situation]
 **Action:** [What needs to be done]
 **Result:** [Expected outcome or deliverable]
@@ -893,7 +893,7 @@ CARE emphasizes clarity and actionable insights with demonstrative examples.
 
 ### Example 1: Performance Review Feedback
 
-```
+```text
 **Context:** I need to write a performance review for a mid-level engineer who has strong technical skills but struggles with communication and cross-team collaboration. They've been on the team for 2 years and are up for senior promotion consideration.
 
 **Action:** Help me write constructive feedback that acknowledges their strengths, clearly addresses growth areas, and provides a path to promotion.
@@ -905,7 +905,7 @@ CARE emphasizes clarity and actionable insights with demonstrative examples.
 
 ### Example 2: Website Audit
 
-```
+```text
 **Context:** Our SaaS company's marketing website has a 65% bounce rate (industry average is 45%) and our demo request conversion rate is 0.8% (we're targeting 2.5%). The site was last redesigned 3 years ago. We get 50,000 monthly visitors, primarily from organic search and paid ads.
 
 **Action:** Conduct a strategic audit of our website and identify the highest-impact improvements.
@@ -918,7 +918,7 @@ CARE emphasizes clarity and actionable insights with demonstrative examples.
 
 ### Example 3: Vendor Evaluation
 
-```
+```text
 **Context:** We're evaluating three CRM platforms for our 50-person sales team: Salesforce, HubSpot, and Pipedrive. Budget is $50K/year. Key requirements: Gmail integration, pipeline management, reporting, and mobile app. We currently use spreadsheets and it's not scaling.
 
 **Action:** Create a comprehensive evaluation framework and score each vendor against our requirements.
@@ -944,7 +944,7 @@ SCAMPER is a powerful ideation framework that systematically explores different 
 
 ### Template
 
-```
+```text
 Apply the SCAMPER method to [product/service/process]:
 
 **Substitute:** What can be replaced with something else?
@@ -958,7 +958,7 @@ Apply the SCAMPER method to [product/service/process]:
 
 ### Example 1: Mobile App Innovation
 
-```
+```text
 Apply SCAMPER to reimagine a traditional alarm clock app:
 
 **Substitute:**
@@ -1001,7 +1001,7 @@ Generate 3 complete product concepts from the most promising ideas.
 
 ### Example 2: Restaurant Service Model
 
-```
+```text
 Use SCAMPER to innovate a traditional sit-down restaurant experience:
 
 **Substitute:**
@@ -1044,7 +1044,7 @@ Identify the top 3 innovations that could genuinely disrupt casual dining.
 
 ### Example 3: Employee Onboarding Process
 
-```
+```text
 Apply SCAMPER to transform traditional corporate onboarding:
 
 **Substitute:**
@@ -1095,7 +1095,7 @@ Originally developed for the academic community, TRACE ensures outputs are cente
 
 ### Template
 
-```
+```text
 **Task:** [The specific challenge or objective to address]
 **Request:** [Direct request specifying the type of response desired]
 **Action:** [Detailed actions the AI should undertake]
@@ -1105,7 +1105,7 @@ Originally developed for the academic community, TRACE ensures outputs are cente
 
 ### Example 1: Course Module Design
 
-```
+```text
 **Task:** Design a learning module on "Introduction to Machine Learning" for non-technical business professionals.
 
 **Request:** Create a comprehensive module outline with learning objectives, activities, and assessments that can be completed in a 4-hour workshop.
@@ -1124,7 +1124,7 @@ Originally developed for the academic community, TRACE ensures outputs are cente
 
 ### Example 2: Research Synthesis
 
-```
+```text
 **Task:** Synthesize current research on the effectiveness of four-day work weeks on employee productivity and wellbeing.
 
 **Request:** Generate a research brief suitable for HR executives considering implementing a pilot program.
@@ -1143,7 +1143,7 @@ Originally developed for the academic community, TRACE ensures outputs are cente
 
 ### Example 3: Patient Education Material
 
-```
+```text
 **Task:** Create patient education content about managing Type 2 Diabetes with lifestyle changes.
 
 **Request:** Develop a comprehensive guide that patients can reference at home between doctor visits.
@@ -1176,7 +1176,7 @@ ERA leads with the end goal, making it especially useful when you have specific 
 
 ### Template
 
-```
+```text
 **Expectation:** [Desired outcome, format, quality standards]
 **Role:** [Who the AI should be / expertise needed]
 **Action:** [Specific task to perform]
@@ -1184,7 +1184,7 @@ ERA leads with the end goal, making it especially useful when you have specific 
 
 ### Example 1: Executive Presentation
 
-```
+```text
 **Expectation:** I need a 10-slide presentation that can be delivered in 15 minutes to C-suite executives. Each slide should have one key message, minimal text (max 6 bullet points, 6 words each), and a suggestion for supporting visual. The presentation should lead to a decision: approve or reject a $2M investment.
 
 **Role:** You are a McKinsey-trained management consultant who specializes in creating executive communications that drive decisions.
@@ -1194,7 +1194,7 @@ ERA leads with the end goal, making it especially useful when you have specific 
 
 ### Example 2: Technical Specification
 
-```
+```text
 **Expectation:** A technical specification document that an engineering team can use to implement a feature without ambiguity. Should be detailed enough that two different engineers would build essentially the same thing. Include acceptance criteria that QA can use for testing. Target length: 2-3 pages.
 
 **Role:** You are a Staff Engineer at Stripe with experience writing technical specifications for payment systems that handle millions of transactions.
@@ -1204,7 +1204,7 @@ ERA leads with the end goal, making it especially useful when you have specific 
 
 ### Example 3: Legal Contract Summary
 
-```
+```text
 **Expectation:** A plain-English summary that a non-lawyer business owner can understand and use to make decisions. Highlight anything unusual or concerning. Maximum 1 page. Include a "sign/don't sign" recommendation with clear reasoning.
 
 **Role:** You are a business attorney with 20 years of experience reviewing commercial contracts for SMBs. You're known for translating legalese into actionable advice.
