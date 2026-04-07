@@ -82,7 +82,7 @@ The RTF framework is the simplest and most versatile framework. It's the "jack-o
 
 **Best for:** Precise, repeatable prompts across technical, business, and creative use cases
 
-The RISEN framework ensures clarity and consistency by breaking down prompts into five key components. Created by Kyle Balmer.
+The RISEN framework ensures clarity and consistency by breaking down prompts into five key components. Often attributed to Kyle Balmer.
 
 ### Template
 
@@ -173,7 +173,7 @@ The RISEN framework ensures clarity and consistency by breaking down prompts int
 
 **Best for:** Content creation, marketing, and communications requiring specific voice
 
-Developed by GovTech Singapore, CO-STAR won Singapore's first GPT-4 Prompt Engineering competition. It ensures all key aspects influencing an LLM's response are considered.
+Developed by GovTech Singapore's Data Science & AI team, CO-STAR reportedly won Singapore's GPT-4 Prompt Engineering competition. It ensures all key aspects influencing an LLM's response are considered.
 
 ### Template
 
@@ -428,6 +428,7 @@ RACE is designed for obtaining responses that mimic the expertise, methodology, 
 - Tax optimization strategies (Roth conversion ladder, etc.)
 - Sensitivity analysis: What if they can only save 50% of target?
 - Key milestones and decision points
+- Disclaimer that this is for informational purposes only and not financial advice
 ```
 
 ### Example 3: Medical Research Synthesis
@@ -447,6 +448,7 @@ RACE is designed for obtaining responses that mimic the expertise, methodology, 
 - Clear statement of what we don't know yet
 - Plain language suitable for patients (8th-grade reading level)
 - Citations to major studies (author, year) without full references
+- Disclaimer that this is for educational purposes only and patients should consult their healthcare provider
 ```
 
 ---
@@ -1160,6 +1162,8 @@ Instead of: "Reduce your glycemic load by selecting complex carbohydrates."
 Use: "Choose foods that don't spike your blood sugar fast. Swap white bread for whole wheat. Pick brown rice over white rice. Add beans to stretch meals—they fill you up and are gentle on blood sugar."
 
 Output should include visual elements described (diagrams, charts) that can be created separately.
+
+Note: Include a disclaimer that this is for educational purposes only and patients should consult their healthcare provider before making changes.
 ```
 
 ---
