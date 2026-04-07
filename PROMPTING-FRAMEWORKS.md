@@ -128,13 +128,12 @@ The RISEN framework ensures clarity and consistency by breaking down prompts int
 5. Common Errors table
 
 **Examples:**
-```json
-POST /api/v1/users
-{
-  "email": "user@example.com",
-  "password": "securePassword123"
-}
-```
+
+    POST /api/v1/users
+    {
+      "email": "user@example.com",
+      "password": "securePassword123"
+    }
 
 **Nuance:**
 - Use concise, scannable language
@@ -599,12 +598,12 @@ RASCEF provides comprehensive guidance for tasks requiring detailed, step-by-ste
 **Context:** Target audience is developers with basic Git knowledge but no CI/CD experience. Application uses Node.js 18, PostgreSQL, and deploys to AWS ECS. Team size is 5 developers who currently deploy manually via SSH.
 
 **Examples:**
-```yaml
-name: CI/CD Pipeline
-on:
-  push:
-    branches: [main, develop]
-```
+
+    name: CI/CD Pipeline
+    on:
+      push:
+        branches: [main, develop]
+
 - Command explanation: "npm ci is preferred over npm install in CI environments because it provides faster, more reliable builds"
 
 **Format:**
