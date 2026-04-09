@@ -115952,3 +115952,16 @@ The result should look like a refined typographic portrait where shadows are cre
 
 </details>
 
+<details>
+<summary><strong>mc</strong></summary>
+
+## mc
+
+Contributed by [@macro4lifeahk@gmail.com](https://github.com/macro4lifeahk@gmail.com)
+
+```md
+make me an advance minecraft hack with good visuals and advance modules
+```
+
+</details>
+
