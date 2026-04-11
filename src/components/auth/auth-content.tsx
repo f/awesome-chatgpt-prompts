@@ -16,6 +16,7 @@ const providerNames: Record<string, string> = {
   google: "Google",
   azure: "Microsoft",
   apple: "Apple",
+  gitlab: "GitLab",
   credentials: "Email",
 };
 
