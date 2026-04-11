@@ -16,10 +16,6 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
- // eslint: {
- //   ignoreDuringBuilds: true,
- // },
-
   // Configure webpack for raw imports
   webpack: (config) => {
     config.module.rules.push({
