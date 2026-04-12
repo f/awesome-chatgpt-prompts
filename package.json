@@ -65,6 +65,7 @@
     "seed": "npx tsx prisma/seed.ts"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.19.1",
     "@clack/prompts": "^0.11.0",
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.6.3",
