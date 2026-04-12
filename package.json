@@ -2,9 +2,9 @@
   "name": "prompts.chat-v2",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "build": "prisma generate && next build && npx @opennextjs/cloudflare build",
-    "deploy": "npm run build && npx wrangler deploy"
+"scripts": {
+    "build": "prisma generate && next build",
+    "deploy": "npm run build && npx @opennextjs/cloudflare build"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",
