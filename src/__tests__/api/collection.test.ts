@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 import { GET, POST, DELETE } from "@/app/api/collection/route";
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -28,7 +29,7 @@ describe("GET /api/collection", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
     const response = await GET();
     const data = await response.json();
@@ -102,9 +103,9 @@ describe("POST /api/collection", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
-    const request = new Request("http://localhost:3000/api/collection", {
+    const request = new NextRequest("http://localhost:3000/api/collection", {
       method: "POST",
       body: JSON.stringify({ promptId: "123" }),
     });
@@ -119,7 +120,7 @@ describe("POST /api/collection", () => {
   it("should return 400 for invalid input - missing promptId", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
-    const request = new Request("http://localhost:3000/api/collection", {
+    const request = new NextRequest("http://localhost:3000/api/collection", {
       method: "POST",
       body: JSON.stringify({}),
     });
@@ -134,7 +135,7 @@ describe("POST /api/collection", () => {
   it("should return 400 for empty promptId", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
-    const request = new Request("http://localhost:3000/api/collection", {
+    const request = new NextRequest("http://localhost:3000/api/collection", {
       method: "POST",
       body: JSON.stringify({ promptId: "" }),
     });
@@ -150,7 +151,7 @@ describe("POST /api/collection", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
     vi.mocked(db.collection.findUnique).mockResolvedValue({ id: "existing" } as never);
 
-    const request = new Request("http://localhost:3000/api/collection", {
+    const request = new NextRequest("http://localhost:3000/api/collection", {
       method: "POST",
       body: JSON.stringify({ promptId: "123" }),
     });
@@ -167,7 +168,7 @@ describe("POST /api/collection", () => {
     vi.mocked(db.collection.findUnique).mockResolvedValue(null);
     vi.mocked(db.prompt.findUnique).mockResolvedValue(null);
 
-    const request = new Request("http://localhost:3000/api/collection", {
+    const request = new NextRequest("http://localhost:3000/api/collection", {
       method: "POST",
       body: JSON.stringify({ promptId: "nonexistent" }),
     });
@@ -188,7 +189,7 @@ describe("POST /api/collection", () => {
       authorId: "other-user",
     } as never);
 
-    const request = new Request("http://localhost:3000/api/collection", {
+    const request = new NextRequest("http://localhost:3000/api/collection", {
       method: "POST",
       body: JSON.stringify({ promptId: "123" }),
     });
@@ -214,7 +215,7 @@ describe("POST /api/collection", () => {
       promptId: "123",
     } as never);
 
-    const request = new Request("http://localhost:3000/api/collection", {
+    const request = new NextRequest("http://localhost:3000/api/collection", {
       method: "POST",
       body: JSON.stringify({ promptId: "123" }),
     });
@@ -240,7 +241,7 @@ describe("POST /api/collection", () => {
       promptId: "123",
     } as never);
 
-    const request = new Request("http://localhost:3000/api/collection", {
+    const request = new NextRequest("http://localhost:3000/api/collection", {
       method: "POST",
       body: JSON.stringify({ promptId: "123" }),
     });
@@ -266,9 +267,9 @@ describe("DELETE /api/collection", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
-    const request = new Request("http://localhost:3000/api/collection?promptId=123", {
+    const request = new NextRequest("http://localhost:3000/api/collection?promptId=123", {
       method: "DELETE",
     });
 
@@ -282,7 +283,7 @@ describe("DELETE /api/collection", () => {
   it("should return 400 if promptId missing", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
-    const request = new Request("http://localhost:3000/api/collection", {
+    const request = new NextRequest("http://localhost:3000/api/collection", {
       method: "DELETE",
     });
 
@@ -297,7 +298,7 @@ describe("DELETE /api/collection", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
     vi.mocked(db.collection.delete).mockResolvedValue({} as never);
 
-    const request = new Request("http://localhost:3000/api/collection?promptId=123", {
+    const request = new NextRequest("http://localhost:3000/api/collection?promptId=123", {
       method: "DELETE",
     });
 
@@ -320,7 +321,7 @@ describe("DELETE /api/collection", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
     vi.mocked(db.collection.delete).mockRejectedValue(new Error("Not found"));
 
-    const request = new Request("http://localhost:3000/api/collection?promptId=123", {
+    const request = new NextRequest("http://localhost:3000/api/collection?promptId=123", {
       method: "DELETE",
     });
 

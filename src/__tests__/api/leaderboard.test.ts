@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 import { GET } from "@/app/api/leaderboard/route";
 import { db } from "@/lib/db";
 
@@ -52,7 +53,7 @@ describe("GET /api/leaderboard", () => {
       },
     ] as never);
 
-    const request = new Request("http://localhost:3000/api/leaderboard");
+    const request = new NextRequest("http://localhost:3000/api/leaderboard");
 
     const response = await GET(request);
     const data = await response.json();
@@ -67,7 +68,7 @@ describe("GET /api/leaderboard", () => {
     vi.mocked(db.prompt.findMany).mockResolvedValue([]);
     vi.mocked(db.user.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/leaderboard?period=week");
+    const request = new NextRequest("http://localhost:3000/api/leaderboard?period=week");
 
     const response = await GET(request);
     const data = await response.json();
@@ -81,7 +82,7 @@ describe("GET /api/leaderboard", () => {
     vi.mocked(db.prompt.findMany).mockResolvedValue([]);
     vi.mocked(db.user.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/leaderboard?period=month");
+    const request = new NextRequest("http://localhost:3000/api/leaderboard?period=month");
 
     const response = await GET(request);
     const data = await response.json();
@@ -116,7 +117,7 @@ describe("GET /api/leaderboard", () => {
       },
     ] as never);
 
-    const request = new Request("http://localhost:3000/api/leaderboard");
+    const request = new NextRequest("http://localhost:3000/api/leaderboard");
 
     const response = await GET(request);
     const data = await response.json();
@@ -146,7 +147,7 @@ describe("GET /api/leaderboard", () => {
       },
     ] as never);
 
-    const request = new Request("http://localhost:3000/api/leaderboard");
+    const request = new NextRequest("http://localhost:3000/api/leaderboard");
 
     const response = await GET(request);
     const data = await response.json();
@@ -161,7 +162,7 @@ describe("GET /api/leaderboard", () => {
     vi.mocked(db.prompt.findMany).mockResolvedValue([]);
     vi.mocked(db.user.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/leaderboard");
+    const request = new NextRequest("http://localhost:3000/api/leaderboard");
 
     const response = await GET(request);
     const data = await response.json();
@@ -187,7 +188,7 @@ describe("GET /api/leaderboard", () => {
       },
     ] as never);
 
-    const request = new Request("http://localhost:3000/api/leaderboard");
+    const request = new NextRequest("http://localhost:3000/api/leaderboard");
 
     const response = await GET(request);
     const data = await response.json();
@@ -206,7 +207,7 @@ describe("GET /api/leaderboard", () => {
   it("should handle database errors gracefully", async () => {
     vi.mocked(db.promptVote.groupBy).mockRejectedValue(new Error("Database error"));
 
-    const request = new Request("http://localhost:3000/api/leaderboard");
+    const request = new NextRequest("http://localhost:3000/api/leaderboard");
 
     const response = await GET(request);
     const data = await response.json();
@@ -222,7 +223,7 @@ describe("GET /api/leaderboard", () => {
     vi.mocked(db.prompt.findMany).mockResolvedValue([]); // No public prompts returned
     vi.mocked(db.user.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/leaderboard");
+    const request = new NextRequest("http://localhost:3000/api/leaderboard");
 
     await GET(request);
 
@@ -259,7 +260,7 @@ describe("GET /api/leaderboard", () => {
       })) as never
     );
 
-    const request = new Request("http://localhost:3000/api/leaderboard");
+    const request = new NextRequest("http://localhost:3000/api/leaderboard");
 
     const response = await GET(request);
     const data = await response.json();

@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 import { Prisma } from "@prisma/client";
 import { GET, PATCH } from "@/app/api/user/profile/route";
 import { db } from "@/lib/db";
@@ -25,7 +26,7 @@ describe("GET /api/user/profile", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
     const response = await GET();
     const data = await response.json();
@@ -103,9 +104,9 @@ describe("PATCH /api/user/profile", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
-    const request = new Request("http://localhost:3000/api/user/profile", {
+    const request = new NextRequest("http://localhost:3000/api/user/profile", {
       method: "PATCH",
       body: JSON.stringify({ name: "New Name", username: "newuser" }),
     });
@@ -120,7 +121,7 @@ describe("PATCH /api/user/profile", () => {
   it("should return 400 for invalid input - missing name", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
-    const request = new Request("http://localhost:3000/api/user/profile", {
+    const request = new NextRequest("http://localhost:3000/api/user/profile", {
       method: "PATCH",
       body: JSON.stringify({ username: "testuser" }),
     });
@@ -135,7 +136,7 @@ describe("PATCH /api/user/profile", () => {
   it("should return 400 for invalid input - missing username", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
-    const request = new Request("http://localhost:3000/api/user/profile", {
+    const request = new NextRequest("http://localhost:3000/api/user/profile", {
       method: "PATCH",
       body: JSON.stringify({ name: "Test User" }),
     });
@@ -150,7 +151,7 @@ describe("PATCH /api/user/profile", () => {
   it("should return 400 for invalid username format", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
-    const request = new Request("http://localhost:3000/api/user/profile", {
+    const request = new NextRequest("http://localhost:3000/api/user/profile", {
       method: "PATCH",
       body: JSON.stringify({ name: "Test", username: "invalid user!" }),
     });
@@ -172,7 +173,7 @@ describe("PATCH /api/user/profile", () => {
       })
     );
 
-    const request = new Request("http://localhost:3000/api/user/profile", {
+    const request = new NextRequest("http://localhost:3000/api/user/profile", {
       method: "PATCH",
       body: JSON.stringify({ name: "Test", username: "takenuser" }),
     });
@@ -194,7 +195,7 @@ describe("PATCH /api/user/profile", () => {
       })
     );
 
-    const request = new Request("http://localhost:3000/api/user/profile", {
+    const request = new NextRequest("http://localhost:3000/api/user/profile", {
       method: "PATCH",
       body: JSON.stringify({ name: "Test", username: "takenuser" }),
     });
@@ -216,7 +217,7 @@ describe("PATCH /api/user/profile", () => {
       avatar: null,
     } as never);
 
-    const request = new Request("http://localhost:3000/api/user/profile", {
+    const request = new NextRequest("http://localhost:3000/api/user/profile", {
       method: "PATCH",
       body: JSON.stringify({ name: "Updated Name", username: "sameuser" }),
     });
@@ -240,7 +241,7 @@ describe("PATCH /api/user/profile", () => {
       avatar: "https://example.com/new-avatar.png",
     } as never);
 
-    const request = new Request("http://localhost:3000/api/user/profile", {
+    const request = new NextRequest("http://localhost:3000/api/user/profile", {
       method: "PATCH",
       body: JSON.stringify({
         name: "New Name",
@@ -286,7 +287,7 @@ describe("PATCH /api/user/profile", () => {
       avatar: null,
     } as never);
 
-    const request = new Request("http://localhost:3000/api/user/profile", {
+    const request = new NextRequest("http://localhost:3000/api/user/profile", {
       method: "PATCH",
       body: JSON.stringify({
         name: "Test",
@@ -311,7 +312,7 @@ describe("PATCH /api/user/profile", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
     // Username too long (> 30 chars)
-    const request = new Request("http://localhost:3000/api/user/profile", {
+    const request = new NextRequest("http://localhost:3000/api/user/profile", {
       method: "PATCH",
       body: JSON.stringify({
         name: "Test",
@@ -330,7 +331,7 @@ describe("PATCH /api/user/profile", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
     // Name too long (> 100 chars)
-    const request = new Request("http://localhost:3000/api/user/profile", {
+    const request = new NextRequest("http://localhost:3000/api/user/profile", {
       method: "PATCH",
       body: JSON.stringify({
         name: "a".repeat(101),
@@ -356,7 +357,7 @@ describe("PATCH /api/user/profile", () => {
       avatar: null,
     } as never);
 
-    const request = new Request("http://localhost:3000/api/user/profile", {
+    const request = new NextRequest("http://localhost:3000/api/user/profile", {
       method: "PATCH",
       body: JSON.stringify({
         name: "Test",

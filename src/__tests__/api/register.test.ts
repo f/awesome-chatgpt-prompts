@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 import { Prisma } from "@prisma/client";
 import { POST } from "@/app/api/auth/register/route";
 import { db } from "@/lib/db";
@@ -25,8 +26,8 @@ vi.mock("bcryptjs", () => ({
   },
 }));
 
-function createRequest(body: object): Request {
-  return new Request("http://localhost:3000/api/auth/register", {
+function createRequest(body: object): NextRequest {
+  return new NextRequest("http://localhost:3000/api/auth/register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
@@ -39,8 +40,8 @@ describe("POST /api/auth/register", () => {
     // Default: registration is enabled
     vi.mocked(getConfig).mockResolvedValue({
       auth: { allowRegistration: true, providers: [] },
-      features: {},
-    });
+      features: { privatePrompts: true, changeRequests: true, categories: true, tags: true },
+    } as never);
     // Default: no existing users
     vi.mocked(db.user.findUnique).mockResolvedValue(null);
     vi.mocked(db.user.findFirst).mockResolvedValue(null);
@@ -140,8 +141,8 @@ describe("POST /api/auth/register", () => {
     it("should return 403 when registration is disabled", async () => {
       vi.mocked(getConfig).mockResolvedValue({
         auth: { allowRegistration: false, providers: [] },
-        features: {},
-      });
+        features: { privatePrompts: true, changeRequests: true, categories: true, tags: true },
+      } as never);
 
       const request = createRequest({
         name: "Test User",
@@ -280,13 +281,12 @@ describe("POST /api/auth/register", () => {
         email: "test@example.com",
         password: "hashed_password",
         emailVerified: null,
-        image: null,
+        avatar: null,
         role: "USER",
         bio: null,
-        credits: 0,
         createdAt: new Date(),
         updatedAt: new Date(),
-      });
+      } as never);
 
       const request = createRequest({
         name: "Test User",
@@ -314,13 +314,12 @@ describe("POST /api/auth/register", () => {
         email: "test@example.com",
         password: "hashed_password",
         emailVerified: null,
-        image: null,
+        avatar: null,
         role: "USER",
         bio: null,
-        credits: 0,
         createdAt: new Date(),
         updatedAt: new Date(),
-      });
+      } as never);
 
       const request = createRequest({
         name: "  Test User  ",
@@ -351,13 +350,12 @@ describe("POST /api/auth/register", () => {
         email: "test@example.com",
         password: "hashed_password",
         emailVerified: null,
-        image: null,
+        avatar: null,
         role: "USER",
         bio: null,
-        credits: 0,
         createdAt: new Date(),
         updatedAt: new Date(),
-      });
+      } as never);
 
       const request = createRequest({
         name: "Test User",
@@ -399,7 +397,7 @@ describe("POST /api/auth/register", () => {
     });
 
     it("should return 500 on invalid JSON body", async () => {
-      const request = new Request("http://localhost:3000/api/auth/register", {
+      const request = new NextRequest("http://localhost:3000/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: "invalid json",

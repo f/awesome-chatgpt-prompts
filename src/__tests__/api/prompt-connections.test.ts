@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 import { GET, POST } from "@/app/api/prompts/[id]/connections/route";
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -34,7 +35,7 @@ describe("GET /api/prompts/[id]/connections", () => {
   it("should return 404 for non-existent prompt", async () => {
     vi.mocked(db.prompt.findUnique).mockResolvedValue(null);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections");
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections");
     const response = await GET(request, {
       params: Promise.resolve({ id: "123" }),
     });
@@ -51,9 +52,9 @@ describe("GET /api/prompts/[id]/connections", () => {
       authorId: "user1",
     } as never);
     vi.mocked(db.promptConnection.findMany).mockResolvedValue([]);
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections");
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections");
     const response = await GET(request, {
       params: Promise.resolve({ id: "123" }),
     });
@@ -89,7 +90,7 @@ describe("GET /api/prompts/[id]/connections", () => {
       ] as never);
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections");
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections");
     const response = await GET(request, {
       params: Promise.resolve({ id: "123" }),
     });
@@ -117,7 +118,7 @@ describe("GET /api/prompts/[id]/connections", () => {
       .mockResolvedValueOnce([]);
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections");
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections");
     const response = await GET(request, {
       params: Promise.resolve({ id: "123" }),
     });
@@ -143,7 +144,7 @@ describe("GET /api/prompts/[id]/connections", () => {
       .mockResolvedValueOnce([]);
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections");
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections");
     const response = await GET(request, {
       params: Promise.resolve({ id: "123" }),
     });
@@ -159,9 +160,9 @@ describe("POST /api/prompts/[id]/connections", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections", {
       method: "POST",
       body: JSON.stringify({ targetId: "456", label: "next" }),
     });
@@ -178,7 +179,7 @@ describe("POST /api/prompts/[id]/connections", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
     vi.mocked(db.prompt.findUnique).mockResolvedValue(null);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections", {
       method: "POST",
       body: JSON.stringify({ targetId: "456", label: "next" }),
     });
@@ -195,7 +196,7 @@ describe("POST /api/prompts/[id]/connections", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1", role: "USER" } } as never);
     vi.mocked(db.prompt.findUnique).mockResolvedValue({ authorId: "other-user" } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections", {
       method: "POST",
       body: JSON.stringify({ targetId: "456", label: "next" }),
     });
@@ -214,7 +215,7 @@ describe("POST /api/prompts/[id]/connections", () => {
       .mockResolvedValueOnce({ authorId: "user1" } as never) // Source
       .mockResolvedValueOnce(null); // Target
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections", {
       method: "POST",
       body: JSON.stringify({ targetId: "456", label: "next" }),
     });
@@ -233,7 +234,7 @@ describe("POST /api/prompts/[id]/connections", () => {
       .mockResolvedValueOnce({ authorId: "user1" } as never) // Source
       .mockResolvedValueOnce({ id: "456", authorId: "other-user" } as never); // Target
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections", {
       method: "POST",
       body: JSON.stringify({ targetId: "456", label: "next" }),
     });
@@ -252,7 +253,7 @@ describe("POST /api/prompts/[id]/connections", () => {
       .mockResolvedValueOnce({ authorId: "user1" } as never)
       .mockResolvedValueOnce({ id: "123", authorId: "user1" } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections", {
       method: "POST",
       body: JSON.stringify({ targetId: "123", label: "next" }),
     });
@@ -272,7 +273,7 @@ describe("POST /api/prompts/[id]/connections", () => {
       .mockResolvedValueOnce({ id: "456", authorId: "user1" } as never);
     vi.mocked(db.promptConnection.findUnique).mockResolvedValue({ id: "existing" } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections", {
       method: "POST",
       body: JSON.stringify({ targetId: "456", label: "next" }),
     });
@@ -301,7 +302,7 @@ describe("POST /api/prompts/[id]/connections", () => {
       target: { id: "456", title: "Target", slug: "target" },
     } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections", {
       method: "POST",
       body: JSON.stringify({ targetId: "456", label: "next" }),
     });
@@ -327,7 +328,7 @@ describe("POST /api/prompts/[id]/connections", () => {
       target: {},
     } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections", {
       method: "POST",
       body: JSON.stringify({ targetId: "456", label: "next" }),
     });
@@ -345,7 +346,7 @@ describe("POST /api/prompts/[id]/connections", () => {
   it("should return 400 for missing required fields", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections", {
       method: "POST",
       body: JSON.stringify({ targetId: "456" }), // Missing label
     });
@@ -368,7 +369,7 @@ describe("POST /api/prompts/[id]/connections", () => {
       target: {},
     } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/connections", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/connections", {
       method: "POST",
       body: JSON.stringify({ targetId: "456", label: "admin-link" }),
     });

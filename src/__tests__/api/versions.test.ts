@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 import { GET, POST } from "@/app/api/prompts/[id]/versions/route";
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -35,7 +36,7 @@ describe("GET /api/prompts/[id]/versions", () => {
     } as never);
     vi.mocked(db.promptVersion.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions");
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions");
     const response = await GET(request, {
       params: Promise.resolve({ id: "123" }),
     });
@@ -77,7 +78,7 @@ describe("GET /api/prompts/[id]/versions", () => {
       },
     ] as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions");
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions");
     const response = await GET(request, {
       params: Promise.resolve({ id: "123" }),
     });
@@ -106,7 +107,7 @@ describe("GET /api/prompts/[id]/versions", () => {
       },
     ] as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions");
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions");
     const response = await GET(request, {
       params: Promise.resolve({ id: "123" }),
     });
@@ -124,7 +125,7 @@ describe("GET /api/prompts/[id]/versions", () => {
     } as never);
     vi.mocked(db.promptVersion.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions");
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions");
     await GET(request, {
       params: Promise.resolve({ id: "123" }),
     });
@@ -150,9 +151,9 @@ describe("POST /api/prompts/[id]/versions", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions", {
       method: "POST",
       body: JSON.stringify({ content: "New content" }),
     });
@@ -169,7 +170,7 @@ describe("POST /api/prompts/[id]/versions", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
     vi.mocked(db.prompt.findUnique).mockResolvedValue(null);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions", {
       method: "POST",
       body: JSON.stringify({ content: "New content" }),
     });
@@ -189,7 +190,7 @@ describe("POST /api/prompts/[id]/versions", () => {
       content: "Original content",
     } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions", {
       method: "POST",
       body: JSON.stringify({ content: "New content" }),
     });
@@ -209,7 +210,7 @@ describe("POST /api/prompts/[id]/versions", () => {
       content: "Original content",
     } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions", {
       method: "POST",
       body: JSON.stringify({ content: "" }),
     });
@@ -229,7 +230,7 @@ describe("POST /api/prompts/[id]/versions", () => {
       content: "Original content",
     } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions", {
       method: "POST",
       body: JSON.stringify({}),
     });
@@ -249,7 +250,7 @@ describe("POST /api/prompts/[id]/versions", () => {
       content: "Same content",
     } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions", {
       method: "POST",
       body: JSON.stringify({ content: "Same content" }),
     });
@@ -282,7 +283,7 @@ describe("POST /api/prompts/[id]/versions", () => {
       },
     ] as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions", {
       method: "POST",
       body: JSON.stringify({ content: "New content" }),
     });
@@ -316,7 +317,7 @@ describe("POST /api/prompts/[id]/versions", () => {
       ];
     });
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions", {
       method: "POST",
       body: JSON.stringify({ content: "New content" }),
     });
@@ -347,7 +348,7 @@ describe("POST /api/prompts/[id]/versions", () => {
       },
     ] as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions", {
       method: "POST",
       body: JSON.stringify({
         content: "New content",
@@ -381,7 +382,7 @@ describe("POST /api/prompts/[id]/versions", () => {
       },
     ] as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions", {
       method: "POST",
       body: JSON.stringify({ content: "New content" }),
     });
@@ -412,7 +413,7 @@ describe("POST /api/prompts/[id]/versions", () => {
       },
     ] as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/versions", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/versions", {
       method: "POST",
       body: JSON.stringify({ content: "New content" }),
     });

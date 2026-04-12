@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 import { GET } from "@/app/api/prompts/search/route";
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -22,7 +23,7 @@ describe("GET /api/prompts/search", () => {
   });
 
   it("should return empty array for query shorter than 2 characters", async () => {
-    const request = new Request("http://localhost:3000/api/prompts/search?q=a");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search?q=a");
 
     const response = await GET(request);
     const data = await response.json();
@@ -33,7 +34,7 @@ describe("GET /api/prompts/search", () => {
   });
 
   it("should return empty array for empty query", async () => {
-    const request = new Request("http://localhost:3000/api/prompts/search?q=");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search?q=");
 
     const response = await GET(request);
     const data = await response.json();
@@ -43,7 +44,7 @@ describe("GET /api/prompts/search", () => {
   });
 
   it("should return empty array for missing query", async () => {
-    const request = new Request("http://localhost:3000/api/prompts/search");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search");
 
     const response = await GET(request);
     const data = await response.json();
@@ -53,7 +54,7 @@ describe("GET /api/prompts/search", () => {
   });
 
   it("should search prompts with valid query", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
     vi.mocked(db.prompt.findMany).mockResolvedValue([
       {
         id: "1",
@@ -63,7 +64,7 @@ describe("GET /api/prompts/search", () => {
       },
     ] as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/search?q=test");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search?q=test");
 
     const response = await GET(request);
     const data = await response.json();
@@ -74,10 +75,10 @@ describe("GET /api/prompts/search", () => {
   });
 
   it("should respect limit parameter", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
     vi.mocked(db.prompt.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/prompts/search?q=test&limit=5");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search?q=test&limit=5");
 
     await GET(request);
 
@@ -89,10 +90,10 @@ describe("GET /api/prompts/search", () => {
   });
 
   it("should cap limit at 50", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
     vi.mocked(db.prompt.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/prompts/search?q=test&limit=100");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search?q=test&limit=100");
 
     await GET(request);
 
@@ -104,10 +105,10 @@ describe("GET /api/prompts/search", () => {
   });
 
   it("should use default limit of 10", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
     vi.mocked(db.prompt.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/prompts/search?q=test");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search?q=test");
 
     await GET(request);
 
@@ -119,10 +120,10 @@ describe("GET /api/prompts/search", () => {
   });
 
   it("should filter public prompts for unauthenticated users", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
     vi.mocked(db.prompt.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/prompts/search?q=test");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search?q=test");
 
     await GET(request);
 
@@ -140,7 +141,7 @@ describe("GET /api/prompts/search", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
     vi.mocked(db.prompt.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/prompts/search?q=test");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search?q=test");
 
     await GET(request);
 
@@ -153,7 +154,7 @@ describe("GET /api/prompts/search", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
     vi.mocked(db.prompt.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/prompts/search?q=test&ownerOnly=true");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search?q=test&ownerOnly=true");
 
     await GET(request);
 
@@ -161,12 +162,12 @@ describe("GET /api/prompts/search", () => {
   });
 
   it("should handle comma-separated keywords", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
     vi.mocked(db.prompt.findMany).mockResolvedValue([
       { id: "1", title: "Coding Helper", slug: "coding-helper", author: { username: "test" } },
     ] as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/search?q=coding,helper");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search?q=coding,helper");
 
     const response = await GET(request);
     const data = await response.json();
@@ -176,10 +177,10 @@ describe("GET /api/prompts/search", () => {
   });
 
   it("should order results by featured then viewCount", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
     vi.mocked(db.prompt.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/prompts/search?q=test");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search?q=test");
 
     await GET(request);
 
@@ -191,10 +192,10 @@ describe("GET /api/prompts/search", () => {
   });
 
   it("should select appropriate fields", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
     vi.mocked(db.prompt.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/prompts/search?q=test");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search?q=test");
 
     await GET(request);
 
@@ -215,10 +216,10 @@ describe("GET /api/prompts/search", () => {
   });
 
   it("should handle database errors gracefully", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
     vi.mocked(db.prompt.findMany).mockRejectedValue(new Error("Database error"));
 
-    const request = new Request("http://localhost:3000/api/prompts/search?q=test");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search?q=test");
 
     const response = await GET(request);
     const data = await response.json();
@@ -228,10 +229,10 @@ describe("GET /api/prompts/search", () => {
   });
 
   it("should handle special characters in query", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
     vi.mocked(db.prompt.findMany).mockResolvedValue([]);
 
-    const request = new Request("http://localhost:3000/api/prompts/search?q=test%20query%20with%20spaces");
+    const request = new NextRequest("http://localhost:3000/api/prompts/search?q=test%20query%20with%20spaces");
 
     const response = await GET(request);
 

@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 import { GET } from "@/app/api/admin/users/route";
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -23,9 +24,9 @@ describe("GET /api/admin/users", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
-    const request = new Request("http://localhost:3000/api/admin/users");
+    const request = new NextRequest("http://localhost:3000/api/admin/users");
     const response = await GET(request);
     const data = await response.json();
 
@@ -36,7 +37,7 @@ describe("GET /api/admin/users", () => {
   it("should return 403 if user is not admin", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1", role: "USER" } } as never);
 
-    const request = new Request("http://localhost:3000/api/admin/users");
+    const request = new NextRequest("http://localhost:3000/api/admin/users");
     const response = await GET(request);
     const data = await response.json();
 
@@ -66,7 +67,7 @@ describe("GET /api/admin/users", () => {
     ] as never);
     vi.mocked(db.user.count).mockResolvedValue(1);
 
-    const request = new Request("http://localhost:3000/api/admin/users");
+    const request = new NextRequest("http://localhost:3000/api/admin/users");
     const response = await GET(request);
     const data = await response.json();
 
@@ -80,7 +81,7 @@ describe("GET /api/admin/users", () => {
     vi.mocked(db.user.findMany).mockResolvedValue([]);
     vi.mocked(db.user.count).mockResolvedValue(0);
 
-    const request = new Request("http://localhost:3000/api/admin/users?search=john");
+    const request = new NextRequest("http://localhost:3000/api/admin/users?search=john");
     await GET(request);
 
     expect(db.user.findMany).toHaveBeenCalledWith(
@@ -101,7 +102,7 @@ describe("GET /api/admin/users", () => {
     vi.mocked(db.user.findMany).mockResolvedValue([]);
     vi.mocked(db.user.count).mockResolvedValue(0);
 
-    const request = new Request("http://localhost:3000/api/admin/users?filter=admin");
+    const request = new NextRequest("http://localhost:3000/api/admin/users?filter=admin");
     await GET(request);
 
     expect(db.user.findMany).toHaveBeenCalledWith(
@@ -116,7 +117,7 @@ describe("GET /api/admin/users", () => {
     vi.mocked(db.user.findMany).mockResolvedValue([]);
     vi.mocked(db.user.count).mockResolvedValue(0);
 
-    const request = new Request("http://localhost:3000/api/admin/users?filter=verified");
+    const request = new NextRequest("http://localhost:3000/api/admin/users?filter=verified");
     await GET(request);
 
     expect(db.user.findMany).toHaveBeenCalledWith(
@@ -131,7 +132,7 @@ describe("GET /api/admin/users", () => {
     vi.mocked(db.user.findMany).mockResolvedValue([]);
     vi.mocked(db.user.count).mockResolvedValue(0);
 
-    const request = new Request("http://localhost:3000/api/admin/users?filter=unverified");
+    const request = new NextRequest("http://localhost:3000/api/admin/users?filter=unverified");
     await GET(request);
 
     expect(db.user.findMany).toHaveBeenCalledWith(
@@ -146,7 +147,7 @@ describe("GET /api/admin/users", () => {
     vi.mocked(db.user.findMany).mockResolvedValue([]);
     vi.mocked(db.user.count).mockResolvedValue(0);
 
-    const request = new Request("http://localhost:3000/api/admin/users?filter=flagged");
+    const request = new NextRequest("http://localhost:3000/api/admin/users?filter=flagged");
     await GET(request);
 
     expect(db.user.findMany).toHaveBeenCalledWith(
@@ -161,7 +162,7 @@ describe("GET /api/admin/users", () => {
     vi.mocked(db.user.findMany).mockResolvedValue([]);
     vi.mocked(db.user.count).mockResolvedValue(100);
 
-    const request = new Request("http://localhost:3000/api/admin/users?page=3&limit=25");
+    const request = new NextRequest("http://localhost:3000/api/admin/users?page=3&limit=25");
     const response = await GET(request);
     const data = await response.json();
 
@@ -180,7 +181,7 @@ describe("GET /api/admin/users", () => {
     vi.mocked(db.user.findMany).mockResolvedValue([]);
     vi.mocked(db.user.count).mockResolvedValue(0);
 
-    const request = new Request("http://localhost:3000/api/admin/users?sortBy=username&sortOrder=asc");
+    const request = new NextRequest("http://localhost:3000/api/admin/users?sortBy=username&sortOrder=asc");
     await GET(request);
 
     expect(db.user.findMany).toHaveBeenCalledWith(

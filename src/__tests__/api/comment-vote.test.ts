@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 import { POST, DELETE } from "@/app/api/prompts/[id]/comments/[commentId]/vote/route";
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -39,7 +40,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/vote", () => {
   it("should return 403 if comments feature is disabled", async () => {
     vi.mocked(getConfig).mockResolvedValue({ features: { comments: false } } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "POST",
       body: JSON.stringify({ value: 1 }),
     });
@@ -53,9 +54,9 @@ describe("POST /api/prompts/[id]/comments/[commentId]/vote", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "POST",
       body: JSON.stringify({ value: 1 }),
     });
@@ -71,7 +72,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/vote", () => {
   it("should return 400 for invalid vote value", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "POST",
       body: JSON.stringify({ value: 5 }),
     });
@@ -87,7 +88,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/vote", () => {
   it("should return 400 for missing vote value", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "POST",
       body: JSON.stringify({}),
     });
@@ -103,7 +104,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/vote", () => {
   it("should return 400 for value of 0", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "POST",
       body: JSON.stringify({ value: 0 }),
     });
@@ -120,7 +121,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/vote", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
     vi.mocked(db.comment.findUnique).mockResolvedValue(null);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "POST",
       body: JSON.stringify({ value: 1 }),
     });
@@ -140,7 +141,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/vote", () => {
       promptId: "different-prompt",
     } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "POST",
       body: JSON.stringify({ value: 1 }),
     });
@@ -166,7 +167,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/vote", () => {
     vi.mocked(db.commentVote.findMany).mockResolvedValue([{ value: 1 }] as never);
     vi.mocked(db.comment.update).mockResolvedValue({} as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "POST",
       body: JSON.stringify({ value: 1 }),
     });
@@ -200,7 +201,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/vote", () => {
     vi.mocked(db.commentVote.findMany).mockResolvedValue([{ value: -1 }] as never);
     vi.mocked(db.comment.update).mockResolvedValue({} as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "POST",
       body: JSON.stringify({ value: -1 }),
     });
@@ -227,7 +228,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/vote", () => {
     vi.mocked(db.commentVote.findMany).mockResolvedValue([] as never);
     vi.mocked(db.comment.update).mockResolvedValue({} as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "POST",
       body: JSON.stringify({ value: 1 }), // Same as existing
     });
@@ -255,7 +256,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/vote", () => {
     vi.mocked(db.commentVote.findMany).mockResolvedValue([{ value: -1 }] as never);
     vi.mocked(db.comment.update).mockResolvedValue({} as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "POST",
       body: JSON.stringify({ value: -1 }), // Opposite of existing
     });
@@ -287,7 +288,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/vote", () => {
     ] as never);
     vi.mocked(db.comment.update).mockResolvedValue({} as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "POST",
       body: JSON.stringify({ value: 1 }),
     });
@@ -311,7 +312,7 @@ describe("DELETE /api/prompts/[id]/comments/[commentId]/vote", () => {
   it("should return 403 if comments feature is disabled", async () => {
     vi.mocked(getConfig).mockResolvedValue({ features: { comments: false } } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "DELETE",
     });
     const response = await DELETE(request, {
@@ -324,9 +325,9 @@ describe("DELETE /api/prompts/[id]/comments/[commentId]/vote", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "DELETE",
     });
     const response = await DELETE(request, {
@@ -344,7 +345,7 @@ describe("DELETE /api/prompts/[id]/comments/[commentId]/vote", () => {
     vi.mocked(db.commentVote.findMany).mockResolvedValue([{ value: 1 }] as never);
     vi.mocked(db.comment.update).mockResolvedValue({} as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "DELETE",
     });
     const response = await DELETE(request, {
@@ -363,7 +364,7 @@ describe("DELETE /api/prompts/[id]/comments/[commentId]/vote", () => {
     vi.mocked(db.commentVote.findMany).mockResolvedValue([] as never);
     vi.mocked(db.comment.update).mockResolvedValue({} as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "DELETE",
     });
     const response = await DELETE(request, {
@@ -385,7 +386,7 @@ describe("DELETE /api/prompts/[id]/comments/[commentId]/vote", () => {
     ] as never);
     vi.mocked(db.comment.update).mockResolvedValue({} as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/vote", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/vote", {
       method: "DELETE",
     });
     await DELETE(request, {

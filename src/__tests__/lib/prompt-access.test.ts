@@ -80,7 +80,7 @@ describe("checkPromptAccess", () => {
   });
 
   it("should return 404 for private prompt with no session", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
     const result = await checkPromptAccess({ isPrivate: true, authorId: "user1" });
     expect(result).not.toBeNull();
     expect(result!.status).toBe(404);

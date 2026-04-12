@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 import { POST } from "@/app/api/prompts/[id]/feature/route";
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -26,9 +27,9 @@ describe("POST /api/prompts/[id]/feature", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/feature", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/feature", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -44,7 +45,7 @@ describe("POST /api/prompts/[id]/feature", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
     vi.mocked(db.user.findUnique).mockResolvedValue({ role: "USER" } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/feature", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/feature", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -61,7 +62,7 @@ describe("POST /api/prompts/[id]/feature", () => {
     vi.mocked(db.user.findUnique).mockResolvedValue({ role: "ADMIN" } as never);
     vi.mocked(db.prompt.findUnique).mockResolvedValue(null);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/feature", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/feature", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -79,7 +80,7 @@ describe("POST /api/prompts/[id]/feature", () => {
     vi.mocked(db.prompt.findUnique).mockResolvedValue({ isFeatured: false } as never);
     vi.mocked(db.prompt.update).mockResolvedValue({ isFeatured: true } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/feature", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/feature", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -98,7 +99,7 @@ describe("POST /api/prompts/[id]/feature", () => {
     vi.mocked(db.prompt.findUnique).mockResolvedValue({ isFeatured: true } as never);
     vi.mocked(db.prompt.update).mockResolvedValue({ isFeatured: false } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/feature", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/feature", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -117,7 +118,7 @@ describe("POST /api/prompts/[id]/feature", () => {
     vi.mocked(db.prompt.findUnique).mockResolvedValue({ isFeatured: false } as never);
     vi.mocked(db.prompt.update).mockResolvedValue({ isFeatured: true } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/feature", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/feature", {
       method: "POST",
     });
     await POST(request, {
@@ -139,7 +140,7 @@ describe("POST /api/prompts/[id]/feature", () => {
     vi.mocked(db.prompt.findUnique).mockResolvedValue({ isFeatured: true } as never);
     vi.mocked(db.prompt.update).mockResolvedValue({ isFeatured: false } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/feature", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/feature", {
       method: "POST",
     });
     await POST(request, {

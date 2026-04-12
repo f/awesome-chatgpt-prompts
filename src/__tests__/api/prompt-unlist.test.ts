@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 import { POST } from "@/app/api/prompts/[id]/unlist/route";
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -27,9 +28,9 @@ describe("POST /api/prompts/[id]/unlist", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/unlist", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/unlist", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -44,7 +45,7 @@ describe("POST /api/prompts/[id]/unlist", () => {
   it("should return 403 if user is not admin", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1", role: "USER" } } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/unlist", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/unlist", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -60,7 +61,7 @@ describe("POST /api/prompts/[id]/unlist", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "admin1", role: "ADMIN" } } as never);
     vi.mocked(db.prompt.findUnique).mockResolvedValue(null);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/unlist", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/unlist", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -77,7 +78,7 @@ describe("POST /api/prompts/[id]/unlist", () => {
     vi.mocked(db.prompt.findUnique).mockResolvedValue({ id: "123", isUnlisted: false } as never);
     vi.mocked(db.prompt.update).mockResolvedValue({ isUnlisted: true } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/unlist", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/unlist", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -96,7 +97,7 @@ describe("POST /api/prompts/[id]/unlist", () => {
     vi.mocked(db.prompt.findUnique).mockResolvedValue({ id: "123", isUnlisted: true } as never);
     vi.mocked(db.prompt.update).mockResolvedValue({ isUnlisted: false } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/unlist", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/unlist", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -115,7 +116,7 @@ describe("POST /api/prompts/[id]/unlist", () => {
     vi.mocked(db.prompt.findUnique).mockResolvedValue({ id: "123", isUnlisted: false } as never);
     vi.mocked(db.prompt.update).mockResolvedValue({} as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/unlist", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/unlist", {
       method: "POST",
     });
     await POST(request, {
@@ -136,7 +137,7 @@ describe("POST /api/prompts/[id]/unlist", () => {
     vi.mocked(db.prompt.findUnique).mockResolvedValue({ id: "123", isUnlisted: true } as never);
     vi.mocked(db.prompt.update).mockResolvedValue({} as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/unlist", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/unlist", {
       method: "POST",
     });
     await POST(request, {
