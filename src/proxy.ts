@@ -27,9 +27,6 @@ export function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-// 如果这个文件被 API 路由引用，并且你想让该路由在 Edge 环境运行：
-export const runtime = 'edge';
-
 // 注意：这里不要写 export const config = { matcher: [...] }
 // 那个配置必须剪切并粘贴到你的 middleware.ts 文件中
 
