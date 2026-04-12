@@ -1,0 +1,13 @@
+{
+  "name": "prompts-chat",
+  "compatibility_date": "2026-04-12",
+  "compatibility_flags": ["nodejs_compat"],
+  "build": {
+    // 核心修复：指名道姓让 npx 去 @opennextjs/cloudflare 包里找 build 命令
+    "command": "npm run build && npx @opennextjs/cloudflare build",
+    "upload": {
+      "dir": ".open-next",
+      "format": "service-worker"
+    }
+  }
+}
