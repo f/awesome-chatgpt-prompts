@@ -1,25 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// 确保没有任何 export const ... 变量
+// 只有一个逻辑导出函数
 export async function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  // Rewrite .prompt.md and .prompt.yml requests to the raw API route
-  if (pathname.startsWith("/prompts/") && (pathname.endsWith(".prompt.md") || pathname.endsWith(".prompt.yml"))) {
-    const id = pathname.slice("/prompts/".length);
-    const url = request.nextUrl.clone();
-    url.pathname = `/api/prompts/${id}/raw`;
-    return NextResponse.rewrite(url);
-  }
-
-  // Add pathname header for layout detection
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-pathname", pathname);
-
-  return NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  });
-}
-
-;
+  console.log("Proxy tool triggered");
+  return NextResponse.next();
+};
