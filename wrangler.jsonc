@@ -1,13 +1,13 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "prompts-chat",
-  "main": ".open-next/worker.js", // 核心：告诉 Wrangler 入口文件在这里
+  "main": ".open-next/worker.js", 
   "compatibility_date": "2026-04-12",
   "compatibility_flags": [
     "nodejs_compat"
   ],
   "assets": {
-    "directory": ".open-next/assets", // 核心：静态资源在这里
+    "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
   "observability": {
