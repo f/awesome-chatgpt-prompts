@@ -1,14 +1,16 @@
 // open-next.config.ts
-import { defineConfig } from "@opennextjs/cloudflare";
+// 不再从包里 import defineConfig，直接导出一个兼容的配置对象
 
-export default defineConfig({
+const config = {
   default: {
     runtime: "edge",
     placement: "smart",
   },
   build: {
-    // 踢出二进制依赖，防止打包崩溃
+    // 依然保留这个核心配置，防止二进制依赖报错
     external: ["@swc/core", "@swc/wasm", "fsevents"],
     minify: true,
   },
-});
+};
+
+export default config;
