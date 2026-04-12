@@ -10,7 +10,8 @@ const config = {
       queue: "dummy",
     },
   },
-  // 刚才报错信息里提到的额外部分也给它补上
+  // 报错信息里明确要求的字段，必须有
+  edgeExternals: ["node:crypto"],
   middleware: {
     external: true,
     override: {
@@ -22,8 +23,8 @@ const config = {
       queue: "dummy",
     },
   },
+  // 咱们之前为了解决 SWC 二进制崩溃加的配置
   build: {
-    // 依然保留咱们之前的“地雷排查”配置
     external: ["@swc/core", "@swc/wasm", "fsevents"],
     minify: true,
   },
