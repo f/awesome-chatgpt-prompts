@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-      "build": "prisma generate && next build && npx @opennextjs/cloudflare build"
+      "build": "npx @opennextjs/cloudflare build"
       "deploy": "npm run build && npx @opennextjs/cloudflare build"
     },
   "dependencies": {
