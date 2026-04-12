@@ -1,7 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-// middleware.ts
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
