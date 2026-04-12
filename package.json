@@ -4,8 +4,8 @@
   "private": true,
 "scripts": {
   "build": "prisma generate && next build",
-  "deploy": "npx @opennextjs/cloudflare build && npx @opennextjs/cloudflare deploy",
-  "preview": "npx @opennextjs/cloudflare build && npx @opennextjs/cloudflare preview"
+  "build:worker": "npx @opennextjs/cloudflare build",
+  "deploy": "npm run build && npm run build:worker && npx @opennextjs/cloudflare deploy"
 },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",
