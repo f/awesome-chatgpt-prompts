@@ -22,12 +22,4 @@ export async function proxy(request: NextRequest) {
   });
 }
 
-
-export function middleware(request: NextRequest) {
-  return NextResponse.next();
-}
-
-// 注意：这里不要写 export const config = { matcher: [...] }
-// 那个配置必须剪切并粘贴到你的 middleware.ts 文件中
-
 ;
