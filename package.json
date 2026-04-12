@@ -1,7 +1,7 @@
 {
   "name": "prompts.chat-v2",
   "version": "0.1.0",
-  "private": true},
+  "private": true,
 "scripts": {
   "build": "prisma generate && next build && npx @opennextjs/cloudflare build",
   "deploy": "npm run build && npx wrangler deploy"
