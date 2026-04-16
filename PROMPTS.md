@@ -118157,3 +118157,17 @@ Contributed by [@senoldak](https://github.com/senoldak)
 
 </details>
 
+<details>
+<summary><strong>create prompt for audit purpose on password configuartion file for linux</strong></summary>
+
+## create prompt for audit purpose on password configuartion file for linux
+
+Contributed by [@balajiforaix@gmail.com](https://github.com/balajiforaix@gmail.com)
+
+```md
+create prompt for audit purpose on password configuartion file for linux & unix
+
+```
+
+</details>
+
