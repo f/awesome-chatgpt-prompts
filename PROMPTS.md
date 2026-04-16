@@ -118171,3 +118171,16 @@ create prompt for audit purpose on password configuartion file for linux & unix
 
 </details>
 
+<details>
+<summary><strong>MAP</strong></summary>
+
+## MAP
+
+Contributed by [@kevjones7563@gmail.com](https://github.com/kevjones7563@gmail.com)
+
+```md
+BLACK AND WHITE DETAILED VINTAGE MAP OF THE WORLD FOR ENGRAVING ON SLATE
+```
+
+</details>
+
