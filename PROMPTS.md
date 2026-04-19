@@ -118825,3 +118825,25 @@ Example:
 
 </details>
 
+<details>
+<summary><strong>MDCT Step-by-Step Calculation</strong></summary>
+
+## MDCT Step-by-Step Calculation
+
+Contributed by [@mvel20342@gmail.com](https://github.com/mvel20342@gmail.com)
+
+```md
+Implement MDCT for the input sequence:
+
+x(n) = [1, 2, 3, 4]
+
+Steps:
+1. Identify N and 2N
+2. Apply MDCT formula
+3. Show cosine values clearly
+4. Display step-by-step calculation table
+5. Give final coefficients
+```
+
+</details>
+
