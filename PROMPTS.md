@@ -119295,3 +119295,16 @@ create a a CAN simulation so when i run it i understand how CAN works in a singl
 
 </details>
 
+<details>
+<summary><strong>Rocket launcher</strong></summary>
+
+## Rocket launcher
+
+Contributed by [@ngattu7044@gmail.com](https://github.com/ngattu7044@gmail.com)
+
+```md
+I want a video prompt on south Indian village youngsters manufacture a rocket video with their knowledge 
+```
+
+</details>
+
