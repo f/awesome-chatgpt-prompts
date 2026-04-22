@@ -119282,3 +119282,16 @@ Rules:
 
 </details>
 
+<details>
+<summary><strong>Create a CAN Simulation in Python</strong></summary>
+
+## Create a CAN Simulation in Python
+
+Contributed by [@tullapeople@gmail.com](https://github.com/tullapeople@gmail.com)
+
+```md
+create a a CAN simulation so when i run it i understand how CAN works in a single ECU unit create it in python 
+```
+
+</details>
+
