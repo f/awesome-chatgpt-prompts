@@ -119458,3 +119458,16 @@ for an important test or exam.
 
 </details>
 
+<details>
+<summary><strong>suitable sunglasses using gemini</strong></summary>
+
+## suitable sunglasses using gemini
+
+Contributed by [@naveen@upfinzo.in](https://github.com/naveen@upfinzo.in)
+
+```md
+Provide an image using upload image with suitable sunglass frames to the face
+```
+
+</details>
+
