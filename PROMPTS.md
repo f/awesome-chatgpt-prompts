@@ -119566,3 +119566,16 @@ How it is important to build an friend group that had to do with each and everyo
 
 </details>
 
+<details>
+<summary><strong>What friendship should be all about </strong></summary>
+
+## What friendship should be all about 
+
+Contributed by [@oluwasegunolorungbeja@gmail.com](https://github.com/oluwasegunolorungbeja@gmail.com)
+
+```md
+How it is important to build an friend group that had to do with each and everyone’s growth, because your development self can’t be attained with only what you have to offer 
+```
+
+</details>
+
