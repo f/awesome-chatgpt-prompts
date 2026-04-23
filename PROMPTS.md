@@ -119553,3 +119553,16 @@ Contributed by [@narrivodigital](https://github.com/narrivodigital)
 
 </details>
 
+<details>
+<summary><strong>Building a community </strong></summary>
+
+## Building a community 
+
+Contributed by [@oluwasegunolorungbeja@gmail.com](https://github.com/oluwasegunolorungbeja@gmail.com)
+
+```md
+How it is important to build an friend group that had to do with each and everyone’s growth 
+```
+
+</details>
+
