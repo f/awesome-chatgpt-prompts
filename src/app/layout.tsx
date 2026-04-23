@@ -9,6 +9,7 @@ import { CookieConsentBanner } from "@/components/layout/cookie-consent";
 import { Analytics } from "@/components/layout/analytics";
 import { WebsiteStructuredData } from "@/components/seo/structured-data";
 import { AppBanner } from "@/components/layout/app-banner";
+import { AnnouncementBanner } from "@/components/layout/announcement-banner";
 import { LocaleDetector } from "@/components/providers/locale-detector";
 import { getConfig } from "@/lib/config";
 import { isRtlLocale } from "@/lib/i18n/config";
@@ -196,6 +197,7 @@ export default async function RootLayout({
             <>
               <LocaleDetector />
               <div className="relative min-h-screen flex flex-col">
+                <AnnouncementBanner />
                 <Header authProvider={config.auth.provider} allowRegistration={config.auth.allowRegistration} />
                 <main className="flex-1">{children}</main>
                 <Footer />
