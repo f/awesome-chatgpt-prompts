@@ -99525,3 +99525,6 @@ Include smooth camera interpolation using Lerp to follow the player's rigid body
 Star-Marshal: Raycast Tactical Shooter,"Game Concept: A top-down tactical shooter where you play as a ""Star-Marshal"" clearing a space station of rogue drones. The game emphasizes precise hit-scan combat and dynamic lighting.
 Technical Prompt:
 Develop a top-down shooter mechanic. Use THREE.Raycaster for instant-hit weapon fire. Implement a muzzle flash light that flickers for 0.05s upon firing.",FALSE,TEXT,loshu2000
+Logic-Flow Educational Puzzle,"Game Concept: An educational game where students link historical events (Chronos) using ""Energy Threads."" It uses a force-directed layout to keep event bubbles floating naturally in a 3D space.
+Technical Prompt:
+Create a link-based puzzle. Use a force-simulation logic to prevent bubble overlapping. When two correct bubbles are clicked, draw a CatmullRomCurve3 between them with a glowing neon texture.",FALSE,TEXT,loshu2000
