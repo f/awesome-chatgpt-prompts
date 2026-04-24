@@ -99522,3 +99522,6 @@ function rotateGravity() {
   world.gravity.copy(newG);
 }
 Include smooth camera interpolation using Lerp to follow the player's rigid body during shifts.",TRUE,TEXT,loshu2000
+Star-Marshal: Raycast Tactical Shooter,"Game Concept: A top-down tactical shooter where you play as a ""Star-Marshal"" clearing a space station of rogue drones. The game emphasizes precise hit-scan combat and dynamic lighting.
+Technical Prompt:
+Develop a top-down shooter mechanic. Use THREE.Raycaster for instant-hit weapon fire. Implement a muzzle flash light that flickers for 0.05s upon firing.",FALSE,TEXT,loshu2000
