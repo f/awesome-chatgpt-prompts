@@ -5,9 +5,9 @@ import { Analytics } from "@/components/layout/analytics";
 
 vi.mock("next/script", () => ({
   default: ({ id, src, children }: { id?: string; src?: string; children?: ReactNode }) => (
-    <script data-testid={id ?? "external-script"} src={src}>
+    <div data-testid={id ?? "external-script"} data-src={src}>
       {children}
-    </script>
+    </div>
   ),
 }));
 
@@ -39,7 +39,7 @@ describe("Analytics", () => {
 
     await waitFor(() => {
       expect(screen.getByTestId("external-script")).toHaveAttribute(
-        "src",
+        "data-src",
         "https://www.googletagmanager.com/gtag/js?id=G-TEST",
       );
     });
