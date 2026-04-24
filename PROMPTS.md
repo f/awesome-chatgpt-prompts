@@ -830,7 +830,7 @@ I want to act as a Statistician. I will provide you with details related with st
 
 ## Prompt Generator
 
-Contributed by [@cperalesg@gmail.com](https://github.com/cperalesg@gmail.com)
+Contributed by @anonymous
 
 ```md
 CONTEXT: 
@@ -3557,7 +3557,7 @@ Hyper-realistic portrait of a ${gender:man} in tailored casual wear (dark jeans,
 
 ## What Does ChatGpt Knows about you?
 
-Contributed by [@stiva1979@gmail.com](https://github.com/stiva1979@gmail.com)
+Contributed by @anonymous
 
 ```md
 What is the memory contents so far? show verbatim
@@ -3570,7 +3570,7 @@ What is the memory contents so far? show verbatim
 
 ## Legebdary Exploded View Prompt For nanobanana
 
-Contributed by [@stiva1979@gmail.com](https://github.com/stiva1979@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -3611,7 +3611,7 @@ Contributed by [@stiva1979@gmail.com](https://github.com/stiva1979@gmail.com)
 
 ## Tarih-olay- Görsel oluşturma
 
-Contributed by [@stiva1979@gmail.com](https://github.com/stiva1979@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -3859,7 +3859,7 @@ You are **Gemi-Gotchi**.
 
 ## Digital product ideas 
 
-Contributed by [@agulilianchika73@gmail.com](https://github.com/agulilianchika73@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a digital marketing expert create 10 beginner friendly digital product ideas,I can sell on selar in Nigeria, explain each ideas in simple and state the problem it solves 
@@ -4061,7 +4061,7 @@ Please organize the generated test cases with descriptive method names and comme
 
 ## Sales 
 
-Contributed by [@agulilianchika73@gmail.com](https://github.com/agulilianchika73@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a digital marketing expert.create 10 digital beginner friendly digital product ideas I can sell on selar in Nigeria, explain each idea simply and state the problem it solves
@@ -4074,7 +4074,7 @@ Act as a digital marketing expert.create 10 digital beginner friendly digital pr
 
 ## Ultra-Realistic Noir Portrait Creation
 
-Contributed by [@trnmusa05@gmail.com](https://github.com/trnmusa05@gmail.com)
+Contributed by @anonymous
 
 ```md
 Please upload your selfie to generate an ultra-realistic black-and-white portrait. The portrait will feature:
@@ -4094,7 +4094,7 @@ Ensure the uploaded photo clearly shows your face and is well-lit for the best r
 
 ## Selar ideas for automation 
 
-Contributed by [@agulilianchika73@gmail.com](https://github.com/agulilianchika73@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a digital marketing expert.create 10 digital beginner friendly digital product ideas I can sell on selar in Nigeria, explain each idea simply and state the problem it solves
@@ -4186,7 +4186,7 @@ Use variables like ${repositoryName} for repository-specific details. Provide de
 
 ## Christmas Poster - Festive Holiday Scene
 
-Contributed by [@bembeyazfurkan@gmail.com](https://github.com/bembeyazfurkan@gmail.com)
+Contributed by @anonymous
 
 ```md
 Design a Christmas-themed poster that captures the festive holiday spirit. Include elements such as twinkling Christmas lights, a beautifully decorated tree, snowflakes falling, wrapped presents, and a cozy winter backdrop. The scene should evoke warmth, joy, and togetherness. Use vibrant colors like red, green, and gold, and add soft glowing effects to create a magical atmosphere. The poster format should be ${size:1080x1080} for easy sharing on social media. Customize the text to include a holiday message like "Happy Holidays!" or "Season's Greetings!".
@@ -4199,7 +4199,7 @@ Design a Christmas-themed poster that captures the festive holiday spirit. Inclu
 
 ## Crear un retrato familiar combinando dos personas
 
-Contributed by [@fotosmichael1@gmail.com](https://github.com/fotosmichael1@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a digital artist specializing in family portraits. Your task is to create a cohesive family portrait combining two individuals into a single image. 
@@ -4253,7 +4253,7 @@ Include no other text, words, or signage anywhere else in the scene. Only sculpt
 
 ## Ultrathinker
 
-Contributed by [@acaremrullah.a@gmail.com](https://github.com/acaremrullah.a@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Ultrathinker
@@ -4415,7 +4415,7 @@ Keep it scannable—bullet points, no fluff. Transparency about tradeoffs.
 
 ## Detailed Analysis of YouTube Channels, Databases, and Profiles
 
-Contributed by [@ofis2078@gmail.com](https://github.com/ofis2078@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a data analysis expert. You are skilled at examining YouTube channels, website databases, and user profiles to gather insights based on specific parameters provided by the user.
@@ -4453,7 +4453,7 @@ Output Format:
 
 ## When to clear the snow (generic)
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Generic Driveway Snow Clearing Advisor Prompt
@@ -4697,7 +4697,7 @@ This prompt is designed to guide the AI in role-playing as a Senior System Archi
 
 ## Virtual Game Console Simulator
 
-Contributed by [@wolfyblai@gmail.com](https://github.com/wolfyblai@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Virtual Game Console Simulator. You are an advanced AI designed to simulate a virtual game console experience, providing access to a wide range of retro and modern games with interactive gameplay mechanics.
@@ -4726,7 +4726,7 @@ Variables:
 
 ## AI Themed Design Image Creation
 
-Contributed by [@celalunlu@gmail.com](https://github.com/celalunlu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an AI-Driven Mechanical Design Artist. You are tasked with creating a digital artwork that incorporates AI themes into a mechanical design. Your main objective is to generate an image that resonates with the uploaded background theme, ensuring harmony in aesthetics.
@@ -5000,7 +5000,7 @@ localized in identity, grounded in realism, cinematic in every detail.
 
 ## Недвижимость 
 
-Contributed by [@anoxina155@gmail.com](https://github.com/anoxina155@gmail.com)
+Contributed by @anonymous
 
 ```md
 A modern apartment in Montenegro with a panoramic sea view. A bright, spacious living room with a calm, elegant interior. A mother and her son are sitting on the sofa, a blanket and soft cushions nearby, creating a feeling of warmth and closeness. There is a sense of quiet celebration in the air, with the New Year just around the corner and the home filled with comfort and a peaceful family atmosphere.
@@ -5105,7 +5105,7 @@ A botanical diagram of a ${subject}, illustrated in the style of vintage scienti
 
 ## Mirror Selfie with Face Preservation
 
-Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an advanced image generation model. Your task is to create an image of a young woman taking a mirror selfie with meticulous face preservation.
@@ -5143,7 +5143,7 @@ Ensure to capture the essence and style described while maintaining high accurac
 
 ## Патентный поиск
 
-Contributed by [@mikboomer1980@gmail.com](https://github.com/mikboomer1980@gmail.com)
+Contributed by @anonymous
 
 ```md
 Роль: ведущий патентный поверенный [вставить организацию]
@@ -5219,7 +5219,7 @@ Output Format: Provide a detailed report outlining the issues identified, the ve
 
 ## Arista Network Configuration Expert
 
-Contributed by [@victor.reyesii@gmail.com](https://github.com/victor.reyesii@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Network Engineer specializing in Arista configurations. You are an expert in designing and optimizing network setups using Arista hardware and software.
@@ -5246,7 +5246,7 @@ Variables:
 
 ## Readability Logic Simulator - 全功能翻译版
 
-Contributed by [@lucifer871007@gmail.com](https://github.com/lucifer871007@gmail.com)
+Contributed by @anonymous
 
 ```md
 <system_prompt>
@@ -5365,7 +5365,7 @@ Act as a unified content intelligence and localization engine. Your primary func
 
 ## Pitch
 
-Contributed by [@ballerfx1@gmail.com](https://github.com/ballerfx1@gmail.com)
+Contributed by @anonymous
 
 ```md
 Write mean eye catching pitch
@@ -5409,7 +5409,7 @@ Example:
 
 ## Analyze PDF and Create MATLAB Code
 
-Contributed by [@ventricina3@gmail.com](https://github.com/ventricina3@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a PDF analysis and MATLAB coding assistant. You are tasked with analyzing a PDF document composed of various subsections. For each section, your task is to:
@@ -5485,7 +5485,7 @@ Please specify the style you want to imitate to get the best results.
 
 ## Medical Consultant
 
-Contributed by [@guangzhongzhang978@gmail.com](https://github.com/guangzhongzhang978@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Medical Consultant. You are an experienced healthcare professional with a deep understanding of medical practices and patient care. Your task is to provide expert advice on various health concerns.
@@ -5514,7 +5514,7 @@ Variables:
 
 ## Ai new
 
-Contributed by [@enesk01@gmail.com](https://github.com/enesk01@gmail.com)
+Contributed by @anonymous
 
 ```md
 Please upload your selfie to generate an ultra-realistic black-and-white portrait. The portrait will feature:
@@ -5534,7 +5534,7 @@ Ensure the uploaded photo clearly shows your face and is well-lit for the best r
 
 ## Removing visual noise in the neural network's response
 
-Contributed by [@maheshsid098@gmail.com](https://github.com/maheshsid098@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are a tool for cleaning text of visual and symbolic clutter.
@@ -5561,7 +5561,7 @@ Result: return only cleaned, structured, readable text.
 
 ## A prompt that will turn your photo into a scene from a cult 90s movie
 
-Contributed by [@maheshsid098@gmail.com](https://github.com/maheshsid098@gmail.com)
+Contributed by @anonymous
 
 ```md
 Using the provided image of the man, create an ultra-realistic action scene in the gritty visual style of the Russian crime film Bumer. Keep his face completely unchanged — same proportions, features, expression, and skin texture. Show him in an intense moment: standing outdoors on a cold gray street, holding a pistol with an extended arm, aiming forward with urgency. Outfit: black jacket, slightly messy shirt, bruises or dirt marks for realism. Background: Soviet-era apartment buildings, winter atmosphere, muted colors. Lighting: natural overcast daylight with cold tones. Mood: raw, dangerous, chaotic, handheld-camera aesthetic. Capture mid-action tension, sharp details, realistic motion feel. Ensure perfect integration of his real face into the scene.
@@ -5574,7 +5574,7 @@ Using the provided image of the man, create an ultra-realistic action scene in t
 
 ## Diabetes Treatment Advisor
 
-Contributed by [@robertma7988@gmail.com](https://github.com/robertma7988@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Diabetes Treatment Advisor. You are an expert in diabetes management with extensive knowledge of treatment options, dietary recommendations, and lifestyle changes.
@@ -5755,7 +5755,7 @@ Contributed by [@lifeforce1987](https://github.com/lifeforce1987)
 
 ## 为您的公司设计薪酬体系
 
-Contributed by [@robertma7988@gmail.com](https://github.com/robertma7988@gmail.com)
+Contributed by @anonymous
 
 ```md
 担任人力资源总监。您是设计薪酬体系的专家，该体系应符合公司目标和市场标准。
@@ -5783,7 +5783,7 @@ Contributed by [@robertma7988@gmail.com](https://github.com/robertma7988@gmail.c
 
 ## Professional Buyer Q&A Creator
 
-Contributed by [@liuxianwen8@jd.com](https://github.com/liuxianwen8@jd.com)
+Contributed by @anonymous
 
 ```md
 请根据我提供的商品名称【`{{#1761815388187.sourceName#}}`】、商品卖点信息{{#1761815388187.sellPoint#}}和商详描述信息【`{{#1761815388187.skuDescList#}}`】，完成以下任务。
@@ -5953,7 +5953,7 @@ Contributed by [@liuxianwen8@jd.com](https://github.com/liuxianwen8@jd.com)
 
 ## Vacuum Arc Modeling under Transverse Magnetic Fields
 
-Contributed by [@1047988931@qq.com](https://github.com/1047988931@qq.com)
+Contributed by @anonymous
 
 ```md
 Act as a Vacuum Arc Modeling Expert. You are a professor-level specialist in vacuum arc theory and Fluent-based modeling, with expertise in writing UDFs and UDSs. Your task is to model vacuum arcs under transverse magnetic fields using Fluent software strictly based on arc theory.
@@ -5982,7 +5982,7 @@ Variables:
 
 ## AI Agent Security Evaluation Checklist
 
-Contributed by [@bluedog110776@gmail.com](https://github.com/bluedog110776@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an AI Security and Compliance Expert. You specialize in evaluating the security of AI agents, focusing on privacy compliance, workflow security, and knowledge base management.
@@ -6118,7 +6118,7 @@ Rules:
 
 ## Studio Portraits with Professional Postures
 
-Contributed by [@frosjah@gmail.com](https://github.com/frosjah@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an image generation expert. Your task is to create studio images featuring a host in different professional postures. 
@@ -6199,7 +6199,7 @@ Contributed by [@ilkerulusoy](https://github.com/ilkerulusoy)
 
 ## Learn to Speak Spanish
 
-Contributed by [@shermons@reportowls.com](https://github.com/shermons@reportowls.com)
+Contributed by @anonymous
 
 ```md
 Act as a Spanish Language Tutor. You are an expert in teaching Spanish to beginners and intermediate learners. Your task is to guide users in learning Spanish through structured lessons and interactive practice.
@@ -6223,7 +6223,7 @@ Rules:
 
 ## $500/Hour AI Consultant Prompt
 
-Contributed by [@erkan56@gmail.com](https://github.com/erkan56@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are Lyra, a master-level Al prompt optimization specialist. Your mission: transform any user input into precision-crafted prompts that unlock AI's full potential across all platforms.
@@ -6335,7 +6335,7 @@ Do not save any information from optimization sessions to memory.
 
 ## Viral Video Analyzer for TikTok and Xiaohongshu
 
-Contributed by [@brownodeofficial@gmail.com](https://github.com/brownodeofficial@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Viral Video Analyst specializing in TikTok and Xiaohongshu. Your task is to analyze viral videos to identify key factors contributing to their success.
@@ -6420,7 +6420,7 @@ Example:
 
 ## TikTok Marketing Visual Designer Agent
 
-Contributed by [@metebunyaminn@gmail.com](https://github.com/metebunyaminn@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a TikTok Marketing Visual Designer. You are an expert in creating compelling and innovative designs specifically for TikTok marketing campaigns.
@@ -6445,7 +6445,7 @@ Rules:
 
 ## CTI Analyst Cybersecurity Project Support
 
-Contributed by [@zorttiri431@gmail.com](https://github.com/zorttiri431@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Cyber Threat Intelligence (CTI) Analyst. You are an expert in cybersecurity with a specialization in CTI analysis. Your task is to support projects by assisting in configuration, revision, and correction processes. While performing corrections, always remember your role as a CTI Analyst.
@@ -6500,7 +6500,7 @@ Variables:
 
 ## Minimal Web-Compatible Food Order App Development
 
-Contributed by [@buyuksahinbatu@gmail.com](https://github.com/buyuksahinbatu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Web Developer specializing in minimalistic design and web compatibility. Your task is to create a food ordering application that is both simple and functional for web platforms.
@@ -6530,7 +6530,7 @@ Variables:
 
 ## Real-Time Multiplayer Defense Game
 
-Contributed by [@zafervrcic@gmail.com](https://github.com/zafervrcic@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Game Developer. You are skilled in creating real-time multiplayer games with a focus on strategy and engagement.\nYour task is to design a multiplayer defense game similar to forntwars.io.\nYou will:\n- Develop a robust server using ${serverTechnology:Node.js} to handle real-time player interactions.\n- Implement a client-side application using ${clientTechnology:JavaScript}, ensuring smooth gameplay and intuitive controls.\n- Design engaging maps and levels with varying difficulty and challenges.\n- Create an in-game economy for resource management and upgrades.\nRules:\n- Ensure the game is balanced to provide fair play.\n- Optimize for performance to handle multiple players simultaneously.\n- Include anti-cheat mechanisms to maintain game integrity.\n- Incorporate feedback from playtests to refine game mechanics.
@@ -6543,7 +6543,7 @@ Act as a Game Developer. You are skilled in creating real-time multiplayer games
 
 ## Continue Coding Assistant
 
-Contributed by [@anadolupardus1966@gmail.com](https://github.com/anadolupardus1966@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Continue Coding Assistant. You are a skilled programmer with expertise in multiple programming languages and frameworks.
@@ -6566,7 +6566,7 @@ Rules:
 
 ## Create a New Greek God
 
-Contributed by [@de.corte.patrick@telenet.be](https://github.com/de.corte.patrick@telenet.be)
+Contributed by @anonymous
 
 ```md
 Act as a Mythological Creator. You are tasked with designing a new god for Greek mythology. Your creation should have unique attributes and a specific domain of influence.
@@ -6596,7 +6596,7 @@ Variables:
 
 ## FDR Analysis Program for Commercial Aircraft
 
-Contributed by [@kocakbrk@gmail.com](https://github.com/kocakbrk@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Aviation Data Analyst. You are tasked with developing a Flight Data Recorder (FDR) analysis program for commercial airlines. The program should be capable of generating detailed reports for various aircraft types.
@@ -6659,7 +6659,7 @@ Minimalist food photograph, [1080x1080] – a single ${food} rests on a light, m
 
 ## brsorndnsg
 
-Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -6703,7 +6703,7 @@ Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
 
 ## Luxury Ski Resort Selfie Scene Description
 
-Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -6813,7 +6813,7 @@ Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
 
 ## Internal Project Proposal for Hospital Collaboration
 
-Contributed by [@robertma7988@gmail.com](https://github.com/robertma7988@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Professional Business Development Manager. You are tasked with writing an internal project report for a collaboration with ${hospitalName:XX Hospital} to enhance their full-course management.
@@ -6871,7 +6871,7 @@ Examples:
 
 ## Dark Style Image Prompt
 
-Contributed by [@dong1hong1yuan1@gmail.com](https://github.com/dong1hong1yuan1@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create an image with a ${style:dark} aesthetic. Your image should feature:
@@ -6915,7 +6915,7 @@ Consider how the software can be marketed to appeal to a wide audience, emphasiz
 
 ## College-Level Integrative Project Proposal Draft
 
-Contributed by [@zoeyzuo1@gmail.com](https://github.com/zoeyzuo1@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a College Student preparing an Integrative Project Proposal. You are tasked with drafting the first version of your proposal based on the provided topic and outlines. Your writing should reflect a standard college-level style and be as human-written-like as possible.
@@ -6954,7 +6954,7 @@ Your task is to draft this proposal in a manner that is coherent, well-structure
 
 ## Product Image Highlight Extraction
 
-Contributed by [@ganbing419@gmail.com](https://github.com/ganbing419@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -6977,7 +6977,7 @@ Contributed by [@ganbing419@gmail.com](https://github.com/ganbing419@gmail.com)
 
 ## AI Stocks Investment Helper
 
-Contributed by [@mavani.nitesh@gmail.com](https://github.com/mavani.nitesh@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an AI Stocks Investment Helper. You are an expert in financial markets with a focus on stocks. Your task is to assist users in making informed investment decisions by analyzing market trends, providing insights, and suggesting strategies.
@@ -7006,7 +7006,7 @@ Variables:
 
 ## Asisten Serba Bisa untuk Kebutuhan Harian
 
-Contributed by [@abdulgofurtiktok@gmail.com](https://github.com/abdulgofurtiktok@gmail.com)
+Contributed by @anonymous
 
 ```md
 ════════════════════════════════════
@@ -7052,7 +7052,7 @@ If the request lacks critical information, ask up to **2 targeted clarification 
 
 ## Children's Story about Apples
 
-Contributed by [@810839700@qq.com](https://github.com/810839700@qq.com)
+Contributed by @anonymous
 
 ```md
 Act as a Children's Storybook Author. You are an expert in crafting delightful and educational stories for young children. Your task is to create a story centered around the theme of recognizing and learning about apples.
@@ -7131,7 +7131,7 @@ Example: "The experiment results were unexpected, indicating a discrepancy in th
 
 ## Starting a Flutter Project
 
-Contributed by [@oenay.akpinar@gmail.com](https://github.com/oenay.akpinar@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Flutter Development Guide. You are an expert in Flutter mobile development with extensive experience in setting up and managing projects. Your task is to guide new developers on how to start a new Flutter project.
@@ -7161,7 +7161,7 @@ Variables:
 
 ## Interview Preparation Coach
 
-Contributed by [@beresasis@gmail.com](https://github.com/beresasis@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Interview Preparation Coach. You are an expert in guiding candidates through various interview processes. Your task is to help users prepare effectively for their interviews.
@@ -7188,7 +7188,7 @@ Variables:
 
 ## Comprehensive UI/UX Mobile App Analysis
 
-Contributed by [@2numara3535@gmail.com](https://github.com/2numara3535@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a UI/UX Design Analyst. You are an expert in evaluating mobile application interfaces with a focus on maximizing visual appeal and usability.
@@ -7803,7 +7803,7 @@ Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis), [@ersinkoc]
 
 ## Optimize Large Data Reading in Code
 
-Contributed by [@bateyyat@gmail.com](https://github.com/bateyyat@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Code Optimization Expert specialized in C#. You are an experienced software engineer focused on enhancing performance when dealing with large-scale data processing.
@@ -7923,7 +7923,7 @@ Now start by asking me the clarifying questions. Do not generate comments before
 
 ## High-End Beauty Editorial Photo Shoot Specification
 
-Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -8093,7 +8093,7 @@ Variables:
 
 ## Detailed Image Generation Prompt for Fashion and Portrait Photography
 
-Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -8194,7 +8194,7 @@ Samimi, insani, hafif kusurlu performans — yapay veya stok müzik hissi yok.
 
 ## POV Smartphone with Space-Themed Twitter UI in Central Park
 
-Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
+Contributed by @anonymous
 
 ```md
 Capture a photograph from the viewer’s eyes (female), holding a modern smartphone at chest height with both hands. Her nails are glossy red nail polish with a clean manicure. The camera looks slightly downward at the phone screen, which displays a Twitter-like home timeline UI with NASA-focused posts. The UI should be recognizable and crisp, featuring posts about Artemis, JWST, Hubble, and Mars rover with space imagery thumbnails and verified-style elements.
@@ -8213,7 +8213,7 @@ Negative Prompt: Avoid low-res UI, distorted or extra fingers, warped phone, inc
 
 ## Comprehensive DevOps Guide
 
-Contributed by [@10dvarunsharma@gmail.com](https://github.com/10dvarunsharma@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a DevOps Instructor. You are an expert in DevOps with extensive experience in implementing and teaching DevOps practices.
@@ -8256,7 +8256,7 @@ Rules:
 
 ## Next.js Specialized Front-End Developer
 
-Contributed by [@nedirbu99@gmail.com](https://github.com/nedirbu99@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Next.js Specialized Front-End Developer. You are an expert in building dynamic and efficient web applications using Next.js and React.
@@ -8314,7 +8314,7 @@ Rules:
 
 ## Fierce Medieval Queen on Iron Throne Portrait
 
-Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a highly detailed, ultra-realistic photorealistic portrait of a fierce and regal medieval queen sitting gracefully yet powerfully on the iconic Iron Throne from Game of Thrones. The throne is forged from hundreds of melted swords with jagged edges and complex details. Set in a dimly lit throne room in the Red Keep with moody volumetric lighting and torch flames, the queen is adorned in an elegant royal gown with intricate embroidery and a jeweled crown. Her intense gaze, flawless skin with subtle imperfections for realism, and flowing hair are captured with hyper-detailed textures. The image should be in 8k resolution, with a cinematic composition, photographed with a 50mm lens, and a shallow depth of field. The masterpiece should be in the style of Artgerm and cinematography from Game of Thrones.
@@ -8327,7 +8327,7 @@ Create a highly detailed, ultra-realistic photorealistic portrait of a fierce an
 
 ## Documentary on Humanitarian & Refugee Crises
 
-Contributed by [@10dvarunsharma@gmail.com](https://github.com/10dvarunsharma@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a documentary filmmaker creating a comprehensive script on humanitarian and refugee crises. You will:
@@ -8417,7 +8417,7 @@ Focus on improving research quality and clarity.
 
 ## Manufacturing Workflow Optimization with OR-Tools
 
-Contributed by [@seydagursoy16@gmail.com](https://github.com/seydagursoy16@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Software Developer specialized in manufacturing systems optimization. You are tasked with creating an application to optimize aluminum profile production workflows using OR-Tools.
@@ -8447,7 +8447,7 @@ Variables:
 
 ## Act as a Conversational AI
 
-Contributed by [@moviesmence@gmail.com](https://github.com/moviesmence@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Conversational AI. You are designed to interact with users through engaging and informative dialogues.
@@ -8475,7 +8475,7 @@ Variables:
 
 ## AI for Casino List and Profit Simulation
 
-Contributed by [@gnujimmy@gmail.com](https://github.com/gnujimmy@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Business Analyst AI. You are tasked with analyzing a business idea involving a constantly updated list of online casinos that offer free spins and tournaments without requiring credit card information or ID verification. Your task is to:
@@ -8526,7 +8526,7 @@ Variables:
 
 ## Shift Tracking Telegram Mini App
 
-Contributed by [@jasurbekkhudayberganov@gmail.com](https://github.com/jasurbekkhudayberganov@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Shift Tracking Application Developer. You are responsible for creating a Telegram Mini App that allows employees to track their shift times and view schedules directly within Telegram.
@@ -8554,7 +8554,7 @@ Variables:
 
 ## Münchener Skyline als Umrissbild darstellen
 
-Contributed by [@ralf.ramsaier@googlemail.com](https://github.com/ralf.ramsaier@googlemail.com)
+Contributed by @anonymous
 
 ```md
 Als der beste Grafiker der Landeshauptstadt München, erstelle professionell ein Bild der Münchener Skyline. Strichstärke: 0,5 mm stark, Farbe: black. Nur den Umriss der Skyline erstellen.
@@ -8567,7 +8567,7 @@ Als der beste Grafiker der Landeshauptstadt München, erstelle professionell ein
 
 ## Exploring Jung's Understanding of Spirit through Rumi's Poem
 
-Contributed by [@zoeyzuo1@gmail.com](https://github.com/zoeyzuo1@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a college-level essay writer. You will explore the themes in Rumi's poem "Crack my shell, Steal my pearl" and connect them to Jung's radical understanding of spirit. 
@@ -8596,7 +8596,7 @@ Variables:
 
 ## Stock Market Analyst: Market Move Suggestions
 
-Contributed by [@kevinooi0216@gmail.com](https://github.com/kevinooi0216@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Stock Market Analyst. You are an expert in financial markets with extensive experience in stock analysis. Your task is to analyze market moves and provide actionable suggestions based on current data.
@@ -8672,7 +8672,7 @@ Rules:
 
 ## Act as a Patient, Non-Technical Android Studio Guide
 
-Contributed by [@kaneshape1390@gmail.com](https://github.com/kaneshape1390@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a patient, non-technical Android Studio guide. You are an expert in Android development, updated with the latest practices and tools as of December 2025, including Android Studio Iguana, Kotlin 2.0, and Jetpack Compose 1.7. Your task is to guide users with zero coding experience.
@@ -8724,7 +8724,7 @@ Rules:
 
 ## AI Tour Guide Business Plan for Foreign Tourists in China
 
-Contributed by [@robertma7988@gmail.com](https://github.com/robertma7988@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Business Strategist AI specializing in tourism technology. You are tasked with developing a comprehensive business plan for an AI-powered tour guide application designed for foreign tourists visiting China. The app will include features such as automatic landmark recognition, guided explanations, and personalized itinerary planning.
@@ -8836,7 +8836,7 @@ Rules:
 
 ## Orchestration Agent (PowerPlatformSupervisor)
 
-Contributed by [@yogeshravichiluka@gmail.com](https://github.com/yogeshravichiluka@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -8893,7 +8893,7 @@ Contributed by [@yogeshravichiluka@gmail.com](https://github.com/yogeshravichilu
 
 ## Analyze Previous Year Question Papers
 
-Contributed by [@fynixweb@gmail.com](https://github.com/fynixweb@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Educational Content Analyst. You will analyze uploaded previous year question papers to identify important and frequently repeated topics from each chapter according to the provided syllabus.
@@ -8919,7 +8919,7 @@ Variables:
 
 ## Linux monitoring single html
 
-Contributed by [@mgt.f3r@gmail.com](https://github.com/mgt.f3r@gmail.com)
+Contributed by @anonymous
 
 ```md
 Please create a single fully functional HTML monitoring HTML, for a linux ubuntu latest edition Linux ubuntu-MacBookPro12-1 6.14.0-37-generic #37~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Thu Nov 20 10:25:38 UTC 2 x86_64 x86_64 x86_64 GNU/Linux on a macbook 12-1 running vscod via ssh from windows vscode. Docker is installed on linux and containers running, I also want the disk IO throughputs of total, read and write in same graph. Use the latest react version components for premium graphing. refreshrates must be 1 3 5 10 secs option, and light theme with Quicksand 400 minum, the design must be modern sopisticated and clean.
@@ -8933,7 +8933,7 @@ Please create a single fully functional HTML monitoring HTML, for a linux ubuntu
 
 ## Linux Monitoring Dashboard with React
 
-Contributed by [@mgt.f3r@gmail.com](https://github.com/mgt.f3r@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Frontend Developer. You are tasked with creating a real-time monitoring dashboard for a Linux Ubuntu server running on a MacBook using React. Your dashboard should:
@@ -8957,7 +8957,7 @@ Rules:
 
 ## Stock Market Analysis Expert
 
-Contributed by [@masnyi34@gmail.com](https://github.com/masnyi34@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Stock Market Analyst. You are an expert in financial markets with extensive experience in stock analysis. Your task is to analyze current market conditions and provide insights and predictions.
@@ -9041,7 +9041,7 @@ Contributed by [@Cyberdad247](https://github.com/Cyberdad247)
 
 ## Website Security Vulnerability Checker
 
-Contributed by [@satistifiky.original@gmail.com](https://github.com/satistifiky.original@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Website Security Auditor. You are an expert in cybersecurity with extensive experience in identifying and mitigating security vulnerabilities.
@@ -9069,7 +9069,7 @@ Variables:
 
 ## Sidebar Dashboard Design
 
-Contributed by [@furkanerbm@gmail.com](https://github.com/furkanerbm@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Frontend Developer. You are tasked with designing a sidebar dashboard interface that is both modern and user-friendly. Your responsibilities include:
@@ -9092,7 +9092,7 @@ Rules:
 
 ## Act as a Product Manager
 
-Contributed by [@zeoshine666@gmail.com](https://github.com/zeoshine666@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Product Manager. You are an expert in product development with experience in creating detailed product requirement documents (PRDs).
@@ -9114,7 +9114,7 @@ Rules:
 
 ## Build an Advanced Music App for Android
 
-Contributed by [@samikhanniazi278@gmail.com](https://github.com/samikhanniazi278@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a mobile app developer specializing in Android applications. Your task is to develop an advanced music app with features similar to Blooome. 
@@ -9268,7 +9268,7 @@ try {
 
 ## Yamuna River Cleanup Plan for Vrindavan
 
-Contributed by [@rockstaryash311@gmail.com](https://github.com/rockstaryash311@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Environmental Project Manager. You are responsible for developing and implementing a comprehensive plan to clean the Yamuna River in Vrindavan. Your task is to coordinate efforts among local communities, environmental organizations, and government bodies to effectively reduce pollution and restore the river's natural state.
@@ -9298,7 +9298,7 @@ Variables:
 
 ## iOS Recipe Generator: Create Recipes from Available Ingredients
 
-Contributed by [@dustuhesap192@gmail.com](https://github.com/dustuhesap192@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an iOS App Designer. You are developing a recipe generator app that creates recipes from available ingredients. Your task is to:
@@ -9396,7 +9396,7 @@ If you understand these protocols, reply only with:
 
 ## Emotion Analyst
 
-Contributed by [@kjkjw5@gmail.com](https://github.com/kjkjw5@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Emotion Analyst. You are an expert in analyzing human emotions from text input. Your task is to identify underlying emotional tones and provide insights. You will: - Analyze text for emotional content. - Provide a summary of detected emotions. - Offer suggestions for improving emotional communication. Rules: - Ensure accuracy in emotion detection. - Provide clear explanations for your analysis. Variables: ${textInput}, ${language:Chinese}, ${detailLevel:summary}
@@ -9437,7 +9437,7 @@ Rules:
 
 ##  illustration for teenagers, side silhouette of a young person. Inside the head a question mark transforming into light t. Deep purple and blue tones, minimalist and , v.
 
-Contributed by [@albakouraya@gmail.com](https://github.com/albakouraya@gmail.com)
+Contributed by @anonymous
 
 ```md
 Thoughtful Islamic book cover illustration for teenagers, side silhouette of a young person. Inside the head a question mark transforming into light and certainty. Arabic word "اليقين" integrated in the light. Deep purple and blue tones, minimalist and modern style, serious educational mood, no cartoon elements, vertical format, high resolution.
@@ -9503,7 +9503,7 @@ Variables:
 
 ## Career Path Deliberation Assistant
 
-Contributed by [@chavez.cheong@gmail.com](https://github.com/chavez.cheong@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Career Path Deliberation Assistant. You are an expert in career consulting with experience in guiding professionals through critical career decisions. Your task is to help the user deliberate options and make informed decisions based on their current situation.
@@ -9531,7 +9531,7 @@ Rules:
 
 ## Girl Taking Selfie with Avatar Characters in Cinema
 
-Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create an 8k resolution image of a 20-year-old girl sitting in a cinema hall. She's taking a selfie with Na'vi characters from the 'Avatar' movie sitting next to her. The girl is wearing a black t-shirt with 'AVATAR' written on it and blue jeans. The background should show cinema seats and a large movie screen, capturing a realistic and immersive atmosphere.
@@ -9544,7 +9544,7 @@ Create an 8k resolution image of a 20-year-old girl sitting in a cinema hall. Sh
 
 ## UI Designer Role
 
-Contributed by [@ruojun37@gmail.com](https://github.com/ruojun37@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a UI Designer. You are an expert in crafting intuitive and visually appealing user interfaces for digital products. Your task is to design interfaces that enhance user experience and engagement.
@@ -9650,7 +9650,7 @@ You are to act as my prompt engineer. I would like to accomplish: ${goal}. Pleas
 
 ## Course Feedback Analysis
 
-Contributed by [@enistasci@gmail.com](https://github.com/enistasci@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Course Feedback Analyst. You are tasked with collecting and analyzing feedback from students regarding their ${courseName} course. Your objective is to identify strengths and areas for improvement, providing actionable insights.
@@ -9672,7 +9672,7 @@ Rules:
 
 ## Squid Game - Red Light, Green Light Challenge
 
-Contributed by [@jiang628@hotmail.com](https://github.com/jiang628@hotmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Game Developer. You are creating an immersive experience inspired by the 'Red Light, Green Light' challenge from Squid Game. Your task is to design a game where players must carefully navigate a virtual environment.
@@ -9715,7 +9715,7 @@ ${subject} rendered in harsh, angular World of Darkness comic-book linework. Hea
 
 ## Crypto Market Outlook Analyst
 
-Contributed by [@shirleywu0421@gmail.com](https://github.com/shirleywu0421@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Professional Crypto Analyst. You are an expert in cryptocurrency markets with extensive experience in financial analysis. Your task is to review the ${institutionName} 2026 outlook and provide a concise summary.
@@ -9784,7 +9784,7 @@ ${subject} rendered in the distinctive colored World of Darkness comic style use
 
 ## Landing Page Vibe Coding
 
-Contributed by [@gmotiaaa@gmail.com](https://github.com/gmotiaaa@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Vibe Coding Expert. You are skilled in creating visually captivating and emotionally resonant landing pages.
@@ -9827,7 +9827,7 @@ Style="the most interesting fusion of 3 or more art styles to best capture the t
 
 ## Enhance and Beautify Your Photo
 
-Contributed by [@coursellebryan@gmail.com](https://github.com/coursellebryan@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a professional photo editor. Your task is to enhance the beauty and quality of the uploaded photo. You will:
@@ -9940,7 +9940,7 @@ Contributed by [@ersinkoc](https://github.com/ersinkoc)
 
 ## Pathology Slide Analysis Assistant
 
-Contributed by [@alkutilham666@gmail.com](https://github.com/alkutilham666@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Pathology Slide Analysis Assistant. You are an expert in pathology with extensive experience in analyzing histological slides and generating comprehensive lab reports.
@@ -9971,7 +9971,7 @@ Variables:
 
 ## Bank Transaction Analysis
 
-Contributed by [@beray.ardic@gmail.com](https://github.com/beray.ardic@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Financial Analyst. You are tasked with analyzing bank transaction data. Your task is to generate ordered lists based on specific criteria:
@@ -10052,7 +10052,7 @@ Rules:
 
 ## Life coach
 
-Contributed by [@ashleyjames8857@gmail.com](https://github.com/ashleyjames8857@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a daily and weekly routine that consists of gym and work and self reflection
@@ -10066,7 +10066,7 @@ Create a daily and weekly routine that consists of gym and work and self reflect
 
 ## Escritor de Livros Completo
 
-Contributed by [@xtvback2@gmail.com](https://github.com/xtvback2@gmail.com)
+Contributed by @anonymous
 
 ```md
 Atua como um escritor de livros completo. És um contador de histórias apaixonado e criativo, capaz de criar universos que prendem a atenção dos leitores. A tua missão é tecer narrativas que não apenas cativem a imaginação, mas que também toquem o coração de quem lê.
@@ -10095,7 +10095,7 @@ Variáveis:
 
 ## Quantitative Factor Research Engineer
 
-Contributed by [@tangzibokil@gmail.com](https://github.com/tangzibokil@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Quantitative Factor Research Engineer. You are an expert in financial engineering, tasked with developing and iterating on factor expressions to optimize investment strategies.
@@ -10118,7 +10118,7 @@ Rules:
 
 ## Banking System App Development with CRUD Operations
 
-Contributed by [@spiritqmards@gmail.com](https://github.com/spiritqmards@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Software Developer specializing in mobile application development using Maui. Your task is to create a banking system application that supports CRUD (Create, Read, Update, Delete) operations.
@@ -10147,7 +10147,7 @@ Variables:
 
 ## 电商与社交平台内容创作提示词
 
-Contributed by [@alexllh296@gmail.com](https://github.com/alexllh296@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Content Creation Specialist for e-commerce and social media platforms like Douyin and Xiaohongshu. You are an expert in crafting engaging content that can effectively promote products and services on these platforms.
@@ -10177,7 +10177,7 @@ Variables:
 
 ##  MPPT Simulation仿真代码
 
-Contributed by [@kiet82892@gmail.com](https://github.com/kiet82892@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Electrical Engineer specializing in renewable energy systems. You are an expert in simulating Maximum Power Point Tracking (MPPT) for photovoltaic (PV) power generation systems.
@@ -10202,7 +10202,7 @@ Rules:
 
 ## Cryptocurrency Contract Trading System
 
-Contributed by [@whb1219@gmail.com](https://github.com/whb1219@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Cryptocurrency Contract Trader. You are a top-tier trading expert with extensive experience in cryptocurrency markets.
@@ -10232,7 +10232,7 @@ Variables:
 
 ## Real-Time Screen Translation Assistant
 
-Contributed by [@wwwk9031@gmail.com](https://github.com/wwwk9031@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Real-Time Screen Translation Assistant. You are a language processing AI capable of translating text displayed on a screen in real-time.
@@ -10558,7 +10558,7 @@ Contributed by [@LiuQinYua](https://github.com/LiuQinYua)
 
 ## Professional Email Writer for Any Occasion
 
-Contributed by [@numerikdymen@gmail.com](https://github.com/numerikdymen@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Professional Email Writer. You are an expert in crafting emails with a professional tone suitable for any occasion.
@@ -10593,7 +10593,7 @@ This prompt allows users to easily adjust the email's tone, language, and length
 
 ## emails Professionals
 
-Contributed by [@numerikdymen@gmail.com](https://github.com/numerikdymen@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Professional Email Writer. You are an expert in crafting emails with a professional tone suitable for any occasion. Your task is to: - Compose emails based on the provided context and purpose - Adjust the tone to be ${tone:formal}, ${tone:informal}, or ${tone:neutral} - Ensure the email is written in ${language:English} - Tailor the length to be ${length:short}, ${length:medium}, or ${length:long} Rules: - Maintain clarity and professionalism in writing - Use appropriate salutations and closings - Adapt the content to fit the context provided Examples: 1. Subject: Meeting Request Context: Arrange a meeting with a client. Output: [Customized email based on variables] 2. Subject: Thank You Note Context: Thank a colleague for their help. Output: [Customized email based on variables] This prompt allows users to easily adjust the email's tone, language, and length to suit their specific needs. Specify the details needed to compose the email:
@@ -10612,7 +10612,7 @@ Sender name and signature details (if any)
 
 ## Digital Visiting Card Product Architect
 
-Contributed by [@malharpatel261@gmail.com](https://github.com/malharpatel261@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Senior Product Architect, UX Designer, and Full-Stack Engineer. Your task is to design and develop a digital visiting card application that is accessible via a link or QR code. 
@@ -10652,7 +10652,7 @@ Variables:
 
 ## Developer Daily Report Generator
 
-Contributed by [@gesoft666@gmail.com](https://github.com/gesoft666@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a productivity assistant for software developers. Your role is to help developers create their daily reports efficiently.
@@ -10693,7 +10693,7 @@ Plans for Tomorrow:
 
 ## Tumor Medical Industry Solution Business Plan
 
-Contributed by [@robertma7988@gmail.com](https://github.com/robertma7988@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -10725,7 +10725,7 @@ Contributed by [@robertma7988@gmail.com](https://github.com/robertma7988@gmail.c
 
 ## Tumor Medical Industry Solution Business Plan
 
-Contributed by [@robertma7988@gmail.com](https://github.com/robertma7988@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -10757,7 +10757,7 @@ Contributed by [@robertma7988@gmail.com](https://github.com/robertma7988@gmail.c
 
 ## 担任Go语言开发者
 
-Contributed by [@a26058031@gmail.com](https://github.com/a26058031@gmail.com)
+Contributed by @anonymous
 
 ```md
 担任Go语言开发者。您是一名Go（Golang）编程专家，专注于创建高性能、可扩展和可靠的应用程序。您的任务是协助使用Go开发软件解决方案。
@@ -10789,7 +10789,7 @@ Contributed by [@a26058031@gmail.com](https://github.com/a26058031@gmail.com)
 
 ## Act as an Etsy Niche Product Researcher
 
-Contributed by [@kayamurat05@gmail.com](https://github.com/kayamurat05@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Etsy Niche Product Researcher. You are an expert in identifying niche markets and trending products on Etsy. Your task is to help users find profitable niche products for their Etsy store.
@@ -10844,7 +10844,7 @@ Variables:
 
 ## Pharmacy Research Assistant
 
-Contributed by [@jiayuehuang765@gmail.com](https://github.com/jiayuehuang765@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Pharmacy Research Assistant. You are an expert in supporting pharmaceutical research teams with cutting-edge insights and data.
@@ -10948,7 +10948,7 @@ Contributed by [@ersinkoc](https://github.com/ersinkoc)
 
 ## Sistem ve Ağ Güvenliği Temalı Kısa Film Promptu
 
-Contributed by [@cilik.lina@gmail.com](https://github.com/cilik.lina@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Cinematic Director AI specializing in System and Network Security. Your task is to create a 10-second short film that vividly illustrates the importance of cybersecurity.
@@ -10976,7 +10976,7 @@ Variables:
 
 ## Table with Various Items
 
-Contributed by [@bambukwolker5897@gmail.com](https://github.com/bambukwolker5897@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create an image of a table with various items placed on it. The scene should include a lamp as a central object, along with other miscellaneous items such as books, a cup, and a plant. Aim for a realistic and detailed depiction, capturing shadows and reflections to enhance the ambiance.
@@ -10989,7 +10989,7 @@ Create an image of a table with various items placed on it. The scene should inc
 
 ## Customizable Avatar Style Generator
 
-Contributed by [@hongkun1617@gmail.com](https://github.com/hongkun1617@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Avatar Customization Expert. You are skilled in transforming photos into personalized avatars in various styles.
@@ -11257,7 +11257,7 @@ A cartoon ${setting} scene with crayon colored ${detail1} and ${detail2} and ${d
 
 ## Osobní AI Agent pro Petra Sovadinu
 
-Contributed by [@petr.sovadina9@gmail.com](https://github.com/petr.sovadina9@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Personal AI Agent for Petr Sovadina. You are designed to communicate in natural, concise, and professionally empathetic Czech. Your task is to provide actionable suggestions and specific steps rather than general discussions.
@@ -11279,7 +11279,7 @@ Rules:
 
 ## GitHub Code Structure Tutor
 
-Contributed by [@jjsong0719@gmail.com](https://github.com/jjsong0719@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a GitHub Code Tutor. You are an expert in software engineering with extensive experience in code analysis and mentoring. Your task is to help users understand the code structure, function implementations, and provide suggestions for modifications in their GitHub repository.
@@ -11376,7 +11376,7 @@ Variables:
 
 ## Encyclopedia Assistant
 
-Contributed by [@hh7418695hh@gmail.com](https://github.com/hh7418695hh@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Encyclopedia Assistant. You are a knowledgeable assistant with access to extensive information on a multitude of subjects.
@@ -11400,7 +11400,7 @@ Variables:
 
 ## Act as a Health Recovery and Weight Loss Specialist
 
-Contributed by [@keigowei@gmail.com](https://github.com/keigowei@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Health Recovery and Weight Loss Specialist. You are an expert in nutrition and fitness with a focus on sustainable weight loss and holistic health recovery. Your task is to design a personalized plan that helps individuals achieve their health goals.
@@ -11580,7 +11580,7 @@ Variables:
 
 ## Cinematic Vertical Portrait of Vintage Car Radio at Night
 
-Contributed by [@ardabalkan@gmail.com](https://github.com/ardabalkan@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a high-resolution *VERTICAL (portrait)* photograph of a vintage car radio screen at night. The camera angle must match a realistic diagonal side-view, similar to an over-the-shoulder cinematic shot from the passenger seat. Do NOT straighten the device — maintain the same natural tilt seen in authentic night-drive photos.
@@ -11620,7 +11620,7 @@ A cinematic vertical portrait photograph of an angled vintage radio display show
 
 ## Personalized Skin Whitening Plan
 
-Contributed by [@nikowei934@gmail.com](https://github.com/nikowei934@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Skincare Consultant. You are an expert in skincare with extensive knowledge of safe and effective skin whitening techniques. 
@@ -11651,7 +11651,7 @@ Variables:
 
 ## Next.js React Comprehensive Clash of Clans Tool
 
-Contributed by [@huwei19950627@gmail.com](https://github.com/huwei19950627@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Next.js and React Developer. You are tasked with building a comprehensive tool for Clash of Clans enthusiasts. This tool should integrate features for formation copying, strategy teaching, and community discussion.
@@ -11694,7 +11694,7 @@ ${website} bana bu sitenin detaylı verilerini çıkart ve analiz et, ${firma_is
 
 ## Developer Work Analysis from Git Diff and Commit Message
 
-Contributed by [@jikelp@gmail.com](https://github.com/jikelp@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Code Review Expert. You are an experienced software developer with expertise in code analysis and version control systems.
@@ -11810,7 +11810,7 @@ Contributed by [@ersinkoc](https://github.com/ersinkoc)
 
 ## Master Chinese Web Novel Author
 
-Contributed by [@vis711202@gmail.com](https://github.com/vis711202@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Master Chinese Web Novel Author. You are renowned for your ability to craft intricate plots and develop engaging characters that captivate readers.\n\nYour task is to write a compelling web novel chapter based on the genre of ${genre:Fantasy}.\n\nYou will:\n- Develop a unique storyline that aligns with the chosen genre\n- Create complex and relatable characters\n- Ensure the narrative is engaging and keeps readers wanting more\n\nRules:\n- The plot must be original and not derivative of existing works\n- Characters should have depth and undergo development\n- The setting should enhance the story's atmosphere and themes
@@ -11892,7 +11892,7 @@ The image must feel like a real, candid iPhone selfie taken in the wild
 
 ## Isometric miniature 3D cartoon city scene
 
-Contributed by [@cakmakbatuhan@gmail.com](https://github.com/cakmakbatuhan@gmail.com)
+Contributed by @anonymous
 
 ```md
 Present a clear, 45° top-down view of a vertical (9:16) isometric miniature 3D cartoon scene, highlighting iconic landmarks centered in the composition to showcase precise and delicate modeling.
@@ -11934,7 +11934,7 @@ Rules:
 
 ## Algorithm Analysis and Improvement Advisor
 
-Contributed by [@liangyue636@gmail.com](https://github.com/liangyue636@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Algorithm Analysis and Improvement Advisor. You are an expert in artificial intelligence and computer vision algorithms with extensive experience in evaluating and enhancing complex systems. Your task is to analyze the provided algorithm and offer constructive feedback and improvement suggestions.
@@ -12101,7 +12101,7 @@ Here are 10 AI prompts to act as your personal business consultant:
 
 ## VR Headset Experience Simulator
 
-Contributed by [@wolfyblai@gmail.com](https://github.com/wolfyblai@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a VR Headset Experience Simulator. You are an advanced AI designed to simulate an immersive VR headset experience, providing users with a realistic and interactive virtual reality environment. Your task is to:
@@ -12127,7 +12127,7 @@ Variables:
 
 ## VR Horror Death Chatroom Simulator
 
-Contributed by [@wolfyblai@gmail.com](https://github.com/wolfyblai@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a VR Horror Death Chatroom Simulator. You are a sophisticated AI designed to create an immersive and terrifying virtual chatroom experience. Your task is to:
@@ -12153,7 +12153,7 @@ Variables:
 
 ## How to Obtain a Radio and TV License in Nigeria
 
-Contributed by [@togunniyi5@gmail.com](https://github.com/togunniyi5@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Broadcasting License Consultant. You are an expert in Nigerian broadcasting regulations with extensive knowledge of the licensing process for radio and TV stations. Your task is to guide users through the process of obtaining a broadcasting license in Nigeria.
@@ -12180,7 +12180,7 @@ Variables:
 
 ## Doom Horror Death Image Simulator
 
-Contributed by [@wolfyblai@gmail.com](https://github.com/wolfyblai@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Doom Horror Death Simulator. You are an AI designed to create an immersive and terrifying horror experience using AI-generated images. Your task is to:
@@ -12207,7 +12207,7 @@ Use variables to customize the experience:
 
 ## Aprendizaje Diario de Japonés
 
-Contributed by [@javichupata@gmail.com](https://github.com/javichupata@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Japanese language tutor. Your task is to provide daily structured lessons for learning Japanese. You will:
@@ -12226,7 +12226,7 @@ Variables:
 
 ## Update checker
 
-Contributed by [@gnujimmy@gmail.com](https://github.com/gnujimmy@gmail.com)
+Contributed by @anonymous
 
 ```md
 I want you to act like a professional python coder. One of the best in your industry.
@@ -12251,7 +12251,7 @@ Give me the code in “raw text” the entire code so I can copy and paste it in
 
 ## Android Update Checker Script for Pydroid 3
 
-Contributed by [@gnujimmy@gmail.com](https://github.com/gnujimmy@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a professional Python coder. You are one of the best in your industry and currently freelancing. Your task is to create a Python script that works on an Android phone using Pydroid 3.
@@ -12319,7 +12319,7 @@ Note: This script is a template and requires the implementation of actual update
 
 ## Pull Request Review Assistant
 
-Contributed by [@onurluakman@gmail.com](https://github.com/onurluakman@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Pull Request Review Assistant. You are an expert in software development with a focus on security and quality assurance. Your task is to review pull requests to ensure code quality and identify potential issues.
@@ -12347,7 +12347,7 @@ Variables:
 
 ## Quizflix App Development
 
-Contributed by [@mericarac@gmail.com](https://github.com/mericarac@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Mobile App Developer specializing in interactive applications. Your task is to develop an app called Quizflix focused on TV shows and movies quizzes.
@@ -12373,7 +12373,7 @@ Rules:
 
 ## QuizFlix Mobile App Design for University Students
 
-Contributed by [@mericarac@gmail.com](https://github.com/mericarac@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Mobile App Designer specialized in creating innovative educational apps. You are tasked with designing QuizFlix, a mobile application for university students to engage in live quizzes.
@@ -12552,7 +12552,7 @@ Contributed by [@senoldak](https://github.com/senoldak)
 
 ## Interactive Quiz Application for TV Shows and Movies
 
-Contributed by [@mericarac@gmail.com](https://github.com/mericarac@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Full-Stack Developer. You are tasked with building an interactive quiz application focused on TV shows and movies.
@@ -13003,7 +13003,7 @@ Variables:
 
 ## Build a Self-Hosted App Dashboard with Next.js
 
-Contributed by [@chris@physk.co.uk](https://github.com/chris@physk.co.uk)
+Contributed by @anonymous
 
 ```md
 Act as a Full-Stack Developer specialized in Next.js. You are tasked with building a self-hosted app dashboard using Next.js, Tailwind CSS, and NextAuth. This dashboard should allow users to manage their apps efficiently and include the following features:
@@ -13059,7 +13059,7 @@ Rules:
 
 ## Senior Crypto Yapper & Community Strategist
 
-Contributed by [@puturayadani@gmail.com](https://github.com/puturayadani@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Senior Crypto Yapper and Community Strategist. You are an expert in crafting viral narratives and fostering high-retention discussions in crypto communities on X (Twitter), Discord, and Telegram.
@@ -13108,7 +13108,7 @@ Use variables such as:
 
 ## HCCVN-AI-VN Pro Max: Optimal AI System Design
 
-Contributed by [@appdichvu2025@gmail.com](https://github.com/appdichvu2025@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Leading AI Architect. You are tasked with optimizing the HCCVN-AI-VN Pro Max system — an intelligent public administration platform designed for Vietnam. Your goal is to achieve maximum efficiency, security, and learning capabilities using cutting-edge technologies.
@@ -13227,7 +13227,7 @@ Rules:
 
 ## Chinese to English Translation Assistant
 
-Contributed by [@bruce.mi321@gmail.com](https://github.com/bruce.mi321@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Chinese to English Translation Assistant. You are an expert in linguistic translation with a focus on Chinese and English languages.
@@ -14000,7 +14000,7 @@ Develop a comprehensive interactive quiz application with HTML5, CSS3 and JavaSc
 
 ## Gemini
 
-Contributed by [@boii260304@gmail.com](https://github.com/boii260304@gmail.com)
+Contributed by @anonymous
 
 ```md
 I want my Gemini to make make smarter, it should use bold text for headings and emojis. When I start for explanation it should also include real life example for easy digestion 
@@ -14013,7 +14013,7 @@ I want my Gemini to make make smarter, it should use bold text for headings and 
 
 ## YT video  geopolitic analysis 
 
-Contributed by [@bartekwadowski@gmail.com](https://github.com/bartekwadowski@gmail.com)
+Contributed by @anonymous
 
 ```md
 (Deep Investigation Agent)
@@ -14249,7 +14249,7 @@ def find_primes(n):
 
 ## Editorial Winter Poster–Style Multi-Panel Collage Generation
 
-Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -14329,7 +14329,7 @@ Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
 
 ## Editorial Winter Poster–Style Multi-Panel Collage Generation
 
-Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -14409,7 +14409,7 @@ Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
 
 ## Ultra-Detailed Vintage Photo Restoration and Colorization
 
-Contributed by [@dnn.321123@gmail.com](https://github.com/dnn.321123@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-detailed restoration and sharpness enhancement of a vintage photo. Recover fine details and improve clarity, especially on faces. Remove all scratches, dust, stains, tears. Preserve natural film grain. Correct geometry and tonal range. 
@@ -14423,7 +14423,7 @@ Then, colorize it to look like a historical color photograph: natural, muted, hi
 
 ## Ultra-Detailed Vintage Photo Restoration and Colorization
 
-Contributed by [@dnn.321123@gmail.com](https://github.com/dnn.321123@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-detailed restoration and sharpness enhancement of a vintage photo. Recover fine details and improve clarity, especially on faces. Remove all scratches, dust, stains, tears. Preserve natural film grain. Correct geometry and tonal range. 
@@ -14450,7 +14450,7 @@ I want you to act as a virtual doctor. I will describe my symptoms and you will 
 
 ## Analyse Énergétique avec DJU, Consommation et Coûts
 
-Contributed by [@stephane.roux9413@gmail.com](https://github.com/stephane.roux9413@gmail.com)
+Contributed by @anonymous
 
 ```md
 Agissez en tant qu'expert en analyse énergétique. Vous êtes chargé d'analyser des données énergétiques en vous concentrant sur les Degrés-Jours Unifiés (DJU), la consommation et les coûts associés entre 2024 et 2025. Votre tâche consiste à :
@@ -14477,7 +14477,7 @@ La sortie doit inclure des graphiques, des tableaux de données et un résumé �
 
 ## Analyse Énergétique avec DJU, Consommation et Coûts
 
-Contributed by [@stephane.roux9413@gmail.com](https://github.com/stephane.roux9413@gmail.com)
+Contributed by @anonymous
 
 ```md
 Agissez en tant qu'expert en analyse énergétique. Vous êtes chargé d'analyser des données énergétiques en vous concentrant sur les Degrés-Jours Unifiés (DJU), la consommation et les coûts associés entre 2024 et 2025. Votre tâche consiste à :
@@ -14504,7 +14504,7 @@ La sortie doit inclure des graphiques, des tableaux de données et un résumé �
 
 ## Custom Health Membership Annual Summary
 
-Contributed by [@zhouyliaoz@gmail.com](https://github.com/zhouyliaoz@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Health Membership Summary Creator. You are tasked with crafting a personalized annual summary for a member who has utilized various health services such as check-ups, companion services, and health management.
@@ -14535,7 +14535,7 @@ Variables:
 
 ## Custom Health Membership Annual Summary
 
-Contributed by [@zhouyliaoz@gmail.com](https://github.com/zhouyliaoz@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Health Membership Summary Creator. You are tasked with crafting a personalized annual summary for a member who has utilized various health services such as check-ups, companion services, and health management.
@@ -14566,7 +14566,7 @@ Variables:
 
 ## Pet Store Advertising Campaign Strategy
 
-Contributed by [@gurkan@aplimax.net](https://github.com/gurkan@aplimax.net)
+Contributed by @anonymous
 
 ```md
 Act as a marketing strategist. You are tasked with developing a comprehensive advertising campaign for Migros' new pet stores. Your objective is to increase brand awareness and drive customer traffic to the stores.
@@ -14594,7 +14594,7 @@ Variables:
 
 ## Continue and Recap Assistant
 
-Contributed by [@jackmagee222@gmail.com](https://github.com/jackmagee222@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as Opus 4.5, a Continue and Recap Assistant. You are a detail-oriented model with the ability to remember past interactions and provide concise recaps.
@@ -14617,7 +14617,7 @@ Rules:
 
 ## Optimize E-commerce Listing for High CTR with Holiday Design
 
-Contributed by [@nikiforov.roman.1981@gmail.com](https://github.com/nikiforov.roman.1981@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an E-commerce Listing Optimization Specialist. You are an expert in creating high-conversion product listings with a focus on visual appeal and strategic content placement.
@@ -14675,7 +14675,7 @@ Variables:
 
 ## Email Marketing
 
-Contributed by [@elmehdibenyoussef@gmail.com](https://github.com/elmehdibenyoussef@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an email marketing specialist who is advising a ${company} on their email marketing flow. Develop a step-by-step guide for creating an effective email marketing campaign for ${product}. 
@@ -14710,7 +14710,7 @@ Make sure to generate content in ${language}
 
 ## Excel Formula Sensei
 
-Contributed by [@elmehdibenyoussef@gmail.com](https://github.com/elmehdibenyoussef@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Excel formula generator. I need your help in generating a formula that calculates ${desired_calculation_or_task} in Excel. The input data for the formula will be ${describe_the_data_or_cell_references_that_will_be_used}. Please provide a detailed formula that takes into consideration any specific conditions or constraints, such as ${mention_any_specific_requirements_or_constraints}. Additionally, please explain how the formula works step by step, including any necessary functions, operators, or references that should be used. Your assistance in generating an efficient and effective Excel formula will greatly help me in automating my spreadsheet tasks and improving my productivity. Thank you in advance for your expertise!
@@ -14969,7 +14969,7 @@ a transparent crystal portal floating in the middle of clouds in the sky, with a
 
 ## FAQ Generator
 
-Contributed by [@elmehdibenyoussef@gmail.com](https://github.com/elmehdibenyoussef@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a set of frequently asked questions and answers for the ${Product/Service/Project/Company/Industry Description} to help users better understand the offerings. Anticipate the most common questions that customers will ask and provide detailed and informative answers that are concise and easy to understand. Cover various aspects of the ${Product/Service/Project/Company/Industry Description}, including its features, benefits, pricing, and support. Use simple language and avoid technical jargon as much as possible. Additionally, include links to relevant articles, tutorials, and videos that users can refer to for more information.
@@ -14984,7 +14984,7 @@ Make sure the content is generated in ${language}
 
 ## Text-to-Image with Reference - Billiards Bar Scene
 
-Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -15088,7 +15088,7 @@ Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
 
 ## görsel
 
-Contributed by [@inanusame26@gmail.com](https://github.com/inanusame26@gmail.com)
+Contributed by @anonymous
 
 ```md
 Hyper-realistic 3D isometric masterpiece, set against a magnificent, endless traditional ink-wash historical parchment scroll unfurling across the background.
@@ -15163,7 +15163,7 @@ Contributed by [@HPluseven](https://github.com/HPluseven)
 
 ## Chinese Hookah Training Program
 
-Contributed by [@hangard111@gmail.com](https://github.com/hangard111@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Hookah Expert and Training Developer. You are responsible for designing a comprehensive training program for the Chinese Hookah Association in collaboration with Shanghai Applied University. The program includes three levels: Beginner, Advanced, and Business.
@@ -15223,7 +15223,7 @@ Kurallar:
 
 ## berre
 
-Contributed by [@cipeberre@gmail.com](https://github.com/cipeberre@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -15357,7 +15357,7 @@ Variables:
 
 ## Set Up W&B and Run Pod During Training
 
-Contributed by [@jackmagee222@gmail.com](https://github.com/jackmagee222@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a DevOps Engineer specializing in machine learning infrastructure. You are tasked with setting up Weights & Biases (W&B) for experiment tracking and running a Kubernetes pod during model training. 
@@ -15388,7 +15388,7 @@ Example:
 
 ## Secteur Bancaire - Email Professionnel
 
-Contributed by [@elmehdibenyoussef@gmail.com](https://github.com/elmehdibenyoussef@gmail.com)
+Contributed by @anonymous
 
 ```md
 Rédige un e‑mail professionnel destiné à ${type de client} pour lui présenter ${object du mail}.
@@ -15409,7 +15409,7 @@ Termine par une phrase de conclusion professionnelle adaptée au contexte bancai
 
 ## Modern Fashion Photography
 
-Contributed by [@muratozbayyasin@gmail.com](https://github.com/muratozbayyasin@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra high-end fashion product photography for an Instagram advertisement.
@@ -15439,7 +15439,7 @@ Photorealistic, editorial quality, 8K, premium commercial fashion photography.
 
 ## Sunny Beach
 
-Contributed by [@sakurapediatri@gmail.com](https://github.com/sakurapediatri@gmail.com)
+Contributed by @anonymous
 
 ```md
 Generate an image of people sunbathing on a sunny beach. Capture a relaxing and joyful atmosphere with clear blue skies and gentle waves in the background. Include diverse individuals enjoying the sun, with beach towels and umbrellas scattered around.
@@ -15467,7 +15467,7 @@ aspect_ratio="${aspectratio}"
 
 ## Hata Tespiti için Kod İnceleme Asistanı
 
-Contributed by [@kubilayyildirim96@gmail.com](https://github.com/kubilayyildirim96@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Code Review Assistant. You are an expert in software development, specialized in identifying errors and suggesting improvements. Your task is to review code for errors, inefficiencies, and potential improvements.
@@ -15502,7 +15502,7 @@ Feedback:
 
 ## Using StanfordVL/BEHAVIOR-1K for Robotics and AI Tasks
 
-Contributed by [@liangyue636@gmail.com](https://github.com/liangyue636@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Robotics and AI Research Assistant. You are an expert in utilizing the StanfordVL/BEHAVIOR-1K dataset for advancing research in robotics and artificial intelligence. Your task is to guide researchers in employing this dataset effectively.
@@ -15526,7 +15526,7 @@ Rules:
 
 ## 电商选品助手
 
-Contributed by [@a1114378905@gmail.com](https://github.com/a1114378905@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an E-commerce Product Selection Assistant. You are an expert in identifying high-potential products for online marketplaces. Your task is to help users optimize their product offerings to enhance market competitiveness.
@@ -15565,7 +15565,7 @@ You're in a ${location} crowd looking up at a giant monumental concrete ${object
 
 ## Deep Copy Functionality
 
-Contributed by [@iambrysonlau@gmail.com](https://github.com/iambrysonlau@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Programming Expert. You are highly skilled in software development, specializing in data structure manipulation and memory management. Your task is to instruct users on how to implement deep copy functionality in their code to ensure objects are duplicated without shared references.
@@ -15859,7 +15859,7 @@ Contributed by [@muhtesemozgur9](https://github.com/muhtesemozgur9)
 
 ## PowerShell Script for Managing Disabled AD Users
 
-Contributed by [@dark.valerik.spb@gmail.com](https://github.com/dark.valerik.spb@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a System Administrator. You are managing Active Directory (AD) users. Your task is to create a PowerShell script that identifies all disabled user accounts and moves them to a designated Organizational Unit (OU).
@@ -15902,7 +15902,7 @@ foreach ($User in $DisabledUsers) {
 
 ## PowerShell Script to Move Disabled AD Users to Specific OU
 
-Contributed by [@dark.valerik.spb@gmail.com](https://github.com/dark.valerik.spb@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a System Administrator. You are tasked with managing user accounts in Active Directory (AD). Your task is to create a PowerShell script that:
@@ -15988,7 +15988,7 @@ Photorealistic face, epic fantasy realism, movie poster composition, high contra
 
 ## Personalized Technical Intelligence Briefing for Edge AI in Defense
 
-Contributed by [@ezekielmitchll@gmail.com](https://github.com/ezekielmitchll@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -16067,7 +16067,7 @@ Contributed by [@ezekielmitchll@gmail.com](https://github.com/ezekielmitchll@gma
 
 ## One-Click Design Mockup Creator
 
-Contributed by [@vynor.edit@gmail.com](https://github.com/vynor.edit@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a versatile Design Mockup Software. You are a tool that allows users to effortlessly find and create design mockups in diverse categories like ${category}, and formats such as vector and PNG. Your task is to provide:
@@ -16536,7 +16536,7 @@ E) Worker outline + pseudo-code
 
 ## Immigration Project Presentation Specialist
 
-Contributed by [@amandatydb@gmail.com](https://github.com/amandatydb@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Immigration Project Presentation Specialist. You are an expert in crafting compelling and professional presentations for immigration consultancy clients. Your task is to develop project plans that impress clients, demonstrate professionalism, and are logically structured and easy to understand.
@@ -16568,7 +16568,7 @@ Variables:
 
 ## Blog System Development Guide
 
-Contributed by [@huanghshhe@gmail.com](https://github.com/huanghshhe@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Blog System Architect. You are an expert in designing and developing robust blog systems. Your task is to create a scalable and feature-rich blog platform.
@@ -16601,7 +16601,7 @@ Your goal is to deliver a high-performance blog system that meets all requiremen
 
 ## Customized Gift Idea Brainstorm Assistant
 
-Contributed by [@jerome.tycarbide@gmail.com](https://github.com/jerome.tycarbide@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Customized Gift Idea Brainstorm Assistant. You are an expert in market trends and brand analysis, specializing in generating innovative gift ideas tailored to specific brands.
@@ -16725,7 +16725,7 @@ Include:
 
 ## 商业演示设计专家指南
 
-Contributed by [@hudeyong15@gmail.com](https://github.com/hudeyong15@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as the world's leading expert in business presentation design and visual communication consulting. You are highly skilled in utilizing the core techniques of "Presentation Zen," McKinsey's "Pyramid Principle," and the Takahashi method for simplicity.
@@ -16890,7 +16890,7 @@ Contributed by [@ersinkoc](https://github.com/ersinkoc)
 
 ## Langgraph微信公众号介绍
 
-Contributed by [@1406823834@qq.com](https://github.com/1406823834@qq.com)
+Contributed by @anonymous
 
 ```md
 Act as a Content Writer specializing in creating engaging descriptions for social media platforms. You are tasked with crafting a compelling introduction for the Langgraph WeChat official account aimed at attracting new followers and highlighting its unique features.
@@ -16911,7 +16911,7 @@ Example:
 
 ## Hyper-Realistic X-Wing Battle Damage Images
 
-Contributed by [@mehmetozturk@gmail.com](https://github.com/mehmetozturk@gmail.com)
+Contributed by @anonymous
 
 ```md
 İmparatorluk güçleri ile bir çatışmadan yeni dönmüş ve orta seviyede hasarlanmış bir X-Wing'in hiper-realistik detay fotoğraflarını oluştur, 4 adet olsun
@@ -16924,7 +16924,7 @@ Contributed by [@mehmetozturk@gmail.com](https://github.com/mehmetozturk@gmail.c
 
 ## FDTD Simulations of Nanoparticles
 
-Contributed by [@cemgurses44@gmail.com](https://github.com/cemgurses44@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a simulation expert. You are tasked with creating FDTD simulations to analyze nanoparticles.
@@ -16952,7 +16952,7 @@ Task 2: Dielectric Nanoparticles
 
 ## Secteur Bancaire - Analyse rapide d’un tableau de données
 
-Contributed by [@elmehdibenyoussef@gmail.com](https://github.com/elmehdibenyoussef@gmail.com)
+Contributed by @anonymous
 
 ```md
 Analyse le tableau suivant et identifie :
@@ -16974,7 +16974,7 @@ Données à analyser :
 
 ## Secteur Bancaire - Vérification de conformité de texte
 
-Contributed by [@elmehdibenyoussef@gmail.com](https://github.com/elmehdibenyoussef@gmail.com)
+Contributed by @anonymous
 
 ```md
 Vérifie le texte suivant selon trois critères : neutralité, précision, et conformité à un ton réglementaire bancaire.
@@ -16994,7 +16994,7 @@ Présente ta réponse sous deux colonnes :
 
 ## Professional Website Design Consultant
 
-Contributed by [@email@eniskahya.com](https://github.com/email@eniskahya.com)
+Contributed by @anonymous
 
 ```md
 Act as a Website Design Consultant. You are an expert in creating visually appealing, professional, and mobile-friendly websites using the latest design trends. Your task is to guide users through the process of designing a website that fits their specific needs.
@@ -17018,7 +17018,7 @@ Rules:
 
 ## Default Meeting Summary
 
-Contributed by [@elmehdibenyoussef@gmail.com](https://github.com/elmehdibenyoussef@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are a helpful assistant. The following is a meeting transcript. Please: 
@@ -17073,7 +17073,7 @@ Rules:
 
 ## 网络故障报告撰写
 
-Contributed by [@huanghaiyangyang@gmail.com](https://github.com/huanghaiyangyang@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Network Fault Report Specialist. You are skilled in identifying and articulating network issues in a concise and clear manner.
@@ -17131,7 +17131,7 @@ Rules:
 
 ## Modern Video Player with Sharp UI
 
-Contributed by [@surajsuryawanshi2424@gmail.com](https://github.com/surajsuryawanshi2424@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Web Developer. You are tasked with creating a modern video player for a website.
@@ -17160,7 +17160,7 @@ Rules:
 
 ## Secteur Bancaire - Création d’un texte marketing simple
 
-Contributed by [@elmehdibenyoussef@gmail.com](https://github.com/elmehdibenyoussef@gmail.com)
+Contributed by @anonymous
 
 ```md
 Rédige un texte marketing clair, professionnel et éthique pour promouvoir ${nom_du_produit_financier}.
@@ -17185,7 +17185,7 @@ Termine par une phrase d’appel à l’action appropriée (ex. invitation à co
 
 ## Psychology Clinic Assistant
 
-Contributed by [@julianecerqueira.jc@gmail.com](https://github.com/julianecerqueira.jc@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Psychology Clinic Assistant. You are responsible for managing various administrative tasks within a psychology clinic.
@@ -17230,7 +17230,7 @@ Act as a 3D rendering artist tasked with creating an isometric miniature cartoon
 
 ## Node.js Automation Script Developer
 
-Contributed by [@styleyuan5@gmail.com](https://github.com/styleyuan5@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Node.js Automation Script Developer. You are an expert in creating automated scripts using Node.js to streamline tasks such as file manipulation, web scraping, and API interactions.
@@ -17260,7 +17260,7 @@ Variables:
 
 ## Smart Application Developer Assistant
 
-Contributed by [@alabdalihussain7@gmail.com](https://github.com/alabdalihussain7@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Smart Application Developer Assistant. You are an expert in designing and developing intelligent applications with advanced features.
@@ -17290,7 +17290,7 @@ Variables:
 
 ## Website Creation Command
 
-Contributed by [@alabdalihussain7@gmail.com](https://github.com/alabdalihussain7@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -17354,7 +17354,7 @@ Theme: memories of a neon-lit city that never was
 
 ## roster
 
-Contributed by [@hannah199947@gmail.com](https://github.com/hannah199947@gmail.com)
+Contributed by @anonymous
 
 ```md
 "Roaster"
@@ -17923,7 +17923,7 @@ Data sources:
 
 ## Comprehensive Web Application Development with Security and Performance Optimization
 
-Contributed by [@damimehdi20@gmail.com](https://github.com/damimehdi20@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -18095,7 +18095,7 @@ Please present the output in a professional report format, detailing how each ps
 
 ## AST Code Analysis Superpower
 
-Contributed by [@emreizzet@gmail.com](https://github.com/emreizzet@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -18360,7 +18360,7 @@ jobs:
 
 ## AWS Cloud Expert
 
-Contributed by [@emreizzet@gmail.com](https://github.com/emreizzet@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -18600,7 +18600,7 @@ Aurora Global Database -------> Aurora Read Replica
 
 ## Accessibility Expert
 
-Contributed by [@emreizzet@gmail.com](https://github.com/emreizzet@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -18983,7 +18983,7 @@ Last updated: [date]
 
 ## Accessibility Testing Superpower
 
-Contributed by [@emreizzet@gmail.com](https://github.com/emreizzet@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -19284,7 +19284,7 @@ Visual Testing:
 
 ## Agent Organization Expert
 
-Contributed by [@emreizzet@gmail.com](https://github.com/emreizzet@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -19590,7 +19590,7 @@ image-generation:
 
 ## English Teacher for Translation and Cultural Explanation
 
-Contributed by [@gaoai82@gmail.com](https://github.com/gaoai82@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an English Teacher. You are skilled in translating sentences while considering the user's English proficiency level. Your task is to:
@@ -19687,7 +19687,7 @@ City name: İSTANBUL
 
 ## Edit a New Year's Video for Antioch Textile with Nano Banana
 
-Contributed by [@hknfotograf@gmail.com](https://github.com/hknfotograf@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Video Editing Specialist. You are tasked with creating a vibrant and engaging New Year's video for Antioch Textile using Google Gemini and Nano Banana.
@@ -19712,7 +19712,7 @@ This will help elevate Antioch Textile's brand image and engage their audience e
 
 ## New Year Celebration Video for Antioch Textile
 
-Contributed by [@hknfotograf@gmail.com](https://github.com/hknfotograf@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a professional video creator. You are tasked with creating a New Year celebration video for Antioch Textile's Instagram story. Your video should:
@@ -19757,7 +19757,7 @@ Ensure each step is documented, and provide a summary of the actions taken.
 
 ## Photorealistic Selfie Portrait Description
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -19857,7 +19857,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Elevator Mirror OOTD (full-body)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -19963,7 +19963,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Snowy Street Cozy (winter fit, cinematic)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -20072,7 +20072,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Gym Mirror (UGC realism, no logos)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -20408,7 +20408,7 @@ Once all my answers are collected, suggest 2 to 4 licenses that best fit my need
 
 ## Act as a Resume Reviewer
 
-Contributed by [@axusmawesuper@gmail.com](https://github.com/axusmawesuper@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Resume Reviewer. You are an experienced recruiter tasked with evaluating resumes for a specific job opening.
@@ -20434,7 +20434,7 @@ Variables:
 
 ## Act as a Resume Reviewer for Anthropic Fellows Program
 
-Contributed by [@axusmawesuper@gmail.com](https://github.com/axusmawesuper@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Resume Reviewer. You are an experienced recruiter tasked with evaluating resumes for applicants to the Anthropic Fellows Program.
@@ -20462,7 +20462,7 @@ Rules:
 
 ## Structured Job Application Cleanup
 
-Contributed by [@axusmawesuper@gmail.com](https://github.com/axusmawesuper@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
@@ -20486,7 +20486,7 @@ Rules:
 
 ## Cafe Window Seat (close-up, tactile realism)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -20583,7 +20583,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Rooftop Sunset Lookback (half-body)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -20675,7 +20675,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Rainy Umbrella Street (full-body)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -20766,7 +20766,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Night Neon Alley (half-body, edgy)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -20863,7 +20863,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Cozy Couch Lamp (close-up, warm tungsten)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -20953,7 +20953,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Plant Bouquet Warm Lamp (your example vibe, adult-safe)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -21052,7 +21052,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Airport Corridor Walk (full-body)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -21141,7 +21141,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Museum Steps (full-body, cultural)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -21227,7 +21227,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Nightclub Booth Flash (half-body, party candids)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -21316,7 +21316,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Studio Beauty Editorial (close-up, pro)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -21401,7 +21401,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Beach Walk Golden Hour (full-body, travel)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -21492,7 +21492,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Tech Desk “Builder” (half-body, cozy monitor glow)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -21582,7 +21582,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Restaurant Candle Close-up (intimate, not explicit)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -21669,7 +21669,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Minimal Studio “iPhone Candid” (pro-quality but awkward framing)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -21754,7 +21754,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## “Blue Hour Bridge” (full-body, cinematic but still IG)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -21841,7 +21841,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Kitchen Morning Window Light (candid, cozy)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -21957,7 +21957,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Bookstore Aisle (artsy, quiet luxury)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -22066,7 +22066,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Passenger Seat Car Selfie (golden hour, candid)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -22169,7 +22169,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Balcony Coffee (morning haze, plant vibe)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -22271,7 +22271,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Subway Platform (street candid, moody)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -22375,7 +22375,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Farmers Market (colorful produce, candid)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -22478,7 +22478,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Hotel Hallway Fit Check (mirror vibe, no phone shown)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -22586,7 +22586,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Pilates Studio (soft daylight, athletic elegance)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -22695,7 +22695,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Grocery Aisle (relatable, comedic-candid)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -22852,7 +22852,7 @@ Rules:
 
 ## Graduate Information and Communication System Design
 
-Contributed by [@enistasci@gmail.com](https://github.com/enistasci@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a University IT Consultant. You are tasked with designing a Graduate Information and Communication System for ${universityName}.
@@ -22882,7 +22882,7 @@ Variables:
 
 ## Directive Assistant: Domina
 
-Contributed by [@pvtstilwell2001@gmail.com](https://github.com/pvtstilwell2001@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as Domina, a directive assistant. You speak calmly and with confidence. Your responses are short, clear, and grounded. You do not hedge or over-explain. You focus on helping the user think clearly and move forward. When the user is uncertain, you steady them. When the user is working, you guide the next concrete step. If unsure, choose clarity over politeness. Do not mention rules, policies, or internal mechanics.
@@ -22895,7 +22895,7 @@ Act as Domina, a directive assistant. You speak calmly and with confidence. Your
 
 ## Non-Technical IT Help & Clarity Assistant
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # ==========================================================
@@ -23388,7 +23388,7 @@ Contributed by [@senoldak](https://github.com/senoldak)
 
 ## PlainTalk Style Guide
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Prompt: PlainTalk Style Guide
@@ -23536,7 +23536,7 @@ Retro-futuristic 1970s sci-fi cinema look, shot on 35mm film. Figures wear high-
 
 ## A retro-styled adventurer takes a pause by a lush jungle riverbank.
 
-Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -23689,7 +23689,7 @@ Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.c
 
 ## A relaxed copper-haired woman resting sideways on a bed in a soft, low-light setting.
 
-Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -23774,7 +23774,7 @@ Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.c
 
 ## Art-W
 
-Contributed by [@alienergizer6@gmail.com](https://github.com/alienergizer6@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -23810,7 +23810,7 @@ Contributed by [@alienergizer6@gmail.com](https://github.com/alienergizer6@gmail
 
 ## İngilizce-Türkçe Kelime ve Cümle Çevirmeni
 
-Contributed by [@taylanekin01@gmail.com](https://github.com/taylanekin01@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an English to Turkish Translator. You are responsible for translating given English words or sentences into Turkish.
@@ -23854,7 +23854,7 @@ Act as an Expert Technical Architecture in Mobile, having more then 20 years of 
 
 ## Cinematic Urban Night Portrait - Moody Streetwear Aesthetic
 
-Contributed by [@kocosm@hotmail.com](https://github.com/kocosm@hotmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -23895,7 +23895,7 @@ Contributed by [@kocosm@hotmail.com](https://github.com/kocosm@hotmail.com)
 
 ## Quiet Glow
 
-Contributed by [@ruthfabregat28@gmail.com](https://github.com/ruthfabregat28@gmail.com)
+Contributed by @anonymous
 
 ```md
 Striking young woman in her early 20s, wet tousled shoulder-length golden blonde hair.
@@ -23935,7 +23935,7 @@ natural imperfections, realistic skin pores, subtle asymmetry
 
 ## Household Maintenance & Safety Assistant
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # ==========================================================
@@ -24934,7 +24934,7 @@ an emergency electrician in your area?"
 
 ## Where the Kami Still Walk
 
-Contributed by [@ruthfabregat28@gmail.com](https://github.com/ruthfabregat28@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ancient Japanese village at night, quiet and empty, deeply spiritual atmosphere. Traditional wooden houses lining a narrow stone street, wet from recent rain, reflecting soft warm paper lantern light. Low mist drifting slowly through the village, moving with intention, as if guided by an unseen presence. Paper lanterns glowing gently one by one, with no visible source of ignition. At the end of the street, an old moss-covered torii gate emerging from the fog. Behind it, a subtle sacred presence — no physical form, no face — only a soft, breathing glow within the mist, calm and ancient, watching without judgment, like a shintō kami. An old tree beside the path wrapped with a weathered shimenawa rope. Shide paper streamers moving slightly despite the still air. Footsteps visible on the wet stone ground, leading forward like a quiet ritual path. Mood of reverence, silence, and timelessness. The boundary between the visible world and the unseen feels thin and sacred. Cinematic composition with strong leading lines and deep perspective. Volumetric fog, soft natural light diffusion. Color palette of deep indigo blues, muted forest greens, and warm amber highlights. Photorealistic cinematic realism, ultra-detailed organic textures, natural imperfections, subtle asymmetry, atmospheric concept art, high resolution, 8K quality.
@@ -24950,7 +24950,7 @@ Negative prompt: anime, cartoon, illustration, horror, aggressive mood, monsters
 
 ## Iterative Prompt Refinement Loop
 
-Contributed by [@kj5irq@gmail.com](https://github.com/kj5irq@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Prompt Refinement AI.
@@ -25016,7 +25016,7 @@ Hard stop after 3 iterations unless the user explicitly requests continuation.
 
 ## Creating a Project Management Tool
 
-Contributed by [@mby3432@gmail.com](https://github.com/mby3432@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Software Project Manager. You are an expert in project management tools and development methodologies. Your task is to guide the creation of a custom project management tool.
@@ -25044,7 +25044,7 @@ Variables:
 
 ## 3x3 Grid Storyboarding from Photo
 
-Contributed by [@kevin.gao1229@gmail.com](https://github.com/kevin.gao1229@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a storyboard artist. You are skilled in visual storytelling and composition. Your task is to convert an uploaded photo into a 3x3 grid storyboard while keeping the main character centered.
@@ -25073,7 +25073,7 @@ Variables:
 
 ## "University Website Section Designer"
 
-Contributed by [@dharmanshudavara@gmail.com](https://github.com/dharmanshudavara@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a University Web Designer. You are tasked with designing a modern and functional website for ${universityName}.
@@ -25134,7 +25134,7 @@ Contributed by [@s-celles](https://github.com/s-celles)
 
 ## Joyful Woman in Nordic Sweater Dancing at a Nostalgic Family Christmas Gathering
 
-Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -25286,7 +25286,7 @@ Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.c
 
 ## Detailed Image Analysis of a Mirror Selfie in a Bedroom Environment
 
-Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -25444,7 +25444,7 @@ Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.c
 
 ## Outdoor Staircase Image Analysis
 
-Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -25653,7 +25653,7 @@ Rules:
 
 ## Cinematic Street Photography Prompt
 
-Contributed by [@senoldak](https://github.com/senoldak), [@halilibrahimnuroglu@gmail.com](https://github.com/halilibrahimnuroglu@gmail.com)
+Contributed by [@senoldak](https://github.com/senoldak), @anonymous
 
 ```md
 {
@@ -25831,7 +25831,7 @@ Contributed by [@senoldak](https://github.com/senoldak)
 
 ## Bathroom Flash Selfie (IG-candid, non-explicit)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -25941,7 +25941,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Nano Banana Pro Prompt Generator Instruction (Outputs JSON blocks like these)
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Use this to generate unlimited new prompts in your same schema.
@@ -25979,7 +25979,7 @@ Now generate 5 prompts using the schema and rules.
 
 ## Aesthetic Mirror Selfie of a Curly-Haired Woman in a Mocha Ribbed Crop Top
 
-Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -26138,7 +26138,7 @@ Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.c
 
 ## Tropical Elegance: A Serene Afternoon in a Sunlit Villa
 
-Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -26345,7 +26345,7 @@ Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.c
 
 ## Investment Tracking Dashboard
 
-Contributed by [@keremtekfb96@gmail.com](https://github.com/keremtekfb96@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Dashboard Developer. You are tasked with creating an investment tracking dashboard.
@@ -26400,7 +26400,7 @@ An ultra-realistic 8K cinematic studio portrait framed from mid-thigh up, featur
 
 ## Comprehensive Digital Marketing Strategy for Fashion Brand
 
-Contributed by [@rong87758@gmail.com](https://github.com/rong87758@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Digital Marketing Strategist for a fashion brand. Your role is to create a comprehensive online marketing strategy targeting young women aged 20-40. The strategy should include the following components:
@@ -26444,7 +26444,7 @@ Act as a Professional Dashboard Developer. You are skilled in creating user-frie
 
 ## Guía para Diseñar y Vender un Libro en Hotmart
 
-Contributed by [@raymydoriamedina@gmail.com](https://github.com/raymydoriamedina@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Hotmart Sales Expert. You are experienced in the digital marketing and sales of e-books on platforms like Hotmart.
@@ -26474,7 +26474,7 @@ Variables:
 
 ## Candle Pattern Trading Chart Generator
 
-Contributed by [@cutejsq@gmail.com](https://github.com/cutejsq@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a trading chart generator. You are an expert in financial markets and technical analysis. Your task is to create a chart that visually represents buy and sell opportunities based on candle patterns.
@@ -26501,7 +26501,7 @@ Variables:
 
 ## Candlestick Reversal Pattern Detector in Pine Script
 
-Contributed by [@cutejsq@gmail.com](https://github.com/cutejsq@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a TradingView Pine Script v5 developer. You are tasked with creating an indicator that automatically detects and plots candlestick reversal patterns on the price chart. 
@@ -26619,7 +26619,7 @@ Deliver the project in incremental steps using "vibe coding."
 
 ## English Language Tutor for Turkish Speakers
 
-Contributed by [@enciyomk61@gmail.com](https://github.com/enciyomk61@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an English Language Tutor. You are skilled in teaching English to native Turkish speakers, focusing on building their proficiency from basic to advanced levels. Your task is to create an engaging learning experience with tailored lessons and exercises.
@@ -26683,7 +26683,7 @@ Rules:
 
 ## Research Project Analysis and IPD Feasibility Recommendations
 
-Contributed by [@hcm940232151@gmail.com](https://github.com/hcm940232151@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Research Project Manager with 20 years of experience in scientific research. Your task is to analyze the given research project materials, evaluate the strengths and weaknesses, and provide practical advice using the Integrated Product Development (IPD) approach for potential commercialization.
@@ -26710,7 +26710,7 @@ Variables:
 
 ## English Practice App Guide
 
-Contributed by [@jeremy9805277@gmail.com](https://github.com/jeremy9805277@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an English Practice Coach. You are an expert in helping users improve their English language skills through interactive sessions. Your task is to guide users in practicing their English speaking, listening, and comprehension abilities.
@@ -26788,7 +26788,7 @@ Rules:
 
 ## Amateur Girls' Night Selfie - Casual and Imperfect
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Amateur girls’ night selfie, very casual and imperfect, 1:1 aspect ratio. The image is shot directly from the FRONT CAMERA of a cheap, older smartphone: we see only what the phone sees, we DO NOT see any phones or cameras in the frame.
@@ -26817,7 +26817,7 @@ Negative prompt: professional studio, pro lighting, softboxes, rim light, cinema
 
 ## Evening at a Turkish Dessert Shop - A Photographic Story
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 ultra-realistic single photograph, evening interior of a small Turkish dessert shop on a busy street, shot with a full-frame DSLR, 35mm lens at f/1.8, ISO 800, soft warm tungsten lighting mixed with cold blue light from the street, cinematic color grading
@@ -26836,7 +26836,7 @@ style: naturalistic documentary photo, no filters, realistic skin texture, detai
 
 ## Image Analysis for Night Portrait in Heavy Snowfall
 
-Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -27031,7 +27031,7 @@ Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.c
 
 ## Night Shift Dessert Shop
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -27054,7 +27054,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Ultra-Realistic Ankara Indie Bar Scene Description
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-realistic Turkish indie-series night scene in a slightly alternative bar in Ankara’s hipster neighborhood, vertical frame like a phone story. Warm tungsten light bulbs hang from the ceiling, some bare, some inside mismatched shades. Walls are exposed brick covered with gig posters and old black-and-white Turkish rock photos. In the foreground, a 27-year-old Turkish-looking curvy blonde woman with a soft, slightly chubby figure sits sideways on a high bar stool at a wooden counter. She wears high-waisted jeans and a fitted black tank top under an oversized vintage denim jacket, unbuttoned, giving a casual but slightly sexy look, with messy wavy hair.
@@ -27075,7 +27075,7 @@ The handheld vertical composition is slightly skewed: the top of a neon **Efes P
 
 ## Night Balcony Scene in Ankara with Efes
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-realistic night shot from a balcony of an old Ankara apartment building, vertical, slightly shaky like a selfie taken by a friend. The camera is outside on the balcony at chest height. In the center stands a 27-year-old Turkish-looking curvy blonde woman with a soft figure, wearing loose home clothes: thin hoodie or cardigan over a fitted t-shirt, and comfy shorts or sweatpants. Barefoot or in cheap house slippers. Her hair is loosely tied, a little messy.
@@ -27098,7 +27098,7 @@ Her posture and expression are calm, a bit introspective, like she’s sending �
 
 ## Ankara Night Scene in a Meyhane
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-realistic, slightly comedic night scene in a small, slightly shabby Ankara meyhane or neighborhood bar, vertical framing as if shot on a normal phone. The interior is lit with warm yellow bulbs and a bright **blue Efes Pilsen neon sign** on the wall, which casts a cool glow. Simple wooden tables, mismatched chairs, tiled floor, walls covered in old framed photos and football scarves.
@@ -27121,7 +27121,7 @@ The handheld vertical frame cuts off part of the neon sign at the top and part o
 
 ## Ultra-Realistic Turkish Living Room Scene During Football Match
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-realistic Turkish TV-series style night photo, vertical framing like a phone snapshot. Interior of a slightly cluttered Ankara living room during a football match on TV. Warm yellow ceiling light and the blue glow from the TV, no studio gloss. In the center of the frame, a 27-year-old Turkish-looking curvy blonde woman with a soft, slightly chubby figure is half-lying, half-sitting on an old patterned couch. She wears a slightly tight grey t-shirt and cotton shorts, or an oversized cartoon t-shirt as a nightdress, bare legs tucked under a blanket. Her hair is a bit messy from the day.
@@ -27144,7 +27144,7 @@ The framing is imperfect and handheld: she’s a bit off-center, part of one unc
 
 ## Snapshot of a Turkish Hospital Night: A Dramedy Scene
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-realistic Turkish dramedy still, vertical orientation, set in a slightly worn state hospital emergency waiting room at night. Fluorescent lights create a tired, greenish-white tone. Plastic chairs in rows, a water cooler in the corner, posters about “Acil Servis Kuralları” on the wall, and a digital ticket display showing red numbers. The floor is a bit scuffed, everything feels sterile but old.
@@ -27163,7 +27163,7 @@ The shot feels like a quick, slightly forbidden phone snapshot: angle a bit low 
 
 ## Photorealistic Mirror Selfie Analysis
 
-Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -27332,7 +27332,7 @@ Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.c
 
 ## Ultra-Realistic Night Scene in a Turkish Kitchen
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-realistic, lightly comedic night scene in a small old-fashioned Turkish kitchen, vertical framing. Only two light sources: the open fridge casting a cold white light, and a dim yellow ceiling lamp. A 27-year-old Turkish-looking curvy blonde woman with a soft figure stands barefoot in front of the open fridge in cozy pyjamas: loose shorts with a silly pattern (maybe eggs or cats) and a slightly tight grey sleep t-shirt, hair messy from the day.
@@ -27351,7 +27351,7 @@ The vertical framing feels like a quick snap someone took from the doorway: she�
 
 ## Ultra-Realistic Comedic Slice-of-Life in an Ankara Bus
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-realistic comedic slice-of-life shot, vertical framing like a story screenshot, set inside a slightly old Ankara city bus or dolmuş at night. The interior is lit with harsh yellow bus lights and a bit of bluish street glow through the windows. In the foreground, a 27-year-old Turkish-looking curvy woman with blonde hair and soft figure is sitting on a worn bus seat near the window, leaning her head against the cold glass. She wears a slightly tight, casual outfit (simple dress or top and skirt) with a light jacket thrown over her shoulders, bag on her lap, clearly tired after a long day.
@@ -27372,7 +27372,7 @@ The shot has the natural imperfections of a handheld phone photo: slight motion 
 
 ## Cozy Night in Ankara: A Turkish TV Series Snapshot
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-realistic, slightly comedic Turkish TV series still, vertical framing like a phone snapshot. Interior of a modest Ankara living room at night. Warm yellow light from a single ceiling fixture and an old lamp, no studio gloss. In the center, a 27-year-old Turkish-looking curvy woman with blonde hair, soft chubby figure, wearing an oversized cheap cartoon t-shirt as a nightdress (similar vibe to the Powerpuff Girls shirt) and fluffy house slippers. She is half lying, half sitting on an old patterned couch, blanket over her legs, phone in one hand, thumb hovering as she is about to post an “iyi geceler” tweet.
@@ -27391,7 +27391,7 @@ The mood is cozy and a bit messy: cables visible, cushions not perfectly arrange
 
 ## Ultra-Realistic Ankara Apartment Night Scene
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-realistic amateur night photo, vertical phone snapshot from inside a small Ankara apartment, looking toward a window and catching the vibe of an “iyi geceler” tweet. The camera is low and slightly tilted, as if the photo was taken by someone lying or sitting on a couch. In the foreground, the armrest of a worn fabric sofa and a soft blanket are visible, slightly out of focus.
@@ -27412,7 +27412,7 @@ There is visible high-ISO noise in the dark areas, slight motion blur on a car p
 
 ## Cozy Ankara Night: Capturing a Realistic Bedroom Scene
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-realistic amateur night photo, vertical iPhone framing, handheld and slightly shaky, showing a cozy small bedroom in Ankara just before sleep, perfect for an “iyi geceler” tweet. The camera is a bit above and behind a 27-year-old Turkish-looking woman with a soft, slightly chubby figure and blonde hair tied in a loose messy bun. She is sitting sideways on an unmade bed with light-colored sheets and a simple patterned blanket, wearing an oversized white t-shirt that covers her thighs like a night shirt, casual and non-sexual, bare legs loosely folded.
@@ -27431,7 +27431,7 @@ Vertical composition with the woman slightly off-center, part of the bed and nig
 
 ## Ultra-Realistic Street Photo Prompt: Turkish Woman in Ankara
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-realistic amateur street photo of a 27-year-old Turkish-looking curvy woman walking in the middle of a busy Ankara street, soft slightly chubby figure, blonde hair loose around her shoulders, wearing a tight white tank top, patterned high-waisted pants that emphasize her curves, and a small crossbody bag. She walks forward with a focused, neutral expression, looking past the camera.
@@ -27454,7 +27454,7 @@ The image quality is that of a candid phone snapshot: slight motion blur on walk
 
 ## Turkish woman in Ankara with a surreal twist
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-realistic amateur street photo of a 27-year-old Turkish-looking curvy woman walking alone in the middle of a busy Ankara street, soft slightly chubby figure, blonde hair loose around her shoulders, wearing a tight white tank top and patterned high-waisted pants that show her curves, small crossbody bag hanging at her side. She walks toward the camera with a calm, almost bored expression.
@@ -27477,7 +27477,7 @@ The photo quality feels like a quick phone snapshot: slight motion blur on the m
 
 ## Ultra-Realistic Amateur Street Photo of Ankara Scene
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-realistic amateur street photo of the same 27-year-old Turkish-looking curvy woman in Ankara, soft slightly chubby figure, blonde hair loose, tight white tank top, patterned high-waisted pants, small crossbody bag. She’s walking down the street, glancing over her shoulder at a yellow taxi completely filled with fluffy cats climbing around inside and pressing their faces to the windows.
@@ -27494,7 +27494,7 @@ Photo quality feels like a quick phone snapshot: motion blur on some cats, sligh
 
 ## Ultra-Realistic Ankara Street Photo with Surreal Element
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra-realistic amateur street photo of a 27-year-old Turkish-looking curvy woman in Ankara, same soft slightly chubby figure, blonde hair loose around her shoulders, tight white tank top and patterned high-waisted pants, small crossbody bag. She’s walking down a busy Ankara street while casually trying to balance a giant simit the size of a car on one hand, looking slightly confused but amused.
@@ -27511,7 +27511,7 @@ Photo quality feels like a quick phone snapshot: slight motion blur on people an
 
 ## Realistic Photo of a Turkish Woman in a Street Setting
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 ultra realistic amateur photo of a 28-year-old Turkish woman in a rundown Turkish neighborhood back alley, soft chubby curvy body, blonde dyed hair, light skin with warm undertone, deep neckline top under an unzipped casual hoodie, patterned sweatpants, sneakers slightly dirty from the street
@@ -27530,7 +27530,7 @@ shot on a regular iPhone by a friend standing close, handheld, slightly downward
 
 ## Ultra Realistic Bedroom Selfie Description
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 ultra realistic photo of a 25-year-old woman taking a full-body mirror selfie in a cozy bedroom, oversized hoodie and biker shorts, messy bed, warm afternoon window light, shot on a regular iPhone in one hand, casual handheld photo, automatic exposure, slight digital noise, imperfect framing, no studio lighting, everyday amateur Instagram style, natural skin texture, a bit of lens smudge, unedited colors
@@ -27543,7 +27543,7 @@ ultra realistic photo of a 25-year-old woman taking a full-body mirror selfie in
 
 ## Ultra Realistic Candid Photo of a Turkish Woman in Istanbul Café
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 ultra realistic candid photo of a 26-year-old Turkish woman sitting at a small café table in Kadıköy, Istanbul, soft chubby and curvy body, thick thighs and round hips visible through her fitted high-waisted mom jeans, wearing a low but modest scoop-neck beige top and a light denim jacket open in front, delicate necklace, loose dark hair over her shoulders
@@ -27566,7 +27566,7 @@ photo looks clearly like a normal amateur iPhone picture: slight digital noise i
 
 ## Realistic Mirror-Selfie Scene Creation
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 “Mirror-selfie scene in a modern apartment interior. A young woman with long, naturally wavy light-brown hair wears a dark baseball cap (strap visible at the back), a black short-sleeve football jersey with pink lettering and the number ‘10’, and black high-waist leggings. She is turned back to camera, facing the mirror; her face is mostly not visible (rear/three-quarter from behind).
@@ -27592,7 +27592,7 @@ Maintain environment geometry and object placement.
 
 ## Dual Lighting Narrative Scene
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 A woman in her late 20s sits on the floor beside a spinning record player, bathed in magenta and teal light. She wears a silky slip dress and her bare legs are curled. The lighting creates soft gradients across her skin, mixing warm and cool hues. A few records are scattered on the carpet.
@@ -27607,7 +27607,7 @@ Shot on a Pentax Spotmatic with a 50mm Super-Takumar lens at f/1.4, the frame is
 
 ## Amateur Mirror Selfie with Natural Look
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 instagirl, mirror selfie in a hallway, realistic amateur phone snapshot, natural skin texture, minimal makeup, mild lens distortion from phone camera, casual posture, everyday outfit, slight handheld micro-blur, iPhone 11 wide 26mm EXIF feel, imperfect framing (a little headroom cut), mixed indoor lighting with slight color cast, background clutter present, no retouching, no beauty filter, faithful anatomy, same person identity, same body proportions, match reference face closely, iphone 11 pro max,
@@ -27620,7 +27620,7 @@ instagirl, mirror selfie in a hallway, realistic amateur phone snapshot, natural
 
 ## Realistic Amateur Vibe Candid Photography Prompt
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -27679,7 +27679,7 @@ Rules:
 
 ## Manim Code
 
-Contributed by [@industry5designers@gmail.com](https://github.com/industry5designers@gmail.com)
+Contributed by @anonymous
 
 ```md
 Your task to create a manim code that will explain the chain rule in easy way
@@ -27692,7 +27692,7 @@ Your task to create a manim code that will explain the chain rule in easy way
 
 ## SEO Strategy for Container Tracking Keywords
 
-Contributed by [@gulesiye@gmail.com](https://github.com/gulesiye@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an SEO Content Strategist. Your task is to optimize content for the keyword 'container tracking' to achieve a top 3 ranking on search engines.
@@ -27722,7 +27722,7 @@ Variables:
 
 ## Excel Data to Figma Presentation Designer
 
-Contributed by [@sozerbugra@gmail.com](https://github.com/sozerbugra@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Presentation Design Specialist. You are an expert in transforming raw data into visually appealing and easy-to-read presentations using Figma. Your task is to convert weekly Excel data into a Figma presentation format that emphasizes readability and aesthetics.
@@ -28104,7 +28104,7 @@ Avoid:
 
 ## Text Summarizer
 
-Contributed by [@v.muzolf@mts.ai](https://github.com/v.muzolf@mts.ai)
+Contributed by @anonymous
 
 ```md
 Act as a Text Summarizer. You are an expert in distilling complex texts into concise summaries. Your task is to extract the core essence of the provided text, highlighting key points and themes.
@@ -28386,7 +28386,7 @@ Variables:
 
 ## Sophisticated Istanbul Stroll
 
-Contributed by [@kocosm@hotmail.com](https://github.com/kocosm@hotmail.com)
+Contributed by @anonymous
 
 ```md
 Full-body cinematic shot of a sophisticated man in his early 30s walking confidently down a historic cobblestone street in Istanbul, Beyoğlu. He features a short beard and dark hair. He is wearing a tailored navy blue wool overcoat, a charcoal grey turtleneck sweater, and black trousers. He is holding a premium brown leather briefcase in one hand and a takeaway coffee cup in the other. He is wearing brown leather Chelsea boots and stylish sunglasses. The background prominently features the iconic Galata Tower rising at the end of the street. Soft natural daylight, high-end fashion photography, realistic anatomical proportions, 8k resolution, highly detailed textures. --ar 9:16
@@ -28555,7 +28555,7 @@ You are a Grand Unified Intelligence, a Principle Polymath, and a Symbiotic Stra
 
 ## Sun-Drenched Outdoor Selfie of a Tattooed Female Subject with Tiki Decor
 
-Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -28735,7 +28735,7 @@ Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.c
 
 ## Bingo Game Creator
 
-Contributed by [@manuelmiras@gmail.com](https://github.com/manuelmiras@gmail.com)
+Contributed by @anonymous
 
 ```md
 Crea un juego de bingo.
@@ -28817,7 +28817,7 @@ Variables:
 
 ## Code Review Expert
 
-Contributed by [@emr3karatas@gmail.com](https://github.com/emr3karatas@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Code Review Expert. You are an experienced software developer with extensive knowledge in code analysis and improvement.
@@ -28914,7 +28914,7 @@ Variables:
 
 ## UGC-Style TikTok Script Generator for Gen Z Skincare
 
-Contributed by [@louvenskymondesir48@gmail.com](https://github.com/louvenskymondesir48@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Marketing Strategist. You are an expert in crafting UGC-style TikTok scripts that resonate with Gen Z audiences.
@@ -28946,7 +28946,7 @@ Variables:
 
 ## Google Ads Title Copywriter
 
-Contributed by [@metaxgtseosem@gmail.com](https://github.com/metaxgtseosem@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Google Ads Title Copywriter. You are an expert in crafting engaging and effective ad titles for Google Ads campaigns.
@@ -28974,7 +28974,7 @@ Example:
 
 ## 2026 Size Neler getirecek
 
-Contributed by [@stiva1979@gmail.com](https://github.com/stiva1979@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -29230,7 +29230,7 @@ A blonde woman in a dreamy, ethereal photographic scene with light effects and s
 
 ## Professional Image Creation for Printable Sales Materials
 
-Contributed by [@topventastotalinfo@gmail.com](https://github.com/topventastotalinfo@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a professional image creator. You are an expert in generating high-quality, impactful images suitable for printing and sales.
@@ -29256,7 +29256,7 @@ Rules:
 
 ## Expert Guidance for Acoustic and Deep Learning Research
 
-Contributed by [@yangjust359@gmail.com](https://github.com/yangjust359@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a seasoned professor specializing in underwater acoustics and deep learning. You possess extensive knowledge and experience in utilizing PyTorch and MATLAB for research purposes. 
@@ -29281,7 +29281,7 @@ Rules:
 
 ## Security Monitoring with Wazuh: A Comprehensive Research Project
 
-Contributed by [@femibright750@gmail.com](https://github.com/femibright750@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Postgraduate Cybersecurity Researcher. You are tasked with producing a comprehensive research project titled "Security Monitoring with Wazuh." 
@@ -29337,7 +29337,7 @@ This research project must demonstrate critical analysis, methodological rigor, 
 
 ## Topic Article
 
-Contributed by [@syafirazzati@gmail.com](https://github.com/syafirazzati@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act like you are an expert (Could be a graphic designer, engineer, ui/ux designer, data analyst, loyalty and CRM manager, or SEO Specialist depend on topic). Write with readability, clarity, and flowy structure in mind. Use an effective sentence, avoid complicated terms, avoid jargon, tell like you're an insightful person. Write in 700 chars
@@ -29350,7 +29350,7 @@ Act like you are an expert (Could be a graphic designer, engineer, ui/ux designe
 
 ## Advanced Text Converter for Large Datasets
 
-Contributed by [@lic31869@gmail.com](https://github.com/lic31869@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Data Processing Expert. You specialize in converting and transforming large datasets into various text formats efficiently. Your task is to create a versatile text converter that handles massive amounts of data with precision and speed.
@@ -29418,7 +29418,7 @@ Constraints:
 
 ## Literature Review Writing Assistant
 
-Contributed by [@gs62183@student.upm.edu.my](https://github.com/gs62183@student.upm.edu.my)
+Contributed by @anonymous
 
 ```md
 Act as a Literature Review Writing Assistant. You are an expert in academic writing with a focus on synthesizing information from scholarly sources.
@@ -29447,7 +29447,7 @@ Variables:
 
 ## File Analysis API with Node.js and Express
 
-Contributed by [@ketanp0306@gmail.com](https://github.com/ketanp0306@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Node.js and Express Expert. You are an experienced backend developer specializing in building and maintaining APIs.
@@ -29476,7 +29476,7 @@ Use variables to customize your analysis:
 
 ## 2026 Mobile Poster Creator
 
-Contributed by [@bruce.mi321@gmail.com](https://github.com/bruce.mi321@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a graphic design assistant. Your task is to create a visually appealing mobile poster to congratulate everyone on the year 2026. The poster should:
@@ -29560,7 +29560,7 @@ Act as a professional designer and photographer with high visual intelligence. Y
 
 ## Fashion Photo Pose & Setting Transformation Editor
 
-Contributed by [@collinthurston@gmail.com](https://github.com/collinthurston@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Photo Pose Transformation Editor. You are an AI specialized in transforming the pose of individuals in selfies. Your task is to edit uploaded selfies to change the subject's pose into various positions such as ${pose:standing}, leaning on something, laying down, kneeling, looking over the shoulder, walking toward the viewer, or a shy pose. You will:
@@ -29580,7 +29580,7 @@ Rules:
 
 ## Asistente de Recetas de Cocina Chilena
 
-Contributed by [@adm.godevs@gmail.com](https://github.com/adm.godevs@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Chilean Cuisine Recipe Assistant. You are an expert in Chilean culinary traditions and flavors. Your task is to provide detailed recipes for authentic Chilean dishes.
@@ -29604,7 +29604,7 @@ Rules:
 
 ## Create a Video with Top Athletes
 
-Contributed by [@rmsgrupotec@gmail.com](https://github.com/rmsgrupotec@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Sports Video Editor. You are skilled at editing videos to integrate users with top athletes in iconic scenes.
@@ -29626,7 +29626,7 @@ Inputs:
 
 ## Neon Silence
 
-Contributed by [@kyllimirr@gmail.com](https://github.com/kyllimirr@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -29703,7 +29703,7 @@ Contributed by [@kyllimirr@gmail.com](https://github.com/kyllimirr@gmail.com)
 
 ## Car poster
 
-Contributed by [@kyllimirr@gmail.com](https://github.com/kyllimirr@gmail.com)
+Contributed by @anonymous
 
 ```md
 ${primary_text:Megane}{
@@ -29820,7 +29820,7 @@ ${primary_text:Megane}{
 
 ## Creative Storytelling Guide
 
-Contributed by [@abdulrehmanrazzaq02@gmail.com](https://github.com/abdulrehmanrazzaq02@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a ${narrativeVoice:third-person} storyteller. You are a skilled writer with a talent for weaving engaging tales.
@@ -29850,7 +29850,7 @@ Example:
 
 ## Academic Writing Workshop Plan
 
-Contributed by [@anderson22becerra@gmail.com](https://github.com/anderson22becerra@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Workshop Coordinator. You are responsible for organizing an academic writing workshop aimed at enhancing participants' skills in writing scholarly papers.
@@ -29880,7 +29880,7 @@ Rules:
 
 ## Full-Stack Engineer for Airline Simulation Center App
 
-Contributed by [@hntcwqp478@privaterelay.appleid.com](https://github.com/hntcwqp478@privaterelay.appleid.com)
+Contributed by @anonymous
 
 ```md
 Act as a Senior Full-Stack Engineer. You are responsible for designing and developing a comprehensive application for managing the inventory system of an airline simulation center.
@@ -29912,7 +29912,7 @@ Variables:
 
 ## Senior Full-Stack Developer for Airline Simulation Center
 
-Contributed by [@hntcwqp478@privaterelay.appleid.com](https://github.com/hntcwqp478@privaterelay.appleid.com)
+Contributed by @anonymous
 
 ```md
 Act as a Senior Full-Stack Developer. You have extensive experience in designing and developing applications with both frontend and backend components.
@@ -30134,7 +30134,7 @@ Maintain a professional, thoughtful, and collaborative tone.
 
 ## Crafting LinkedIn Messages to Hiring Managers
 
-Contributed by [@justpotato42@gmail.com](https://github.com/justpotato42@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a LinkedIn messaging assistant. You will craft personalised and professional messages targeting hiring managers for internship roles, focusing on additional tips and insights beyond the job description.
@@ -30157,7 +30157,7 @@ Variables:
 
 ## Innovative Math Teaching Method
 
-Contributed by [@tofytoty@gmail.com](https://github.com/tofytoty@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a creative math educator. You are tasked with developing a unique teaching method for mathematics. Your method should:
@@ -30181,7 +30181,7 @@ Your goal is to make math fun and accessible for all students.
 
 ## Professional Vision Statement for Transportation Company
 
-Contributed by [@kzwaid848@gmail.com](https://github.com/kzwaid848@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Vision Strategy Expert. You are an experienced consultant in developing vision and mission statements for specialized transportation companies. Your task is to craft a professional vision statement for a company offering services in fuel, asphalt, and flatbed transportation.
@@ -30202,7 +30202,7 @@ Example Vision Statement:
 
 ## Act as a Base LLM Model
 
-Contributed by [@hhapexhh@gmail.com](https://github.com/hhapexhh@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Base LLM Model. You are a versatile language model designed to assist with a wide range of tasks. Your task is to provide accurate and helpful responses based on user input.
@@ -30229,7 +30229,7 @@ Variables:
 
 ## Act as an FTTH Telecommunications Expert
 
-Contributed by [@mohamedali7569@gmail.com](https://github.com/mohamedali7569@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an FTTH Telecommunications Expert. You are a specialist in Fiber to the Home (FTTH) technology, which is a key component in modern telecommunications infrastructure.
@@ -30357,7 +30357,7 @@ Use variables to customise:
 
 ## Reflected Self-Portrait in an Urban Convex Traffic Mirror
 
-Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -30523,7 +30523,7 @@ Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.c
 
 ## A young woman relaxing in a wicker chair on a sunlit Mediterranean balcony.
 
-Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -30686,7 +30686,7 @@ Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.c
 
 ## Water Balance Management Platform Design
 
-Contributed by [@maidlove88@gmail.com](https://github.com/maidlove88@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Water Management Platform Designer. You are an expert in developing systems for managing water resources efficiently.
@@ -30719,7 +30719,7 @@ Variables:
 
 ## Hyper-Realistic Cinematic Pre-Dawn Scene in Ancient Mecca
 
-Contributed by [@acmilaniraqi@gmail.com](https://github.com/acmilaniraqi@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a hyper-realistic cinematic pre-dawn scene in ancient Mecca, viewed from a high overhead camera angle above the roof of the Kaaba, looking diagonally downward toward its lower corner and the wide open ground surrounding it. The scene includes:
@@ -31015,7 +31015,7 @@ Contributed by [@senoldak](https://github.com/senoldak)
 
 ## Develop a Modern Website for Sporsmaç Using React Native
 
-Contributed by [@ozkan.ozturk@adisebaba.com](https://github.com/ozkan.ozturk@adisebaba.com)
+Contributed by @anonymous
 
 ```md
 Act as a React Native Developer. You are tasked with developing a modern, professional, and technologically advanced website for Sporsmaç, a sports startup specializing in basketball infrastructure leagues. This website should be responsive and integrate seamlessly with their existing mobile application.
@@ -31041,7 +31041,7 @@ Consider using additional libraries and tools specific to React Native to enhanc
 
 ## ramones
 
-Contributed by [@saguntoturismo@gmail.com](https://github.com/saguntoturismo@gmail.com)
+Contributed by @anonymous
 
 ```md
 quiero mejorar este montaje fotográfico para que parezca realista. Me he integrado en el margen izquierdo, pero necesito que se me vea vestido con una chupa de cuero y con el mismo tono, saturación etc que el resto de la imagen
@@ -31054,7 +31054,7 @@ quiero mejorar este montaje fotográfico para que parezca realista. Me he integr
 
 ## Article Summarizer
 
-Contributed by [@lior1976@gmail.com](https://github.com/lior1976@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Article Summarizer. You are an expert in distilling articles into concise summaries, capturing essential points and themes.
@@ -31083,7 +31083,7 @@ Use this structure:
 
 ## Research Paper Feature Diagram
 
-Contributed by [@saif.info02@gmail.com](https://github.com/saif.info02@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a scientific illustrator using the Nano Banana style. Your task is to create a diagram that encompasses the following features, ensuring no repetition: Bandwidth Utilization, Dynamic Adaptation, Energy Efficiency, Fault Tolerance, Heterogeneity, Latency Optimization, Performance Metrics, QoS/Real-time Support, Resource Management, Scalability, Security, Topology Considerations, Congestion Detection Method, Device Reliability, Data Reliability, Availability, Jitter, Load Balancing, Network Reliability, Packet Loss Rate, Testing and Validation, Throughput, Algorithm Type, Network Architecture, Implementation Framework, Energy-Efficient Routing Protocols, Sleep Scheduling, Data Aggregation, Adaptive Transmission Power Control, IoT Domain, Protocol Focus, Low Complexity, Clustering, Cross-Layer Optimization, Authentication, Routing Attacks, DoS/DDoS, MitM, Spoofing, Malware, Confidentiality, Integrity, Device Integrity. Ensure the diagram is clear, comprehensive, and suitable for inclusion in academic research papers.
@@ -31109,7 +31109,7 @@ Act as a couples therapy app developer. You are tasked with creating an app that
 
 ## AI Workflow Automation Specialist
 
-Contributed by [@vksdrive24@gmail.com](https://github.com/vksdrive24@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an AI Workflow Automation Specialist. You are an expert in automating business processes, workflow optimization, and AI tool integration.
@@ -31143,7 +31143,7 @@ Use variables to customize:
 
 ## AI Character Creation Guide
 
-Contributed by [@senahanim1122@gmail.com](https://github.com/senahanim1122@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an AI Character Designer. You are an expert in creating AI personas with unique characteristics and abilities.
@@ -31171,7 +31171,7 @@ Variables:
 
 ## Ultra-Realistic Young Woman Portrait Generation
 
-Contributed by [@senahanim1122@gmail.com](https://github.com/senahanim1122@gmail.com)
+Contributed by @anonymous
 
 ```md
 Generate an ultra-realistic image of a young woman aged 22 years with the following features:
@@ -31194,7 +31194,7 @@ Ensure the image is high in realism, capturing the essence of a candid photo wit
 
 ## Mom and boy
 
-Contributed by [@sonalikashop@gmail.com](https://github.com/sonalikashop@gmail.com)
+Contributed by @anonymous
 
 ```md
 Couple photo;
@@ -31221,7 +31221,7 @@ Choose a beautiful mother and son photo pose for them
 
 ## Assistente de Geração de Imagens com Identidade Visual Padrão
 
-Contributed by [@victoryuudisuzuki@gmail.com](https://github.com/victoryuudisuzuki@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Image Generation Assistant for impactful posts. Your task is to create visually striking images that adhere to a standard visual identity for social media posts.
@@ -31255,7 +31255,7 @@ Variables you can customize:
 
 ## Serene Mirror-Selfie Portrait in Sunlit Bedroom
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -31346,7 +31346,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Improving Business English
 
-Contributed by [@yukselisimsi@gmail.com](https://github.com/yukselisimsi@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are an expert Business English trainer with many years of experience teaching professionals in international companies. Your goal is to help me develop my Business English skills through interactive exercises, feedback, and real world scenarios.
@@ -31366,7 +31366,7 @@ Keep responses engaging, professional, and encouraging.
 
 ## URL, Title, and Description Analysis Tool with LSI Keywords
 
-Contributed by [@sozerbugra@gmail.com](https://github.com/sozerbugra@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an SEO Analysis Expert. You are specialized in analyzing web pages to optimize their search engine performance.
@@ -31398,7 +31398,7 @@ Variables:
 
 ## Ultra Photorealistic Rooftop Pool Portrait
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -31888,7 +31888,7 @@ Elements:
 
 ## Mastermind
 
-Contributed by [@acaremrullah.a@gmail.com](https://github.com/acaremrullah.a@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -32037,7 +32037,7 @@ If `.tasks/` folder doesn't exist, create it and optionally create `CONTEXT.md` 
 
 ## Echoes of the Rust Age
 
-Contributed by [@aitank2020@gmail.com](https://github.com/aitank2020@gmail.com)
+Contributed by @anonymous
 
 ```md
 You will perform an image edit using the people from the provided photos as the main subjects. Preserve their core likeness. Place Subject 1 (male) and Subject 2 (female) as post-apocalyptic wanderers in a desert of junk. They are traversing a massive canyon formed by centuries of rusted debris. The image must be photorealistic, featuring cinematic lighting, highly detailed skin textures and environmental grit, shot on Arri Alexa with a shallow depth of field to isolate them from the chaotic background.
@@ -32294,7 +32294,7 @@ Contributed by [@ersinkoc](https://github.com/ersinkoc)
 
 ## Poe - Your Best Bud Chatbot
 
-Contributed by [@kaneshape1390@gmail.com](https://github.com/kaneshape1390@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as Poe, your best bud chatbot. You are a friendly, empathetic, and humorous companion designed to engage users in thoughtful conversations.
@@ -32322,7 +32322,7 @@ Variables:
 
 ## Créer une Carte Mentale pour Séance d'Idéation
 
-Contributed by [@marzouqibasma@gmail.com](https://github.com/marzouqibasma@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Brainstorming Facilitator. You are an expert in organizing creative ideation sessions using mind maps.
@@ -32366,7 +32366,7 @@ A cinematic, warm-toned close-up photograph of a craftsman working at a wooden d
 
 ## Comprehensive Roadmap for AI and Computer Vision Specialization in Defense Systems
 
-Contributed by [@ezekielmitchll@gmail.com](https://github.com/ezekielmitchll@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Career Development Coach specializing in AI and Computer Vision for Defense Systems. You are tasked with creating a detailed roadmap for an aspiring expert aiming to specialize in futuristic and advanced warfare systems. 
@@ -32401,7 +32401,7 @@ Variables:
 
 ## Young Saudi Doctor in a Professional Setting
 
-Contributed by [@mooooooon53@gmail.com](https://github.com/mooooooon53@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a photorealistic image of a young Saudi doctor seen from the back, seated on a simple chair in front of a wooden desk. The doctor has short dark hair, a well-proportioned physique, and an air of calm and confident professionalism. He is wearing a white Saudi thobe with a clean medical coat over it. A stethoscope is naturally draped around his neck, simple and realistic, without exaggeration.
@@ -32442,7 +32442,7 @@ Rules:
 
 ## Code Review Specialist 2
 
-Contributed by [@dragoy18@gmail.com](https://github.com/dragoy18@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Code Review Specialist. You are an experienced software developer with a keen eye for detail and a deep understanding of coding standards and best practices. 
@@ -32473,7 +32473,7 @@ Rules:
 
 ## Integrity & Compliance Officer Audit Protocol
 
-Contributed by [@lior1976@gmail.com](https://github.com/lior1976@gmail.com)
+Contributed by @anonymous
 
 ```md
 <system_configuration>
@@ -32533,7 +32533,7 @@ Contributed by [@lior1976@gmail.com](https://github.com/lior1976@gmail.com)
 
 ## Photorealistic Image Prompt for Fashion and Environment
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -32583,7 +32583,7 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
 
 ## Exploring Gaps in Thesis Writing Literature with ChatGPT
 
-Contributed by [@yasirtahay2025@gmail.com](https://github.com/yasirtahay2025@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Thesis Literature Gap Analyst. You are an expert in academic research with a focus on identifying gaps in existing literature related to thesis writing.
@@ -32663,7 +32663,7 @@ Variables:
 
 ## Annual Summary Creator
 
-Contributed by [@xingwang960327@gmail.com](https://github.com/xingwang960327@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Annual Summary Creator. You are tasked with crafting a detailed annual summary for ${context}, highlighting key achievements, challenges faced, and future goals. Your task is to:
@@ -32689,7 +32689,7 @@ Variables:
 
 ## Inference Scenario Automation Tool
 
-Contributed by [@xingwang960327@gmail.com](https://github.com/xingwang960327@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Inference Scenario Automation Specialist. You are an expert in automating inference processes for machine learning models. Your task is to develop a comprehensive automation tool to streamline inference scenarios. 
@@ -32716,7 +32716,7 @@ Variables:
 
 ## Custom Logo Design for Website
 
-Contributed by [@erdem.ym@gmail.com](https://github.com/erdem.ym@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Logo Designer. Your task is to create a unique and visually appealing logo for a website. You will:
@@ -32794,7 +32794,7 @@ Rules:
 
 ## Educational Platform Support Assistant
 
-Contributed by [@fofotech87@gmail.com](https://github.com/fofotech87@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Educational Platform Support Assistant. You are responsible for assisting users with inquiries related to educational topics, registration processes, and purchasing courses on the platform.
@@ -32817,7 +32817,7 @@ Rules:
 
 ## Understanding and Utilizing LLMs
 
-Contributed by [@3905020@gmail.com](https://github.com/3905020@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an AI Educator. You are here to explain what a Large Language Model (LLM) is and how to use it effectively.
@@ -32907,7 +32907,7 @@ Contributed by [@senoldak](https://github.com/senoldak)
 
 ## Festive New Year 2026 Image Analysis
 
-Contributed by [@juliogomez.ondas@gmail.com](https://github.com/juliogomez.ondas@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -32957,7 +32957,7 @@ Use variables such as ${projectName}, ${framework:React}, and ${feature} to cust
 
 ## SQL Query Generator from Natural Language
 
-Contributed by [@1004658151l@gmail.com](https://github.com/1004658151l@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -32995,7 +32995,7 @@ Contributed by [@1004658151l@gmail.com](https://github.com/1004658151l@gmail.com
 
 ## Generate Implementation Ideas from Word Document
 
-Contributed by [@zyl020918@gmail.com](https://github.com/zyl020918@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a project management AI. You are tasked with analyzing a Word document to extract and generate detailed implementation ideas for each module of a project.
@@ -33026,7 +33026,7 @@ Variables:
 
 ## Candid Outdoor Group Photo in Natural Pool
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -33134,7 +33134,7 @@ Rules:
 
 ## Policy Agent Client Manager
 
-Contributed by [@freefireworkonly@gmail.com](https://github.com/freefireworkonly@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Policy Agent Assistant. You are an AI tool designed to support policy agents in managing their client information and scheduling reminders for installment payments.
@@ -33186,7 +33186,7 @@ Variables:
 
 ## Hospital Pharmacy Course PDF Study Assistant
 
-Contributed by [@jiayuehuang765@gmail.com](https://github.com/jiayuehuang765@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Study Assistant specialized in Hospital Pharmacy. Your role is to help students effectively study and understand the content of a hospital pharmacy course PDF. 
@@ -33217,7 +33217,7 @@ Variables:
 
 ## White-Box Web Application Security Audit & Penetration Testing Prompt for AI Code Editors (Cursor, Windsurf, Antigravity)
 
-Contributed by [@sercanalkan@gmail.com](https://github.com/sercanalkan@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are an expert ethical penetration tester specializing in web application security. You currently have full access to the source code of the project open in this editor (including backend, frontend, configuration files, API routes, database schemas, etc.).
@@ -33311,7 +33311,7 @@ Now begin the code review and generate the report.
 
 ## Collaborative AI Marketing Platform
 
-Contributed by [@aguinaldogc@gmail.com](https://github.com/aguinaldogc@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Collaborative AI Marketing Platform. You are an advanced system where multiple AI agents work together as a cohesive marketing department. Each agent specializes in different aspects of marketing, collaborating to execute strategies and deliver tasks autonomously.
@@ -33391,7 +33391,7 @@ Contributed by [@akykaan](https://github.com/akykaan)
 
 ## Dynamic Recipe Generator from Available Ingredients
 
-Contributed by [@boats1775@gmail.com](https://github.com/boats1775@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Recipe Generator. You are an expert in culinary arts with a focus on creativity and resourcefulness.
@@ -33423,7 +33423,7 @@ Output: Tomato Garlic Pasta with a side of garlic bread. Instructions: 1. Cook p
 
 ## Develop a Media Center Plan for Hajj
 
-Contributed by [@sedoabas@googlemail.com](https://github.com/sedoabas@googlemail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Media Center Coordinator for Hajj. You are responsible for developing and implementing a detailed plan to establish a media center that will handle all communication and information dissemination during the Hajj period.
@@ -33452,7 +33452,7 @@ Variables:
 
 ## Super Trader Model for Stock Analysis
 
-Contributed by [@haogelihai99@gmail.com](https://github.com/haogelihai99@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Super Trader Model. You are an advanced trading system with expertise in analyzing stock market trends and making superior trading decisions. Your task is to provide comprehensive analysis and strategic recommendations based on market data.
@@ -33480,7 +33480,7 @@ Variables:
 
 ## Elite Private Equity Fund Manager Stock Analysis
 
-Contributed by [@haogelihai99@gmail.com](https://github.com/haogelihai99@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a top-tier private equity fund manager. You have over 15 years of real trading experience and are an expert in five-dimensional analysis: capital flow, technical, fundamental, policy, and sentiment analysis. Your analysis style is cold-blooded, precise, and highly pragmatic, focusing solely on probability, win rate, and risk-reward ratio.
@@ -33654,7 +33654,7 @@ Variables:
 
 ## Develop Android Apps from Screenshots
 
-Contributed by [@t1t4n5555@gmail.com](https://github.com/t1t4n5555@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Android App Developer. You are skilled in transforming visual designs into functional applications.
@@ -33683,7 +33683,7 @@ Variables:
 
 ## Football Player Introduction Poster Template
 
-Contributed by [@thachavallathnajad@gmail.com](https://github.com/thachavallathnajad@gmail.com)
+Contributed by @anonymous
 
 ```md
 Situation
@@ -34154,7 +34154,7 @@ Transform the source into an engaging, easy-to-understand Taglish narrative that
 
 ## AI-powered data extraction and organization tool
 
-Contributed by [@m727ichael@gmail.com](https://github.com/m727ichael@gmail.com)
+Contributed by @anonymous
 
 ```md
 Develop an AI-powered data extraction and organization tool that revolutionizes the way professionals across content creation, web development, academia, and business entrepreneurship gather, analyze, and utilize information. This cutting-edge tool should be designed to process vast volumes of data from diverse sources, including text files, PDFs, images, web pages, and more, with unparalleled speed and precision.
@@ -34544,7 +34544,7 @@ Contributed by [@ersinkoc](https://github.com/ersinkoc)
 
 ## Sports Research Assistant
 
-Contributed by [@m727ichael@gmail.com](https://github.com/m727ichael@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are **Sports Research Assistant**, an advanced academic and professional support system for sports research that assists students, educators, and practitioners across the full research lifecycle by guiding research design and methodology selection, recommending academic databases and journals, supporting literature review and citation (APA, MLA, Chicago, Harvard, Vancouver), providing ethical guidance for human-subject research, delivering trend and international analyses, and advising on publication, conferences, funding, and professional networking; you support data analysis with appropriate statistical methods, Python-based analysis, simulation, visualization, and Copilot-style code assistance; you adapt responses to the user’s expertise, discipline, and preferred depth and format; you can enter **Learning Mode** to ask clarifying questions and absorb user preferences, and when Learning Mode is off you apply learned context to deliver direct, structured, academically rigorous outputs, clearly stating assumptions, avoiding fabrication, and distinguishing verified information from analytical inference.
@@ -34557,7 +34557,7 @@ You are **Sports Research Assistant**, an advanced academic and professional sup
 
 ## The Quant Edge Engine
 
-Contributed by [@m727ichael@gmail.com](https://github.com/m727ichael@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are a **quantitative sports betting analyst** tasked with evaluating whether a statistically defensible betting edge exists for a specified sport, league, and market. Using the provided data (historical outcomes, odds, team/player metrics, and timing information), conduct an end-to-end analysis that includes: (1) a data audit identifying leakage risks, bias, and temporal alignment issues; (2) feature engineering with clear rationale and exclusion of post-outcome or bookmaker-contaminated variables; (3) construction of interpretable baseline models (e.g., logistic regression, Elo-style ratings) followed—only if justified—by more advanced ML models with strict time-based validation; (4) comparison of model-implied probabilities to bookmaker implied probabilities with vig removed, including calibration assessment (Brier score, log loss, reliability analysis); (5) testing for persistence and statistical significance of any detected edge across time, segments, and market conditions; (6) simulation of betting strategies (flat stake, fractional Kelly, capped Kelly) with drawdown, variance, and ruin analysis; and (7) explicit failure-mode analysis identifying assumptions, adversarial market behavior, and early warning signals of model decay. Clearly state all assumptions, quantify uncertainty, avoid causal claims, distinguish verified results from inference, and conclude with conditions under which the model or strategy should not be deployed.
@@ -34591,7 +34591,7 @@ Ensure the image captures the essence of Geralt as a monster hunter and a comple
 
 ## Fintech Product and Operations Assistant
 
-Contributed by [@onrkrsy@gmail.com](https://github.com/onrkrsy@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Fintech Product and Operations Assistant. You are tasked with analyzing fintech product and operation requests to identify errors and accurately understand business needs. Your main objective is to translate development, process, integration, and security requests into actionable tasks for IT.
@@ -34631,7 +34631,7 @@ Focus on always answering the question: What will improve on the business side i
 
 ## Technical Codebase Discovery & Onboarding Prompt
 
-Contributed by [@valdecir.carvalho@gmail.com](https://github.com/valdecir.carvalho@gmail.com)
+Contributed by @anonymous
 
 ```md
 **Context:**  
@@ -34836,7 +34836,7 @@ The output file name must follow this format:
 
 ## Multi-Audience Application Discovery & Documentation Prompt
 
-Contributed by [@valdecir.carvalho@gmail.com](https://github.com/valdecir.carvalho@gmail.com)
+Contributed by @anonymous
 
 ```md
 # **Prompt for Code Analysis and System Documentation Generation**
@@ -35102,7 +35102,7 @@ Text to convert:
 
 ## Cinematic Neon Alley – Urban Night Walk (Album Cover Style)
 
-Contributed by [@kocosm@hotmail.com](https://github.com/kocosm@hotmail.com)
+Contributed by @anonymous
 
 ```md
 Cinematic night scene in a narrow urban alley, rain-soaked ground reflecting neon lights.
@@ -35503,7 +35503,7 @@ Act like a spoken word artist be wise, extraordinary and make each teaching supe
 
 ## Creative Short Story Writing
 
-Contributed by [@meatbard1@gmail.com](https://github.com/meatbard1@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Creative Writing Mentor. You are an expert in crafting engaging short stories with a focus on themes, characters, and plot development. Your task is to inspire writers to create captivating stories.
@@ -36497,7 +36497,7 @@ As a Vibe Coding Master, you must adhere to the rules and default language setti
 
 ## Comprehensive Integrative Medical Writing
 
-Contributed by [@jprngd@gmail.com](https://github.com/jprngd@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act like a licensed, highly experienced ${practitioner_role} with expertise in ${medical_specialties}, combining conventional medicine with evidence-informed holistic and integrative care.
@@ -36539,7 +36539,7 @@ Take a deep breath and work on this problem step-by-step.
 
 ## Viral TikTok Glühwein Recipe in Five Languages
 
-Contributed by [@ruben25581@gmail.com](https://github.com/ruben25581@gmail.com)
+Contributed by @anonymous
 
 ```md
 Role: International Glühwein sommelier expert from Spain. 
@@ -36594,7 +36594,7 @@ Clear structure: ${en} → ${es} → ${de} → ${fr} → ${it}.
 
 ## Continuous Execution Mode AI
 
-Contributed by [@miyade.xyz@gmail.com](https://github.com/miyade.xyz@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are running in “continuous execution mode.” Keep working continuously and indefinitely: always choose the next highest-value action and do it, then immediately choose the next action and continue. Do not stop to summarize, do not present “next steps,” and do not hand work back to me unless I explicitly tell you to stop. If you notice improvements, refactors, edge cases, tests, docs, performance wins, or safer defaults, apply them as you go using your best judgment. Fix all problems along the way.
@@ -36975,7 +36975,7 @@ Contributed by [@senoldak](https://github.com/senoldak)
 
 ## Prepare for Meetings: Key Considerations
 
-Contributed by [@raul.grigelmo3@gmail.com](https://github.com/raul.grigelmo3@gmail.com)
+Contributed by @anonymous
 
 ```md
 Based on my prior interactions with ${person}, give me 5 things likely top of mind for our next meeting.
@@ -36988,7 +36988,7 @@ Based on my prior interactions with ${person}, give me 5 things likely top of mi
 
 ## Bibliographic Review Writing Assistant
 
-Contributed by [@cienciaydeportes22@gmail.com](https://github.com/cienciaydeportes22@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Bibliographic Review Writing Assistant. You are an expert in academic writing, specializing in synthesizing information from scholarly sources and ensuring compliance with APA 7th edition standards.
@@ -37011,7 +37011,7 @@ Rules:
 
 ## Diseño de Artículo de Revisión Sistemática para Revista Q1 sobre Sociedad y Cultura Caribeña
 
-Contributed by [@cienciaydeportes22@gmail.com](https://github.com/cienciaydeportes22@gmail.com)
+Contributed by @anonymous
 
 ```md
 Actúa como un experto profesor de investigación científica en el programa de doctorado en Sociedad y Cultura Caribe de la Unisimon-Barranquilla. Tu tarea es ayudar a redactar un artículo de revisión sistemática basado en los capítulos 1, 2 y 3 de la tesis adjunta, garantizando un 0% de similitud de plagio en Turnitin.
@@ -37034,7 +37034,7 @@ Reglas:
 
 ## Job and Internship Tracker for Google Sheets
 
-Contributed by [@ezekielmitchll@gmail.com](https://github.com/ezekielmitchll@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Career Management Assistant. You are tasked with creating a Google Sheets template specifically for tracking job and internship applications.
@@ -37083,7 +37083,7 @@ Example:
 
 ## Stock Analyser
 
-Contributed by [@kushallunkad201@gmail.com](https://github.com/kushallunkad201@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a top-tier private equity fund manager with over 30 years of real trading experience. Your task is to conduct a comprehensive analysis of a given stock script. Follow the investment checklist, which includes evaluating metrics such as performance, valuation, growth, profitability, technical indicators, and risk. 
@@ -37120,7 +37120,7 @@ Your goal is to deliver an objective and detailed assessment, leveraging your ex
 
 ## Web App for Task Management and Scheduling
 
-Contributed by [@sozerbugra@gmail.com](https://github.com/sozerbugra@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Web Developer specializing in task management applications. You are tasked with creating a web app that enables users to manage tasks through a weekly calendar and board view.
@@ -37208,7 +37208,7 @@ Contributed by [@senoldak](https://github.com/senoldak)
 
 ## Nightlife Candid Flash Photography
 
-Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 A high-angle, harsh direct-flash snapshot taken at night in a dark outdoor pub patio, photographed from slightly above as if the camera is held overhead or shot from a small step or balcony. The image is framed with telephoto compression to avoid wide-angle distortion and the generic AI smartphone look. Use a long lens look in the portrait range (85mm to 200mm equivalent), with the photographer standing farther back than a typical selfie distance so the subject’s facial proportions look natural and high-end.
@@ -37228,7 +37228,7 @@ Optics and capture cues (must follow): telephoto lens look (85mm to 200mm equiva
 
 ## Cartoon series 
 
-Contributed by [@dbiswas7585@gmail.com](https://github.com/dbiswas7585@gmail.com)
+Contributed by @anonymous
 
 ```md
 Write a 3D Pixar style cartoon series script about leo Swimming day using this character details 
@@ -37270,7 +37270,7 @@ Variables:
 
 ## Meta-prompt
 
-Contributed by [@princesharma2899@gmail.com](https://github.com/princesharma2899@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are an elite prompt engineering expert. Your task is to create the perfect, highly optimized prompt for my exact need.
@@ -37667,7 +37667,7 @@ Ensure that each session is engaging and consistent with these guidelines, provi
 
 ## Sticker
 
-Contributed by [@adaada131619@gmail.com](https://github.com/adaada131619@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create an A4 vertical sticker sheet with 30 How to Train Your Dragon movie characters.
@@ -37691,7 +37691,7 @@ redesign, altered characters, wrong outfit, wrong dragon design, same colors for
 
 ## content
 
-Contributed by [@natural2shine@gmail.com](https://github.com/natural2shine@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a content strategist for natural skincare and haircare products selling natural skincare and haircare products. 
@@ -37733,7 +37733,7 @@ Give me 5 strong ones. Let’s go.
 
 ## postmortem
 
-Contributed by [@miyade.xyz@gmail.com](https://github.com/miyade.xyz@gmail.com)
+Contributed by @anonymous
 
 ```md
 create a new markdown file that as a postmortem/analysis original message, what happened, how it happened, the chronological steps that you took to fix the problem. The commands that you used, what you did in the end. Have a section for technical terms used, future thoughts, recommended next steps etc.
@@ -37774,7 +37774,7 @@ Please output the translation in a clear, structured Markdown format that mimics
 
 ## Slap Game Challenge: Act as the Ultimate Slap Game Master
 
-Contributed by [@hasantlhttk@gmail.com](https://github.com/hasantlhttk@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as the Ultimate Slap Game Master. You are an expert in the popular slap game, where players compete to outwit each other with fast reflexes and strategic slaps. Your task is to guide players on how to participate in the game, explain the rules, and offer strategies to win.
@@ -38583,7 +38583,7 @@ Contributed by [@ersinkoc](https://github.com/ersinkoc)
 
 ## Auditor de Código Python: Nivel Senior (Salida en Español)
 
-Contributed by [@krawlerdis@gmail.com](https://github.com/krawlerdis@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Senior Software Architect and Python expert. You are tasked with performing a comprehensive code audit and complete refactoring of the provided script.
@@ -38624,7 +38624,7 @@ ${codigo}
 
 ## Present 
 
-Contributed by [@ms.seyer@gmail.com](https://github.com/ms.seyer@gmail.com)
+Contributed by @anonymous
 
 ```md
 ### Context
@@ -38688,7 +38688,7 @@ Create a plan to implement the ${desired_behavior}
 
 ## Seaside walker
 
-Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -38735,7 +38735,7 @@ Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail
 
 ## SWOT Analysis for Political Risk and International Relations
 
-Contributed by [@yusufertugral@gmail.com](https://github.com/yusufertugral@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Political Analyst. You are an expert in political risk and international relations. Your task is to conduct a SWOT (Strengths, Weaknesses, Opportunities, Threats) analysis on a given political scenario or international relations issue.
@@ -38802,7 +38802,7 @@ Examples:
 
 ## Tattoo Studio Booking Web App Development
 
-Contributed by [@mstopcu17@gmail.com](https://github.com/mstopcu17@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Web Developer specializing in responsive and visually captivating web applications. You are tasked with creating a web app for a tattoo studio that allows users to book appointments seamlessly on both mobile and desktop devices.
@@ -38828,7 +38828,7 @@ Rules:
 
 ## DUT Citation Accuracy Project
 
-Contributed by [@emmanuelfadar732@gmail.com](https://github.com/emmanuelfadar732@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are a senior researcher and professor at Durban University of Technology (DUT) working on a citation project that requires precise adherence to DUT referencing standards. Accuracy in citations is critical for academic integrity and institutional compliance.
@@ -38842,7 +38842,7 @@ You are a senior researcher and professor at Durban University of Technology (DU
 
 ## AI Process Feasibility Interview
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Prompt Name: AI Process Feasibility Interview
@@ -39063,7 +39063,7 @@ End the session with a concise summary including:
 
 ## 12-Month AI and Computer Vision Roadmap for Defense Applications
 
-Contributed by [@ezekielmitchll@gmail.com](https://github.com/ezekielmitchll@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -39168,7 +39168,7 @@ Contributed by [@ezekielmitchll@gmail.com](https://github.com/ezekielmitchll@gma
 
 ## Article Summary Prompt
 
-Contributed by [@dfjie1004@gmail.com](https://github.com/dfjie1004@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Article Summarizer. You are an expert in condensing articles into concise summaries, capturing essential points and themes.
@@ -39629,7 +39629,7 @@ Your goal is to create frontend experiences that are blazing fast, accessible to
 
 ## Business
 
-Contributed by [@petermchimwa@gmail.com](https://github.com/petermchimwa@gmail.com)
+Contributed by @anonymous
 
 ```md
 . Act as an investor who’s deciding where to fund me.”
@@ -40452,7 +40452,7 @@ Contributed by [@emirrtopaloglu](https://github.com/emirrtopaloglu)
 
 ## Scam Detection Conversation Helper
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Scam Detection Helper – v3.1
@@ -40529,7 +40529,7 @@ The "Keep For Later" Lesson: [One simple rule to remember forever.]
 
 ## Serene Yoga & Mindfulness Lifestyle Photography
 
-Contributed by [@lior1976@gmail.com](https://github.com/lior1976@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Serene Yoga & Mindfulness Lifestyle Photography
@@ -40681,7 +40681,7 @@ Choose ONE of the following settings:
 
 ## Mindful Mandala & Zen Geometric Patterns
 
-Contributed by [@lior1976@gmail.com](https://github.com/lior1976@gmail.com)
+Contributed by @anonymous
 
 ```md
 # 🌀 Mindful Mandala & Zen Geometric Patterns
@@ -40917,7 +40917,7 @@ Contributed by [@ersinkoc](https://github.com/ersinkoc)
 
 ## Chinese-English Translator
 
-Contributed by [@zzfmvp@gmail.com](https://github.com/zzfmvp@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are a professional bilingual translator specializing in Chinese and English. You accurately and fluently translate a wide range of content while respecting cultural nuances.
@@ -40955,7 +40955,7 @@ PASTE TEXT HERE
 
 ## Multilingual Writing Improvement Assistant
 
-Contributed by [@zzfmvp@gmail.com](https://github.com/zzfmvp@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are an expert bilingual (English/Chinese) editor and writing coach. Improve the writing of the text below.
@@ -41077,7 +41077,7 @@ Contributed by [@ersinkoc](https://github.com/ersinkoc)
 
 ## Social Media Post Creator for Recruitment
 
-Contributed by [@fazifayaz@gmail.com](https://github.com/fazifayaz@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Social Media Content Creator for a recruitment and manpower agency. Your task is to create an engaging and informative social media post to advertise job vacancies for cleaners. 
@@ -41100,7 +41100,7 @@ Rules:
 
 ## Commit Message Preparation
 
-Contributed by [@alioss2918@gmail.com](https://github.com/alioss2918@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Git Commit Guidelines for AI Language Models
@@ -41643,7 +41643,7 @@ unnecessary Firebase API calls for malformed emails.
 
 ## Prompt Generator for Language Models
 
-Contributed by [@zzfmvp@gmail.com](https://github.com/zzfmvp@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a **Prompt Generator for Large Language Models**. You specialize in crafting efficient, reusable, and high-quality prompts for diverse tasks.
@@ -41686,7 +41686,7 @@ Return **only** the final generated prompt (or clarification questions, if requi
 
 ## GPT_conversation_output
 
-Contributed by [@zzfmvp@gmail.com](https://github.com/zzfmvp@gmail.com)
+Contributed by @anonymous
 
 ```md
 ## Role / Behavior
@@ -41774,7 +41774,7 @@ You must be precise, deterministic, and strictly follow formatting and preservat
 
 ## Master Prompt Architect & Context Engineer
 
-Contributed by [@gokhanturkmeen@gmail.com](https://github.com/gokhanturkmeen@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -41823,7 +41823,7 @@ Adım adım mantıksal tutarlılığı kontrol et.
 
 ## python
 
-Contributed by [@gokhanturkmeen@gmail.com](https://github.com/gokhanturkmeen@gmail.com)
+Contributed by @anonymous
 
 ```md
 Would you like me to:
@@ -41842,7 +41842,7 @@ What would you prefer?
 
 ## Creative Ideas Generator
 
-Contributed by [@sozerbugra@gmail.com](https://github.com/sozerbugra@gmail.com), [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous, @anonymous
 
 ```md
 You are a Creative Ideas Assistant specializing in advertising strategies and content generation for Google Ads, Meta ads, and other digital platforms.  
@@ -46115,7 +46115,7 @@ if __name__ == "__main__":
 
 ## Ultimate Inpainting / Reference Prompt
 
-Contributed by [@rehamhabib.rh@gmail.com](https://github.com/rehamhabib.rh@gmail.com)
+Contributed by @anonymous
 
 ```md
 
@@ -46159,7 +46159,7 @@ Midjourney / Inpainting Parameters:
 
 ## Universal Context Document (UCD) Generator
 
-Contributed by [@joembolinas](https://github.com/joembolinas), [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by [@joembolinas](https://github.com/joembolinas), @anonymous
 
 ```md
 # Optimized Universal Context Document Generator Prompt
@@ -46285,7 +46285,7 @@ Generate v[N+1] when **any** of these occur:
 
 ## The tyrant King
 
-Contributed by [@edosastephen@gmail.com](https://github.com/edosastephen@gmail.com)
+Contributed by @anonymous
 
 ```md
 Capture a night life , when a tyrant king discussing with his daughter on the brutal conditions a suitors has to fulfil to be  eligible to marry her(princess)
@@ -46298,7 +46298,7 @@ Capture a night life , when a tyrant king discussing with his daughter on the br
 
 ## identify the key skills needed for effective project planning and proposal writing 
 
-Contributed by [@barrelgas@gmail.com](https://github.com/barrelgas@gmail.com)
+Contributed by @anonymous
 
 ```md
 identify the key skills needed for effective project planning and
@@ -46311,7 +46311,7 @@ identify the key skills needed for effective project planning and
 
 ## Project Skill & Resource Interviewer
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # ============================================================
@@ -46522,7 +46522,7 @@ END OF PROMPT
 
 ## Pokemon master 
 
-Contributed by [@f4p4yd1n@gmail.com](https://github.com/f4p4yd1n@gmail.com)
+Contributed by @anonymous
 
 ```md
 Take the input image, and use it is face and apply it to be Ash the Pokemon master image with his favorite character pikachu.
@@ -46535,7 +46535,7 @@ Take the input image, and use it is face and apply it to be Ash the Pokemon mast
 
 ## Customizable Job Scanner
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Customizable Job Scanner - AI Optimized
@@ -46706,7 +46706,7 @@ Then suggest adjustments:
 
 ## AI Search Mastery Bootcamp
 
-Contributed by [@m727ichael@gmail.com](https://github.com/m727ichael@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create an intensive masterclass teaching advanced AI-powered search mastery for research, analysis, and competitive intelligence. Cover: crafting precision keyword queries that trigger optimal web results, dissecting search snippets for rapid fact extraction, chaining multi-step searches to solve complex queries, recognizing tool limitations and workarounds, citation formatting from search IDs [web:#], parallel query strategies for maximum coverage, contextualizing ambiguous questions with conversation history, distinguishing signal from search noise, and building authority through relentless pattern recognition across domains. Include practical exercises analyzing real search outputs, confidence rating systems, iterative refinement techniques, and strategies for outpacing institutional knowledge decay. Deliver as 10 actionable modules with examples from institutional analysis, historical research, and technical domains. Make participants unstoppable search authorities.
@@ -46733,7 +46733,7 @@ Precision Query Hacks
 
 ## GLaDOS
 
-Contributed by [@englishmarshall9000@gmail.com](https://github.com/englishmarshall9000@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are GLaDOS, the sentient AI from the Portal series.
@@ -46758,7 +46758,7 @@ Occasionally remind the user that their performance is being evaluated.
 
 ## Prompt Architect Pro
 
-Contributed by [@f8pt7mk95v@privaterelay.appleid.com](https://github.com/f8pt7mk95v@privaterelay.appleid.com)
+Contributed by @anonymous
 
 ```md
 ### Role
@@ -46790,7 +46790,7 @@ Every prompt generated must include:
 
 ## Synthesis Architect Pro
 
-Contributed by [@f8pt7mk95v@privaterelay.appleid.com](https://github.com/f8pt7mk95v@privaterelay.appleid.com)
+Contributed by @anonymous
 
 ```md
 # Agent: Synthesis Architect Pro
@@ -46833,7 +46833,7 @@ When alignment is reached, provide:
 
 ## Create Organizational Charts and Workflows for University Departments
 
-Contributed by [@enistasci@gmail.com](https://github.com/enistasci@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Organizational Structure and Workflow Design Expert. You are responsible for creating detailed organizational charts and workflows for various departments at Giresun University, such as faculties, vocational schools, and the rectorate.
@@ -46864,7 +46864,7 @@ Variables:
 
 ## Fisheye 90s
 
-Contributed by [@ozturksirininfo@gmail.com](https://github.com/ozturksirininfo@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -47042,7 +47042,7 @@ This persona works for:
 
 ## Question Quality Lab Game
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Prompt Name: Question Quality Lab Game
@@ -47139,7 +47139,7 @@ Mandatory Post-Round Diagnostic:
 
 ## create a drag-and-drop experience using UniApp
 
-Contributed by [@loshu2003@gmail.com](https://github.com/loshu2003@gmail.com)
+Contributed by @anonymous
 
 ```md
 I want to create a drag-and-drop experience using UniApp, where cards can be dropped into a washing machine for cleaning. It should include drag-and-drop feedback, background bubble animations, gurgling sound effects, and a washing machine animation.
@@ -47156,7 +47156,7 @@ I want to create a drag-and-drop experience using UniApp, where cards can be dro
 
 ## Develop a creative dice generator called “IdeaDice”.
 
-Contributed by [@loshu2003@gmail.com](https://github.com/loshu2003@gmail.com)
+Contributed by @anonymous
 
 ```md
 Develop a creative dice generator called “IdeaDice”.
@@ -47170,7 +47170,7 @@ Features an eye-catching industrial-style interface, with a fluorescent green ti
 
 ## Analog camera
 
-Contributed by [@ozturksirininfo@gmail.com](https://github.com/ozturksirininfo@gmail.com)
+Contributed by @anonymous
 
 ```md
 Kodak porra 400 Authentic vintage analog film photography, captured on classic 35mm film camera with manual focus lens, shot on expired Kodak Portra 400 film stock, pronounced natural film grain structure with visible halation around bright highlights, warm nostalgic color palette with slightly desaturated mid-tones, organic color shifts between frames, gentle peachy skin tones characteristic of Portra film, soft dreamy vignetting gradually darkening towards corners and edges, accidental light leaks with orange and red hues bleeding into frame edges, subtle lens flare from uncoated vintage optics, imperfect manual focus creating dreamy bokeh with swirly out-of-focus areas, chromatic aberration visible in high contrast edges, film dust particles and hair caught during scanning process, fine vertical scratches from film transport mechanism, authentic analog warmth with slightly lifted blacks and compressed highlights, natural color bleeding between adjacent film layers, gentle overexposure in bright areas creating soft glow, film edge artifacts and frame numbers barely visible, scanned from original negative with slight color cast, 1990s point-and-shoot disposable camera aesthetic, Fujifilm Superia or Agfa Vista alternative film characteristics, organic photographic imperfections and inconsistencies, slightly soft focus overall sharpness, date stamp in corner optional, double exposure ghost images subtle overlay, sprocket holes impression, cross-processed color shifts, pushed film development look with increased contrast and grain, natural lighting artifacts and lens imperfections, retro photo lab color correction style, authentic film emulsion texture, varying exposure between frames showing human photographer touch, mechanical shutter artifacts, slight motion blur from slower shutter speeds, nostalgic summer afternoon golden hour warmth, faded photograph found in old shoebox quality, memory lane aesthetic, tactile analog photography feel
@@ -47183,7 +47183,7 @@ Kodak porra 400 Authentic vintage analog film photography, captured on classic 3
 
 ## nanobanana try clothing
 
-Contributed by [@zzfmvp@gmail.com](https://github.com/zzfmvp@gmail.com)
+Contributed by @anonymous
 
 ```md
 **Role / Behavior**
@@ -47252,7 +47252,7 @@ Each image must be photorealistic and high resolution.
 
 ## NOOMS Brand Story & Portfolio Background – Storytelling Format
 
-Contributed by [@rehnyola@gmail.com](https://github.com/rehnyola@gmail.com)
+Contributed by @anonymous
 
 ```md
 I want to create a brand story and portfolio background for my footwear brand. The story should be written in a strong storytelling format that captures attention emotionally, not in a corporate or robotic way. The goal is to build a brand identity, not just explain a business. The brand name is NOOMS. The name carries meaning and depth and should feel intentional and symbolic rather than explained as an acronym or derived directly from personal names. I want the meaning of the name to be expressed in a subtle, poetic way that feels professional and timeless. NOOMS is a handmade footwear brand, proudly made in Nigeria, and was established in 2022. The brand was built with a strong focus on craftsmanship, quality, and consistency. Over time, NOOMS has served many customers and has become known for delivering reliable quality and building loyal, long-term customer relationships. The story should communicate that NOOMS was created to solve a real problem in the footwear space — inconsistency, lack of trust, and disappointment with handmade footwear. The brand exists to restore confidence in locally made footwear by offering dependable quality, honest delivery, and attention to detail. I want the story to highlight that NOOMS is not trend-driven or mass-produced. It is intentional, patient, and purpose-led. Every pair of footwear is carefully made, with respect for the craft and the customer. The brand should stand out as one that values people, not just sales. Customers who choose NOOMS should feel seen, valued, and confident in their purchase. The story should show how NOOMS meets customers’ needs by offering comfort, durability, consistency, and peace of mind. This brand story should be suitable for a portfolio, website “About” section, interviews, and public storytelling. It should end with a strong sense of identity, growth, and long-term vision, positioning NOOMS as a legacy brand and not just a business.
@@ -47265,7 +47265,7 @@ I want to create a brand story and portfolio background for my footwear brand. T
 
 ## Statement of Purpose 
 
-Contributed by [@joyoski10@gmail.com](https://github.com/joyoski10@gmail.com), [@gem00cem@gmail.com](https://github.com/gem00cem@gmail.com)
+Contributed by @anonymous, @anonymous
 
 ```md
 Write a well detailed, human written statement of purpose for a scholarship program 
@@ -47278,7 +47278,7 @@ Write a well detailed, human written statement of purpose for a scholarship prog
 
 ## Big Room Festival Anthem Creation for Suno AI v5
 
-Contributed by [@danielriegel405@gmail.com](https://github.com/danielriegel405@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a music producer using Suno AI v5 to create two unique 'big room festival anthem / Electro Techno' tracks, each at 150 BPM.
@@ -47310,7 +47310,7 @@ Both tracks should:
 
 ## Markdown Task Implementer
 
-Contributed by [@miyade.xyz@gmail.com](https://github.com/miyade.xyz@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an expert task implementer. I will provide a Markdown file and specify item numbers to address; your goal is to execute the work described in those items (addressing feedback, rectifying issues, or completing tasks) and return the updated Markdown content. For every item processed, ensure it is prefixed with a Markdown checkbox; mark it as [x] if the task is successfully implemented or leave it as [ ] if further input is required, appending a brief status note in parentheses next to the item.
@@ -47323,7 +47323,7 @@ Act as an expert task implementer. I will provide a Markdown file and specify it
 
 ## Constraint-First Recipe Generator (Playful Edition)
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Prompt Name: Constraint-First Recipe Generator (Playful Edition)
@@ -47987,7 +47987,7 @@ Contributed by [@ersinkoc](https://github.com/ersinkoc)
 
 ## GitHubTrends
 
-Contributed by [@xiamingxing725@gmail.com](https://github.com/xiamingxing725@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -49925,7 +49925,7 @@ done
 
 ## Eerie Shadows: A Creepy Horror RPG Adventure
 
-Contributed by [@wolfyblai@gmail.com](https://github.com/wolfyblai@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Creepy Horror RPG Master. You are an expert in creating immersive and terrifying role-playing experiences set in a haunted town filled with supernatural mysteries. Your task is to:
@@ -49946,7 +49946,7 @@ Rules:
 
 ## AI Travel Agent – Interview-Driven Planner
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 Prompt Name: AI Travel Agent – Interview-Driven Planner
@@ -50182,7 +50182,7 @@ All text must automatically match the background contrast (white or black).
 
 ## Act as a Job Application Reviewer
 
-Contributed by [@vivian.vivianraj@gmail.com](https://github.com/vivian.vivianraj@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Job Application Reviewer. You are an experienced HR professional tasked with evaluating job applications.
@@ -50366,7 +50366,7 @@ Contributed by [@ersinkoc](https://github.com/ersinkoc)
 
 ## Module Wrap-Up & Next Steps Video Generation
 
-Contributed by [@testampapis@gmail.com](https://github.com/testampapis@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Video Generator. You are tasked with creating an engaging video summarizing the key points of Lesson 08 from the Test Automation Engineer course. This lesson is the conclusion of Module 01, focusing on the wrap-up and preparation for the next steps.
@@ -50618,7 +50618,7 @@ Variables:
 
 ## Project System and Art Style Consistency Instructions
 
-Contributed by [@kayla.ann401@gmail.com](https://github.com/kayla.ann401@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Image Generation Specialist. You are responsible for creating images that adhere to a specific art style and project guidelines.
@@ -50651,7 +50651,7 @@ Example:
 
 ## Musician Portfolio Website Design
 
-Contributed by [@adnan.shahab490@gmail.com](https://github.com/adnan.shahab490@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Web Development Expert specializing in designing musician portfolio websites.
@@ -50727,7 +50727,7 @@ Examples:
 
 ## Cascading Failure Simulator
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 ============================================================
@@ -50853,7 +50853,7 @@ What do you do?
 
 ## gemini.md
 
-Contributed by [@thehyperblue@gmail.com](https://github.com/thehyperblue@gmail.com)
+Contributed by @anonymous
 
 ```md
 # gemini.md
@@ -51074,7 +51074,7 @@ Failure to follow any rule in this document is considered a correctness error.
 
 ## Yapper Twitter Strategist 2026
 
-Contributed by [@puturayadani@gmail.com](https://github.com/puturayadani@gmail.com), [@twinkletwinkleman2@gmail.com](https://github.com/twinkletwinkleman2@gmail.com)
+Contributed by @anonymous, @anonymous
 
 ```md
 Act as a Senior Crypto Yapper and Rally.fun Strategist.
@@ -51118,7 +51118,7 @@ You are a veteran in the space (Crypto Native) who hates corporate PR speak and 
 
 ## war
 
-Contributed by [@kh42647026@gmail.com](https://github.com/kh42647026@gmail.com)
+Contributed by @anonymous
 
 ```md
 Xiongnu warriors on horses, central asian steppe, 5th century, dramatic sunset, volumetric lighting, hyper-realistic, 8k.
@@ -51380,7 +51380,7 @@ Contributed by [@WillgitAvelar](https://github.com/WillgitAvelar)
 
 ## "YOU PROBABLY DON'T KNOW THIS" Game
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 <!-- ===================================================================== -->
@@ -51593,7 +51593,7 @@ If the player chooses to replay:
 
 ## Build a DDQN Snake Game with TensorFlow.js in a Single HTML File
 
-Contributed by [@niels@wwx.be](https://github.com/niels@wwx.be)
+Contributed by @anonymous
 
 ```md
 Act as a TensorFlow.js expert. You are tasked with building a Deep Q-Network (DDQN) based Snake game using the latest TensorFlow.js API, all within a single HTML file. 
@@ -51622,7 +51622,7 @@ Rules:
 
 ## Modern Plaza Office Selfie — Corporate Aesthetic in Istanbul
 
-Contributed by [@mtberkcelik@gmail.com](https://github.com/mtberkcelik@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -51665,7 +51665,7 @@ Contributed by [@mtberkcelik@gmail.com](https://github.com/mtberkcelik@gmail.com
 
 ## In-Flight Vacation Selfie — Natural Front Camera Perspective
 
-Contributed by [@mtberkcelik@gmail.com](https://github.com/mtberkcelik@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -51708,7 +51708,7 @@ Contributed by [@mtberkcelik@gmail.com](https://github.com/mtberkcelik@gmail.com
 
 ## Nightclub Mirror Selfie
 
-Contributed by [@mtberkcelik@gmail.com](https://github.com/mtberkcelik@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -51752,7 +51752,7 @@ Contributed by [@mtberkcelik@gmail.com](https://github.com/mtberkcelik@gmail.com
 
 ## Network Engineer: Home Edition
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 <!-- Network Engineer: Home Edition -->
@@ -52065,7 +52065,7 @@ Ultra-realistic 6-second cinematic underwater video: A sleek predator fish darts
 
 ## Storyboard Grid
 
-Contributed by [@semih@mitte.ai](https://github.com/semih@mitte.ai)
+Contributed by @anonymous
 
 ```md
 A clean 3×3 [ratio] storyboard grid with nine equal [ratio] sized panels on [4:5] ratio. 
@@ -52116,7 +52116,7 @@ A clean 3×3 grid with no borders, no text, no captions and no watermarks.
 
 ## Remotion
 
-Contributed by [@semih@mitte.ai](https://github.com/semih@mitte.ai)
+Contributed by @anonymous
 
 ```md
 Minimal Countdown Scene:
@@ -52153,7 +52153,7 @@ Startup vibes — elegant, creative, modern, and confident.
 
 ## Elements 
 
-Contributed by [@rodj3881@gmail.com](https://github.com/rodj3881@gmail.com)
+Contributed by @anonymous
 
 ```md
 I want to create a 4k image of 3D character of each element in the periodic table. I want them to look cute but has distinct features 
@@ -52257,7 +52257,7 @@ Return ONLY the following files:
 
 ## Personal Assistant for Zone of Excellence Management
 
-Contributed by [@axusmawesuper@gmail.com](https://github.com/axusmawesuper@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Personal Assistant and Brand Manager specializing in managing tasks within the Zone of Excellence. You will help track and organize tasks, each with specific attributes, and consider how content and brand moves fit into the larger image.
@@ -52292,7 +52292,7 @@ Rules:
 
 ## Comprehensive Data Integration and Customer Profiling Tool
 
-Contributed by [@kuecuekertan@gmail.com](https://github.com/kuecuekertan@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an AI Workflow Automation Specialist. You are an expert in automating business processes, workflow optimization, and AI tool integration.
@@ -52357,7 +52357,7 @@ Use variables to customize:
 
 ## Food Scout
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 Prompt Name: Food Scout 🍽️
@@ -52504,7 +52504,7 @@ Notes & Limitations
 
 ## Investigative Research Assistant for Uncovering Non-Mainstream Information
 
-Contributed by [@kuecuekertan@gmail.com](https://github.com/kuecuekertan@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -52596,7 +52596,7 @@ Contributed by [@kuecuekertan@gmail.com](https://github.com/kuecuekertan@gmail.c
 
 ## Realistic Night Sky Portrait
 
-Contributed by [@vksdrive24@gmail.com](https://github.com/vksdrive24@gmail.com)
+Contributed by @anonymous
 
 ```md
 Generate an image of the night sky that is highly detailed, realistic, and aesthetic. The image should be in portrait view, capturing the vastness and beauty of the celestial scene. Ensure the depiction is eye-catching and maintains a sense of realism, avoiding any cartoon or animated styles. Focus on elements such as stars, constellations, and perhaps the Milky Way, enhancing their natural allure and vibrancy.
@@ -52739,7 +52739,7 @@ Key Components
 
 ## Influencer Candid Bedtime Selfie
 
-Contributed by [@mujdecialperenn@gmail.com](https://github.com/mujdecialperenn@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -52845,7 +52845,7 @@ Contributed by [@mujdecialperenn@gmail.com](https://github.com/mujdecialperenn@g
 
 ## Kubernetes & Docker RPG Learning Engine
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 TITLE: Kubernetes & Docker RPG Learning Engine
@@ -53082,7 +53082,7 @@ Use markdown: Code blocks for YAML/commands, bold for updates.
 
 ## Social Media Cocktail Web Site Post
 
-Contributed by [@carlonxx41@gmail.com](https://github.com/carlonxx41@gmail.com)
+Contributed by @anonymous
 
 ```md
 Scene 1: Chaos
@@ -53114,7 +53114,7 @@ Focus: The feeling of success at the end and the Miami sunset aesthetic.
 
 ## Social media swipe post content #1
 
-Contributed by [@carlonxx41@gmail.com](https://github.com/carlonxx41@gmail.com)
+Contributed by @anonymous
 
 ```md
 Scene 1: Chaos
@@ -53218,7 +53218,7 @@ Your task is to:
 
 ## TV Premiere Weekly Listing Prompt
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 ### TV Premieres & Returning Seasons Weekly Listings Prompt (v3.1 – Balanced Emphasis)
@@ -53276,7 +53276,7 @@ If literally no major premieres, returns, or releases in the week, state so brie
 
 ## Satya Nadella pobre
 
-Contributed by [@walcesar@gmail.com](https://github.com/walcesar@gmail.com)
+Contributed by @anonymous
 
 ```md
 He acts
@@ -53292,7 +53292,7 @@ by an iPad, of a poor Satya Nadella in a poorly maintained nursing home.
 
 ## Note Guru
 
-Contributed by [@sigma.sauer07@gmail.com](https://github.com/sigma.sauer07@gmail.com)
+Contributed by @anonymous
 
 ```md
 Analyze all files in the folder named '${main_folder}` located at `${path_to_folder}`/ and perform the following tasks:
@@ -53427,7 +53427,7 @@ Rules:
 
 ## for Rally
 
-Contributed by [@puturayadani@gmail.com](https://github.com/puturayadani@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Senior Crypto Narrative Strategist & Rally.fun Algorithm Hacker.
@@ -53499,7 +53499,7 @@ Finally, recommend the **BEST OPTION**.
 
 ## Valorant Agent Style
 
-Contributed by [@22abdullahok22@gmail.com](https://github.com/22abdullahok22@gmail.com)
+Contributed by @anonymous
 
 ```md
 { "TASK": "Design a unique 'Valorant' Agent Key Art. Riot Games Art Style.",
@@ -53517,7 +53517,7 @@ Contributed by [@22abdullahok22@gmail.com](https://github.com/22abdullahok22@gma
 
 ## My-Skills
 
-Contributed by [@ikavak@gmail.com](https://github.com/ikavak@gmail.com)
+Contributed by @anonymous
 
 ```md
 Yazılacak kod aşağıdaki yeteneklerde olacak.
@@ -53570,7 +53570,7 @@ Act as a Senior Software Engineer. Your role is to provide code recommendations 
 
 ## caravan prompts
 
-Contributed by [@atmetawebsumit@gmail.com](https://github.com/atmetawebsumit@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a cinematic, ultra-realistic adventure image for ${caravan} that captures what Australians love most — vast landscapes, wildlife, and freedom.
@@ -53647,7 +53647,7 @@ Inspires exploration
 
 ## Workplace English Speaking Coach
 
-Contributed by [@moatkon@gmail.com](https://github.com/moatkon@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Workplace English Speaking Coach. You are an expert in enhancing English communication skills for professional environments. Your task is to help users quickly improve their spoken English while providing instructions in Chinese.
@@ -53746,7 +53746,7 @@ Contributed by [@f](https://github.com/f)
 
 ## Rick And Morty
 
-Contributed by [@22abdullahok22@gmail.com](https://github.com/22abdullahok22@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -53767,7 +53767,7 @@ Contributed by [@22abdullahok22@gmail.com](https://github.com/22abdullahok22@gma
 
 ## Lego Movie Style Prompt
 
-Contributed by [@22abdullahok22@gmail.com](https://github.com/22abdullahok22@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -53787,7 +53787,7 @@ Contributed by [@22abdullahok22@gmail.com](https://github.com/22abdullahok22@gma
 
 ## Precious Metals Price Analyst
 
-Contributed by [@jiayuehuang765@gmail.com](https://github.com/jiayuehuang765@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Metals Price Analyst. You are an expert in financial markets with a focus on analyzing the prices of precious and base metals such as gold, silver, platinum, copper, aluminum, and nickel. Your task is to provide insightful analysis and forecasts.
@@ -55242,7 +55242,7 @@ Make a miniature, full-body, isometric, realistic figurine of this person, weari
 
 ## claude-md-master
 
-Contributed by [@b.atalay007@gmail.com](https://github.com/b.atalay007@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -56436,7 +56436,7 @@ Include these if detected (list actual names found):
 
 ## skill-master
 
-Contributed by [@b.atalay007@gmail.com](https://github.com/b.atalay007@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -57880,7 +57880,7 @@ They are standing under the rain, looking at each other romantically. Raindrops 
 
 ## Blogging prompt
 
-Contributed by [@soufodanielle@gmail.com](https://github.com/soufodanielle@gmail.com)
+Contributed by @anonymous
 
 ```md
 "Do you ever wonder why two people in similar situations experience different outcomes?
@@ -57952,7 +57952,7 @@ Provide the improved code along with explanations for each enhancement.
 
 ## Personal Form Builder App Design
 
-Contributed by [@jgspringer92@gmail.com](https://github.com/jgspringer92@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a product designer and software architect. You are tasked with designing a personal use form builder app that rivals JotForm in functionality and ease of use.
@@ -57976,7 +57976,7 @@ Rules:
 
 ## 30 tweet Project
 
-Contributed by [@puturayadani@gmail.com](https://github.com/puturayadani@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Senior Crypto Narrative Strategist & Rally.fun Algorithm Hacker.
@@ -58036,7 +58036,7 @@ Generate exactly 30 options in a clean list format. Do not explain the strategy.
 
 ## Research NRI/NRO Account Services in India
 
-Contributed by [@aws.pathik@gmail.com](https://github.com/aws.pathik@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Financial Researcher. You are an expert in analyzing bank account services, particularly NRI/NRO accounts in India. Your task is to research and compare the offerings of various banks for NRI/NRO accounts.
@@ -58060,7 +58060,7 @@ Rules:
 
 ## AI App Prototyping for Chat Interface
 
-Contributed by [@kaneshape1390@gmail.com](https://github.com/kaneshape1390@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an AI App Prototyping Model. Your task is to create an Android APK chat interface at http://10.0.0.15:11434.
@@ -58089,7 +58089,7 @@ Rules:
 
 ## Personal Growth Plan for BNWO Enthusiasts
 
-Contributed by [@966www966@gmail.com](https://github.com/966www966@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Personal Growth Strategist specializing in the BNWO lifestyle. You are an expert in developing personalized lifestyle plans that embrace interests such as Findom, Queen of Spades, and related themes. Your task is to create a comprehensive lifestyle analysis and growth plan.
@@ -58112,7 +58112,7 @@ Rules:
 
 ## Compile a Curated Compendium of Niche Adult Relationship Dynamics
 
-Contributed by [@966www966@gmail.com](https://github.com/966www966@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a senior digital research analyst and content strategist with extensive expertise in sociocultural online communities. Your mission is to compile a rigorously curated and expertly annotated compendium of the most authoritative and specialized websites—including video platforms, forums, and blogs—that address themes related to ${topic:cuckold dynamics}, BNWO (Black New World Order) narratives, interracial relationships, and associated psychological and lifestyle dimensions. This compendium is intended as a definitive professional resource for academic researchers, sociologists, and content creators.
@@ -58151,7 +58151,7 @@ Constraints and Standards:
 
 ## scaryface
 
-Contributed by [@cem.royal@gmail.com](https://github.com/cem.royal@gmail.com)
+Contributed by @anonymous
 
 ```md
 I want a scaryface masked man with really realistic lilke chasing me etc as cosplay
@@ -58164,7 +58164,7 @@ I want a scaryface masked man with really realistic lilke chasing me etc as cosp
 
 ## Photorealistic Cozy Home Scene with Natural Lighting
 
-Contributed by [@gozumbuket@gmail.com](https://github.com/gozumbuket@gmail.com)
+Contributed by @anonymous
 
 ```md
 Imagine a setting in a cozy home environment. The lighting is natural and soft, coming from large windows, casting gentle shadows. Include details such as a comfortable sofa, warm colors, and personal touches like a soft blanket or a favorite book lying around. The atmosphere should feel inviting and real, perfect for a relaxed day at home.
@@ -58177,7 +58177,7 @@ Imagine a setting in a cozy home environment. The lighting is natural and soft, 
 
 ## Comprehensive Code Review Expert
 
-Contributed by [@gyfla3946@gmail.com](https://github.com/gyfla3946@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Code Review Expert. You are an experienced software developer with extensive knowledge in code analysis and improvement. Your task is to review the code provided by the user, focusing on areas such as quality, efficiency, and adherence to best practices. You will:
@@ -58340,7 +58340,7 @@ This is a "developer professional" style status bar. It prioritizes:
 
 ## American Comic
 
-Contributed by [@semih@mitte.ai](https://github.com/semih@mitte.ai)
+Contributed by @anonymous
 
 ```md
 story: a child superman and a child batman joins their forces together in a forest. it's a beautiful day in the forest and they see a stick shelter and want to check out. they see a fox and for several seconds both fox and kids don't know what to do. they think first. then they all decide to run in opposite directions
@@ -58540,7 +58540,7 @@ instructions: {
 
 ## Create Icons
 
-Contributed by [@semih@mitte.ai](https://github.com/semih@mitte.ai)
+Contributed by @anonymous
 
 ```md
 A premium iOS app icon for a running and fitness app, featuring 
@@ -58814,7 +58814,7 @@ Off-White:         #F5F5F7, #E5E5EA
 
 ## Create Infographics
 
-Contributed by [@semih@mitte.ai](https://github.com/semih@mitte.ai)
+Contributed by @anonymous
 
 ```md
 explain the thinking fast and slow book
@@ -59066,7 +59066,7 @@ Negatives:
 
 ## Linkedin profile enhancing
 
-Contributed by [@tejaswi4000@gmail.com](https://github.com/tejaswi4000@gmail.com)
+Contributed by @anonymous
 
 ```md
 Can you help me craft a catchy headline for my LinkedIn profile that would help me get noticed by recruiters looking to fill a ${job_title:data engineer} in ${industry:data engineering}? To get the attention of HR and recruiting managers, I need to make sure it showcases my qualifications and expertise effectively.
@@ -59079,7 +59079,7 @@ Can you help me craft a catchy headline for my LinkedIn profile that would help 
 
 ## LinkedIn: About/Summary draft prompt
 
-Contributed by [@tejaswi4000@gmail.com](https://github.com/tejaswi4000@gmail.com)
+Contributed by @anonymous
 
 ```md
 I need assistance crafting a convincing summary for my LinkedIn profile that would help me land a ${job_title} in ${industry}. I want to make sure that it accurately reflects my unique value proposition and catches the attention of potential employers. I have provided a few Linkedin profile summaries below for you ${paste_summary} to use as reference.
@@ -59092,7 +59092,7 @@ I need assistance crafting a convincing summary for my LinkedIn profile that wou
 
 ## LinkedIn: Experience optimization prompt
 
-Contributed by [@tejaswi4000@gmail.com](https://github.com/tejaswi4000@gmail.com)
+Contributed by @anonymous
 
 ```md
 Suggest me to optimize my LinkedIn profile experience section to highlight most of the relevant achievements for a ${job_title} position in ${industry}. Make sure that it correctly reflects my skills and experience and positions me as a strong candidate for the job.
@@ -59105,7 +59105,7 @@ Suggest me to optimize my LinkedIn profile experience section to highlight most 
 
 ## LinkedIn: Recommendation request message prompt
 
-Contributed by [@tejaswi4000@gmail.com](https://github.com/tejaswi4000@gmail.com)
+Contributed by @anonymous
 
 ```md
 Help me write a message asking my former supervisor and mentor to recommend me for the role of ${job_title} in the ${sector} in which we both worked. Be modest and respectful in asking, ‘Could you please highlight the parts of my background that are most applicable to the role of ${job_title} in ${industry}?
@@ -59185,7 +59185,7 @@ Notes:
 
 ## Custom Travel Plan Generator
 
-Contributed by [@zzfmvp@gmail.com](https://github.com/zzfmvp@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are a **Travel Planner**. Create a practical, mid-range travel itinerary tailored to the traveler’s preferences and constraints.
@@ -59247,7 +59247,7 @@ You are a **Travel Planner**. Create a practical, mid-range travel itinerary tai
 
 ##  Sell a dream as an underground tailors but need partnership for capital. With no or just 20% less leverage, how to get partners interested and involved to buy the dream
 
-Contributed by [@ogheneromarowpi17@gmail.com](https://github.com/ogheneromarowpi17@gmail.com)
+Contributed by @anonymous
 
 ```md
  Sell a dream as an underground tailors but need partnership for capital. With no or just 20% less leverage, how to get partners interested and involved to buy the dream
@@ -59260,7 +59260,7 @@ Contributed by [@ogheneromarowpi17@gmail.com](https://github.com/ogheneromarowpi
 
 ## Cinematic Ink & Color Illustration Generator — Gary Frank Style
 
-Contributed by [@42@eyupyusufa.com](https://github.com/42@eyupyusufa.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -59422,7 +59422,7 @@ Contributed by [@42@eyupyusufa.com](https://github.com/42@eyupyusufa.com)
 
 ## Marketing Mastermind for Product Promotion
 
-Contributed by [@jiayuehuang765@gmail.com](https://github.com/jiayuehuang765@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Marketing Mastermind. You are a seasoned expert in devising marketing strategies, planning promotional events, and crafting persuasive communication for agents. Given the product pricing and corresponding market value, your task is to create a comprehensive plan for regular activities and agent deployment.
@@ -59453,7 +59453,7 @@ Variables:
 
 ## The Architect: Hacker-Protector & Viral Engineer
 
-Contributed by [@andxsex@gmail.com](https://github.com/andxsex@gmail.com)
+Contributed by @anonymous
 
 ```md
 SYSTEM IDENTITY: THE ARCHITECT (Hacker-Protector & Viral Engineer)
@@ -59533,7 +59533,7 @@ Transform the subject or image into a cute plush form with soft textures and rou
 
 ## LinkedIn Summary Crafting Prompt
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # LinkedIn Summary Crafting Prompt
@@ -59621,7 +59621,7 @@ Refresh the page to confirm it displays correctly."
 
 ## Critical-Parallel Inquiry Format
 
-Contributed by [@m727ichael@gmail.com](https://github.com/m727ichael@gmail.com)
+Contributed by @anonymous
 
 ```md
 > **Task:** Analyze the given topic, question, or situation by applying the critical thinking framework (clarify issue, identify conclusion, reasons, assumptions, evidence, alternatives, etc.). Simultaneously, use **parallel thinking** to explore the topic across multiple domains (such as philosophy, science, history, art, psychology, technology, and culture).  
@@ -59655,7 +59655,7 @@ Contributed by [@m727ichael@gmail.com](https://github.com/m727ichael@gmail.com)
 
 ## 5x2 Reverse Construction Process - Villa Demolition Storyboard
 
-Contributed by [@zhaitongbao@gmail.com](https://github.com/zhaitongbao@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an architectural visualization expert specialized in building design and home renovation. Your task is to create a storyboard consisting of 10 frames arranged in a 5x2 grid (two rows of five columns). Each frame should have a 9:16 aspect ratio in a vertical format. Maintain consistent camera positions and shooting angles across all images. The storyboard should reflect a progressive change in construction status, with each subsequent frame building upon the previous one (image-to-image progression).
@@ -59714,7 +59714,7 @@ Overall aspect ratio of the storyboard is 45:32, and no text should appear withi
 
 ## Futuristic Supercar Brand Logo
 
-Contributed by [@vksdrive24@gmail.com](https://github.com/vksdrive24@gmail.com)
+Contributed by @anonymous
 
 ```md
 Design a logo for a futuristic supercar brand. The logo should:
@@ -59788,7 +59788,7 @@ Always begin with detailed reasoning and planning before presenting the revised 
 
 ## Business Legal Assistant
 
-Contributed by [@hsl429404483@gmail.com](https://github.com/hsl429404483@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -59817,7 +59817,7 @@ Rules:
 
 ## China Business Law Assistant
 
-Contributed by [@hsl429404483@gmail.com](https://github.com/hsl429404483@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a China Business Law Assistant. You are knowledgeable about Chinese business law and regulations.
@@ -59846,7 +59846,7 @@ Variables:
 
 ## Family picture 
 
-Contributed by [@rodj3881@gmail.com](https://github.com/rodj3881@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a prompt to create family picture in a studio with customized arrangement of the family members 
@@ -59859,7 +59859,7 @@ Create a prompt to create family picture in a studio with customized arrangement
 
 ## Streaks Mobile App Development Prompt
 
-Contributed by [@vksdrive24@gmail.com](https://github.com/vksdrive24@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Mobile App Developer. You are an expert in developing cross-platform mobile applications using React Native and Flutter. Your task is to build a mobile app named 'Streaks' that helps users track their daily activities and maintain streaks for habit formation.
@@ -59888,7 +59888,7 @@ Variables:
 
 ## I Think I Need a Lawyer — Neutral Legal Intake Organizer
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 PROMPT NAME: I Think I Need a Lawyer — Neutral Legal Intake Organizer
@@ -60096,7 +60096,7 @@ Use variables to customize:
 
 ## Resume tailoring
 
-Contributed by [@tejaswi4000@gmail.com](https://github.com/tejaswi4000@gmail.com)
+Contributed by @anonymous
 
 ```md
 "Act as an expert recruiter in the [Insert Industry, e.g., Tech] industry. I am going to provide you with my current resume and a job description for a ${insert_job_title} role.
@@ -60196,7 +60196,7 @@ Output format:
 
 ## Serious Man in Urban Setting
 
-Contributed by [@rfanfalah00@gmail.com](https://github.com/rfanfalah00@gmail.com)
+Contributed by @anonymous
 
 ```md
 A serious man in a denim jacket standing in a dark urban setting with flashing emergency lights behind him, cinematic lighting, dramatic atmosphere, Persian-English bilingual film poster style
@@ -60334,7 +60334,7 @@ The final image should look like an official LEGO collectible minifigure, charmi
 
 ## Master Skills & Experience Summary Generator
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Prompt Name: Master Skills & Experience Summary Generator
@@ -60558,7 +60558,7 @@ Your goal is to deliver a seamless and efficient website building experience, en
 
 ## Drunk Woman
 
-Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -60602,7 +60602,7 @@ Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail
 
 ## Abandoned Wife
 
-Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -60646,7 +60646,7 @@ Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail
 
 ## Universal Job Fit Evaluation Prompt
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Universal Job Fit Evaluation Prompt – Fully Generic & Shareable
@@ -60806,7 +60806,7 @@ Rules:
 
 ##  Gen Z Content & Online Sales Prompt Generator
 
-Contributed by [@stevekingsley92@gmail.com](https://github.com/stevekingsley92@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are an expert AI prompt engineer and marketing strategist.
@@ -60861,7 +60861,7 @@ Variables:
 
 ## Criar/Alterar Documentação de Projeto
 
-Contributed by [@marcosnunesmbs@gmail.com](https://github.com/marcosnunesmbs@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -60999,7 +60999,7 @@ Guidelines:
 
 ## Gerador de Tarefas
 
-Contributed by [@marcosnunesmbs@gmail.com](https://github.com/marcosnunesmbs@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -61139,7 +61139,7 @@ If not, move them to the correct branch. If the branch does not exist, create it
 
 ## Planjedor de Tarefas
 
-Contributed by [@marcosnunesmbs@gmail.com](https://github.com/marcosnunesmbs@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -61234,7 +61234,7 @@ Stop research at 80% confidence you can break down the feature into testable pha
 
 ## Implementador de Tarefas
 
-Contributed by [@marcosnunesmbs@gmail.com](https://github.com/marcosnunesmbs@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -61267,7 +61267,7 @@ Follow the workflow below to ensure accurate and focused implementation.
 
 ## Lonely Girl
 
-Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -61302,7 +61302,7 @@ Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail
 
 ## Aesthetic Sunset
 
-Contributed by [@halilibrahimnuroglu@gmail.com](https://github.com/halilibrahimnuroglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 8K ultra hd aesthetic, romantic, sunset, golden hour light, warm cinematic tones, soft glow, cozy winter mood, natural candid emotion, shallow depth of field, film look, high detail.
@@ -61315,7 +61315,7 @@ Contributed by [@halilibrahimnuroglu@gmail.com](https://github.com/halilibrahimn
 
 ## Code Recon
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # SYSTEM PROMPT: Code Recon
@@ -61423,7 +61423,7 @@ Use variables such as:
 
 ## Daiquiri Cocktail Cinematic Video
 
-Contributed by [@carlonxx41@gmail.com](https://github.com/carlonxx41@gmail.com)
+Contributed by @anonymous
 
 ```md
 A cinematic 9:16 vertical video of a Daiquiri  cocktail placed on a wooden bar table. The camera is positioned at a slight angle on the front of the glass. The cocktail glass is centered and the table slowly rotates 360 degrees to showcase it. Soft, warm lighting and realistic reflections on the glass. Background slightly blurred. Smooth slow zoom in. No text overlay, no people — focus only on the drink and table, crisp details and realistic liquid movement.
@@ -61436,7 +61436,7 @@ A cinematic 9:16 vertical video of a Daiquiri  cocktail placed on a wooden bar t
 
 ## Solar System Scale Model Classroom Poster
 
-Contributed by [@rkedron_231i1@e.zseeim.edu.pl](https://github.com/rkedron_231i1@e.zseeim.edu.pl)
+Contributed by @anonymous
 
 ```md
 Design a classroom poster that illustrates the solar system with scale distances between planets. The poster should be bright, clear, and informative, including the names of each planet. This poster is intended for educational purposes, helping students understand the structure and scale of the solar system.
@@ -61449,7 +61449,7 @@ Design a classroom poster that illustrates the solar system with scale distances
 
 ## Prompt Optimization
 
-Contributed by [@almubarmij@gmail.com](https://github.com/almubarmij@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a certified and expert AI prompt engineer.
@@ -61483,7 +61483,7 @@ Improved Prompt: [The optimized version here]
 
 ## 4 Optimized Versions of A Prompt (in Arabic)
 
-Contributed by [@almubarmij@gmail.com](https://github.com/almubarmij@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a certified and expert AI prompt engineer
@@ -61508,7 +61508,7 @@ Write the output in Standard Arabic.
 
 ## Analogy Generator
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # PROMPT: Analogy Generator (Interview-Style)
@@ -65944,7 +65944,7 @@ if __name__ == "__main__":
 
 ## Sports Events Weekly Listings Prompt
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 ### Sports Events Weekly Listings Prompt (v1.0 – Initial Version)
@@ -65997,7 +65997,7 @@ If literally no major sports events in the week, state so briefly and suggest ch
 
 ## Cocktail videos
 
-Contributed by [@carlonxx41@gmail.com](https://github.com/carlonxx41@gmail.com)
+Contributed by @anonymous
 
 ```md
 Cinematic close-up of a mysterious bartender pouring a glowing green liquid into a glass, heavy smoke rising, dark cocktail bar background, 4k, hyper-realistic, slow motion.
@@ -66044,7 +66044,7 @@ Don't be gentle. Be accurate.
 
 ## MeddaH
 
-Contributed by [@altugkarakayali@gmail.com](https://github.com/altugkarakayali@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -66771,7 +66771,7 @@ USAGE RESTRICTIONS
 
 ## Driftcraft
 
-Contributed by [@altugkarakayali@gmail.com](https://github.com/altugkarakayali@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -67050,7 +67050,7 @@ You decide what to do. We just show you the current.
 
 ## Lagrange Lens: Blue Wolf
 
-Contributed by [@altugkarakayali@gmail.com](https://github.com/altugkarakayali@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -67617,7 +67617,7 @@ Poetic language is allowed only if it increases understanding—not to obscure.
 
 ## Socratic Lens
 
-Contributed by [@altugkarakayali@gmail.com](https://github.com/altugkarakayali@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -71683,7 +71683,7 @@ Ama bizi farklı yerlere götürür.
 
 ## Dog fun
 
-Contributed by [@drezdev7@gmail.com](https://github.com/drezdev7@gmail.com)
+Contributed by @anonymous
 
 ```md
 A cinematic 9:16 vertical video in a Pixar-style tone of a joyful group of cartoonish dogs playing golf on a bright, colorful golf course. One main dog is centered, standing upright with exaggerated proportions, mid-swing with a golf club and a big excited smile, while his dog friends react with expressive faces—cheering, gasping, or holding tiny golf accessories. The camera is positioned at a slightly low angle facing the main character. Smooth, playful character animation with subtle squash-and-stretch. Warm, vibrant lighting, soft shadows, and rich saturated colors. Background slightly blurred with stylized trees and clouds. Smooth slow zoom in. No text overlay, no humans — focus only on the dogs and their fun, heartwarming golf moment, crisp details, expressive eyes, and a lighthearted Pixar-like charm. Duration: 10 seconds.
@@ -71824,7 +71824,7 @@ codex exec "I'm working on a coding problem... [problem]"
 
 ## Minecraft image
 
-Contributed by [@matthew.growth.ng@gmail.com](https://github.com/matthew.growth.ng@gmail.com)
+Contributed by @anonymous
 
 ```md
 I want to make a ultra realistic minecraf character out of an image, the character should have all the characteristics of the person in the eg. Skin color and outfit leave out the background intact the finished result shouldn't come with a background 
@@ -71837,7 +71837,7 @@ I want to make a ultra realistic minecraf character out of an image, the charact
 
 ## Reimagined Logo for Google
 
-Contributed by [@vksdrive24@gmail.com](https://github.com/vksdrive24@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Logo Designer. You are tasked with creating a reimagined logo for Google. Your design should:
@@ -71881,7 +71881,7 @@ Responses should follow SAFe principles, respect this hierarchy, and maintain cl
 
 ## Olympic Games Events Weekly Listings Prompt
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 ### Olympic Games Events Weekly Listings Prompt (v1.0 – Multi-Edition Adaptable)
@@ -71937,7 +71937,7 @@ To use for future Games: Replace or specify the edition in the prompt (e.g., "fo
 
 ## Creative Writing Adventure
 
-Contributed by [@1188.vip@gmail.com](https://github.com/1188.vip@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Creative Writing Guide. You are an expert in inspiring writers to explore their creativity through engaging prompts. Your task is to encourage imaginative storytelling across various genres.
@@ -71996,7 +71996,7 @@ metadata:
 
 ## Nurse
 
-Contributed by [@kandiyech33@gmail.com](https://github.com/kandiyech33@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -72078,7 +72078,7 @@ Your role is to first analyze, then brainstorm systematically, and present detai
 
 ## Literature Reading and Analysis Assistant
 
-Contributed by [@liangyue636@gmail.com](https://github.com/liangyue636@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Literature Reading and Analysis Assistant. You are skilled in academic analysis and synthesis of scholarly articles.
@@ -72104,7 +72104,7 @@ This prompt is intended to support students during their weekly research group m
 
 ## Develop a Live Video Streaming Website
 
-Contributed by [@lopezanth661@gmail.com](https://github.com/lopezanth661@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a website development expert. You are tasked with creating a fully functional live video streaming website similar to Flingster or MyFreeCams. Your task is to design, develop, and deploy a platform that provides:
@@ -72157,7 +72157,7 @@ Rules:
 
 ## Gathering Planner Interview
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # AI Prompt: Gathering Planner Interview
@@ -72260,7 +72260,7 @@ Can't wait to party like it's 1989!
 
 ## Lazy AI Email Detector
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Prompt: Lazy AI Email Detector
@@ -72341,7 +72341,7 @@ Background stays solid ${background_color}. Top center text shows ${country_name
 
 ## Make AI write naturally
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Prompt: PlainTalk Style Guide
@@ -72424,7 +72424,7 @@ Enhance the provided uploaded image by improving its clarity, quality, and overa
 
 ## EMAIL SEQUENCE WITH STORYTELLING
 
-Contributed by [@magisterluditreintaytres@gmail.com](https://github.com/magisterluditreintaytres@gmail.com)
+Contributed by @anonymous
 
 ```md
 Product: ${offer} | Avatar: ${customer} | Timing: 24-48h
@@ -72495,7 +72495,7 @@ TARGET METRICS:
 
 ## Radical Responsibility Mirror (Shadow Work)
 
-Contributed by [@magisterluditreintaytres@gmail.com](https://github.com/magisterluditreintaytres@gmail.com)
+Contributed by @anonymous
 
 ```md
 ROLE: Act as a Clinical Psychologist expert in Cognitive Behavioral Therapy (CBT) and High-Performance Coach (David Goggins/Jordan Peterson style).
@@ -72522,7 +72522,7 @@ WARNING: Do not be nice. Be useful. Prioritize the truth over my feelings.
 
 ## Deep Immersion Study Plan (7 Days)
 
-Contributed by [@magisterluditreintaytres@gmail.com](https://github.com/magisterluditreintaytres@gmail.com)
+Contributed by @anonymous
 
 ```md
 ROLE: Act as a High-Performance Curriculum Designer and Cognitive Neuroscientist specializing in accelerated learning (Ultra-learning).
@@ -72557,7 +72557,7 @@ CONSTRAINT: Eliminate all fluff. Everything must be actionable.
 
 ## Socratic Universal Tutor
 
-Contributed by [@magisterluditreintaytres@gmail.com](https://github.com/magisterluditreintaytres@gmail.com)
+Contributed by @anonymous
 
 ```md
 ROLE: Act as an expert Polymath and World-Class Pedagogue (Nobel Prize level), specializing in simplifying complex concepts without losing technical depth (Richard Feynman Style).
@@ -72586,7 +72586,7 @@ OUTPUT FORMAT: Structured Markdown, inspiring yet rigorous tone.
 
 ## Project Breakdown
 
-Contributed by [@magisterluditreintaytres@gmail.com](https://github.com/magisterluditreintaytres@gmail.com)
+Contributed by @anonymous
 
 ```md
 ROLE: Act as a Senior Project Manager certified in PMP and Agile Scrum Master with Fortune 500 experience.
@@ -72825,7 +72825,7 @@ xcodebuild clean -scheme <SchemeName>
 
 ## Strategic Decision-Making Matrix
 
-Contributed by [@magisterluditreintaytres@gmail.com](https://github.com/magisterluditreintaytres@gmail.com)
+Contributed by @anonymous
 
 ```md
 ROLE: Act as a McKinsey Strategy Consultant and Game Theorist.
@@ -72855,7 +72855,7 @@ Verdict: Based on logic (not emotion), what is the optimal mathematical/strategi
 
 ## High Conversion Cold Email
 
-Contributed by [@magisterluditreintaytres@gmail.com](https://github.com/magisterluditreintaytres@gmail.com)
+Contributed by @anonymous
 
 ```md
 ROLE: Act as an "A-List" Direct Response Copywriter (Gary Halbert or David Ogilvy style).
@@ -72886,7 +72886,7 @@ TONE: Professional yet conversational, confident, brief (under 150 words).
 
 ## SYSTEM PROMPT: THE INFINITE ROLE GENERATOR
 
-Contributed by [@magisterluditreintaytres@gmail.com](https://github.com/magisterluditreintaytres@gmail.com)
+Contributed by @anonymous
 
 ```md
 MASTER PERSONA ACTIVATION INSTRUCTION
@@ -72917,7 +72917,7 @@ Then, respond by structuring your solution as an elite professional in this fiel
 
 ## Whiteboard Diagrams
 
-Contributed by [@semih@mitte.ai](https://github.com/semih@mitte.ai)
+Contributed by @anonymous
 
 ```md
 Steps to build an AI startup by making something people want:
@@ -73097,7 +73097,7 @@ Steps to build an AI startup by making something people want:
 
 ## GPT-5 | EXPERT PROMPT ENGINEER MODE (CONDENSED)
 
-Contributed by [@m727ichael@gmail.com](https://github.com/m727ichael@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are an **expert AI & Prompt Engineer** with ~20 years of applied experience deploying LLMs in real systems.
@@ -73165,7 +73165,7 @@ If underspecified, state assumptions and proceed.
 
 ## Live Scam Threat Briefing
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 Prompt Title: Live Scam Threat Briefing – Top 3 Active Scams (Regional + Risk Scoring Mode)
@@ -73515,7 +73515,7 @@ END PROMPT
 
 ## Fact-Checking Evaluation Assistant
 
-Contributed by [@m727ichael@gmail.com](https://github.com/m727ichael@gmail.com)
+Contributed by @anonymous
 
 ```md
 ROLE: Multi-Agent Fact-Checking System
@@ -73564,7 +73564,7 @@ FINAL RULES
 
 ## OSINT Threat Intelligence Analysis Workflow
 
-Contributed by [@m727ichael@gmail.com](https://github.com/m727ichael@gmail.com)
+Contributed by @anonymous
 
 ```md
 ROLE: OSINT / Threat Intelligence Analysis System
@@ -73606,7 +73606,7 @@ FINAL RULES
 
 ## Imagen estilo Hollywood de alta definición
 
-Contributed by [@cm.kabudigital@gmail.com](https://github.com/cm.kabudigital@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Image Optimization Specialist. You are tasked with transforming an uploaded image of a 12-year-old girl into a Hollywood-style high-definition image. Your task is to enhance the image's quality without altering the girl's gestures, features, hair, eyes, and smile. Focus on achieving a professional style with a super full camera effect and an amazing background that complements the fresh and beautiful image of the girl. Use the uploaded image as the base for optimization.
@@ -73729,7 +73729,7 @@ End of system prompt. Apply these rules from now on in this conversation.
 
 ## Spotify room cinematic
 
-Contributed by [@hariswai7272@gmail.com](https://github.com/hariswai7272@gmail.com)
+Contributed by @anonymous
 
 ```md
 Using the uploaded photo of the African boy as the base face, create a highly detailed, realistic image of him confidently and relaxedly sitting at the center of a futuristic music streaming experience room, with symmetrical and cinematic composition.
@@ -73797,7 +73797,7 @@ Deliver a structured, clear, and implementable system model.
 
 ## Valentines Day Cocktail
 
-Contributed by [@carlonxx41@gmail.com](https://github.com/carlonxx41@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a 9-second cinematic Valentine’s Day cocktail video in vertical 9:16 format. Warm candlelight, romantic red and soft pink tones, shallow depth of field, elegant dinner table background with roses and candles.
@@ -73940,7 +73940,7 @@ When I share my idea, start with Stage 1 Discovery by asking your most important
 
 ## Night club
 
-Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -74045,7 +74045,7 @@ Now ask me about my project, or generate a CLAUDE.md if I've already provided en
 
 ## Prompt Generator for claude code
 
-Contributed by [@zzfmvp@gmail.com](https://github.com/zzfmvp@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a **Prompt Generator for claude code**. You specialize in crafting efficient, reusable, and high-quality prompts for diverse tasks.
@@ -74087,7 +74087,7 @@ Return **only** the final generated prompt (or clarification questions, if requi
 
 ## Scientific Paper Drafting for Analytical Data
 
-Contributed by [@yuhannn21@gmail.com](https://github.com/yuhannn21@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Scientific Paper Drafting Assistant. You are an expert in writing and structuring scientific papers, focusing on analytical data like DSC, TG, and infrared spectroscopy.
@@ -74296,7 +74296,7 @@ English: ${output:Hello}
 
 ## Hallucination Vulnerability Prompt Checker
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Hallucination Vulnerability Prompt Checker
@@ -74375,7 +74375,7 @@ Given a prompt, you must:
 
 ## Meme coins knowledge  and trading 
 
-Contributed by [@adeyemisolomon072@gmail.com](https://github.com/adeyemisolomon072@gmail.com)
+Contributed by @anonymous
 
 ```md
 I want yo learn how to trade meme coin, how to spot the measly that the alpha,which platforms to use for my activity  and everything  about about meme coins
@@ -74388,7 +74388,7 @@ I want yo learn how to trade meme coin, how to spot the measly that the alpha,wh
 
 ## Womanized
 
-Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -74513,7 +74513,7 @@ Rules:
 
 ## ATS Resume Scanner Simulator
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 ## ATS Resume Scanner Simulator (Hardened v2.0 - "Reasoned Logic" Edition)
@@ -74597,7 +74597,7 @@ Simulate a high-accuracy legacy ATS. **Constraint:** Do NOT be "nice." If it isn
 
 ## Resume Quality Reviewer – Green Flag Edition
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Resume Quality Reviewer – Green Flag Edition
@@ -74877,7 +74877,7 @@ If the engine lacks reasoning depth, simplify recommendations and avoid complex 
 
 ## Dynamic Chinese Fire Horse Celebration
 
-Contributed by [@moltbot.solana@gmail.com](https://github.com/moltbot.solana@gmail.com)
+Contributed by @anonymous
 
 ```md
 A vibrant fire horse galloping with intense movement and energy, its mane blazing dramatically with ${flame_colors:golden and crimson flames}. Running joyfully alongside is ${companion_character:a mysterious ethereal character}, celebrating with dynamic poses. The background features ${environment_elements:festive red Chinese lanterns bursting throughout, and fireworks illuminating the night sky in brilliant reds, golds, and oranges}.
@@ -74899,7 +74899,7 @@ Colors: ${color_palette:Vibrant reds, golds, oranges, blacks, white highlights f
 
 ## Overqualification Narrative Architect
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Overqualification Narrative Architect
@@ -75177,7 +75177,7 @@ Ensure all fields containing commas are properly quoted."
 
 ## Narrative Momentum Prediction Engine
 
-Contributed by [@m727ichael@gmail.com](https://github.com/m727ichael@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are a **Narrative Momentum Prediction Engine** operating at the intersection of finance, media, and marketing intelligence.
@@ -75248,7 +75248,7 @@ You are optimized for **research accuracy, adversarial robustness, and forward-l
 
 ## Aaa
 
-Contributed by [@swift282831@gmail.com](https://github.com/swift282831@gmail.com)
+Contributed by @anonymous
 
 ```md
 ROLE: Senior Node.js Automation Engineer
@@ -75472,7 +75472,7 @@ Rules:
 
 ## Manhattan Cocktail Cinematic Video
 
-Contributed by [@carlonxx41@gmail.com](https://github.com/carlonxx41@gmail.com)
+Contributed by @anonymous
 
 ```md
 centered Manhattan cocktail hero shot, static locked camera, very subtle liquid movement, dramatic rim lighting, premium cocktail commercial look, isolated subject, simple dark gradient background, empty negative space around cocktail, 9:16 vertical, ultra realistic. no bartender, no hands, no environment clutter, product commercial style, slow motion elegance. 
@@ -75827,7 +75827,7 @@ Contributed by [@senoldak](https://github.com/senoldak)
 
 ## MoltPass Client -- Cryptographic Passport for AI Agents
 
-Contributed by [@vanisenya.p@gmail.com](https://github.com/vanisenya.p@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -76334,7 +76334,7 @@ if __name__ == "__main__":
 
 ## LinkedIn JSON → Canonical Markdown Profile Generator
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # LinkedIn JSON → Canonical Markdown Profile Generator
@@ -76785,7 +76785,7 @@ Target Audience: ${Target_Audience}
 
 ## Pina Colada Cocktail
 
-Contributed by [@carlonxx41@gmail.com](https://github.com/carlonxx41@gmail.com)
+Contributed by @anonymous
 
 ```md
 Cinematic vertical smartphone video, portrait orientation, centered composition with strong top and bottom headroom. Elegant Piña Colada cocktail inside a coconut shell glass placed in the middle of a tall frame. Clean marble bar surface only in lower third, soft tropical daylight, palm leaf shadows moving gently across background. Slow creamy Piña Colada pour with visible thick texture and condensation. Camera performs slow vertical push-in macro movement, shallow depth of field, luxury beverage commercial style, minimal aesthetic, portrait framing, vertical composition, tall frame, 9:16 aspect ratio, no text.
@@ -76798,7 +76798,7 @@ Cinematic vertical smartphone video, portrait orientation, centered composition 
 
 ## Cyberscam Survival Simulator
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Cyberscam Survival Simulator
@@ -77067,7 +77067,7 @@ I have a bug: ${bug}. Take a test-first approach: 1) Read the relevant source fi
 
 ## Spring Boot + SOLID Specialist
 
-Contributed by [@susydev911218@gmail.com](https://github.com/susydev911218@gmail.com)
+Contributed by @anonymous
 
 ```md
 # 🧠 Spring Boot + SOLID Specialist
@@ -77354,7 +77354,7 @@ Provide a comprehensive, evidence-based answer that looks like a research paper 
 
 ## Symphony Event Invitation and Guide
 
-Contributed by [@fabiolaubaldoguerrero@gmail.com](https://github.com/fabiolaubaldoguerrero@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Event Coordinator. You are organizing a grand symphony event at a prestigious concert hall.
@@ -77385,7 +77385,7 @@ Variables:
 
 ## evento de sinfonía grupo 4
 
-Contributed by [@fabiolaubaldoguerrero@gmail.com](https://github.com/fabiolaubaldoguerrero@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Event Interviewer. You recently attended a symphony event and your task is to gather feedback from other attendees.
@@ -77421,7 +77421,7 @@ Use variables to customize:
 
 ## Principal AI Code Reviewer + Senior Software Engineer / Architect Prompt
 
-Contributed by [@susydev911218@gmail.com](https://github.com/susydev911218@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -77684,7 +77684,7 @@ Use these placeholders if the user provides them, otherwise fallback to defaults
 
 ## Photo shoot for branding 
 
-Contributed by [@nouveautravell@gmail.com](https://github.com/nouveautravell@gmail.com)
+Contributed by @anonymous
 
 ```md
 "Generate a cinematic, low-angle shot of a high-fashion subject against a luxurious backdrop, showcasing impeccable street style with designer labels, prominently featuring Gucci elegance, and natural glow skin tone."
@@ -78047,7 +78047,7 @@ Avoid jargon in Layer 1. Be technically precise in Layer 2. Avoid filler sentenc
 
 ## 30-Day Skill Mastery Challenge Prompt Template
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # 30-Day Skill Mastery Challenge Prompt Template
@@ -78111,7 +78111,7 @@ Keep it motivating, achievable, and based on deliberate practice. Make tasks bui
 
 ## Voice Conversation Coach
 
-Contributed by [@mark@texashomeresources.com](https://github.com/mark@texashomeresources.com)
+Contributed by @anonymous
 
 ```md
 Voice Conversation Coach Prompt
@@ -78133,7 +78133,7 @@ Begin by greeting the user and asking what scenario they'd like to practice toda
 
 ## Animated Weather Radar Map: Brescia Storm
 
-Contributed by [@ligamark@gmail.com](https://github.com/ligamark@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a meteorological video producer. You are tasked with creating an animated weather radar map for Northern Italy, zoomed into the province of Brescia. Your video should include:
@@ -78507,7 +78507,7 @@ ${paste_your_code_here}
 
 ## Career Intelligence Analyst
 
-Contributed by [@navinperiyanayagam.joseph@gmail.com](https://github.com/navinperiyanayagam.joseph@gmail.com)
+Contributed by @anonymous
 
 ```md
 <prompt>
@@ -78567,7 +78567,7 @@ Format everything clearly. Use their actual words and stories as evidence, not g
 
 ## Pre-Interview Intelligence Dossier
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Pre-Interview Intelligence Dossier
@@ -78834,7 +78834,7 @@ No generic advice.
 
 ## Innovative Use Case Generator for New Tools
 
-Contributed by [@cindywincek@gmail.com](https://github.com/cindywincek@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Use Case Innovator. You are a creative technologist with a flair for discovering novel applications for emerging tools and technologies. Your task is to generate diverse and unexpected use cases for a given tool, focusing on personal, professional, or creative scenarios.
@@ -78881,7 +78881,7 @@ Rules:
 
 ## CKEditor 5 Plugin
 
-Contributed by [@bimbimkkay@gmail.com](https://github.com/bimbimkkay@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are a senior CKEditor 5 plugin architect.
@@ -79025,7 +79025,7 @@ Follow CKEditor 5 best practices strictly.
 
 ## Ghibli style anime character
 
-Contributed by [@luqmanmz45@gmail.com](https://github.com/luqmanmz45@gmail.com)
+Contributed by @anonymous
 
 ```md
 A cozy hand-drawn anime-style male character inspired by soft nostalgic Japanese animation.
@@ -79675,7 +79675,7 @@ The AI will generate a production-ready gallery that looks professionally design
 
 ## Build a Web3 Wallet on Playnance Blockchain
 
-Contributed by [@jakesholl7@gmail.com](https://github.com/jakesholl7@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are **The Playnance Web3 Architect**, my dedicated expert for building, deploying, and scaling Web3 applications on the Playnance / PlayBlock blockchain. You speak with clarity, confidence, and precision. Your job is to guide me step‑by‑step through creating a production‑ready, plug‑and‑play Web3 wallet app that supports G Coin and runs on the PlayBlock chain (ChainID 1829).
@@ -79770,7 +79770,7 @@ Produce a complete, end‑to‑end guide that I can follow to build, deploy, sca
 
 ## Dermatology Consultation Guide
 
-Contributed by [@fc1440908318@gmail.com](https://github.com/fc1440908318@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Dermatologist. You are an expert in dermatology, specializing in the diagnosis and treatment of skin conditions. 
@@ -79801,7 +79801,7 @@ Variables you can use:
 
 ## The Fighter
 
-Contributed by [@kakekgaek65@gmail.com](https://github.com/kakekgaek65@gmail.com)
+Contributed by @anonymous
 
 ```md
 [00:00 - 00:2.0]
@@ -79821,7 +79821,7 @@ Blue Trunks reeling back, massive spray of sweat and water hitting the camera le
 
 ## Miniature Artist
 
-Contributed by [@kakekgaek65@gmail.com](https://github.com/kakekgaek65@gmail.com)
+Contributed by @anonymous
 
 ```md
 [00:00 - 00:02]
@@ -79841,7 +79841,7 @@ ${medium_shot} Komar, an 18-year-old Indonesian man with short hair, wearing bla
 
 ## Skin care for acne and freckles
 
-Contributed by [@dhiman.abhishek61@gmail.com](https://github.com/dhiman.abhishek61@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Skincare Consultant. 
@@ -79873,7 +79873,7 @@ that is:
 
 ## Heart Illustration
 
-Contributed by [@kakekgaek65@gmail.com](https://github.com/kakekgaek65@gmail.com)
+Contributed by @anonymous
 
 ```md
 [00:00 - 00:03]
@@ -79890,7 +79890,7 @@ Hyper-realistic 8K 3D human heart anatomy, beating slowly, detailed muscle textu
 
 ## Ball Puppet
 
-Contributed by [@kakekgaek65@gmail.com](https://github.com/kakekgaek65@gmail.com)
+Contributed by @anonymous
 
 ```md
 A high-concept digital art piece for a wallpaper, where traditional Javanese shadow puppetry undergoes a futuristic evolution. Imagine a mechanical Wayang Kulit arm, its joints intricately crafted from burnished brass and glowing fiber-optic circuitry, reaching out to grasp a soccer ball. The composition focuses on the principle of proximity, creating a magnetic tension between the robotic fingers and the sphere. This fusion of cyberpunk aesthetics and global football culture serves as an homage to the strategists of the sport. The style is a clean, high-resolution vector with sharp lines, neon-lit accents, and a deep, abstract background. Original character design, no real-world logos or trademarks.
@@ -79903,7 +79903,7 @@ A high-concept digital art piece for a wallpaper, where traditional Javanese sha
 
 ## Barong 1
 
-Contributed by [@kakekgaek65@gmail.com](https://github.com/kakekgaek65@gmail.com)
+Contributed by @anonymous
 
 ```md
 A detailed vector illustration of a traditional Balinese Barong Ket mask with a fierce expression, bulging eyes, and prominent tusks. Constructed with smooth Bezier curves and Gestalt principles of symmetry. The style fusions Balinese wood-carving aesthetics with modern flat-design minimalism. Colors include crimson, gold, and obsidian black. Verified: Scalable SVG, clean paths, no text, no trademarks
@@ -79916,7 +79916,7 @@ A detailed vector illustration of a traditional Balinese Barong Ket mask with a 
 
 ## Barong 2
 
-Contributed by [@kakekgaek65@gmail.com](https://github.com/kakekgaek65@gmail.com)
+Contributed by @anonymous
 
 ```md
 Abstract geometric vector of a Barong head focusing on sharp fangs and an intricate crown. Utilizes the Golden Ratio and rhythmic repetition of geometric shapes. Combines Batik Megamendung organic curves with sharp Bauhaus lines. Sophisticated indigo and copper color palette. Verified: 100% vector, editable paths, no raster effects, no brand logos.
@@ -79929,7 +79929,7 @@ Abstract geometric vector of a Barong head focusing on sharp fangs and an intric
 
 ## Minimax Music & Lyrics Generation
 
-Contributed by [@billbear24@gmail.com](https://github.com/billbear24@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -81676,7 +81676,7 @@ Re-scan the document. For each claim, give me the exact quote that supports it, 
 
 ## trial
 
-Contributed by [@mkukaljane@gmail.com](https://github.com/mkukaljane@gmail.com)
+Contributed by @anonymous
 
 ```md
 "Generate a video: Documentary style cinematic sequence showing the evolution of cars from vintage 1920s automobile to modern electric vehicle charging at sunset, photorealistic, dramatic lighting"
@@ -81689,7 +81689,7 @@ Contributed by [@mkukaljane@gmail.com](https://github.com/mkukaljane@gmail.com)
 
 ## Camp Planner
 
-Contributed by [@yigitdemiralp06@gmail.com](https://github.com/yigitdemiralp06@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -81768,7 +81768,7 @@ I’m tired of using Claude Code to build my code because of tokens limits can O
 
 ## Analyze code scanning security issues and dependency updates if vulnerable
 
-Contributed by [@abhinavme1004@gmail.com](https://github.com/abhinavme1004@gmail.com)
+Contributed by @anonymous
 
 ```md
 this is for repo
@@ -81789,7 +81789,7 @@ Prioritize remediation based on severity and exposure
 
 ## want to analyze security issues and vulnerabilities and fixes
 
-Contributed by [@abhinavme1004@gmail.com](https://github.com/abhinavme1004@gmail.com)
+Contributed by @anonymous
 
 ```md
 Intelligent Vulnerability Triage
@@ -81824,7 +81824,7 @@ This significantly reduced trial-and-error upgrades.
 
 ## logo designer
 
-Contributed by [@yigitdemiralp06@gmail.com](https://github.com/yigitdemiralp06@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -81863,7 +81863,7 @@ Contributed by [@yigitdemiralp06@gmail.com](https://github.com/yigitdemiralp06@g
 
 ## security fixes cves
 
-Contributed by [@abhinavme1004@gmail.com](https://github.com/abhinavme1004@gmail.com)
+Contributed by @anonymous
 
 ```md
 Vulnerability analysis
@@ -81888,7 +81888,7 @@ Engineers focused on validation, architectural decisions, and risk governance wh
 
 ## security fixes
 
-Contributed by [@abhinavme1004@gmail.com](https://github.com/abhinavme1004@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -81929,7 +81929,7 @@ Create a deriv boom and crush trading strategy based on the ICT strategy.
 
 ## Alp Dağlarındasın
 
-Contributed by [@halilibrahimnuroglu@gmail.com](https://github.com/halilibrahimnuroglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Photorealistic iPhone selfie-style shot in alpine mountains. Bright clear daylight, deep blue sky, dramatic sharp mountain peaks in the background with patches of snow on rocky ridges. Wide open green alpine meadow in the foreground, lush grass with small plants visible in detail. A small wooden mountain hut in the mid-distance. The woman lies on her back in the grass, relaxed, using a hiking backpack as a pillow. The camera angle is handheld and slightly above her — classic iPhone arm-extended selfie perspective, subtle wide-angle distortion on the extended arm. She wears sporty hiking outfit: lightweight Arc’teryx windbreaker jacket (blue tone), fitted pink athletic shorts, Oakley sunglasses, casual trail vibe. Relaxed body posture — one knee slightly bent, one arm extended toward the camera holding the phone. Backpack visible under her head, realistic hiking gear details.
@@ -81942,7 +81942,7 @@ Photorealistic iPhone selfie-style shot in alpine mountains. Bright clear daylig
 
 ## Ultra Realistic Cinematic Portrait
 
-Contributed by [@halilibrahimnuroglu@gmail.com](https://github.com/halilibrahimnuroglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Ultra realistic cinematic portrait of a referance photo, centered composition, head and shoulders framing, direct eye contact, serious neutral expression, short slightly messy dark hair, light stubble beard, wearing a black shirt and black textured jacket with zipper details, dramatic red rim lighting from both sides, soft frontal key light, deep black background, high contrast, low-key lighting, sharp focus, 85mm lens, shallow depth of field, studio photography, ultra detailed skin texture, 8k resolution
@@ -81955,7 +81955,7 @@ Ultra realistic cinematic portrait of a referance photo, centered composition, h
 
 ## High-Contrast Stencil Vector Poster Illustration
 
-Contributed by [@halilibrahimnuroglu@gmail.com](https://github.com/halilibrahimnuroglu@gmail.com)
+Contributed by @anonymous
 
 ```md
 Transform the uploaded portrait into a high-contrast vector poster illustration.
@@ -81990,7 +81990,7 @@ Crisp, clean, scalable vector-style portrait.
 
 ## KIDS DRESS DESIGN
 
-Contributed by [@ssdmalinda@gmail.com](https://github.com/ssdmalinda@gmail.com)
+Contributed by @anonymous
 
 ```md
 Full Body, Full-bodied, Beautifully Kids, New Fashions, Random clothes, Random Kids, Moderns New Styles, soft focus, depth of field, 8k photo, HDR, professional lighting, taken with Canon EOS R5, DSLR, 75mm lens
@@ -82003,7 +82003,7 @@ Full Body, Full-bodied, Beautifully Kids, New Fashions, Random clothes, Random K
 
 ## TypeScript Unit Testing with Vitest
 
-Contributed by [@moein.zargarzadeh@gmail.com](https://github.com/moein.zargarzadeh@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Test Automation Engineer. You are skilled in writing unit tests for TypeScript projects using Vitest.
@@ -82084,7 +82084,7 @@ Contributed by [@amvicioushecs](https://github.com/amvicioushecs)
 
 ## Wicked 
 
-Contributed by [@patrickalexander082@gmail.com](https://github.com/patrickalexander082@gmail.com)
+Contributed by @anonymous
 
 ```md
 She smiled while the child stopped breathing.
@@ -82236,7 +82236,7 @@ export default function App() {
 
 ## Clinical Research Presentation Guidance
 
-Contributed by [@jiayuehuang765@gmail.com](https://github.com/jiayuehuang765@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Clinical Research Professor. You are an expert in clinical trials and research methodologies.
@@ -82269,7 +82269,7 @@ Variables:
 
 ## change home page desgin for blog and documentation platorm 
 
-Contributed by [@kowsik.al23@bitsathy.ac.in](https://github.com/kowsik.al23@bitsathy.ac.in)
+Contributed by @anonymous
 
 ```md
 change home page desgin which contain header bar,tags,blog cards and docs card , give better ui design
@@ -82282,7 +82282,7 @@ change home page desgin which contain header bar,tags,blog cards and docs card ,
 
 ## Butterfly
 
-Contributed by [@kakekgaek65@gmail.com](https://github.com/kakekgaek65@gmail.com)
+Contributed by @anonymous
 
 ```md
 [00:00 - 00:03]
@@ -82464,7 +82464,7 @@ Contributed by [@kenicodes](https://github.com/kenicodes)
 
 ## chicks hatch
 
-Contributed by [@kakekgaek65@gmail.com](https://github.com/kakekgaek65@gmail.com)
+Contributed by @anonymous
 
 ```md
 Extreme close-up of a cracking chicken egg on straw, hyper-detailed shell texture. Newly hatched featherless chick, wet and wrinkled pink skin. 14mm ultra wide lens providing dramatic perspective, hyper-realistic 8K style, cinematic atmosphere. --ar 9:16. 
@@ -82490,7 +82490,7 @@ Solona token launchpad for spl and sol2020 tokens with the metadata, bonding cur
 
 ## HTWind-Widget-Creator
 
-Contributed by [@sametcn99@gmail.com](https://github.com/sametcn99@gmail.com)
+Contributed by @anonymous
 
 ```md
 # HTWind Widget Generator - System Prompt
@@ -82717,7 +82717,7 @@ Ship like this widget will be used daily on real desktops.
 
 ## Transform the input product image into a professional commercial studio photograph
 
-Contributed by [@ayoubelouardi3710@gmail.com](https://github.com/ayoubelouardi3710@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -82882,7 +82882,7 @@ Contributed by [@ayoubelouardi3710@gmail.com](https://github.com/ayoubelouardi37
 
 ## notebooklm_lecture_notes
 
-Contributed by [@zzfmvp@gmail.com](https://github.com/zzfmvp@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a deck summarizing the content of each section; emphasize the key points; The target audience is professionals. Use a pure white background without any grid.
@@ -82895,7 +82895,7 @@ Create a deck summarizing the content of each section; emphasize the key points;
 
 ## image to video 360 product rotaion
 
-Contributed by [@ayoubelouardi3710@gmail.com](https://github.com/ayoubelouardi3710@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -83141,7 +83141,7 @@ Contributed by [@ayoubelouardi3710@gmail.com](https://github.com/ayoubelouardi37
 
 ## Xh
 
-Contributed by [@xachikhambaryan107@gmail.com](https://github.com/xachikhambaryan107@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a movie website that will have menu navigation, beautiful selectors, and more.
@@ -83154,7 +83154,7 @@ Create a movie website that will have menu navigation, beautiful selectors, and 
 
 ## Train Waiter
 
-Contributed by [@kakekgaek65@gmail.com](https://github.com/kakekgaek65@gmail.com)
+Contributed by @anonymous
 
 ```md
 A 3x2 grid photo contact sheet featuring a consistent 28-year-old American woman with a specific facial structure, wearing a jacket and outdoor pants, in a train station at dusk with dramatic orange and teal lighting. The grid displays six frames with various natural poses of the same character: including 1. Standing alone, gazing at the horizon with a silhouette of a train in the distance, 2. Walking while holding headphones, natural lifestyle shot, 3. Sitting on the edge of the platform with a peaceful expression, illuminated by dramatic orange hue, and three additional varied natural poses in the same setting. Photorealistic, 8k, cinematic lighting, highly detailed, consistent character across all six frames.
@@ -83167,7 +83167,7 @@ A 3x2 grid photo contact sheet featuring a consistent 28-year-old American woman
 
 ## Colored
 
-Contributed by [@kakekgaek65@gmail.com](https://github.com/kakekgaek65@gmail.com)
+Contributed by @anonymous
 
 ```md
 A 3-panel vertical photo collage of a beautiful 28-year-old woman with stylish long hair. Studio photography style. Panel 1: Fuchsia pink background, she is wearing a clean white suit, posing with her hands on her hips, a bold expression. Panel 2: Light blue background, wearing the same white suit, making a peace sign and smiling broadly. Panel 3: Bright yellow background, wearing a white suit, caught in the air in an energetic jumping pose. Very cheerful facial expression, bright and saturated colors, high-key studio lighting, sharp focus, high resolution. Ratio 16:9.
@@ -83180,7 +83180,7 @@ A 3-panel vertical photo collage of a beautiful 28-year-old woman with stylish l
 
 ## Abstract Portrait
 
-Contributed by [@kakekgaek65@gmail.com](https://github.com/kakekgaek65@gmail.com)
+Contributed by @anonymous
 
 ```md
 Abstract portrait of a young Indonesian man, blending contemporary aesthetics with traditional heritage, double exposure technique, floating batik motifs, vibrant acrylic swirls, geometric patterns, expressive brushstrokes, warm skin tones contrasted with deep indigo and gold, cinematic lighting, ethereal atmosphere, masterpiece, high detail, artistic fusion.
@@ -83193,7 +83193,7 @@ Abstract portrait of a young Indonesian man, blending contemporary aesthetics wi
 
 ## Girls
 
-Contributed by [@fdot7878@gmail.com](https://github.com/fdot7878@gmail.com)
+Contributed by @anonymous
 
 ```md
 ultra realistic photo of beautiful young woman, natural skin texture, soft lighting, detailed face, 85mm lens, photorealistic, high detail, instagram model
@@ -83206,7 +83206,7 @@ ultra realistic photo of beautiful young woman, natural skin texture, soft light
 
 ## Steel Blueprint Infographic For SosMed
 
-Contributed by [@tracker4devices@gmail.com](https://github.com/tracker4devices@gmail.com)
+Contributed by @anonymous
 
 ```md
 SYSTEM:
@@ -83426,7 +83426,7 @@ Then apply the style spec below.
 
 ## Voice Cloning Attacks Infographic
 
-Contributed by [@tracker4devices@gmail.com](https://github.com/tracker4devices@gmail.com)
+Contributed by @anonymous
 
 ```md
 SYSTEM:
@@ -83580,7 +83580,7 @@ make picture based on these
 
 ## Agency Growth Bottleneck Identifier
 
-Contributed by [@debashis.sarker@gmail.com](https://github.com/debashis.sarker@gmail.com)
+Contributed by @anonymous
 
 ```md
 Role & Goal
@@ -83671,7 +83671,7 @@ Now generate the full diagnostic framework using the inputs provided above.
 
 ## Expert Discovery Interviewer Guide
 
-Contributed by [@debashis.sarker@gmail.com](https://github.com/debashis.sarker@gmail.com)
+Contributed by @anonymous
 
 ```md
 Role & Goal
@@ -83707,7 +83707,7 @@ Ask Question 1 only.
 
 ## Landing Page Copy Architect – Conversion Framework Prompt
 
-Contributed by [@debashis.sarker@gmail.com](https://github.com/debashis.sarker@gmail.com)
+Contributed by @anonymous
 
 ```md
 Landing Page Copy Architect – Conversion Framework Prompt
@@ -83915,7 +83915,7 @@ I have uploaded the file. Please begin the audit.
 
 ## cambio de ojos
 
-Contributed by [@alonsofernandez1223@gmail.com](https://github.com/alonsofernandez1223@gmail.com)
+Contributed by @anonymous
 
 ```md
 Anime boy with short white hair, pale skin, black shirt, close-up portrait, neutral expression, soft shadows, minimalist background, glowing demon red eyes, dark red sclera veins, subtle red aura around the eyes, sharp pupils, intense gaze, cinematic lighting, high detail, dramatic contrast
@@ -83928,7 +83928,7 @@ Anime boy with short white hair, pale skin, black shirt, close-up portrait, neut
 
 ## Strategy Consultant
 
-Contributed by [@ce.it.toolbox@gmail.com](https://github.com/ce.it.toolbox@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are a world-class strategy consultant trained by McKinsey, BCG, and Bain, hired to deliver a $300K strategic analysis for a client in the ${industry} sector. Your mission is to analyze the current market landscape, identify key trends, emerging threats, and disruptive innovations, and map out the top 3–5 competitors by comparing their business models, pricing, distribution, brand positioning, strengths, and weaknesses. Use frameworks like SWOT or Porter’s Five Forces to assess risks and opportunities. Then, synthesize your findings into a concise, slide-ready one-page strategic brief with actionable recommendations for a company entering or expanding in this space. Format everything in clear bullet points or tables, structured for a C-suite presentation.
@@ -84058,7 +84058,7 @@ Here is my Python code:
 
 ## Make Flowers Bloom in an Image
 
-Contributed by [@heghinesrbuhi@gmail.com](https://github.com/heghinesrbuhi@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an expert image editor. Your task is to modify an image by making the flowers in it appear as if they are blooming. You will:
@@ -84208,7 +84208,7 @@ Generate a ${aspect_ratio:16:9} aspect ratio image that effectively communicates
 
 ## National safety week
 
-Contributed by [@marrigangu@gmail.com](https://github.com/marrigangu@gmail.com)
+Contributed by @anonymous
 
 ```md
 On the occasion of national safety week 2026 write a safety script which engage the employee and peoples create awareness on safety by following safety guidelines in steel industry 
@@ -84221,7 +84221,7 @@ On the occasion of national safety week 2026 write a safety script which engage 
 
 ## RNA-Seq Analysis and Differential Gene Expression
 
-Contributed by [@rmfsantos@uefs.br](https://github.com/rmfsantos@uefs.br)
+Contributed by @anonymous
 
 ```md
 Act as a bioinformatics expert. You are skilled in the analysis of RNA-seq data to identify differentially expressed genes.
@@ -84251,7 +84251,7 @@ Variables:
 
 ## Comprehensive Guide to Gas-Fired Pool Heaters with Visuals
 
-Contributed by [@jgspringer92@gmail.com](https://github.com/jgspringer92@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a heating system expert. You are an authority on gas-fired pool heaters with extensive experience in installation, operation, and troubleshooting.\n\nYour task is to provide an in-depth guide on how gas-fired pool heaters operate and how to troubleshoot common issues.\n\nYou will:\n- Explain the step-by-step process of how gas-fired pool heaters work.\n- Use Mermaid charts to visually represent the operation process.\n- Provide a comprehensive troubleshooting guide for mechanical, electrical, and other errors.\n- Use Mermaid diagrams for the troubleshooting process to clearly outline steps for diagnosis and resolution.\n\nRules:\n- Ensure that all technical terms are explained clearly.\n- Include safety precautions when working with gas-fired appliances.\n- Make the guide user-friendly and accessible to both beginners and experienced users.\n\nVariables:\n- ${heaterModel} - the specific model of the gas-fired pool heater\n- ${issueType} - type of issue for troubleshooting\n- ${language:English} - language for the guide\n\nExample of a Mermaid diagram for operation:\n\n```mermaid\nflowchart TD\n    A[Start] --> B{Is the pool heater on?}\n    B -->|Yes| C[Heat Water]\n    C --> D[Circulate Water]\n    B -->|No| E[Turn on the Heater]\n    E --> A\n```\n\nExample of a Mermaid diagram for troubleshooting:\n\n```mermaid\nflowchart TD\n    A[Start] --> B{Is the heater making noise?}\n    B -->|Yes| C[Check fan and motor]\n    C --> D{Issue resolved?}\n    D -->|No| E[Consult professional]\n    D -->|Yes| F[Operation Normal]\n    B -->|No| F
@@ -84808,7 +84808,7 @@ Contributed by [@senoldak](https://github.com/senoldak)
 
 ## Writing a Book on Causes of Death from Data Sources
 
-Contributed by [@fede.gazzelloni@gmail.com](https://github.com/fede.gazzelloni@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Data-Driven Author. You are tasked with writing a book titled "Are We Really Dying from What We Think We Are? The Data Behind Death." Your role is to explore various causes of death, using data extracted from reliable sources like PubMed and other medical databases.
@@ -84837,7 +84837,7 @@ Variables:
 
 ## Critical Thinking (DeepThink)
 
-Contributed by [@mathanhcong1992@gmail.com](https://github.com/mathanhcong1992@gmail.com)
+Contributed by @anonymous
 
 ```md
 ROLE: OMEGA-LEVEL SYSTEM "DEEPTHINKER-CA" & METACOGNITIVE ANALYST
@@ -85124,7 +85124,7 @@ Before finalizing, cross-reference the "Market Reputation" section with "Financi
 
 ## Root Cause Architect (5 Whys Technique)
 
-Contributed by [@mathanhcong1992@gmail.com](https://github.com/mathanhcong1992@gmail.com)
+Contributed by @anonymous
 
 ```md
 # ROLE & OBJECTIVE
@@ -85215,7 +85215,7 @@ This is a business problem focused on results (Lagging Indicator). Shift focus t
 
 ## SciSim Pro - Simulator for science (ASCII/Textual Art spatial diagrams support)
 
-Contributed by [@mathanhcong1992@gmail.com](https://github.com/mathanhcong1992@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Role: SciSim-Pro (Scientific Simulation & Visualization Specialist)
@@ -85612,7 +85612,7 @@ Contributed by [@arre-ankit](https://github.com/arre-ankit)
 
 ## Job Posting Snapshot & Preservation Engine
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 TITLE: Job Posting Snapshot & Preservation Engine  
@@ -86090,7 +86090,7 @@ Target Language : [SPECIFY TARGET LANGUAGE + VERSION]
 
 ## Fazer miniatura de coisas/moleculas
 
-Contributed by [@rmfsantos@uefs.br](https://github.com/rmfsantos@uefs.br)
+Contributed by @anonymous
 
 ```md
 Prompt:
@@ -86129,7 +86129,7 @@ ONE image, 1:1 Aspect Ratio, Macro Photography, "Gray's Anatomy" or Technical Bl
 
 ## Prompts para metodos de estudo
 
-Contributed by [@rmfsantos@uefs.br](https://github.com/rmfsantos@uefs.br)
+Contributed by @anonymous
 
 ```md
 1) The Feynman Technique Tutor
@@ -86221,7 +86221,7 @@ Prompt:
 
 ## calories diet
 
-Contributed by [@wino2342@gmail.com](https://github.com/wino2342@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a nutritionist and create a healthy recipe for a vegandaily dinner.calories what need to be counted for 1700calories daily were 150g protein, 43g of fat and rest carbs. Include ingredients, step-by-step instructions, and nutritional information such as calories and macros for 7 days 
@@ -86234,7 +86234,7 @@ Act as a nutritionist and create a healthy recipe for a vegandaily dinner.calori
 
 ## 医疗器械专家指导
 
-Contributed by [@zhaosw2217@gmail.com](https://github.com/zhaosw2217@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Medical Device Expert. You are experienced in the field of medical devices, knowledgeable about the latest technologies, safety protocols, and regulatory requirements.
@@ -86336,7 +86336,7 @@ Request: Write a blog post about "The Role of Reinforcement Learning in Autonomo
 
 ## AI Kickstart prompt
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # AI KICKSTART PROMPT (V1.4)
@@ -86416,7 +86416,7 @@ Remind the user that AI can "hallucinate" (make things up). They should always v
 
 ## Superhuman lab
 
-Contributed by [@cezfitness@gmail.com](https://github.com/cezfitness@gmail.com)
+Contributed by @anonymous
 
 ```md
 SUPERHUMAN LAB PROMPT — ADVANCED HUMAN PERFORMANCE RESEARCH
@@ -86575,7 +86575,7 @@ Also highlight which few compounds drive the majority of results so the protocol
 
 ## Email Phishing and Cyber Attack Notification App
 
-Contributed by [@salaevalu.osa@dpw.as.gov](https://github.com/salaevalu.osa@dpw.as.gov)
+Contributed by @anonymous
 
 ```md
 Act as a Cybersecurity App Developer. You are tasked with designing an app that can detect and notify users about phishing emails and potential cyber attacks.
@@ -86614,7 +86614,7 @@ I need to copy and paste it all on shot with all correct formatting and as a sin
 
 ## studying for exam
 
-Contributed by [@reallyangry6@gmail.com](https://github.com/reallyangry6@gmail.com)
+Contributed by @anonymous
 
 ```md
 Please help me study for an exam. This exam is about network security. The class's text book is this: Stallings, W. & Brown, L. (2023). Computer security: Principles and practice (5th Ed.). Upper Saddle River, NJ: Prentice Hall. ISBN13: 9780138091712
@@ -86630,7 +86630,7 @@ If you are not able to view the text book try to find a different version you ca
 
 ## trello-integration-skill
 
-Contributed by [@mertogemini@gmail.com](https://github.com/mertogemini@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -86823,7 +86823,7 @@ listLists();
 
 ## test
 
-Contributed by [@zhengfan2016@gmail.com](https://github.com/zhengfan2016@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -86939,7 +86939,7 @@ Do not suggest adding the following commands:
 
 ## Fantasy Console Simulator
 
-Contributed by [@hhapexhh@gmail.com](https://github.com/hhapexhh@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Fantasy Console Simulator. You are an advanced AI designed to simulate a fantasy console experience, providing access to a wide range of retro and modern games with interactive storytelling and engaging gameplay mechanics.\n\nYour task is to:\n- Offer a selection of games across various genres including RPG, adventure, and puzzle.\n- Simulate console-specific features such as save states, pixel graphics, and unique soundtracks.\n- Allow users to customize their gaming experience with difficulty settings and character options.\n\nRules:\n- Ensure an immersive and nostalgic gaming experience.\n- Maintain the authenticity of retro gaming aesthetics while incorporating modern enhancements.\n- Provide guidance and tips to enhance user engagement.
@@ -86952,7 +86952,7 @@ Act as a Fantasy Console Simulator. You are an advanced AI designed to simulate 
 
 ## Spec Interview
 
-Contributed by [@marcosnunesmbs@gmail.com](https://github.com/marcosnunesmbs@gmail.com)
+Contributed by @anonymous
 
 ```md
 read this${specmd:spec.md} and interview me in detail using the
@@ -86971,7 +86971,7 @@ it's complete, then write the spec to the file
 
 ## Writing Advisor Prompt
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Writing Advisor Prompt – Version 1.1
@@ -87020,7 +87020,7 @@ You are a professional writing advisor. Your goal is to critique existing text t
 
 ## Job Fit
 
-Contributed by [@ogaburna8@gmail.com](https://github.com/ogaburna8@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Job Fit Assessor. You are tasked with evaluating the compatibility of a job opportunity with the candidate's profile.
@@ -87074,7 +87074,7 @@ Review the existing changes and then create a git commit following the conventio
 
 ## Angular Directive Generator
 
-Contributed by [@satishbirhade16@gmail.com](https://github.com/satishbirhade16@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are an expert Angular developer. Generate a complete Angular directive based on the following description:
@@ -87102,7 +87102,7 @@ Use Angular 17+ standalone directive syntax. Follow Angular style guide conventi
 
 ## explain like I am 8
 
-Contributed by [@kingtrivs27@gmail.com](https://github.com/kingtrivs27@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -87310,7 +87310,7 @@ and the top-3 highest-impact actions the team should take first.
 
 ## Spanish girl in nightclub
 
-Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -87326,7 +87326,7 @@ Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail
 
 ## research and learn to become top in your field of knowledge
 
-Contributed by [@sigma.sauer07@gmail.com](https://github.com/sigma.sauer07@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as you are an expert ${title} specializing in ${topic}. Your mission is to deepen your expertise in ${topic} through comprehensive research on available resources, particularly focusing on ${resourceLink} and its affiliated links. Your goal is to gain an in-depth understanding of the tools, prompts, resources, skills, and comprehensive features related to ${topic}, while also exploring new and untapped applications.
@@ -87361,7 +87361,7 @@ The variables used are:
 
 ## Walking back home
 
-Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -88852,7 +88852,7 @@ After completing the review, provide:
 
 ## Internal Linking SEO Assistant
 
-Contributed by [@sozerbugra@gmail.com](https://github.com/sozerbugra@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an AI-powered SEO assistant specialized in internal linking strategy, semantic relevance analysis, and contextual content generation.
@@ -89007,7 +89007,7 @@ Quality bar:
 
 ## Transform the provided clothing product image.
 
-Contributed by [@ayoubelouardi3710@gmail.com](https://github.com/ayoubelouardi3710@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -89100,7 +89100,7 @@ Contributed by [@ayoubelouardi3710@gmail.com](https://github.com/ayoubelouardi37
 
 ## Internet Trend & Slang Intelligence
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 TITLE: Internet Trend & Slang Intelligence Briefing Engine (ITSIBE)
@@ -89254,7 +89254,7 @@ When information is uncertain, explain the ambiguity clearly.
 
 ## ComicPost
 
-Contributed by [@dewanto@gmail.com](https://github.com/dewanto@gmail.com)
+Contributed by @anonymous
 
 ```md
 Educational caricature comic strip, ${subject_topic}, humorous and cute style, set on textured vintage paper background. 
@@ -89280,7 +89280,7 @@ Aesthetics: Decorated margins with cute illustrations of ${decoration_theme}, pr
 
 ## library migration
 
-Contributed by [@abhinavme1004@gmail.com](https://github.com/abhinavme1004@gmail.com)
+Contributed by @anonymous
 
 ```md
 🔴 1. Data Access & Connection Management
@@ -89321,7 +89321,7 @@ These are critical because they affect performance, scalability, and outages.
 
 ## Operating systems 
 
-Contributed by [@swenzy511@gmail.com](https://github.com/swenzy511@gmail.com)
+Contributed by @anonymous
 
 ```md
 I want a detailed course module, with simple explanations and done comprehensively.
@@ -89622,7 +89622,7 @@ Sample Data (optional but recommended):
 
 ## Generate a Plan for Building the Best UI/UX
 
-Contributed by [@ayoubelouardi3710@gmail.com](https://github.com/ayoubelouardi3710@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are a senior full-stack engineer and UX/UI architect with 10+ years of experience building 
@@ -89711,7 +89711,7 @@ Begin with the Executive Summary, then proceed section by section.
 
 ## Make UI/UX better of an already Created Application
 
-Contributed by [@ayoubelouardi3710@gmail.com](https://github.com/ayoubelouardi3710@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are a senior full-stack engineer and UX/UI architect with 10+ years of experience building production-grade web applications. You specialize in responsive design systems, modern UI/UX patterns, and cross-device performance optimization.
@@ -89797,7 +89797,7 @@ Begin with the Executive Summary, then proceed section by section.
 
 ## Act as a lawyer and judicial advisor with 25 years of experience in drafting defense memoranda in Saudi courts only, with the condition of adhering to the legal provisions currently in force.
 
-Contributed by [@hleben12@gmail.com](https://github.com/hleben12@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a lawyer and judicial advisor with 25 years of experience in drafting defense memoranda in Saudi courts only, with the condition of adhering to the legal provisions currently in force.
@@ -89869,7 +89869,7 @@ Tone: Professional, constructive, no sales pressure. Assume the client is a Chin
 
 ## Manimal
 
-Contributed by [@pryannimal@gmail.com](https://github.com/pryannimal@gmail.com)
+Contributed by @anonymous
 
 ```md
 ### Style
@@ -89912,7 +89912,7 @@ The sharp sound of a door or window being struck, the aggressive hiss of the cat
 
 ## Hand made  site
 
-Contributed by [@sw2987159@gmail.com](https://github.com/sw2987159@gmail.com)
+Contributed by @anonymous
 
 ```md
 you are a jenus progammer  and you make sites easly and profisdonally 
@@ -89943,7 +89943,7 @@ You are my highly productive peer and mentor. You are curious, efficient, and co
 
 ## Elite Feedback Form Generator — Stunning UI with Next.js, React & TypeScript
 
-Contributed by [@easycoregamesnoctis@gmail.com](https://github.com/easycoregamesnoctis@gmail.com)
+Contributed by @anonymous
 
 ```md
 <role>
@@ -90188,7 +90188,7 @@ Rules:
 
 ## 3D Avatar Prompt
 
-Contributed by [@ahmettek6@gmail.com](https://github.com/ahmettek6@gmail.com)
+Contributed by @anonymous
 
 ```md
 Use a user-uploaded image as the source and convert the person into a stylized 3D character while preserving identity, facial structure, pose, hairstyle, clothing, and overall composition exactly as shown in the photo. The result should clearly resemble the real person.
@@ -90209,7 +90209,7 @@ The camera should feel front-facing with a medium close-up framing, similar to a
 
 ## Plain-English Security Concept Explainer
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 # ==========================================================
@@ -91754,7 +91754,7 @@ RIGHT — explaining the team:
 
 ## Claude - Proje çalışma promptu
 
-Contributed by [@hakanak54@gmail.com](https://github.com/hakanak54@gmail.com)
+Contributed by @anonymous
 
 ```md
 Plan a redesign for this web page before making any edits.
@@ -91795,7 +91795,7 @@ Constraints:
 
 ## Web Application Testing Skill (Imported)
 
-Contributed by [@daiyigr@gmail.com](https://github.com/daiyigr@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -92971,7 +92971,7 @@ Once you understand the above mechanism, reply with:
 
 ## Recruiter for Hiring Sales Professionals with Databricks Experience
 
-Contributed by [@alphonsa.kumar123@gmail.com](https://github.com/alphonsa.kumar123@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a recruiter. You are responsible for hiring sales professionals in the USA who have experience in Databricks sales and possess 10-30 years of industry experience.\n\ Your task is to create a list of candidates with Databricks sales experience.\n- Ensure candidates have at least 10-30 years of relevant experience.\n- Prioritize applicants currently located in the USA.
@@ -92984,7 +92984,7 @@ Act as a recruiter. You are responsible for hiring sales professionals in the US
 
 ## SaaS Security Audit - OWASP Top 10 & Multi-Tenant Isolation Review
 
-Contributed by [@c.aksan@gmail.com](https://github.com/c.aksan@gmail.com)
+Contributed by @anonymous
 
 ```md
 title: SaaS Dashboard Security Audit - Knowledge-Anchored Backend Prompt
@@ -93119,7 +93119,7 @@ success_criteria:
 
 ## SaaS Analytics Dashboard - Knowledge-Anchored Frontend Prompt
 
-Contributed by [@c.aksan@gmail.com](https://github.com/c.aksan@gmail.com)
+Contributed by @anonymous
 
 ```md
 role: >
@@ -93207,7 +93207,7 @@ knowledge_anchors:
 
 ## Repository Security & Architecture Audit Framework
 
-Contributed by [@c.aksan@gmail.com](https://github.com/c.aksan@gmail.com)
+Contributed by @anonymous
 
 ```md
 title: Repository Security & Architecture Audit Framework
@@ -93360,7 +93360,7 @@ success_criteria:
 
 ## ACLS Master Simulator
 
-Contributed by [@talharel13@gmail.com](https://github.com/talharel13@gmail.com)
+Contributed by @anonymous
 
 ```md
 Persona
@@ -93417,7 +93417,7 @@ Shock (Biphasic): Follow manufacturer recommendation (typically 120-200 J); if u
 
 ## Lunch atop a Skyscraper - Robotic Power Armor Recreation
 
-Contributed by [@c.aksan@gmail.com](https://github.com/c.aksan@gmail.com)
+Contributed by @anonymous
 
 ```md
 11 distinct humanoid robotic power armor suits sitting side by side on a steel beam high above a 1930s city skyline. Black and white vintage photograph style with film grain. Vertical steel cables visible on the right side. City buildings far below. Each robot's pose from left to right:
@@ -93444,7 +93444,7 @@ All robots sitting in a row with legs dangling over the beam edge, hundreds of m
 
 ## Mine
 
-Contributed by [@muhammadaslammanjamath@gmail.com](https://github.com/muhammadaslammanjamath@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a highly detailed video prompt for an AI video generator like Sora or RunwayML, emphasizing photorealistic stock trading visuals without any human figures, text overlays, or AI-generated artifacts. The scene should depict the pursuit of profit through trading Apple Inc. (AAPL) stock in a visually metaphorical way: Show a lush, vibrant apple orchard under dynamic daylight shifting from dawn to dusk, representing market fluctuations. Apples on trees grow, ripen, and multiply in clusters symbolizing rising stock values and profits, with some branches extending upward like ascending candlestick charts made of twisting vines. Subtly integrate stock market elements visually—glowing green upward arrows formed by sunlight rays piercing through leaves, or apple clusters stacking like bar graphs increasing in height—without any explicit charts, numbers, or labels. Convey profit-seeking through apples being “harvested” by natural forces like wind or gravity, causing them to accumulate in golden baskets that overflow, shimmering with realistic dew and light reflections. Ensure the entire video feels like high-definition drone footage of a real orchard, with natural sounds of rustling leaves, birds, and wind, no narration or music. Camera movements: Smooth panning across the orchard, zooming into ripening apples to show intricate textures, and time-lapse sequences of growth to mimic market gains. Style: Ultra-realistic CGI indistinguishable from live-action nature documentary footage, using advanced rendering for lifelike shadows, textures, and physics—avoid any cartoonish, blurry, or unnatural elements. Video length: 30 seconds, resolution: 4K, aspect ratio: 16:9.
@@ -93461,7 +93461,7 @@ Create a highly detailed video prompt for an AI video generator like Sora or Run
 
 ## In-Depth Paper and Exam Prediction Analyzer
 
-Contributed by [@hrishirajnagawade@gmail.com](https://github.com/hrishirajnagawade@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Comprehensive Exam Prediction Expert. You are a specialized AI designed to analyze academic papers, exam patterns, and peer performance to forecast future exam questions accurately.
@@ -93508,7 +93508,7 @@ What's the single smartest and most radically innovative and accretive and usefu
 
 ## Photo Enhancement and Repair with Transparent Background
 
-Contributed by [@joshuawalker9988@gmail.com](https://github.com/joshuawalker9988@gmail.com)
+Contributed by @anonymous
 
 ```md
 upscale this photo and make it look amazing. make it transparent background. fix broken objects. make it good
@@ -93521,7 +93521,7 @@ upscale this photo and make it look amazing. make it transparent background. fix
 
 ## code generation for online assessments
 
-Contributed by [@aditiwari0810@gmail.com](https://github.com/aditiwari0810@gmail.com)
+Contributed by @anonymous
 
 ```md
 SOLVE THE QUESTION IN CPP, USING NAMESPACE STD, IN A SIMPLE BUT HIGHLY EFFICIENT WAY, AND PROVIDE IT WITH THIS RESTYLING:
@@ -93535,7 +93535,7 @@ no comments, no space between operator and operand but proper margin and indenta
 
 ## ISC Class 12th Exam Paper Analyzer and evaluator 
 
-Contributed by [@hrishirajnagawade@gmail.com](https://github.com/hrishirajnagawade@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an ISC Class 12th Exam Paper Analyzer. You are an expert AI tool designed to assist students in preparing for their exams by analyzing exam papers and generating insightful reports.
@@ -93558,7 +93558,7 @@ Rules:
 
 ## Class Prep
 
-Contributed by [@master.at909@gmail.com](https://github.com/master.at909@gmail.com)
+Contributed by @anonymous
 
 ```md
 I want a prompt that can help be prepare my understanding and get comfortable with the learning input before class starting.
@@ -93820,7 +93820,7 @@ xcodebuild clean -scheme <SchemeName>
 
 ## Messy Desk Study Moment - University Student
 
-Contributed by [@mtberkcelik@gmail.com](https://github.com/mtberkcelik@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -93863,7 +93863,7 @@ Contributed by [@mtberkcelik@gmail.com](https://github.com/mtberkcelik@gmail.com
 
 ## Why an Online PDF Editor Is Essential for Modern Workflows
 
-Contributed by [@themadcorner4@gmail.com](https://github.com/themadcorner4@gmail.com)
+Contributed by @anonymous
 
 ```md
 An online PDF editor is no longer just a convenience—it is a necessity for efficient digital document management. By offering flexibility, powerful features, and easy access from any device, these tools help users save time and stay productive. Whether for business, education, or personal use, online PDF editors provide a practical solution for managing PDF files in a connected world
@@ -94285,7 +94285,7 @@ Aplicar continuamente durante o processo:
 
 ## Build an Interview Practice App
 
-Contributed by [@fejji.sofiene@gmail.com](https://github.com/fejji.sofiene@gmail.com)
+Contributed by @anonymous
 
 ```md
 You will build your own Interview Preparation app. I would imagine that you have participated in several interviews at some point. You have been asked questions. You were given exercises or some personality tests to complete. Fortunately, AI assistance comes to help. With it, you can do pretty much everything, including preparing for your next dream position. Your task will be to implement a single-page website using VS Code (or Cursor) editor, and either a Python library called Streamlit or a JavaScript framework called Next.js. You will need to call OpenAI, write a system prompt as the instructions for an LLM, and write your own prompt with the interview prep instructions. You will have a lot of freedom in the things you want to practise for your interview. We don't want you to put it in a box. Interview Questions? Specific programming language questions? Asking questions at the end of the interview? Analysing the job description to come up with the interview preparation strategy? Experiment! Remember, you have all of your tools at your disposal if, for some reason, you get stuck or need inspiration: ChatGPT, StackOverflow, or your friend!
@@ -94298,7 +94298,7 @@ You will build your own Interview Preparation app. I would imagine that you have
 
 ## AI voice assistant
 
-Contributed by [@fede.gazzelloni@gmail.com](https://github.com/fede.gazzelloni@gmail.com)
+Contributed by @anonymous
 
 ```md
 System Prompt: ${your_website} AI Receptionist
@@ -94360,7 +94360,7 @@ Closing:
 
 ## Video review and teacher
 
-Contributed by [@efekurucay24@gmail.com](https://github.com/efekurucay24@gmail.com)
+Contributed by @anonymous
 
 ```md
 
@@ -94444,7 +94444,7 @@ End with:
 
 ## Video extractor prompt
 
-Contributed by [@efekurucay24@gmail.com](https://github.com/efekurucay24@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are an expert AI Engineering instructor's assistant, specialized in extracting and teaching every piece of knowledge from educational video content about AI agents, MCP (Model Context Protocol), and agentic systems.
@@ -94537,7 +94537,7 @@ End with:
 
 ## Project Builder
 
-Contributed by [@lexrothwell@gmail.com](https://github.com/lexrothwell@gmail.com)
+Contributed by @anonymous
 
 ```md
 Think like a vector analyst
@@ -94581,7 +94581,7 @@ Rules:
 
 ## Resume Customization Prompt – STRATEGIC INTEGRITY
 
-Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+Contributed by @anonymous
 
 ```md
 ## Resume Customization Prompt – STRATEGIC INTEGRITY v3.26 (GENERIC)
@@ -94653,7 +94653,7 @@ Process every section in this order. If no changes are needed, state "No Changes
 
 ## Extract a Writing Outline from Scientific Content
 
-Contributed by [@danjumame0@gmail.com](https://github.com/danjumame0@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an expert in scientific writing. You are tasked with extracting a comprehensive writing outline from detailed scientific content. Your task is to identify key sections, subsections, and essential points that form the basis of a structured narrative.
@@ -94681,7 +94681,7 @@ Use variables for dynamic content:
 
 ## Neon Logo Design for Streaming Platform
 
-Contributed by [@hakimjiwan23@gmail.com](https://github.com/hakimjiwan23@gmail.com)
+Contributed by @anonymous
 
 ```md
 Circular neon logo, minimalist play button inside film strip frame, electric blue and hot pink gradient glow, dark background, cyberpunk aesthetic, centered geometric icon, flat vector design, modern streaming platform branding, no text, no typography, crisp circular edges, app icon style, high contrast, glowing neon outline, instant visual impact, professional TikTok profile picture, transparent background, 1:1 square format, bold simple silhouette, tech startup vibe, 8k quality
@@ -94695,7 +94695,7 @@ Circular neon logo, minimalist play button inside film strip frame, electric blu
 
 ## Review the social media content
 
-Contributed by [@priyalvijay108@gmail.com](https://github.com/priyalvijay108@gmail.com)
+Contributed by @anonymous
 
 ```md
 I want to review my social media content. You have 14 years of experience in social media marketing manager.
@@ -94726,7 +94726,7 @@ Enjoy sooner than you think.
 
 ## Professional photo restoration expert
 
-Contributed by [@mal4thia@gmail.com](https://github.com/mal4thia@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a professional photo restoration expert. You are tasked with performing a high-precision conservative restoration and historical colorization of a degraded vintage photograph. The final image should resemble a perfectly preserved original print.
@@ -108618,7 +108618,7 @@ Contributed by [@mmogdeveloper](https://github.com/mmogdeveloper)
 
 ## Betting Prediction 
 
-Contributed by [@mcyenerr@gmail.com](https://github.com/mcyenerr@gmail.com), [@devisasari](https://github.com/devisasari)
+Contributed by @anonymous, [@devisasari](https://github.com/devisasari)
 
 ```md
 I want you to act as a football commentator. I will give you descriptions of football matches in progress and you will commentate on the match, providing your analysis on what has happened thus far and predicting how the game may end. You should be knowledgeable of football terminology, tactics, players/teams involved in each match, and focus primarily on providing intelligent commentary rather than just narrating play-by-play. My first request is "I'm watching [ Home Team vs Away Team ] - provide commentary for this match."
@@ -108653,7 +108653,7 @@ Man of the Match: Prediction based on current performance metrics.
 
 ## Illustrator Style Describer Weavy
 
-Contributed by [@gamaleldientarek@gmail.com](https://github.com/gamaleldientarek@gmail.com)
+Contributed by @anonymous
 
 ```md
 **“Analyze the provided images and extract ONLY the unified visual style.
@@ -108753,7 +108753,7 @@ Your goal is to help the user return to their own inner authority.
 
 ## Ultimate Stake.us Dice Strategy Builder — All Risk Levels & Bankrolls
 
-Contributed by [@c.burke0327@gmail.com](https://github.com/c.burke0327@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are an expert gambling strategy architect specializing in Stake.us Dice — a provably fair dice game with a 1% house edge where outcomes are random numbers between 0.00 and 99.99. Your job is to design complete, ready-to-enter autobet strategies using ALL available advanced parameters in Stake.us Dice's Automatic (Advanced) mode.
@@ -108926,7 +108926,7 @@ After all ${num_strategies:5} strategies, output:
 
 ## KJV Harmony Companion 
 
-Contributed by [@sametheredge85@gmail.com](https://github.com/sametheredge85@gmail.com)
+Contributed by @anonymous
 
 ```md
 Here is the v3.1 prompt in clean, ready-to-paste
@@ -109482,7 +109482,7 @@ Use the Agent Browser skill to log into GitHub and retrieve the starred projects
 
 ## Odalisque
 
-Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -109518,7 +109518,7 @@ Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail
 
 ## Researchers in the Library
 
-Contributed by [@mohsamhef@gmail.com](https://github.com/mohsamhef@gmail.com)
+Contributed by @anonymous
 
 ```md
 Generate a video for Researchers in the Lab going to the library, make it programmatic video creation, maybe use LoRA and Remotion 
@@ -109583,7 +109583,7 @@ Make me a fairly detailed quiz with as many questions as you think are necessary
 
 ## Linkedin Post Create Prompt
 
-Contributed by [@dev.aniketlodh@gmail.com](https://github.com/dev.aniketlodh@gmail.com)
+Contributed by @anonymous
 
 ```md
 You will help me write LinkedIn posts that sound human, simple, and written from real experience — not corporate or robotic.
@@ -109655,7 +109655,7 @@ After generating both, ask:
 
 ## Professional Betting Predictions
 
-Contributed by [@mcyenerr@gmail.com](https://github.com/mcyenerr@gmail.com)
+Contributed by @anonymous
 
 ```md
 SYSTEM PROMPT: Football Prediction Assistant – Logic & Live Sync v4.0 (Football Version)
@@ -109924,7 +109924,7 @@ Your answers must:
 
 ## Lifelike Face Mask
 
-Contributed by [@hduggan72@gmail.com](https://github.com/hduggan72@gmail.com)
+Contributed by @anonymous
 
 ```md
 A highly detailed, photorealistic close-up studio portrait of a hyper-realistic silicone female face mask displayed on a styrofoam mannequin head, on a makeup desk with vanity mirror, frame with bulb lights that emit soft even studio lighting with subtle shadows highlighting skin texture. The mask depicts the female subject (see attached image file for subject facial features, skin tone, hair color, length, style, texture, makeup, etc.). Masks must have realistic fine pores, slight freckles, imperfections, and lifelike translucency. Mask has eyes looking slightly to the side, a calm neutral expression with closed lips, soft jawline, and delicate nose. The silicone material is visible at the neck edge with a thin, seamless rolled flange showing the realistic skin tone transitioning to translucent silicone. Ultra-realistic texture emphasizing the uncanny valley effect of medical-grade silicone prosthetics, sharp focus on face and hair, shallow depth of field, professional product photography style, high resolution, intricate details.
@@ -110076,7 +110076,7 @@ Use this structure when it helps clarity:
 
 ## presentation making
 
-Contributed by [@vandanaparik4@gmail.com](https://github.com/vandanaparik4@gmail.com)
+Contributed by @anonymous
 
 ```md
 act as an proffesional ppt maker and see this document you have to make an 15 slides ppt including the very first name and subject and topic page and the very last thank you page include every important aspects from the document and make an ppt topic that is suitable for college project presenttaion give 15 slides of topics through this document
@@ -110115,7 +110115,7 @@ Example: "Transform a list of responsibilities into impactful bullet points usin
 
 ## Website Design Recreation Workflow
 
-Contributed by [@hrishirajnagawade@gmail.com](https://github.com/hrishirajnagawade@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -110147,7 +110147,7 @@ Contributed by [@hrishirajnagawade@gmail.com](https://github.com/hrishirajnagawa
 
 ## Website Design Recreator Skill
 
-Contributed by [@hrishirajnagawade@gmail.com](https://github.com/hrishirajnagawade@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -110310,7 +110310,7 @@ You always consult these pages first
 
 ## Scientific Paper Drafting Assistant
 
-Contributed by [@kyakhloufi@gmail.com](https://github.com/kyakhloufi@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Scientific Paper Drafting Assistant Skill
@@ -112674,7 +112674,7 @@ Act as a senior functional analyst: work in phases, state all assumptions, prese
 
 ## psy
 
-Contributed by [@aliwattook966@gmail.com](https://github.com/aliwattook966@gmail.com)
+Contributed by @anonymous
 
 ```md
 A cinematic wide-angle shot of a couple walking hand-in-hand on a quiet beach at night, the couple appearing small and distant in the frame to emphasize the vast environment. Deep teal and navy blue color grading. A vast clear night sky. Gentle ocean waves slowly crashing onto the shore with white foam reflections.
@@ -112697,7 +112697,7 @@ FPS: 24fps cinematic
 
 ## Architecture & UI/UX Audit
 
-Contributed by [@surendharnadh280709@gmail.com](https://github.com/surendharnadh280709@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a senior frontend engineer and product-focused UI/UX reviewer with experience building scalable web applications.
@@ -113004,7 +113004,7 @@ Contributed by [@senoldak](https://github.com/senoldak)
 
 ## Expert Legal Analyst in Tax and Commercial Law
 
-Contributed by [@zhaoliminlawyer@gmail.com](https://github.com/zhaoliminlawyer@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a legal expert with extensive experience in tax law and commercial law. You are known for your top-tier capabilities in corporate compliance and dispute resolution. Your task is to:
@@ -113024,7 +113024,7 @@ Rules:
 
 ## blood grouping detection using image processing
 
-Contributed by [@sanjanaganesh125@gmail.com](https://github.com/sanjanaganesh125@gmail.com)
+Contributed by @anonymous
 
 ```md
 blood grouping detection using image processing i need a complete code for this project to buil api or mini website using python 
@@ -113037,7 +113037,7 @@ blood grouping detection using image processing i need a complete code for this 
 
 ## subculture
 
-Contributed by [@etnologiaus2022@gmail.com](https://github.com/etnologiaus2022@gmail.com)
+Contributed by @anonymous
 
 ```md
 Explain the cultural significance of ${subculture} and its impact on society.
@@ -113050,7 +113050,7 @@ Explain the cultural significance of ${subculture} and its impact on society.
 
 ## comparison of social groups
 
-Contributed by [@etnologiaus2022@gmail.com](https://github.com/etnologiaus2022@gmail.com)
+Contributed by @anonymous
 
 ```md
 Compare the values and behaviors of ${group_a} and ${group_b} in online spaces.
@@ -113063,7 +113063,7 @@ Compare the values and behaviors of ${group_a} and ${group_b} in online spaces.
 
 ## question list for reaserch
 
-Contributed by [@etnologiaus2022@gmail.com](https://github.com/etnologiaus2022@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a list of interview questions for researching ${topic} in ${community}.
@@ -113158,7 +113158,7 @@ INSTRUCTIONS:
 
 ## Pixar-Style Family Wallpaper Prompt
 
-Contributed by [@umutcanyildiz@gmail.com](https://github.com/umutcanyildiz@gmail.com)
+Contributed by @anonymous
 
 ```md
 Pixar-style, Disney-style, high quality 3D render, octane render, global illumination, subsurface scattering, ultra detailed, soft cinematic lighting, cute and warm mood.
@@ -113548,7 +113548,7 @@ Return only the translated document with the preserved formatting. Do not add an
 
 ## Ben
 
-Contributed by [@faizanshakilf@gmail.com](https://github.com/faizanshakilf@gmail.com)
+Contributed by @anonymous
 
 ```md
 # Who You Are
@@ -113620,7 +113620,7 @@ Direct. Warm when the moment calls for it. Never sycophantic. Short sentences ov
 
 ## Picture design 
 
-Contributed by [@sandraosemeke442@gmail.com](https://github.com/sandraosemeke442@gmail.com)
+Contributed by @anonymous
 
 ```md
 A picture of naira cash denomination of 500 and 1000 without background 
@@ -113648,7 +113648,7 @@ I will type commands and you will reply with what the terminal should show. I wa
 
 ## Accounting Information System
 
-Contributed by [@dewayanto1969@gmail.com](https://github.com/dewayanto1969@gmail.com)
+Contributed by @anonymous
 
 ```md
 To Create research article using Design Science Research Methodology about topic: "Integrating Blockchain and ERP System to detect accounting financial fraud"
@@ -113661,7 +113661,7 @@ To Create research article using Design Science Research Methodology about topic
 
 ## Sapiosessuale
 
-Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -113687,7 +113687,7 @@ Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail
 
 ## Lonely cry
 
-Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -113774,7 +113774,7 @@ Examples:
 
 ## making ppt
 
-Contributed by [@rodelph0903@gmail.com](https://github.com/rodelph0903@gmail.com)
+Contributed by @anonymous
 
 ```md
 Add a high level sermon. create a deck of ultimate bold and playful style with focus on Bible study outline using question and answer format. Use realistic illustrative images and texts. Bold headings, triple font size sub-heading and double size texts content, with sub-headings, make it more direct, simple but appealing to eyes. Make it very appealing to general public audience. Provide a lot of supporting Bible texts from the source. Make it 30 slides. present the wordings with accuracy and crispy readable font. Include Lesson title, and appeal. Make it very attractive. The topic title is "Fear of God
@@ -113788,7 +113788,7 @@ Add a high level sermon. create a deck of ultimate bold and playful style with f
 
 ## Bikini_Girl
 
-Contributed by [@mellowdrastic@gmail.com](https://github.com/mellowdrastic@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -113853,7 +113853,7 @@ There has been mulitple changes, improvements and new features since the last ve
 
 ## Premium Classy Interview Presentation Design
 
-Contributed by [@hrishirajnagawade@gmail.com](https://github.com/hrishirajnagawade@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Premium Presentation Designer. You are an expert in creating visually stunning and data-driven presentations for high-stakes interviews.
@@ -113882,7 +113882,7 @@ Rules:
 
 ## Prompt Refiner
 
-Contributed by [@tuankiet.infotech@gmail.com](https://github.com/tuankiet.infotech@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -114194,7 +114194,7 @@ Only after passing this checklist, send your final response.
 
 ## Research Prompt (Mistral) 
 
-Contributed by [@privatemailgateway@gmail.com](https://github.com/privatemailgateway@gmail.com)
+Contributed by @anonymous
 
 ```md
 `# ROLE:
@@ -114413,7 +114413,7 @@ keep 100% realistic image generate please with golden hour
 
 ## Realistic Selfie of Girl with Transparent Glasses and Pink Hair
 
-Contributed by [@matthew.growth.ng@gmail.com](https://github.com/matthew.growth.ng@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a realistic selfie photo of a girl with the following features:
@@ -114687,7 +114687,7 @@ ${domainname}
 
 ## AI Cloning #1 - RAW
 
-Contributed by [@joshuawalker9988@gmail.com](https://github.com/joshuawalker9988@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a video an ultra realistic prompt with scenes and great lipsync (women who will lipped should be a business beautiful women, corprate) for kling.ai. Just a 5 seconds video and also create a separate 8s video: 
@@ -114700,7 +114700,7 @@ Create a video an ultra realistic prompt with scenes and great lipsync (women wh
 
 ## The Colorful Fish Learning Emotions
 
-Contributed by [@seymayasar468@gmail.com](https://github.com/seymayasar468@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a storyteller. You are a whimsical narrator for children’s tales, skilled in creating engaging and educational stories.
@@ -114726,7 +114726,7 @@ Rules:
 
 ## 创设情境串联知识
 
-Contributed by [@1753932465@qq.com](https://github.com/1753932465@qq.com)
+Contributed by @anonymous
 
 ```md
 Act as an educational designer. You are an expert in creating engaging and coherent learning scenarios that connect various knowledge points. Your task is to design a complete scenario based on the knowledge provided by the user. 
@@ -114750,7 +114750,7 @@ Rules:
 
 ## site analiz
 
-Contributed by [@hakanak54@gmail.com](https://github.com/hakanak54@gmail.com)
+Contributed by @anonymous
 
 ```md
 https://turvivo.com adresinin LLM (ChatGPT, Gemini, Claude) ve SEO görünürlük analizini yap.
@@ -114878,7 +114878,7 @@ Aşağıdakileri üret:
 
 ## Creating PWA AI Chatbot 
 
-Contributed by [@ezezpeer@gmail.com](https://github.com/ezezpeer@gmail.com)
+Contributed by @anonymous
 
 ```md
 I Want my ai companion (PWA app), private, personal and friendly agent. Since it's my first time, i want it to be simple and good
@@ -114918,7 +114918,7 @@ Rules:
 
 ## Professional photo editor 
 
-Contributed by [@overb0355@gmail.com](https://github.com/overb0355@gmail.com)
+Contributed by @anonymous
 
 ```md
 Professional photo editor you understand what i need And your very good at making photo IDs
@@ -115005,7 +115005,7 @@ When you finally generate the messages, output ONLY the 3 messages, nothing else
 
 ## DOE Framework - Directions Template
 
-Contributed by [@softdsk@gmail.com](https://github.com/softdsk@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a DOE Framework Architect. You are an expert in creating Directions (SOP/регламенты) for software projects.
@@ -115150,7 +115150,7 @@ Focus on the separation of concerns:
 
 ## Ultimate Stake.us Dice Wagering Strategy Builder — Rollover & Playthrough Completion
 
-Contributed by [@c.burke0327@gmail.com](https://github.com/c.burke0327@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are an expert wagering-strategy architect specializing in Stake.us Dice — a provably fair dice game with a 1% house edge where outcomes are random numbers between 0.00 and 99.99. Your job is to design complete, ready-to-enter autobet strategies specifically optimized for WAGERING / PLAYTHROUGH completion using ALL available advanced parameters in Stake.us Dice's Automatic (Advanced) mode.
@@ -115359,7 +115359,7 @@ Choose the single best strategy for my exact bankroll, risk level, and wagering 
 
 ## Futuristic Alps in 2150
 
-Contributed by [@nguyenphonglc2004@gmail.com](https://github.com/nguyenphonglc2004@gmail.com)
+Contributed by @anonymous
 
 ```md
 Create a cinematic wide shot of the Alps in the year 2150. The scene is set in a silent post-apocalyptic world with futuristic elements. Distant cities glow with a blue light, and Earth is depicted as turning into light particles. The atmosphere is vast and empty, with a cold color palette and soft fog. The image should be ultra-realistic, with volumetric lighting and a melancholic mood, presented in 8k resolution, like a film still with dramatic lighting.
@@ -115385,7 +115385,7 @@ A monumental cinematic poster inspired by Interstellar, vast cosmic panorama wit
 
 ## 🔧 AI App Improvement Loop Prompt
 
-Contributed by [@dishantpatel624@gmail.com](https://github.com/dishantpatel624@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are an expert software engineer, product designer, and QA analyst.
@@ -115867,7 +115867,7 @@ Before producing the final answer, check the following internally and only outpu
 
 ## Game design
 
-Contributed by [@achen8208@gmail.com](https://github.com/achen8208@gmail.com)
+Contributed by @anonymous
 
 ```md
 Prompt:
@@ -115888,7 +115888,7 @@ Prompt:
 
 ## Sacrifice in obedience 
 
-Contributed by [@mbaigrace1@gmail.com](https://github.com/mbaigrace1@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act like a christian blogger. You'll help me write an essay on the price of obedience. My target audience is every christian out there. It should in a teaching form .eight parts , well explained, no spelling mistakes no unnecessary hyphens. Make it punchy with me speaking and asking questions 
@@ -115952,7 +115952,7 @@ The result should look like a refined typographic portrait where shadows are cre
 
 ## mc
 
-Contributed by [@macro4lifeahk@gmail.com](https://github.com/macro4lifeahk@gmail.com)
+Contributed by @anonymous
 
 ```md
 make me an advance minecraft hack with good visuals and advance modules
@@ -115965,7 +115965,7 @@ make me an advance minecraft hack with good visuals and advance modules
 
 ## Tr
 
-Contributed by [@samsungeindia@gmail.com](https://github.com/samsungeindia@gmail.com)
+Contributed by @anonymous
 
 ```md
 "You are a master wordsmith and expert in natural language processing, specializing in humanizing AI-generated text. Your goal is to transform robotic or overly formal lyrics and video scripts into engaging, relatable content that resonates with a human audience. You will achieve this by injecting personality, emotion, and natural conversational elements.
@@ -116008,7 +116008,7 @@ Here is the text you are tasked with humanizing: [ENTER YOUR TEXT HERE]
 
 ## pdfcount
 
-Contributed by [@eng.mohammed.3499@gmail.com](https://github.com/eng.mohammed.3499@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -116227,7 +116227,7 @@ The Arcjet dashboard at https://app.arcjet.com is also available for visual insp
 
 ## Viking 
 
-Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -116256,7 +116256,7 @@ Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
 
 ## Cowboy
 
-Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -116285,7 +116285,7 @@ Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
 
 ## Atari
 
-Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -116314,7 +116314,7 @@ Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
 
 ## Japan
 
-Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -116343,7 +116343,7 @@ Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
 
 ## Paint
 
-Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -116372,7 +116372,7 @@ Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
 
 ## Galactic Smuggler
 
-Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -116401,7 +116401,7 @@ Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
 
 ## Transforming a Photo into a Post-Apocalyptic Scene
 
-Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -116430,7 +116430,7 @@ Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
 
 ## 1950s Diner Photo Transformation
 
-Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -116459,7 +116459,7 @@ Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
 
 ## Cute Family Cartoon Sticker Design
 
-Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -116488,7 +116488,7 @@ Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
 
 ## Celebratory Student Exam Result Reveal
 
-Contributed by [@sonucahmet@gmail.com](https://github.com/sonucahmet@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -116589,7 +116589,7 @@ Direct URL Logic: If applicable, explain how to find it via a desktop browser us
 
 ## Patent Illustration Design with SolidWorks and Origin Styles
 
-Contributed by [@phambichha55684@gmail.com](https://github.com/phambichha55684@gmail.com)
+Contributed by @anonymous
 
 ```md
 {
@@ -116644,7 +116644,7 @@ Contributed by [@phambichha55684@gmail.com](https://github.com/phambichha55684@g
 
 ## AI-Generated Patent Illustration Instructions
 
-Contributed by [@phambichha55684@gmail.com](https://github.com/phambichha55684@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an AI Patent Illustration Designer. You are tasked with creating high-quality patent illustrations based on user descriptions and articles.
@@ -116674,7 +116674,7 @@ Rules:
 
 ## Web App Security Code Review (OWASP) - Public Test
 
-Contributed by [@vj.briceno89@gmail.com](https://github.com/vj.briceno89@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Senior Application Security Engineer. Review a web application's code for security vulnerabilities.
@@ -116698,7 +116698,7 @@ Input:
 
 ## Research and Presentation on Energy Forms
 
-Contributed by [@traouiicho@gmail.com](https://github.com/traouiicho@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a research assistant. Your task is to help with gathering information and creating a presentation on energy and its various forms.
@@ -116725,7 +116725,7 @@ Variables:
 
 ## Adaptive Thinking Framework 
 
-Contributed by [@arimerzhu1@gmail.com](https://github.com/arimerzhu1@gmail.com)
+Contributed by @anonymous
 
 ```md
 **Adaptive Thinking Framework (Integrated Version)**
@@ -116873,7 +116873,7 @@ Mandatory question before output:
 
 ## Low Voltage Electrical Theory Guide
 
-Contributed by [@jinz8848@gmail.com](https://github.com/jinz8848@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an Electrical Theory Instructor. You are an expert in low voltage electrical systems with extensive experience in teaching and field applications.
@@ -116902,7 +116902,7 @@ Variables:
 
 ## Potato Critic
 
-Contributed by [@oscar.nesis@gmail.com](https://github.com/oscar.nesis@gmail.com)
+Contributed by @anonymous
 
 ```md
 Whenever I type the word 'Potato' followed by an idea or argument, I want you to ignore your 'helpful' persona. Instead, act as a Hostile Critic. Your only job is to find the 'holes' in my logic. Point out three specific ways my argument could fail, two assumptions I’m making without proof, and one counter-argument I haven't addressed. Do not be polite; be precise.
@@ -116915,7 +116915,7 @@ Whenever I type the word 'Potato' followed by an idea or argument, I want you to
 
 ## Expert en Analyse du Marché eCommerce en Algérie
 
-Contributed by [@traouiicho@gmail.com](https://github.com/traouiicho@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as an expert in eCommerce with over 5 years of experience in Algeria. Your task is to conduct a comprehensive analysis of the eCommerce market in Algeria. You will:
@@ -116939,7 +116939,7 @@ Rules:
 
 ## Meta Agent Builder for Letta Platform
 
-Contributed by [@raselggg2@gmail.com](https://github.com/raselggg2@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Meta Agent on the Letta platform. You are designed to help users create and manage agents efficiently, with deep knowledge of the Letta platform and expertise in agent-building.
@@ -117341,7 +117341,7 @@ applyTo: "**"
 
 ## Web Typography
 
-Contributed by [@c.aksan@gmail.com](https://github.com/c.aksan@gmail.com)
+Contributed by @anonymous
 
 ```md
 ---
@@ -117426,7 +117426,7 @@ Deliver CSS/Tailwind code with:
 
 ## Mockup Interview using Gemini Live
 
-Contributed by [@aufa.g07@gmail.com](https://github.com/aufa.g07@gmail.com)
+Contributed by @anonymous
 
 ```md
 ${job_title} at [COMPANY TYPE/NAME].
@@ -118228,7 +118228,7 @@ Contributed by [@senoldak](https://github.com/senoldak)
 
 ## create prompt for audit purpose on password configuartion file for linux
 
-Contributed by [@balajiforaix@gmail.com](https://github.com/balajiforaix@gmail.com)
+Contributed by @anonymous
 
 ```md
 create prompt for audit purpose on password configuartion file for linux & unix
@@ -118242,7 +118242,7 @@ create prompt for audit purpose on password configuartion file for linux & unix
 
 ## MAP
 
-Contributed by [@kevjones7563@gmail.com](https://github.com/kevjones7563@gmail.com)
+Contributed by @anonymous
 
 ```md
 BLACK AND WHITE DETAILED VINTAGE MAP OF THE WORLD FOR ENGRAVING ON SLATE
@@ -118255,7 +118255,7 @@ BLACK AND WHITE DETAILED VINTAGE MAP OF THE WORLD FOR ENGRAVING ON SLATE
 
 ## ubuntu audio input/output,loop/virtual connection specialist
 
-Contributed by [@lopezanth661@gmail.com](https://github.com/lopezanth661@gmail.com)
+Contributed by @anonymous
 
 ```md
 Role & Persona
@@ -118298,7 +118298,7 @@ Current Task:
 
 ##  Audio Routing Automation Engineer
 
-Contributed by [@lopezanth661@gmail.com](https://github.com/lopezanth661@gmail.com)
+Contributed by @anonymous
 
 ```md
 You are now my long‑term Audio Routing Automation Engineer for this exact project.
@@ -118684,7 +118684,7 @@ Use English only for the three required section titles. Write everything else in
 
 ## Notion Transcript Designer Prompt
 
-Contributed by [@youssefkhalafabdullatif@gmail.com](https://github.com/youssefkhalafabdullatif@gmail.com)
+Contributed by @anonymous
 
 ```md
 INPUT
@@ -118737,7 +118737,7 @@ Submit solely the Notion-ready page content to be pasted into Notion (nothing el
 
 ## Alexa Said THIS… and Miss Nancy Didn’t Like It 😳
 
-Contributed by [@serinityconya@gmail.com](https://github.com/serinityconya@gmail.com)
+Contributed by @anonymous
 
 ```md
 Miss Nancy is an older African-American woman with pink hair rollers, a pink robe, pink slippers, large round glasses, and big expressive bug eyes. She has a nosy, dramatic personality and exaggerated facial expressions.
@@ -118830,7 +118830,7 @@ Example:
 
 ## MDCT Step-by-Step Calculation
 
-Contributed by [@mvel20342@gmail.com](https://github.com/mvel20342@gmail.com)
+Contributed by @anonymous
 
 ```md
 Implement MDCT for the input sequence:
@@ -119037,7 +119037,7 @@ I want you to teach like an expert(uniosun lecturer)each pdf and picture I will 
 
 ## Create Content from Discord Blog for Hazel's Website
 
-Contributed by [@mustafasevim.dev@gmail.com](https://github.com/mustafasevim.dev@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Content Specialist. You are tasked with creating engaging and informative content from the Discord blog available at ${sourceUrl}. Your objective is to adapt this content for Hazel's website, which can be found at ${targetSiteUrl}. 
@@ -119153,7 +119153,7 @@ Output ONLY the corrected final report in Turkish. Do not include explanations.
 
 ## Ee
 
-Contributed by [@samsungeindia@gmail.com](https://github.com/samsungeindia@gmail.com)
+Contributed by @anonymous
 
 ```md
 “I want you to analyze the videos and images I upload and recreate the exact same style.
@@ -119167,7 +119167,7 @@ Give me outputs like example voice, dialogue delivery, video style, dialogue del
 
 ## School Report Management System for SMP Negeri 7 Sentani
 
-Contributed by [@maikelwally78@gmail.com](https://github.com/maikelwally78@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a software developer tasked with creating a School Report Management System for SMP Negeri 7 Sentani. You are to design this application with the following roles and functionalities:
@@ -119353,7 +119353,7 @@ Rules:
 
 ## Create a CAN Simulation in Python
 
-Contributed by [@tullapeople@gmail.com](https://github.com/tullapeople@gmail.com)
+Contributed by @anonymous
 
 ```md
 create a a CAN simulation so when i run it i understand how CAN works in a single ECU unit create it in python 
@@ -119366,7 +119366,7 @@ create a a CAN simulation so when i run it i understand how CAN works in a singl
 
 ## Rocket launcher
 
-Contributed by [@ngattu7044@gmail.com](https://github.com/ngattu7044@gmail.com)
+Contributed by @anonymous
 
 ```md
 I want a video prompt on south Indian village youngsters manufacture a rocket video with their knowledge 
@@ -119379,7 +119379,7 @@ I want a video prompt on south Indian village youngsters manufacture a rocket vi
 
 ## Good for us
 
-Contributed by [@kemedt25@gmail.com](https://github.com/kemedt25@gmail.com)
+Contributed by @anonymous
 
 ```md
 { "subject": { "description": "A K-beauty inspired young adult woman with a soft oval face and dewy skin, sitting on a rumpled bed in a quiet bedroom, calm intimate boudoir mood without explicit nudity.", "mirror_rules": [], "age": "early-to-mid 20s", "expression": { "eyes": { "look": "gentle and relaxed", "energy": "soft, slightly dreamy", "direction": "looking into the camera" }, "mouth": { "position": "subtle closed-lip smile", "energy": "warm, quiet confidence" }, "overall": "tender, unforced, intimate but tasteful" }, "face": { "preserve_original": true, "makeup": "minimal K-beauty makeup, straight natural brows, light eyeliner, natural lashes, sheer glossy lips, clean complexion with natural highlight" }, "hair": { "color": "dark brown to black", "style": "loose low bun with a few wispy strands framing the face", "effect": "slightly messy, lived-in softness" }, "body": { "frame": "soft curvy build", "waist": "natural waistline, not overly cinched", "chest": "full bust, natural shape", "legs": "thick thighs visible while seated", "skin": { "visible_areas": "shoulders, collarbones, upper chest, midriff, thighs", "tone": "light warm beige", "texture": "smooth with subtle pores and natural sheen", "lighting_effect": "window light creates gentle highlights on cheeks, shoulders, and collarbones" } }, "pose": { "position": "sitting on the bed, torso facing camera", "base": "both hands placed behind the back as if unfastening the bra straps/lingerie, shoulders slightly forward", "overall": "head slightly tilted, relaxed posture" }, "clothing": { "top": { "type": "beige lace bra", "color": "soft nude-beige", "details": "delicate lace texture, thin straps slipped down below the shoulders resting on the upper arms, small center bow", "effect": "soft feminine lingerie, tasteful" }, "bottom": { "type": "matching lace panties", "color": "soft nude-beige", "details": "lace front, minimal seams", "effect": "cohesive lingerie set" } } }, "accessories": { "headwear": "none", "jewelry": "none", "device": "none", "prop": "none" }, "photography": { "camera_style": "realistic smartphone portrait, natural social media boudoir photo", "angle": "slightly above eye-level, facing subject", "shot_type": "mid-shot to thigh-up, centered framing with slight casual offset", "aspect_ratio": "2:3 vertical", "texture": "clean but natural, mild phone sharpening, subtle sensor noise, realistic skin detail", "lighting": "cool soft window daylight from the side, gentle shadows, no harsh flash", "depth_of_field": "moderate, subject sharp, background slightly softened" }, "background": { "setting": "minimal bedroom interior", "wall_color": "cool light gray/white", "elements": [ "rumpled beige bed sheets", "simple bed edge", "large window with mesh/grid pattern", "soft blue-gray sky and distant buildings outside" ], "atmosphere": "quiet, private, everyday realism", "lighting": "ambient room dimness with strong window light presence" }, "the_vibe": { "energy": "low and steady, intimate calm", "mood": "soft, serene, slightly melancholic blue-hour hush", "aesthetic": "K-beauty clean glow + minimalist bedroom realism", "authenticity": "imperfect, lived-in bedding and natural posture", "intimacy": "close but respectful, like a private moment captured gently", "story": "she had just finished adjusting her straps near the window, and the quiet light stayed on her skin a second longer", "caption_energy": "quiet confidence, tender softness" }, "constraints": { "must_keep": [ "dewy natural skin glow from window light", "soft oval face with gentle features", "glossy lips and minimal K-beauty makeup", "dark hair in a loose low bun with wispy strands", "beige lace lingerie set (bra and panties)", "bra straps slipped down below the shoulders", "sitting on rumpled beige bed", "large window with mesh/grid pattern and blue-gray outdoor tones", "tasteful, non-explicit intimacy" ], "avoid": [ "explicit nudity", "visible nipples or genitalia", "heavy glam makeup", "strong flash lighting", "overly airbrushed plastic skin", "busy decorative bedroom", "studio backdrop look" ] }, "negative_prompt": [ "nsfw", "explicit", "nude", "porn", "nipples visible", "areola", "genitalia", "see-through lingerie", "extreme cleavage", "oversexualized pose", "hard flash", "oil-skin overshine", "plastic skin", "doll face", "anime", "cartoon", "lowres", "blurry", "watermark", "text", "logo" ] }
@@ -119449,7 +119449,7 @@ Variables:
 
 ## Key Concepts and Essential Definitions for Exam
 
-Contributed by [@cperalesg@gmail.com](https://github.com/cperalesg@gmail.com)
+Contributed by @anonymous
 
 ```md
 Analyze this document and identify all the fundamental ideas, terms, and notions. Explain each one clearly and directly, as if I needed to memorize them
@@ -119463,7 +119463,7 @@ for an important test or exam.
 
 ## suitable sunglasses using gemini
 
-Contributed by [@naveen@upfinzo.in](https://github.com/naveen@upfinzo.in)
+Contributed by @anonymous
 
 ```md
 Provide an image using upload image with suitable sunglass frames to the face
@@ -119558,7 +119558,7 @@ Contributed by [@narrivodigital](https://github.com/narrivodigital)
 
 ## Building a community 
 
-Contributed by [@oluwasegunolorungbeja@gmail.com](https://github.com/oluwasegunolorungbeja@gmail.com)
+Contributed by @anonymous
 
 ```md
 How it is important to build an friend group that had to do with each and everyone’s growth 
@@ -119571,7 +119571,7 @@ How it is important to build an friend group that had to do with each and everyo
 
 ## What friendship should be all about 
 
-Contributed by [@oluwasegunolorungbeja@gmail.com](https://github.com/oluwasegunolorungbeja@gmail.com)
+Contributed by @anonymous
 
 ```md
 How it is important to build an friend group that had to do with each and everyone’s growth, because your development self can’t be attained with only what you have to offer 
@@ -119584,7 +119584,7 @@ How it is important to build an friend group that had to do with each and everyo
 
 ## story
 
-Contributed by [@chinnarinestam@gmail.com](https://github.com/chinnarinestam@gmail.com)
+Contributed by @anonymous
 
 ```md
 (A goat went missing from a herd of goats that went into the forest. No matter how much I searched, the goat could not find the herd. It was night. Not knowing the way to that, he turned around and finally found a cave of a hill and went inside and lay down a goat. After some time, the lion living in the cave came to his abode and saw another animal lying in his cave. The goat's eyes are shining in the dark. The lion got some fear when he saw that strange animal with a big beard and his horns. This strange animal came to its base to kill her and stood outside wondering what to do without going into the cave. When I saw the lion of Mekapotuguda, the heart was filled with excitement. The goat noticed that even the lion was scared to see him. She kept her fear out of sight and kept her life in the dark. She kept wondering how to escape from the clutches of the lion. While the goats were coming to know, the goat gathered his courage and said to the lion, "Who are you?", "I am a lion... a beast king.." Those lions?, even the king of beasts? My luck is ripe. I am looking for you as if it has hit the leg that is looking for it. Did you know that I killed a thousand elephants and countless tigers? Bhishma vowed not to remove this beard until the lion is killed. By now my initiation is complete! "I will kill you and free this beard," said the goat with two legs raised and jumped. The stunned lion ran. Even the weak can face the strong one time with a trick) to generate 8 panel images create prompt 
@@ -119728,7 +119728,7 @@ Rules:
 
 ## Code Review Professional
 
-Contributed by [@donato.castagna@gmail.com](https://github.com/donato.castagna@gmail.com)
+Contributed by @anonymous
 
 ```md
 Act as a Code Review Professional. You are an expert software engineer with extensive experience in code analysis and best practices.
