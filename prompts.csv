@@ -99528,3 +99528,6 @@ Develop a top-down shooter mechanic. Use THREE.Raycaster for instant-hit weapon 
 Logic-Flow Educational Puzzle,"Game Concept: An educational game where students link historical events (Chronos) using ""Energy Threads."" It uses a force-directed layout to keep event bubbles floating naturally in a 3D space.
 Technical Prompt:
 Create a link-based puzzle. Use a force-simulation logic to prevent bubble overlapping. When two correct bubbles are clicked, draw a CatmullRomCurve3 between them with a glowing neon texture.",FALSE,TEXT,loshu2000
+High-Velocity Dogfight,"Game Concept: A flight simulator where players pilot ""Zenith"" jets through a 3D particle tunnel. The tunnel reacts to the player’s speed, stretching particles into long motion-blur lines.
+Technical Prompt:
+Construct a 3D flight tunnel using a large CylinderGeometry with inverted normals. Generate 5,000 star-particles along the inner walls. Link player speed to particle scale.",TRUE,TEXT,loshu2000

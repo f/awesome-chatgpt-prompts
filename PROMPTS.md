@@ -119764,3 +119764,18 @@ Create a link-based puzzle. Use a force-simulation logic to prevent bubble overl
 
 </details>
 
+<details>
+<summary><strong>High-Velocity Dogfight</strong></summary>
+
+## High-Velocity Dogfight
+
+Contributed by [@loshu2000](https://github.com/loshu2000)
+
+```md
+Game Concept: A flight simulator where players pilot "Zenith" jets through a 3D particle tunnel. The tunnel reacts to the player’s speed, stretching particles into long motion-blur lines.
+Technical Prompt:
+Construct a 3D flight tunnel using a large CylinderGeometry with inverted normals. Generate 5,000 star-particles along the inner walls. Link player speed to particle scale.
+```
+
+</details>
+
