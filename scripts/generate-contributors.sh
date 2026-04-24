@@ -132,7 +132,7 @@ def git_commit(author_name, author_email, message):
 # --- PROMPTS.md helpers ---
 
 EMAIL_RE = re.compile(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
-GITHUB_USERNAME_RE = re.compile(r'^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$')
+GITHUB_USERNAME_RE = re.compile(r'^[A-Za-z0-9](?:[A-Za-z0-9]|-(?=[A-Za-z0-9])){0,37}$')
 
 def format_contributor_links(contributor_field):
     if not contributor_field:
@@ -143,13 +143,14 @@ def format_contributor_links(contributor_field):
 
     links = []
     for contributor in contributors:
-        if EMAIL_RE.match(contributor):
+        normalized = contributor.lstrip('@')
+        if EMAIL_RE.match(normalized):
             links.append('@anonymous')
-        elif GITHUB_USERNAME_RE.match(contributor):
-            links.append(f'[@{contributor}](https://github.com/{contributor})')
-        else:
-            links.append(f'@{contributor}')
-    return ', '.join(links)
+        elif GITHUB_USERNAME_RE.match(normalized):
+            links.append(f'[@{normalized}](https://github.com/{normalized})')
+        elif normalized:
+            links.append(f'@{normalized}')
+    return ', '.join(links) if links else '@anonymous'
 
 def generate_prompt_block(row):
     act = row.get('act', 'Untitled')
