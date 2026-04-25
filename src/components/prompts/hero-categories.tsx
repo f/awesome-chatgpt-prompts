@@ -35,11 +35,12 @@ export function HeroCategories() {
         </div>
       </form>
 
-      <div className="w-full max-w-md aspect-video rounded-xl overflow-hidden border-2 border-primary/30 shadow-md bg-background/80 backdrop-blur-md">
+      <div className="w-full max-w-lg aspect-video rounded-xl overflow-hidden border-2 border-primary/30 shadow-md bg-background/80 backdrop-blur-md">
         <iframe
           className="w-full h-full"
-          src="https://www.youtube.com/embed/T1Ay91zvkok?start=372"
-          title="GitHub Open Source Friday"
+          src="https://www.youtube-nocookie.com/embed/T1Ay91zvkok?start=372"
+          title={t("videoTitle")}
+          loading="lazy"
           frameBorder={0}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
