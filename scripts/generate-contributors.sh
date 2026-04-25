@@ -132,7 +132,7 @@ def git_commit(author_name, author_email, message):
 # --- PROMPTS.md helpers ---
 
 EMAIL_RE = re.compile(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
-GITHUB_USERNAME_RE = re.compile(r'^[A-Za-z0-9](?:[A-Za-z0-9]|-(?=[A-Za-z0-9])){0,37}$')
+GITHUB_USERNAME_RE = re.compile(r'^[A-Za-z0-9](?:[A-Za-z0-9]|-(?=[A-Za-z0-9])){0,38}$')
 
 def format_contributor_links(contributor_field):
     if not contributor_field:
