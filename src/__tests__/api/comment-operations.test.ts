@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 import { DELETE } from "@/app/api/prompts/[id]/comments/[commentId]/route";
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -31,7 +32,7 @@ describe("DELETE /api/prompts/[id]/comments/[commentId]", () => {
   it("should return 403 if comments feature is disabled", async () => {
     vi.mocked(getConfig).mockResolvedValue({ features: { comments: false } } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456", {
       method: "DELETE",
     });
     const response = await DELETE(request, {
@@ -44,9 +45,9 @@ describe("DELETE /api/prompts/[id]/comments/[commentId]", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456", {
       method: "DELETE",
     });
     const response = await DELETE(request, {
@@ -62,7 +63,7 @@ describe("DELETE /api/prompts/[id]/comments/[commentId]", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1", role: "USER" } } as never);
     vi.mocked(db.comment.findUnique).mockResolvedValue(null);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456", {
       method: "DELETE",
     });
     const response = await DELETE(request, {
@@ -82,7 +83,7 @@ describe("DELETE /api/prompts/[id]/comments/[commentId]", () => {
       authorId: "user1",
     } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456", {
       method: "DELETE",
     });
     const response = await DELETE(request, {
@@ -102,7 +103,7 @@ describe("DELETE /api/prompts/[id]/comments/[commentId]", () => {
       authorId: "other-user", // Different author
     } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456", {
       method: "DELETE",
     });
     const response = await DELETE(request, {
@@ -123,7 +124,7 @@ describe("DELETE /api/prompts/[id]/comments/[commentId]", () => {
     } as never);
     vi.mocked(db.comment.update).mockResolvedValue({} as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456", {
       method: "DELETE",
     });
     const response = await DELETE(request, {
@@ -148,7 +149,7 @@ describe("DELETE /api/prompts/[id]/comments/[commentId]", () => {
     } as never);
     vi.mocked(db.comment.update).mockResolvedValue({} as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456", {
       method: "DELETE",
     });
     const response = await DELETE(request, {
@@ -169,7 +170,7 @@ describe("DELETE /api/prompts/[id]/comments/[commentId]", () => {
     } as never);
     vi.mocked(db.comment.update).mockResolvedValue({} as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456", {
       method: "DELETE",
     });
     await DELETE(request, {

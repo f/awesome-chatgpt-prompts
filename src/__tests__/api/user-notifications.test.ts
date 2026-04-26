@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 import { GET, POST } from "@/app/api/user/notifications/route";
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -29,7 +30,7 @@ describe("GET /api/user/notifications", () => {
   });
 
   it("should return default response if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
     const response = await GET();
     const data = await response.json();
@@ -132,9 +133,9 @@ describe("POST /api/user/notifications", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
-    const request = new Request("http://localhost:3000/api/user/notifications", {
+    const request = new NextRequest("http://localhost:3000/api/user/notifications", {
       method: "POST",
       body: JSON.stringify({}),
     });
@@ -149,7 +150,7 @@ describe("POST /api/user/notifications", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
     vi.mocked(db.notification.updateMany).mockResolvedValue({ count: 2 } as never);
 
-    const request = new Request("http://localhost:3000/api/user/notifications", {
+    const request = new NextRequest("http://localhost:3000/api/user/notifications", {
       method: "POST",
       body: JSON.stringify({ notificationIds: ["notif1", "notif2"] }),
     });
@@ -171,7 +172,7 @@ describe("POST /api/user/notifications", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
     vi.mocked(db.notification.updateMany).mockResolvedValue({ count: 5 } as never);
 
-    const request = new Request("http://localhost:3000/api/user/notifications", {
+    const request = new NextRequest("http://localhost:3000/api/user/notifications", {
       method: "POST",
       body: JSON.stringify({}),
     });
@@ -193,7 +194,7 @@ describe("POST /api/user/notifications", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
     vi.mocked(db.notification.updateMany).mockResolvedValue({ count: 3 } as never);
 
-    const request = new Request("http://localhost:3000/api/user/notifications", {
+    const request = new NextRequest("http://localhost:3000/api/user/notifications", {
       method: "POST",
       body: JSON.stringify({ notificationIds: "invalid" }),
     });

@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 import { POST } from "@/app/api/prompts/[id]/comments/[commentId]/flag/route";
 import { db } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -31,7 +32,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/flag", () => {
   it("should return 403 if comments feature is disabled", async () => {
     vi.mocked(getConfig).mockResolvedValue({ features: { comments: false } } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/flag", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/flag", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -44,9 +45,9 @@ describe("POST /api/prompts/[id]/comments/[commentId]/flag", () => {
   });
 
   it("should return 401 if not authenticated", async () => {
-    vi.mocked(auth).mockResolvedValue(null);
+    vi.mocked(auth).mockResolvedValue(null as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/flag", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/flag", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -61,7 +62,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/flag", () => {
   it("should return 403 if user is not admin", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1", role: "USER" } } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/flag", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/flag", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -77,7 +78,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/flag", () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "admin1", role: "ADMIN" } } as never);
     vi.mocked(db.comment.findUnique).mockResolvedValue(null);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/flag", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/flag", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -97,7 +98,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/flag", () => {
       flagged: false,
     } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/flag", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/flag", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -118,7 +119,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/flag", () => {
     } as never);
     vi.mocked(db.comment.update).mockResolvedValue({ flagged: true } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/flag", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/flag", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -139,7 +140,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/flag", () => {
     } as never);
     vi.mocked(db.comment.update).mockResolvedValue({ flagged: false } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/flag", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/flag", {
       method: "POST",
     });
     const response = await POST(request, {
@@ -160,7 +161,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/flag", () => {
     } as never);
     vi.mocked(db.comment.update).mockResolvedValue({ flagged: true } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/flag", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/flag", {
       method: "POST",
     });
     await POST(request, {
@@ -186,7 +187,7 @@ describe("POST /api/prompts/[id]/comments/[commentId]/flag", () => {
     } as never);
     vi.mocked(db.comment.update).mockResolvedValue({ flagged: false } as never);
 
-    const request = new Request("http://localhost:3000/api/prompts/123/comments/456/flag", {
+    const request = new NextRequest("http://localhost:3000/api/prompts/123/comments/456/flag", {
       method: "POST",
     });
     await POST(request, {
