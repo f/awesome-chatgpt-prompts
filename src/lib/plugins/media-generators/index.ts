@@ -10,6 +10,7 @@
 
 import { wiroGeneratorPlugin } from "./wiro";
 import { falGeneratorPlugin } from "./fal";
+import { promptchanGeneratorPlugin } from "./promptchan";
 import type { MediaGeneratorPlugin, MediaGeneratorModel, MediaType, WebSocketHandler } from "./types";
 
 export * from "./types";
@@ -20,8 +21,7 @@ export * from "./types";
 const plugins: MediaGeneratorPlugin[] = [
   wiroGeneratorPlugin,
   falGeneratorPlugin,
-  // Add new plugins here:
-  // myNewPlugin,
+  promptchanGeneratorPlugin,
 ];
 
 const mediaGeneratorRegistry = new Map<string, MediaGeneratorPlugin>();
