@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/f-prompts-chat-badge.png)](https://mseep.ai/app/f-prompts-chat)
+
 <h1 align="center">
   <a href="https://prompts.chat">
     <picture>
