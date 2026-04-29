@@ -121758,3 +121758,16 @@ Focus on practical guidance with an emphasis on compliance, customization, and i
 
 </details>
 
+<details>
+<summary><strong>Competitor Awareness</strong></summary>
+
+## Competitor Awareness
+
+Contributed by [@shamanthreddy57@gmail.com](https://github.com/shamanthreddy57@gmail.com)
+
+```md
+give the best prompt to identify the complete company profile of euler, like core aspeccts to focus on, fundraising, growth strategy, series funding, execution plan, vc involvement, etc. Basically complete data about Euler motors
+```
+
+</details>
+
