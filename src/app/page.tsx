@@ -72,7 +72,7 @@ export default async function HomePage() {
             />
           </div>
         ) : (
-          <div className="absolute top-0 end-0 bottom-0 w-1/3 2xl:w-1/2 hidden md:block pointer-events-none">
+          <div className="absolute top-0 end-0 bottom-0 w-2/5 xl:w-[45%] 2xl:w-1/2 hidden md:block pointer-events-none overflow-hidden">
             {/* Video background */}
             <div className="absolute inset-0">
               <div className="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-background via-background/80 to-transparent z-10" />
@@ -126,7 +126,7 @@ export default async function HomePage() {
         )}
         
         <div className="container relative z-20">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl lg:max-w-xl xl:max-w-2xl">
             {useCloneBranding ? (
               <>
                 <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-5xl !text-2xl sm:!text-3xl md:!text-4xl lg:!text-5xl text-primary">

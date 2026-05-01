@@ -17,12 +17,12 @@ services:
       start_period: 10s
 
   app:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile
-    # To use a pre-built image instead of building locally, comment out
-    # the 'build' block above and uncomment the line below:
-    # image: ghcr.io/f/prompts.chat:latest
+    image: ghcr.io/f/prompts.chat:latest
+    # To build locally instead of using the pre-built image, comment out
+    # the 'image' line above and uncomment the build block below:
+    # build:
+    #   context: .
+    #   dockerfile: docker/Dockerfile
     restart: unless-stopped
     ports:
       - "${PORT:-4444}:3000"
