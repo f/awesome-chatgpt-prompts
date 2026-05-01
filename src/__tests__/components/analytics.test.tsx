@@ -16,20 +16,24 @@ describe("Analytics", () => {
     localStorage.clear();
   });
 
-  it("does not inject Google Analytics before cookie consent is accepted", () => {
+  it("does not inject Google Analytics before cookie consent is accepted", async () => {
     render(<Analytics gaId="G-TEST" />);
 
-    expect(screen.queryByTestId("external-script")).not.toBeInTheDocument();
-    expect(screen.queryByTestId("google-analytics")).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.queryByTestId("external-script")).not.toBeInTheDocument();
+      expect(screen.queryByTestId("google-analytics")).not.toBeInTheDocument();
+    });
   });
 
-  it("does not inject Google Analytics when cookie consent was rejected", () => {
+  it("does not inject Google Analytics when cookie consent was rejected", async () => {
     localStorage.setItem("cookie-consent", "rejected");
 
     render(<Analytics gaId="G-TEST" />);
 
-    expect(screen.queryByTestId("external-script")).not.toBeInTheDocument();
-    expect(screen.queryByTestId("google-analytics")).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.queryByTestId("external-script")).not.toBeInTheDocument();
+      expect(screen.queryByTestId("google-analytics")).not.toBeInTheDocument();
+    });
   });
 
   it("injects Google Analytics after cookie consent is accepted", async () => {
