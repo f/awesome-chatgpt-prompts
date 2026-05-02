@@ -1,6 +1,8 @@
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { getProviderMetadata, getConfiguredProviderIds } from "@/lib/auth/provider-metadata";
 
+type ConfigParam = Parameters<typeof getConfiguredProviderIds>[0];
+
 describe("Provider Metadata", () => {
     const originalEnv = process.env;
 
@@ -107,15 +109,23 @@ describe("Provider Metadata", () => {
         it("should return providers array when configured", () => {
             const config = {
                 auth: { providers: ["github", "google", "oidc"], allowRegistration: false },
-            } as any;
+            } as unknown as ConfigParam;
 
             expect(getConfiguredProviderIds(config)).toEqual(["github", "google", "oidc"]);
+        });
+
+        it("should fallback to deprecated singular provider string if present", () => {
+            const config = {
+                auth: { provider: "github", allowRegistration: false },
+            } as unknown as ConfigParam;
+
+            expect(getConfiguredProviderIds(config)).toEqual(["github"]);
         });
 
         it("should default to credentials when providers array is empty", () => {
             const config = {
                 auth: { providers: [], allowRegistration: false },
-            } as any;
+            } as unknown as ConfigParam;
 
             expect(getConfiguredProviderIds(config)).toEqual(["credentials"]);
         });
@@ -123,7 +133,7 @@ describe("Provider Metadata", () => {
         it("should default to credentials when providers is not set", () => {
             const config = {
                 auth: { allowRegistration: false },
-            } as any;
+            } as unknown as ConfigParam;
 
             expect(getConfiguredProviderIds(config)).toEqual(["credentials"]);
         });

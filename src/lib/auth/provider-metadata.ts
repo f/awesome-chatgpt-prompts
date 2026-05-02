@@ -68,5 +68,8 @@ export function getConfiguredProviderIds(config: Awaited<ReturnType<typeof getCo
     if (config.auth.providers && config.auth.providers.length > 0) {
         return config.auth.providers;
     }
+    if (config.auth.provider && typeof config.auth.provider === "string") {
+        return [config.auth.provider];
+    }
     return ["credentials"];
 }
