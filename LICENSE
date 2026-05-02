@@ -1,1 +1,14 @@
-"This project uses a dual-license model:\n\n- **Source code and site-authored content** (everything under src/,\n  prisma/, scripts/, and all configuration/build files) is licensed under\n  the MIT License. This includes the interactive book content in\n  src/content/book/.\n  See LICENSE-MIT for the full text.\n\n- **Prompt content and data** (prompts.csv, PROMPTS.md, and all user-submitted\n  prompt text) is dedicated to the public domain under CC0 1.0 Universal.\n  See LICENSE-CC0 for the full text.\n\nIf you are unsure which license applies to a particular file, the MIT License\napplies by default.\n"
+This project uses a dual-license model:
+
+- **Source code and site-authored content** (everything under src/,
+  prisma/, scripts/, and all configuration/build files) is licensed under
+  the MIT License. This includes the interactive book content in
+  src/content/book/.
+  See LICENSE-MIT for the full text.
+
+- **Prompt content and data** (prompts.csv, PROMPTS.md, and all user-submitted
+  prompt text) is dedicated to the public domain under CC0 1.0 Universal.
+  See LICENSE-CC0 for the full text.
+
+If you are unsure which license applies to a particular file, the MIT License
+applies by default.
