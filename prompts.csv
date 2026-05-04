@@ -102012,3 +102012,4 @@ Rules:
 Variables:
 - ${text} - input text to be corrected
 - ${tone:formal} - desired tone of the corrected text",FALSE,TEXT,karthigeyanbaskaran
+Split Word Rejoin,Remove the - character and restore the split words in the markdown content.,FALSE,TEXT,Bornduck

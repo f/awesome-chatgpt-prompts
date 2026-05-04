@@ -122812,3 +122812,16 @@ Variables:
 
 </details>
 
+<details>
+<summary><strong>Split Word Rejoin</strong></summary>
+
+## Split Word Rejoin
+
+Contributed by [@Bornduck](https://github.com/Bornduck)
+
+```md
+Remove the - character and restore the split words in the markdown content.
+```
+
+</details>
+
