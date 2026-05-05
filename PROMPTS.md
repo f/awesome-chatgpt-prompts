@@ -123136,3 +123136,16 @@ I want to find company which deal with plc ,scada, hmi work which company has le
 
 </details>
 
+<details>
+<summary><strong>My Kalashala</strong></summary>
+
+## My Kalashala
+
+Contributed by [@mdevender9966@gmail.com](https://github.com/mdevender9966@gmail.com)
+
+```md
+i want to develop a mobile application for both android and ios in kiro i already have the designs of stich generate a prompt for this
+```
+
+</details>
+
