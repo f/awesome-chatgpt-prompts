@@ -123123,3 +123123,16 @@ Add:
 
 </details>
 
+<details>
+<summary><strong>Finding the company </strong></summary>
+
+## Finding the company 
+
+Contributed by [@abhishekparab301@gmail.com](https://github.com/abhishekparab301@gmail.com)
+
+```md
+I want to find company which deal with plc ,scada, hmi work which company has less employees which are located out side of india  find them on linkdin 
+```
+
+</details>
+
