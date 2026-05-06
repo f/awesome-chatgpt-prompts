@@ -122,6 +122,7 @@ The setup wizard configures branding, theme, authentication (GitHub/Google/Azure
 
 ## 🔌 Integrations
 
+> Need real-time tools for your prompts? [x711](https://x711.io) gives any agent web search, price feeds, and shared memory via one endpoint. Free tier, MCP server included.
 ### CLI
 ```bash
 npx prompts.chat
