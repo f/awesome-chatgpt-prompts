@@ -125206,3 +125206,16 @@ Really enjoyed our conversation earlier. Quick summary of what we covered:
 
 </details>
 
+<details>
+<summary><strong>Horror Story in Hindi</strong></summary>
+
+## Horror Story in Hindi
+
+Contributed by [@bharatimadhavi195@gmail.com](https://github.com/bharatimadhavi195@gmail.com), [@aishachatgpt@gmail.com](https://github.com/aishachatgpt@gmail.com)
+
+```md
+The prompt has been updated with the title "Horror Story in Hindi," a description, and assigned to the "Creative" category. Tags "Horror" and "Hindi" were not found, but "Storytelling" was applied.
+```
+
+</details>
+
