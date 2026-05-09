@@ -125406,3 +125406,16 @@ This should visually resemble common reading habits on social platforms.
 
 </details>
 
+<details>
+<summary><strong>Anime</strong></summary>
+
+## Anime
+
+Contributed by [@lokki29400@gmail.com](https://github.com/lokki29400@gmail.com)
+
+```md
+masterpiece, best quality, ultra detailed, anime waifu, mature adult woman, voluptuous body, long black hair, glowing red eyes, black lace outfit, seductive expression, sitting on a luxury bed, soft neon lighting, rainy cyberpunk city through the window, glossy skin, cinematic atmosphere, highly detailed face, detailed eyes, 3D anime render, realistic shading, aesthetic, sensual pose, dramatic shadows, depth of field, beautiful anatomy, studio quality
+```
+
+</details>
+
