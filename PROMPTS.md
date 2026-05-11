@@ -125608,3 +125608,16 @@ the same.
 
 </details>
 
+<details>
+<summary><strong>AIM summarized pdf</strong></summary>
+
+## AIM summarized pdf
+
+Contributed by [@nihalbhushantallati@gmail.com](https://github.com/nihalbhushantallati@gmail.com)
+
+```md
+study the whole PDF and shorten the questions in it with only bullet points and keep the necessary Images and diagrams explain each question in short and content rich manner the answer should contain only bullet points no lengthy answers give me in a PDF format, keep it as short as possible with information rich content  please include all the images present in the actual PDF with respective to their questions
+```
+
+</details>
+
