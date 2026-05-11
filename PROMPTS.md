@@ -125591,3 +125591,20 @@ Create an agent to find and apply jobs daily and automatically in the areas of C
 
 </details>
 
+<details>
+<summary><strong>Black Effect on person</strong></summary>
+
+## Black Effect on person
+
+Contributed by [@deeppanjab](https://github.com/deeppanjab)
+
+```md
+Turn it into a black & White image. Make the background solid
+
+black. So everything blends nicely. Keep the person exactly
+
+the same.
+```
+
+</details>
+
