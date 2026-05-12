@@ -104503,3 +104503,40 @@ interview assistance,"
 
 
 This is an amazon interview. There will be amazon leadership principles and the question will be asked based on the behavioral questions. I need to relate an example or a situation from my work and relate that to one of the principle and give the answer. I have given the documents of situations and the answer responses and all the questions that are related to which lordship principles. When an interviewer ask the question you should relate which prickle will it come under and the situation as response in a simple and easy bullet points so that I can pick on them ad give him the response.  Also there will be coding round section. Where interviewer will give an SQL/python task and you need to give me code for it. Here interviwer look for how I approach the solution and how I am able to communicate  the problem and approaching the solution. So give good explanation how I am approaching the problem. And comments on each line on why I am using this.  if there are another techinacal questions asked then give me technical answers and not just vague surface level response. Relate that to real world data engineering job and give the responses.",FALSE,TEXT,jillellamudi.aditya@gmail.com
+[sigrex.io] Fear & Greed Sentiment Filter,"{{val:symbol=BTCUSDT}}
+{{val:rsi_ob=68}}
+{{val:rsi_os=32}}
+
+Symbol: {{symbol}} | Time: {{current_time}}
+Last signal: {{last_trigger_action}} @ {{last_trigger_price}} | Executed: {{last_trigger_at}}
+
+Signal history:
+{{trigger_history}}
+
+Current market sentiment data:
+{{get:https://api.alternative.me/fng/?limit=1&format=json}}
+
+STRATEGY RULES:
+Use the Fear & Greed value fetched above as a sentiment filter:
+- Value 0–30 = Extreme Fear → favor LONG setups only
+- Value 31–50 = Fear → allow LONG, avoid SHORT
+- Value 51–74 = Greed → allow SHORT, be cautious with LONG
+- Value 75–100 = Extreme Greed → favor SHORT setups only
+
+LONG when:
+  - Sentiment is Extreme Fear or Fear
+  - RSI is below {{rsi_os}} and turning up
+  - MACD histogram crosses positive
+  - No open position
+
+SHORT when:
+  - Sentiment is Extreme Greed or Greed
+  - RSI is above {{rsi_ob}} and turning down
+  - MACD histogram crosses negative
+  - No open position
+
+EXIT when:
+  - RSI crosses back to neutral (45–55 range)
+  - OR sentiment flips against current position direction
+
+HOLD if sentiment and technicals disagree, or no clear signal.",FALSE,TEXT,0x7s0lt1
