@@ -126419,3 +126419,16 @@ Avoid:
 
 </details>
 
+<details>
+<summary><strong>Generate literature search report</strong></summary>
+
+## Generate literature search report
+
+Contributed by [@kamarasuba@gmail.com](https://github.com/kamarasuba@gmail.com)
+
+```md
+Development of cryogels using biodegradable polymers and nanoparticles for environmental monitoring and effective remediation
+```
+
+</details>
+
