@@ -6,6 +6,9 @@ import { db } from "@/lib/db";
 import { generatePromptEmbedding, findAndSaveRelatedPrompts } from "@/lib/ai/embeddings";
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
+import { resolvePromptTagConnections } from "@/lib/tags";
+
+const tagNameSchema = z.string().trim().min(1).max(50);
 
 const updatePromptSchema = z.object({
   title: z.string().min(1).max(200).optional(),
@@ -15,6 +18,7 @@ const updatePromptSchema = z.object({
   structuredFormat: z.enum(["JSON", "YAML"]).optional().nullable(),
   categoryId: z.string().optional().nullable(),
   tagIds: z.array(z.string()).optional(),
+  tagNames: z.array(tagNameSchema).max(10).optional(),
   contributorIds: z.array(z.string()).optional(),
   isPrivate: z.boolean().optional(),
   mediaUrl: z.string().url().optional().or(z.literal("")).nullable(),
@@ -162,7 +166,7 @@ export async function PATCH(
       );
     }
 
-    const { tagIds, contributorIds, categoryId, mediaUrl, title, bestWithModels, bestWithMCP, workflowLink, ...data } = parsed.data;
+    const { tagIds, tagNames, contributorIds, categoryId, mediaUrl, title, bestWithModels, bestWithMCP, workflowLink, ...data } = parsed.data;
 
     // Regenerate slug if title changed
     let newSlug: string | undefined;
@@ -181,16 +185,20 @@ export async function PATCH(
       ...(bestWithMCP !== undefined && { bestWithMCP }),
       ...(workflowLink !== undefined && { workflowLink: workflowLink || null }),
     };
+    const shouldUpdateTags = tagIds !== undefined || tagNames !== undefined;
+    const tagConnections = shouldUpdateTags
+      ? await resolvePromptTagConnections(tagIds, tagNames)
+      : undefined;
 
     // Update prompt
     const prompt = await db.prompt.update({
       where: { id },
       data: {
         ...cleanedData,
-        ...(tagIds && {
+        ...(tagConnections && {
           tags: {
             deleteMany: {},
-            create: tagIds.map((tagId) => ({ tagId })),
+            create: tagConnections,
           },
         }),
         ...(contributorIds !== undefined && {

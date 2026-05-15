@@ -348,6 +348,7 @@ const createPromptSchema = (t: (key: string) => string) => z.object({
   structuredFormat: z.enum(["JSON", "YAML"]).optional(),
   categoryId: z.string().optional(),
   tagIds: z.array(z.string()),
+  tagNames: z.array(z.string().trim().min(1).max(50)).optional(),
   isPrivate: z.boolean(),
   mediaUrl: z.string().url().optional().or(z.literal("")),
   requiresMediaUpload: z.boolean(),
@@ -446,6 +447,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
       structuredFormat: (builderData?.format as "JSON" | "YAML") || initialData?.structuredFormat || undefined,
       categoryId: initialData?.categoryId || "",
       tagIds: initialData?.tagIds || [],
+      tagNames: [],
       isPrivate: initialData?.isPrivate || false,
       mediaUrl: initialData?.mediaUrl || "",
       requiresMediaUpload: initialData?.requiresMediaUpload || false,
@@ -466,6 +468,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
   const modelsByProvider = getModelsByProvider();
 
   const selectedTags = form.watch("tagIds");
+  const selectedTagNames = form.watch("tagNames") || [];
   const promptType = form.watch("type");
   const structuredFormat = form.watch("structuredFormat");
   const isStructuredInput = !!structuredFormat;
@@ -681,6 +684,38 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
     }
   };
 
+  const removeManualTag = (tagName: string) => {
+    const current = form.getValues("tagNames") || [];
+    form.setValue("tagNames", current.filter((name) => name !== tagName));
+  };
+
+  const addManualTag = () => {
+    const tagName = tagSearch.trim();
+    if (!tagName) return;
+
+    const existingTag = tags.find(
+      (tag) => tag.name.toLowerCase() === tagName.toLowerCase()
+    );
+    if (existingTag) {
+      const currentTagIds = form.getValues("tagIds");
+      if (!currentTagIds.includes(existingTag.id)) {
+        toggleTag(existingTag.id);
+      }
+      setTagSearch("");
+      setTagDropdownOpen(false);
+      tagInputRef.current?.focus();
+      return;
+    }
+
+    const current = form.getValues("tagNames") || [];
+    if (!current.some((name) => name.toLowerCase() === tagName.toLowerCase())) {
+      form.setValue("tagNames", [...current, tagName]);
+    }
+    setTagSearch("");
+    setTagDropdownOpen(false);
+    tagInputRef.current?.focus();
+  };
+
   const handleAiGenerate = (field: string, label: string) => {
     if (usedAiButtons.has(field) || !builderRef.current) return;
     setUsedAiButtons(prev => new Set(prev).add(field));
@@ -852,6 +887,9 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                   !selectedTags.includes(tag.id) &&
                   tag.name.toLowerCase().includes(tagSearch.toLowerCase())
               );
+              const exactTagMatchExists = tags.some(
+                (tag) => tag.name.toLowerCase() === tagSearch.trim().toLowerCase()
+              );
               const selectedTagObjects = tags.filter((tag) => selectedTags.includes(tag.id));
 
               return (
@@ -861,7 +899,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                     <AiGenerateButton field="tags" label="Tags" />
                   </FormLabel>
                   {/* Selected tags */}
-                  {selectedTagObjects.length > 0 && (
+                  {(selectedTagObjects.length > 0 || selectedTagNames.length > 0) && (
                     <div className="flex flex-wrap gap-2 mb-2">
                       {selectedTagObjects.map((tag) => (
                         <Badge
@@ -874,6 +912,22 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                             type="button"
                             onClick={() => toggleTag(tag.id)}
                             className="ml-1 rounded-full hover:bg-white/20 p-0.5"
+                          >
+                            <X className="h-3 w-3" />
+                          </button>
+                        </Badge>
+                      ))}
+                      {selectedTagNames.map((tagName) => (
+                        <Badge
+                          key={tagName}
+                          variant="secondary"
+                          className="pr-1 flex items-center gap-1"
+                        >
+                          {tagName}
+                          <button
+                            type="button"
+                            onClick={() => removeManualTag(tagName)}
+                            className="ml-1 rounded-full hover:bg-muted p-0.5"
                           >
                             <X className="h-3 w-3" />
                           </button>
@@ -896,6 +950,12 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                         }}
                         onFocus={() => setTagDropdownOpen(true)}
                         onBlur={() => setTimeout(() => setTagDropdownOpen(false), 150)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" && tagSearch.trim()) {
+                            e.preventDefault();
+                            addManualTag();
+                          }
+                        }}
                         className="pl-9"
                         autoComplete="off"
                         autoCorrect="off"
@@ -929,9 +989,16 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                         ))}
                       </div>
                     )}
-                    {tagDropdownOpen && tagSearch && filteredTags.length === 0 && (
-                      <div className="absolute z-10 w-full mt-1 bg-popover border rounded-md shadow-md p-3 text-sm text-muted-foreground">
-                        {t("noTagsFound")}
+                    {tagDropdownOpen && tagSearch && filteredTags.length === 0 && !exactTagMatchExists && (
+                      <div className="absolute z-10 w-full mt-1 bg-popover border rounded-md shadow-md p-2">
+                        <button
+                          type="button"
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={addManualTag}
+                          className="w-full px-3 py-2 text-left text-sm hover:bg-muted rounded-sm"
+                        >
+                          {tCommon("create")} &quot;{tagSearch.trim()}&quot;
+                        </button>
                       </div>
                     )}
                   </div>
