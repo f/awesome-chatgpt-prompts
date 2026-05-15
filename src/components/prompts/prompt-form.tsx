@@ -348,7 +348,7 @@ const createPromptSchema = (t: (key: string) => string) => z.object({
   structuredFormat: z.enum(["JSON", "YAML"]).optional(),
   categoryId: z.string().optional(),
   tagIds: z.array(z.string()),
-  tagNames: z.array(z.string().trim().min(1).max(50)).optional(),
+  tagNames: z.array(z.string().trim().min(1).max(50)).max(10).optional(),
   isPrivate: z.boolean(),
   mediaUrl: z.string().url().optional().or(z.literal("")),
   requiresMediaUpload: z.boolean(),

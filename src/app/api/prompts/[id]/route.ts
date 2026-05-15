@@ -6,9 +6,7 @@ import { db } from "@/lib/db";
 import { generatePromptEmbedding, findAndSaveRelatedPrompts } from "@/lib/ai/embeddings";
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
-import { resolvePromptTagConnections } from "@/lib/tags";
-
-const tagNameSchema = z.string().trim().min(1).max(50);
+import { resolvePromptTagConnections, tagNameSchema } from "@/lib/tags";
 
 const updatePromptSchema = z.object({
   title: z.string().min(1).max(200).optional(),

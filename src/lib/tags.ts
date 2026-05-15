@@ -1,5 +1,8 @@
 import { db } from "@/lib/db";
 import { slugify } from "@/lib/slug";
+import { z } from "zod";
+
+export const tagNameSchema = z.string().trim().min(1).max(50);
 
 export async function resolvePromptTagConnections(
   tagIds: string[] = [],

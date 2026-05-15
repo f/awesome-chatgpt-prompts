@@ -8,9 +8,7 @@ import { generatePromptEmbedding, findAndSaveRelatedPrompts } from "@/lib/ai/emb
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
 import { isSimilarContent, normalizeContent } from "@/lib/similarity";
-import { resolvePromptTagConnections } from "@/lib/tags";
-
-const tagNameSchema = z.string().trim().min(1).max(50);
+import { resolvePromptTagConnections, tagNameSchema } from "@/lib/tags";
 
 const promptSchema = z.object({
   title: z.string().min(1).max(200),
