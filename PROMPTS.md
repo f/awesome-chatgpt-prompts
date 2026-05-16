@@ -126486,3 +126486,19 @@ Keep the screen readable but slightly blurry, like a poorly photographed phone s
 
 </details>
 
+<details>
+<summary><strong>Photo emhanced</strong></summary>
+
+## Photo emhanced
+
+Contributed by [@ashimkhan36.ak@gmail.com](https://github.com/ashimkhan36.ak@gmail.com)
+
+```md
+ ​"A professional, ultra-realistic 8K extremely high resolution masterpiece of [You decide content of the picture your self ]. Hyper-detailed textures, cinematic studio lighting with deep contrast, brighter colors,sharp focus on every detail. Shot on Sony A1 with 85mm f/1.8 lens for extreme clarity. Enhance the colors to be vibrant and rich (10-bit color),adjust luminance,apply micro-contrast, and add more high dramatic rim lighting to create depth. The surface should have realistic reflections and textures. Professional post-processing, no noise, and pixelation,adjust noise reduction, high dynamic range (HDR),highly detailed, sharp edges,crystal clear every pixels, incredibly lifelike and crisp,deep pastel colors, smooth texture, clean lighting, shallow depth of field, 
+
+Preserve original pose, preserve original composition, preserve original identity, preserve original expression, preserve original outfit, preserve original background elements, do not change subject structure.
+
+```
+
+</details>
+
