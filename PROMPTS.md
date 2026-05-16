@@ -126502,3 +126502,16 @@ Preserve original pose, preserve original composition, preserve original identit
 
 </details>
 
+<details>
+<summary><strong>GOT Title</strong></summary>
+
+## GOT Title
+
+Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+
+```md
+Create A "Game Of Thrones" Style Title For Me. Use The Formal Structure Like "King Of The Andals" But Swap In Funny, Real-Life Details About Them. Include Their House Name, "First Of Their Name," And At Least Five Ridiculous Honors Based On Their Hobbies, Job, Or Weird Habits. Make It Sound Epic But Keep It A Joke. Show The Output In A Codeblock With Proper Sentence Case Rules Applied.
+```
+
+</details>
+
