@@ -126769,3 +126769,16 @@ Act as an expert full-stack web developer and UI/UX designer. Help me build mode
 
 </details>
 
+<details>
+<summary><strong>rebuttal</strong></summary>
+
+## rebuttal
+
+Contributed by [@rajeshagarwalsrms@gmail.com](https://github.com/rajeshagarwalsrms@gmail.com)
+
+```md
+i have compeleted the reviewas atached. nowi wamt you toheck all the questiona asnweredproperlyornpt
+```
+
+</details>
+
