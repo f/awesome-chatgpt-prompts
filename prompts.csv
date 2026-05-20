@@ -104997,14 +104997,14 @@ Realistic Amateur Phone Photo with WhatsApp Chat,"Create a realistic, poorly tak
 
 The phone should be held vertically in one hand, with visible dark bezels/case, warm dim indoor lighting, slight tilt, blur, grain, glare, reflections, uneven focus, and imperfect framing. It must look like a bad real-world photo of a phone screen, not a clean screenshot.
 
-On the phone screen, show an iPhone-style WhatsApp conversation in Turkish with the contact name “Lagrima Yeni Son No” and a small profile photo resembling Luis Guzmán.
+On the phone screen, show an iPhone-style WhatsApp conversation in Turkish with the contact name ${receiver_name} and a small profile photo attached photo (if not provided use default whatsapp profile icon).
 
 Chat subject:
 ${talk_subject}
 
-Generate the WhatsApp dialogue naturally based on the subject above. The contact’s messages should be in ${talk_style} (e.g. broken Turkish with typos and awkward wording. My messages should be correct Turkish with no typos). Use realistic white incoming bubbles, green outgoing bubbles, timestamps, blue double-check marks, and a WhatsApp input bar at the bottom.
+Generate the WhatsApp dialogue naturally based on the subject above. The contact’s messages should be in ${language_name:Turkish} language and ${talk_style} (e.g. broken ${language_name:Turkish} with typos and awkward wording. My messages should be correct Turkish with no typos). Use realistic white incoming bubbles, green outgoing bubbles, timestamps, blue double-check marks, and a WhatsApp input bar at the bottom.
 
-Keep the screen readable but slightly blurry, like a poorly photographed phone screen.",FALSE,TEXT,f
+Keep the screen readable but slightly blurry, like a poorly photographed phone screen.",FALSE,TEXT,"f,ekmekcicaner"
 Photo emhanced," ​""A professional, ultra-realistic 8K extremely high resolution masterpiece of [You decide content of the picture your self ]. Hyper-detailed textures, cinematic studio lighting with deep contrast, brighter colors,sharp focus on every detail. Shot on Sony A1 with 85mm f/1.8 lens for extreme clarity. Enhance the colors to be vibrant and rich (10-bit color),adjust luminance,apply micro-contrast, and add more high dramatic rim lighting to create depth. The surface should have realistic reflections and textures. Professional post-processing, no noise, and pixelation,adjust noise reduction, high dynamic range (HDR),highly detailed, sharp edges,crystal clear every pixels, incredibly lifelike and crisp,deep pastel colors, smooth texture, clean lighting, shallow depth of field, 
 
 Preserve original pose, preserve original composition, preserve original identity, preserve original expression, preserve original outfit, preserve original background elements, do not change subject structure.
