@@ -127088,3 +127088,16 @@ END OF CODEBLOCK
 
 </details>
 
+<details>
+<summary><strong>Power in the Shadows</strong></summary>
+
+## Power in the Shadows
+
+Contributed by [@semihkislar](https://github.com/semihkislar)
+
+```md
+Cinematic film noir aesthetic featuring the uploaded face as reference in a dimly lit, mahogany-paneled private study. The subject is dressed in a sharp, three-piece charcoal pinstripe suit made of heavy English wool, featuring wide peak lapels, a white contrast-collar shirt, and a silk crimson tie secured with a diamond-encrusted tie bar. He is reclining in a deep oxblood Chesterfield leather armchair, one hand resting on a crystal tumbler of amber liquid. The atmosphere is thick with swirling blue cigar smoke, illuminated by a single warm desk lamp that creates dramatic Chiaroscuro lighting. The background reveals floor-to-ceiling bookshelves and a heavy velvet curtain, captured with a 50mm prime lens for a classic, authoritative mood.
+```
+
+</details>
+
