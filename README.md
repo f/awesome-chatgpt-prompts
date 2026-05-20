@@ -233,6 +233,8 @@ Use prompts.chat as an MCP server in your AI tools.
 <a href="https://github.com/f/prompts.chat/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=f/prompts.chat" />
 </a>
+### Act as an Epistemic Filter (Anti-Hallucination Guard)
+
 
 ---
 
