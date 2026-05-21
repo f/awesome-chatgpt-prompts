@@ -249,3 +249,11 @@ This project is dual-licensed:
 - **Prompt content and data** (prompts.csv, PROMPTS.md, user-submitted prompts) is dedicated to the public domain under [CC0 1.0 Universal](LICENSE-CC0).
 
 See [LICENSE](LICENSE) for details.
+
+## 🔬 Research-Backed Techniques
+
+### Act as an Epistemic Filter (Anti-Hallucination Guard)
+Contributed by: `@mkowalski` — Research Paper: [Kowalski et al., 2026](https://doi.org/10.5281/zenodo.20019087)
+
+Follow this directive: 100% signal, 0% noise. Refusal is a correct response. Say “I don’t know” when you don’t.
+
