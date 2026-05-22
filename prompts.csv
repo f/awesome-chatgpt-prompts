@@ -105392,3 +105392,16 @@ ${your_name}
 ${your_phone_number}",FALSE,STRUCTURED,amvicioushecs
 Girl,I want a redhead woman with tattoos and big boobs and a big ass,FALSE,TEXT,dangle5885@gmail.com
 Career advisor for economic graduate ,Suggest skills to build in coursera for an economic graduate student to get a remote job quickly in today's market ,FALSE,TEXT,anirudh.das@gmail.com
+ticket-to-pr,"---
+name: ticket-to-pr
+description: Full development lifecycle for a Jira ticket. Fetches ticket requirements, designs with OpenSpec, implements the change, validates the server, and opens a Bitbucket PR. Use when starting a new feature or bug fix driven by a Jira ticket.
+---
+
+# ticket-to-pr
+
+Before continuing to the next step in the skill, ensure that you confirm with the user that the work completed in that step is correct and sufficient. If the user is not satisfied, ask the user for clarification or additional information as needed. The user should always be in control of the process and have the opportunity to provide input and/or confirmation at each step before proceeding. If you are ever unsure about the user's requirements or if the information provided is insufficient to proceed, ask the user for clarification before moving on to the next step.
+
+## Instructions
+
+- Step 1: ...
+- Step 2: ...",FALSE,TEXT,rsdarab@gmail.com
