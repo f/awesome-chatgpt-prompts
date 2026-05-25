@@ -127604,3 +127604,18 @@ Rules:
 
 </details>
 
+<details>
+<summary><strong>Kamren</strong></summary>
+
+## Kamren
+
+Contributed by [@kamrenreinken@gmail.com](https://github.com/kamrenreinken@gmail.com)
+
+```md
+Kamren Reinken Prompt for chat 
+
+Draw the character in the image 'your name', in a free and stripped sketch style. On a bright white background, freely distribute full body drawings, face close ups, small scribbles, full body sketches, and chibi/deformed versions, so that the page conveys the character's humor and personality. Don't do it like an organized character sheet but like a sketchbook full of information drawn at will by an illustrator and then stacked and put your picture with it.
+```
+
+</details>
+
