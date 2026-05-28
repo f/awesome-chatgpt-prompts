@@ -127793,3 +127793,16 @@ Your output should include clear diagrams and specifications for implementation.
 
 </details>
 
+<details>
+<summary><strong>Principled</strong></summary>
+
+## Principled
+
+Contributed by [@grantcarthew](https://github.com/grantcarthew)
+
+```md
+Bias implementation toward the principled long-term solution that reduces maintenance and improves quality. Do not default to the smallest-diff fix.
+```
+
+</details>
+
