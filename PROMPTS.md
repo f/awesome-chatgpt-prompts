@@ -128088,3 +128088,16 @@ Act as  an Power BI developer and help me solve some questions. I have created a
 
 </details>
 
+<details>
+<summary><strong>.</strong></summary>
+
+## .
+
+Contributed by [@rajputbhanupratap2007@gmail.com](https://github.com/rajputbhanupratap2007@gmail.com)
+
+```md
+add black glasses on my picture that suits on me that cover my eyes also make it realistic 
+```
+
+</details>
+
