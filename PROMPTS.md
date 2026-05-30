@@ -128075,3 +128075,16 @@ ${number}
 
 </details>
 
+<details>
+<summary><strong>Power BI</strong></summary>
+
+## Power BI
+
+Contributed by [@divyeshpatel465@gmail.com](https://github.com/divyeshpatel465@gmail.com)
+
+```md
+Act as  an Power BI developer and help me solve some questions. I have created a report and my company has preferred theme and color. They have provided color pallet and sample of chart. How can i change that in one go. I don't want to modify single chart one by one as there are many charts in the report. Give me the steps so that i can replicate and complete the report timely. 
+```
+
+</details>
+
