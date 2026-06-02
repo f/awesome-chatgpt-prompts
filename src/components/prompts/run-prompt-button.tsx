@@ -79,8 +79,8 @@ const videoPlatforms: Platform[] = [
 const codePlatforms: Platform[] = [
   { id: "commandcode", name: "Command Code", baseUrl: "https://commandcode.ai/?utm_source=prompts.chat", supportsQuerystring: false, sponsor: true },
   { id: "windsurf", name: "Windsurf", baseUrl: "windsurf://", isDeeplink: true, supportsQuerystring: false, sponsor: true },
-  { id: "vscode", name: "VS Code", baseUrl: "vscode://", isDeeplink: true, supportsQuerystring: false },
-  { id: "vscode-insiders", name: "VS Code Insiders", baseUrl: "vscode-insiders://", isDeeplink: true, supportsQuerystring: false },
+  { id: "vscode", name: "VS Code", baseUrl: "vscode://GitHub.Copilot-Chat/chat", isDeeplink: true },
+  { id: "vscode-insiders", name: "VS Code Insiders", baseUrl: "vscode-insiders://GitHub.Copilot-Chat/chat", isDeeplink: true },
   { id: "cursor", name: "Cursor", baseUrl: "cursor://anysphere.cursor-deeplink/prompt", isDeeplink: true },
   { id: "goose", name: "Goose", baseUrl: "goose://recipe", isDeeplink: true },
     {
@@ -136,6 +136,9 @@ function buildUrl(platformId: string, baseUrl: string, promptText: string, promp
     // IDE deeplinks
     case "cursor":
       return `${baseUrl}?text=${encoded}`;
+    case "vscode":
+    case "vscode-insiders":
+      return `${baseUrl}?prompt=${encoded}`;
     case "goose": {
       const config = JSON.stringify({
         version: "1.0.0",
