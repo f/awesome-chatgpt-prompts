@@ -128084,3 +128084,21 @@ Draft a 2-week plan on the basic skills of computer knowledge for a company that
 
 </details>
 
+<details>
+<summary><strong>Write an Email</strong></summary>
+
+## Write an Email
+
+Contributed by [@training002025@gmail.com](https://github.com/training002025@gmail.com)
+
+```md
+Write a ${tone:professional|friendly} email to ${recipient} about ${topic}.
+
+The email should:
+- Be approximately ${length:200} words
+- Include a clear call to action
+- Use ${language:English} language
+```
+
+</details>
+

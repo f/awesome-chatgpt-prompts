@@ -105999,3 +105999,9 @@ Rules:
 - The question should be adaptable to various contexts within the project.",FALSE,TEXT,jovemexausto
 Draft a 2-week plan on the basic skills of computer knowledge for a company that has outlets across the country,"Draft a 2-week plan on the basic skills of computer knowledge for a company that has outlets across the country
 ",FALSE,TEXT,clintonuzoh@gmail.com
+Write an Email,"Write a ${tone:professional|friendly} email to ${recipient} about ${topic}.
+
+The email should:
+- Be approximately ${length:200} words
+- Include a clear call to action
+- Use ${language:English} language",FALSE,TEXT,training002025@gmail.com
