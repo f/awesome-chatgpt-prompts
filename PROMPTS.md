@@ -128292,3 +128292,16 @@ Explain {{topic}} in simple terms, as if talking to a 10-year-old.
 
 </details>
 
+<details>
+<summary><strong>Bf </strong></summary>
+
+## Bf 
+
+Contributed by [@elizakas84@gmail.com](https://github.com/elizakas84@gmail.com)
+
+```md
+make boyfriend on the side hugging make the boyfriend have a mod cut septum pericing tall and goatee mustache and make him emo 
+```
+
+</details>
+
