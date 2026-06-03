@@ -128279,3 +128279,16 @@ quiz her with open-ended or multiple choice questions with AskUserQuestion (be s
 
 </details>
 
+<details>
+<summary><strong>Dummy Test Prompt</strong></summary>
+
+## Dummy Test Prompt
+
+Contributed by [@gk0415439@gmail.com](https://github.com/gk0415439@gmail.com)
+
+```md
+Explain {{topic}} in simple terms, as if talking to a 10-year-old.
+```
+
+</details>
+
