@@ -1,4 +1,9 @@
 {
+  "permissions": {
+    "deny": [
+      "Read(./.entire/metadata/**)"
+    ]
+  },
   "hooks": {
     "PostToolUse": [
       {
@@ -76,9 +81,5 @@
       }
     ]
   },
-  "permissions": {
-    "deny": [
-      "Read(./.entire/metadata/**)"
-    ]
-  }
+  "enabledPlugins": {}
 }

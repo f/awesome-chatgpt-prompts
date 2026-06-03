@@ -1,0 +1,132 @@
+{
+  "always_allow": [],
+  "always_deny": [],
+  "categories": [
+    {
+      "category": "runtime_dependency",
+      "examples": [
+        "react",
+        "express",
+        "fastapi",
+        "requests"
+      ],
+      "keywords": [
+        "runtime",
+        "production",
+        "dependency"
+      ],
+      "patterns": [
+        "^[^@].*",
+        "^@[^/]+/[^/]+$"
+      ]
+    },
+    {
+      "category": "framework",
+      "examples": [
+        "next.js",
+        "vue-cli",
+        "create-react-app",
+        "django"
+      ],
+      "keywords": [
+        "framework",
+        "cli",
+        "generator",
+        "boilerplate"
+      ],
+      "patterns": [
+        ".*framework.*",
+        ".*-cli$",
+        "create-.*"
+      ]
+    },
+    {
+      "category": "build_tool",
+      "examples": [
+        "webpack",
+        "vite",
+        "rollup",
+        "esbuild"
+      ],
+      "keywords": [
+        "build",
+        "bundler",
+        "compiler"
+      ],
+      "patterns": [
+        ".*webpack.*",
+        ".*vite.*",
+        ".*rollup.*"
+      ]
+    }
+  ],
+  "created_by": "adr-kit",
+  "default_dependency_policy": "requires_adr",
+  "default_framework_policy": "requires_adr",
+  "default_tool_policy": "allowed",
+  "development_tools": [
+    "eslint",
+    "prettier",
+    "jest",
+    "vitest",
+    "webpack",
+    "vite",
+    "typescript",
+    "babel",
+    "rollup",
+    "esbuild",
+    "parcel",
+    "pytest",
+    "black",
+    "mypy",
+    "ruff",
+    "pre-commit",
+    "husky",
+    "lint-staged",
+    "nodemon",
+    "concurrently"
+  ],
+  "name_mappings": [
+    {
+      "aliases": [
+        "reactjs",
+        "react.js"
+      ],
+      "canonical_name": "react"
+    },
+    {
+      "aliases": [
+        "vuejs",
+        "vue.js"
+      ],
+      "canonical_name": "vue"
+    },
+    {
+      "aliases": [
+        "react-query",
+        "tanstack-query"
+      ],
+      "canonical_name": "@tanstack/react-query"
+    },
+    {
+      "aliases": [
+        "fast-api",
+        "FastAPI"
+      ],
+      "canonical_name": "fastapi"
+    },
+    {
+      "aliases": [
+        "python-requests"
+      ],
+      "canonical_name": "requests"
+    },
+    {
+      "aliases": [
+        "axios-http"
+      ],
+      "canonical_name": "axios"
+    }
+  ],
+  "version": "1.0"
+}

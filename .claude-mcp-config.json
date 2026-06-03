@@ -1,0 +1,22 @@
+{
+  "servers": {
+    "adr-kit": {
+      "command": "/Users/thedawgctor/.local/bin/adr-kit",
+      "args": [
+        "mcp-server"
+      ],
+      "description": "AI-first Architectural Decision Records management",
+      "tools": [
+        "adr_init",
+        "adr_query_related",
+        "adr_create",
+        "adr_approve",
+        "adr_supersede",
+        "adr_validate",
+        "adr_index",
+        "adr_export_lint_config",
+        "adr_render_site"
+      ]
+    }
+  }
+}
