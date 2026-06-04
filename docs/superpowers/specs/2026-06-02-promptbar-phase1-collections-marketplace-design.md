@@ -30,6 +30,23 @@ PromptBar becomes a Git-native team distribution platform for Skills and Plugin 
 
 ## 2. Data Model
 
+### 2.0 Pre-migration prerequisite
+
+The `collections` table is already occupied by a flat bookmarks model (`userId + promptId` composite PK). Phase 1 completely replaces it.
+
+Required before any Phase 1 migration:
+1. Rename existing Prisma model from `Collection` → `Bookmark` (keep `@@map("bookmarks")`)
+2. Migration: `ALTER TABLE "collections" RENAME TO "bookmarks"`
+3. Update all references (full list):
+   - `src/app/api/collection/route.ts` — 4× `db.collection.*` → `db.bookmark.*`
+   - `src/app/collection/page.tsx:20` — `db.collection.findMany` → `db.bookmark.findMany`
+   - `src/app/prompts/[id]/page.tsx:180` — `db.collection.findUnique` → `db.bookmark.findUnique`
+   - `src/app/feed/page.tsx:50` — `whereClause.collectedBy` → `whereClause.bookmarks`
+   - `src/components/prompts/add-to-collection-button.tsx` — any `db.collection.*` or `Collection` type refs
+   - `src/__tests__/api/collection.test.ts` — all `vi.mocked(db.collection.*)` → `vi.mocked(db.bookmark.*)`
+   - `prisma/schema.prisma` — `User.collections Collection[]` → `User.bookmarks Bookmark[]`; `Prompt.collectedBy Collection[]` → `Prompt.bookmarks Bookmark[]`
+4. Phase 1 `Collection` model can then claim the `"collections"` table
+
 ### 2.1 New Prisma Models
 
 ```prisma
@@ -42,7 +59,6 @@ model Collection {
   ownerId     String
   owner       User                 @relation(fields: [ownerId], references: [id])
   items       CollectionItem[]
-  members     CollectionMember[]
   createdAt   DateTime             @default(now())
   updatedAt   DateTime             @updatedAt
 
@@ -63,6 +79,7 @@ model CollectionItem {
   prompt       Prompt?        @relation(fields: [promptId], references: [id])
   contentHash  String?        // SHA-256 of served content — INTERNAL items only
   type         ItemType
+  mcpConfig    Json?          // MCP server config (command, args, env) — required when type = MCP
   lastSyncedAt DateTime?
   syncStatus   SyncStatus?
   upstreamRef  String?        // last known upstream commit SHA
@@ -72,17 +89,6 @@ model CollectionItem {
 
   @@unique([collectionId, order])
   @@map("collection_items")
-}
-
-model CollectionMember {
-  collectionId String
-  userId       String
-  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
-  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt    DateTime   @default(now())
-
-  @@id([collectionId, userId])
-  @@map("collection_members")
 }
 
 model AgentConfig {
@@ -124,7 +130,7 @@ model AuditLog {
 ```prisma
 enum CollectionVisibility {
   PUBLIC        // anyone reads; le-dawg can unpublish others'
-  ADMIN_PRIVATE // org admins + invited CollectionMembers read; hidden from public
+  ADMIN_PRIVATE // users with role=ADMIN + owner; hidden from public
   USER_PRIVATE  // owner only — no exceptions, returns 404 to all others including admins
 }
 
@@ -165,6 +171,23 @@ Collections are namespaced by owner username:
 
 `@@unique([ownerId, slug])` — same slug allowed across different users. Global uniqueness not required.
 
+**Username stability:** Marketplace URLs are namespaced by username. Username changes are blocked in `PATCH /api/user/profile` when the user has any `Collection` with `visibility IN (PUBLIC, ADMIN_PRIVATE)` — changing the username would silently break all registered marketplace URLs. `USER_PRIVATE` collections do not lock the username (their URLs return 404 regardless).
+
+Guard implemented in `src/app/api/user/profile/route.ts` as part of Phase 1 collection setup:
+```typescript
+if (username !== session.user.username) {
+  const activeCount = await (db as any).collection?.count({
+    where: { ownerId: session.user.id, visibility: { in: ["PUBLIC", "ADMIN_PRIVATE"] } },
+  }) ?? 0;
+  if (activeCount > 0) {
+    return NextResponse.json(
+      { error: "username_locked", message: "Remove or make all collections private before changing username." },
+      { status: 400 }
+    );
+  }
+}
+```
+
 ---
 
 ## 3. API Routes
@@ -201,9 +224,22 @@ src/app/api/collections/
   - INTERNAL items: `source.url = /api/collections/[u]/[s]/items/[id]/download`, `sha = contentHash`
   - LOCAL items: excluded entirely
 
+Auth for INTERNAL download URLs:
+- PUBLIC collection: no auth required on download
+- ADMIN_PRIVATE: same `PROMPTS_API_KEY` header required on download as on `marketplace.json` fetch
+- USER_PRIVATE: owner API key required on download; 404 to all others
+- Note: API key is never embedded in `marketplace.json`. Agents must forward the same `PROMPTS_API_KEY` header to all embedded URLs.
+
+**`GET /api/collections/[username]/[slug]/items/[itemId]/download`**
+- Only serves items where `sourceType = INTERNAL`
+- Auth mirrors parent collection visibility (same rules as `marketplace.json` auth above)
+- Response: raw file bytes; `Content-Type: application/zip` for multi-file skills, `text/plain` for single-file
+- Returns 404 for non-INTERNAL items or non-existent itemId
+- `contentHash` of served content must match `CollectionItem.contentHash`; mismatch logs warning
+
 **`POST /api/collections`**
 - Auth: session required
-- Phase 1 publisher gate: `assertPublisher(user)` — `username === "le-dawg"`
+- Phase 1 publisher gate: `assertPublisher(user)` — `user.role === "ADMIN"`
 - Body: `{ slug, name, description?, visibility }`
 - Returns: `{ id, slug, marketplaceUrl }`
 
@@ -224,11 +260,11 @@ src/app/api/collections/
 
 ### 3.2 Access matrix
 
-| Visibility | Owner | Invited member | Other admin | le-dawg | Unauthenticated |
-|---|---|---|---|---|---|
-| PUBLIC | R/W/Patch/Delete | — | R/W/Patch | R/W/Patch + unpublish | R |
-| ADMIN_PRIVATE | R/W/Patch/Delete | R | R | R | 404 |
-| USER_PRIVATE | R/W/Patch/Delete | — | 404 | 404 | 404 |
+| Visibility | Owner | Other admin (role=ADMIN) | le-dawg | Unauthenticated |
+|---|---|---|---|---|
+| PUBLIC | R/W/Patch/Delete | R/W/Patch | R/W/Patch + unpublish | R |
+| ADMIN_PRIVATE | R/W/Patch/Delete | R | R | 404 |
+| USER_PRIVATE | R/W/Patch/Delete | 404 | 404 | 404 |
 
 Delete = owner only across all tiers.
 Unpublish (visibility change on others' collections) = le-dawg only.
@@ -258,12 +294,13 @@ Output: { collection: { ...metadata, items: [{ order, name, type, sourceType, so
 ```
 Input:  { slug, name, description?, visibility: "public"|"admin_private"|"user_private" }
 Output: { collection: { id, slug, marketplaceUrl } }
-Phase 1: rejects unless authenticated user is le-dawg
+Phase 1: rejects unless authenticated user has role=ADMIN
 ```
 
 **`update_collection_item`**
 ```
-Input:  { username, slug, action: "add"|"edit"|"remove", itemId?: string, item?: { order?, name, type, sourceType, sourceUrl, sourcePath?, sourceRef?, description? } }
+Input:  { username, slug, action: "add"|"edit"|"remove", itemId?: string, item?: { order?, name, type, sourceType, sourceUrl, sourcePath?, sourceRef?, description?, mcpConfig?: { command: string, args?: string[], env?: Record<string, string> } } }
+         // mcpConfig required when type = MCP; stores the MCP server config template for config injection
 Output: { item }
 - "remove" action: owner only
 - "add"/"edit": owner OR admin on PUBLIC collections
@@ -405,7 +442,7 @@ Manual setup:
 ### 7.1 Auth helpers (new)
 
 ```typescript
-assertPublisher(user)         // Phase 1: username === "le-dawg"
+assertPublisher(user)         // Phase 1: user.role === "ADMIN"
 assertOwner(user, collection) // collection.ownerId === user.id
 assertAdminOrOwner(user, collection) // owner OR user.role === ADMIN
 ```
@@ -414,7 +451,7 @@ assertAdminOrOwner(user, collection) // owner OR user.role === ADMIN
 
 `USER_PRIVATE` queries always append `WHERE ownerId = authenticatedUserId`. Admin role explicitly excluded. Returns 404, never 403.
 
-`ADMIN_PRIVATE` queries: `WHERE ownerId = userId OR role = ADMIN OR EXISTS(CollectionMember WHERE userId = authenticatedUserId)`
+`ADMIN_PRIVATE` queries: `WHERE ownerId = userId OR role = ADMIN`
 
 ### 7.3 SSRF protection
 
@@ -431,7 +468,20 @@ cline.bot, docs.github.com, antigravity.google
 
 ### 7.4 Content integrity
 
-INTERNAL items: SHA-256 of served file content stored in `CollectionItem.contentHash`. Returned as `sha` field in `marketplace.json`. Tier 1 agents verify on install.
+INTERNAL items: SHA-256 of served content stored in `CollectionItem.contentHash`. Returned as `sha` field in `marketplace.json`. Tier 1 agents verify on install.
+
+**Canonical computation** (`src/lib/collections/content-hash.ts → computePromptContentHash()`):
+- Single-file skill: `SHA-256(Buffer.from(prompt.content, "utf8"))`
+- Multi-file skill (prompt + skill files): hash over content and skill files sorted alphabetically by filename:
+  ```
+  hash.update(content)
+  for each file sorted by filename: hash.update("\0" + filename + "\0" + fileContent)
+  ```
+
+**Staleness prevention:**
+- `contentHash` is recomputed in `src/pages/api/mcp.ts` whenever `update_skill_file`, `add_file_to_skill`, or `remove_file_from_skill` modifies a Prompt referenced by a `CollectionItem`
+- Recomputation updates all `CollectionItem` rows where `promptId = modifiedPromptId AND sourceType = INTERNAL`
+- Phase 1 limitation: Prompt edits via non-MCP routes do not trigger recomputation. Full hook coverage is Phase 2.
 
 ### 7.5 Rate limits
 
@@ -468,7 +518,7 @@ Not mitigated Phase 1 (Phase 4): code signing, sandboxing, supply chain attestat
 
 - `@@unique([ownerId, slug])` enforced; same slug different owner allowed
 - `USER_PRIVATE` invisible to other users AND admins — 0 rows, not 403
-- `ADMIN_PRIVATE` visible to admins + invited CollectionMembers
+- `ADMIN_PRIVATE` visible to admins (role=ADMIN) + owner only
 - `sourceUrl` SSRF validation: localhost, private IPs, http:// all rejected on write
 - `@@unique([collectionId, order])` enforced
 - `contentHash` computed correctly on INTERNAL write
@@ -509,7 +559,7 @@ Not mitigated Phase 1 (Phase 4): code signing, sandboxing, supply chain attestat
 
 - `USER_PRIVATE` returns 404 not 403 to non-owners
 - `contentHash` mismatch on INTERNAL download flagged
-- Publisher gate: non-le-dawg rejected Phase 1
+- Publisher gate: non-admin (role != ADMIN) rejected Phase 1
 - All sensitive actions produce AuditLog rows
 
 ### 8.6 End-to-end scenarios
@@ -532,7 +582,7 @@ Phase 1 is done when all are true:
 - [ ] Tier 2 agents install SKILL items via `npx skills`; MCP items via config injection
 - [ ] LOCAL items skipped with clear warning in `install_collection`
 - [ ] USER_PRIVATE collections return 404 to all non-owners including admins
-- [ ] ADMIN_PRIVATE collections visible to org admins + invited members only
+- [ ] ADMIN_PRIVATE collections visible to users with role=ADMIN + owner only
 - [ ] Delete restricted to owner only across all visibility tiers
 - [ ] le-dawg can unpublish other users' PUBLIC collections
 - [ ] `update_agent_config` MCP tool fetches from allowlist, presents diff, requires confirmation
@@ -546,11 +596,32 @@ Phase 1 is done when all are true:
 ## 10. Backlog Items (logged, not in Phase 1 scope)
 
 - **BLOCKING (pre-implementation):** Admin plugin review/approval UI — scope before writing-plans
+- **BLOCKING (pre-implementation):** Rename existing `Collection` model → `Bookmark`; migrate `collections` table → `bookmarks` before any Phase 1 schema work
+- **BLOCKING (pre-implementation):** Cherry-pick upstream skill infra into fork — `src/lib/skill-files.ts`, `src/app/.well-known/skills/` routes, `src/app/skills/page.tsx` — Phase 1 INTERNAL item download depends on `skill-files.ts`
+- **BLOCKING (pre-implementation):** Three-way merge of `src/pages/api/mcp.ts` — fork has env-driven branding + session middleware exemption; upstream has rate limiters + skill file tools; Phase 1 MCP tools build on top
 - **MCP audit:** Too many tools exposed in mcp.ts; guide/article content exposed as tools; auth broken
 - **Admin template libraries:** Per-user MCP-driven git-versioned collections with complete access isolation
 - **URL import:** Paste URL from skills.sh/officialskills.sh → platform fetches and adds to skill list
 - **BUG:** MCP skill/article creation reports success but URL is broken (ID+slug concatenation issue)
 - **Phase 3 prerequisite:** OAuth scope expansion (`repo` write) + secure token storage for GitHub push sync
+- **[Phase 2] CollectionMember model:** Invite-based access control for ADMIN_PRIVATE collections. Schema: `CollectionMember { collectionId, userId, @@id([collectionId, userId]) }` with Cascade deletes. Requires add/remove/list surface exposed via `manage_collection_members` MCP tool.
+- **[Phase 2] `manage_collection_members` MCP tool (stub):** `Input: { action: "add"|"remove"|"list", collectionId: string, userId?: string }` — owner only. Blocked until CollectionMember model is introduced.
+
+### Spec Review Findings — MEDIUM priority (2026-06-04)
+
+- **[M1 — MEDIUM] set_me_up elicitation fallback is not auth** *(§4.2 set_me_up, §7 Auth & Security)*
+  The set_me_up fallback trusts a user-pasted HTTP status from `gh api /orgs/solution8-com/members/{username}` as proof of org membership. This is trivially bypassed by any user who pastes "204". Real mitigation: if OAuth token lacks `read:org` scope, treat as unverified and gate on le-dawg manual approval OR require re-auth with elevated scope. Do NOT use pasted user input as authorization proof.
+
+- **[M2 — MEDIUM] 5 route contracts missing** *(§3 API Routes)*
+  The following routes have no concrete request/response/auth contract documented and must be fully specified before implementation:
+  - `GET /api/collections` — list public collections: what filters? pagination? sort?
+  - `GET /api/collections/[username]` — list user's visible collections: what are the auth rules?
+  - `PATCH /api/collections/[username]/[slug]` — update collection metadata: what fields? who can update?
+  - `POST /api/collections/[username]/[slug]/items` — add item: same as update_collection_item add action, or a separate contract?
+  - `GET /api/collections/[username]/[slug]/items/[itemId]/download` — INTERNAL files: what format? what auth?
+
+- **[M3 — MEDIUM] Backlog facts stale post-upstream-delta** *(§10 Backlog)*
+  The bullet "Cherry-pick `src/lib/skill-files.ts` and `src/app/skills/page.tsx` from upstream" is a false blocker — both files already exist in the fork. Remove those items. Also missing from backlog: a note to preserve fork-only enum values `PromptType.HACK` and `PromptType.GUIDE` during any upstream rebase, as these do not exist upstream and will be silently dropped.
 
 ---
 
