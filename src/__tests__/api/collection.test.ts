@@ -6,7 +6,7 @@ import { auth } from "@/lib/auth";
 // Mock dependencies
 vi.mock("@/lib/db", () => ({
   db: {
-    collection: {
+    bookmark: {
       findMany: vi.fn(),
       findUnique: vi.fn(),
       create: vi.fn(),
