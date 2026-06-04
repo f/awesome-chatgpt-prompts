@@ -14,7 +14,7 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const collections = await db.collection.findMany({
+  const collections = await db.bookmark.findMany({
     where: { userId: session.user.id },
     take: 50,
     orderBy: { createdAt: "desc" },
@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { promptId } = addToCollectionSchema.parse(body);
 
-    const existingCollection = await db.collection.findUnique({
+    const existingCollection = await db.bookmark.findUnique({
       where: {
         userId_promptId: {
           userId: session.user.id,
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Cannot add private prompt" }, { status: 403 });
     }
 
-    const collection = await db.collection.create({
+    const collection = await db.bookmark.create({
       data: {
         userId: session.user.id,
         promptId,
@@ -122,7 +122,7 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: "promptId required" }, { status: 400 });
     }
 
-    await db.collection.delete({
+    await db.bookmark.delete({
       where: {
         userId_promptId: {
           userId: session.user.id,

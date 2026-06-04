@@ -39,7 +39,7 @@ describe("GET /api/collection", () => {
 
   it("should return empty collections array", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
-    vi.mocked(db.collection.findMany).mockResolvedValue([]);
+    vi.mocked(db.bookmark.findMany).mockResolvedValue([]);
 
     const response = await GET();
     const data = await response.json();
@@ -50,7 +50,7 @@ describe("GET /api/collection", () => {
 
   it("should return user collections with prompt details", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
-    vi.mocked(db.collection.findMany).mockResolvedValue([
+    vi.mocked(db.bookmark.findMany).mockResolvedValue([
       {
         id: "col1",
         userId: "user1",
@@ -83,11 +83,11 @@ describe("GET /api/collection", () => {
 
   it("should fetch collections ordered by createdAt desc", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
-    vi.mocked(db.collection.findMany).mockResolvedValue([]);
+    vi.mocked(db.bookmark.findMany).mockResolvedValue([]);
 
     await GET();
 
-    expect(db.collection.findMany).toHaveBeenCalledWith(
+    expect(db.bookmark.findMany).toHaveBeenCalledWith(
       expect.objectContaining({
         where: { userId: "user1" },
         orderBy: { createdAt: "desc" },
@@ -148,7 +148,7 @@ describe("POST /api/collection", () => {
 
   it("should return 400 if already in collection", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
-    vi.mocked(db.collection.findUnique).mockResolvedValue({ id: "existing" } as never);
+    vi.mocked(db.bookmark.findUnique).mockResolvedValue({ id: "existing" } as never);
 
     const request = new Request("http://localhost:3000/api/collection", {
       method: "POST",
@@ -164,7 +164,7 @@ describe("POST /api/collection", () => {
 
   it("should return 404 if prompt not found", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
-    vi.mocked(db.collection.findUnique).mockResolvedValue(null);
+    vi.mocked(db.bookmark.findUnique).mockResolvedValue(null);
     vi.mocked(db.prompt.findUnique).mockResolvedValue(null);
 
     const request = new Request("http://localhost:3000/api/collection", {
@@ -181,7 +181,7 @@ describe("POST /api/collection", () => {
 
   it("should return 403 when adding private prompt not owned by user", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
-    vi.mocked(db.collection.findUnique).mockResolvedValue(null);
+    vi.mocked(db.bookmark.findUnique).mockResolvedValue(null);
     vi.mocked(db.prompt.findUnique).mockResolvedValue({
       id: "123",
       isPrivate: true,
@@ -202,13 +202,13 @@ describe("POST /api/collection", () => {
 
   it("should allow adding own private prompt to collection", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
-    vi.mocked(db.collection.findUnique).mockResolvedValue(null);
+    vi.mocked(db.bookmark.findUnique).mockResolvedValue(null);
     vi.mocked(db.prompt.findUnique).mockResolvedValue({
       id: "123",
       isPrivate: true,
       authorId: "user1",
     } as never);
-    vi.mocked(db.collection.create).mockResolvedValue({
+    vi.mocked(db.bookmark.create).mockResolvedValue({
       id: "col1",
       userId: "user1",
       promptId: "123",
@@ -228,13 +228,13 @@ describe("POST /api/collection", () => {
 
   it("should add public prompt to collection successfully", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
-    vi.mocked(db.collection.findUnique).mockResolvedValue(null);
+    vi.mocked(db.bookmark.findUnique).mockResolvedValue(null);
     vi.mocked(db.prompt.findUnique).mockResolvedValue({
       id: "123",
       isPrivate: false,
       authorId: "other-user",
     } as never);
-    vi.mocked(db.collection.create).mockResolvedValue({
+    vi.mocked(db.bookmark.create).mockResolvedValue({
       id: "col1",
       userId: "user1",
       promptId: "123",
@@ -251,7 +251,7 @@ describe("POST /api/collection", () => {
     expect(response.status).toBe(200);
     expect(data.added).toBe(true);
     expect(data.collection.id).toBe("col1");
-    expect(db.collection.create).toHaveBeenCalledWith({
+    expect(db.bookmark.create).toHaveBeenCalledWith({
       data: {
         userId: "user1",
         promptId: "123",
@@ -295,7 +295,7 @@ describe("DELETE /api/collection", () => {
 
   it("should remove prompt from collection successfully", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
-    vi.mocked(db.collection.delete).mockResolvedValue({} as never);
+    vi.mocked(db.bookmark.delete).mockResolvedValue({} as never);
 
     const request = new Request("http://localhost:3000/api/collection?promptId=123", {
       method: "DELETE",
@@ -306,7 +306,7 @@ describe("DELETE /api/collection", () => {
 
     expect(response.status).toBe(200);
     expect(data.removed).toBe(true);
-    expect(db.collection.delete).toHaveBeenCalledWith({
+    expect(db.bookmark.delete).toHaveBeenCalledWith({
       where: {
         userId_promptId: {
           userId: "user1",
@@ -318,7 +318,7 @@ describe("DELETE /api/collection", () => {
 
   it("should handle delete error gracefully", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
-    vi.mocked(db.collection.delete).mockRejectedValue(new Error("Not found"));
+    vi.mocked(db.bookmark.delete).mockRejectedValue(new Error("Not found"));
 
     const request = new Request("http://localhost:3000/api/collection?promptId=123", {
       method: "DELETE",

@@ -17,7 +17,7 @@ export default async function CollectionPage() {
     redirect("/login");
   }
 
-  const collectionsRaw = await db.collection.findMany({
+  const collectionsRaw = await db.bookmark.findMany({
     where: { userId: session.user.id },
     orderBy: { createdAt: "desc" },
     include: {

@@ -175,9 +175,9 @@ export default async function PromptPage({ params }: PromptPageProps) {
       })
     : null;
 
-  // Check if user has this prompt in their collection
-  const userCollection = session?.user
-    ? await db.collection.findUnique({
+  // Check if user has this prompt bookmarked
+  const userBookmark = session?.user
+    ? await db.bookmark.findUnique({
         where: {
           userId_promptId: {
             userId: session.user.id,
@@ -260,7 +260,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
   const canEdit = isOwner || isAdmin;
   const voteCount = prompt._count?.votes ?? 0;
   const hasVoted = !!userVote;
-  const inCollection = !!userCollection;
+  const inCollection = !!userBookmark;
 
   // Fetch change requests for this prompt
   const changeRequests = await db.changeRequest.findMany({

@@ -47,7 +47,7 @@ export default async function FeedPage({
       },
     };
   } else if (filter === "bookmarked") {
-    whereClause.collectedBy = {
+    whereClause.bookmarks = {
       some: {
         userId: session.user.id,
       },
