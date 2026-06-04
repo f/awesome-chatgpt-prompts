@@ -4,7 +4,7 @@ import { getToken } from "next-auth/jwt";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
-const PUBLIC_PATHS = ["/login", "/register", "/api/auth", "/api/mcp", "/unauthorized", "/monitoring"];
+const PUBLIC_PATHS = ["/login", "/register", "/api/auth", "/api/mcp", "/api/collections", "/unauthorized", "/monitoring"];
 const REQUIRED_ORG = process.env.S8_REQUIRED_ORG || "solution8-com";
 const ENFORCE_GITHUB_ORG = process.env.S8_ENFORCE_GITHUB_ORG !== "false";
 
