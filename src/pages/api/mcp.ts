@@ -12,6 +12,7 @@ import { db } from "@/lib/db";
 import { isValidApiKeyFormat } from "@/lib/api-key";
 import { improvePrompt } from "@/lib/ai/improve-prompt";
 import { parseSkillFiles, serializeSkillFiles, DEFAULT_SKILL_FILE } from "@/lib/skill-files";
+import { computePromptContentHash } from "@/lib/collections/content-hash";
 
 interface AuthenticatedUser {
   id: string;
@@ -919,6 +920,20 @@ function createServer(options: ServerOptions = {}) {
           data: { content: updatedContent, updatedAt: new Date() },
         });
 
+        // Recompute contentHash for any CollectionItems referencing this prompt (Phase 1+)
+        try {
+          const skillMdFile = files.find(f => f.filename === DEFAULT_SKILL_FILE);
+          const newHash = computePromptContentHash({
+            content: skillMdFile?.content ?? "",
+            skillFiles: files.filter(f => f.filename !== DEFAULT_SKILL_FILE),
+          });
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          await (db as any).collectionItem?.updateMany({
+            where: { promptId: skillId, sourceType: "INTERNAL" },
+            data: { contentHash: newHash },
+          });
+        } catch { /* CollectionItem table not yet migrated — skip */ }
+
         return {
           content: [
             {
@@ -1008,6 +1023,20 @@ function createServer(options: ServerOptions = {}) {
           where: { id: skillId },
           data: { content: updatedContent, updatedAt: new Date() },
         });
+
+        // Recompute contentHash for any CollectionItems referencing this prompt (Phase 1+)
+        try {
+          const skillMdFile = files.find(f => f.filename === DEFAULT_SKILL_FILE);
+          const newHash = computePromptContentHash({
+            content: skillMdFile?.content ?? "",
+            skillFiles: files.filter(f => f.filename !== DEFAULT_SKILL_FILE),
+          });
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          await (db as any).collectionItem?.updateMany({
+            where: { promptId: skillId, sourceType: "INTERNAL" },
+            data: { contentHash: newHash },
+          });
+        } catch { /* CollectionItem table not yet migrated — skip */ }
 
         return {
           content: [
@@ -1104,6 +1133,20 @@ function createServer(options: ServerOptions = {}) {
           where: { id: skillId },
           data: { content: updatedContent, updatedAt: new Date() },
         });
+
+        // Recompute contentHash for any CollectionItems referencing this prompt (Phase 1+)
+        try {
+          const skillMdFile = updatedFiles.find(f => f.filename === DEFAULT_SKILL_FILE);
+          const newHash = computePromptContentHash({
+            content: skillMdFile?.content ?? "",
+            skillFiles: updatedFiles.filter(f => f.filename !== DEFAULT_SKILL_FILE),
+          });
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          await (db as any).collectionItem?.updateMany({
+            where: { promptId: skillId, sourceType: "INTERNAL" },
+            data: { contentHash: newHash },
+          });
+        } catch { /* CollectionItem table not yet migrated — skip */ }
 
         return {
           content: [
