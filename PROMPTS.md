@@ -126411,7 +126411,7 @@ On the phone screen, show an iPhone-style WhatsApp conversation in Turkish with 
 Chat subject:
 ${talk_subject}
 
-Generate the WhatsApp dialogue naturally based on the subject above. The contact’s messages should be in ${language_name:Turkish} language and ${talk_style} (e.g. broken ${language_name:Turkish} with typos and awkward wording. My messages should be correct Turkish with no typos). Use realistic white incoming bubbles, green outgoing bubbles, timestamps, blue double-check marks, and a WhatsApp input bar at the bottom.
+Generate the WhatsApp dialogue naturally based on the subject above. The contact’s messages should be in ${language_name:Turkish} language and ${talk_style} (e.g. broken ${language_name:Turkish} with typos and awkward wording. My messages should be correct ${language_name:Turkish} with no typos). Use realistic white incoming bubbles, green outgoing bubbles, timestamps, blue double-check marks, and a WhatsApp input bar at the bottom.
 
 Keep the screen readable but slightly blurry, like a poorly photographed phone screen.
 ```
