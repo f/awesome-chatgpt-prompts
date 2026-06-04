@@ -44,6 +44,33 @@ export async function PATCH(request: NextRequest) {
 
     const { name, username, avatar, bio, customLinks } = parsed.data;
 
+    // Phase 1: block username change when user has active public collections
+    if (username !== session.user.username) {
+      let activeCollectionCount = 0;
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        activeCollectionCount = await (db as any).collection?.count({
+          where: {
+            ownerId: session.user.id,
+            visibility: { in: ["PUBLIC", "ADMIN_PRIVATE"] },
+          },
+        }) ?? 0;
+      } catch {
+        // collection table not yet migrated — guard skipped
+      }
+
+      if (activeCollectionCount > 0) {
+        return NextResponse.json(
+          {
+            error: "username_locked",
+            message:
+              "Remove or make all collections private before changing username — active marketplace URLs would break.",
+          },
+          { status: 400 }
+        );
+      }
+    }
+
     // Check if username is taken by another user
     if (username !== session.user.username) {
       const existingUser = await db.user.findUnique({
