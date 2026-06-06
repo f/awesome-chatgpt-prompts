@@ -409,7 +409,44 @@ enum NotificationType {
 // Phase 1: Multi-tenancy + Composition Engine execution traces
 // Added by service-extraction Day-1 migration. See SERVICE-EXTRACTION-PLAN.md
 // and EXECUTION-TRACE-SCORING-SPEC.md for rationale.
+//
+// Phase 2 (Composition Engine, Level 2): Composition + Stage models added.
+// ExecutionRecord/StageTrace are reused as-is (superset) — the audited trace
+// columns (rawInput/adaptedInput/promptVersion/score/thresholdMet/...) are
+// preserved so Level-3 scoring stays migration-free.
 // ---------------------------------------------------------------------------
+
+model Composition {
+  id             String            @id @default(cuid())
+  organizationId String
+  name           String
+  description    String?
+  createdBy      String
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  stages         Stage[]
+  executions     ExecutionRecord[]
+
+  @@index([organizationId])
+  @@map("compositions")
+}
+
+model Stage {
+  id               String      @id @default(cuid())
+  compositionId    String
+  composition      Composition @relation(fields: [compositionId], references: [id], onDelete: Cascade)
+  order            Int
+  promptId         String
+  fallbackPromptId String?
+  successThreshold Float       @default(0.5)
+  extractFields    String[]
+  transformRules   Json?
+  createdAt        DateTime    @default(now())
+
+  @@unique([compositionId, order])
+  @@index([compositionId])
+  @@map("stages")
+}
 
 model Organization {
   id               String            @id @default(cuid())
@@ -427,8 +464,10 @@ model Organization {
 
 model ExecutionRecord {
   id              String          @id @default(cuid())
-  compositionId   String // opaque id; FK added in Phase 2 when Composition model lands (no orphan FK now)
+  compositionId   String // Phase 2: now FK-backed by Composition (see `composition` relation)
   organizationId  String
+  userId          String // Phase 2: user who ran the execution
+  sessionId       String? // Phase 2: optional client/session correlation id
   status          ExecutionStatus
   input           String
   finalOutput     String?
@@ -438,6 +477,7 @@ model ExecutionRecord {
   startedAt       DateTime        @default(now())
   completedAt     DateTime?
   organization    Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  composition     Composition     @relation(fields: [compositionId], references: [id], onDelete: Cascade)
   stageTraces     StageTrace[]
 
   @@index([organizationId])
