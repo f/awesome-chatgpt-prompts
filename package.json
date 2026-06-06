@@ -17,6 +17,7 @@
     "db:setup": "prisma generate && prisma migrate dev && prisma db seed",
     "setup": "node scripts/setup.js",
     "generate:examples": "npx tsx scripts/generate-examples.ts",
+    "smoke:composition": "tsx scripts/smoke-composition.ts",
     "postinstall": "prisma generate",
     "test": "vitest run",
     "test:watch": "vitest",
