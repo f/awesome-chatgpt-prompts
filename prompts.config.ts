@@ -56,6 +56,6 @@ export default defineConfig({
   homepage: {
     useCloneBranding,
     achievements: { enabled: !useCloneBranding },
-    sponsors: { enabled: !useCloneBranding },
+sponsors: { enabled: !useCloneBranding, items: [] },
   },
 });
