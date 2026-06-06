@@ -50,4 +50,4 @@ next-env.d.ts
 .env.sentry-build-plugin
 .env.docker
 .env.production.vyaxis
-   .env*
+.env*
