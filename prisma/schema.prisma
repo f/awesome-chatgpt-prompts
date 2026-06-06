@@ -424,6 +424,7 @@ model Composition {
   createdBy      String
   createdAt      DateTime          @default(now())
   updatedAt      DateTime          @updatedAt
+  organization   Organization      @relation(fields: [organizationId], references: [id], onDelete: Restrict)
   stages         Stage[]
   executions     ExecutionRecord[]
 
@@ -458,6 +459,7 @@ model Organization {
   users            User[]
   prompts          Prompt[]
   executionRecords ExecutionRecord[]
+  compositions     Composition[]
 
   @@map("organizations")
 }
