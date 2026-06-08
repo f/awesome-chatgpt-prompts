@@ -127490,14 +127490,14 @@ Rules:
 
 ## CHARACTER SHEET
 
-Contributed by [@randomruffneck89@gmail.com](https://github.com/randomruffneck89@gmail.com)
+Contributed by [@randomruffneck89@gmail.com](https://github.com/randomruffneck89@gmail.com), [@f](https://github.com/f)
 
 ```md
 Create a professional character reference sheet of the exact same person from the uploaded reference image on a plain white background.
 
 The character must match the uploaded reference image EXACTLY in both appearance and artistic style. If the reference image is a drawing, illustration, or stylized artwork, replicate the same drawing style, line work, shading technique, and rendering method. If the reference image is photorealistic, the result must also be photorealistic. The visual style must be identical to the reference.
 
-Layout: two rows.
+Layout: three rows.
 
 Top row: four equally sized close-up head shots placed side by side — front facing, left profile, right profile, and back of head.
 
