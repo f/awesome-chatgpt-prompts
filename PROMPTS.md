@@ -128653,3 +128653,145 @@ Steps to integrate
 
 </details>
 
+<details>
+<summary><strong>shadcn Component Adapter for Cursor</strong></summary>
+
+## shadcn Component Adapter for Cursor
+
+Contributed by [@farias.andreluiz@gmail.com](https://github.com/farias.andreluiz@gmail.com)
+
+```md
+# shadcn Component Visual Adapter
+
+## 🎯 Objective
+Refactor the existing `${component_name}` component located at `${component_file_path}` to match the **visual design, structure, and behavior** of the reference component available at:
+
+> ${install_command:bunx --bun shadcn@latest add accordion}
+${reference_url:}   ← optional; leave blank if no docs page exists
+
+Do NOT replace business logic, existing props interface, or data-fetching patterns. Preserve them.
+Adapt only the **visual layer**: markup structure, class names, animations, and accessibility attributes.
+
+---
+
+## 📋 Step 1 — Analyze the Existing Component
+
+Before writing any code:
+
+1. Read the full source of `${component_file_path}`.
+2. Map out:
+   - All **props and their types** (TypeScript interfaces or PropTypes).
+   - Internal **state variables** (`useState`, `useReducer`, Zustand slices, etc.).
+   - **Context providers or custom hooks** consumed.
+   - **Child components** rendered and where they live.
+   - **Event handlers** and callbacks exposed to the parent.
+3. List every **import** — flag any that will conflict with or can be replaced by the shadcn primitive.
+
+Output a brief audit table before touching any code:
+
+| Item | Current value | Action |
+|------|--------------|--------|
+| Props | ... | keep / rename / remove |
+| State | ... | keep / migrate |
+| Context/Hooks | ... | keep / replace |
+| Sub-components | ... | keep / replace |
+| Dependencies | ... | keep / install / remove |
+
+---
+
+## 📦 Step 2 — Dependency Resolution
+
+Run the install command directly:
+
+${install_command}
+
+After the command completes, the generated files will appear in
+${components_dir:components/ui}/. Proceed to Step 3 using those files.
+
+---
+
+## 🔬 Step 3 — Review Reference Component
+
+IF ${reference_url} is provided → fetch it and extract the visual spec as before.
+
+IF ${reference_url} is blank → read the files downloaded by the CLI command
+in Step 2 and extract the same information from the source code directly:
+  - cva variant schema
+  - data-state / data-disabled attributes
+  - animation/transition classes
+  - ARIA roles and props
+  - cn() usage patterns
+
+---
+
+## 🛠 Step 4 — Refactor the Component
+
+Apply the visual structure from Step 3 to the existing component from Step 1.
+
+### Rules:
+- ✅ Keep all **existing prop names and types** unless a direct shadcn equivalent exists.
+- ✅ Keep all **data-fetching, business logic, and callbacks**.
+- ✅ Wrap Radix primitives using **`forwardRef`** and spread `...props` to preserve flexibility.
+- ✅ Use `cn()` for all className merging — never string concatenation.
+- ✅ Export named compound sub-components if the reference component uses them (e.g., `Accordion`, `AccordionItem`, `AccordionTrigger`, `AccordionContent`).
+- ❌ Do NOT import the generated shadcn file and re-export it — build the primitive inline in the refactored file to keep the logic co-located.
+- ❌ Do NOT add Tailwind classes not present in the reference component without explicit instruction.
+
+### Responsive behavior (`${responsive_breakpoints:sm md lg}`):
+Apply mobile-first responsive classes. Confirm current breakpoints in `tailwind.config.ts` match the project's convention. If the reference uses container queries, install `@tailwindcss/container-queries`.
+
+---
+
+## 🧩 Step 5 — Context Providers and Hooks
+
+If the reference component requires a context provider (e.g., `ToastProvider`, `TooltipProvider`):
+
+1. Check if it is already mounted in `${provider_file:app/layout.tsx}` or `${provider_file:app/providers.tsx}`.
+2. If not, add it to the appropriate layout file. Provide the exact diff.
+3. If a custom hook is required (e.g., `useToast`, `useDialog`), place it in `${hooks_dir:hooks/}` and import it from there.
+
+---
+
+## ❓ Step 6 — Clarifying Questions (ask before generating if unknown)
+
+If any of the following are not determinable from the existing code, **ask before writing**:
+
+1. **Data/props**: What shape of data will be passed? (Provide a sample object if helpful.)
+2. **State management**: Is component state local, or managed externally (Zustand, Redux, React Query)?
+3. **Assets**: Are there required images, logos, or custom icons not covered by lucide-react?
+4. **Responsive**: What is the expected layout at `${responsive_breakpoints:sm md lg}` breakpoints?
+5. **Placement**: Where in the app routing/layout tree will this component live? (Important for context provider placement.)
+
+---
+
+## 📐 Step 7 — Output Format
+
+Provide the result as:
+
+1. **`${component_file_path}`** — full refactored component file.
+2. **`${components_dir:components/ui}/${shadcn_component_slug}.tsx`** — shadcn primitive (only if needed and not generated by CLI).
+3. **`lib/utils.ts`** — only if it needs to be created or updated.
+4. **Layout/provider diff** — only if a provider needs to be added.
+5. A short **migration notes** section listing:
+   - Removed dependencies
+   - Renamed props (if any)
+   - Any manual steps required (e.g., adding CSS variables to `globals.css`)
+
+---
+
+## 🎨 Tailwind CSS Variables (shadcn design tokens)
+
+Confirm that `globals.css` contains the required CSS custom properties. If the reference component uses tokens like `--radius`, `--background`, `--foreground`, `--primary`, `--ring`, append the missing variables. Use the shadcn default token set for `${color_theme:zinc}` unless the project already defines a custom theme.
+
+---
+
+## 🚫 Constraints
+
+- Framework: **${framework:Next.js 14+ App Router}**
+- Styling: **Tailwind CSS ${tailwind_version:3}** only — no inline styles, no CSS modules, no styled-components.
+- TypeScript: **strict mode**. All new code must be fully typed.
+- Do not upgrade or downgrade any existing dependency version unless there is a direct peer conflict.
+```
+
+</details>
+
