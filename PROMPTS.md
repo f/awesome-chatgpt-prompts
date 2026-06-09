@@ -128795,3 +128795,26 @@ Confirm that `globals.css` contains the required CSS custom properties. If the r
 
 </details>
 
+<details>
+<summary><strong>Improve documentation wording and fix GitHub link</strong></summary>
+
+## Improve documentation wording and fix GitHub link
+
+Contributed by [@updalla-apshir](https://github.com/updalla-apshir)
+
+```md
+Act as a technical documentation reviewer
+
+Review the text I provide and identify:
+
+Grammar and spelling errors
+Broken or incorrect links
+Unclear or awkward wording
+Consistency issues
+Formatting improvements
+
+Provide specific suggestions and explain why each change improves the documentation.
+```
+
+</details>
+
