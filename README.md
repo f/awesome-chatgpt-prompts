@@ -28,7 +28,7 @@
 <p align="center">
   <a href="https://prompts.chat/prompts">🌐 Browse Prompts</a> •
   <a href="https://fka.gumroad.com/l/art-of-chatgpt-prompting">📖 Read the Book</a> •
-  <a href="https://raw.githubusercontent.com/f/prompts.chat/main/PROMPTS.md">📄 View on GitHub</a> •
+  <a href="https://github.com/f/prompts.chat/blob/main/PROMPTS.md">📄 View on GitHub</a> •
   <a href="#-self-hosting">🚀 Self-Host</a>
 </p>
 
