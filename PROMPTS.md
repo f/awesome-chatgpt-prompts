@@ -129090,3 +129090,16 @@ After naming, generate a descriptive prompt that highlights the application's ma
 
 </details>
 
+<details>
+<summary><strong>SWAP MENU EXTERNAL C++</strong></summary>
+
+## SWAP MENU EXTERNAL C++
+
+Contributed by [@reyvannshz](https://github.com/reyvannshz)
+
+```md
+CHANGE THE OLD MISTY LOADER TO THE NEWEST LOADER THAT IS ALREADY IN THE NEW SOURCE PATH WITH THE SAME FONT AND THE SAME THEME AND THE SAME SIZE AND JUST CHANGE THE LOADER TO ENTER THE KEYAUTH, DON'T CHANGE ANYTHING ELSE
+```
+
+</details>
+
