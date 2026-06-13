@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { requestLogger } from "@/lib/logger";
+import { resolveUserOrganizationId } from "@/lib/organization";
 
 const stageSchema = z.object({
   order: z.number().int(),
@@ -17,7 +18,9 @@ const stageSchema = z.object({
 const createSchema = z.object({
   name: z.string().min(1),
   description: z.string().optional(),
-  organizationId: z.string().min(1),
+  // Optional and only ever validated against the server-resolved org — never
+  // used as the source of truth.
+  organizationId: z.string().min(1).optional(),
   stages: z.array(stageSchema).min(1),
 });
 
@@ -30,8 +33,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "unauthorized" }, { status: 401 });
     }
 
+    const organizationId = await resolveUserOrganizationId(session.user.id);
+    if (!organizationId) {
+      return NextResponse.json({ error: "no_organization" }, { status: 403 });
+    }
+
     const body = await request.json();
     const data = createSchema.parse(body);
+
+    if (data.organizationId && data.organizationId !== organizationId) {
+      return NextResponse.json({ error: "organization_mismatch" }, { status: 403 });
+    }
 
     const orders = data.stages.map((s) => s.order);
     if (new Set(orders).size !== orders.length) {
@@ -42,7 +54,7 @@ export async function POST(request: NextRequest) {
       data: {
         name: data.name,
         description: data.description,
-        organizationId: data.organizationId,
+        organizationId,
         createdBy: session.user.id,
         stages: {
           create: data.stages.map((s) => ({
@@ -86,7 +98,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET /api/v1/compositions — list compositions (optionally by organizationId)
+// GET /api/v1/compositions — list compositions in the caller's organization
 export async function GET(request: NextRequest) {
   const log = requestLogger(request.headers.get("x-request-id"));
   try {
@@ -95,11 +107,19 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "unauthorized" }, { status: 401 });
     }
 
+    const organizationId = await resolveUserOrganizationId(session.user.id);
+    if (!organizationId) {
+      return NextResponse.json({ error: "no_organization" }, { status: 403 });
+    }
+
     const { searchParams } = new URL(request.url);
-    const organizationId = searchParams.get("organizationId") ?? undefined;
+    const requestedOrgId = searchParams.get("organizationId");
+    if (requestedOrgId && requestedOrgId !== organizationId) {
+      return NextResponse.json({ error: "organization_mismatch" }, { status: 403 });
+    }
 
     const compositions = await db.composition.findMany({
-      where: organizationId ? { organizationId } : undefined,
+      where: { organizationId },
       orderBy: { createdAt: "desc" },
       include: {
         stages: { orderBy: { order: "asc" } },
