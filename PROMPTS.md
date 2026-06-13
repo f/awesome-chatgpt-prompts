@@ -129123,3 +129123,16 @@ also list down all the resources which are using the vnet. so that its easier to
 
 </details>
 
+<details>
+<summary><strong>RFQ</strong></summary>
+
+## RFQ
+
+Contributed by [@bobbysunday44-maker](https://github.com/bobbysunday44-maker)
+
+```md
+An RFQ email that can be sent to diferent industry when the leads list has different business industries and the RFQ needs to fit in every industry 
+```
+
+</details>
+
