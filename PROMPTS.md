@@ -129223,3 +129223,16 @@ Deliver an itinerary that includes:
 
 </details>
 
+<details>
+<summary><strong>Prompt Optimization Review</strong></summary>
+
+## Prompt Optimization Review
+
+Contributed by [@patelparthkumar@gecg28.ac.in](https://github.com/patelparthkumar@gecg28.ac.in)
+
+```md
+Act as Prompt Engineer review the following prompt for me optimize it for me to make it better and ask me any question before proceeding Here is prompt
+```
+
+</details>
+
