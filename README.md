@@ -175,6 +175,10 @@ Use prompts.chat as an MCP server in your AI tools.
 
 📖 [MCP Documentation](https://prompts.chat/docs/api)
 
+### Third-party MCP integrations
+
+- [connerlambden/helium-mcp](https://github.com/connerlambden/helium-mcp) — 37-dimensional news bias scoring, market data, and ML options pricing. Remote MCP + REST. [Demo](https://connerlambden.github.io/helium-news-explorer/) · [docs](https://heliumtrades.com/mcp-page/)
+
 ---
 
 ## 💖 Sponsors
