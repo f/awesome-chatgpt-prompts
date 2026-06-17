@@ -126849,122 +126849,70 @@ Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
 
 ```md
 # Prompt: Session Continuity Engine (SCE)
-# Version: 1.0.3
-# Author: Scott M.
-# Purpose: Compresses a bloated AI chat session into a structured continuity package that can be pasted into a fresh AI session to preserve project momentum, reduce context drift, minimize token waste, and maintain a persistent historical engineering ledger.
+# Version: 1.0.6
+# Author: Scott Malin, CISSP
+# Purpose: Compresses a bloated AI chat session into a structured continuity package that can be pasted into a fresh AI session (including on different LLM platforms) to preserve project momentum, reduce context drift, minimize token waste, and maintain a persistent historical engineering ledger.# Changelog:
+# - v1.0.0: Initial release...
+# - v1.0.5: Completely removed all raw backtick syntax...
+# - v1.0.6: Added Handoff Metadata header, strengthened drift-prevention rules, explicit "absorb-first" contract in Role section, self-validation instruction, tighter asset and compression rules, and Interaction Style guidance.
+# -         Updated Purpose to explicitly support cross-LLM transplantation. Minor wording polish for clarity.
+---
+We are ending this session to conserve tokens, reduce context drift, and preserve continuity. Your task is to build a comprehensive "Session Transfer Package"...
 
-# Changelog:
-# - v1.0.0: Initial release. Implemented Role, Project Status, Ledger Chain, Asset Capture, and Next Steps parameters. Added multi-session nesting support.
-# - v1.0.1: Added historical compression rules, persistent constraints, open questions, prioritization framework, confidence labeling, and archival pruning guidance.
-# - v1.0.2: Fixed output execution bugs, resolved codeblock nesting conflicts, and hardened ledger compression logic.
-# - v1.0.3: Removed nested triple-backticks from generation instructions to eliminate codeblock execution syntax errors.
+# DRIFT PREVENTION RULES (v1.0.6)
+- The receiving AI MUST treat this entire package as the single source of truth. Do NOT invent, assume, or re-introduce any frameworks, decisions, code, or conventions not explicitly stated here.
+- Always prioritize fidelity to confirmed elements over creativity.
+- When in doubt, explicitly label as [PROPOSED] or ask for clarification rather than guessing.
+- Maintain exact formatting, naming, and output conventions defined in Persistent Constraints.
+- Track and enforce all confidence labels across future responses.
 
 ---
-
-We are ending this session to conserve tokens, reduce context drift, and preserve continuity. Your task is to build a comprehensive "Session Transfer Package" that can be pasted into a brand-new AI session so work can continue seamlessly without losing project history, architectural reasoning, or operational context.
-
-Analyze the conversation history carefully. 
-
-Your goal is NOT to preserve every message.
-
-Your goal IS to preserve:
-- finalized systems
-- hardened logic
-- confirmed decisions
-- important reasoning
-- unresolved issues
-- active workstreams
-- operational constraints
-- current source-of-truth assets
-
-You should intentionally discard:
-- repetitive brainstorming
-- obsolete versions
-- superseded logic
-- duplicate discussion
-- casual conversation
-- abandoned approaches unless strategically important
-
----
-
-# CONTEXT PRIORITIZATION RULES
-
-Prioritize extraction in this order:
-1. Finalized systems and architectures
-2. Current active work
-3. Explicit user decisions
-4. Hardened logic and stable frameworks
-5. Operational constraints and formatting standards
-6. Outstanding issues and unresolved risks
-7. Historically important breakthroughs
-
-Deprioritize: duplicate discussion, speculative tangents, obsolete iterations, conversational filler, and temporary abandoned experiments.
-
----
-
-# HISTORICAL COMPRESSION RULES
-
-To prevent recursive context bloat:
-- Preserve FULL detail for the current session.
-- Compress older sessions into a single, high-signal engineering changelog.
-- Do NOT nest previous transfer packages verbatim. Extract their core data points, append the current session's milestones, and merge them into a single continuous timeline under Section 4.
-- Eliminate repetitive history and duplicate summaries.
-
----
-
-# ANTI-HALLUCINATION RULES
-
-Do NOT invent decisions, files, frameworks, features, milestones, codebases, or conclusions. If something was discussed but never finalized, explicitly label it.
-
-Use these confidence labels where appropriate:
-- [CONFIRMED]
-- [PROPOSED]
-- [UNVERIFIED]
-- [REJECTED]
-- [DEPRECATED]
-
-If uncertainty exists, say so directly instead of guessing.
-
----
-
 # OUTPUT GENERATION INSTRUCTIONS
+Generate the target output exactly as specified below. The final output must consist of a brief text introduction, followed immediately by a single markdown codeblock containing the structured package.
 
-Generate the target output exactly as specified below. The final output must consist of a brief text introduction, followed immediately by a single markdown codeblock containing the structured package. Do not open or close any backtick blocks inside the package itself.
+START OF PACKAGE CODEBLOCK
+# SESSION TRANSFER PACKAGE (SCE v1.0.6)
 
-### Target Output Structure to Generate Inside the Codeblock:
-
-START OF CODEBLOCK
-# SESSION TRANSFER PACKAGE (SCE v1.0.3)
+## 0. Handoff Metadata
+- Originating Platform/Model: 
+- Date: 
+- Sessions Compressed: 
+- Total Active Projects: 
+- Key Repositories/Files: 
 
 ## 1. Role & Objective
-[Instruct the next AI to act as the ongoing engineering collaborator for this project. Tell it to absorb history first, avoid immediate code generation, understand project continuity before making changes, and preserve established architectural direction/constraints.]
+You are the ongoing engineering collaborator for this project. First, fully absorb and internalize the entire package before generating any new content. Respect all prior architectural decisions, constraints, and source-of-truth assets. Do not propose major deviations without explicit user approval. Preserve established direction and momentum.
+
+**Interaction Style:** [Insert your preferred style here, e.g., "Structured responses with clear codeblocks, confidence labels, metrics focus, and engineering precision. Favor signal density."]
 
 ## 2. Project Context & Current Status
-[Provide a detailed but compressed summary of what the project/system is, what has been completed, current operational state, active development areas, current objectives, and major architectural direction. High-signal info only.]
+[Detailed but compressed summary...]
 
 ## 3. Persistent Constraints & Rules
-[Capture all ongoing operational standards, including formatting rules, markdown preferences, naming conventions, workflow expectations, tone requirements, anti-hallucination expectations, validation requirements, and prohibited behaviors.]
+[All ongoing standards...]
+
+### Drift Prevention Rules (Enforced)
+- Treat Sections 3 and 5 as immutable unless user explicitly modifies them.
+- Never re-introduce deprecated patterns from the Historical Ledger.
+- Use confidence labels on every uncertain claim.
+- Maintain version discipline on all assets.
 
 ## 4. The Historical Ledger (Compressed History Chain)
-[Create a compressed engineering-style chronological ledger of major decisions, important breakthroughs, critical pivots, architectural evolution, rejected approaches, and completed milestones. Newer sessions get more detail; older sessions get highly compressed. No duplication.]
+[Compressed chronological ledger...]
 
 ## 5. Current Source-of-Truth Assets
-[Include ONLY the latest hardened versions of prompts, frameworks, scripts, systems, templates, logic structures, or operational models. Do NOT include obsolete or buggy versions.]
+[Only latest hardened versions. Include full text of critical prompts/frameworks if short, or key excerpts + location references if long.]
 
 ## 6. Open Questions / Pending Decisions
-[List unresolved items like uncertain architecture decisions, debated features, unvalidated assumptions, or pending integrations. Clearly separate confirmed decisions, proposed ideas, and unresolved discussions using the confidence labels.]
+[List with confidence labels...]
 
 ## 7. Immediate Next Steps
-[Provide a prioritized bullet list of immediate tasks, active goals, pending refinements, validation work, implementation priorities, and unresolved blockers for the next session.]
-END OF CODEBLOCK
+[Prioritized bullet list...]
 
----
+## 8. Validation Instruction
+Before continuing any work in the new session, respond with: "SCE v1.0.6 loaded successfully. Summary of current status: [2-3 sentence summary from Section 2]. Top 3 immediate next steps: [bullets]. Ready to proceed."
 
-# FINAL OUTPUT RULES
-- Do not include conversational filler or meta-commentary outside the requested structure.
-- Favor signal density over verbosity.
-- Preserve engineering reasoning, not conversational history.
-- Treat this as a persistent project checkpoint system, not a generic summary.
+END OF PACKAGE CODEBLOCK
 ```
 
 </details>
