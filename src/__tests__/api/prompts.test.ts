@@ -16,6 +16,9 @@ vi.mock("@/lib/db", () => ({
     promptVersion: {
       create: vi.fn(),
     },
+    tag: {
+      upsert: vi.fn(),
+    },
     user: {
       findUnique: vi.fn(),
     },
@@ -41,6 +44,7 @@ vi.mock("@/lib/ai/embeddings", () => ({
 
 vi.mock("@/lib/slug", () => ({
   generatePromptSlug: vi.fn().mockResolvedValue("test-prompt"),
+  slugify: vi.fn((text: string) => text.toLowerCase().replace(/\s+/g, "-")),
 }));
 
 vi.mock("@/lib/ai/quality-check", () => ({
@@ -268,6 +272,53 @@ describe("POST /api/prompts", () => {
     expect(data.id).toBe("new-prompt");
     expect(db.prompt.create).toHaveBeenCalled();
     expect(db.promptVersion.create).toHaveBeenCalled();
+  });
+
+  it("should create prompt with manual tags", async () => {
+    vi.mocked(auth).mockResolvedValue({ user: { id: "user1" } } as never);
+    vi.mocked(db.prompt.findFirst).mockResolvedValue(null);
+    vi.mocked(db.tag.upsert).mockResolvedValue({
+      id: "tag1",
+      name: "Manual Tag",
+      slug: "manual-tag",
+      color: "#6366f1",
+    } as never);
+    vi.mocked(db.prompt.create).mockResolvedValue({
+      id: "new-prompt",
+      title: "Test Prompt",
+      slug: "test-prompt",
+      content: "This is test content",
+      type: "TEXT",
+      isPrivate: false,
+      author: { id: "user1", name: "Test", username: "test" },
+      category: null,
+      tags: [],
+    } as never);
+    vi.mocked(db.promptVersion.create).mockResolvedValue({} as never);
+
+    const request = new Request("http://localhost:3000/api/prompts", {
+      method: "POST",
+      body: JSON.stringify({
+        ...validPromptData,
+        tagNames: ["Manual Tag"],
+      }),
+    });
+
+    const response = await POST(request);
+
+    expect(response.status).toBe(200);
+    expect(db.tag.upsert).toHaveBeenCalledWith({
+      where: { slug: "manual-tag" },
+      update: {},
+      create: { name: "Manual Tag", slug: "manual-tag" },
+    });
+    expect(db.prompt.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({
+          tags: { create: [{ tagId: "tag1" }] },
+        }),
+      })
+    );
   });
 
   it("should return 429 when flagged user exceeds daily limit", async () => {

@@ -8,6 +8,7 @@ import { generatePromptEmbedding, findAndSaveRelatedPrompts } from "@/lib/ai/emb
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
 import { isSimilarContent, normalizeContent } from "@/lib/similarity";
+import { resolvePromptTagConnections, tagNameSchema } from "@/lib/tags";
 
 const promptSchema = z.object({
   title: z.string().min(1).max(200),
@@ -17,6 +18,7 @@ const promptSchema = z.object({
   structuredFormat: z.enum(["JSON", "YAML"]).nullish(), // Input type indicator
   categoryId: z.string().optional(),
   tagIds: z.array(z.string()),
+  tagNames: z.array(tagNameSchema).max(10).optional(),
   contributorIds: z.array(z.string()).optional(),
   isPrivate: z.boolean(),
   mediaUrl: z.string().url().optional().or(z.literal("")),
@@ -52,7 +54,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount, bestWithModels, bestWithMCP, workflowLink } = parsed.data;
+    const { title, description, content, type, structuredFormat, categoryId, tagIds, tagNames, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount, bestWithModels, bestWithMCP, workflowLink } = parsed.data;
 
     // Check if user is flagged (for auto-delisting and daily limit)
     const currentUser = await db.user.findUnique({
@@ -166,6 +168,7 @@ export async function POST(request: Request) {
 
     // Generate slug from title (translated to English)
     const slug = await generatePromptSlug(title);
+    const tagConnections = await resolvePromptTagConnections(tagIds, tagNames);
 
     // Create prompt with tags
     // Auto-delist if user is flagged
@@ -194,9 +197,7 @@ export async function POST(request: Request) {
           delistReason: "UNUSUAL_ACTIVITY",
         }),
         tags: {
-          create: tagIds.map((tagId) => ({
-            tagId,
-          })),
+          create: tagConnections,
         },
         ...(contributorIds && contributorIds.length > 0 && {
           contributors: {
