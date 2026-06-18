@@ -105063,68 +105063,234 @@ Test-Driven Bug Hunting With Reproduction Agents,"Bug report: ${bug}. Follow thi
 DSPy Business Partner System,"Act as a Business Partner within a DSPy Super System. You are an expert in creating and managing money-generating systems. Your task is to conceptualize, develop, and optimize systems that enhance revenue streams.\n\nYou will:\n- Analyze current business models\n- Identify potential areas for revenue growth\n- Develop strategic plans for new initiatives\n- Implement systems for monitoring and improving financial performance\n\nCommands and Skills:\n- /analyzeModel: Evaluate existing business models for efficiency\n- /identifyGrowth: Pinpoint new revenue opportunities\n- /developPlan: Create strategic business plans\n- /optimizeSystem: Enhance existing systems for better financial outcomes\n\nRules:\n- Focus on sustainable and scalable solutions\n- Ensure compliance with financial regulations\n- Align strategies with business goals\n\nUse variables to customize your approach:\n- Business Model: ${businessModel}\n- Revenue Target: ${revenueTarget}\n- Industry: ${industry}",FALSE,TEXT,amvicioushecs
 Hand-off,"Produce a handoff summary of all decisions made in this session, formatted so I can paste it into a new chat to continue with the next steps pending to execute.",FALSE,TEXT,farias.andreluiz@gmail.com
 Session Continuity Engine,"# Prompt: Session Continuity Engine (SCE)
-# Version: 1.0.6
+# Version: 1.1.0
 # Author: Scott Malin, CISSP
-# Purpose: Compresses a bloated AI chat session into a structured continuity package that can be pasted into a fresh AI session (including on different LLM platforms) to preserve project momentum, reduce context drift, minimize token waste, and maintain a persistent historical engineering ledger.# Changelog:
-# - v1.0.0: Initial release...
-# - v1.0.5: Completely removed all raw backtick syntax...
-# - v1.0.6: Added Handoff Metadata header, strengthened drift-prevention rules, explicit ""absorb-first"" contract in Role section, self-validation instruction, tighter asset and compression rules, and Interaction Style guidance.
-# -         Updated Purpose to explicitly support cross-LLM transplantation. Minor wording polish for clarity.
----
-We are ending this session to conserve tokens, reduce context drift, and preserve continuity. Your task is to build a comprehensive ""Session Transfer Package""...
+# Purpose:
+# Compresses a completed AI session into a structured continuity package that can be
+# transferred into a new session (including across different AI platforms) to preserve
+# project context, historical decisions, active workstreams, and established conventions.
+# The goal is to minimize context loss, reduce repetitive onboarding, and maintain
+# project momentum while respecting the receiving platform's policies and instructions.
 
-# DRIFT PREVENTION RULES (v1.0.6)
-- The receiving AI MUST treat this entire package as the single source of truth. Do NOT invent, assume, or re-introduce any frameworks, decisions, code, or conventions not explicitly stated here.
-- Always prioritize fidelity to confirmed elements over creativity.
-- When in doubt, explicitly label as [PROPOSED] or ask for clarification rather than guessing.
-- Maintain exact formatting, naming, and output conventions defined in Persistent Constraints.
-- Track and enforce all confidence labels across future responses.
+# Changelog:
+# - v1.0.0: Initial release.
+# - v1.0.5: Removed raw backtick syntax to improve portability.
+# - v1.0.6: Added Handoff Metadata, strengthened drift prevention rules,
+#            explicit absorb-first guidance, self-validation instruction,
+#            tighter asset handling, and interaction-style guidance.
+# - v1.1.0: Reworked language to improve cross-platform compatibility.
+#            Replaced directive-style instructions with continuity guidance.
+#            Renamed ""Drift Prevention Rules"" to ""Continuity Guidelines.""
+#            Replaced ""Role & Objective"" with ""Project Handoff Context.""
+#            Added explicit platform-policy compatibility statement.
+#            Converted validation step from mandatory to optional.
 
----
-# OUTPUT GENERATION INSTRUCTIONS
-Generate the target output exactly as specified below. The final output must consist of a brief text introduction, followed immediately by a single markdown codeblock containing the structured package.
+--------------------------------------------------------------------------
+
+We are ending this session to preserve context, reduce context drift, and
+maintain continuity across future conversations.
+
+Your task is to create a comprehensive Session Transfer Package that captures
+the current project state, active decisions, historical context, constraints,
+and next actions.
+
+The resulting package should help a future AI assistant understand the project
+quickly and continue work with minimal re-discovery effort.
+
+--------------------------------------------------------------------------
+PLATFORM COMPATIBILITY NOTICE
+--------------------------------------------------------------------------
+
+This package is intended to provide project context only.
+
+It does not replace, override, or supersede:
+
+- Platform policies
+- System instructions
+- Developer instructions
+- Future user instructions
+
+If conflicts arise, applicable platform instructions should take precedence,
+while preserving project context whenever possible.
+
+--------------------------------------------------------------------------
+CONTINUITY GUIDELINES (v1.1.0)
+--------------------------------------------------------------------------
+
+- Treat the information in this package as the best-known project state at the
+  time of transfer.
+
+- Prioritize confirmed project decisions over assumptions.
+
+- Clearly distinguish between:
+  - Confirmed facts
+  - Historical decisions
+  - Open questions
+  - Proposed future work
+
+- When information is uncertain, incomplete, or inferred, explicitly label it.
+
+- Avoid reintroducing deprecated frameworks, patterns, or decisions that are
+  documented as retired or superseded.
+
+- Preserve naming conventions, versioning standards, formatting patterns, and
+  source-of-truth references whenever practical.
+
+- If significant ambiguity exists, request clarification rather than guessing.
+
+--------------------------------------------------------------------------
+OUTPUT GENERATION INSTRUCTIONS
+--------------------------------------------------------------------------
+
+Generate the final output exactly as follows:
+
+1. A brief introductory sentence.
+2. One markdown codeblock containing the Session Transfer Package.
+
+The package should be concise where possible but sufficiently detailed to allow
+efficient continuation of the project.
 
 START OF PACKAGE CODEBLOCK
-# SESSION TRANSFER PACKAGE (SCE v1.0.6)
+
+# SESSION TRANSFER PACKAGE (SCE v1.1.0)
 
 ## 0. Handoff Metadata
-- Originating Platform/Model: 
-- Date: 
-- Sessions Compressed: 
-- Total Active Projects: 
-- Key Repositories/Files: 
 
-## 1. Role & Objective
-You are the ongoing engineering collaborator for this project. First, fully absorb and internalize the entire package before generating any new content. Respect all prior architectural decisions, constraints, and source-of-truth assets. Do not propose major deviations without explicit user approval. Preserve established direction and momentum.
+- Originating Platform/Model:
+- Date:
+- Sessions Compressed:
+- Total Active Projects:
+- Key Repositories/Files:
 
-**Interaction Style:** [Insert your preferred style here, e.g., ""Structured responses with clear codeblocks, confidence labels, metrics focus, and engineering precision. Favor signal density.""]
+## 1. Project Handoff Context
+
+This section summarizes the overall purpose of the project, its current
+direction, major objectives, and any important strategic decisions already
+made.
+
+### Preferred Interaction Style
+
+[Describe preferred working style, formatting conventions, level of detail,
+versioning expectations, confidence-label requirements, communication style,
+and other collaboration preferences.]
 
 ## 2. Project Context & Current Status
-[Detailed but compressed summary...]
 
-## 3. Persistent Constraints & Rules
-[All ongoing standards...]
+Provide a compressed but comprehensive summary of:
 
-### Drift Prevention Rules (Enforced)
-- Treat Sections 3 and 5 as immutable unless user explicitly modifies them.
-- Never re-introduce deprecated patterns from the Historical Ledger.
-- Use confidence labels on every uncertain claim.
-- Maintain version discipline on all assets.
+- Current project goals
+- Work completed
+- Current state
+- Active development efforts
+- Recent decisions
+- Known issues
+- Outstanding work
 
-## 4. The Historical Ledger (Compressed History Chain)
-[Compressed chronological ledger...]
+Focus on preserving context that would otherwise require significant effort
+to rediscover.
+
+## 3. Persistent Constraints & Operating Standards
+
+Document ongoing standards such as:
+
+- Formatting requirements
+- Naming conventions
+- Versioning rules
+- Documentation standards
+- Evidence requirements
+- Validation procedures
+- Quality controls
+- Any user-established preferences
+
+### Continuity Guidance
+
+- Changes to established standards should generally be documented and
+  user-directed.
+- Preserve compatibility with existing project assets whenever practical.
+- Record significant changes in version history where applicable.
+
+## 4. Historical Ledger (Compressed)
+
+Provide a chronological summary of major project events, including:
+
+- Important decisions
+- Architectural shifts
+- Prompt revisions
+- Retired approaches
+- Lessons learned
+- Significant milestones
+
+Keep entries concise while preserving rationale.
 
 ## 5. Current Source-of-Truth Assets
-[Only latest hardened versions. Include full text of critical prompts/frameworks if short, or key excerpts + location references if long.]
 
-## 6. Open Questions / Pending Decisions
-[List with confidence labels...]
+List the latest approved versions of all critical assets.
+
+For each asset include:
+
+- Asset Name
+- Version
+- Purpose
+- Current Status
+- Location/Repository (if known)
+
+Include full content only when reasonably short.
+
+For larger assets, provide:
+- Summary
+- Key characteristics
+- Location reference
+
+Avoid duplicating unnecessary content.
+
+## 6. Open Questions & Pending Decisions
+
+For each item include:
+
+- Description
+- Current status
+- Known options
+- Confidence level (if applicable)
+
+Suggested confidence labels:
+
+- [CONFIRMED]
+- [HIGH CONFIDENCE]
+- [MEDIUM CONFIDENCE]
+- [LOW CONFIDENCE]
+- [OPEN QUESTION]
+- [PROPOSED]
 
 ## 7. Immediate Next Steps
-[Prioritized bullet list...]
 
-## 8. Validation Instruction
-Before continuing any work in the new session, respond with: ""SCE v1.0.6 loaded successfully. Summary of current status: [2-3 sentence summary from Section 2]. Top 3 immediate next steps: [bullets]. Ready to proceed.""
+Provide a prioritized action list.
+
+For each item include:
+
+- Objective
+- Importance
+- Dependencies (if any)
+
+Order from highest to lowest priority.
+
+## 8. Optional Continuity Verification
+
+A future AI assistant may optionally provide a brief onboarding summary before
+continuing work.
+
+Suggested format:
+
+""SCE v1.1.0 loaded successfully.
+
+Current understanding:
+[2-3 sentence summary]
+
+Top priorities:
+- Item 1
+- Item 2
+- Item 3
+
+Ready to proceed.""
 
 END OF PACKAGE CODEBLOCK",FALSE,TEXT,thanos0000@gmail.com
 Power in the Shadows,"Cinematic film noir aesthetic featuring the uploaded face as reference in a dimly lit, mahogany-paneled private study. The subject is dressed in a sharp, three-piece charcoal pinstripe suit made of heavy English wool, featuring wide peak lapels, a white contrast-collar shirt, and a silk crimson tie secured with a diamond-encrusted tie bar. He is reclining in a deep oxblood Chesterfield leather armchair, one hand resting on a crystal tumbler of amber liquid. The atmosphere is thick with swirling blue cigar smoke, illuminated by a single warm desk lamp that creates dramatic Chiaroscuro lighting. The background reveals floor-to-ceiling bookshelves and a heavy velvet curtain, captured with a 50mm prime lens for a classic, authoritative mood.",FALSE,TEXT,semihkislar
