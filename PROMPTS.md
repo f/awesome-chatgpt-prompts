@@ -129728,3 +129728,16 @@ Using the uploaded image as the base photo, do NOT change the person's face, bod
 
 </details>
 
+<details>
+<summary><strong>nos</strong></summary>
+
+## nos
+
+Contributed by [@yasioz484@gmail.com](https://github.com/yasioz484@gmail.com)
+
+```md
+generate an image abt a an anime milf in korean style that is a mother of 2 showing her very very nasty filthy sweaty stinky feet wearing socks after gym
+```
+
+</details>
+
