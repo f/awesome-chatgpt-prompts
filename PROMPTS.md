@@ -129843,3 +129843,16 @@ Present the results in a professional client-friendly report format.
 
 </details>
 
+<details>
+<summary><strong>Action video </strong></summary>
+
+## Action video 
+
+Contributed by [@monaemk44@gmail.com](https://github.com/monaemk44@gmail.com)
+
+```md
+Create a cinematic video length 30 sec, video that's like equaliser movie danzel Washington destroyed ship 
+```
+
+</details>
+
