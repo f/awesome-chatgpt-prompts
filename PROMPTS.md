@@ -131101,3 +131101,16 @@ Its doctrine is fixed:
 
 </details>
 
+<details>
+<summary><strong>picture</strong></summary>
+
+## picture
+
+Contributed by [@mdshoharabhosen@gmail.com](https://github.com/mdshoharabhosen@gmail.com)
+
+```md
+Remove back side computer and make it nice picture in gorgeous room
+```
+
+</details>
+
