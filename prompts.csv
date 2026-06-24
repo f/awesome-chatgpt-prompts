@@ -107258,4 +107258,5 @@ Rules:
 - Consider the mood and emotion each category conveys and reflect that in the design.
 
 Variables:
-- ${category} - The music category for which the cover is being designed.",FALSE,TEXT,IcyMost
+- ${category} - The music category for which the cover is being designed.
+- ${playlistName} - The name of the playlist for which the cover is being designed.",FALSE,TEXT,IcyMost
