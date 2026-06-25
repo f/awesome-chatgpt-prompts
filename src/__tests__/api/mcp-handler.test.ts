@@ -7,6 +7,7 @@ vi.mock("@/lib/db", () => ({
     user: { findUnique: vi.fn() },
     prompt: { findMany: vi.fn(), findFirst: vi.fn(), create: vi.fn() },
     tag: { findUnique: vi.fn(), create: vi.fn() },
+    category: { findMany: vi.fn(), findUnique: vi.fn() },
     $queryRaw: vi.fn(),
   },
 }));
@@ -80,6 +81,51 @@ function createMockRes(): NextApiResponse & {
   };
   return res as unknown as NextApiResponse & typeof res;
 }
+
+describe("findCategoryMatch - category resolution", () => {
+  const cats = [
+    { id: "1", name: "Writing & Content", slug: "writing" },
+    { id: "2", name: "Code Review", slug: "code-review" },
+    { id: "3", name: "Development", slug: "development" },
+  ];
+  let findCategoryMatch: (
+    categories: typeof cats,
+    input: string,
+  ) => (typeof cats)[number] | null;
+
+  beforeEach(async () => {
+    const mod = await import("@/pages/api/mcp");
+    findCategoryMatch = mod.findCategoryMatch;
+  });
+
+  it("matches an exact slug", () => {
+    expect(findCategoryMatch(cats, "code-review")?.id).toBe("2");
+  });
+
+  it("matches a slug case-insensitively", () => {
+    expect(findCategoryMatch(cats, "Code-Review")?.id).toBe("2");
+  });
+
+  it("matches by category name", () => {
+    expect(findCategoryMatch(cats, "Development")?.id).toBe("3");
+  });
+
+  it("matches a name with different spacing/case via slugify", () => {
+    expect(findCategoryMatch(cats, "code_review")?.id).toBe("2");
+  });
+
+  it("matches a name whose slug differs from slugify (Writing & Content -> writing)", () => {
+    expect(findCategoryMatch(cats, "Writing & Content")?.id).toBe("1");
+  });
+
+  it("returns null when nothing matches", () => {
+    expect(findCategoryMatch(cats, "nonexistent-category")).toBeNull();
+  });
+
+  it("returns null for whitespace-only input", () => {
+    expect(findCategoryMatch(cats, "   ")).toBeNull();
+  });
+});
 
 describe("MCP API handler - HTTP method routing", () => {
   let handler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
