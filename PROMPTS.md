@@ -131545,3 +131545,16 @@ Rules:
 
 </details>
 
+<details>
+<summary><strong>Verbatim Chat to Organized Notes</strong></summary>
+
+## Verbatim Chat to Organized Notes
+
+Contributed by [@thankcheeses](https://github.com/thankcheeses)
+
+```md
+extract all information in this chat verbatim Capture every detail from start to finish, ensuring the notes read like a comprehensive plan or proposal, with a focus on the user's intentions and actions.
+```
+
+</details>
+
