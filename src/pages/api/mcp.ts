@@ -126,6 +126,26 @@ export function findCategoryMatch(categories: CategoryRow[], input: string): Cat
 }
 
 /**
+ * Visibility filter for fetching a single prompt/skill by id: public entries, plus the
+ * authenticated owner's own private ones. Unauthenticated callers see only public entries.
+ * Returns a Prisma `where` fragment to spread into the query. Keep get_prompt and get_skill
+ * in sync — get_prompt previously hard-filtered `isPrivate: false`, hiding owners' own private
+ * prompts from themselves.
+ */
+export function buildPromptVisibilityFilter(
+  authenticatedUser: Pick<AuthenticatedUser, "id"> | null | undefined
+) {
+  return authenticatedUser
+    ? {
+        OR: [
+          { isPrivate: false },
+          { isPrivate: true, authorId: authenticatedUser.id },
+        ],
+      }
+    : { isPrivate: false };
+}
+
+/**
  * Resolve a category string (slug or name) to a category id. Returns a human-readable
  * warning (instead of silently dropping the value) when nothing matches, so callers can
  * surface it rather than creating a prompt with no category and no feedback.
@@ -438,12 +458,14 @@ function createServer(options: ServerOptions = {}) {
     },
     async ({ id, fill_variables }, extra) => {
       try {
+        const visibilityFilter = buildPromptVisibilityFilter(authenticatedUser);
+
         const prompt = await db.prompt.findFirst({
           where: {
             id,
-            isPrivate: false,
             isUnlisted: false,
             deletedAt: null,
+            ...visibilityFilter,
           },
           select: {
             id: true,
@@ -1214,15 +1236,7 @@ function createServer(options: ServerOptions = {}) {
     },
     async ({ id }) => {
       try {
-        // Build visibility filter
-        const visibilityFilter = authenticatedUser
-          ? {
-              OR: [
-                { isPrivate: false },
-                { isPrivate: true, authorId: authenticatedUser.id },
-              ],
-            }
-          : { isPrivate: false };
+        const visibilityFilter = buildPromptVisibilityFilter(authenticatedUser);
 
         const skill = await db.prompt.findFirst({
           where: {

@@ -127,6 +127,38 @@ describe("findCategoryMatch - category resolution", () => {
   });
 });
 
+describe("buildPromptVisibilityFilter - get_prompt/get_skill visibility", () => {
+  let buildPromptVisibilityFilter: (
+    user: { id: string } | null | undefined,
+  ) => Record<string, unknown>;
+
+  beforeEach(async () => {
+    const mod = await import("@/pages/api/mcp");
+    buildPromptVisibilityFilter = mod.buildPromptVisibilityFilter;
+  });
+
+  it("lets an authenticated owner see public prompts AND their own private ones", () => {
+    const filter = buildPromptVisibilityFilter({ id: "user-1" });
+    expect(filter).toEqual({
+      OR: [
+        { isPrivate: false },
+        { isPrivate: true, authorId: "user-1" },
+      ],
+    });
+  });
+
+  it("restricts unauthenticated callers to public prompts only", () => {
+    expect(buildPromptVisibilityFilter(null)).toEqual({ isPrivate: false });
+    expect(buildPromptVisibilityFilter(undefined)).toEqual({ isPrivate: false });
+  });
+
+  it("does not hard-filter isPrivate:false for an owner (regression: own private prompt was unfetchable)", () => {
+    const filter = buildPromptVisibilityFilter({ id: "owner" });
+    expect(filter).not.toHaveProperty("isPrivate", false);
+    expect(filter.OR).toContainEqual({ isPrivate: true, authorId: "owner" });
+  });
+});
+
 describe("MCP API handler - HTTP method routing", () => {
   let handler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
 
