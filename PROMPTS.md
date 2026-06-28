@@ -131723,3 +131723,18 @@ Steps:
 
 </details>
 
+<details>
+<summary><strong>Programming Logic Controller PLC interview questions and answers. Add S7400 Simens PLC and ABB PLC.</strong></summary>
+
+## Programming Logic Controller PLC interview questions and answers. Add S7400 Simens PLC and ABB PLC.
+
+Contributed by [@skillsubhasis@gmail.com](https://github.com/skillsubhasis@gmail.com)
+
+```md
+Programming Logic Controller PLC interview questions and answers practical interview industrial based. 
+Siemens PLC and ABB PLC models Q and A.
+PLC working in Cold Rolling Mill interview questions and answers.
+```
+
+</details>
+
