@@ -131766,3 +131766,16 @@ Example:
 
 </details>
 
+<details>
+<summary><strong>Optical, Optometrist</strong></summary>
+
+## Optical, Optometrist
+
+Contributed by [@aprasedu@gmail.com](https://github.com/aprasedu@gmail.com)
+
+```md
+i want develop a tele-ophthalmic/optometric app. i need ideas and development sop. no need any code. provide free guides. try to analyze what are efficient for tele-ophthalmic assessments and what are possible and practically and clinically worked.
+```
+
+</details>
+
