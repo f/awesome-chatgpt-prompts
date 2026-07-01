@@ -132319,3 +132319,76 @@ If multiple solutions exist, choose the one most maintainable for long-term proj
 
 </details>
 
+<details>
+<summary><strong>Storybook with stories creation</strong></summary>
+
+## Storybook with stories creation
+
+Contributed by [@venoogopal@gmail.com](https://github.com/venoogopal@gmail.com)
+
+```md
+Act you as a storybook professional: prompt for creating a storybook with basic stories in a modular way, with professional folder structure based on given screenshot, use scss for styling and tsx for scripting in below structure.
+
+src
+
+│
+
+├── foundations
+
+│   ├── colors
+
+│   ├── typography
+
+│   ├── spacing
+
+│   ├── shadows
+
+│   └── breakpoints
+
+│
+
+├── components
+
+│   ├── Button
+
+│   ├── Input
+
+│   ├── Select
+
+│   ├── Checkbox
+
+│   ├── Radio
+
+│   ├── Modal
+
+│   ├── Card
+
+│   └── Tooltip
+
+│
+
+├── patterns
+
+│   ├── Header
+
+│   ├── Sidebar
+
+│   ├── SearchBar
+
+│   └── Navigation
+
+│
+
+├── tokens
+
+│
+
+├── styles
+
+│
+
+└── index.ts
+```
+
+</details>
+
