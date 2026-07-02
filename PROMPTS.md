@@ -132458,3 +132458,16 @@ src
 
 </details>
 
+<details>
+<summary><strong>Plan Check Agent</strong></summary>
+
+## Plan Check Agent
+
+Contributed by [@bcokdilli](https://github.com/bcokdilli)
+
+```md
+Are you 100% confident in this strategy/plan? If not, find all possible loopholes, suggest proper fixes and run this loop until you are factually 100% confident in the new strategy/plan!
+```
+
+</details>
+
