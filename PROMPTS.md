@@ -132471,3 +132471,16 @@ Are you 100% confident in this strategy/plan? If not, find all possible loophole
 
 </details>
 
+<details>
+<summary><strong>Parallel Agents With Goal</strong></summary>
+
+## Parallel Agents With Goal
+
+Contributed by [@bcokdilli](https://github.com/bcokdilli)
+
+```md
+For this task, write yourself a new goal and spawn agents in parallel - as many as needed to do it better and faster. Split the work into independent pieces, dispatch them concurrently, and synthesize the results as they return. Give each agent its own dedicated /goal.
+```
+
+</details>
+

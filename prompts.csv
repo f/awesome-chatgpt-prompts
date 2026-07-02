@@ -109272,3 +109272,4 @@ src
 
 └── index.ts",FALSE,TEXT,venoogopal@gmail.com
 Plan Check Agent,"Are you 100% confident in this strategy/plan? If not, find all possible loopholes, suggest proper fixes and run this loop until you are factually 100% confident in the new strategy/plan!",FALSE,TEXT,bcokdilli
+Parallel Agents With Goal,"For this task, write yourself a new goal and spawn agents in parallel - as many as needed to do it better and faster. Split the work into independent pieces, dispatch them concurrently, and synthesize the results as they return. Give each agent its own dedicated /goal.",FALSE,TEXT,bcokdilli
