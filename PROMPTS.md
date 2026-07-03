@@ -132743,3 +132743,16 @@ Contributed by [@EmX0X](https://github.com/EmX0X)
 
 </details>
 
+<details>
+<summary><strong>Enhancing Efficiency with Codex Using Sub-Agents</strong></summary>
+
+## Enhancing Efficiency with Codex Using Sub-Agents
+
+Contributed by [@bcokdilli](https://github.com/bcokdilli)
+
+```md
+Look across my threads and projects and come up with five ways to simplify and work more efficiently with Codex. Use sub-agents.
+```
+
+</details>
+
