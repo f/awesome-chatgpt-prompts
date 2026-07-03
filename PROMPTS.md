@@ -132775,3 +132775,16 @@ Rules:
 
 </details>
 
+<details>
+<summary><strong>Result </strong></summary>
+
+## Result 
+
+Contributed by [@aadisingh22@gmail.com](https://github.com/aadisingh22@gmail.com)
+
+```md
+Analysis of school result subject wise using charts and table on one page well decorated 
+```
+
+</details>
+
