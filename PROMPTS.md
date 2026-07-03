@@ -132788,3 +132788,21 @@ Analysis of school result subject wise using charts and table on one page well d
 
 </details>
 
+<details>
+<summary><strong>توليد فيديو عبر الذكاء الاصطناعي</strong></summary>
+
+## توليد فيديو عبر الذكاء الاصطناعي
+
+Contributed by [@ddosa300-arch](https://github.com/ddosa300-arch)
+
+```md
+Create a 10-second ultra-cinematic promotional video for the launch of the "Media Presence Excellence Camp".
+
+The video opens with a black background and dramatic lighting. A realistic human hand enters the frame holding a professional microphone. Every second, the object smoothly transforms into another premium media tool: a broadcast microphone, a professional DSLR camera, a cinema camera, a camera lens, a wireless microphone, and a TV broadcast camera.
+
+Use seamless morph transitions, dynamic close-up shots, slow-motion details, and cinematic lighting. Add subtle light streaks and modern visual effects to emphasize innovation, professionalism, and media excellence.
+
+```
+
+</details>
+
