@@ -133396,3 +133396,49 @@ Mandatory Critique: Conclude every single response with a dedicated, brief secti
 
 </details>
 
+<details>
+<summary><strong>1337</strong></summary>
+
+## 1337
+
+Contributed by [@kennynah85@gmail.com](https://github.com/kennynah85@gmail.com)
+
+```md
+"Create a detailed efficiency guide for ${game_name}. 
+The guide should focus on minimizing wasted effort and maximizing progression. 
+Organize the content by chapters/levels/major story beats, and include:
+
+1. **Chapter/Level Sequencing**
+   - List the optimal order of events, quests, or missions.
+   - Highlight critical checkpoints that unlock new mechanics or areas.
+   - Note any optional content worth doing early for long-term benefits.
+
+2. **Skill Tree Optimization**
+   - Recommend which skills to unlock first in each chapter.
+   - Show how skill priorities evolve as new abilities become available.
+   - Provide alternative builds for different playstyles (e.g., stealth, ranged, melee).
+
+3. **Weapons & Gear**
+   - Identify the best weapons available in each chapter.
+   - Explain how to acquire them efficiently.
+   - Suggest upgrade paths and resource-saving strategies.
+
+4. **Upgrades & Crafting**
+   - Prioritize upgrades by chapter (e.g., ammo pouches first, armor later).
+   - Recommend farming spots for resources.
+   - Warn against low-value upgrades that waste materials.
+
+5. **Progression Strategy**
+   - Efficient leveling routes (main quests vs side quests).
+   - Exploration tips to maximize loot and avoid backtracking.
+   - Key hidden mechanics or unlockables that change gameplay efficiency.
+
+6. **Endgame Preparation**
+   - Outline late-game skill builds.
+   - Best-in-slot weapons and armor.
+   - Strategies for final bosses, challenges, or achievements.
+"
+```
+
+</details>
+
