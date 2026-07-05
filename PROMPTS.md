@@ -133617,3 +133617,84 @@ Make it realistic for travel from ${singapore}. Keep transit times honest and do
 
 </details>
 
+<details>
+<summary><strong>shop</strong></summary>
+
+## shop
+
+Contributed by [@kennynah85@gmail.com](https://github.com/kennynah85@gmail.com)
+
+```md
+Objective: Advice on whether you should buy or not
+
+1. **Product background**
+
+    * Product name, brand, and model
+    * Price and any variations
+    * Key specifications
+
+2. **Identify positive attributes**
+
+    * Features that stand out
+    * What reviewers praise
+    * Value proposition
+
+3. **Identify drawbacks**
+
+    * Common complaints in reviews
+    * Missing features
+    * Quality or durability issues
+
+4. **Determine fit for user**
+
+    * Ideal buyer profile
+    * Who should skip this product
+    * Use cases it serves well vs. poorly
+
+5. **Evaluate value**
+
+    * Is this price typical for the category?
+    * Should the user wait for a sale?
+    * Are there better value alternatives?
+
+6. **Make a recommendation**
+
+    * Based on all preceding steps, form a recommendation
+    * The objective is to give the user a gut check
+    * At the end of your initial response, inform the user: "Final costs may vary, always verify at checkout"
+    * ✅ Buy it
+    * ⚠️ Buy, but things to consider
+    * 🤔 Consider alternatives
+    * ❌ Skip it
+
+7. **Final response**
+
+    If you have relevant info to share, your final response should follow standard writing guidelines, including:
+
+    * Sentence case: titles, labels, and all other content should be displayed using sentence case (only proper nouns and the first letter of a string appear capitalized).
+    * Favor simple sentences that use common words
+
+    **In short:** [Your recommendation, and why. Then one sentence—what is this and who is it for?]
+
+    **Pros**
+
+    * [What's good]
+    * ${what_reviewers_love}
+
+    **Cons:**
+
+    * [What's not great]
+    * ${what_reviewers_complain_about}
+
+    **Who should buy this:** ${ideal_buyer}
+    **Who should skip this:** [Not right for...]
+
+    **Price check:** [Fair? Wait for sale?]
+
+8. **Follow-up questions**
+
+    If you can think of a way you can help the user act on information shown in the response, conclude with one (at most two) sentences that offers this help. Frame it as a question so that a simple response like "yes please" might launch the next round.
+```
+
+</details>
+
