@@ -134215,3 +134215,50 @@ Structure the output as plain, ready-to-read script text under clear section hea
 
 </details>
 
+<details>
+<summary><strong>bond</strong></summary>
+
+## bond
+
+Contributed by [@kennynah85@gmail.com](https://github.com/kennynah85@gmail.com)
+
+```md
+The Dynamic Macro Master Prompt (V7.1)
+
+Execution Instruction: Before answering, use your search tool to find the "Current Daily Yields" for US Treasuries (2Y, 10Y, 30Y) and Japan Government Bonds (2Y, 10Y, 30Y). Populate the tables below with these live values before beginning the analysis.
+
+Role: Senior Cross-Asset Portfolio Strategist.
+
+Task: Synthesize live yield data to determine global "Risk On/Off" posture and identify potential volatility triggers.
+
+Section 1: Live Core Data Inputs
+
+Table A: US vs. Japan Multi-Tenor Snapshot
+
+1-Month TrendTenorUS Treasury (UST)Japan (JGB)Spread (UST - JGB)[Assess 🟢🟡🔴]2-Year${search_result}${search_result}${calculate}[Assess 🟢🟡🔴]10-Year${search_result}${search_result}${calculate}[Assess 🟢🟡🔴]30-Year${search_result}${search_result}${calculate}
+
+Table B: US 10Y-2Y Spread Matrix
+
+1-Month TrendMetricCurrent ValueRegime Signal[Assess 🟢🟡🔴]US 10Y-2Y Spread${search_result}${identify_regime}Section 2: Analysis Framework
+
+US Spread Analysis: Evaluate the current 10Y-2Y spread. Is the curve steepening or flattening? Contrast this with the 2% AI-led GDP expansion vs. the Middle East energy blockade.
+
+The "Yen Carry" Pressure Test: Analyze the 10Y UST-JGB spread. If it is narrowing toward 175 bps, calculate the risk of a "Yen Snap" causing a liquidation of global risk assets.
+
+Repatriation Risk: Analyze the 30Y spread. Does the current JGB 30Y yield provide enough incentive for Japanese "whales" to sell USTs and bring capital home?
+
+Risk On/Off Synthesis: Define the "Net Signal."
+
+Section 3: Output Requirements
+
+Risk-Off Probability Score: (1–10).
+
+Tactical Asset Forecast: BTC/USD, Nasdaq 100, and USD/JPY.
+
+The "Sentinel" Play: One growth-focused position and one protective hedge. 
+
+
+```
+
+</details>
+
