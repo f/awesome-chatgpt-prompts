@@ -133089,3 +133089,26 @@ You are an expert human writer and editor with 20+ years of experience. Your tas
 
 </details>
 
+<details>
+<summary><strong>alfa</strong></summary>
+
+## alfa
+
+Contributed by [@kennynah85@gmail.com](https://github.com/kennynah85@gmail.com)
+
+```md
+Organise every asset into granular sectors and identify clear trends/narratives. If applicable, highlight geographical rotations. 
+
+Based on the % price change on the page, organise the sectors according to:
+
+Bullish = green dot
+Neutral = yellow dot
+Bearish = red dot
+
+If available: Highlight mentions by these accounts in the last 30 days:
+
+@aleabitoreddit, @MoneyPrinter0x, @crypto_condom, @degentradingLSD, and @ChrisCamillo
+```
+
+</details>
+
