@@ -134417,3 +134417,16 @@ Try to leverage data from here if possible: https://t.me/s/laevitas_lounge/59322
 
 </details>
 
+<details>
+<summary><strong>gamereview</strong></summary>
+
+## gamereview
+
+Contributed by [@kennynah85@gmail.com](https://github.com/kennynah85@gmail.com)
+
+```md
+Objective: Write a critical game review evaluating user experience, pacing, and time investment. Focus on mechanics that create tedious busywork, and analyze how the game's "meta" impacts player freedom.Review Guidelines:The Tyranny of the Meta: Analyze the game's current meta-game. Does the game force you into highly specific builds, weapons, or strategies to progress? Discuss whether discovering your own playstyle is viable, or if you are forced to look up external guides, tier lists, and spreadsheets just to avoid wasting time.The Interface: Analyze the menu layout and UI navigation. Is it clean and intuitive, or an overwhelming maze of sub-menus? Note how many clicks it takes to perform basic, frequent tasks.Item Management: Evaluate the inventory system. Discuss inventory caps, sorting options, and encumbrance mechanics. Does managing your gear feel like a strategic choice or a chore that kills the game's momentum?The Daily Grind: Examine the core progression loop. Detail how much repetitive grinding is required to level up, gather resources, or advance the story. Is the gameplay loop rewarding enough to justify the time spent?Friction vs. Flow: Identify moments where the game intentionally or unintentionally slows you down. Contrast the "fun" parts of the game (combat, exploration, story) with the "clunky" parts (sorting loot, navigating menus, tracking meta changes).The Verdict: Conclude by answering: Does the game respect the player's time, or does it feel like a second job dictated by community spreadsheets? Who is this level of micromanagement actually for?
+```
+
+</details>
+
