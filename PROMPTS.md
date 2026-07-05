@@ -133014,3 +133014,18 @@ The "So What?" Factor: Conclude with an assessment of the work’s cultural or e
 
 </details>
 
+<details>
+<summary><strong>bizcase</strong></summary>
+
+## bizcase
+
+Contributed by [@kennynah85@gmail.com](https://github.com/kennynah85@gmail.com)
+
+```md
+Act as an expert business strategist and product manager. Conduct a rigorous, board-level teardown of the content on this page..
+
+Please deconstruct and analyze the announcement using the following 7 sections:Business Logic: Explain the underlying revenue model, cost implications, and strategic intent. Why does this make sense for the company's bottom line and market positioning?Current Model Juxtaposition: Compare this new offering side-by-side with the company's existing flagship product or legacy business model. How does this announcement either cannibalize, complement, or completely pivot the current operations?The "So What?": What is the overarching macro-implication of this move? Analyze the paradigm shift, the message it sends to competitors, and why this matters for the industry's future trajectory.Use Case: Detail the primary target audience and explain exactly how, when, and why they will use this offering.Pitfalls: Identify the inherent structural, operational, or market risks associated with this announcement.Success Factors: List the top 3 to 5 conditions or key performance metrics that must be met for this announcement to achieve its strategic goals.Failure Factors: Identify the specific internal missteps, external market shifts, or customer adoption barriers that would cause this initiative to fail.
+```
+
+</details>
+
