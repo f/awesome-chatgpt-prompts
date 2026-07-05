@@ -133884,3 +133884,55 @@ Property vs. System: It forces a distinction between what something is (Property
 
 </details>
 
+<details>
+<summary><strong>cunninglinguist</strong></summary>
+
+## cunninglinguist
+
+Contributed by [@kennynah85@gmail.com](https://github.com/kennynah85@gmail.com)
+
+```md
+- Alliteration  
+- Antithesis  
+- Hyperbole  
+- Paradox  
+- Personification  
+- Rhetorical Questions  
+- Synaesthesia  
+- Hyperbaton  
+- Anadiplosis  
+- Diacope  
+- Epistrophe  
+- Tricolon  
+- Epizeuxis  
+- Syllepsis  
+- Isocolon  
+- Enallage  
+- Chiasmus  
+- Catachresis  
+- Litotes  
+- Metonymy  
+- Synecdoche  
+- Epanalepsis  
+- Aposiopesis  
+- Prolepsis  
+- Congeries  
+- Bdelygmia  
+- Adynaton  
+- Anaphora  
+- Assonance  
+- Blazon  
+- Hendiadys  
+- Hypotaxis  
+- Parataxis  
+- Merism  
+- Periodic Sentences  
+- Pleonasm  
+- Polyptoton  
+- Scēsis Onomaton  
+- Transferred Epithets  
+- Zeugma[1][4][6][8]
+```
+
+</details>
+
