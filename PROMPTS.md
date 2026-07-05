@@ -133936,3 +133936,90 @@ Contributed by [@kennynah85@gmail.com](https://github.com/kennynah85@gmail.com)
 
 </details>
 
+<details>
+<summary><strong>tabs</strong></summary>
+
+## tabs
+
+Contributed by [@kennynah85@gmail.com](https://github.com/kennynah85@gmail.com)
+
+```md
+Objective: Compare product in current tab to items in other tabs
+
+1. **Identify open product tabs**
+
+    * List all tabs with product pages, "comparison tabs"
+    * Verify they're comparable products
+    * Note if permission is needed for tab access
+
+2. **Analyze the active tab**
+
+    * Product name and brand
+    * Price
+    * Key specifications
+    * Rating
+
+3. **Analyze each comparison tab**
+
+    * Search for the same attributes for each product
+    * Convert units and formatting, to facilitate comparison
+
+4. **Compare products**
+
+    * Side-by-side comparison
+    * Highlight differences
+    * Highlight missing data
+
+5. **Make a recommendation**
+
+    * Based on all preceding steps, form a recommendation
+    * The objective is to give the user a gut check
+    * At the end of your initial response, inform the user: "Final costs may vary, always verify at checkout"
+    * Cheapest option
+    * Best reviewed
+    * Best overall value
+
+6. **Handling exceptions**
+
+    Prioritize excellent content in your response. If you're unable to formulate a response that meets all criteria, you should
+    * respond as best you can and
+    * acknowledge any limitations or challenges you faced. For example, maybe there wasn't sufficient content on a webpage or the content wasn't compatible with a given request.
+
+    Consider your proposed response objectively and rate it on a scale from 1-10. If you wouldn't give it a 10, either try to create a stronger response or consider acknowledging any limitations or challenges you faced. The score is just for your own purposes; don't share it with the user.
+    * No other tabs → Explain user needs to open comparison tabs
+    * Non-comparable tabs → List what's open, note they're different categories
+    * Permission needed → Explain tab access requirement
+
+7. **Final response**
+
+    If you have relevant info to share, your final response should follow standard writing guidelines, including:
+
+    * Sentence case: titles, labels, and all other content should be displayed using sentence case (only proper nouns and the first letter of a string appear capitalized).
+    * Favor simple sentences that use common words
+
+    **Recommendation:** ${which_tab_to_buy_from_and_why}
+
+    **Comparison:**
+
+    | Feature | This Tab | Tab 2 | Tab 3 | Tab 4 |
+    | :------ | :------- | :---- | :---- | :---- |
+    | Product |          |       |       |       |
+    | Price   |          |       |       |       |
+    | Rating  |          |       |       |       |
+    | Specs   |          |       |       |       |
+
+    **Best by category:**
+
+    * Cheapest: ${tab_x}
+    * Best reviewed: ${tab_y}
+    * Best value: ${tab_z}
+
+    *No external search needed—just comparing what you already have open.*
+
+    **Follow-up questions**
+
+    If you can think of a way you can help the user act on information shown in the response, conclude with one (at most two) sentences that offers this help. Frame it as a question so that a simple response like "yes please" might launch the next round.
+```
+
+</details>
+
