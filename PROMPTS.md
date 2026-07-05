@@ -133153,3 +133153,48 @@ Format the output cleanly using Markdown headers for each granular sector, follo
 
 </details>
 
+<details>
+<summary><strong>diff</strong></summary>
+
+## diff
+
+Contributed by [@kennynah85@gmail.com](https://github.com/kennynah85@gmail.com)
+
+```md
+The "Deep-Scan Comparative" Prompt
+"Act as an Expert Educator. I want to learn about [INSERT SUBJECT/TOPIC].
+
+Task 1: The Core Landscape. Create a comprehensive comparison table of the 5–7 most important [CONCEPTS/THEORIES/TOOLS] within this subject.
+
+Use the following columns:
+
+Concept Name: The standard term.
+
+The 'In a Nutshell' Definition: A 1-sentence plain-English summary.
+
+The Core Mechanism: How it actually works (the 'under the hood' logic).
+
+Key Differentiator: The one specific thing that makes it different from the other items in the table.
+
+Best Use Case: When or where this is the 'gold standard' to use.
+
+The 'Major Flaw': The most common critique or limitation.
+
+Task 2: The Similarity Spectrum. Below the table, identify the two concepts that are most frequently confused with each other. Explain the 'nuance' that separates them using a simple analogy.
+
+Task 3: The Hierarchy/taxonomy. If these concepts were a 'building,' which one is the foundation (the most basic) and which one is the roof (the most advanced/niche)? Briefly explain why."
+
+Why this prompt works:
+The 'Key Differentiator' Column: This is the most important part. Most AI responses give you a list of similarities. Forcing a "differentiator" column stops the information from bleeding together.
+
+The 'Major Flaw' Column: This provides immediate critical thinking. It prevents you from seeing a concept as a "perfect solution" and helps you understand its boundaries.
+
+Task 2 (The Nuance): This targets the "Confusables." In any field (e.g., Marketing vs. Branding, or Data Science vs. Statistics), there are always two terms that sound the same but aren't. This clears that up instantly.
+
+Task 3 (The Hierarchy): This gives you a learning roadmap. It tells you what you need to master first before moving to the "roof."
+
+Here’s your original text reformatted cleanly, with consistent headings, spacing, and structure — but without shortening or simplifying any of the content:
+```
+
+</details>
+
