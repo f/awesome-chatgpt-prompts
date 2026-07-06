@@ -134496,3 +134496,18 @@ Objective: Write a critical game review evaluating user experience, pacing, and 
 
 </details>
 
+<details>
+<summary><strong>Vintage copper engraving portrait with glasses in front of yellow circle</strong></summary>
+
+## Vintage copper engraving portrait with glasses in front of yellow circle
+
+Contributed by [@dominic@stefani.email](https://github.com/dominic@stefani.email)
+
+```md
+A vintage engraved-style portrait illustration using the provided reference image as a strict identity reference.
+Preserve the exact facial features, proportions, bone structure, and overall likeness of the person in the photo without alteration. The subject is shown in a side profile, looking slightly upward to the left with a confident, thoughtful expression. Short hair on top with subtle gray tones, thinner on the sides, and a neatly distributed beard along the jawline. Detailed facial rendering using fine cross-hatching and stippling engraving textures. The subject wears glasses, a light beige blazer with subtle diagonal fabric texture, and a dark navy shirt. Behind the head is a circular flat warm yellow background. High-contrast ink linework using monochrome blue ink tones with soft cream highlights. Vector-like precision combined with hand-drawn engraving texture. Chest-up portrait composition, clean light gray background, 4K
+resolution, editorial illustration style.
+```
+
+</details>
+
