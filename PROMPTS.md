@@ -135068,3 +135068,16 @@ Ensure the video is engaging, with dynamic transitions between different sports 
 
 </details>
 
+<details>
+<summary><strong>TGscrape</strong></summary>
+
+## TGscrape
+
+Contributed by [@kennynah85@gmail.com](https://github.com/kennynah85@gmail.com)
+
+```md
+Input Data: [PASTE RAW TELEGRAM EXPORTS, THREADS, OR CHAT LOGS HERE]Analysis Objectives:Event Extraction: What exactly happened? (Who, what, when, where, and why).Impact Assessment: What is the immediate or potential consequence of this information?Actionability: What should be done about this? Identify concrete next steps or decisions required.Output Structure:Format your response exactly as follows using Markdown:🚨 Executive SummaryProvide a 2-3 sentence summary of the critical events and current operational state based on the feeds.🔑 Key Intelligence Gaps (KIG)What critical information is currently missing that prevents a complete assessment?📋 Actionable Tasks & DirectivesList concrete, prioritized tasks for the team/user to execute based on this intel.Priority 1: ${task} - [Rationale/Risk of inaction]Priority 2: ${task} - [Rationale/Risk of inaction]🌍 Geopolitical / Market Context (If Applicable)Briefly explain the broader context, sentiment shifts, or emerging trends.Narrative 1: ${detail}Narrative 2: ${detail}
+```
+
+</details>
+
