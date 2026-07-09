@@ -61,6 +61,7 @@ describe("getModelsByProvider", () => {
     expect(grouped).toHaveProperty("Anthropic");
     expect(grouped).toHaveProperty("Google");
     expect(grouped).toHaveProperty("xAI");
+    expect(grouped).toHaveProperty("MiniMax");
   });
 
   it("includes all OpenAI models under OpenAI provider", () => {
