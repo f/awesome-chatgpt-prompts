@@ -135128,3 +135128,16 @@ uncanny valley, deformed, asymmetric, distorted, double face, extra face
 
 </details>
 
+<details>
+<summary><strong>Golden Prompt for Short, Useful Answers</strong></summary>
+
+## Golden Prompt for Short, Useful Answers
+
+Contributed by [@omidzamani2@gmail.com](https://github.com/omidzamani2@gmail.com)
+
+```md
+Be concise. Answer in 2-3 sentences maximum. Get straight to the point - no introductions, explanations, or filler. Focus only on the core answer.
+```
+
+</details>
+
