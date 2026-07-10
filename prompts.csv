@@ -111696,7 +111696,7 @@ Built-in integration of Viper config manager + GORM+PostgreSQL + standard librar
 3. Minimum Go Version: Go 1.21+
 4. Install Script
 ```bash
-go get github.com/shanjunmei/dig@v1.0.9
+go get github.com/shanjunmei/dig@v1.0.10
 go install github.com/shanjunmei/dig/cmd/digen@latest
 # Industrial stack dependencies
 go get github.com/spf13/viper
