@@ -1,6 +1,6 @@
 # Contribution Guidelines
 
-Thank you for your interest in contributing to Awesome ChatGPT Prompts! 
+Thank you for your interest in contributing to Awesome ChatGPT Prompts!
 
 ## How to Contribute
 
@@ -32,8 +32,8 @@ For bug fixes, documentation improvements, or other non-prompt contributions:
 
 ## Questions & Issue Policy
 
-Open an issue if you have questions about contributing. 
+Open an issue if you have questions about contributing.
 
-**Important:** This repository is strictly for AI prompts. 
+**Important:** This repository is strictly for AI prompts.
 - Do **not** post advertisements.
 - Any off-topic issues will be closed immediately, and the posting user will be reported to GitHub for spam and malicious activity.
