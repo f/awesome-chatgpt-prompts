@@ -34,6 +34,7 @@ export const AI_MODELS = {
 
   // MiniMax
   "minimax-m3": { name: "MiniMax-M3", provider: "MiniMax" },
+  "minimax-m2-7": { name: "MiniMax-M2.7", provider: "MiniMax" },
 
   // Image Generation
   "nano-banana": { name: "Nano Banana", provider: "Google" },
