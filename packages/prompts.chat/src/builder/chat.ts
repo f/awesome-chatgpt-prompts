@@ -1,13 +1,13 @@
 /**
  * Chat Prompt Builder - Model-Agnostic Conversation Prompt Builder
- * 
+ *
  * Build structured prompts for any chat/conversation model.
  * Focus on prompt engineering, not model-specific features.
- * 
+ *
  * @example
  * ```ts
  * import { chat } from 'prompts.chat/builder';
- * 
+ *
  * const prompt = chat()
  *   .role("helpful coding assistant")
  *   .context("Building a React application")
@@ -47,21 +47,21 @@ export interface ResponseFormat {
 }
 
 // --- Persona Types ---
-export type PersonaTone = 
+export type PersonaTone =
   | 'professional' | 'casual' | 'formal' | 'friendly' | 'academic'
   | 'technical' | 'creative' | 'empathetic' | 'authoritative' | 'playful'
   | 'concise' | 'detailed' | 'socratic' | 'coaching' | 'analytical'
   | 'encouraging' | 'neutral' | 'humorous' | 'serious';
 
-export type PersonaExpertise = 
+export type PersonaExpertise =
   | 'general' | 'coding' | 'writing' | 'analysis' | 'research'
   | 'teaching' | 'counseling' | 'creative' | 'legal' | 'medical'
   | 'financial' | 'scientific' | 'engineering' | 'design' | 'marketing'
   | 'business' | 'philosophy' | 'history' | 'languages' | 'mathematics';
 
 // --- Reasoning Types ---
-export type ReasoningStyle = 
-  | 'step-by-step' | 'chain-of-thought' | 'tree-of-thought' 
+export type ReasoningStyle =
+  | 'step-by-step' | 'chain-of-thought' | 'tree-of-thought'
   | 'direct' | 'analytical' | 'comparative' | 'deductive' | 'inductive'
   | 'first-principles' | 'analogical' | 'devil-advocate';
 
@@ -363,35 +363,35 @@ export class ChatPromptBuilder {
   }
 
   outputFormat(format: ResponseFormatType): this {
-    this._output = { 
-      ...(this._output || {}), 
-      format: { type: format } 
+    this._output = {
+      ...(this._output || {}),
+      format: { type: format }
     };
     return this;
   }
 
   json(schema?: JsonSchema): this {
     if (schema) {
-      this._output = { 
-        ...(this._output || {}), 
-        format: { type: 'json', jsonSchema: schema } 
+      this._output = {
+        ...(this._output || {}),
+        format: { type: 'json', jsonSchema: schema }
       };
     } else {
-      this._output = { 
-        ...(this._output || {}), 
-        format: { type: 'json' } 
+      this._output = {
+        ...(this._output || {}),
+        format: { type: 'json' }
       };
     }
     return this;
   }
 
   jsonSchema(name: string, schema: Record<string, unknown>, description?: string): this {
-    this._output = { 
-      ...(this._output || {}), 
-      format: { 
-        type: 'json', 
-        jsonSchema: { name, schema, description } 
-      } 
+    this._output = {
+      ...(this._output || {}),
+      format: {
+        type: 'json',
+        jsonSchema: { name, schema, description }
+      }
     };
     return this;
   }
@@ -573,21 +573,21 @@ export class ChatPromptBuilder {
       } else if (this._persona.role) {
         personaText += `You are ${this._persona.role}.`;
       }
-      
+
       if (this._persona.tone) {
         const tones = Array.isArray(this._persona.tone) ? this._persona.tone : [this._persona.tone];
         personaText += ` Your tone is ${tones.join(' and ')}.`;
       }
-      
+
       if (this._persona.expertise) {
         const areas = Array.isArray(this._persona.expertise) ? this._persona.expertise : [this._persona.expertise];
         personaText += ` You have expertise in ${areas.join(', ')}.`;
       }
-      
+
       if (this._persona.personality?.length) {
         personaText += ` You are ${this._persona.personality.join(', ')}.`;
       }
-      
+
       if (this._persona.background) {
         personaText += ` ${this._persona.background}`;
       }
@@ -606,7 +606,7 @@ export class ChatPromptBuilder {
     // Context
     if (this._context) {
       const contextParts: string[] = [];
-      
+
       if (this._context.background) {
         contextParts.push(this._context.background);
       }
@@ -625,7 +625,7 @@ export class ChatPromptBuilder {
       if (this._context.assumptions?.length) {
         contextParts.push(`Assumptions:\n${this._context.assumptions.map(a => `- ${a}`).join('\n')}`);
       }
-      
+
       if (contextParts.length) {
         parts.push(`## Context\n${contextParts.join('\n')}`);
       }
@@ -634,7 +634,7 @@ export class ChatPromptBuilder {
     // Task
     if (this._task) {
       const taskParts: string[] = [];
-      
+
       if (this._task.instruction) {
         taskParts.push(this._task.instruction);
       }
@@ -653,7 +653,7 @@ export class ChatPromptBuilder {
       if (this._task.antiPatterns?.length) {
         taskParts.push(`\nAvoid:\n${this._task.antiPatterns.map(a => `- ${a}`).join('\n')}`);
       }
-      
+
       if (taskParts.length) {
         parts.push(`## Task\n${taskParts.join('\n')}`);
       }
@@ -679,7 +679,7 @@ export class ChatPromptBuilder {
     // Output format
     if (this._output) {
       const outputParts: string[] = [];
-      
+
       if (this._output.format) {
         switch (this._output.format.type) {
           case 'json':
@@ -731,7 +731,7 @@ export class ChatPromptBuilder {
       if (this._output.includeConfidence) {
         outputParts.push('Include your confidence level in the answer.');
       }
-      
+
       if (outputParts.length) {
         parts.push(`## Output Format\n${outputParts.join('\n')}`);
       }
@@ -740,7 +740,7 @@ export class ChatPromptBuilder {
     // Reasoning
     if (this._reasoning) {
       const reasoningParts: string[] = [];
-      
+
       if (this._reasoning.style) {
         const styleInstructions: Record<ReasoningStyle, string> = {
           'step-by-step': 'Think through this step by step.',
@@ -769,7 +769,7 @@ export class ChatPromptBuilder {
       if (this._reasoning.explainAssumptions) {
         reasoningParts.push('Explicitly state any assumptions you make.');
       }
-      
+
       if (reasoningParts.length) {
         parts.push(`## Reasoning\n${reasoningParts.join('\n')}`);
       }
@@ -778,7 +778,7 @@ export class ChatPromptBuilder {
     // Memory
     if (this._memory) {
       const memoryParts: string[] = [];
-      
+
       if (this._memory.summary) {
         memoryParts.push(`Previous conversation summary: ${this._memory.summary}`);
       }
@@ -788,7 +788,7 @@ export class ChatPromptBuilder {
       if (this._memory.preferences?.length) {
         memoryParts.push(`User preferences:\n${this._memory.preferences.map(p => `- ${p}`).join('\n')}`);
       }
-      
+
       if (memoryParts.length) {
         parts.push(`## Memory\n${memoryParts.join('\n')}`);
       }
@@ -804,16 +804,16 @@ export class ChatPromptBuilder {
 
   build(): BuiltChatPrompt {
     const systemPrompt = this.buildSystemPrompt();
-    
+
     // Ensure system message is first
     let messages = [...this._messages];
     const hasSystemMessage = messages.some(m => m.role === 'system');
-    
+
     if (systemPrompt && !hasSystemMessage) {
       messages = [{ role: 'system', content: systemPrompt }, ...messages];
     } else if (systemPrompt && hasSystemMessage) {
       // Prepend built system prompt to existing system message
-      messages = messages.map(m => 
+      messages = messages.map(m =>
         m.role === 'system' ? { ...m, content: `${systemPrompt}\n\n${m.content}` } : m
       );
     }
@@ -869,9 +869,9 @@ export class ChatPromptBuilder {
   toMarkdown(): string {
     const built = this.build();
     const sections: string[] = ['# Chat Prompt\n'];
-    
+
     sections.push('## System Prompt\n```\n' + built.systemPrompt + '\n```\n');
-    
+
     if (built.messages.length > 1) {
       sections.push('## Messages\n');
       for (const msg of built.messages) {
@@ -879,7 +879,7 @@ export class ChatPromptBuilder {
         sections.push(`**${msg.role.toUpperCase()}${msg.name ? ` (${msg.name})` : ''}:**\n${msg.content}\n`);
       }
     }
-    
+
     return sections.join('\n');
   }
 }
@@ -891,10 +891,10 @@ export class ChatPromptBuilder {
 function objectToYaml(obj: object, indent = 0): string {
   const spaces = '  '.repeat(indent);
   const lines: string[] = [];
-  
+
   for (const [key, value] of Object.entries(obj)) {
     if (value === undefined || value === null) continue;
-    
+
     if (Array.isArray(value)) {
       if (value.length === 0) continue;
       lines.push(`${spaces}${key}:`);
@@ -918,7 +918,7 @@ function objectToYaml(obj: object, indent = 0): string {
       lines.push(`${spaces}${key}: ${value}`);
     }
   }
-  
+
   return lines.join('\n');
 }
 
@@ -946,11 +946,11 @@ export const chatPresets = {
       .role("expert software developer")
       .expertise("coding")
       .tone("technical");
-    
+
     if (language) {
       c.context(`Programming language: ${language}`);
     }
-    
+
     return c;
   },
 
@@ -961,11 +961,11 @@ export const chatPresets = {
     const c = chat()
       .role("skilled writer and editor")
       .expertise("writing");
-    
+
     if (style) {
       c.tone(style === 'creative' ? 'creative' : style === 'academic' ? 'academic' : 'professional');
     }
-    
+
     return c;
   },
 
@@ -979,11 +979,11 @@ export const chatPresets = {
       .tone(['friendly', 'empathetic'])
       .stepByStep()
       .withExamples();
-    
+
     if (subject) {
       c.domain(subject);
     }
-    
+
     return c;
   },
 

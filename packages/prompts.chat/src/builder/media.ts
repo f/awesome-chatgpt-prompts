@@ -1,13 +1,13 @@
 /**
  * Media Prompt Builders - The D3.js of Prompt Building
- * 
+ *
  * Comprehensive, structured builders for Image, Video, and Audio generation prompts.
  * Every attribute a professional would consider is available as a chainable method.
- * 
+ *
  * @example
  * ```ts
  * import { image, video, audio } from 'prompts.chat/builder';
- * 
+ *
  * const imagePrompt = image()
  *   .subject("a lone samurai")
  *   .environment("bamboo forest at dawn")
@@ -25,11 +25,11 @@
 export type OutputFormat = 'text' | 'json' | 'yaml' | 'markdown';
 
 // --- Camera Brands & Models ---
-export type CameraBrand = 
+export type CameraBrand =
   | 'sony' | 'canon' | 'nikon' | 'fujifilm' | 'leica' | 'hasselblad' | 'phase-one'
   | 'panasonic' | 'olympus' | 'pentax' | 'red' | 'arri' | 'blackmagic' | 'panavision';
 
-export type CameraModel = 
+export type CameraModel =
   // Sony
   | 'sony-a7iv' | 'sony-a7riv' | 'sony-a7siii' | 'sony-a1' | 'sony-fx3' | 'sony-fx6'
   | 'sony-venice' | 'sony-venice-2' | 'sony-a9ii' | 'sony-zv-e1'
@@ -51,35 +51,35 @@ export type CameraModel =
   | 'blackmagic-ursa-mini-pro' | 'blackmagic-pocket-6k' | 'blackmagic-pocket-4k'
   | 'panavision-dxl2' | 'panavision-millennium-xl2';
 
-export type SensorFormat = 
+export type SensorFormat =
   | 'full-frame' | 'aps-c' | 'micro-four-thirds' | 'medium-format' | 'large-format'
   | 'super-35' | 'vista-vision' | 'imax' | '65mm' | '35mm-film' | '16mm-film' | '8mm-film';
 
-export type FilmFormat = 
+export type FilmFormat =
   | '35mm' | '120-medium-format' | '4x5-large-format' | '8x10-large-format'
   | '110-film' | 'instant-film' | 'super-8' | '16mm' | '65mm-imax';
 
 // --- Camera & Shot Types ---
-export type CameraAngle = 
-  | 'eye-level' | 'low-angle' | 'high-angle' | 'dutch-angle' | 'birds-eye' 
+export type CameraAngle =
+  | 'eye-level' | 'low-angle' | 'high-angle' | 'dutch-angle' | 'birds-eye'
   | 'worms-eye' | 'over-the-shoulder' | 'point-of-view' | 'aerial' | 'drone'
   | 'canted' | 'oblique' | 'hip-level' | 'knee-level' | 'ground-level';
 
-export type ShotType = 
+export type ShotType =
   | 'extreme-close-up' | 'close-up' | 'medium-close-up' | 'medium' | 'medium-wide'
   | 'wide' | 'extreme-wide' | 'establishing' | 'full-body' | 'portrait' | 'headshot';
 
-export type LensType = 
+export type LensType =
   | 'wide-angle' | 'ultra-wide' | 'standard' | 'telephoto' | 'macro' | 'fisheye'
   | '14mm' | '24mm' | '35mm' | '50mm' | '85mm' | '100mm' | '135mm' | '200mm' | '400mm'
   | '600mm' | '800mm' | 'tilt-shift' | 'anamorphic' | 'spherical' | 'prime' | 'zoom';
 
-export type LensBrand = 
+export type LensBrand =
   | 'zeiss' | 'leica' | 'canon' | 'nikon' | 'sony' | 'sigma' | 'tamron' | 'voigtlander'
   | 'fujifilm' | 'samyang' | 'rokinon' | 'tokina' | 'cooke' | 'arri' | 'panavision'
   | 'angenieux' | 'red' | 'atlas' | 'sirui';
 
-export type LensModel = 
+export type LensModel =
   // Zeiss
   | 'zeiss-otus-55' | 'zeiss-batis-85' | 'zeiss-milvus-35' | 'zeiss-supreme-prime'
   // Leica
@@ -96,50 +96,50 @@ export type LensModel =
   // Vintage
   | 'helios-44-2' | 'canon-fd-55' | 'minolta-rokkor-58' | 'pentax-takumar-50';
 
-export type FocusType = 
+export type FocusType =
   | 'shallow' | 'deep' | 'soft-focus' | 'tilt-shift' | 'rack-focus' | 'split-diopter'
   | 'zone-focus' | 'hyperfocal' | 'selective' | 'bokeh-heavy' | 'tack-sharp';
 
-export type BokehStyle = 
+export type BokehStyle =
   | 'smooth' | 'creamy' | 'swirly' | 'busy' | 'soap-bubble' | 'cat-eye' | 'oval-anamorphic';
 
-export type FilterType = 
+export type FilterType =
   | 'uv' | 'polarizer' | 'nd' | 'nd-graduated' | 'black-pro-mist' | 'white-pro-mist'
   | 'glimmer-glass' | 'classic-soft' | 'streak' | 'starburst' | 'diffusion'
   | 'infrared' | 'color-gel' | 'warming' | 'cooling' | 'vintage-look';
 
-export type CameraMovement = 
-  | 'static' | 'pan' | 'tilt' | 'dolly' | 'truck' | 'pedestal' | 'zoom' 
+export type CameraMovement =
+  | 'static' | 'pan' | 'tilt' | 'dolly' | 'truck' | 'pedestal' | 'zoom'
   | 'handheld' | 'steadicam' | 'crane' | 'drone' | 'tracking' | 'arc' | 'whip-pan'
   | 'roll' | 'boom' | 'jib' | 'cable-cam' | 'motion-control' | 'snorricam'
   | 'dutch-roll' | 'vertigo-effect' | 'crash-zoom' | 'slow-push' | 'slow-pull';
 
-export type CameraRig = 
+export type CameraRig =
   | 'tripod' | 'monopod' | 'gimbal' | 'steadicam' | 'easyrig' | 'shoulder-rig'
   | 'slider' | 'dolly' | 'jib' | 'crane' | 'technocrane' | 'russian-arm'
   | 'cable-cam' | 'drone' | 'fpv-drone' | 'motion-control' | 'handheld';
 
-export type GimbalModel = 
+export type GimbalModel =
   | 'dji-ronin-4d' | 'dji-ronin-rs3-pro' | 'dji-ronin-rs4' | 'moza-air-2'
   | 'zhiyun-crane-3s' | 'freefly-movi-pro' | 'tilta-gravity-g2x';
 
 // --- Lighting Types ---
-export type LightingType = 
+export type LightingType =
   | 'natural' | 'studio' | 'dramatic' | 'soft' | 'hard' | 'diffused'
   | 'key' | 'fill' | 'rim' | 'backlit' | 'silhouette' | 'rembrandt'
   | 'split' | 'butterfly' | 'loop' | 'broad' | 'short' | 'chiaroscuro'
   | 'high-key' | 'low-key' | 'three-point' | 'practical' | 'motivated';
 
-export type TimeOfDay = 
+export type TimeOfDay =
   | 'dawn' | 'sunrise' | 'golden-hour' | 'morning' | 'midday' | 'afternoon'
   | 'blue-hour' | 'sunset' | 'dusk' | 'twilight' | 'night' | 'midnight';
 
-export type WeatherLighting = 
-  | 'sunny' | 'cloudy' | 'overcast' | 'foggy' | 'misty' | 'rainy' 
+export type WeatherLighting =
+  | 'sunny' | 'cloudy' | 'overcast' | 'foggy' | 'misty' | 'rainy'
   | 'stormy' | 'snowy' | 'hazy';
 
 // --- Style Types ---
-export type ArtStyle = 
+export type ArtStyle =
   | 'photorealistic' | 'hyperrealistic' | 'cinematic' | 'documentary'
   | 'editorial' | 'fashion' | 'portrait' | 'landscape' | 'street'
   | 'fine-art' | 'conceptual' | 'surreal' | 'abstract' | 'minimalist'
@@ -149,9 +149,9 @@ export type ArtStyle =
   | 'comic-book' | 'illustration' | 'digital-art' | 'oil-painting' | 'watercolor'
   | 'sketch' | 'pencil-drawing' | 'charcoal' | 'pastel' | '3d-render';
 
-export type FilmStock = 
+export type FilmStock =
   // Kodak Color Negative
-  | 'kodak-portra-160' | 'kodak-portra-400' | 'kodak-portra-800' 
+  | 'kodak-portra-160' | 'kodak-portra-400' | 'kodak-portra-800'
   | 'kodak-ektar-100' | 'kodak-gold-200' | 'kodak-ultramax-400' | 'kodak-colorplus-200'
   // Kodak Black & White
   | 'kodak-tri-x-400' | 'kodak-tmax-100' | 'kodak-tmax-400' | 'kodak-tmax-3200'
@@ -178,46 +178,46 @@ export type FilmStock =
   | 'agfa-vista-400' | 'agfa-apx-100' | 'fomapan-100' | 'fomapan-400'
   | 'bergger-pancro-400' | 'jch-streetpan-400';
 
-export type AspectRatio = 
+export type AspectRatio =
   | '1:1' | '4:3' | '3:2' | '16:9' | '21:9' | '9:16' | '2:3' | '4:5' | '5:4';
 
 // --- Color & Mood ---
-export type ColorPalette = 
+export type ColorPalette =
   | 'warm' | 'cool' | 'neutral' | 'vibrant' | 'muted' | 'pastel' | 'neon'
   | 'monochrome' | 'sepia' | 'desaturated' | 'high-contrast' | 'low-contrast'
   | 'earthy' | 'oceanic' | 'forest' | 'sunset' | 'midnight' | 'golden';
 
-export type Mood = 
+export type Mood =
   | 'serene' | 'peaceful' | 'melancholic' | 'dramatic' | 'tense' | 'mysterious'
   | 'romantic' | 'nostalgic' | 'hopeful' | 'joyful' | 'energetic' | 'chaotic'
   | 'ethereal' | 'dark' | 'light' | 'whimsical' | 'eerie' | 'epic' | 'intimate';
 
 // --- Video Specific ---
-export type VideoTransition = 
+export type VideoTransition =
   | 'cut' | 'fade' | 'dissolve' | 'wipe' | 'morph' | 'match-cut' | 'jump-cut'
   | 'cross-dissolve' | 'iris' | 'push' | 'slide';
 
-export type VideoPacing = 
+export type VideoPacing =
   | 'slow' | 'medium' | 'fast' | 'variable' | 'building' | 'frenetic' | 'contemplative';
 
 // --- Audio/Music Specific ---
-export type MusicGenre = 
+export type MusicGenre =
   | 'pop' | 'rock' | 'jazz' | 'classical' | 'electronic' | 'hip-hop' | 'r&b'
   | 'country' | 'folk' | 'blues' | 'metal' | 'punk' | 'indie' | 'alternative'
   | 'ambient' | 'lo-fi' | 'synthwave' | 'orchestral' | 'cinematic' | 'world'
   | 'latin' | 'reggae' | 'soul' | 'funk' | 'disco' | 'house' | 'techno' | 'edm';
 
-export type Instrument = 
+export type Instrument =
   | 'piano' | 'guitar' | 'acoustic-guitar' | 'electric-guitar' | 'bass' | 'drums'
   | 'violin' | 'cello' | 'viola' | 'flute' | 'saxophone' | 'trumpet' | 'trombone'
   | 'synthesizer' | 'organ' | 'harp' | 'percussion' | 'strings' | 'brass' | 'woodwinds'
   | 'choir' | 'vocals' | 'beatbox' | 'turntables' | 'harmonica' | 'banjo' | 'ukulele';
 
-export type VocalStyle = 
+export type VocalStyle =
   | 'male' | 'female' | 'duet' | 'choir' | 'a-cappella' | 'spoken-word' | 'rap'
   | 'falsetto' | 'belting' | 'whisper' | 'growl' | 'melodic' | 'harmonized';
 
-export type Tempo = 
+export type Tempo =
   | 'largo' | 'adagio' | 'andante' | 'moderato' | 'allegro' | 'vivace' | 'presto'
   | number; // BPM
 
@@ -243,36 +243,36 @@ export interface ImageCamera {
   // Framing
   angle?: CameraAngle;
   shot?: ShotType;
-  
+
   // Camera Body
   brand?: CameraBrand;
   model?: CameraModel;
   sensor?: SensorFormat;
-  
+
   // Lens
   lens?: LensType;
   lensModel?: LensModel;
   lensBrand?: LensBrand;
   focalLength?: string;
-  
+
   // Focus & Depth
   focus?: FocusType;
   aperture?: string;
   bokeh?: BokehStyle;
   focusDistance?: string;
-  
+
   // Exposure
   iso?: number;
   shutterSpeed?: string;
   exposureCompensation?: string;
-  
+
   // Film/Digital
   filmStock?: FilmStock;
   filmFormat?: FilmFormat;
-  
+
   // Filters & Accessories
   filter?: FilterType | FilterType[];
-  
+
   // Camera Settings
   whiteBalance?: 'daylight' | 'cloudy' | 'tungsten' | 'fluorescent' | 'flash' | 'custom';
   colorProfile?: string;
@@ -371,7 +371,7 @@ export class ImagePromptBuilder {
   private _custom: string[] = [];
 
   // --- Subject Methods ---
-  
+
   subject(main: string | ImageSubject): this {
     if (typeof main === 'string') {
       this._subject = { ...(this._subject || {}), main };
@@ -876,9 +876,9 @@ export class ImagePromptBuilder {
   toMarkdown(): string {
     const built = this.build();
     const sections: string[] = ['# Image Prompt\n'];
-    
+
     sections.push('## Prompt\n```\n' + built.prompt + '\n```\n');
-    
+
     if (built.structure.subject) {
       sections.push('## Subject\n' + objectToMarkdownList(built.structure.subject));
     }
@@ -903,7 +903,7 @@ export class ImagePromptBuilder {
     if (built.structure.technical) {
       sections.push('## Technical\n' + objectToMarkdownList(built.structure.technical));
     }
-    
+
     return sections.join('\n');
   }
 
@@ -924,10 +924,10 @@ export class ImagePromptBuilder {
 function objectToYaml(obj: object, indent = 0): string {
   const spaces = '  '.repeat(indent);
   const lines: string[] = [];
-  
+
   for (const [key, value] of Object.entries(obj)) {
     if (value === undefined || value === null) continue;
-    
+
     if (Array.isArray(value)) {
       if (value.length === 0) continue;
       lines.push(`${spaces}${key}:`);
@@ -946,17 +946,17 @@ function objectToYaml(obj: object, indent = 0): string {
       lines.push(`${spaces}${key}: ${value}`);
     }
   }
-  
+
   return lines.join('\n');
 }
 
 function objectToMarkdownList(obj: object, indent = 0): string {
   const spaces = '  '.repeat(indent);
   const lines: string[] = [];
-  
+
   for (const [key, value] of Object.entries(obj)) {
     if (value === undefined || value === null) continue;
-    
+
     if (Array.isArray(value)) {
       lines.push(`${spaces}- **${key}:** ${value.join(', ')}`);
     } else if (typeof value === 'object') {
@@ -966,7 +966,7 @@ function objectToMarkdownList(obj: object, indent = 0): string {
       lines.push(`${spaces}- **${key}:** ${value}`);
     }
   }
-  
+
   return lines.join('\n');
 }
 

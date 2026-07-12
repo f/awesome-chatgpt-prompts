@@ -1,12 +1,12 @@
 /**
  * Audio/Music Prompt Builder - Comprehensive music generation prompt builder
- * 
+ *
  * Based on Suno, Udio, and other music generation best practices.
- * 
+ *
  * @example
  * ```ts
  * import { audio } from 'prompts.chat/builder';
- * 
+ *
  * const prompt = audio()
  *   .genre("synthwave")
  *   .mood("nostalgic", "dreamy")
@@ -23,7 +23,7 @@ import type { Mood, OutputFormat } from './media';
 // AUDIO-SPECIFIC TYPES
 // ============================================================================
 
-export type MusicGenre = 
+export type MusicGenre =
   | 'pop' | 'rock' | 'jazz' | 'classical' | 'electronic' | 'hip-hop' | 'r&b'
   | 'country' | 'folk' | 'blues' | 'metal' | 'punk' | 'indie' | 'alternative'
   | 'ambient' | 'lo-fi' | 'synthwave' | 'orchestral' | 'cinematic' | 'world'
@@ -32,7 +32,7 @@ export type MusicGenre =
   | 'shoegaze' | 'post-rock' | 'prog-rock' | 'psychedelic' | 'chillwave'
   | 'vaporwave' | 'drum-and-bass' | 'dubstep' | 'trance' | 'hardcore';
 
-export type Instrument = 
+export type Instrument =
   | 'piano' | 'guitar' | 'acoustic-guitar' | 'electric-guitar' | 'bass' | 'drums'
   | 'violin' | 'cello' | 'viola' | 'flute' | 'saxophone' | 'trumpet' | 'trombone'
   | 'synthesizer' | 'organ' | 'harp' | 'percussion' | 'strings' | 'brass' | 'woodwinds'
@@ -41,7 +41,7 @@ export type Instrument =
   | 'congas' | 'bongos' | 'djembe' | 'tabla' | 'sitar' | 'erhu' | 'koto'
   | '808' | '909' | 'moog' | 'rhodes' | 'wurlitzer' | 'mellotron' | 'theremin';
 
-export type VocalStyle = 
+export type VocalStyle =
   | 'male' | 'female' | 'duet' | 'choir' | 'a-cappella' | 'spoken-word' | 'rap'
   | 'falsetto' | 'belting' | 'whisper' | 'growl' | 'melodic' | 'harmonized'
   | 'auto-tuned' | 'operatic' | 'soul' | 'breathy' | 'nasal' | 'raspy' | 'clear';
@@ -51,18 +51,18 @@ export type VocalLanguage =
   | 'japanese' | 'korean' | 'chinese' | 'arabic' | 'hindi' | 'russian' | 'turkish'
   | 'instrumental';
 
-export type TempoMarking = 
+export type TempoMarking =
   | 'largo' | 'adagio' | 'andante' | 'moderato' | 'allegro' | 'vivace' | 'presto';
 
 export type TimeSignature = '4/4' | '3/4' | '6/8' | '2/4' | '5/4' | '7/8' | '12/8';
 
-export type MusicalKey = 
-  | 'C' | 'C#' | 'Db' | 'D' | 'D#' | 'Eb' | 'E' | 'F' | 'F#' | 'Gb' 
+export type MusicalKey =
+  | 'C' | 'C#' | 'Db' | 'D' | 'D#' | 'Eb' | 'E' | 'F' | 'F#' | 'Gb'
   | 'G' | 'G#' | 'Ab' | 'A' | 'A#' | 'Bb' | 'B'
-  | 'Cm' | 'C#m' | 'Dm' | 'D#m' | 'Ebm' | 'Em' | 'Fm' | 'F#m' 
+  | 'Cm' | 'C#m' | 'Dm' | 'D#m' | 'Ebm' | 'Em' | 'Fm' | 'F#m'
   | 'Gm' | 'G#m' | 'Am' | 'A#m' | 'Bbm' | 'Bm';
 
-export type SongSection = 
+export type SongSection =
   | 'intro' | 'verse' | 'pre-chorus' | 'chorus' | 'bridge' | 'breakdown'
   | 'drop' | 'build-up' | 'outro' | 'solo' | 'interlude' | 'hook';
 
@@ -202,8 +202,8 @@ export class AudioPromptBuilder {
   }
 
   fusion(genres: MusicGenre[]): this {
-    this._genre = { 
-      ...(this._genre || { primary: 'pop' }), 
+    this._genre = {
+      ...(this._genre || { primary: 'pop' }),
       secondary: genres,
       fusion: genres as string[],
     };
@@ -213,8 +213,8 @@ export class AudioPromptBuilder {
   // --- Mood Methods ---
 
   mood(primary: Mood | string, ...secondary: (Mood | string)[]): this {
-    this._mood = { 
-      primary, 
+    this._mood = {
+      primary,
       secondary: secondary.length ? secondary : undefined,
     };
     return this;
@@ -296,8 +296,8 @@ export class AudioPromptBuilder {
   // --- Instrumentation Methods ---
 
   instruments(instruments: Instrument[]): this {
-    this._instrumentation = { 
-      ...(this._instrumentation || {}), 
+    this._instrumentation = {
+      ...(this._instrumentation || {}),
       lead: instruments,
     };
     return this;
@@ -482,7 +482,7 @@ export class AudioPromptBuilder {
     if (this._instrumentation) {
       const instrParts: string[] = [];
       if (this._instrumentation.lead) {
-        const leads = Array.isArray(this._instrumentation.lead) 
+        const leads = Array.isArray(this._instrumentation.lead)
           ? this._instrumentation.lead : [this._instrumentation.lead];
         instrParts.push(leads.join(', '));
       }
@@ -499,7 +499,7 @@ export class AudioPromptBuilder {
         vocalParts.push('instrumental');
       } else {
         if (this._vocals.style) {
-          const styles = Array.isArray(this._vocals.style) 
+          const styles = Array.isArray(this._vocals.style)
             ? this._vocals.style : [this._vocals.style];
           vocalParts.push(`${styles.join(' and ')} vocals`);
         }
@@ -514,7 +514,7 @@ export class AudioPromptBuilder {
     if (this._production) {
       const prodParts: string[] = [];
       if (this._production.style) {
-        const styles = Array.isArray(this._production.style) 
+        const styles = Array.isArray(this._production.style)
           ? this._production.style : [this._production.style];
         prodParts.push(`${styles.join(', ')} production`);
       }
@@ -620,13 +620,13 @@ export class AudioPromptBuilder {
   toMarkdown(): string {
     const built = this.build();
     const sections: string[] = ['# Audio Prompt\n'];
-    
+
     sections.push('## Style Prompt\n```\n' + built.stylePrompt + '\n```\n');
-    
+
     if (built.lyricsPrompt) {
       sections.push('## Lyrics\n```\n' + built.lyricsPrompt + '\n```\n');
     }
-    
+
     if (built.structure.genre) {
       sections.push('## Genre\n' + objectToMarkdownList(built.structure.genre));
     }
@@ -645,7 +645,7 @@ export class AudioPromptBuilder {
     if (built.structure.production) {
       sections.push('## Production\n' + objectToMarkdownList(built.structure.production));
     }
-    
+
     return sections.join('\n');
   }
 
@@ -666,10 +666,10 @@ export class AudioPromptBuilder {
 function objectToYaml(obj: object, indent = 0): string {
   const spaces = '  '.repeat(indent);
   const lines: string[] = [];
-  
+
   for (const [key, value] of Object.entries(obj)) {
     if (value === undefined || value === null) continue;
-    
+
     if (Array.isArray(value)) {
       if (value.length === 0) continue;
       lines.push(`${spaces}${key}:`);
@@ -688,17 +688,17 @@ function objectToYaml(obj: object, indent = 0): string {
       lines.push(`${spaces}${key}: ${value}`);
     }
   }
-  
+
   return lines.join('\n');
 }
 
 function objectToMarkdownList(obj: object, indent = 0): string {
   const spaces = '  '.repeat(indent);
   const lines: string[] = [];
-  
+
   for (const [key, value] of Object.entries(obj)) {
     if (value === undefined || value === null) continue;
-    
+
     if (Array.isArray(value)) {
       lines.push(`${spaces}- **${key}:** ${value.join(', ')}`);
     } else if (typeof value === 'object') {
@@ -708,7 +708,7 @@ function objectToMarkdownList(obj: object, indent = 0): string {
       lines.push(`${spaces}- **${key}:** ${value}`);
     }
   }
-  
+
   return lines.join('\n');
 }
 

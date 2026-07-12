@@ -1,10 +1,10 @@
 /**
  * Prompt Builder - A fluent DSL for creating structured prompts
- * 
+ *
  * @example
  * ```ts
  * import { builder } from 'prompts.chat';
- * 
+ *
  * const prompt = builder()
  *   .role("Senior TypeScript Developer")
  *   .context("You are helping review code")
@@ -150,7 +150,7 @@ export class PromptBuilder {
    * Define a variable placeholder
    */
   variable(
-    name: string, 
+    name: string,
     options: { description?: string; required?: boolean; defaultValue?: string } = {}
   ): this {
     this._variables.push({
@@ -237,7 +237,7 @@ export class PromptBuilder {
     if (this._variables.length > 0) {
       const varsText = this._variables
         .map(v => {
-          const placeholder = v.defaultValue 
+          const placeholder = v.defaultValue
             ? `\${${v.name}:${v.defaultValue}}`
             : `\${${v.name}}`;
           const desc = v.description ? ` - ${v.description}` : '';
@@ -286,11 +286,11 @@ export function fromPrompt(content: string): PromptBuilder {
 
 // Re-export media builders
 export { image, ImagePromptBuilder } from './media';
-export type { 
-  BuiltImagePrompt, 
-  ImageSubject, 
-  ImageCamera, 
-  ImageLighting, 
+export type {
+  BuiltImagePrompt,
+  ImageSubject,
+  ImageCamera,
+  ImageLighting,
   ImageComposition,
   ImageStyle,
   ImageColor,
@@ -309,7 +309,7 @@ export type {
 } from './media';
 
 export { video, VideoPromptBuilder } from './video';
-export type { 
+export type {
   BuiltVideoPrompt,
   VideoScene,
   VideoSubject,

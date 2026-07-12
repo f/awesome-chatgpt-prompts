@@ -1,28 +1,28 @@
 /**
  * prompts.chat - Developer toolkit for AI prompts
- * 
+ *
  * @example
  * ```ts
  * import { variables, similarity, builder, quality } from 'prompts.chat';
- * 
+ *
  * // Detect and normalize variables
  * const vars = variables.detect("Hello {{name}}, you are [ROLE]");
  * const normalized = variables.normalize("Hello {{name}}");
  * // → "Hello ${name}"
- * 
+ *
  * // Check similarity
  * const score = similarity.calculate(prompt1, prompt2);
  * const isDupe = similarity.isDuplicate(prompt1, prompt2);
- * 
+ *
  * // Build structured prompts
  * const prompt = builder()
  *   .role("Senior Developer")
  *   .task("Review code")
  *   .build();
- * 
+ *
  * // Check quality locally
  * const result = quality.check("Act as a developer...");
- * 
+ *
  * ```
  */
 
@@ -33,9 +33,9 @@ export * as quality from './quality';
 export * as parser from './parser';
 
 // Builder exports (special handling for fluent API)
-export { 
-  builder, 
-  fromPrompt, 
+export {
+  builder,
+  fromPrompt,
   templates,
   PromptBuilder,
   video,
@@ -56,9 +56,9 @@ export {
 } from './builder';
 
 // Variable utilities
-export { 
-  detectVariables, 
-  convertToSupportedFormat, 
+export {
+  detectVariables,
+  convertToSupportedFormat,
   convertAllVariables,
   extractVariables,
   compile,
@@ -69,9 +69,9 @@ export {
 } from './variables';
 
 // Similarity utilities
-export { 
-  calculateSimilarity, 
-  isSimilarContent, 
+export {
+  calculateSimilarity,
+  isSimilarContent,
   normalizeContent,
   getContentFingerprint,
   findDuplicates,

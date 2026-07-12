@@ -43,10 +43,10 @@ function getJSDocComment(node: ts.Node, sourceFile: ts.SourceFile): { descriptio
   const jsDocNodes = (node as any).jsDoc as ts.JSDoc[] | undefined;
   if (jsDocNodes && jsDocNodes.length > 0) {
     const jsDoc = jsDocNodes[0];
-    
+
     if (jsDoc.comment) {
-      description = typeof jsDoc.comment === 'string' 
-        ? jsDoc.comment 
+      description = typeof jsDoc.comment === 'string'
+        ? jsDoc.comment
         : jsDoc.comment.map(c => c.text || '').join('');
     }
 
@@ -54,7 +54,7 @@ function getJSDocComment(node: ts.Node, sourceFile: ts.SourceFile): { descriptio
       for (const tag of jsDoc.tags) {
         const tagName = tag.tagName.text;
         let tagComment = '';
-        
+
         if (tag.comment) {
           tagComment = typeof tag.comment === 'string'
             ? tag.comment
@@ -85,13 +85,13 @@ function getTypeString(type: ts.TypeNode | undefined, sourceFile: ts.SourceFile)
 
 function parseFunction(node: ts.FunctionDeclaration | ts.MethodDeclaration | ts.ArrowFunction, sourceFile: ts.SourceFile, checker: ts.TypeChecker): DocEntry {
   const { description, tags, examples } = getJSDocComment(node, sourceFile);
-  
+
   const name = ts.isFunctionDeclaration(node) || ts.isMethodDeclaration(node)
     ? node.name?.getText(sourceFile) || 'anonymous'
     : 'anonymous';
 
   const parameters: Array<{ name: string; type: string; description?: string; optional?: boolean; defaultValue?: string; isRest?: boolean }> = [];
-  
+
   for (const param of node.parameters) {
     const paramName = param.name.getText(sourceFile);
     const paramType = getTypeString(param.type, sourceFile);
@@ -136,7 +136,7 @@ function parseInterface(node: ts.InterfaceDeclaration, sourceFile: ts.SourceFile
   const name = node.name.getText(sourceFile);
 
   const properties: DocEntry[] = [];
-  
+
   for (const member of node.members) {
     if (ts.isPropertySignature(member)) {
       const propName = member.name.getText(sourceFile);
@@ -247,7 +247,7 @@ function parseVariableStatement(node: ts.VariableStatement, sourceFile: ts.Sourc
   for (const decl of node.declarationList.declarations) {
     const name = decl.name.getText(sourceFile);
     let signature = name;
-    
+
     if (decl.type) {
       signature += `: ${decl.type.getText(sourceFile)}`;
     } else if (decl.initializer) {
@@ -265,18 +265,18 @@ function parseVariableStatement(node: ts.VariableStatement, sourceFile: ts.Sourc
         if (ts.isPropertyAssignment(prop) && prop.name) {
           const propName = prop.name.getText(sourceFile);
           const { description: propDesc, tags: propTags, examples: propExamples } = getJSDocComment(prop, sourceFile);
-          
+
           // Handle arrow functions and function expressions
           if (ts.isArrowFunction(prop.initializer) || ts.isFunctionExpression(prop.initializer)) {
             const fn = prop.initializer;
             const params: Array<{ name: string; type: string; description?: string; optional?: boolean; defaultValue?: string }> = [];
-            
+
             for (const param of fn.parameters) {
               const paramName = param.name.getText(sourceFile);
               const paramType = getTypeString(param.type, sourceFile);
               const optional = !!param.questionToken || !!param.initializer;
               const defaultValue = param.initializer?.getText(sourceFile);
-              
+
               params.push({
                 name: paramName,
                 type: paramType,
@@ -285,13 +285,13 @@ function parseVariableStatement(node: ts.VariableStatement, sourceFile: ts.Sourc
                 defaultValue,
               });
             }
-            
+
             const returnType = getTypeString(fn.type, sourceFile);
             const paramSignature = params
               .map(p => `${p.name}${p.optional ? '?' : ''}: ${p.type}`)
               .join(', ');
             const methodSignature = `${propName}(${paramSignature}): ${returnType}`;
-            
+
             methods.push({
               name: propName,
               kind: 'method',
@@ -332,7 +332,7 @@ function parseSourceFile(filePath: string, program: ts.Program): ModuleDoc {
 
   const checker = program.getTypeChecker();
   const exports: DocEntry[] = [];
-  
+
   // Get module-level JSDoc if any
   let moduleDescription: string | undefined;
   const firstStatement = sourceFile.statements[0];
@@ -396,7 +396,7 @@ function parseSourceFile(filePath: string, program: ts.Program): ModuleDoc {
 
 function generateMarkdown(modules: ModuleDoc[]): string {
   const lines: string[] = [];
-  
+
   lines.push('# API Reference\n');
   lines.push('> Auto-generated from TypeScript source files\n');
 
@@ -416,7 +416,7 @@ function generateMarkdown(modules: ModuleDoc[]): string {
   for (const mod of modules) {
     lines.push(`---\n`);
     lines.push(`## ${mod.name}\n`);
-    
+
     if (mod.description) {
       lines.push(`${mod.description}\n`);
     }
@@ -570,7 +570,7 @@ function generateMarkdown(modules: ModuleDoc[]): string {
 // Generate TypeScript file for IDE sidebar
 function generateSidebarTS(modules: ModuleDoc[]): string {
   const lines: string[] = [];
-  
+
   lines.push('/**');
   lines.push(' * Auto-generated API documentation for IDE sidebar');
   lines.push(' * Generated from TypeScript source files via reflection');
@@ -634,7 +634,7 @@ function generateSidebarTS(modules: ModuleDoc[]): string {
     if (groupModules.length === 0) continue;
 
     const items: string[] = [];
-    
+
     for (const mod of groupModules) {
       // Add functions
       const functions = mod.exports.filter(e => e.kind === 'function');
@@ -644,7 +644,7 @@ function generateSidebarTS(modules: ModuleDoc[]): string {
           type: p.type,
           description: p.description || undefined,
         })) || [];
-        
+
         items.push(`    {
       name: "${fn.name}()",
       type: "function",
@@ -664,7 +664,7 @@ function generateSidebarTS(modules: ModuleDoc[]): string {
       type: "class",
       description: ${JSON.stringify(cls.description || '')},
     }`);
-        
+
         // Add class methods
         if (cls.methods) {
           for (const method of cls.methods) {
@@ -673,7 +673,7 @@ function generateSidebarTS(modules: ModuleDoc[]): string {
               type: p.type,
               description: p.description || undefined,
             })) || [];
-            
+
             items.push(`    {
       name: ".${method.name}()",
       type: "method",
@@ -716,7 +716,7 @@ function generateSidebarTS(modules: ModuleDoc[]): string {
       signature: ${JSON.stringify(v.signature || '')},
       description: ${JSON.stringify(v.description || '')},
     }`);
-        
+
         // Add methods from object literals (like templates)
         if (v.methods) {
           for (const method of v.methods) {
@@ -725,7 +725,7 @@ function generateSidebarTS(modules: ModuleDoc[]): string {
               type: p.type,
               description: p.description || undefined,
             })) || [];
-            
+
             items.push(`    {
       name: "${v.name}.${method.name}()",
       type: "method",
@@ -751,14 +751,14 @@ function generateSidebarTS(modules: ModuleDoc[]): string {
 
   lines.push('];');
   lines.push('');
-  
+
   return lines.join('\n');
 }
 
 // Generate TypeScript declaration file content for Monaco editor
 function generateTypeDefinitions(modules: ModuleDoc[]): string {
   const lines: string[] = [];
-  
+
   lines.push('/**');
   lines.push(' * Auto-generated type definitions for prompts.chat');
   lines.push(' * Generated from TypeScript source files via reflection');
@@ -825,10 +825,10 @@ function generateTypeDefinitions(modules: ModuleDoc[]): string {
   // Process each module
   const processModule = (mod: ModuleDoc | undefined, sectionComment: string) => {
     if (!mod) return;
-    
+
     lines.push('');
     lines.push(`  // ${sectionComment}`);
-    
+
     // Types first (skip duplicates)
     for (const entry of mod.exports.filter(e => e.kind === 'type')) {
       if (addedTypes.has(entry.name)) continue;
@@ -838,7 +838,7 @@ function generateTypeDefinitions(modules: ModuleDoc[]): string {
         addedTypes.add(entry.name);
       }
     }
-    
+
     // Interfaces (skip duplicates)
     for (const entry of mod.exports.filter(e => e.kind === 'interface')) {
       if (addedInterfaces.has(entry.name)) continue;
@@ -848,7 +848,7 @@ function generateTypeDefinitions(modules: ModuleDoc[]): string {
         addedInterfaces.add(entry.name);
       }
     }
-    
+
     // Classes (skip duplicates)
     for (const entry of mod.exports.filter(e => e.kind === 'class')) {
       if (addedClasses.has(entry.name)) continue;
@@ -858,7 +858,7 @@ function generateTypeDefinitions(modules: ModuleDoc[]): string {
         addedClasses.add(entry.name);
       }
     }
-    
+
     // Functions (skip duplicates)
     for (const entry of mod.exports.filter(e => e.kind === 'function')) {
       if (addedFunctions.has(entry.name)) continue;
@@ -876,7 +876,7 @@ function generateTypeDefinitions(modules: ModuleDoc[]): string {
   processModule(audioModule, 'AUDIO BUILDER TYPES');
   processModule(videoModule, 'VIDEO BUILDER TYPES');
   processModule(mediaModule, 'IMAGE BUILDER TYPES');
-  
+
   // Generate templates namespace from object literal methods
   if (builderModule) {
     const templatesVar = builderModule.exports.find(e => e.kind === 'variable' && e.name === 'templates');
@@ -945,7 +945,7 @@ function generateTypeDefinitions(modules: ModuleDoc[]): string {
   lines.push('}');
   lines.push('`;');
   lines.push('');
-  
+
   return lines.join('\n');
 }
 
@@ -954,10 +954,10 @@ function extractStringLiteralOptions(program: ts.Program, files: string[]): { me
   // Phase 1: Collect all type aliases and interface properties
   const typeAliases: Record<string, string[]> = {};
   const interfaceProps: Record<string, Record<string, string[]>> = {}; // InterfaceName -> { propName -> literals }
-  
+
   function extractLiteralsFromType(type: ts.TypeNode, sourceFile: ts.SourceFile): string[] {
     const literals: string[] = [];
-    
+
     if (ts.isUnionTypeNode(type)) {
       for (const member of type.types) {
         if (ts.isLiteralTypeNode(member) && member.literal && ts.isStringLiteral(member.literal)) {
@@ -969,7 +969,7 @@ function extractStringLiteralOptions(program: ts.Program, files: string[]): { me
     } else if (ts.isLiteralTypeNode(type) && type.literal && ts.isStringLiteral(type.literal)) {
       literals.push(type.literal.text);
     }
-    
+
     return literals;
   }
 
@@ -991,7 +991,7 @@ function extractStringLiteralOptions(program: ts.Program, files: string[]): { me
       if (ts.isInterfaceDeclaration(node)) {
         const interfaceName = node.name.getText(sf);
         interfaceProps[interfaceName] = interfaceProps[interfaceName] || {};
-        
+
         for (const member of node.members) {
           if (ts.isPropertySignature(member) && member.name && member.type) {
             const propName = member.name.getText(sf);
@@ -1022,15 +1022,15 @@ function extractStringLiteralOptions(program: ts.Program, files: string[]): { me
         for (const member of node.members) {
           if (ts.isMethodDeclaration(member) && member.name) {
             const methodName = member.name.getText(sf);
-            
+
             for (const param of member.parameters) {
               if (!param.type) continue;
-              
+
               let literals: string[] = [];
-              
+
               // Direct literal union in parameter
               literals = extractLiteralsFromType(param.type, sf);
-              
+
               // Type reference (e.g., MusicGenre)
               if (literals.length === 0 && ts.isTypeReferenceNode(param.type)) {
                 const refName = param.type.typeName.getText(sf);
@@ -1038,12 +1038,12 @@ function extractStringLiteralOptions(program: ts.Program, files: string[]): { me
                   literals = typeAliases[refName];
                 }
               }
-              
+
               // Indexed access type (e.g., AudioTempo['feel'])
               if (literals.length === 0 && ts.isIndexedAccessTypeNode(param.type)) {
                 const objectType = param.type.objectType;
                 const indexType = param.type.indexType;
-                
+
                 if (ts.isTypeReferenceNode(objectType) && ts.isLiteralTypeNode(indexType)) {
                   const interfaceName = objectType.typeName.getText(sf);
                   if (indexType.literal && ts.isStringLiteral(indexType.literal)) {
@@ -1054,7 +1054,7 @@ function extractStringLiteralOptions(program: ts.Program, files: string[]): { me
                   }
                 }
               }
-              
+
               // Union containing type references (e.g., MusicGenre | AudioGenre)
               if (literals.length === 0 && ts.isUnionTypeNode(param.type)) {
                 for (const member of param.type.types) {
@@ -1066,7 +1066,7 @@ function extractStringLiteralOptions(program: ts.Program, files: string[]): { me
                   }
                 }
               }
-              
+
               if (literals.length > 0) {
                 // Deduplicate
                 const uniqueLiterals = [...new Set(literals)];
@@ -1091,29 +1091,29 @@ function extractStringLiteralOptions(program: ts.Program, files: string[]): { me
 // Generate type options mapping (TypeName -> valid values) for error messages
 function generateTypeOptions(typeAliases: Record<string, string[]>): string {
   const lines: string[] = [];
-  
+
   lines.push('');
   lines.push('// Type name to valid options mapping for enhanced error messages');
   lines.push('export const TYPE_OPTIONS: Record<string, string[]> = {');
-  
+
   // Sort keys for consistent output
   const sortedKeys = Object.keys(typeAliases).sort();
-  
+
   for (const key of sortedKeys) {
     if (typeAliases[key].length > 0) {
       lines.push(`  ${JSON.stringify(key)}: ${JSON.stringify(typeAliases[key])},`);
     }
   }
-  
+
   lines.push('};');
-  
+
   return lines.join('\n');
 }
 
 // Generate method options file for Monaco autocomplete
 function generateMethodOptions(options: Record<string, string[]>): string {
   const lines: string[] = [];
-  
+
   lines.push('/**');
   lines.push(' * Auto-generated method options for Monaco autocomplete');
   lines.push(' * Generated from TypeScript source files via reflection');
@@ -1121,10 +1121,10 @@ function generateMethodOptions(options: Record<string, string[]>): string {
   lines.push(' */');
   lines.push('');
   lines.push('export const METHOD_OPTIONS: Record<string, string[]> = {');
-  
+
   // Collect all method names with their values, avoiding duplicates
   const methodMap: Record<string, string[]> = {};
-  
+
   // Common method name aliases (type name -> method name)
   const methodAliases: Record<string, string[]> = {
     musicGenre: ['genre'],
@@ -1150,17 +1150,17 @@ function generateMethodOptions(options: Record<string, string[]>): string {
     sensorFormat: ['sensor'],
     songSection: ['section'],
   };
-  
+
   for (const [key, values] of Object.entries(options)) {
     if (values.length > 0) {
       // Convert type names to likely method names (camelCase, remove 'Type' suffix)
       const methodName = key.charAt(0).toLowerCase() + key.slice(1).replace(/Type$/, '');
-      
+
       // Keep the longer list if there's a conflict
       if (!methodMap[methodName] || methodMap[methodName].length < values.length) {
         methodMap[methodName] = values;
       }
-      
+
       // Also add aliases
       const aliases = methodAliases[methodName] || [];
       for (const alias of aliases) {
@@ -1170,17 +1170,17 @@ function generateMethodOptions(options: Record<string, string[]>): string {
       }
     }
   }
-  
+
   // Sort keys for consistent output
   const sortedKeys = Object.keys(methodMap).sort();
-  
+
   for (const key of sortedKeys) {
     lines.push(`  ${JSON.stringify(key)}: ${JSON.stringify(methodMap[key])},`);
   }
-  
+
   lines.push('};');
   lines.push('');
-  
+
   return lines.join('\n');
 }
 
