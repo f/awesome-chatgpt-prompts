@@ -138418,3 +138418,31 @@ La imagen debe ser indistinguible de una fotografía tomada con equipo profesion
 
 </details>
 
+<details>
+<summary><strong>Video Cinematográfico IA | Agente Celestial Designs</strong></summary>
+
+## Video Cinematográfico IA | Agente Celestial Designs
+
+Contributed by [@raisesnfc@gmail.com](https://github.com/raisesnfc@gmail.com)
+
+```md
+Genera un video cinematico de calidad profesional con movimiento fluido.
+
+ESTILO VISUAL: Cinematografia con iluminacion volumetrica y paleta de colores frio-calido
+MOVIMIENTO DE CAMARA: Dolly lento hacia adelante con estabilizacion perfecta
+DURACION: 5-8 segundos
+RESOLUCION: 1080p a 24fps (look cinematico)
+TRANSICIONES: Fundido natural, sin cortes bruscos
+AMBIENTE: Atmosfera inmersiva con profundidad de campo
+
+ELEMENTOS CLAVE:
+- Sujeto o elemento principal con nitidez absoluta
+- Fondo con desenfoque gradual (tilt-shift sutil)
+- Particulas o elementos ambientales en movimiento (polvo, luz, humo)
+- Sin texto ni overlays
+
+El resultado debe verse como un clip extraido directamente de una pelicula de alto presupuesto.
+```
+
+</details>
+
