@@ -23,7 +23,7 @@ Let's examine each component in detail.
 
 Setting a role focuses the model's responses through the lens of a specific expertise or perspective.
 
-<Compare 
+<Compare
   before={{ label: "Without Role", content: "Explain quantum computing." }}
   after={{ label: "With Role", content: "You are a physics professor who specializes in making complex topics accessible to beginners. Explain quantum computing." }}
 />
@@ -46,7 +46,7 @@ The role primes the model to:
 
 Context provides the information the model needs to understand your situation. Remember: the model knows nothing about you, your project, or your goals unless you tell it.
 
-<Compare 
+<Compare
   before={{ label: "Weak Context", content: "Fix this bug in my code." }}
   after={{ label: "Strong Context", content: "I'm building a Node.js REST API using Express.js. The API handles user authentication with JWT tokens. When a user tries to access a protected route, they're getting a 403 error even with a valid token. Here's the relevant code: [code]" }}
 />
@@ -167,7 +167,7 @@ Analyze this customer review and return JSON:
   "key_phrases": ["notable phrases"]
 }
 
-Review: "The product arrived quickly and works great, but 
+Review: "The product arrived quickly and works great, but
 the instructions were confusing."
 ```
 
@@ -205,7 +205,7 @@ Classify: "The app crashes when I open settings"
 
 Here's a complete prompt using all components:
 
-<TryIt 
+<TryIt
   title="Complete Prompt Example"
   description="This prompt demonstrates all six components working together. Try it to see how structured prompts produce professional results."
   prompt={`# Role
@@ -266,7 +266,7 @@ Effective prompts are constructed, not discovered. By understanding and applying
 - Create reusable prompt templates
 - Communicate your intentions clearly
 
-<Quiz 
+<Quiz
   question="Which component has the biggest impact on response quality?"
   options={[
     "Always the role/persona",
@@ -278,7 +278,7 @@ Effective prompts are constructed, not discovered. By understanding and applying
   explanation="Different tasks benefit from different components. A simple translation needs minimal structure, while a complex analysis benefits from detailed role, context, and format specifications."
 />
 
-<TryIt 
+<TryIt
   prompt={`You are a senior product manager with 10 years of experience in SaaS products.
 
 Context: I'm building a task management app for remote teams. We're a small startup with limited engineering resources.
@@ -291,7 +291,7 @@ Constraints:
 
 Format: For each feature, provide:
 1. Feature name
-2. One-sentence description  
+2. One-sentence description
 3. Why it matters for remote teams`}
   description="This prompt uses all six components. Try it and see how the structured approach produces focused, actionable results."
 />
@@ -300,7 +300,7 @@ Format: For each feature, provide:
 
 Now it's your turn! Use this interactive prompt builder to construct your own prompt using the components you've learned:
 
-<PromptBuilder 
+<PromptBuilder
   title="Interactive Prompt Builder"
   description="Fill in each section to build a complete, well-structured prompt"
 />
@@ -325,7 +325,7 @@ Task: Review the following code for security vulnerabilities.
 
 Focus on:
 - SQL injection risks
-- XSS vulnerabilities  
+- XSS vulnerabilities
 - Authentication/authorization issues
 - Input validation gaps
 

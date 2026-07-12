@@ -211,21 +211,21 @@ Document: \${apiEndpoint}`} />
 
 ### Overly Generic Roles
 
-<Compare 
+<Compare
   before={{ label: "Weak", content: "You are a helpful assistant." }}
   after={{ label: "Better", content: "You are a helpful assistant specializing in Python development, particularly web applications with Flask and Django." }}
 />
 
 ### Conflicting Roles
 
-<Compare 
+<Compare
   before={{ label: "Problematic", content: "You are a creative writer who always follows strict templates." }}
   after={{ label: "Better", content: "You are a creative writer who works within established story structures while adding original elements." }}
 />
 
 ### Unrealistic Expertise
 
-<Compare 
+<Compare
   before={{ label: "Problematic", content: "You are an expert in everything." }}
   after={{ label: "Better", content: "You are a T-shaped professional: deep expertise in machine learning with broad knowledge of software engineering practices." }}
 />
@@ -234,7 +234,7 @@ Document: \${apiEndpoint}`} />
 
 ### Technical Documentation
 
-<TryIt 
+<TryIt
   title="Technical Writer Role"
   description="Try this technical documentation prompt with your own API endpoint."
   prompt={`You are a senior technical writer at a developer tools company. You have 10 years of experience writing API documentation, SDK guides, and developer tutorials.
@@ -251,7 +251,7 @@ Document this API endpoint: GET /api/users/:id - Returns user profile data`}
 
 ### Creative Writing
 
-<TryIt 
+<TryIt
   title="Novelist Role"
   description="This role combines genre expertise with specific stylistic traits."
   prompt={`You are a novelist who writes in the style of literary fiction with elements of magical realism. Your prose is known for:
@@ -265,14 +265,14 @@ Write the opening scene of a story about a librarian who discovers that books in
 
 ### Business Communication
 
-<TryIt 
+<TryIt
   title="Executive Coach Role"
   description="This role helps with sensitive business communications."
   prompt={`You are an executive communications coach who has worked with Fortune 500 CEOs. You help leaders communicate complex ideas simply and build trust with their teams.
 
 Review this message for a team meeting about budget cuts. Suggest improvements that:
 - Acknowledge the difficulty while maintaining confidence
-- Are transparent without creating panic  
+- Are transparent without creating panic
 - Show empathy while being professional
 - Include clear next steps
 
@@ -313,7 +313,7 @@ Solve step by step, explaining your deductions.`} />
 Role-based prompting is powerful because it focuses the model's vast knowledge, sets expectations for tone and style, provides implicit context, and makes outputs more consistent.
 </Callout>
 
-<Quiz 
+<Quiz
   question="What makes a role-based prompt more effective?"
   options={[
     "Using generic role titles like 'expert'",

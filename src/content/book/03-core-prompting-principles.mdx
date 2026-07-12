@@ -10,7 +10,7 @@ The best prompts are clear, not clever. AI models are literal interpreters—the
 
 ### Be Explicit
 
-<Compare 
+<Compare
   before={{ label: "Implicit (problematic)", content: "Make this better." }}
   after={{ label: "Explicit (effective)", content: "Improve this email by:\n1. Making the subject line more compelling\n2. Shortening paragraphs to 2-3 sentences max\n3. Adding a clear call-to-action at the end" }}
 />
@@ -19,7 +19,7 @@ The best prompts are clear, not clever. AI models are literal interpreters—the
 
 Words can have multiple meanings. Choose precise language.
 
-<Compare 
+<Compare
   before={{ label: "Ambiguous", content: "Give me a short summary.\n(How short? 1 sentence? 1 paragraph? 1 page?)" }}
   after={{ label: "Precise", content: "Summarize in exactly 3 bullet points, each under 20 words." }}
 />
@@ -88,7 +88,7 @@ Models have no memory, no access to your files, and no knowledge of your situati
 
 ### Provide Sufficient Context
 
-<Compare 
+<Compare
   before={{ label: "Insufficient context", content: "Why isn't my function working?" }}
   after={{ label: "Sufficient context", content: "I have a Python function that should filter a list of dictionaries by a specific key value. It's returning an empty list when it should return 3 items.\n\nFunction:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nCall: filter_items(items, 'status', 'active')\nExpected: 2 items, Got: empty list" }}
 />
@@ -99,7 +99,7 @@ Models have no memory, no access to your files, and no knowledge of your situati
 Ask yourself: Would a smart stranger understand this request? If not, add more context.
 </Callout>
 
-<Checklist 
+<Checklist
   title="Context Checklist"
   items={[
     { text: "Does the model know what I'm working on?" },
@@ -116,7 +116,7 @@ Don't just ask for an answer—guide the model toward the answer you want.
 
 ### Use Instructional Framing
 
-<Compare 
+<Compare
   before={{ label: "Just Asking", content: "What are the pros and cons of microservices?" }}
   after={{ label: "Guiding", content: "List 5 advantages and 5 disadvantages of microservices architecture.\n\nFor each point:\n- State the point clearly in one sentence\n- Provide a brief explanation (2-3 sentences)\n- Give a concrete example\n\nConsider perspectives of: small startups, large enterprises, and teams transitioning from monoliths." }}
 />
@@ -125,7 +125,7 @@ Don't just ask for an answer—guide the model toward the answer you want.
 
 For complex tasks, guide the reasoning process:
 
-<TryIt 
+<TryIt
   title="Reasoning Scaffold Example"
   description="This prompt guides the AI through a systematic decision-making process."
   prompt={`I need to choose between PostgreSQL and MongoDB for my e-commerce project.
@@ -199,7 +199,7 @@ Work with how models are trained, not against them.
 
 Frame requests as things a helpful assistant would naturally do:
 
-<Compare 
+<Compare
   before={{ label: "Against the grain", content: "I know you can't do this, but try to..." }}
   after={{ label: "With the grain", content: "Help me understand...\nI'm working on X and need assistance with...\nCould you walk me through..." }}
 />
@@ -208,7 +208,7 @@ Frame requests as things a helpful assistant would naturally do:
 
 If you need consistent output, show the pattern:
 
-<TryIt 
+<TryIt
   title="Pattern Example"
   description="This prompt shows the AI exactly what format you want for book recommendations."
   prompt={`Recommend 3 science fiction books. Format each recommendation as:
@@ -312,7 +312,7 @@ List any issues found.
 
 <PrinciplesSummary />
 
-<Quiz 
+<Quiz
   question="Which principle suggests you should include all relevant background information in your prompt?"
   options={[
     "Clarity Over Cleverness",

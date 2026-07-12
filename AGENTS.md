@@ -122,7 +122,7 @@ interface MyComponentProps {
 
 export function MyComponent({ title, onAction }: MyComponentProps) {
   const t = useTranslations("namespace");
-  
+
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">{title}</h2>
@@ -165,7 +165,7 @@ Authentication and storage use a plugin architecture:
 ### Auth Plugins (`src/lib/plugins/auth/`)
 - `credentials.ts` - Email/password authentication
 - `github.ts` - GitHub OAuth
-- `google.ts` - Google OAuth  
+- `google.ts` - Google OAuth
 - `azure.ts` - Microsoft Entra ID
 
 ### Storage Plugins (`src/lib/plugins/storage/`)

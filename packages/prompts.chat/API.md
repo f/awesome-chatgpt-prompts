@@ -943,7 +943,7 @@ type PersonaExpertise = | 'general' | 'coding' | 'writing' | 'analysis' | 'resea
 #### `ReasoningStyle`
 
 ```typescript
-type ReasoningStyle = | 'step-by-step' | 'chain-of-thought' | 'tree-of-thought' 
+type ReasoningStyle = | 'step-by-step' | 'chain-of-thought' | 'tree-of-thought'
   | 'direct' | 'analytical' | 'comparative' | 'deductive' | 'inductive'
   | 'first-principles' | 'analogical' | 'devil-advocate'
 ```
@@ -2073,7 +2073,7 @@ type FilmFormat = | '35mm' | '120-medium-format' | '4x5-large-format' | '8x10-la
 #### `CameraAngle`
 
 ```typescript
-type CameraAngle = | 'eye-level' | 'low-angle' | 'high-angle' | 'dutch-angle' | 'birds-eye' 
+type CameraAngle = | 'eye-level' | 'low-angle' | 'high-angle' | 'dutch-angle' | 'birds-eye'
   | 'worms-eye' | 'over-the-shoulder' | 'point-of-view' | 'aerial' | 'drone'
   | 'canted' | 'oblique' | 'hip-level' | 'knee-level' | 'ground-level'
 ```
@@ -2144,7 +2144,7 @@ type FilterType = | 'uv' | 'polarizer' | 'nd' | 'nd-graduated' | 'black-pro-mist
 #### `CameraMovement`
 
 ```typescript
-type CameraMovement = | 'static' | 'pan' | 'tilt' | 'dolly' | 'truck' | 'pedestal' | 'zoom' 
+type CameraMovement = | 'static' | 'pan' | 'tilt' | 'dolly' | 'truck' | 'pedestal' | 'zoom'
   | 'handheld' | 'steadicam' | 'crane' | 'drone' | 'tracking' | 'arc' | 'whip-pan'
   | 'roll' | 'boom' | 'jib' | 'cable-cam' | 'motion-control' | 'snorricam'
   | 'dutch-roll' | 'vertigo-effect' | 'crash-zoom' | 'slow-push' | 'slow-pull'
@@ -2184,7 +2184,7 @@ type TimeOfDay = | 'dawn' | 'sunrise' | 'golden-hour' | 'morning' | 'midday' | '
 #### `WeatherLighting`
 
 ```typescript
-type WeatherLighting = | 'sunny' | 'cloudy' | 'overcast' | 'foggy' | 'misty' | 'rainy' 
+type WeatherLighting = | 'sunny' | 'cloudy' | 'overcast' | 'foggy' | 'misty' | 'rainy'
   | 'stormy' | 'snowy' | 'hazy'
 ```
 
@@ -2204,7 +2204,7 @@ type ArtStyle = | 'photorealistic' | 'hyperrealistic' | 'cinematic' | 'documenta
 #### `FilmStock`
 
 ```typescript
-type FilmStock = | 'kodak-portra-160' | 'kodak-portra-400' | 'kodak-portra-800' 
+type FilmStock = | 'kodak-portra-160' | 'kodak-portra-400' | 'kodak-portra-800'
   | 'kodak-ektar-100' | 'kodak-gold-200' | 'kodak-ultramax-400' | 'kodak-colorplus-200'
   // Kodak Black & White
   | 'kodak-tri-x-400' | 'kodak-tmax-100' | 'kodak-tmax-400' | 'kodak-tmax-3200'
@@ -4482,9 +4482,9 @@ type TimeSignature = '4/4' | '3/4' | '6/8' | '2/4' | '5/4' | '7/8' | '12/8'
 #### `MusicalKey`
 
 ```typescript
-type MusicalKey = | 'C' | 'C#' | 'Db' | 'D' | 'D#' | 'Eb' | 'E' | 'F' | 'F#' | 'Gb' 
+type MusicalKey = | 'C' | 'C#' | 'Db' | 'D' | 'D#' | 'Eb' | 'E' | 'F' | 'F#' | 'Gb'
   | 'G' | 'G#' | 'Ab' | 'A' | 'A#' | 'Bb' | 'B'
-  | 'Cm' | 'C#m' | 'Dm' | 'D#m' | 'Ebm' | 'Em' | 'Fm' | 'F#m' 
+  | 'Cm' | 'C#m' | 'Dm' | 'D#m' | 'Ebm' | 'Em' | 'Fm' | 'F#m'
   | 'Gm' | 'G#m' | 'Am' | 'A#m' | 'Bbm' | 'Bm'
 ```
 

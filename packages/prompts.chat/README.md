@@ -92,7 +92,7 @@ const imagePrompt = image()
   .medium("cinematic")
   .build();
 
-// Build music generation prompts  
+// Build music generation prompts
 const musicPrompt = audio()
   .genre("electronic")
   .mood("energetic")
@@ -275,7 +275,7 @@ const existing = fromPrompt("You are a helpful assistant...").build();
 import { templates } from 'prompts.chat';
 
 // Code review template
-const review = templates.codeReview({ 
+const review = templates.codeReview({
   language: "TypeScript",
   focus: ["performance", "security"]
 });
@@ -284,9 +284,9 @@ const review = templates.codeReview({
 const translate = templates.translation("English", "Spanish");
 
 // Summarization template
-const summary = templates.summarize({ 
-  maxLength: 100, 
-  style: "bullet" 
+const summary = templates.summarize({
+  maxLength: 100,
+  style: "bullet"
 });
 
 // Q&A template
@@ -340,7 +340,7 @@ const prompt = chat()
   .background("Specialized in distributed systems")
   .speakAs("CodeReviewer")                         // Set a name
   .responseLanguage("English")                     // Response language
-  
+
   // ━━━ Context ━━━
   .context({
     background: "Reviewing a pull request for an e-commerce platform",
@@ -358,7 +358,7 @@ const prompt = chat()
   .constraint("Focus on security issues")          // Single constraint
   .assumptions(["Code compiles successfully"])     // Set assumptions
   .knowledge(["Using React 18", "Node.js backend"]) // Known facts
-  
+
   // ━━━ Task ━━━
   .task({
     instruction: "Review the submitted code and provide actionable feedback",
@@ -383,7 +383,7 @@ const prompt = chat()
   .criteria(["Clear explanations"])                // Success criteria
   .avoid(["Being overly critical", "Ignoring context"])  // Anti-patterns
   .priority("thoroughness")                        // accuracy | speed | creativity | thoroughness
-  
+
   // ━━━ Examples (Few-Shot) ━━━
   .example(
     "const [data, setData] = useState()",
@@ -398,7 +398,7 @@ const prompt = chat()
     { input: "var x = 1", output: "Use const or let instead of var" },
     { input: "any[]", output: "Define specific array types" }
   ])
-  
+
   // ━━━ Output Format ━━━
   .output({
     format: { type: "markdown" },
@@ -419,7 +419,7 @@ const prompt = chat()
   .markdown()                                      // Markdown output
   .code("typescript")                              // Code output with language
   .table()                                         // Table output
-  
+
   // ━━━ Output Length ━━━
   .length("detailed")                              // brief | moderate | detailed | comprehensive | exhaustive
   .brief()                                         // Shortcut for brief
@@ -427,16 +427,16 @@ const prompt = chat()
   .detailed()                                      // Shortcut for detailed
   .comprehensive()                                 // Shortcut for comprehensive
   .exhaustive()                                    // Shortcut for exhaustive
-  
+
   // ━━━ Output Style ━━━
   .style("mixed")                                  // prose | bullet-points | numbered-list | table | code | mixed | qa | dialogue
-  
+
   // ━━━ Output Includes ━━━
   .withExamples()                                  // Include examples in response
   .withExplanation()                               // Include explanations
   .withSources()                                   // Cite sources
   .withConfidence()                                // Include confidence level
-  
+
   // ━━━ Reasoning ━━━
   .reasoning({
     style: "chain-of-thought",
@@ -455,7 +455,7 @@ const prompt = chat()
   .verifyAnswer()                                  // Verify before presenting
   .considerAlternatives()                          // Consider alternatives
   .explainAssumptions()                            // Explain assumptions
-  
+
   // ━━━ Memory ━━━
   .memory({
     summary: "Previously discussed authentication patterns",
@@ -473,7 +473,7 @@ const prompt = chat()
     { role: "assistant", content: "Previous answer..." }
   ])
   .summarizeHistory("Discussed React patterns")    // Summary of history
-  
+
   // ━━━ Messages ━━━
   .system("You are a helpful assistant.")          // System message
   .user("Please review this code:", "developer")   // User message (with optional name)
@@ -487,11 +487,11 @@ const prompt = chat()
     { user: "What is X?", assistant: "X is..." },
     { user: "How does it work?" }
   ])
-  
+
   // ━━━ Custom ━━━
   .addSystemPart("Additional system instructions") // Add to system prompt
   .raw("Complete custom system prompt")            // Replace with raw content
-  
+
   .build();
 
 // Access outputs
@@ -523,13 +523,13 @@ interface ChatMessage {
 
 #### Persona Types
 ```typescript
-type PersonaTone = 
+type PersonaTone =
   | 'professional' | 'casual' | 'formal' | 'friendly' | 'academic'
   | 'technical' | 'creative' | 'empathetic' | 'authoritative' | 'playful'
   | 'concise' | 'detailed' | 'socratic' | 'coaching' | 'analytical'
   | 'encouraging' | 'neutral' | 'humorous' | 'serious';
 
-type PersonaExpertise = 
+type PersonaExpertise =
   | 'general' | 'coding' | 'writing' | 'analysis' | 'research'
   | 'teaching' | 'counseling' | 'creative' | 'legal' | 'medical'
   | 'financial' | 'scientific' | 'engineering' | 'design' | 'marketing'
@@ -538,8 +538,8 @@ type PersonaExpertise =
 
 #### Reasoning Types
 ```typescript
-type ReasoningStyle = 
-  | 'step-by-step' | 'chain-of-thought' | 'tree-of-thought' 
+type ReasoningStyle =
+  | 'step-by-step' | 'chain-of-thought' | 'tree-of-thought'
   | 'direct' | 'analytical' | 'comparative' | 'deductive' | 'inductive'
   | 'first-principles' | 'analogical' | 'devil-advocate';
 ```
@@ -887,7 +887,7 @@ const prompt = image()
   .clothing("black nano-fiber suit")                       // Override clothing
   .accessories(["glowing katana", "shoulder armor"])       // Override accessories
   .subjectCount("single")                                  // single | couple | group | crowd | number
-  
+
   // ━━━ Environment ━━━
   .environment({
     setting: "rain-soaked Tokyo alley",
@@ -900,36 +900,36 @@ const prompt = image()
   .props(["flying cars overhead", "robot vendors"])        // Scene props
   .atmosphere("dense fog with neon glow")                  // Atmospheric description
   .season("autumn")                                        // spring | summer | autumn | winter
-  
+
   // ━━━ Camera: Framing ━━━
   .shot("medium")                                          // extreme-close-up | close-up | medium | wide | ...
   .angle("low-angle")                                      // eye-level | low-angle | high-angle | dutch-angle | ...
   .lens("35mm")                                            // wide-angle | 35mm | 50mm | 85mm | telephoto | ...
   .focalLength("35mm")                                     // Specific focal length
-  
+
   // ━━━ Camera: Focus & Depth ━━━
   .focus("shallow")                                        // shallow | deep | soft-focus | tilt-shift | bokeh-heavy | ...
   .aperture("f/1.4")                                       // Aperture setting
   .bokeh("smooth")                                         // smooth | creamy | swirly | soap-bubble | oval-anamorphic | ...
-  
+
   // ━━━ Camera: Equipment ━━━
   .cameraBrand("sony")                                     // sony | canon | nikon | leica | hasselblad | arri | ...
   .cameraModel("sony-a7riv")                               // Specific camera model
   .sensor("full-frame")                                    // full-frame | aps-c | medium-format | ...
   .lensBrand("zeiss")                                      // zeiss | leica | sigma | canon | ...
   .lensModel("zeiss-otus-55")                              // Specific lens model
-  
+
   // ━━━ Camera: Film & Filters ━━━
   .filmStock("kodak-portra-400")                           // Kodak, Fujifilm, CineStill, Ilford stocks
   .filmFormat("35mm")                                      // 35mm | 120-medium-format | instant-film | ...
   .filter("black-pro-mist")                                // nd | polarizer | black-pro-mist | diffusion | ...
-  
+
   // ━━━ Camera: Exposure ━━━
   .iso(800)                                                // ISO sensitivity
   .shutterSpeed("1/250")                                   // Shutter speed
   .whiteBalance("tungsten")                                // daylight | cloudy | tungsten | fluorescent | ...
   .colorProfile("S-Log3")                                  // Color profile
-  
+
   // ━━━ Lighting ━━━
   .lighting({
     type: ["rim", "practical"],
@@ -944,7 +944,7 @@ const prompt = image()
   .weather("rainy")                                        // sunny | cloudy | foggy | rainy | stormy | snowy | ...
   .lightDirection("back")                                  // front | side | back | top | three-quarter
   .lightIntensity("dramatic")                              // soft | medium | hard | dramatic
-  
+
   // ━━━ Composition ━━━
   .composition({
     ruleOfThirds: true,
@@ -959,7 +959,7 @@ const prompt = image()
   .foreground("splashing water droplets")                  // Foreground element
   .midground("central figure in action")                   // Midground element
   .background("city skyline with flying vehicles")         // Background element
-  
+
   // ━━━ Style ━━━
   .style({
     medium: ["cinematic", "cyberpunk"],
@@ -971,7 +971,7 @@ const prompt = image()
   .medium("cinematic")                                     // photorealistic | cinematic | anime | oil-painting | ...
   .artist(["Syd Mead", "Masamune Shirow"])                 // Reference artist(s)
   .influence(["Akira", "The Matrix"])                      // Style influences
-  
+
   // ━━━ Color ━━━
   .color({
     palette: "neon",
@@ -986,7 +986,7 @@ const prompt = image()
   .primaryColors(["electric blue", "hot pink"])            // Primary color scheme
   .accentColors(["neon yellow", "white"])                  // Accent colors
   .colorGrade("cyberpunk teal and orange")                 // Color grading style
-  
+
   // ━━━ Technical ━━━
   .technical({
     aspectRatio: "16:9",
@@ -999,13 +999,13 @@ const prompt = image()
   .aspectRatio("16:9")                                     // 1:1 | 4:3 | 3:2 | 16:9 | 21:9 | 9:16 | ...
   .resolution("8K")                                        // Resolution string
   .quality("masterpiece")                                  // draft | standard | high | ultra | masterpiece
-  
+
   // ━━━ Mood & Misc ━━━
   .mood(["dramatic", "mysterious", "epic"])                // serene | dramatic | tense | epic | intimate | ...
   .negative(["blurry", "low quality", "watermark"])        // Negative prompt items
   .custom("volumetric lighting through rain")              // Custom prompt text
   .custom("lens flare from neon signs")
-  
+
   .build();
 
 // Access outputs
@@ -1022,10 +1022,10 @@ const md = prompt.toMarkdown();
 
 #### Camera Types
 ```typescript
-type ShotType = 'extreme-close-up' | 'close-up' | 'medium-close-up' | 'medium' 
+type ShotType = 'extreme-close-up' | 'close-up' | 'medium-close-up' | 'medium'
   | 'medium-wide' | 'wide' | 'extreme-wide' | 'establishing' | 'full-body' | 'portrait' | 'headshot';
 
-type CameraAngle = 'eye-level' | 'low-angle' | 'high-angle' | 'dutch-angle' | 'birds-eye' 
+type CameraAngle = 'eye-level' | 'low-angle' | 'high-angle' | 'dutch-angle' | 'birds-eye'
   | 'worms-eye' | 'over-the-shoulder' | 'point-of-view' | 'aerial' | 'drone'
   | 'canted' | 'oblique' | 'hip-level' | 'knee-level' | 'ground-level';
 
@@ -1044,7 +1044,7 @@ type BokehStyle = 'smooth' | 'creamy' | 'swirly' | 'busy' | 'soap-bubble' | 'cat
 type CameraBrand = 'sony' | 'canon' | 'nikon' | 'fujifilm' | 'leica' | 'hasselblad' | 'phase-one'
   | 'panasonic' | 'olympus' | 'pentax' | 'red' | 'arri' | 'blackmagic' | 'panavision';
 
-type CameraModel = 'sony-a7iv' | 'sony-a7riv' | 'sony-a1' | 'canon-r5' | 'canon-r6' 
+type CameraModel = 'sony-a7iv' | 'sony-a7riv' | 'sony-a1' | 'canon-r5' | 'canon-r6'
   | 'nikon-z9' | 'nikon-z8' | 'leica-m11' | 'leica-q3' | 'hasselblad-x2d'
   | 'fujifilm-x-t5' | 'fujifilm-gfx100s' | 'arri-alexa-35' | 'red-v-raptor' | ...;
 
@@ -1060,7 +1060,7 @@ type LensModel = 'zeiss-otus-55' | 'zeiss-batis-85' | 'leica-summilux-50' | 'lei
 
 #### Film & Filter Types
 ```typescript
-type FilmStock = 
+type FilmStock =
   // Kodak Color
   | 'kodak-portra-160' | 'kodak-portra-400' | 'kodak-portra-800' | 'kodak-ektar-100' | 'kodak-gold-200'
   // Kodak B&W
@@ -1094,7 +1094,7 @@ type LightingType = 'natural' | 'studio' | 'dramatic' | 'soft' | 'hard' | 'diffu
 type TimeOfDay = 'dawn' | 'sunrise' | 'golden-hour' | 'morning' | 'midday' | 'afternoon'
   | 'blue-hour' | 'sunset' | 'dusk' | 'twilight' | 'night' | 'midnight';
 
-type WeatherLighting = 'sunny' | 'cloudy' | 'overcast' | 'foggy' | 'misty' 
+type WeatherLighting = 'sunny' | 'cloudy' | 'overcast' | 'foggy' | 'misty'
   | 'rainy' | 'stormy' | 'snowy' | 'hazy';
 ```
 
@@ -1381,7 +1381,7 @@ const prompt = video()
   .setting("Mars, near the base camp")     // Additional location context
   .timeOfDay("golden-hour")                // dawn | sunrise | golden-hour | midday | blue-hour | night | ...
   .weather("foggy")                        // sunny | cloudy | overcast | foggy | rainy | stormy | snowy | ...
-  
+
   // ━━━ Subject ━━━
   .subject({
     main: "astronaut",
@@ -1392,7 +1392,7 @@ const prompt = video()
   })
   .appearance("determined expression")     // Additional appearance details
   .clothing("dusty, worn spacesuit")       // Override/add clothing
-  
+
   // ━━━ Camera: Framing ━━━
   .shot("wide")                            // extreme-close-up | close-up | medium | wide | establishing | ...
   .angle("low-angle")                      // eye-level | low-angle | high-angle | dutch-angle | birds-eye | ...
@@ -1400,7 +1400,7 @@ const prompt = video()
   .focalLength("40mm")                     // Specific focal length
   .anamorphic("2x")                        // Enable anamorphic with ratio
   .aperture("f/2.8")                       // Aperture setting
-  
+
   // ━━━ Camera: Movement ━━━
   .movement("tracking")                    // static | pan | tilt | dolly | tracking | crane | steadicam | ...
   .cameraSpeed("slow")                     // slow | medium | fast
@@ -1408,14 +1408,14 @@ const prompt = video()
   .platform("steadicam")                   // handheld | steadicam | tripod | drone | crane | gimbal | dolly | ...
   .rig("slider")                           // tripod | gimbal | steadicam | crane | dolly | slider | ...
   .gimbal("dji-ronin-4d")                  // Specific gimbal model
-  
+
   // ━━━ Camera: Equipment ━━━
   .cameraBrand("arri")                     // arri | red | sony | canon | blackmagic | panavision | ...
   .cameraModel("arri-alexa-65")            // Specific camera model
   .sensor("65mm")                          // full-frame | super-35 | 65mm | imax | ...
   .lensBrand("cooke")                      // zeiss | cooke | arri | panavision | ...
   .lensModel("cooke-anamorphic")           // Specific lens model
-  
+
   // ━━━ Camera: Technical ━━━
   .frameRate(24)                           // 24 | 25 | 30 | 48 | 60 | 120 | 240
   .slowMotion()                            // Enable slow motion
@@ -1424,7 +1424,7 @@ const prompt = video()
   .filmStock("kodak-vision3-500t")         // Kodak, Fujifilm, CineStill film stocks
   .filmGrain("subtle")                     // none | subtle | moderate | heavy
   .halation()                              // Enable film halation effect
-  
+
   // ━━━ Lighting ━━━
   .lighting({
     type: "natural",
@@ -1433,13 +1433,13 @@ const prompt = video()
     intensity: "soft"
   })
   .lightingType(["natural", "rim"])        // natural | studio | dramatic | rim | rembrandt | ...
-  
+
   // ━━━ Actions ━━━
   .action("walks slowly toward camera")                    // Add action beat
   .action("stops and looks at horizon", { timing: "middle" })
   .action("raises hand to shield eyes", { timing: "end" })
   .actions(["turns around", "begins walking back"])        // Add multiple actions
-  
+
   // ━━━ Motion ━━━
   .motion({
     subject: "astronaut",
@@ -1448,7 +1448,7 @@ const prompt = video()
     speed: "slow"
   })
   .motionBeats(["step", "pause", "step", "turn"])          // Detailed motion beats
-  
+
   // ━━━ Style ━━━
   .style({
     format: "cinematic",
@@ -1460,7 +1460,7 @@ const prompt = video()
   .format("widescreen epic")               // Format description
   .styleFilmStock("Kodak Vision3 500T")    // Style reference film stock
   .reference(["Interstellar", "The Martian", "Gravity"])   // Reference films/directors
-  
+
   // ━━━ Color ━━━
   .color({
     palette: "warm",
@@ -1470,7 +1470,7 @@ const prompt = video()
   .palette("warm")                         // warm | cool | neutral | vibrant | neon | monochrome | ...
   .colorAnchors(["mars red", "suit white", "visor gold"])  // Key colors
   .colorGrade("orange and teal")           // Color grading style
-  
+
   // ━━━ Audio ━━━
   .audio({
     ambient: "wind howling",
@@ -1482,7 +1482,7 @@ const prompt = video()
   .diegetic(["footsteps on gravel", "suit servos"])        // In-world sounds
   .soundEffects(["radio static", "helmet HUD beeps"])      // Sound effects
   .music("Hans Zimmer style, building brass")              // Music description
-  
+
   // ━━━ Technical ━━━
   .technical({
     duration: 10,
@@ -1494,13 +1494,13 @@ const prompt = video()
   .resolution("4K")                        // 480p | 720p | 1080p | 4K
   .fps(24)                                 // 24 | 30 | 60
   .aspectRatio("21:9")                     // 16:9 | 9:16 | 1:1 | 4:3 | 21:9
-  
+
   // ━━━ Mood & Pacing ━━━
   .mood(["epic", "mysterious"])            // serene | dramatic | tense | epic | intimate | ...
   .pacing("slow")                          // slow | medium | fast | variable | building | contemplative
   .transition("fade")                      // cut | fade | dissolve | wipe | morph | match-cut | ...
   .transitions(["fade", "dissolve"])       // Multiple transitions
-  
+
   // ━━━ Shot List ━━━
   .addShot({
     name: "Opening wide",
@@ -1512,11 +1512,11 @@ const prompt = video()
     { camera: { shot: "medium", movement: "tracking" }, action: "Follow astronaut" },
     { camera: { shot: "close-up", angle: "low-angle" }, action: "Hero shot" }
   ])
-  
+
   // ━━━ Custom ━━━
   .custom("Lens flare as sun peeks over horizon")
   .custom("Dust particles visible in backlight")
-  
+
   .build();
 
 // Access outputs
@@ -1533,14 +1533,14 @@ const md = prompt.toMarkdown();
 
 #### Camera Types
 ```typescript
-type ShotType = 'extreme-close-up' | 'close-up' | 'medium-close-up' | 'medium' 
+type ShotType = 'extreme-close-up' | 'close-up' | 'medium-close-up' | 'medium'
   | 'medium-wide' | 'wide' | 'extreme-wide' | 'establishing' | 'full-body' | 'portrait' | 'headshot';
 
-type CameraAngle = 'eye-level' | 'low-angle' | 'high-angle' | 'dutch-angle' | 'birds-eye' 
+type CameraAngle = 'eye-level' | 'low-angle' | 'high-angle' | 'dutch-angle' | 'birds-eye'
   | 'worms-eye' | 'over-the-shoulder' | 'point-of-view' | 'aerial' | 'drone'
   | 'canted' | 'oblique' | 'hip-level' | 'knee-level' | 'ground-level';
 
-type CameraMovement = 'static' | 'pan' | 'tilt' | 'dolly' | 'truck' | 'pedestal' | 'zoom' 
+type CameraMovement = 'static' | 'pan' | 'tilt' | 'dolly' | 'truck' | 'pedestal' | 'zoom'
   | 'handheld' | 'steadicam' | 'crane' | 'drone' | 'tracking' | 'arc' | 'whip-pan'
   | 'roll' | 'boom' | 'jib' | 'cable-cam' | 'motion-control' | 'snorricam'
   | 'dutch-roll' | 'vertigo-effect' | 'crash-zoom' | 'slow-push' | 'slow-pull';
@@ -1552,7 +1552,7 @@ type LensType = 'wide-angle' | 'ultra-wide' | 'standard' | 'telephoto' | 'macro'
 
 #### Equipment Types
 ```typescript
-type CameraBrand = 'sony' | 'canon' | 'nikon' | 'fujifilm' | 'leica' | 'hasselblad' 
+type CameraBrand = 'sony' | 'canon' | 'nikon' | 'fujifilm' | 'leica' | 'hasselblad'
   | 'red' | 'arri' | 'blackmagic' | 'panavision' | 'panasonic';
 
 type CameraModel = 'arri-alexa-35' | 'arri-alexa-mini-lf' | 'arri-alexa-65'
@@ -1563,7 +1563,7 @@ type CameraRig = 'tripod' | 'monopod' | 'gimbal' | 'steadicam' | 'easyrig' | 'sh
   | 'slider' | 'dolly' | 'jib' | 'crane' | 'technocrane' | 'russian-arm'
   | 'cable-cam' | 'drone' | 'fpv-drone' | 'motion-control' | 'handheld';
 
-type GimbalModel = 'dji-ronin-4d' | 'dji-ronin-rs3-pro' | 'dji-ronin-rs4' 
+type GimbalModel = 'dji-ronin-4d' | 'dji-ronin-rs3-pro' | 'dji-ronin-rs4'
   | 'moza-air-2' | 'zhiyun-crane-3s' | 'freefly-movi-pro' | 'tilta-gravity-g2x';
 ```
 
@@ -1577,7 +1577,7 @@ type LightingType = 'natural' | 'studio' | 'dramatic' | 'soft' | 'hard' | 'diffu
 type TimeOfDay = 'dawn' | 'sunrise' | 'golden-hour' | 'morning' | 'midday' | 'afternoon'
   | 'blue-hour' | 'sunset' | 'dusk' | 'twilight' | 'night' | 'midnight';
 
-type WeatherLighting = 'sunny' | 'cloudy' | 'overcast' | 'foggy' | 'misty' 
+type WeatherLighting = 'sunny' | 'cloudy' | 'overcast' | 'foggy' | 'misty'
   | 'rainy' | 'stormy' | 'snowy' | 'hazy';
 ```
 
@@ -1604,10 +1604,10 @@ type FilmStock = 'kodak-portra-400' | 'kodak-vision3-500t' | 'kodak-vision3-50d'
 ```typescript
 type VideoPacing = 'slow' | 'medium' | 'fast' | 'variable' | 'building' | 'frenetic' | 'contemplative';
 
-type VideoTransition = 'cut' | 'fade' | 'dissolve' | 'wipe' | 'morph' | 'match-cut' 
+type VideoTransition = 'cut' | 'fade' | 'dissolve' | 'wipe' | 'morph' | 'match-cut'
   | 'jump-cut' | 'cross-dissolve' | 'iris' | 'push' | 'slide';
 
-type FilterType = 'uv' | 'polarizer' | 'nd' | 'nd-graduated' | 'black-pro-mist' 
+type FilterType = 'uv' | 'polarizer' | 'nd' | 'nd-graduated' | 'black-pro-mist'
   | 'white-pro-mist' | 'glimmer-glass' | 'classic-soft' | 'diffusion' | 'infrared';
 ```
 
@@ -1869,17 +1869,17 @@ const prompt = audio()
   .genre("electronic")           // Primary genre
   .subgenre("synthwave")         // Subgenre
   .fusion(["rock", "pop"])       // Genre fusion
-  
+
   // ━━━ Mood & Energy ━━━
   .mood("nostalgic", "triumphant", "hopeful")  // Primary + secondary moods
   .energy("high")                              // low | medium | high | building | fluctuating
   .emotion("euphoria")                         // Custom emotion descriptor
-  
+
   // ━━━ Tempo ━━━
   .bpm(120)                      // Beats per minute
   .tempoMarking("allegro")       // Classical tempo marking
   .tempoFeel("driving")          // steady | swung | shuffled | syncopated | rubato | driving
-  
+
   // ━━━ Vocals ━━━
   .vocalStyle("melodic")         // male | female | duet | choir | rap | falsetto | ...
   .language("english")           // english | spanish | japanese | instrumental | ...
@@ -1887,7 +1887,7 @@ const prompt = audio()
   .lyrics("[Verse 1]\nRiding through the neon glow...")
   .delivery("powerful and emotional")
   .instrumental()                // Shortcut for instrumental (no vocals)
-  
+
   // ━━━ Instrumentation ━━━
   .instruments(["synthesizer", "drums", "bass"])  // Quick instrument list
   .leadInstrument("synthesizer")                  // Lead melody instrument
@@ -1896,7 +1896,7 @@ const prompt = audio()
   .percussion(["drums", "808"])                   // Percussion
   .pads(["synthesizer"])                          // Pad sounds
   .featuredInstrument("electric-guitar")          // Featured solo instrument
-  
+
   // ━━━ Structure ━━━
   .section("intro", 8, "atmospheric synth pad build")
   .section("verse", 16, "driving rhythm with arpeggios")
@@ -1909,24 +1909,24 @@ const prompt = audio()
   .section("outro", 8, "fade out with echoing synths")
   .duration(210)                 // Total duration in seconds (3:30)
   .form("ABABCB")                // Song form notation
-  
+
   // ━━━ Production ━━━
   .productionStyle("polished")   // lo-fi | hi-fi | vintage | modern | polished | raw | ...
   .era("1980s")                  // 1950s-2020s | retro | vintage | modern | futuristic
   .reference(["Kavinsky", "Carpenter Brut", "Perturbator"])
   .texture("lush and warm")
   .effects(["reverb", "delay", "sidechain compression", "chorus"])
-  
+
   // ━━━ Technical ━━━
   .key("Am")                     // C | Am | G | Em | D | Bm | F# | Ebm | ...
   .timeSignature("4/4")          // 4/4 | 3/4 | 6/8 | 5/4 | 7/8 | 12/8
   .formatType("song")            // song | instrumental | jingle | loop | soundtrack
-  
+
   // ━━━ Tags & Custom ━━━
   .tag("80s")                    // Add single tag
   .tags(["retro", "neon", "cinematic"])  // Add multiple tags
   .custom("arpeggiated bassline throughout")  // Custom text
-  
+
   .build();
 
 // Access outputs
@@ -1945,7 +1945,7 @@ const md = prompt.toMarkdown();
 
 #### MusicGenre
 ```typescript
-type MusicGenre = 
+type MusicGenre =
   | 'pop' | 'rock' | 'jazz' | 'classical' | 'electronic' | 'hip-hop' | 'r&b'
   | 'country' | 'folk' | 'blues' | 'metal' | 'punk' | 'indie' | 'alternative'
   | 'ambient' | 'lo-fi' | 'synthwave' | 'orchestral' | 'cinematic' | 'world'
@@ -1957,7 +1957,7 @@ type MusicGenre =
 
 #### Instrument
 ```typescript
-type Instrument = 
+type Instrument =
   | 'piano' | 'guitar' | 'acoustic-guitar' | 'electric-guitar' | 'bass' | 'drums'
   | 'violin' | 'cello' | 'viola' | 'flute' | 'saxophone' | 'trumpet' | 'trombone'
   | 'synthesizer' | 'organ' | 'harp' | 'percussion' | 'strings' | 'brass' | 'woodwinds'
@@ -1969,7 +1969,7 @@ type Instrument =
 
 #### VocalStyle
 ```typescript
-type VocalStyle = 
+type VocalStyle =
   | 'male' | 'female' | 'duet' | 'choir' | 'a-cappella' | 'spoken-word' | 'rap'
   | 'falsetto' | 'belting' | 'whisper' | 'growl' | 'melodic' | 'harmonized'
   | 'auto-tuned' | 'operatic' | 'soul' | 'breathy' | 'nasal' | 'raspy' | 'clear';
@@ -1977,24 +1977,24 @@ type VocalStyle =
 
 #### Other Types
 ```typescript
-type VocalLanguage = 'english' | 'spanish' | 'french' | 'german' | 'italian' 
-  | 'portuguese' | 'japanese' | 'korean' | 'chinese' | 'arabic' | 'hindi' 
+type VocalLanguage = 'english' | 'spanish' | 'french' | 'german' | 'italian'
+  | 'portuguese' | 'japanese' | 'korean' | 'chinese' | 'arabic' | 'hindi'
   | 'russian' | 'turkish' | 'instrumental';
 
 type TempoMarking = 'largo' | 'adagio' | 'andante' | 'moderato' | 'allegro' | 'vivace' | 'presto';
 
 type TimeSignature = '4/4' | '3/4' | '6/8' | '2/4' | '5/4' | '7/8' | '12/8';
 
-type MusicalKey = 'C' | 'C#' | 'Db' | 'D' | 'D#' | 'Eb' | 'E' | 'F' | 'F#' | 'Gb' 
+type MusicalKey = 'C' | 'C#' | 'Db' | 'D' | 'D#' | 'Eb' | 'E' | 'F' | 'F#' | 'Gb'
   | 'G' | 'G#' | 'Ab' | 'A' | 'A#' | 'Bb' | 'B'
-  | 'Cm' | 'C#m' | 'Dm' | 'D#m' | 'Ebm' | 'Em' | 'Fm' | 'F#m' 
+  | 'Cm' | 'C#m' | 'Dm' | 'D#m' | 'Ebm' | 'Em' | 'Fm' | 'F#m'
   | 'Gm' | 'G#m' | 'Am' | 'A#m' | 'Bbm' | 'Bm';
 
-type SongSection = 'intro' | 'verse' | 'pre-chorus' | 'chorus' | 'bridge' 
+type SongSection = 'intro' | 'verse' | 'pre-chorus' | 'chorus' | 'bridge'
   | 'breakdown' | 'drop' | 'build-up' | 'outro' | 'solo' | 'interlude' | 'hook';
 
-type ProductionStyle = 'lo-fi' | 'hi-fi' | 'vintage' | 'modern' | 'polished' | 'raw' 
-  | 'organic' | 'synthetic' | 'acoustic' | 'electric' | 'hybrid' | 'minimalist' 
+type ProductionStyle = 'lo-fi' | 'hi-fi' | 'vintage' | 'modern' | 'polished' | 'raw'
+  | 'organic' | 'synthetic' | 'acoustic' | 'electric' | 'hybrid' | 'minimalist'
   | 'maximalist' | 'layered' | 'sparse' | 'dense' | 'atmospheric' | 'punchy' | 'warm' | 'bright';
 
 type Era = '1950s' | '1960s' | '1970s' | '1980s' | '1990s' | '2000s' | '2010s' | '2020s'
@@ -2327,22 +2327,22 @@ import { builder, templates } from 'prompts.chat/builder';
 Full TypeScript support with comprehensive type exports:
 
 ```typescript
-import type { 
+import type {
   // Variables
   DetectedVariable,
   VariablePattern,
-  
+
   // Builder
   BuiltPrompt,
   PromptVariable,
-  
+
   // Chat
   BuiltChatPrompt,
   ChatMessage,
   ChatPersona,
   PersonaTone,
   ReasoningStyle,
-  
+
   // Image
   BuiltImagePrompt,
   ImageSubject,
@@ -2350,21 +2350,21 @@ import type {
   CameraAngle,
   ShotType,
   LensType,
-  
+
   // Video
   BuiltVideoPrompt,
   VideoScene,
   VideoCamera,
-  
+
   // Audio
   BuiltAudioPrompt,
   MusicGenre,
   Instrument,
-  
+
   // Quality
   QualityResult,
   QualityIssue,
-  
+
   // Parser
   ParsedPrompt,
   PromptMessage,
