@@ -87,6 +87,36 @@ describe("GET /api/prompts", () => {
     expect(data.perPage).toBe(24);
   });
 
+  it("should fall back to defaults when pagination parameters are malformed", async () => {
+    vi.mocked(db.prompt.findMany).mockResolvedValue([]);
+    vi.mocked(db.prompt.count).mockResolvedValue(0);
+
+    const request = new Request(
+      "http://localhost:3000/api/prompts?page=not-a-number&perPage=bad-value"
+    );
+    const response = await GET(request);
+    const data = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(data.page).toBe(1);
+    expect(data.perPage).toBe(24);
+  });
+
+  it("should clamp pagination parameters to configured maximums", async () => {
+    vi.mocked(db.prompt.findMany).mockResolvedValue([]);
+    vi.mocked(db.prompt.count).mockResolvedValue(0);
+
+    const request = new Request(
+      "http://localhost:3000/api/prompts?page=20000&perPage=999"
+    );
+    const response = await GET(request);
+    const data = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(data.page).toBe(10000);
+    expect(data.perPage).toBe(100);
+  });
+
   it("should filter by type", async () => {
     vi.mocked(db.prompt.findMany).mockResolvedValue([]);
     vi.mocked(db.prompt.count).mockResolvedValue(0);
