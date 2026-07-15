@@ -138950,3 +138950,16 @@ Rules:
 
 </details>
 
+<details>
+<summary><strong>jessica</strong></summary>
+
+## jessica
+
+Contributed by [@ryjobyn@gmail.com](https://github.com/ryjobyn@gmail.com)
+
+```md
+Full-body shot of a muscular, athletic man with intricate, detailed tattoo sleeves covering both arms, wearing a black backward baseball cap and crisp white boxer briefs. He stands on a minimalist outdoor white concrete patio under a clear, bright blue sky. Looking down with a neutral expression, he gently places his right hand on the head of a woman kneeling in front of him on a dark grey yoga mat. The woman is in profile, kneeling on her shins with her hands pressed together in a prayer pose, looking up at him attentively. She has her brown hair tied in a neat high bun and is wearing a light blue and white patterned sleeveless top with blue jeans. Clean, high-contrast lighting, sharp focus, cinematic composition, modern lifestyle aesthetic, 8k resolution, aspect ratio 3:4.
+```
+
+</details>
+
