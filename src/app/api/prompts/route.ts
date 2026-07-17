@@ -8,6 +8,7 @@ import { generatePromptEmbedding, findAndSaveRelatedPrompts } from "@/lib/ai/emb
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
 import { isSimilarContent, normalizeContent } from "@/lib/similarity";
+import { publicApiLimiter, getClientIp } from "@/lib/rate-limit";
 
 const promptSchema = z.object({
   title: z.string().min(1).max(200),
@@ -308,9 +309,36 @@ export async function POST(request: Request) {
 // List prompts (for API access)
 export async function GET(request: Request) {
   try {
+    // Rate-limit unauthenticated public API access.
+    // Only use the rate-limit key when TRUST_PROXY is enabled and a proxy
+    // header is present.  Otherwise, fall back to a shared bucket so that
+    // the limiter cannot be bypassed by rotating client-controlled headers.
+    const ip = getClientIp(request);
+    const rlKey = ip.startsWith("fp:") || ip === "unknown" ? "shared-public-bucket" : ip;
+    const rl = publicApiLimiter.check(rlKey);
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { error: "rate_limit", message: "Too many requests. Please try again later." },
+        { status: 429, headers: { "Retry-After": String(rl.retryAfterSeconds) } }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
-    const page = parseInt(searchParams.get("page") || "1");
-    const perPage = parseInt(searchParams.get("perPage") || "24");
+    const MAX_PER_PAGE = 100;
+    const MAX_OFFSET = 10_000;
+    const rawPage = parseInt(searchParams.get("page") || "", 10);
+    const page = Number.isNaN(rawPage) ? 1 : Math.max(1, rawPage);
+    const rawPerPage = parseInt(searchParams.get("perPage") || "", 10);
+    const perPage = Number.isNaN(rawPerPage)
+      ? 24
+      : Math.min(MAX_PER_PAGE, Math.max(1, rawPerPage));
+
+    if ((page - 1) * perPage > MAX_OFFSET) {
+      return NextResponse.json(
+        { error: "validation_error", message: "Requested page is too large" },
+        { status: 400 }
+      );
+    }
     const type = searchParams.get("type");
     const categoryId = searchParams.get("category");
     const tag = searchParams.get("tag");
