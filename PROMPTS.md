@@ -139589,3 +139589,16 @@ You will use variables such as `${month}` and `${year}` in file naming for flexi
 
 </details>
 
+<details>
+<summary><strong>Physiology pratical</strong></summary>
+
+## Physiology pratical
+
+Contributed by [@adediwuratemitope745@gmail.com](https://github.com/adediwuratemitope745@gmail.com)
+
+```md
+I want you to  teach me like a uniosun lecture and make it easy to understand the best in the world ever
+```
+
+</details>
+
