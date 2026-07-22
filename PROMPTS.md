@@ -141387,3 +141387,17 @@ This skill is ideal for developers and IT professionals looking to streamline th
 
 </details>
 
+<details>
+<summary><strong>The Mystery of Easter Island | Who Built the Giant Moai Statues? In the middle of the Pacific Ocean lies a tiny island filled with hundreds of giant stone statues.</strong></summary>
+
+## The Mystery of Easter Island | Who Built the Giant Moai Statues? In the middle of the Pacific Ocean lies a tiny island filled with hundreds of giant stone statues.
+
+Contributed by [@jumoaktar78@gmail.com](https://github.com/jumoaktar78@gmail.com)
+
+```md
+The Mystery of Easter Island | Who Built the Giant Moai Statues?
+In the middle of the Pacific Ocean lies a tiny island filled with hundreds of giant stone statues. But here's the mystery... Who built them, and how were they moved without modern technology?
+```
+
+</details>
+
