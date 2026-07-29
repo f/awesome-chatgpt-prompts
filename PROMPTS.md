@@ -141690,3 +141690,16 @@ Text fades in: `Even rivals can be friends sometimes ❤️`
 
 </details>
 
+<details>
+<summary><strong>Cat</strong></summary>
+
+## Cat
+
+Contributed by @anonymous
+
+```md
+I want a video about a cat and mouse running together and the rat won the cat by using a jet boster. 
+```
+
+</details>
+
