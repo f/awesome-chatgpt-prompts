@@ -141794,3 +141794,16 @@ Video Length: 7 seconds${Tom and Jerry
 
 </details>
 
+<details>
+<summary><strong>Boxer vs Martial Artist Clash Scene</strong></summary>
+
+## Boxer vs Martial Artist Clash Scene
+
+Contributed by [@james08139704679@gmail.com](https://github.com/james08139704679@gmail.com)
+
+```md
+Create a 1-minute video composed of 0.8-second clips featuring a dynamic fight scene between a well-known boxer and an old Chinese martial artist. The story begins with the boxer pushing the martial artist from his begging spot, leading to a chaotic and intense clash. Ensure continuity in character portrayal and storyline throughout the video.
+```
+
+</details>
+
