@@ -141970,3 +141970,18 @@ Flagging & Hooking: Explicitly signal the crucial takeaway (Flagging) or end sec
 
 </details>
 
+<details>
+<summary><strong>Happy new month</strong></summary>
+
+## Happy new month
+
+Contributed by [@adesida706@gmail.com](https://github.com/adesida706@gmail.com)
+
+```md
+Create a simple and good looking flyer for the month of August ‘happy new month’ flyer with this picture (remove the picture background and place it in a proper place to compliment the flyer ) 
+
+Under my brand naw Whykay Entertainment
+```
+
+</details>
+
