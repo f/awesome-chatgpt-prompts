@@ -142251,3 +142251,16 @@ Create an image of a cozy wooden cabin nestled in a misty forest during heavy ra
 
 </details>
 
+<details>
+<summary><strong>Bamboo app</strong></summary>
+
+## Bamboo app
+
+Contributed by [@adediwuratemitope745@gmail.com](https://github.com/adediwuratemitope745@gmail.com)
+
+```md
+I want you to teach me like the best investor in the word on how to use bamboo app what to buy what not to buy and explain every detail 
+```
+
+</details>
+
