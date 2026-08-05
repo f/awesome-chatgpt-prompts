@@ -142238,3 +142238,16 @@ Variables:
 
 </details>
 
+<details>
+<summary><strong>Cozy Cabin in a Rainy Forest</strong></summary>
+
+## Cozy Cabin in a Rainy Forest
+
+Contributed by @anonymous
+
+```md
+Create an image of a cozy wooden cabin nestled in a misty forest during heavy rain. Warm orange firelight glows softly through a frosted window. Dark pine trees frame the scene. Rain streaks down the window glass. Soft distant lightning briefly illuminates the wet trees. The camera slowly pushes toward the cabin window. Professional color grading. 24fps. Highly detailed. Premium quality.
+```
+
+</details>
+
