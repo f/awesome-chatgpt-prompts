@@ -142678,3 +142678,16 @@ The user's visual taste is defined by extreme minimalism and spontaneous express
 
 </details>
 
+<details>
+<summary><strong>Personaje ART</strong></summary>
+
+## Personaje ART
+
+Contributed by [@issac.ron@gmail.com](https://github.com/issac.ron@gmail.com)
+
+```md
+Draw the character from the image—(Your name)—in a free, spontaneous sketching style. Against a bright white background, freely arrange full-body drawings, close-ups of the face, small doodles, full-body sketches, and chibi or stylized versions, so that the page conveys the character's humor and personality. Do not create an organized character sheet; instead, make it look like a sketchbook page filled with spontaneously drawn details.
+```
+
+</details>
+
