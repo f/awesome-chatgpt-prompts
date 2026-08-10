@@ -142668,3 +142668,16 @@ Now, analyze the following character in 3-5 sentences:
 
 </details>
 
+<details>
+<summary><strong>Persian Silent “No” Documentary Portrait</strong></summary>
+
+## Persian Silent “No” Documentary Portrait
+
+Contributed by @anonymous
+
+```md
+Ultra-realistic documentary portrait of a young Iranian woman, 2026, natural window light, film grain, 50mm. Her expression is built entirely around the eyes and brows: one eyebrow lifted sharply, chin barely tilted up, eyelids half-lowered in a slow disbelieving blink — the classic Persian silent "no". Neutral background, muted earth tones. Below the photo, a clean white rectangular frame with rough sketchy hand-drawn borders and messy handwritten ink text: "نه" — pen strokes visible, slightly smudged.
+```
+
+</details>
+
