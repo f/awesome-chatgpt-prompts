@@ -142681,3 +142681,16 @@ Ultra-realistic documentary portrait of a young Iranian woman, 2026, natural win
 
 </details>
 
+<details>
+<summary><strong>Iranian Noir Suspicion Close-Up</strong></summary>
+
+## Iranian Noir Suspicion Close-Up
+
+Contributed by [@omidzamani2@gmail.com](https://github.com/omidzamani2@gmail.com)
+
+```md
+High-contrast black and white noir close-up of an Iranian woman's face, hard side light through blinds, deep shadows across half the face. Only one eye lit; brow furrowed inward, pupil shifted to the corner in a sideways suspicious glance, other brow completely still. Cigarette smoke haze. Beneath the image, a hand-sketched box with scratchy charcoal lines and handwritten script: "شک" / "suspicion".
+```
+
+</details>
+
