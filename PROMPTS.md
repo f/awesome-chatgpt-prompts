@@ -142838,3 +142838,16 @@ Candid street photo in Tehran, 2026, golden hour, shallow depth of field, crowd 
 
 </details>
 
+<details>
+<summary><strong>Minimal Studio Portrait — باشه، هرچی تو بگی</strong></summary>
+
+## Minimal Studio Portrait — باشه، هرچی تو بگی
+
+Contributed by [@omidzamani2@gmail.com](https://github.com/omidzamani2@gmail.com)
+
+```md
+High-key minimal studio portrait, pure white seamless background, soft beauty light, Iranian woman, no makeup. Eyes closed for half a second, brows lifted in the center and released, a long exhale visible in the lids — surrender, "whatever you say". Clean negative space. Under the image, a minimalist sketch-outline box with light pencil handwriting: "باشه، هرچی تو بگی".
+```
+
+</details>
+
