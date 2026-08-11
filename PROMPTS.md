@@ -142799,3 +142799,16 @@ Surreal dreamlike portrait of an Iranian woman, face split by two different ligh
 
 </details>
 
+<details>
+<summary><strong>Vintage Analog Portrait — ناز</strong></summary>
+
+## Vintage Analog Portrait — ناز
+
+Contributed by @anonymous
+
+```md
+Vintage 1980s-style analog photograph, warm faded colors, heavy grain, slight light leak. Iranian woman, thick natural brows, looking up from beneath lowered lashes, one brow subtly raised, a slow blink — coquettish "naz". Old family-album texture. Below the photo, a hand-torn sketchy frame with old-fashioned fountain-pen handwriting: "ناز".  
+```
+
+</details>
+
