@@ -142773,3 +142773,16 @@ Cyberpunk portrait, Iranian woman 2026, neon magenta and cyan rim light, wet ref
 
 </details>
 
+<details>
+<summary><strong>Impasto Oil Portrait of an Iranian Woman with “خفه شدم از سکوت”</strong></summary>
+
+## Impasto Oil Portrait of an Iranian Woman with “خفه شدم از سکوت”
+
+Contributed by @anonymous
+
+```md
+Thick impasto oil-painting portrait of an Iranian woman, aggressive brushstrokes, crimson and ochre. Face nearly still, but the brows are pressed low and locked together, the eyes burning wide and unblinking, lower lid tensed — rage held under the skin. Beneath the canvas, a raw sketchy hand-drawn rectangle with shaky handwritten script: "خفه شدم از سکوت".  
+```
+
+</details>
+
