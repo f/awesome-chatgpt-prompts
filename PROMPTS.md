@@ -142786,3 +142786,16 @@ Thick impasto oil-painting portrait of an Iranian woman, aggressive brushstrokes
 
 </details>
 
+<details>
+<summary><strong>Surreal Portrait — دو دلم</strong></summary>
+
+## Surreal Portrait — دو دلم
+
+Contributed by [@omidzamani2@gmail.com](https://github.com/omidzamani2@gmail.com)
+
+```md
+Surreal dreamlike portrait of an Iranian woman, face split by two different light sources (cold blue / warm amber), floating dust particles. Her brows work in opposite directions — one raised, one lowered — eyes not aligned in focus, embodying pure indecision. Below the image, a sketchy hand-inked box with wobbly handwritten text: "دو دلم".  
+```
+
+</details>
+
