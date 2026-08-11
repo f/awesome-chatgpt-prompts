@@ -142760,3 +142760,16 @@ High-contrast black and white noir close-up of an Iranian woman's face, hard sid
 
 </details>
 
+<details>
+<summary><strong>Cyberpunk Portrait of an Iranian Woman with “همین؟” Glitch Frame</strong></summary>
+
+## Cyberpunk Portrait of an Iranian Woman with “همین؟” Glitch Frame
+
+Contributed by @anonymous
+
+```md
+Cyberpunk portrait, Iranian woman 2026, neon magenta and cyan rim light, wet reflective skin, subtle holographic eyeliner. Expression lives in the eyes only: one brow flattened, the other slightly cocked, eyes narrowed with a cold amused squint — mockery without a smile. Below, a clean glitchy sketch-frame box with hurried handwritten marker text: "همین؟".
+```
+
+</details>
+
