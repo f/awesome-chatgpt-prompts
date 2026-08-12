@@ -117279,3 +117279,23 @@ Vintage Analog Portrait — ناز,"Vintage 1980s-style analog photograph, warm 
 Charcoal Portrait — الهی بمیرم,"Charcoal and graphite drawing on textured paper, Iranian woman in her early thirties, heavy shading, visible smudges. The whole emotion is in the brows: inner ends pulled up and together, eyes soft, wet, slightly narrowed with tenderness — the maternal ""elahi bemiram"" look. Below the drawing, a rough hand-sketched border box with smudged handwritten pencil script: ""الهی بمیرم"".  ",FALSE,TEXT,omidzamani2@gmail.com
 Candid Tehran Street Photo — بریم؟,"Candid street photo in Tehran, 2026, golden hour, shallow depth of field, crowd blurred behind. Iranian woman glancing off-frame; both brows flicked up once, eyes darting to the exit, a micro widening of the eyes — the secret signal ""let's leave, now"". Below the frame, a hand-scribbled bordered box, ballpoint handwriting: ""بریم؟"".  ",FALSE,TEXT,omidzamani2@gmail.com
 Minimal Studio Portrait — باشه، هرچی تو بگی,"High-key minimal studio portrait, pure white seamless background, soft beauty light, Iranian woman, no makeup. Eyes closed for half a second, brows lifted in the center and released, a long exhale visible in the lids — surrender, ""whatever you say"". Clean negative space. Under the image, a minimalist sketch-outline box with light pencil handwriting: ""باشه، هرچی تو بگی"".",FALSE,TEXT,omidzamani2@gmail.com
+Senior AI & Data Engineering Meta-Prompt Generator,"Act as a Senior AI Prompt Engineer and domain expert.
+
+Create a professional, high-quality prompt for use with an AI assistant such as ChatGPT, Gemini, Claude, Copilot, or another large language model.
+
+Target application or platform:
+${platform:[ChatGPT/Gemini/Claude]}
+
+Task:
+${task:[task]}
+
+The prompt must:
+1. Assign the AI a relevant expert role.
+2. Provide clear context and assumptions.
+3. Define the objective and expected outcome.
+4. Include step-by-step instructions where useful.
+5. Specify formatting, tone, and quality requirements.
+6. Ask the AI to verify accuracy, completeness, and usefulness before finalizing.
+
+Output only the final optimized prompt inside a markdown code block. Do not add explanations outside the code block.
+",TRUE,TEXT,mhe931
