@@ -141874,19 +141874,6 @@ Tras mi aprobación del plan, ejecuta los cambios:
 </details>
 
 <details>
-<summary><strong>ram and sita</strong></summary>
-
-## ram and sita
-
-Contributed by @anonymous
-
-```md
-create a cinematic image of lord ram and mata sita sit on the throne, lakhsama standing side of the ram and hanuman kneel down on the ground with namaskara hand gesture, all are in ayodha city in the rajya abhisek time,art style-neathelands realistic art style
-```
-
-</details>
-
-<details>
 <summary><strong>Sprezzatura</strong></summary>
 
 ## Sprezzatura
