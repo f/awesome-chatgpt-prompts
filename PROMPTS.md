@@ -141548,21 +141548,6 @@ Your task is to:
 </details>
 
 <details>
-<summary><strong>Birthday</strong></summary>
-
-## Birthday
-
-Contributed by @anonymous
-
-```md
-I have a photo of my friend, I want to create image of him where he was celebrating his birthday at goa beach enjoying his birthday party with her friends and drinks.
-
-
-```
-
-</details>
-
-<details>
 <summary><strong>Rr</strong></summary>
 
 ## Rr
