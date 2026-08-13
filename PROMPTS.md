@@ -142948,3 +142948,16 @@ Output:
 
 </details>
 
+<details>
+<summary><strong>E-commerce website </strong></summary>
+
+## E-commerce website 
+
+Contributed by @anonymous
+
+```md
+I want to make a e-com website so make a prompt for me.
+```
+
+</details>
+
