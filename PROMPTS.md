@@ -142976,3 +142976,16 @@ Output:
 
 </details>
 
+<details>
+<summary><strong>E-commerce website </strong></summary>
+
+## E-commerce website 
+
+Contributed by [@shipra.aanamika2710@gmail.com](https://github.com/shipra.aanamika2710@gmail.com)
+
+```md
+I want to make a e-com website so make a prompt for me.
+```
+
+</details>
+
