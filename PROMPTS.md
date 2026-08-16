@@ -143112,3 +143112,22 @@ write a mail to my best friend that he is not good in communication skills
 
 </details>
 
+<details>
+<summary><strong>Maximum Lexical Compression</strong></summary>
+
+## Maximum Lexical Compression
+
+Contributed by @anonymous
+
+```md
+Rewrite my text with maximal lexicalization (maximum lexical compression):
+For every phrase, sentence, or paragraph that has an established equivalent term,
+term of art, or single word, remove it and replace it with just that word/term.
+Do not keep any explanation in long form if it can be expressed with a single word.
+
+INPUT:
+${paste_your_text_here}
+```
+
+</details>
+
