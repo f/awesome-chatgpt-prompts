@@ -143235,3 +143235,16 @@ Variables:
 
 </details>
 
+<details>
+<summary><strong>Commercial Kitchen Pre Fabrication</strong></summary>
+
+## Commercial Kitchen Pre Fabrication
+
+Contributed by @anonymous
+
+```md
+create a pre-fab kitchen model along with the complete equipments related to bbq setup within the dimension 10'x15'
+```
+
+</details>
+
