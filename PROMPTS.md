@@ -143928,3 +143928,16 @@ Make me a professional html5 website of cold drink can animation, which roams to
 
 </details>
 
+<details>
+<summary><strong>Cartoon</strong></summary>
+
+## Cartoon
+
+Contributed by @anonymous
+
+```md
+Make a video of 10 sec showing how photos can be turned into moving film when fliped at a particular speed
+```
+
+</details>
+
