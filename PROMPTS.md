@@ -144021,3 +144021,16 @@ White dhoti and red towel and wife is wearing vibhuti and kunkam wearing trendis
 
 </details>
 
+<details>
+<summary><strong>Professional Artist Sketchbook Page</strong></summary>
+
+## Professional Artist Sketchbook Page
+
+Contributed by @anonymous
+
+```md
+Create a professional, high-end artist sketchbook page using the uploaded photo as the sole reference for the character. Preserve the exact facial features, identity, hairstyle, proportions, and overall recognizable likeness with exceptional accuracy. Depict the character in a refined pencil-and-ink illustration style with subtle, tasteful watercolor or marker accents, on a clean pure white background. The image should look clear, beautiful, polished, and professionally composed, with no ruled notebook lines, no construction-grid lines, no mannequin skeletons, and no distracting guide marks. Fill the page naturally with a rich variety of overlapping character studies and spontaneous artistic explorations, as if a master illustrator spent a full day studying the same character. Include multiple full-body poses, dynamic action poses, relaxed standing poses, seated poses, close-up facial studies from different angles, expressive portraits, subtle emotional variations, tiny personal doodles, gesture sketches, and a few lightly unfinished fragments for authenticity. Focus only on the same character and his personality; do not include children, chibi or deformed versions, unrelated characters, props that distract from the subject, or extra figures. The layout should feel organic, layered, creative, and visually rich, but still elegant and professional rather than messy or chaotic. Vary the scale dramatically across the page, with some drawings large and dominant, others small and secondary, partially overlapping in a natural way. Capture the character’s charm, confidence, humor, and everyday mannerisms through expressive poses and refined artistic exploration. Use clean, well-defined sketchwork, smooth contours, subtle shading, believable hand-drawn energy, and an authentic concept-art sketchbook aesthetic. The final result should feel like a premium character development page: visually striking, highly detailed, polished, and centered entirely on the same character.
+```
+
+</details>
+
