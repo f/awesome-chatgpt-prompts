@@ -144034,3 +144034,16 @@ Create a professional, high-end artist sketchbook page using the uploaded photo 
 
 </details>
 
+<details>
+<summary><strong>Infographic</strong></summary>
+
+## Infographic
+
+Contributed by @anonymous
+
+```md
+Generate info graphics that depict story of how an given event with the context of that event can have impact on multiple zones, harm on the direct system it belongs to etc
+```
+
+</details>
+
