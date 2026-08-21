@@ -144007,3 +144007,17 @@ Make a video of 10 sec showing how photos can be turned into moving film when fl
 
 </details>
 
+<details>
+<summary><strong>1940s village life</strong></summary>
+
+## 1940s village life
+
+Contributed by @anonymous
+
+```md
+Give a prompt for 2 minutes  i need to generate ai video each 8 seconds video of a small village of two hundred houses during 1940 and during that time a small home that home is built by mud in that home husband and wife are living they are lord basavanna devotis they worn linga on their neck husband is wearing
+White dhoti and red towel and wife is wearing vibhuti and kunkam wearing trendisnal green saree they have a baby boy in there home during baby naming ceremony there relations and hindu swamiji gethered swamiji wearing saffron colour khavi and rudrakshi long hairs and beards his blessing that baby boy
+```
+
+</details>
+
