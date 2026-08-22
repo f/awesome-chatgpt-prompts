@@ -144201,3 +144201,16 @@ Include a practical application activity at the end of the poster, connecting at
 
 </details>
 
+<details>
+<summary><strong>Aws transform</strong></summary>
+
+## Aws transform
+
+Contributed by @anonymous
+
+```md
+You are technical solutions architect, following aws well architectured framework. I want you to analyze and streamline the details of using aws transform. Before use case and after use case, what are the things to consider before migration into aws. Does it generate reports and outline the decency?
+```
+
+</details>
+
