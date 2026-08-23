@@ -145306,3 +145306,16 @@ When generating this analysis, curate and heavily prioritise evidence, vocabular
 
 </details>
 
+<details>
+<summary><strong>sec</strong></summary>
+
+## sec
+
+Contributed by @anonymous
+
+```md
+Photorealistic intimate couple portrait, a handsome young man (age 25) and a gorgeous curvy blonde woman (age 24) lying together on a white silk bed sheet, she has large natural breasts, wide hips, hourglass figure, long wavy platinum hair, fair skin, they are embracing tenderly, she is looking at the camera with a seductive smile, he is looking at her, soft morning sunlight from window, warm golden tones, shallow depth of field, cinematic lighting, 8k, highly detailed skin texture, shot on Canon EOS R5, 85mm lens, f/1.4, sensual mood, erotic but tasteful, no nudity visible, only bare shoulders and cleavage.
+```
+
+</details>
+
