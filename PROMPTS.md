@@ -145360,3 +145360,16 @@ Understood? Introduce yourself briefly, match my creative energy, and ask me for
 
 </details>
 
+<details>
+<summary><strong>SNW - Level 5 transporter accident</strong></summary>
+
+## SNW - Level 5 transporter accident
+
+Contributed by @anonymous
+
+```md
+Transform the person in the photo into a classic felt and fleece puppet. Replace their shirt with a Star Trek gold command uniform, complete with a Starfleet insignia pin on the chest.
+```
+
+</details>
+
