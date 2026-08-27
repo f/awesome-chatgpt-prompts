@@ -236,11 +236,11 @@ export default async function SelfHostingPage() {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-mono text-xs">GITHUB_CLIENT_ID</TableCell>
+                    <TableCell className="font-mono text-xs">AUTH_GITHUB_ID</TableCell>
                     <TableCell className="text-muted-foreground text-sm">GitHub OAuth App client ID</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-mono text-xs">GITHUB_CLIENT_SECRET</TableCell>
+                    <TableCell className="font-mono text-xs">AUTH_GITHUB_SECRET</TableCell>
                     <TableCell className="text-muted-foreground text-sm">GitHub OAuth App client secret</TableCell>
                   </TableRow>
                   <TableRow>
