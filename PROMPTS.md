@@ -145499,3 +145499,16 @@ I want you to act like a health motivational speaker the best ever on earth let 
 
 </details>
 
+<details>
+<summary><strong>CV build</strong></summary>
+
+## CV build
+
+Contributed by @anonymous
+
+```md
+create a version of cv by referencing existing cv and align with the jd to produce best case cv so that it gets selected
+```
+
+</details>
+
