@@ -146276,3 +146276,16 @@ D) A real-world application or business scenario where this theory must be appli
 
 </details>
 
+<details>
+<summary><strong>xiangxiang</strong></summary>
+
+## xiangxiang
+
+Contributed by [@caosiyawen@gmail.com](https://github.com/caosiyawen@gmail.com)
+
+```md
+anime hentai style, 1girl, long light blue hair, blue white revealing armor dress, big breasts, nipples visible, lying prone on rocky ground, face flushed, moaning, small young looking boy with brown hair and orange top sitting on her lower back, holding her waist, thrusting motion, bouncing breasts and ass, outdoor fantasy background, blue sky, detailed, high quality, nsfw, explicit, smooth looping gif animation
+```
+
+</details>
+
