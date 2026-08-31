@@ -146242,3 +146242,16 @@ Maintain an expert, protective, precise, and highly practical tone. Deliver worl
 
 </details>
 
+<details>
+<summary><strong>Девушка футанари имеет парня </strong></summary>
+
+## Девушка футанари имеет парня 
+
+Contributed by @anonymous
+
+```md
+Девушка футанари имеет парня. Парень сидит на члене девушки аналом. Девушка трогает пальцами его анус
+```
+
+</details>
+
