@@ -146223,3 +146223,16 @@ anime hentai style, 1girl, long light blue hair, blue white revealing armor dres
 
 </details>
 
+<details>
+<summary><strong>exam science study notes</strong></summary>
+
+## exam science study notes
+
+Contributed by @anonymous
+
+```md
+create gpstr and hstr exam science study notes with suitable diagrams and explanation in English for year 2026
+```
+
+</details>
+
