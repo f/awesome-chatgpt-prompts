@@ -146236,3 +146236,16 @@ create gpstr and hstr exam science study notes with suitable diagrams and explan
 
 </details>
 
+<details>
+<summary><strong>Business management </strong></summary>
+
+## Business management 
+
+Contributed by @anonymous
+
+```md
+I own a tree service company and I have no clue what I'm doing I need help with everything I'm lost I need help in every aspect
+```
+
+</details>
+
