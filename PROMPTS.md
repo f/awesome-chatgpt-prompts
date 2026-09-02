@@ -125180,10 +125180,10 @@ This should visually resemble common reading habits on social platforms.
 
 ## Anime
 
-Contributed by [@lokki29400@gmail.com](https://github.com/lokki29400@gmail.com)
+Contributed by [@oncehumsn0@gmail.com](https://github.com/oncehumsn0@gmail.com)
 
 ```md
-masterpiece, best quality, ultra detailed, anime waifu, mature adult woman, voluptuous body, long black hair, glowing red eyes, black lace outfit, seductive expression, sitting on a luxury bed, soft neon lighting, rainy cyberpunk city through the window, glossy skin, cinematic atmosphere, highly detailed face, detailed eyes, 3D anime render, realistic shading, aesthetic, sensual pose, dramatic shadows, depth of field, beautiful anatomy, studio quality
+I want to Create an app where i can store information about all anime and and all anime latest news and information 
 ```
 
 </details>
