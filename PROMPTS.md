@@ -147386,3 +147386,28 @@ Maximum Word limit 500 words- excluding reference list.
 
 </details>
 
+<details>
+<summary><strong>分析股票亚康股份的走势</strong></summary>
+
+## 分析股票亚康股份的走势
+
+Contributed by @anonymous
+
+```md
+---
+name: my-skill-name
+description: 需要了解股票亚康股份的技术面
+---
+
+# 分析股票亚康股份的走势
+
+Describe what this skill does and how the agent should use it.
+
+## Instructions
+
+- Step 1: ...
+- Step 2: ...
+```
+
+</details>
+
