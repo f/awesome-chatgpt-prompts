@@ -147323,3 +147323,28 @@ To help me Edith create image I want him to do and also help me in convincing so
 
 </details>
 
+<details>
+<summary><strong>streaming anime</strong></summary>
+
+## streaming anime
+
+Contributed by @anonymous
+
+```md
+nime streaming architecture
+
+
+Chat
+
+Preview
+can you make a streming anime app android/ios dan menggunakan bahasa pemrograman Bertindaklah sebagai Senior Software Architect. Berikan analisis mendalam mengenai arsitektur teknologi di balik platform streaming anime skala global seperti Crunchyroll. Jelaskan secara teknis bahasa pemrograman, framework, dan infrastruktur yang digunakan dengan membaginya ke dalam 4 aspek berikut:
+
+Backend & Microservices: Bahasa apa saja yang digunakan (misal: Go, Node.js, Python) beserta alasan teknis pemilihannya untuk menangani high concurrency dan video playback authorization.
+Frontend & Player: Teknologi yang digunakan untuk membangun antarmuka web dan HTML5 video player agar adaptif dan minim latensi.
+Mobile & TV Apps: Bahasa pemrograman native (seperti Kotlin dan Swift) yang digunakan untuk ekosistem Android, iOS, dan Smart TV.
+Infrastruktur & Data: Bagaimana pengelolaan database (SQL/NoSQL) untuk data pengguna, riwayat tontonan, serta peran Cloud Provider (seperti AWS) dan CDN dalam mendistribusikan video secara global.
+Gunakan bahasa yang teknis namun mudah dipahami, serta berikan contoh konkret penerapan dari masing-masing teknologi tersebut pada fitur platform streaming.
+```
+
+</details>
+
