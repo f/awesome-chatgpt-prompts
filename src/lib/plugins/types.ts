@@ -10,7 +10,7 @@ export interface AuthPlugin {
   /**
    * Returns the NextAuth provider configuration
    */
-  getProvider: () => NextAuthConfig["providers"][number];
+  getProvider: () => NextAuthConfig["providers"][number] | null;
 }
 
 // ============================================

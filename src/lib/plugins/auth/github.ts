@@ -4,10 +4,14 @@ import type { AuthPlugin } from "../types";
 export const githubPlugin: AuthPlugin = {
   id: "github",
   name: "GitHub",
-  getProvider: () =>
-    GitHub({
-      clientId: process.env.GITHUB_CLIENT_ID!,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+  getProvider: () => {
+    if (!process.env.GITHUB_CLIENT_ID || !process.env.GITHUB_CLIENT_SECRET) {
+      console.warn("Missing GITHUB_CLIENT_ID or GITHUB_CLIENT_SECRET. GitHub auth provider disabled.");
+      return null;
+    }
+    return GitHub({
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
       profile(profile) {
         return {
           id: profile.id.toString(),
@@ -18,5 +22,6 @@ export const githubPlugin: AuthPlugin = {
           githubUsername: profile.login, // Immutable GitHub username for contributor attribution
         };
       },
-    }),
+    });
+  },
 };
