@@ -34,6 +34,61 @@ const TRIM_HEIGHT = '9in';
 const BLEED_WIDTH = '6.25in';  // 6 + 0.125*2
 const BLEED_HEIGHT = '9.25in'; // 9 + 0.125*2
 
+/**
+ * Interface representing a set of font families for different typographic roles.
+ */
+interface FontStacks {
+  serif: string;
+  sans: string;
+  mono: string;
+}
+
+/**
+ * Default font stacks used for all locales unless overridden.
+ */
+const DEFAULT_FONT_STACKS: FontStacks = {
+  serif: `'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, 'Times New Roman', serif`,
+  sans: `'Helvetica Neue', Helvetica, Arial, sans-serif`,
+  mono: `'SF Mono', 'Monaco', 'Menlo', 'Inconsolata', 'Fira Code', 'Consolas', monospace`,
+};
+
+/**
+ * Locale-specific font stack overrides to improve rendering for CJK and other languages.
+ */
+const LOCALE_FONT_STACKS: Partial<Record<string, Partial<FontStacks>>> = {
+  zh: {
+    serif: `'Songti SC', 'STSong', 'Noto Serif CJK SC', 'Source Han Serif SC', serif`,
+    sans: `'Hiragino Sans GB', 'Noto Sans CJK SC', 'Noto Sans SC', 'Source Han Sans SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif`,
+    mono: `'Noto Sans Mono CJK SC', 'Source Han Mono SC', 'Noto Sans CJK SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'SF Mono', 'Monaco', 'Menlo', 'Cascadia Mono', monospace`,
+  },
+  ja: {
+    serif: `'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif CJK JP', 'Source Han Serif JP', serif`,
+    sans: `'Hiragino Sans', 'Yu Gothic', 'Noto Sans CJK JP', 'Source Han Sans JP', Meiryo, -apple-system, BlinkMacSystemFont, sans-serif`,
+    mono: `'Noto Sans Mono CJK JP', 'Source Han Mono JP', 'Noto Sans CJK JP', 'Hiragino Sans', 'Yu Gothic', Meiryo, 'SF Mono', 'Monaco', 'Menlo', 'Cascadia Mono', monospace`,
+  },
+  ko: {
+    serif: `'AppleMyungjo', 'Nanum Myeongjo', 'Noto Serif CJK KR', 'Source Han Serif KR', serif`,
+    sans: `'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', 'Source Han Sans KR', -apple-system, BlinkMacSystemFont, sans-serif`,
+    mono: `'Noto Sans Mono CJK KR', 'Source Han Mono KR', 'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'SF Mono', 'Monaco', 'Menlo', 'Cascadia Mono', monospace`,
+  },
+};
+
+/**
+ * Get the font stacks for a specific locale.
+ * Falls back to default font stacks if no locale-specific override exists.
+ * 
+ * @param locale - The locale string (e.g., 'en', 'zh', 'ja')
+ * @returns The FontStacks object containing serif, sans, and mono font families.
+ */
+function getFontStacks(locale: string): FontStacks {
+  const overrides = LOCALE_FONT_STACKS[locale];
+  return {
+    serif: overrides?.serif || DEFAULT_FONT_STACKS.serif,
+    sans: overrides?.sans || DEFAULT_FONT_STACKS.sans,
+    mono: overrides?.mono || DEFAULT_FONT_STACKS.mono,
+  };
+}
+
 // Components that truly need interactivity (API calls, complex animations)
 // Everything else gets static rendering
 const INTERACTIVE_ONLY_COMPONENTS = [
@@ -529,7 +584,7 @@ function transformMdxForPdf(content: string, locale: string, localeData?: Locale
     const blanks = extractArrayProp(match, 'blanks');
 
     // Replace {{id}} in template with labeled blanks
-    let rendered = template.replace(/\{\{(\w+)\}\}/g, (_, id) => {
+    const rendered = template.replace(/\{\{(\w+)\}\}/g, (_, id) => {
       const blank = blanks.find(b => b.id === id);
       const hint = blank?.correctAnswers || blank?.hint || '';
       if (hint) {
@@ -2119,9 +2174,8 @@ function convertLinksToEndnotes(html: string, messages: Record<string, unknown> 
 }
 
 /**
- * Generate the HTML document for PDF
+ * Map part slugs to message keys for translation
  */
-// Map part slugs to message keys for translation
 const PART_TRANSLATION_KEYS: Record<string, string> = {
   'Introduction': 'introduction',
   'Foundations': 'foundations',
@@ -2133,6 +2187,15 @@ const PART_TRANSLATION_KEYS: Record<string, string> = {
   'Conclusion': 'conclusion',
 };
 
+/**
+ * Generate the HTML document for PDF
+ * 
+ * @param chapters - The array of processed chapters to include.
+ * @param locale - The locale string.
+ * @param messages - Translation messages for the document metadata and labels.
+ * @returns The final HTML document as a string.
+ */
+
 function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, messages: Record<string, unknown> = {}): string {
   // Print version uses shorter printTitle, screen uses full title
   const titleKey = PRINT_READY ? 'book.printTitle' : 'book.title';
@@ -2142,6 +2205,10 @@ function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, mess
   const msgSubtitle = t(messages, subtitleKey);
   const subtitle = (msgSubtitle !== subtitleKey) ? msgSubtitle : 'A Comprehensive Guide to AI Prompt Engineering';
   const isRtl = ['ar', 'he', 'fa'].includes(locale);
+  const isCjk = ['zh', 'ja', 'ko'].includes(locale);
+  const fonts = getFontStacks(locale);
+  const headingFont = isCjk ? fonts.serif : fonts.sans;
+  const promptFont = isCjk ? fonts.sans : fonts.mono;
   
   // Helper to translate part name
   const translatePart = (partName: string): string => {
@@ -2228,9 +2295,11 @@ function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, mess
       --color-bg-muted: ${PRINT_READY ? '#f2f2f2' : '#f5f5f4'};
       --color-border: ${PRINT_READY ? '#cccccc' : '#e7e5e4'};
       --color-border-dark: ${PRINT_READY ? '#999999' : '#d6d3d1'};
-      --font-serif: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, 'Times New Roman', serif;
-      --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Consolas', monospace;
+      --font-serif: ${fonts.serif};
+      --font-sans: ${fonts.sans};
+      --font-heading: ${headingFont};
+      --font-mono: ${fonts.mono};
+      --font-prompt: ${promptFont};
     }
     
     body {
@@ -2267,7 +2336,7 @@ function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, mess
     }
     
     .cover h1 {
-      font-family: var(--font-sans);
+      font-family: var(--font-heading);
       font-size: 30pt;
       font-weight: 800;
       color: var(--color-text);
@@ -2332,7 +2401,7 @@ function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, mess
     }
     
     .toc-title {
-      font-family: var(--font-sans);
+      font-family: var(--font-heading);
       font-size: 18pt;
       font-weight: 600;
       color: var(--color-text);
@@ -2342,7 +2411,7 @@ function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, mess
     }
     
     .toc-part {
-      font-family: var(--font-sans);
+      font-family: var(--font-heading);
       font-size: 10pt;
       font-weight: 600;
       text-transform: uppercase;
@@ -2413,7 +2482,7 @@ function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, mess
     }
     
     .chapter-part {
-      font-family: var(--font-sans);
+      font-family: var(--font-heading);
       font-size: 7.5pt;
       font-weight: 600;
       text-transform: uppercase;
@@ -2424,7 +2493,7 @@ function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, mess
     }
     
     .chapter-title {
-      font-family: var(--font-sans);
+      font-family: var(--font-heading);
       font-size: 22pt;
       font-weight: 700;
       color: var(--color-text);
@@ -2447,18 +2516,18 @@ function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, mess
        HEADINGS
        ======================================== */
     h1 {
-      font-family: var(--font-sans);
+      font-family: var(--font-heading);
       font-size: 15pt;
       font-weight: 700;
       color: var(--color-text);
       margin-top: 2em;
       margin-bottom: 0.5em;
       line-height: 1.25;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.03em;
     }
     
     h2 {
-      font-family: var(--font-sans);
+      font-family: var(--font-heading);
       font-size: 12.5pt;
       font-weight: 700;
       color: var(--color-text);
@@ -2471,7 +2540,7 @@ function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, mess
     }
     
     h3 {
-      font-family: var(--font-sans);
+      font-family: var(--font-heading);
       font-size: 10.5pt;
       font-weight: 700;
       color: var(--color-text);
@@ -2481,7 +2550,7 @@ function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, mess
     }
     
     h4 {
-      font-family: var(--font-sans);
+      font-family: var(--font-heading);
       font-size: 10pt;
       font-weight: 600;
       color: var(--color-text-muted);
@@ -2576,7 +2645,7 @@ function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, mess
     }
     
     .prompt-code {
-      font-family: var(--font-mono);
+      font-family: var(--font-prompt);
       font-size: 8.5pt;
       line-height: 1.5;
       background: #1e1e1e;
@@ -3699,7 +3768,7 @@ function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, mess
     }
     
     .back-matter h2 {
-      font-family: var(--font-sans);
+      font-family: var(--font-heading);
       font-size: 18pt;
       font-weight: 700;
       border: none;
@@ -3753,7 +3822,7 @@ function generateHtmlDocument(chapters: ProcessedChapter[], locale: string, mess
     }
     
     .half-title h1 {
-      font-family: var(--font-sans);
+      font-family: var(--font-heading);
       font-size: 18pt;
       font-weight: 600;
       color: var(--color-text);
