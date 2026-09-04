@@ -147531,3 +147531,16 @@ Contributed by [@aleenamayaa@gmail.com](https://github.com/aleenamayaa@gmail.com
 
 </details>
 
+<details>
+<summary><strong>حلول طابعة</strong></summary>
+
+## حلول طابعة
+
+Contributed by [@en.abdo2003@gmail.com](https://github.com/en.abdo2003@gmail.com)
+
+```md
+عندي مشكلة عندي طابعة smartrace scan 36 وعندما اقوم بادخاله علي جهازي وندز 11 استمع صوت ولاكن لا يوجد اي جهاز جديد يخرجلي وبعد ذالك نزلت او تعريف ولاكن لم يتم تعرف وعند دخولي علي ادارة الاجهزة لا يخرجلي طابعة او بورت ماسبب ومالحل وكيف يمكنني ان احله بشكل صحيح وبدون تجارب حل صريح
+```
+
+</details>
+
