@@ -147544,3 +147544,16 @@ Contributed by @anonymous
 
 </details>
 
+<details>
+<summary><strong>The fox</strong></summary>
+
+## The fox
+
+Contributed by @anonymous
+
+```md
+${The fox}If you don't have photos yet, I can create a 10-second educational-style video concept showing a sequence of still photographs rapidly flipping through a stack, gradually creating the illusion of smooth motion—like a flipbook.
+```
+
+</details>
+
