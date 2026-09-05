@@ -147898,3 +147898,28 @@ Premium + Cinematic + Interactive + Creative + Futuristic + Arabic RTL + Marketi
 
 </details>
 
+<details>
+<summary><strong>DESAYUNO EN LA TEJICA</strong></summary>
+
+## DESAYUNO EN LA TEJICA
+
+Contributed by @anonymous
+
+```md
+---
+name: desayuno-en-la-tejica
+description: quiero una imagen de tazas café  con crema y dibujos en la leche, tipo corazones, cisnes...en una cafetería, con el horario de La Tejica, sería: de lunes a viernes de 7:30 a 13:00 y sábados de 8:00 a 13:00 que sea sencillo pero moderno adecuado a los tiempos de ahora, en formato historia de instagram 
+---
+
+# DESAYUNO EN LA TEJICA
+description
+
+
+## Instructions
+
+- Step 1: ...
+- Step 2: ...
+```
+
+</details>
+
