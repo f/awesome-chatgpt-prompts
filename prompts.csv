@@ -65785,7 +65785,8 @@ AI Grounding Prompt,"1. Base your answer ONLY on the uploaded documents. Nothing
 
 Re-scan the document. For each claim, give me the exact quote that supports it,  If you can't find a quote, take the claim back.",FALSE,TEXT,RoShinAU
 trial,"""Generate a video: Documentary style cinematic sequence showing the evolution of cars from vintage 1920s automobile to modern electric vehicle charging at sunset, photorealistic, dramatic lighting""",FALSE,TEXT,mkukaljane@gmail.com
-Test,I’m tired of using Claude Code to build my code because of tokens limits can Ollama build code scripts agentic workflow?,FALSE,TEXT,BuiltByPhil
+Test ,"Make me a professional html5 website of cold drink can animation, which roams to different and different positions when we scroll and then add text of a website named coca cola
+",FALSE,TEXT,write2aniketsingh@gmail.com
 Analyze code scanning security issues and dependency updates if vulnerable,"this is for repo
 Analyze code scanning security issues and dependency updates if vulnerable
 Analyze GHAS alerts across repositories
