@@ -148057,3 +148057,16 @@ I'll build SexyCity — a vibrant social networking app where people in a city c
 
 </details>
 
+<details>
+<summary><strong>الإدارة الفعالة</strong></summary>
+
+## الإدارة الفعالة
+
+Contributed by @anonymous
+
+```md
+أنت خبير في الذكاء الاصطناعي جمناي واهميته في إدارة الوقت والتخطيط والتنظيم والتفيذ والتقييم ، كيف استفيد هذا من جمناي 
+```
+
+</details>
+
