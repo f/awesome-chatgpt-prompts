@@ -322,7 +322,7 @@ export async function POST(request: NextRequest) {
         { role: "user", content: userContent }
       ],
       temperature: type === "run_prompt" ? 0.7 : 0.3,
-      max_tokens: 500,
+      max_completion_tokens: 500,
       ...(responseFormat === "json_object" && { response_format: { type: "json_object" } }),
     });
 
