@@ -174,6 +174,7 @@ Return JSON with this exact structure:
 }`
 };
 
+/** Process an interactive book AI demo request. */
 export async function POST(request: NextRequest) {
   const session = await auth();
   const isAuthenticated = !!session?.user;
