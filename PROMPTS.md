@@ -168801,19 +168801,6 @@ Aspect Ratio: Vertical 3:4.
 </details>
 
 <details>
-<summary><strong>aire</strong></summary>
-
-## aire
-
-Contributed by @anonymous
-
-```md
-actua como un diagramador de editorial, porque debes separar del pdf adjunto, toda la normativa relacionada con el factor aire o contaminacion atmosferica, para ello debes mantener la ley, reglamento, el titulo y articulo correspondiente. 
-```
-
-</details>
-
-<details>
 <summary><strong>Role: AI Image Prompt Engineering Specialist</strong></summary>
 
 ## Role: AI Image Prompt Engineering Specialist
