@@ -169259,3 +169259,16 @@ Photoreal lifestyle photograph of a restored compact 1960s-style step van food t
 
 </details>
 
+<details>
+<summary><strong>Retro Teal Food Truck at a Riverside Night Market (Rear Right View)</strong></summary>
+
+## Retro Teal Food Truck at a Riverside Night Market (Rear Right View)
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Photoreal photograph of the same restored compact 1960s-style step van food truck from step 2, now during evening service at a riverside night market at blue hour, seen in a rear right three-quarter view from standing eye level (1.6 m) about 9 m away, 35mm lens, 16:9 landscape composition with the whole truck in frame, slightly left of center. Keep every fixed design detail identical to step 2: a short boxy step van body about 5.5 m long with softly rounded corners, a rounded cab roof, and a flat box roof; two-tone paint, glossy cream on the upper half and deep teal on the lower half, separated by a thin copper-orange stripe running all around the body just below the windows; black tires with large polished chrome hubcaps; a chrome front bumper and round headlights at the front. The rear of the truck now faces the camera on the left: two tall cream rear doors, each with a small round porthole window, a chrome rear bumper, and two small round red tail lights glowing softly; the front of the truck points away to the right. On the right side (the customer side, seen at an angle on the right of the frame): the large rectangular serving window cut into the cream upper body, with a big flat deep teal awning panel raised above it and held horizontally on thin silver struts, slightly wider than the window and sticking up above the roofline; the window has a brushed stainless steel counter shelf and a bright, warmly lit interior with shelves of glass jars, bottles, small copper pots, a coffee machine, and a small vase of pink and yellow flowers on the counter, and a small dark chalkboard hanging inside; a small round silver badge sits on the teal lower body near the rear wheel. Warm light from the open window spills onto the ground. A cook in a dark apron works behind the counter, softly blurred. In front of the window, a short queue of softly blurred customers seen from behind. Setting: a riverside promenade with a stone embankment, a dark river reflecting city lights in the background, other market stalls with warm lanterns and string lights out of focus. Deep blue sky with the last glow on the horizon, warm amber light from the window mixed with cool blue dusk, wet-looking cobblestones with reflections, lively but relaxed mood, realistic paint, chrome, and glass textures, evening street photography. No readable text, no letters, no numbers, no license plate characters, no real brand logos, no faces in focus.
+```
+
+</details>
+
