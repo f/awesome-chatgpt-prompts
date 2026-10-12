@@ -169246,3 +169246,16 @@ A mid-century modern gouache illustration of a small mountaintop astronomical ob
 
 </details>
 
+<details>
+<summary><strong>Retro Teal Food Truck Concept in a Sunny City Plaza (Lunchtime View)</strong></summary>
+
+## Retro Teal Food Truck Concept in a Sunny City Plaza (Lunchtime View)
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Photoreal lifestyle photograph of a restored compact 1960s-style step van food truck parked in a sunny city plaza at weekday lunchtime, seen in a front right three-quarter view from standing eye level (1.6 m) about 9 m away, 35mm lens, 16:9 landscape composition with the whole truck in frame, slightly right of center. Fixed design details: a short boxy step van body about 5.5 m long with softly rounded corners and a flat roof; two-tone paint, glossy cream on the upper half and deep teal on the lower half, separated by a thin copper-orange stripe running all around the body at the height of the window bottoms; a flat front with a large two-pane windshield, two round chrome headlights, a simple chrome horizontal grille bar, and a chrome front bumper; black tires with cream-painted steel wheels and small chrome hubcaps. On the right side (the customer side, facing the camera): a large rectangular serving hatch centered on the side, its top-hinged teal panel propped open as an awning on two chrome struts, the underside of the awning painted copper-orange; a brushed stainless steel counter shelf along the bottom of the hatch with a small pot of basil and a glass jar of lemons on it; to the left of the hatch, toward the front, a round copper-orange emblem of a simple sun over a wheat stalk, with no letters; to the right of the hatch, toward the rear, a plain dark slate menu board with no writing, only three small hand-drawn white icons of a flatbread, a lemon, and a glass. Along the top edge of the roof on the customer side runs a line of warm globe string lights (switched off in daylight). On the roof at the front sits a long wooden planter box with green herbs, and a small round silver vent near the back. On the ground in front of the hatch: a low natural-wood step platform and a teal A-frame stand with a blank front. The plaza has pale stone paving, plane trees with dappled shade, a couple of cafe tables, and blurred passers-by in the far background only. Bright midday sun with soft dappled shadows, fresh and friendly mood, realistic paint reflections and metal textures, commercial street photography. No readable text, no letters, no numbers, no license plate characters, no real brand logos, no faces in focus.
+```
+
+</details>
+
