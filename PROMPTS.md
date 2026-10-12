@@ -170973,3 +170973,17 @@ apple iOS app için widget yaptırmak istiyorum ve uygulamada tasarımsal olarak
 
 </details>
 
+<details>
+<summary><strong>كتابة نص يخلي الناس تعلق </strong></summary>
+
+## كتابة نص يخلي الناس تعلق 
+
+Contributed by @anonymous
+
+```md
+اكتب لي بلهجة ليبية بأسلوب يجلب تفاعل بأسلوب رجل صاحب تفاعل ومتابعين 
+رجل كلمنجي 
+```
+
+</details>
+
