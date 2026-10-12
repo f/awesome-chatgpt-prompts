@@ -168640,19 +168640,6 @@ Crea un prompt para redacción de informes policiales con legislación vigente y
 </details>
 
 <details>
-<summary><strong>mql5</strong></summary>
-
-## mql5
-
-Contributed by @anonymous
-
-```md
-صمم لي كود mql5 خارق عبارة عن ادارة الصفقات ع الشارت بكل مرونة ويقتنص الارباح ويتخلص من الصفقات الخاسرة بحسابات دقيقة لكي يحافظ على الحساب 
-```
-
-</details>
-
-<details>
 <summary><strong>Mischievous Joker Glam Portrait</strong></summary>
 
 ## Mischievous Joker Glam Portrait
