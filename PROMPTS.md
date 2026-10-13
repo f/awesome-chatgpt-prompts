@@ -171143,3 +171143,16 @@ A museum-quality photograph of a deep wooden shadow box hanging on a pale grey g
 
 </details>
 
+<details>
+<summary><strong>Victorian Glass Conservatory Interior with Ferns (Morning Light)</strong></summary>
+
+## Victorian Glass Conservatory Interior with Ferns (Morning Light)
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Photoreal architectural interior photograph of a High Victorian glass conservatory in early morning, taken from standing eye level (1.6 m) just inside the open front double doors, looking straight down the central aisle along the length of the hall, 24mm lens, 16:9 landscape composition, symmetrical one-point perspective. Fixed design details: a rectangular hall about 14 m long, 8 m wide, and 7 m high at the ridge; a low pale cream limestone plinth wall about 70 cm high runs around the base, with tall clear glass walls in white-framed rectangular panes above it, and a curved barrel-vault glass roof springing from the tops of the walls. Nine slender white-painted wrought iron arched ribs, about 1.5 m apart, cross the hall from wall to wall, each with small white scroll brackets where the wall meets the roof. Between the ribs the roof is glazed in a diamond lattice of thin white glazing bars, the old glass slightly wavy and misted with condensation. The far end wall is a glazed semicircular gable following the vault curve, with a tall tree fern on each side of it. The floor is black and white marble checkerboard in large square tiles, laid square to the 2 m wide central aisle, polished and a little damp. At the exact center of the hall sits a round fountain basin about 2 m across with a low rim clad in deep blue and gold mosaic, a small three-tier white stone bowl spout trickling water, and orange and white koi visible in the water. Two ornate black cast-iron benches with fern-pattern backs and pale oak seat slats stand one on each side of the aisle, facing the fountain. Four tall kentia palms in large terracotta pots line the aisle, two on each side between the camera and the fountain. Lush Boston ferns in round wire baskets hang on thin chains from every rib along both sides of the aisle. A row of five brass pendant lanterns with frosted glass globes hangs on long chains above the central aisle, switched off. Along the right wall runs a slatted oak plant shelf with white orchids and small terracotta pots; low beds of moss and ground ferns line the plinth on both sides. Light and atmosphere: low morning sun from the left streams through the glass walls in long, clearly visible golden light shafts cutting through soft humid mist, dappled diamond-pattern shadows from the roof fall across the checkerboard floor, droplets of condensation catch the light, fresh green and chalk-white palette with warm gold highlights. Calm, quiet, timeless mood, crisp architectural detail, true colors, no distortion of vertical lines. No people, no readable text, no signs or plaques, no modern objects, no watermark.
+```
+
+</details>
+
