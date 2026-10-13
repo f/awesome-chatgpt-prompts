@@ -164276,41 +164276,6 @@ Highly accurate proportions and anatomy, professional photography, photorealisti
 </details>
 
 <details>
-<summary><strong>Bangladeshi Poultry Farm Corn Feed Video</strong></summary>
-
-## Bangladeshi Poultry Farm Corn Feed Video
-
-Contributed by @anonymous
-
-```md
-ভিডিওর সমস্যাগুলো দূর করে, সঠিক ডায়ালগ ও স্ক্রিপ্টসহ একটি প্রফেশনাল ও বাস্তবসম্মত ভিডিও তৈরির সম্পূর্ণ প্রম্পট গাইড নিচে দেওয়া হলো:
-
-**সম্পূর্ণ ভিডিও প্রম্পট (AI Video Generator-এর জন্য):**
-
-> **Subject & Action:** A healthy, realistic gray-feathered hen pecking at golden corn grains on the ground, transitioning to a close-up of human hands holding raw yellow corn kernels, followed by a quick shot of corn being ground in a kitchen blender.
-> **Environment & Scene:** Authentic flat rural Bangladeshi poultry farm inspired by Naogaon—lush paddy fields and green trees in the soft-focus background under warm daylight. A rustic wooden table outdoors. Absolutely NO text, NO signboards, NO mountains, and NO castles.
-> **Audio & Dialogue (Bengali Voiceover):** Clear, smooth, professional native male Bengali voiceover with natural accent:
-> 1. *"মুরগিকে অনেকেই ভুট্টা ভাঙা খাওয়ান, যার দাম ৪৫ টাকা কেজি।"*
-> 2. *"খরচ কমাতে ৩০ টাকা কেজি দরে আস্ত ভুট্টা কিনুন।"*
-> 3. *"বাড়িতে এনে ব্লেন্ডারে গুঁড়ো করে নিন।"*
-> 4. *"এতে প্রতি কেজিতে ১৫ টাকা বাঁচান।"*
-> 
-> 
-> **Style & Quality:** Cinematic 8K, photorealistic texture, shallow depth of field, bright crisp lighting, perfect lip-sync/audio-visual timing, 60fps smooth movement.
-
----
-
-**ভিডিওর দৃশ্যের ধারাবাহিকতা (Storyboard):**
-
-* **০:০০ - ০:০২ সেকেন্ড:** একটি সুন্দর দেশি মুরগি খামারের মাঠে আস্ত ও ভাঙা ভুট্টা খাচ্ছে।
-* **০:০২ - ০:০৪ সেকেন্ড:** হাত দিয়ে এক গামলা আস্ত ভুট্টা দানা দেখানোর ক্লোজ-আপ শট।
-* **০:০৪ - ০:০৬ সেকেন্ড:** আস্ত ভুট্টা ব্লেন্ডারে গুঁড়ো করার দৃশ্য।
-* **০:০৬ - ০:০৮ সেকেন্ড:** মুরগির দানা খাওয়ার শান্ত ও সুন্দর সমাপনী দৃশ্য।
-```
-
-</details>
-
-<details>
 <summary><strong>Prompt Builder for PDF, Excel and PowerPoint Generation</strong></summary>
 
 ## Prompt Builder for PDF, Excel and PowerPoint Generation
