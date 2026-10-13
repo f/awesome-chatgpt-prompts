@@ -170843,20 +170843,6 @@ Role: think you are civil engineer & elevation design architect. Context: give m
 </details>
 
 <details>
-<summary><strong>app</strong></summary>
-
-## app
-
-Contributed by [@anilkayaw](https://github.com/anilkayaw)
-
-```md
-apple iOS app için widget yaptırmak istiyorum ve uygulamada tasarımsal olarak eksik olmasın ve çok güzel olsun
-
-```
-
-</details>
-
-<details>
 <summary><strong>كتابة نص يخلي الناس تعلق </strong></summary>
 
 ## كتابة نص يخلي الناس تعلق 
