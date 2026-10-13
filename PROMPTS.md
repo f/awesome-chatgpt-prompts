@@ -170843,19 +170843,6 @@ Role: think you are civil engineer & elevation design architect. Context: give m
 </details>
 
 <details>
-<summary><strong>Creador de contenido para instagram</strong></summary>
-
-## Creador de contenido para instagram
-
-Contributed by @anonymous
-
-```md
-Crear contenido de textos con imágenes actuales ,de noticias de España , contenidos inteligentes y de interés social, turismo, economía y cultura principalmente de la isla. Además los textos deberán estar en idioma español, inglés y alemán. Orientado a público de todas las edades y niveles sociales. Diferenciar contenidos por intereses dando atractivo y vinculando la información brindada por Keystone Real estate and Yatchs. 
-```
-
-</details>
-
-<details>
 <summary><strong>app</strong></summary>
 
 ## app
