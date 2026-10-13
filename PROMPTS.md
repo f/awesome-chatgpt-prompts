@@ -170790,3 +170790,29 @@ Contributed by @anonymous
 
 </details>
 
+<details>
+<summary><strong>YouTube Video Downloader Skill</strong></summary>
+
+## YouTube Video Downloader Skill
+
+Contributed by @anonymous
+
+```md
+---
+name: youtube-video-downloader-skill
+description: Helps download YouTube videos. Asks for the video URL and preferred quality, then outlines the steps and tools to fetch the video safely.
+---
+
+# YouTube Video Downloader Skill
+
+Download YouTube videos when the user provides a URL.
+
+## Instructions
+
+- Ask for the video URL and preferred quality or format.
+- Outline safe steps and tools to fetch the video.
+- Warn about copyright and terms of service.
+```
+
+</details>
+

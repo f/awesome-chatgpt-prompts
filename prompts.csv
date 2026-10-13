@@ -140931,3 +140931,17 @@ def main(argv):
 if __name__ == ""__main__"":
     sys.exit(main(sys.argv[1:]))",FALSE,TEXT,f
 Civil Engineer & elevation design architect ,"Role: think you are civil engineer & elevation design architect. Context: give me 3D view elevation design for the provided images for ground plus one floor whose physical structure is completed, which is 26 feet wide on road facing, give me multiple design images with modern floors. Respect the existing visible structure and opening.",FALSE,TEXT,moizubaid@gmail.com
+YouTube Video Downloader Skill,"---
+name: youtube-video-downloader-skill
+description: Helps download YouTube videos. Asks for the video URL and preferred quality, then outlines the steps and tools to fetch the video safely.
+---
+
+# YouTube Video Downloader Skill
+
+Download YouTube videos when the user provides a URL.
+
+## Instructions
+
+- Ask for the video URL and preferred quality or format.
+- Outline safe steps and tools to fetch the video.
+- Warn about copyright and terms of service.",FALSE,TEXT,difalonso@gmail.com
