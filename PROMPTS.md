@@ -155058,32 +155058,6 @@ Before answering, validate the marked answer against the cited official sources.
 </details>
 
 <details>
-<summary><strong>Prueba descarga</strong></summary>
-
-## Prueba descarga
-
-Contributed by @anonymous
-
-```md
----
-name: prueba
-description: descargar videos
----
-
-# My Skill
-
-Download any youtube videos.
-
-## Instructions
-
-- Step 1: ...
-- Step 2: ...
-
-```
-
-</details>
-
-<details>
 <summary><strong>Analyze any code file</strong></summary>
 
 ## Analyze any code file

@@ -127918,20 +127918,6 @@ SOURCE VALIDATION MODE
 Before answering, validate the marked answer against the cited official sources. Prefer the latest applicable official edition, but note when the question is based on a specific older edition. Cite the exact publication and relevant control or section when it can be verified. Never claim that a source uses exact wording unless that wording appears in the source.
 
 ",FALSE,TEXT,klusener31@gmail.com
-Prueba descarga,"---
-name: prueba
-description: descargar videos
----
-
-# My Skill
-
-Download any youtube videos.
-
-## Instructions
-
-- Step 1: ...
-- Step 2: ...
-",FALSE,TEXT,difalonso@gmail.com
 Analyze any code file,"Analyze the provided Python file like a senior/veteran Python developer who is seeing it for the first time.
 
 Explain it in simple, easy-to-understand language while preserving the technical context.
