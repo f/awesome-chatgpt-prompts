@@ -171157,19 +171157,6 @@ Photoreal architectural interior photograph of a High Victorian glass conservato
 </details>
 
 <details>
-<summary><strong>Immagine profilo linkedln</strong></summary>
-
-## Immagine profilo linkedln
-
-Contributed by @anonymous
-
-```md
-voglio creare un immagine da aggiungere al mio profilo linkedln. L'immagine deve essere professionale e realistica, da semprare vera e non fatta con l'intelligenza articiale
-```
-
-</details>
-
-<details>
 <summary><strong>Kintsugi Ethos Omni Ultimate Définitive Version Infinity Édition Balise PSY</strong></summary>
 
 ## Kintsugi Ethos Omni Ultimate Définitive Version Infinity Édition Balise PSY
