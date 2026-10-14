@@ -174523,3 +174523,18 @@ https://hvmgdwpp.mychariow.shop/prd_jgdozl faire la promotion et ventes en ligne
 
 </details>
 
+<details>
+<summary><strong>Proyecto de inversión pública</strong></summary>
+
+## Proyecto de inversión pública
+
+Contributed by @anonymous
+
+```md
+para crear un proyecto de inversión pública para la
+implementación de un puente peatonal en la Av. la cultura a la altura de Angostura.
+Esta implementación estará a cargo de la Municipalidad de San Jerónimo.
+```
+
+</details>
+
