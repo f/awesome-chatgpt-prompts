@@ -171157,19 +171157,6 @@ Photoreal architectural interior photograph of a High Victorian glass conservato
 </details>
 
 <details>
-<summary><strong>abc</strong></summary>
-
-## abc
-
-Contributed by @anonymous
-
-```md
-I Have intel 7 pc with 32 gb ram and  1TB HDD at home. How i can i use this for earn additional income. 
-```
-
-</details>
-
-<details>
 <summary><strong>Immagine profilo linkedln</strong></summary>
 
 ## Immagine profilo linkedln
