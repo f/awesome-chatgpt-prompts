@@ -171646,3 +171646,16 @@ A flat-lay photograph of a finished hand-drawn batik textile panel spread on dar
 
 </details>
 
+<details>
+<summary><strong>Victorian Glass Conservatory at Blue Hour (Garden Approach View)</strong></summary>
+
+## Victorian Glass Conservatory at Blue Hour (Garden Approach View)
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Photoreal architectural exterior photograph of the same Victorian glass conservatory from step 2, now seen from outside at blue hour, standing on a pale gravel garden path about 15 m in front of its glazed gable end, at eye level (1.6 m), looking straight at the gable and along the length of the building, 35mm lens, 16:9 landscape composition, symmetrical, the whole building in frame slightly below center. Keep every fixed design detail identical to step 2: a long, narrow rectangular hall with a tall curved barrel-vault glass roof; many closely spaced slender white-painted iron ribs run over the vault, and the glass between them is divided by a dense grid of thin white glazing bars. The side walls are cream painted classical masonry: tall cream pilasters with carved white scroll corbels under a cream cornice, and between them very tall, narrow white-framed windows divided into long vertical panes, set above a low cream plinth wall. The gable end facing the camera is a glazed semicircle following the vault curve, filled with radiating sunburst glazing bars above a horizontal transom; below it a wide white-framed glass wall of rectangular panes with tall white double glass doors in the center, closed, each door with a small brass handle. Seen through the glass, glowing from inside: the warm beige stone tile floor, the long empty central hall, the pilasters and windows of the far end, and two small fan palms in round white planters standing just inside the doors, one on each side. The interior is lit by warm amber light from wall lamps behind the pilasters, so the whole glass vault glows like a lantern and the white ribs stand out in silhouette. Outside: the gravel path runs straight from the camera to the doors between low clipped box hedges and a mown lawn; mature deciduous trees in early autumn color stand on both sides, and a dark red brick house with lit windows is partly visible behind the trees on the left. Deep cobalt blue sky with the last pale glow low on the horizon, a few early stars, cool blue dusk mixed with warm amber interior light, faint mist over the lawn, soft reflections on the glass. Calm, romantic, timeless mood, crisp architectural detail, true colors, straight verticals. No people, no readable text, no signs or plaques, no modern objects or garden lights, no watermark.
+```
+
+</details>
+
