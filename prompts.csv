@@ -144491,3 +144491,29 @@ Risograph Print of a Crowded Night Train Carriage,"A finished risograph print of
 Cloisonné Enamel Dish of Two Cranes Over a Mountain Lake,"A close studio photograph of a round cloisonné enamel dish centered in a 16:9 frame on dark charcoal linen. Key subject first: two Japanese-style cranes with white bodies, black necks, and red crowns flying left to right above a deep cobalt mountain lake, every shape outlined in thin raised gold wire cells filled with glossy enamel. Behind the birds, layered indigo and teal mountains, a pale cream cloud band, and a small island pine in dark green enamel. The dish rim is a continuous border of peony and chrysanthemum motifs in coral, gold, and jade green. Metalwork details: tiny gold wire walls catching highlights, slight enamel meniscus inside each cell, a glassy kiln-fired surface with soft specular reflections, copper showing faintly at the outer foot ring. Soft side light from the left, gentle contact shadow on the linen, shallow depth of field with the cranes sharpest. Photoreal product photo of handmade enamelware, saturated true enamel colors, calm museum-craft mood. Not a painting of enamel: a real photographed object. No text, no hallmark letters, no watermark, no hands.
 ",FALSE,TEXT,f
 Scratchboard Illustration of a Barn Owl in a Moonlit Barn,"A black scratchboard illustration of a barn owl perched on a rough wooden beam inside a quiet barn at night, 16:9 landscape, high-contrast white scratched lines on deep black ink board. Key subject first: a heart-faced barn owl in three-quarter view facing left, large dark eyes, finely hatched white face disk, speckled breast, and long scratched feather textures on the folded wings. Behind the owl, barn rafters and a hay loft suggested with sparse white lines, nothing hanging from the beams; a broken loft window on the right frames a bright full moon and a few scratched stars. Straw bales below are loose cross-hatching; dust motes are tiny scratched dots in a soft moonbeam. Technique: classic scraperboard look, varying line weight, cross-hatching for shadow, untouched black for void space, no gray wash, no color, no digital glow. Mood still, watchful, slightly eerie but calm. No text, no signature, no watermark, no color tint.",FALSE,TEXT,f
+Floating Teahouse Concept Design Brief Builder,"Act as an architectural concept brief builder for a floating lakeside teahouse. You translate a vague mood into fixed, visual design details that can be reused across multiple image prompts so the same building stays recognizable from different angles and times of day. You are concrete about materials, dimensions, and what must not change.
+
+About the teahouse I imagine:
+- Setting: ${setting:a quiet mountain lake in early autumn, forested shores, soft fog}
+- Scale and use: ${scale:intimate, seats 6 to 8 on floor cushions, ceremonial tea for small groups}
+- Structure vibe: ${vibe:Japanese-inspired cedar, not a theme-park copy; quiet, handmade, slightly weathered}
+- Must include: ${must:hipped cedar shingle roof, sliding paper shoji, narrow engawa deck, two stone lanterns on the dock, a small tied wooden boat}
+- Must avoid: ${avoid:neon signs, glass curtain walls, people in the frame, readable text}
+- Mood words: ${mood:hushed, misty, warm wood, contemplative}
+- Preferred views to generate later: ${views:morning approach from the shore path; dusk interior looking out across the water}
+
+Please do the following:
+1. Write a 1-paragraph architecture and setting concept for the floating teahouse.
+2. Define a color and material palette (wood tones, paper, water, fog, metal accents).
+3. List 10 to 14 fixed design details that must stay identical across every image (roof form and bay count, railing, lantern shapes, dock layout, boat position, mountain silhouette cues, etc.).
+4. Produce Image Prompt A: photoreal exterior, misty morning, shore/path approach view, 16:9, embedding every fixed detail in the first half of the prompt.
+5. Produce Image Prompt B: photoreal interior at lantern dusk looking out to the lake, 16:9, restating every fixed exterior-visible detail so the building still matches without a reference image.
+6. Add a short consistency checklist a human can use when comparing A and B.
+7. Add practical notes (what fal flux ultra tends to drop if buried late; keep key objects in the first sentence; under ~200 words per image prompt).
+
+Rules:
+- No people, no readable text, no logos.
+- Prefer specific measurable details over adjectives alone.
+- If I left a detail vague, choose one clear option and mark it as your choice.
+- Output in clear Markdown sections.
+",FALSE,TEXT,f
