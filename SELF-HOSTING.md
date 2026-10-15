@@ -81,7 +81,7 @@ OPENAI_API_KEY="your-openai-api-key"
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/f/prompts.chat)
 
-The button creates a web service built from `docker/Dockerfile` and a Render Postgres database. Database migrations run each time the service starts. The default plans cost about $13/month. You can pick the free plans during setup, but a free database expires after 30 days and a free web service spins down when idle.
+The button creates a web service from the prebuilt `ghcr.io/f/prompts.chat` image and a Render Postgres database. Database migrations run each time the service starts. To get a newer image, run a manual deploy from the Render Dashboard. The default plans cost about $13/month. You can pick the free plans during setup, but a free database expires after 30 days and a free web service spins down when idle.
 
 After the deploy finishes, open your `onrender.com` URL and register. Sign-in uses email and password with open registration, as in [DOCKER.md](DOCKER.md). The first account is a normal user. To make it an admin, run this in the database's psql shell:
 

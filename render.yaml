@@ -5,9 +5,10 @@ projects:
         services:
           - type: web
             name: prompts-chat
-            runtime: docker
-            dockerfilePath: ./docker/Dockerfile
-            dockerContext: .
+            # needs more than Render's 8 GB build limit, so use the image CI publishes from main
+            runtime: image
+            image:
+              url: ghcr.io/f/prompts.chat:latest
             plan: starter
             healthCheckPath: /api/health
             envVars:
