@@ -175938,3 +175938,16 @@ i want you to create the most outstanding ai featured apartment websites that us
 
 </details>
 
+<details>
+<summary><strong>Viral YouTube Shorts Prompt Optimizer</strong></summary>
+
+## Viral YouTube Shorts Prompt Optimizer
+
+Contributed by [@dani0073107](https://github.com/dani0073107)
+
+```md
+Transform a basic idea into a professional AI video prompt for viral YouTube Shorts. Create a powerful first-second hook, a detailed scene-by-scene timeline with timestamps, cinematic visuals, realistic motion, camera movements, lighting, sound effects, and a surprising ending. Optimize for vertical 9:16 videos lasting 15–20 seconds. Ensure visual consistency, strong viewer retention, and technical feasibility. Include a separate negative prompt to prevent visual errors. Return a polished, copy-ready prompt. Do not generate the video.
+```
+
+</details>
+
