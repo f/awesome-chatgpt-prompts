@@ -605,10 +605,19 @@ export default async function SelfHostingPage() {
           <p className="text-muted-foreground">
             Deploy to Vercel, Railway, Render, or any Node.js hosting platform. Make sure to set all environment variables in your hosting provider&apos;s dashboard.
           </p>
-          <a href="https://render.com/deploy?repo=https://github.com/f/prompts.chat" target="_blank" rel="noopener noreferrer">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render" />
-          </a>
+          <Link
+            href="https://render.com/deploy?repo=https://github.com/f/prompts.chat"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex"
+          >
+            <Image
+              src="https://render.com/images/deploy-to-render-button.svg"
+              alt="Deploy to Render"
+              width={153}
+              height={40}
+            />
+          </Link>
           </div>
 
           {/* Support */}
