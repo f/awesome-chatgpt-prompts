@@ -92,7 +92,7 @@ UPDATE users SET role = 'ADMIN' WHERE email = 'you@example.com';
 Set these in the service's **Environment** page in the Render Dashboard:
 
 - To use GitHub or Google sign-in, set `PCHAT_AUTH_PROVIDERS` and the `AUTH_GITHUB_*` or `AUTH_GOOGLE_*` variables. Use `https://<your-service>.onrender.com/api/auth/callback/github` (or `/google`) as the OAuth callback URL.
-- To turn on AI search, set `OPENAI_API_KEY` and `PCHAT_FEATURE_AI_SEARCH=true`.
+- To turn on AI search and generation, set `OPENAI_API_KEY`. The Blueprint asks for it during setup, and you can leave it blank to deploy without AI. New prompts get embeddings when they're saved. For existing prompts, an admin clicks **Generate Embeddings** in the admin dashboard.
 - To change branding, use the `PCHAT_*` variables listed in [DOCKER.md](DOCKER.md).
 
 Don't run `npm run db:seed` or `npm run db:resetadmin` on a public instance. Both create `admin@prompts.chat` with the password `password123`.

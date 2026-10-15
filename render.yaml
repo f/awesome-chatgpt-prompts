@@ -30,11 +30,9 @@ projects:
                 value: credentials
               - key: PCHAT_ALLOW_REGISTRATION
                 value: "true"
-              # On in prompts.config.ts, but they need OPENAI_API_KEY
-              - key: PCHAT_FEATURE_AI_SEARCH
-                value: "false"
-              - key: PCHAT_FEATURE_AI_GENERATION
-                value: "false"
+              # Optional. AI search and generation stay off until this is set
+              - key: OPENAI_API_KEY
+                sync: false
         databases:
           - name: prompts-chat-db
             databaseName: prompts
