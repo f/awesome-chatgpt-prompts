@@ -77,6 +77,26 @@ OPENAI_API_KEY="your-openai-api-key"
 
 ## Installation
 
+### Deploy to Render
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/f/prompts.chat)
+
+The button creates a web service built from `docker/Dockerfile` and a Render Postgres database. Database migrations run each time the service starts. The default plans cost about $13/month. You can pick the free plans during setup, but a free database expires after 30 days and a free web service spins down when idle.
+
+After the deploy finishes, open your `onrender.com` URL and register. Sign-in uses email and password with open registration, as in [DOCKER.md](DOCKER.md). The first account is a normal user. To make it an admin, run this in the database's psql shell:
+
+```sql
+UPDATE users SET role = 'ADMIN' WHERE email = 'you@example.com';
+```
+
+Set these in the service's **Environment** page in the Render Dashboard:
+
+- To use GitHub or Google sign-in, set `PCHAT_AUTH_PROVIDERS` and the `AUTH_GITHUB_*` or `AUTH_GOOGLE_*` variables. Use `https://<your-service>.onrender.com/api/auth/callback/github` (or `/google`) as the OAuth callback URL.
+- To turn on AI search, set `OPENAI_API_KEY` and `PCHAT_FEATURE_AI_SEARCH=true`.
+- To change branding, use the `PCHAT_*` variables listed in [DOCKER.md](DOCKER.md).
+
+Don't run `npm run db:seed` or `npm run db:resetadmin` on a public instance. Both create `admin@prompts.chat` with the password `password123`.
+
 ### Quick Start (Recommended)
 
 The fastest way to create a new prompts.chat instance:

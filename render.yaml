@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: prompts-chat
+    runtime: docker
+    dockerfilePath: ./docker/Dockerfile
+    dockerContext: .
+    plan: starter
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: prompts-chat-db
+          property: connectionString
+      # Prisma schema reads directUrl, so it must be set even without a pooler
+      - key: DIRECT_URL
+        fromDatabase:
+          name: prompts-chat-db
+          property: connectionString
+      - key: AUTH_SECRET
+        generateValue: true
+      # Auth.js needs this behind Render's proxy
+      - key: AUTH_TRUST_HOST
+        value: "true"
+      # Match the defaults documented in DOCKER.md
+      - key: PCHAT_AUTH_PROVIDERS
+        value: credentials
+      - key: PCHAT_ALLOW_REGISTRATION
+        value: "true"
+      # On in prompts.config.ts, but they need OPENAI_API_KEY
+      - key: PCHAT_FEATURE_AI_SEARCH
+        value: "false"
+      - key: PCHAT_FEATURE_AI_GENERATION
+        value: "false"
+
+databases:
+  - name: prompts-chat-db
+    databaseName: prompts
+    plan: basic-256mb

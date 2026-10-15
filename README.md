@@ -101,6 +101,8 @@ An interactive, game-based adventure to teach children (ages 8-14) how to commun
 
 Deploy your own private prompt library with custom branding, themes, and authentication.
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/f/prompts.chat)
+
 **Quick Start:**
 ```bash
 npx prompts.chat new my-prompt-library
