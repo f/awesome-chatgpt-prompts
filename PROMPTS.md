@@ -174527,3 +174527,17 @@ I wanna make a engaging and 1 month content for his social media, his company is
 
 </details>
 
+<details>
+<summary><strong>Reverse Brief</strong></summary>
+
+## Reverse Brief
+
+Contributed by [@jecspt](https://github.com/jecspt)
+
+```md
+Create a reverse brief of this document. Explain the purpose in plain language, list the most important points, identify any risks, deadlines or obligations, and summarize what actions I need to take.
+${document}
+```
+
+</details>
+
