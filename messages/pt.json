@@ -2255,6 +2255,7 @@
       "nodeJs": "Node.js 24.x",
       "postgresql": "PostgreSQL database",
       "npm": "npm"
-    }
+    },
+    "deployToRender": "Implantar no Render"
   }
 }

@@ -613,7 +613,7 @@ export default async function SelfHostingPage() {
           >
             <Image
               src="https://render.com/images/deploy-to-render-button.svg"
-              alt="Deploy to Render"
+              alt={t("deployToRender")}
               width={153}
               height={40}
             />
