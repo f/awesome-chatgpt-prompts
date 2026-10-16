@@ -177933,3 +177933,16 @@ Image Quality: Photorealistic, high-quality, sharp, ultra-detailed 8K photograph
 
 </details>
 
+<details>
+<summary><strong>Elegant Monochrome S-Curve Portrait</strong></summary>
+
+## Elegant Monochrome S-Curve Portrait
+
+Contributed by @anonymous
+
+```md
+Generates a photorealistic, vertical 3:4 black-and-white portrait of a young woman in an asymmetrical ribbed knit dress. Captured in graceful motion with an S-curve pose, wind-swept hair, and a lowered, introspective gaze. Soft, diffused side lighting creates delicate chiaroscuro against a neutral gray background. Emulates medium-format film with subtle grain and shallow depth of field, preserving exact facial features in sharp 8K iPhone 16 Pro quality.
+```
+
+</details>
+
