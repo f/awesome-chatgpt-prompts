@@ -176030,3 +176030,16 @@ I wanna make a engaging and 1 month content for his social media, his company is
 
 </details>
 
+<details>
+<summary><strong>Income-Based Housing Apartment Website Concept</strong></summary>
+
+## Income-Based Housing Apartment Website Concept
+
+Contributed by @anonymous
+
+```md
+i want you to create the most outstanding ai featured apartment websites that uses real location to determine whether you are qualified for the income based housing or regular listings.
+```
+
+</details>
+
