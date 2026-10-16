@@ -175978,3 +175978,16 @@ I’m building a brand around Anaelle, an AI triage assistant that lightens a pr
 
 </details>
 
+<details>
+<summary><strong>Civil Service Job Application Writer</strong></summary>
+
+## Civil Service Job Application Writer
+
+Contributed by @anonymous
+
+```md
+Generate a prompt that I can use to write the civil service job applications while considering the job specific requirements, criteria and person specifications to align with the required civil service behaviours 
+```
+
+</details>
+
