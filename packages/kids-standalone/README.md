@@ -78,4 +78,4 @@ Sunucu başladığında tarayıcınız otomatik olarak `http://localhost:8080` a
 ## 👥 Katkıda Bulunanlar
 
 - **Orijinal Proje & Konsept**: [Fatih Kadir Akın](https://github.com/f) - [prompts.chat](https://prompts.chat/kids)
-- **Tersine Mühendislik & Yerel Sürüm**: [Abdurrahman Bali](https://github.com/abdbali)
+- **Tersine Mühendislik ile Yerel Sürüm**: [Abdurrahman Balı](https://github.com/abdbali)
