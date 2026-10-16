@@ -175862,19 +175862,6 @@ Be direct. Be specific. Don't hedge — tell me what the data says.
 </details>
 
 <details>
-<summary><strong>the new plate</strong></summary>
-
-## the new plate
-
-Contributed by @anonymous
-
-```md
-i want you to create the most outstanding ai featured apartment websites that uses real location to determine whether you are qualified for the income based housing or regular listings.
-```
-
-</details>
-
-<details>
 <summary><strong>Viral YouTube Shorts Prompt Optimizer</strong></summary>
 
 ## Viral YouTube Shorts Prompt Optimizer
