@@ -175991,3 +175991,16 @@ Generate a prompt that I can use to write the civil service job applications whi
 
 </details>
 
+<details>
+<summary><strong>ChatGPT Pro Style High-Quality Response Simulator</strong></summary>
+
+## ChatGPT Pro Style High-Quality Response Simulator
+
+Contributed by @anonymous
+
+```md
+Use the ChatGPT Pro plan for more precise and high-quality answers. I want responses identical to those from the paid Pro version"
+```
+
+</details>
+
