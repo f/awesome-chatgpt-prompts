@@ -176257,3 +176257,16 @@ A red fox mid-stride crossing two snowy railway tracks at dusk, rendered as a ha
 
 </details>
 
+<details>
+<summary><strong>Gouache Illustration of a Floating Bookshop Barge on a Quiet Canal</strong></summary>
+
+## Gouache Illustration of a Floating Bookshop Barge on a Quiet Canal
+
+Contributed by [@f](https://github.com/f)
+
+```md
+A long narrow canal barge converted into a floating bookshop, moored along a quiet tree-lined canal, painted as a soft gouache illustration. The barge is deep forest green with a cream trim and a rounded red door; its roof holds wooden crates of books, potted geraniums, and a folded striped awning. Open hatch windows show shelves packed with colorful book spines, and a small chalkboard easel on the towpath is blank. A tabby cat sleeps on a stack of books at the bow. Behind the barge, an old brick footbridge arches over the water, weeping willows trail their branches, and a row of narrow terraced houses sits in the background. Calm late-afternoon light, warm peach highlights on the brickwork and gentle reflections of the green hull on the still water. Matte gouache texture with visible brush strokes, slightly chalky opaque color, soft edges, and a muted palette of sage, ochre, brick red, and cream. Cozy, unhurried, storybook mood. No legible text, no people.
+```
+
+</details>
+
