@@ -178562,3 +178562,16 @@ Twin peacocks facing each other beside lotus ponds, rendered as a traditional In
 
 </details>
 
+<details>
+<summary><strong>Oil Painting of a Lighthouse Keeper's Kitchen in a Storm</strong></summary>
+
+## Oil Painting of a Lighthouse Keeper's Kitchen in a Storm
+
+Contributed by [@f](https://github.com/f)
+
+```md
+A lighthouse keeper's kitchen painted in rich oil, warm and lived-in while a storm rages outside. Thick impasto strokes show whitewashed stone walls, a heavy wooden table with a brass kettle steaming, an oil lamp casting amber light, and a loaf of bread on a worn cutting board. Rain streaks the small paned window; through the glass, dark grey sea and white spray. Wet yellow oilskins and rubber boots hang dripping by the door. Copper pans and a enamel mug sit on open shelves. Cozy interior warmth contrasts with cold storm light at the window. Visible brushwork, muted ochres and deep blues, slight varnish sheen. No people, no text, no modern appliances.
+```
+
+</details>
+
