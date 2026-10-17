@@ -148799,3 +148799,4 @@ Observability taste,"# Observability taste
 - Test instrumentation in CI with a smoke request that asserts a span and a log line exist. Confidence: 0.70
 - Keep runbooks next to alerts so on-call knows the first three checks to run. Confidence: 0.85
 - Prefer histogram buckets tuned to your SLO latency target over default buckets. Confidence: 0.80",TRUE,TEXT,f
+Give me a prompt to use in creating an interactive data analysis dashboard,Give me a prompt to use in creating an interactive data analysis dashboard,FALSE,TEXT,sammyduwa2@gmail.com
