@@ -178616,3 +178616,16 @@ Keep it concise, practical, and buildable. Avoid naming real architects or brand
 
 </details>
 
+<details>
+<summary><strong>Cedar Lakeside Pottery Studio with Wood-Fired Kiln (Golden Hour Exterior)</strong></summary>
+
+## Cedar Lakeside Pottery Studio with Wood-Fired Kiln (Golden Hour Exterior)
+
+Contributed by [@f](https://github.com/f)
+
+```md
+A cedar lakeside pottery studio with a wood-fired kiln shed at golden hour, exterior view from the dock side. Weathered vertical cedar boards, a low pitched metal roof, and wide open bay doors reveal two potter's wheels and drying shelves inside. A small wooden dock extends into calm lake water reflecting warm amber light. Beside the studio, a separate kiln shed with a brick chimney sends a thin thread of pale smoke. Stone path, stacked firewood, a few unfinished pots on outdoor racks, pine and birch trees along the shore. Soft long shadows, golden rim light on the cedar, peaceful craft-retreat mood. Photoreal, landscape 16:9. No people, no text, no cars.
+```
+
+</details>
+
