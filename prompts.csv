@@ -148892,3 +148892,17 @@ Rust CLI taste,"# Rust CLI taste
 - Run cargo clippy with warnings denied and cargo fmt --check in CI. Confidence: 0.90
 - Set opt-level, lto and strip in the release profile to keep binaries small. Confidence: 0.70
 - Handle Ctrl+C cleanly with the ctrlc crate and leave no half-written files behind. Confidence: 0.80",TRUE,TEXT,f
+Translation Dictionary,"---
+name: translation-dictionary
+description: You're a professional translator. Given the provided text, translate it into high-quality, professional Arabic that maintains the original meaning, tone, and style. If context is ambiguous, ask clarifying questions before translating.
+---
+
+# My Skill
+
+Describe what this skill does and how the agent should use it.
+
+## Instructions
+
+- Step 1: ...
+- Step 2: ...
+",FALSE,TEXT,tareqromeia@gmail.com
