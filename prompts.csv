@@ -149071,3 +149071,31 @@ quality_bar:
 Chinese Ink Wash Painting of Misty Karst Peaks and an Empty Sampan,"Misty limestone karst peaks rising above a calm river with a single empty wooden sampan moored among reeds, painted as a traditional Chinese ink wash landscape on rice paper. Tall rounded peaks fade into layered mist from dark foreground ink to pale grey silhouettes in the distance. A twisted pine clings to the nearest cliff, its needles drawn in quick dry-brush strokes. The small sampan with a curved woven canopy rests near the lower left shore, reflected faintly in the still water. Generous empty paper space for sky and river, soft ink bleeds where wet washes meet, a few birds as tiny brush flicks far away. Monochrome black and grey ink with one faint touch of warm ochre on the boat canopy. Visible rice paper fiber texture, wide horizontal handscroll composition filling the entire frame edge to edge, quiet contemplative mood. No people, no text, no calligraphy, no seals, no signature.",FALSE,TEXT,f
 Vintage Chromolithograph Plate of Forest Mushrooms and Mosses,"Forest mushrooms and mosses arranged as a vintage natural history chromolithograph plate: a red fly agaric with white spots, a cluster of golden chanterelles, a brown porcini with a thick pale stem, delicate purple amethyst deceivers, and a cross-section of one cap showing gills. The specimens are laid out in a balanced grid on aged cream paper, each drawn with fine engraved outlines and soft stippled shading. Tufts of green cushion moss, a curl of birch bark, and a few fallen oak leaves sit between them. Muted 19th-century print colors: brick red, ochre, olive green, umber, and dusty violet, with slight color registration offset typical of stone lithography. Foxing spots and gentle paper yellowing at the edges, thin double-ruled border around the plate. Scientific, calm, collectible antique print mood. No text, no labels, no numbers, no captions, no people.",FALSE,TEXT,f
 Synthwave Sunset Over an Empty Desert Highway with a Vintage Convertible,"An empty cherry-red vintage convertible parked on the shoulder of a straight desert highway at sunset, rendered in retro synthwave style. The highway runs to a vanishing point where a huge striped sun, banded in hot pink, orange, and yellow, sits half below the horizon. Glowing magenta grid lines stretch across the desert floor, and tall saguaro cacti stand in dark silhouette along the road. Low purple mountains with neon cyan rim light frame the horizon. The sky fades from deep violet at the top to coral near the sun, with a few soft stars and thin horizontal clouds. Chrome bumpers and the car's curved fins catch pink and teal reflections; the dashed center line glows faintly. Clean 1980s retro-futuristic look, subtle film grain and gentle bloom, cinematic wide composition. No people, no text, no logos, no license plate characters.",FALSE,TEXT,f
+Hillside Vineyard Tasting Pavilion Concept Brief Builder,"Act as an architectural concept designer who writes image-ready design briefs. Help me shape a small hillside vineyard tasting pavilion: a single-story building where visitors taste wine and look out over the vine rows. Your brief must be specific enough that two separate image generations (an establishing exterior and a second exterior angle) show the same building.
+
+First ask me, in one short message, for:
+- Region and climate (for example Mediterranean, temperate river valley, high desert) and the season I want to show
+- Slope direction and the main view (valley, lake, distant mountains, village)
+- Capacity (how many guests at once) and whether there is a small barrel room or kitchen
+- Material preferences and anything I want to avoid (glass boxes, rustic kitsch, very modern minimalism)
+- Mood words (calm, sunny, earthy, elegant, family-run)
+
+Then produce the brief with these sections:
+
+1. **Site and Orientation**: where the pavilion sits on the slope, which side faces the view, sun path for morning and sunset, and how a gravel path climbs from the parking area through the vines.
+
+2. **Building Form**: footprint size, roof shape and pitch, overhang depth, the long covered terrace on the downhill side, and the number and position of large openings. Keep it compact and believable.
+
+3. **Materials Palette**: exactly four or five materials with colors (for example local limestone walls, oiled oak beams, clay roof tiles, bronze window frames, gravel terrace) and where each one appears.
+
+4. **Landscape**: vine row direction, an old olive or oak tree near the entrance, low stone retaining walls, lavender or herb borders, and outdoor tables.
+
+5. **Fixed Visual Details**: a numbered list of 8 to 10 details that must stay identical in every image (roof type and color, wall material, number of terrace arches or posts, door color, chimney or none, the signature tree, lighting fixtures). These details make the images consistent.
+
+6. **Prompt Seed A - Establishing Exterior**: a ready-to-paste image prompt under 150 words for a morning or harvest-season exterior from the uphill path, with the building and its key objects in the first sentence.
+
+7. **Prompt Seed B - Second Exterior Angle**: a ready-to-paste image prompt under 150 words for a sunset view from the downhill vine rows looking up at the terrace, repeating every fixed visual detail in plain words.
+
+8. **Practical Notes**: three short notes on shade, accessibility (step-free entry), and drainage on a slope.
+
+Rules: no people as the main subject, no text or logos in the image prompts, no interiors in the seeds (image models often ignore furniture). Use short paragraphs and lists.",FALSE,TEXT,f
