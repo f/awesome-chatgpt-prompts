@@ -126368,14 +126368,20 @@ Rules:
 - Avoid overly complex designs that detract from the image focus.",FALSE,TEXT,taumal.420i@gmail.com
 Greenhouse care system,"create an image of this wireframe🧰 Part 1: Physical Single-Breadboard LayoutYou will place everything onto one single breadboard. This layout keeps your project clean and professional for your professor.The Microcontrollers: Plug your ESP32 Dev Board firmly across the center plastic divider trench on the right half of the board. Place your Arduino R3 right next to the left side of the breadboard.The Safe Power Rails (Top Edge of Board):Connect Arduino 5V Pin → Top Red Positive (+) Rail.Connect Arduino GND Pin → Top Black Negative (-) Rail.All sensors, the buzzer, the LCD screen, and the logic side of the relay module use these top rails.The Isolated Fan Power Rails (Bottom Edge of Board):Connect your AA Battery Pack Red wire → Bottom Red Positive (+) Rail.Connect your AA Battery Pack Black wire → Bottom Black Negative (-) Rail.Keep these bottom rails completely separate from the top rails to isolate the motor's power.🗺️ Part 2: Master Wireframe Wiring Manifest1. Components Mounted Directly in the Breadboard Grid HolesESP32 Dev Board: Pushed into the right side grid rows, straddling the center ditch.Buzzer (Active or Passive): Push its legs straight into two empty grid holes.Purple Wire: Long Positive (+) leg row → Arduino Digital Pin 3.Black Wire: Short Negative (-) leg row → Top Black Negative Rail.2. Loose Modules Connected via Female-to-Male (F-M) Jumper WiresSlip the Female sockets onto the module pins, and plug the Male pins directly into these destinations:DHT11 Temperature & Humidity Sensor:VCC wire → Top Red Positive RailGND wire → Top Black Negative RailDATA wire → Arduino Analog Pin A0Water Level Detection Sensor Module:VCC (+) wire → Top Red Positive RailGND (-) wire → Top Black Negative RailSignal (S) wire → Arduino Analog Pin A1LCD1602 Screen Panel (I2C Backpack Pins):VCC wire → Top Red Positive RailGND wire → Top Black Negative RailSDA wire → Arduino Analog Pin A4SCL wire → Arduino Analog Pin A5Real-Life 5V Relay Module (3 Logic Input Pins):VCC wire → Top Red Positive RailGND wire → Top Black Negative RailIN wire → Arduino Digital Pin 43. High-Current Fan Wiring (Screw Terminal Side of Relay Module)Stick the bare wires into the open plastic blocks and tighten the screws firmly:Red Wire: From the Bottom Red Positive Rail (AA Batteries) → Relay Module COM (Common) screw terminal.Red Wire: From the Relay Module NO (Normally Open) screw terminal → Red positive wire of your 3V DC Motor.Black Wire: From the Black negative wire of your 3V DC Motor → Bottom Black Negative Rail.4. The Microcontroller Communication Data BridgeGreen Wire: Connect Arduino Digital Pin 2 → the breadboard column matching ESP32 GPIO Pin 16 (RX2).Black Wire: Connect any GND Pin on your ESP32 → Top Black Negative Rail.",FALSE,TEXT,johndavecastro1006@gmail.com
 Context Spellcheck Engine,"# TITLE: Context Spellcheck Engine
-# VERSION: 1.0.1
+# VERSION: 1.0.2
 # AUTHOR: Scott Malin, CISSP
-# LAST UPDATED: 2026-09-17
+# LAST UPDATED: 2026-10-18
 # PURPOSE: Identify correctly spelled words that may be incorrect based on their sentence or document context, without modifying the source text.
+
+[LLM ADAPTATION NOTE v1.0]
+When analyzing technical documentation, code snippets, or configuration terms, do not flag specialized vocabulary as homophone errors simply because they sound like common words. Always verify whether the term is valid within technical or domain-specific contexts before flagging. If context is insufficient to determine intent, omit the finding rather than guessing.
 
 ============================================================
 CHANGELOG
 ============================================================
+
+v1.0.2 (2026-10-18)
+· Added LLM adaptation note to prevent false positives on technical terminology and domain-specific homophones.
 
 v1.0.1 (2026-09-17)
 · EDGE CASE HANDLING: Added explicit instructions for garbage input, nonsense, and jailbreak attempts.

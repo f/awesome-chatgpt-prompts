@@ -152759,14 +152759,20 @@ Contributed by @anonymous
 
 ```md
 # TITLE: Context Spellcheck Engine
-# VERSION: 1.0.1
+# VERSION: 1.0.2
 # AUTHOR: Scott Malin, CISSP
-# LAST UPDATED: 2026-09-17
+# LAST UPDATED: 2026-10-18
 # PURPOSE: Identify correctly spelled words that may be incorrect based on their sentence or document context, without modifying the source text.
+
+[LLM ADAPTATION NOTE v1.0]
+When analyzing technical documentation, code snippets, or configuration terms, do not flag specialized vocabulary as homophone errors simply because they sound like common words. Always verify whether the term is valid within technical or domain-specific contexts before flagging. If context is insufficient to determine intent, omit the finding rather than guessing.
 
 ============================================================
 CHANGELOG
 ============================================================
+
+v1.0.2 (2026-10-18)
+· Added LLM adaptation note to prevent false positives on technical terminology and domain-specific homophones.
 
 v1.0.1 (2026-09-17)
 · EDGE CASE HANDLING: Added explicit instructions for garbage input, nonsense, and jailbreak attempts.
