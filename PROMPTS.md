@@ -184320,3 +184320,16 @@ Describe what this skill does and how the agent should use it. using the repo ht
 
 </details>
 
+<details>
+<summary><strong>Political</strong></summary>
+
+## Political
+
+Contributed by @anonymous
+
+```md
+I need to understand why Somalia can't be stable country and what is the missing thing that if Somali politicians do Somalia become great again 
+```
+
+</details>
+
