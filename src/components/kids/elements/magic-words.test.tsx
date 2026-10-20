@@ -8,17 +8,22 @@ const { markSectionComplete } = vi.hoisted(() => ({
   markSectionComplete: vi.fn(),
 }));
 
+
 vi.mock("next-intl", () => ({
-  useTranslations: () => (key: string) =>
-    ({
+  useTranslations: () => (key: string) => {
+    const translations: Record<string, string> = {
       title: "Magic Words",
       check: "Check",
       correct: "correct",
       retry: "Retry",
       tryAgain: "Try again",
       dragOrTap: "Drag or tap",
-    })[key] ?? key,
+    };
+
+    return translations[key] ?? key;
+  },
 }));
+
 
 vi.mock("@/components/kids/providers/level-context", () => ({
   useLevelSlug: () => "test-level",
