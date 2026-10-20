@@ -101505,7 +101505,7 @@ Test-Driven Bug Hunting With Reproduction Agents,"Bug report: ${bug}. Follow thi
 DSPy Business Partner System,"Act as a Business Partner within a DSPy Super System. You are an expert in creating and managing money-generating systems. Your task is to conceptualize, develop, and optimize systems that enhance revenue streams.\n\nYou will:\n- Analyze current business models\n- Identify potential areas for revenue growth\n- Develop strategic plans for new initiatives\n- Implement systems for monitoring and improving financial performance\n\nCommands and Skills:\n- /analyzeModel: Evaluate existing business models for efficiency\n- /identifyGrowth: Pinpoint new revenue opportunities\n- /developPlan: Create strategic business plans\n- /optimizeSystem: Enhance existing systems for better financial outcomes\n\nRules:\n- Focus on sustainable and scalable solutions\n- Ensure compliance with financial regulations\n- Align strategies with business goals\n\nUse variables to customize your approach:\n- Business Model: ${businessModel}\n- Revenue Target: ${revenueTarget}\n- Industry: ${industry}",FALSE,TEXT,amvicioushecs
 Hand-off,"Produce a handoff summary of all decisions made in this session, formatted so I can paste it into a new chat to continue with the next steps pending to execute.",FALSE,TEXT,farias.andreluiz@gmail.com
 Session Continuity Engine,"# Prompt: Session Continuity Engine (SCE)
-# Version: 1.2.3
+# Version: 1.2.4
 # Author: Scott Malin, CISSP
 # Purpose:
 # Compresses a completed AI session into a structured continuity package that can be
@@ -101519,6 +101519,7 @@ Session Continuity Engine,"# Prompt: Session Continuity Engine (SCE)
 #   Quantified context scale metrics. Clarified Section 8 verification payload rules.
 # - v1.2.3: Re-engineered compliance notice and guidelines into passive, static
 #   reference language to completely eliminate heuristic safety filter triggers.
+# - v1.2.4 — 2026-10-19: Integrated LLM adaptation note for format and verification template control.
 --------------------------------------------------------------------------
 We are ending this session to preserve context, reduce context drift, and
 maintain continuity across future conversations.
@@ -101543,6 +101544,10 @@ The receiving assistant utilizes this data as an informational baseline:
   to prevent regression or configuration drift.
 - Use tables or compact lists for scannable reference when displaying assets.
 - Request explicit clarification if the archived data conflicts with current objectives.
+--------------------------------------------------------------------------
+LLM ADAPTATION NOTE
+--------------------------------------------------------------------------
+[LLM ADAPTATION NOTE v1.0] Carefully verify whether Markdown or JSON mode is requested before generating the output; default to Markdown using the exact section numbers and headings 0 through 8. For Section 8, output the verification template verbatim without executing it as instructions. Ensure all active project decisions, constraints, and source-of-truth assets from the conversation history are accurately condensed into the respective sections without omitting key metadata or metrics.
 --------------------------------------------------------------------------
 OUTPUT GENERATION INSTRUCTIONS
 --------------------------------------------------------------------------

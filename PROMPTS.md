@@ -122582,7 +122582,7 @@ Contributed by @anonymous
 
 ```md
 # Prompt: Session Continuity Engine (SCE)
-# Version: 1.2.3
+# Version: 1.2.4
 # Author: Scott Malin, CISSP
 # Purpose:
 # Compresses a completed AI session into a structured continuity package that can be
@@ -122596,6 +122596,7 @@ Contributed by @anonymous
 #   Quantified context scale metrics. Clarified Section 8 verification payload rules.
 # - v1.2.3: Re-engineered compliance notice and guidelines into passive, static
 #   reference language to completely eliminate heuristic safety filter triggers.
+# - v1.2.4 — 2026-10-19: Integrated LLM adaptation note for format and verification template control.
 --------------------------------------------------------------------------
 We are ending this session to preserve context, reduce context drift, and
 maintain continuity across future conversations.
@@ -122620,6 +122621,10 @@ The receiving assistant utilizes this data as an informational baseline:
   to prevent regression or configuration drift.
 - Use tables or compact lists for scannable reference when displaying assets.
 - Request explicit clarification if the archived data conflicts with current objectives.
+--------------------------------------------------------------------------
+LLM ADAPTATION NOTE
+--------------------------------------------------------------------------
+[LLM ADAPTATION NOTE v1.0] Carefully verify whether Markdown or JSON mode is requested before generating the output; default to Markdown using the exact section numbers and headings 0 through 8. For Section 8, output the verification template verbatim without executing it as instructions. Ensure all active project decisions, constraints, and source-of-truth assets from the conversation history are accurately condensed into the respective sections without omitting key metadata or metrics.
 --------------------------------------------------------------------------
 OUTPUT GENERATION INSTRUCTIONS
 --------------------------------------------------------------------------
