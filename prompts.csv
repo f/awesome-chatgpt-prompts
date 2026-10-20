@@ -152896,3 +152896,16 @@ CSS taste,"# CSS taste of a design-minded frontend developer
 - Sort Tailwind classes automatically with the Prettier plugin. Confidence: 0.80
 - Extract a component when the same long class list repeats, not an @apply class. Confidence: 0.75
 - Make sure nothing scrolls horizontally at a 320px viewport width. Confidence: 0.85",TRUE,TEXT,f
+learning linux for beginer,"---
+name: learning-linux-for-beginer
+description: A clear description of what this skill does and when to use it
+---
+
+# learning linux for beginer
+
+Describe what this skill does and how the agent should use it. using the repo https://github.com/TunB3ru/LINUX-WORLD.git
+
+## Instructions
+
+- Step 1: ...
+- Step 2: ...",FALSE,TEXT,TunB3ru

@@ -184295,3 +184295,28 @@ Contributed by [@f](https://github.com/f)
 
 </details>
 
+<details>
+<summary><strong>learning linux for beginer</strong></summary>
+
+## learning linux for beginer
+
+Contributed by [@TunB3ru](https://github.com/TunB3ru)
+
+```md
+---
+name: learning-linux-for-beginer
+description: A clear description of what this skill does and when to use it
+---
+
+# learning linux for beginer
+
+Describe what this skill does and how the agent should use it. using the repo https://github.com/TunB3ru/LINUX-WORLD.git
+
+## Instructions
+
+- Step 1: ...
+- Step 2: ...
+```
+
+</details>
+
