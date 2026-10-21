@@ -186752,3 +186752,16 @@ Contributed by [@f](https://github.com/f)
 
 </details>
 
+<details>
+<summary><strong>North-Facing House Plan Following Hindu Vastu Guidelines</strong></summary>
+
+## North-Facing House Plan Following Hindu Vastu Guidelines
+
+Contributed by @anonymous
+
+```md
+i have a place which contains 2.5 cents place,i dont have a particular model to constucton my house ,as per rules and guidness of hindus(mulam)design me a house plan (north phase house)${consruction}
+```
+
+</details>
+
