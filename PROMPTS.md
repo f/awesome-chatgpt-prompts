@@ -188976,3 +188976,20 @@ Contributed by [@f](https://github.com/f)
 
 </details>
 
+<details>
+<summary><strong>Company Introduction</strong></summary>
+
+## Company Introduction
+
+Contributed by @anonymous
+
+```md
+Act as video editor and create a company introduction video based on the original video and a sample video.
+I want you to keep the content, the characteristic and the order of context.
+Cut the length to 60 seconds.
+The sample video: https://youtu.be/PBrYMBacnyM?si=azTcDzob6GRkhFDd
+The original one: 
+```
+
+</details>
+

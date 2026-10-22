@@ -157157,3 +157157,8 @@ Shell Scripting taste,"# Shell scripting taste of a DevOps engineer
 - Make scripts idempotent so running them twice is safe. Confidence: 0.85
 - Add a --dry-run flag to anything that deletes or changes remote state. Confidence: 0.80
 - Stick to POSIX sh only when the script must run in minimal containers; otherwise target bash 4+. Confidence: 0.70",TRUE,TEXT,f
+Company Introduction,"Act as video editor and create a company introduction video based on the original video and a sample video.
+I want you to keep the content, the characteristic and the order of context.
+Cut the length to 60 seconds.
+The sample video: https://youtu.be/PBrYMBacnyM?si=azTcDzob6GRkhFDd
+The original one: ",FALSE,TEXT,duyennguyen5593@gmail.com
