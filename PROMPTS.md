@@ -186831,3 +186831,18 @@ i have a place which contains 2.5 cents place,i dont have a particular model to 
 
 </details>
 
+<details>
+<summary><strong>Revise a Research Proposal Based on Supervisor Feedback</strong></summary>
+
+## Revise a Research Proposal Based on Supervisor Feedback
+
+Contributed by @anonymous
+
+```md
+Generate a prompt to make changes to my research proposal following the corrections made by the supervisor
+
+
+```
+
+</details>
+
