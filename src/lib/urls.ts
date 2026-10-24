@@ -10,6 +10,14 @@ export function getPromptUrl(id: string, slug?: string | null): string {
 }
 
 /**
+ * Generates a URL path for a bot (a prompt of type BOT)
+ * Format: /bots/{id} or /bots/{id}_{slug}
+ */
+export function getBotUrl(id: string, slug?: string | null): string {
+  return slug ? `/bots/${id}_${slug}` : `/bots/${id}`;
+}
+
+/**
  * Generates edit URL for a prompt
  */
 export function getPromptEditUrl(id: string, slug?: string | null): string {

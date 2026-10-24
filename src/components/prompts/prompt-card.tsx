@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { getPromptUrl } from "@/lib/urls";
+import { getBotUrl, getPromptUrl } from "@/lib/urls";
 import { ArrowBigUp, Lock, Copy, ImageIcon, Download, Play, BadgeCheck, Volume2, Link2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { CodeView } from "@/components/ui/code-view";
@@ -254,7 +254,7 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
         <div className="flex items-start justify-between gap-2 mb-2">
           <div className="flex items-center gap-1 flex-1 min-w-0">
             {prompt.isPrivate && <Lock className="h-3 w-3 text-muted-foreground shrink-0" />}
-            <Link href={getPromptUrl(prompt.id, prompt.slug)} prefetch={false} className="font-medium text-sm hover:underline line-clamp-1">
+            <Link href={prompt.type === "BOT" ? getBotUrl(prompt.id, prompt.slug) : getPromptUrl(prompt.id, prompt.slug)} prefetch={false} className="font-medium text-sm hover:underline line-clamp-1">
               {prompt.title}
             </Link>
           </div>

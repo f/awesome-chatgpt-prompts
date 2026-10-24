@@ -17,7 +17,7 @@ export function proxy(request: NextRequest) {
     url.pathname = "/api/bots";
     return NextResponse.rewrite(url);
   }
-  const botFile = pathname.match(/^\/bots\/([a-z0-9-]+)(\.md|\.json|\/SKILL\.md)$/);
+  const botFile = pathname.match(/^\/bots\/([A-Za-z0-9_-]+)(\.md|\.json|\/SKILL\.md)$/);
   if (botFile) {
     const [, slug, suffix] = botFile;
     const url = request.nextUrl.clone();

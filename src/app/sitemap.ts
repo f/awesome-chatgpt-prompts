@@ -1,8 +1,7 @@
 import { MetadataRoute } from "next";
 import { db } from "@/lib/db";
 import { getAllChapters } from "@/lib/book/chapters";
-import { getAllBots } from "@/lib/bots";
-import { getPromptUrl } from "@/lib/urls";
+import { getBotUrl, getPromptUrl } from "@/lib/urls";
 import { getBaseUrl, toSitemapImageUrl } from "@/lib/seo";
 
 // Revalidate sitemap every hour (3600 seconds)
@@ -52,10 +51,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const chapters = getAllChapters();
   const bookPages: MetadataRoute.Sitemap = chapters.map((chapter) => ({
     url: `${baseUrl}/book/${chapter.slug}`,
-  }));
-
-  const botPages: MetadataRoute.Sitemap = getAllBots().map((bot) => ({
-    url: `${baseUrl}/bots/${bot.slug}`,
   }));
 
   // Dynamic pages - skip if database is unavailable (e.g., during build)
@@ -120,7 +115,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const promptPages: MetadataRoute.Sitemap = prompts.map((prompt) => {
       const image = prompt.type === "IMAGE" && prompt.mediaUrl ? toSitemapImageUrl(prompt.mediaUrl) : null;
       return {
-        url: `${baseUrl}${getPromptUrl(prompt.id, prompt.slug)}`,
+        url: `${baseUrl}${prompt.type === "BOT" ? getBotUrl(prompt.id, prompt.slug) : getPromptUrl(prompt.id, prompt.slug)}`,
         lastModified: prompt.updatedAt,
         ...(image && { images: [image] }),
       };
@@ -139,10 +134,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: authorUpdates.get(user.id) ?? undefined,
     }));
 
-    return [...staticPages, ...bookPages, ...botPages, ...categoryPages, ...tagPages, ...promptPages, ...profilePages];
+    return [...staticPages, ...bookPages, ...categoryPages, ...tagPages, ...promptPages, ...profilePages];
   } catch {
     // Database unavailable (build time) - return static and book pages only
     const staticPages: MetadataRoute.Sitemap = staticPaths.map((path) => ({ url: `${baseUrl}${path}` }));
-    return [...staticPages, ...bookPages, ...botPages];
+    return [...staticPages, ...bookPages];
   }
 }

@@ -9,45 +9,45 @@ datasource db {
 }
 
 model User {
-  id                        String                 @id @default(cuid())
-  email                     String                 @unique
-  username                  String                 @unique
-  name                      String?
-  password                  String?
-  avatar                    String?
-  bio                       String?                @db.VarChar(250)
-  customLinks               Json?                  // Array of {type: string, url: string, label?: string}
-  role                      UserRole               @default(USER)
-  locale                    String                 @default("en")
-  emailVerified             DateTime?
-  createdAt                 DateTime               @default(now())
-  updatedAt                 DateTime               @updatedAt
-  verified                  Boolean                @default(false)
-  githubUsername            String?
-  apiKey                    String?                @unique
-  mcpPromptsPublicByDefault Boolean                @default(false)
-  flagged                   Boolean                @default(false)
-  flaggedAt                 DateTime?
-  flaggedReason             String?
-  dailyGenerationLimit      Int                    @default(3)
-  generationCreditsRemaining Int                   @default(3)
-  generationCreditsResetAt  DateTime?
-  accounts                  Account[]
-  subscriptions  CategorySubscription[]
-  changeRequests ChangeRequest[]
-  pinnedPrompts  PinnedPrompt[]
-  reports        PromptReport[]
-  promptVersions PromptVersion[]
-  votes          PromptVote[]
-  prompts        Prompt[]               @relation("PromptAuthor")
-  sessions       Session[]
-  contributions  Prompt[]               @relation("PromptContributors")
-  comments              Comment[]              @relation("CommentAuthor")
-  commentVotes          CommentVote[]
-  notifications         Notification[]         @relation("NotificationRecipient")
-  notificationsActed    Notification[]         @relation("NotificationActor")
-  collections           Collection[]
-  userPromptExamples    UserPromptExample[]
+  id                         String                 @id @default(cuid())
+  email                      String                 @unique
+  username                   String                 @unique
+  name                       String?
+  password                   String?
+  avatar                     String?
+  bio                        String?                @db.VarChar(250)
+  customLinks                Json? // Array of {type: string, url: string, label?: string}
+  role                       UserRole               @default(USER)
+  locale                     String                 @default("en")
+  emailVerified              DateTime?
+  createdAt                  DateTime               @default(now())
+  updatedAt                  DateTime               @updatedAt
+  verified                   Boolean                @default(false)
+  githubUsername             String?
+  apiKey                     String?                @unique
+  mcpPromptsPublicByDefault  Boolean                @default(false)
+  flagged                    Boolean                @default(false)
+  flaggedAt                  DateTime?
+  flaggedReason              String?
+  dailyGenerationLimit       Int                    @default(3)
+  generationCreditsRemaining Int                    @default(3)
+  generationCreditsResetAt   DateTime?
+  accounts                   Account[]
+  subscriptions              CategorySubscription[]
+  changeRequests             ChangeRequest[]
+  pinnedPrompts              PinnedPrompt[]
+  reports                    PromptReport[]
+  promptVersions             PromptVersion[]
+  votes                      PromptVote[]
+  prompts                    Prompt[]               @relation("PromptAuthor")
+  sessions                   Session[]
+  contributions              Prompt[]               @relation("PromptContributors")
+  comments                   Comment[]              @relation("CommentAuthor")
+  commentVotes               CommentVote[]
+  notifications              Notification[]         @relation("NotificationRecipient")
+  notificationsActed         Notification[]         @relation("NotificationActor")
+  collections                Collection[]
+  userPromptExamples         UserPromptExample[]
 
   @@map("users")
 }
@@ -91,27 +91,27 @@ model VerificationToken {
 }
 
 model Prompt {
-  id                  String             @id @default(cuid())
+  id                  String              @id @default(cuid())
   title               String
   slug                String?
   description         String?
   content             String
-  type                PromptType         @default(TEXT)
-  isPrivate           Boolean            @default(false)
+  type                PromptType          @default(TEXT)
+  isPrivate           Boolean             @default(false)
   mediaUrl            String?
-  viewCount           Int                @default(0)
-  createdAt           DateTime           @default(now())
-  updatedAt           DateTime           @updatedAt
+  viewCount           Int                 @default(0)
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
   authorId            String
   categoryId          String?
   embedding           Json?
   requiredMediaCount  Int?
   requiredMediaType   RequiredMediaType?
-  requiresMediaUpload Boolean            @default(false)
+  requiresMediaUpload Boolean             @default(false)
   structuredFormat    StructuredFormat?
   featuredAt          DateTime?
-  isFeatured          Boolean            @default(false)
-  isUnlisted          Boolean            @default(false)
+  isFeatured          Boolean             @default(false)
+  isUnlisted          Boolean             @default(false)
   unlistedAt          DateTime?
   delistReason        DelistReason?
   deletedAt           DateTime?
@@ -122,20 +122,24 @@ model Prompt {
   versions            PromptVersion[]
   votes               PromptVote[]
   comments            Comment[]
-  author              User               @relation("PromptAuthor", fields: [authorId], references: [id], onDelete: Cascade)
-  category            Category?          @relation(fields: [categoryId], references: [id])
-  contributors        User[]             @relation("PromptContributors")
-  outgoingConnections PromptConnection[] @relation("ConnectionSource")
-  incomingConnections PromptConnection[] @relation("ConnectionTarget")
+  author              User                @relation("PromptAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  category            Category?           @relation(fields: [categoryId], references: [id])
+  contributors        User[]              @relation("PromptContributors")
+  outgoingConnections PromptConnection[]  @relation("ConnectionSource")
+  incomingConnections PromptConnection[]  @relation("ConnectionTarget")
   collectedBy         Collection[]
   userExamples        UserPromptExample[]
-  bestWithModels      String[]           // Model slugs this prompt works best with (max 3), e.g. ["gpt-4o", "claude-3-5-sonnet"]
-  bestWithMCP         Json?              // MCP configs array, e.g. [{command: "npx -y @mcp/server", tools: ["tool1"]}]
-  workflowLink        String?            // URL to test/demo the workflow when prompt has previous/next connections
+  bestWithModels      String[] // Model slugs this prompt works best with (max 3), e.g. ["gpt-4o", "claude-3-5-sonnet"]
+  bestWithMCP         Json? // MCP configs array, e.g. [{command: "npx -y @mcp/server", tools: ["tool1"]}]
+  workflowLink        String? // URL to test/demo the workflow when prompt has previous/next connections
+  botPlatform         BotPlatform? // BOT prompts only: agent platform the bot runs on
+  installUrl          String? // BOT prompts only: one-click install link (e.g. Grok Bot template share URL)
+  botConfig           Json? // BOT prompts only: { routines, skills, connectors }, see src/lib/bots/schema.ts
 
   @@index([authorId])
   @@index([categoryId])
   @@index([type])
+  @@index([type, botPlatform])
   @@index([isPrivate])
   @@index([isFeatured])
   @@index([isUnlisted])
@@ -349,10 +353,10 @@ model Comment {
 model CommentVote {
   userId    String
   commentId String
-  value     Int        // 1 for upvote, -1 for downvote
-  createdAt DateTime   @default(now())
-  comment   Comment    @relation(fields: [commentId], references: [id], onDelete: Cascade)
-  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  value     Int // 1 for upvote, -1 for downvote
+  createdAt DateTime @default(now())
+  comment   Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([userId, commentId])
   @@index([userId])
@@ -378,15 +382,15 @@ model Notification {
 }
 
 model PromptConnection {
-  id            String   @id @default(cuid())
-  sourceId      String
-  targetId      String
-  label         String
-  order         Int      @default(0)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  source        Prompt   @relation("ConnectionSource", fields: [sourceId], references: [id], onDelete: Cascade)
-  target        Prompt   @relation("ConnectionTarget", fields: [targetId], references: [id], onDelete: Cascade)
+  id        String   @id @default(cuid())
+  sourceId  String
+  targetId  String
+  label     String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  source    Prompt   @relation("ConnectionSource", fields: [sourceId], references: [id], onDelete: Cascade)
+  target    Prompt   @relation("ConnectionTarget", fields: [targetId], references: [id], onDelete: Cascade)
 
   @@unique([sourceId, targetId])
   @@index([sourceId])
@@ -412,6 +416,13 @@ enum PromptType {
   STRUCTURED
   SKILL
   TASTE
+  BOT
+}
+
+enum BotPlatform {
+  GROK_BOT
+  OPENCLAW
+  HERMES
 }
 
 enum StructuredFormat {
