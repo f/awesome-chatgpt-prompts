@@ -1,0 +1,40 @@
+projects:
+  - name: prompts-chat
+    environments:
+      - name: production
+        services:
+          - type: web
+            name: prompts-chat
+            # needs more than Render's 8 GB build limit, so use the image CI publishes from main
+            runtime: image
+            image:
+              url: ghcr.io/f/prompts.chat:latest
+            plan: starter
+            healthCheckPath: /api/health
+            envVars:
+              - key: DATABASE_URL
+                fromDatabase:
+                  name: prompts-chat-db
+                  property: connectionString
+              # Prisma schema reads directUrl, so it must be set even without a pooler
+              - key: DIRECT_URL
+                fromDatabase:
+                  name: prompts-chat-db
+                  property: connectionString
+              - key: AUTH_SECRET
+                generateValue: true
+              # Auth.js needs this behind Render's proxy
+              - key: AUTH_TRUST_HOST
+                value: "true"
+              # Match the defaults documented in DOCKER.md
+              - key: PCHAT_AUTH_PROVIDERS
+                value: credentials
+              - key: PCHAT_ALLOW_REGISTRATION
+                value: "true"
+              # Optional. AI search and generation stay off until this is set
+              - key: OPENAI_API_KEY
+                sync: false
+        databases:
+          - name: prompts-chat-db
+            databaseName: prompts
+            plan: basic-256mb
