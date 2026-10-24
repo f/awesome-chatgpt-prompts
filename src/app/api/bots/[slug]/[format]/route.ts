@@ -1,12 +1,12 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { botToJson, botToMarkdown, botToSkill, getBotBySlug } from "@/lib/bots";
 import { getBaseUrl } from "@/lib/seo";
 
 export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
+  _request: Request,
+  { params }: { params: Promise<{ slug: string; format: string }> }
 ) {
-  const { slug } = await params;
+  const { slug, format } = await params;
   const bot = getBotBySlug(slug);
 
   if (!bot) {
@@ -14,12 +14,15 @@ export async function GET(
   }
 
   const baseUrl = getBaseUrl();
-  const format = request.nextUrl.searchParams.get("format");
   // Raw files duplicate the bot page, so keep them out of search results
   const headers = { "X-Robots-Tag": "noindex", "Access-Control-Allow-Origin": "*" };
 
   if (format === "json") {
     return NextResponse.json(botToJson(bot, baseUrl), { headers });
+  }
+
+  if (format !== "md" && format !== "skill") {
+    return new NextResponse("Unknown format", { status: 404 });
   }
 
   const output = format === "skill" ? botToSkill(bot, baseUrl) : botToMarkdown(bot, baseUrl);

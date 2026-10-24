@@ -21,8 +21,7 @@ export function proxy(request: NextRequest) {
   if (botFile) {
     const [, slug, suffix] = botFile;
     const url = request.nextUrl.clone();
-    url.pathname = `/api/bots/${slug}`;
-    url.searchParams.set("format", suffix === ".json" ? "json" : suffix === ".md" ? "md" : "skill");
+    url.pathname = `/api/bots/${slug}/${suffix === ".json" ? "json" : suffix === ".md" ? "md" : "skill"}`;
     return NextResponse.rewrite(url);
   }
 
