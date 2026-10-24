@@ -32,6 +32,11 @@ const nextConfig: NextConfig = {
       bodySizeLimit: "2mb",
     },
   },
+  // Render metadata in <head> before the body streams for crawlers. Next.js only does
+  // this for its built-in list of HTML-limited bots, which leaves out Googlebot and AI
+  // crawlers; they would otherwise find the title, canonical and robots tags in <body>.
+  htmlLimitedBots:
+    /bot|crawler|spider|slurp|google-|-google|googleother|lighthouse|facebookexternalhit|facebookcatalog|externalagent|perplexity|whatsapp|ia_archiver|vkshare|quora link preview|skypeuripreview|yeti|tumblr|yandex|sogou|googleweblight/i,
   // Image optimization
   images: {
     remotePatterns: [
@@ -40,6 +45,15 @@ const nextConfig: NextConfig = {
         hostname: "**",
       },
     ],
+  },
+  // Raw dataset exports duplicate the prompt pages, so keep them out of search results
+  async headers() {
+    return [
+      {
+        source: "/prompts.:format(csv|json)",
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      },
+    ];
   },
   // Redirects
   async redirects() {
@@ -57,6 +71,27 @@ const nextConfig: NextConfig = {
       {
         source: "/embed-preview",
         destination: "/embed",
+        permanent: true,
+      },
+      {
+        source: "/builder",
+        destination: "/developers",
+        permanent: true,
+      },
+      {
+        source: "/how_to_write_effective_prompts",
+        destination: "/how-to-write-effective-prompts",
+        permanent: true,
+      },
+      // Linked from other sites; the footer "Docs" link points to the self-hosting guide
+      {
+        source: "/docs",
+        destination: "/docs/self-hosting",
+        permanent: true,
+      },
+      {
+        source: "/docs/guide",
+        destination: "/docs/self-hosting",
         permanent: true,
       },
       // Redirect book PDF downloads to GitHub raw to save Vercel edge bandwidth

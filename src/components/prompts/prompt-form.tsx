@@ -746,7 +746,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
 
         {/* ===== PROMPT WRITING GUIDE LINK ===== */}
         <Link
-          href="/how_to_write_effective_prompts"
+          href="/how-to-write-effective-prompts"
           target="_blank"
           className="flex items-center gap-2 p-3 rounded-lg border bg-muted/30 hover:bg-muted/50 transition-colors text-sm text-muted-foreground hover:text-foreground"
         >
