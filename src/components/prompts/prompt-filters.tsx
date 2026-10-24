@@ -267,14 +267,14 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
                 .filter((c) => c.id && !c.parentId)
                 .map((parent) => (
                   <div key={parent.id}>
-                    <SelectItem value={parent.id} className="font-medium">
+                    <SelectItem value={parent.slug} className="font-medium">
                       {parent.name}
                     </SelectItem>
                     {/* Child categories */}
                     {categories
                       .filter((c) => c.parentId === parent.id)
                       .map((child) => (
-                        <SelectItem key={child.id} value={child.id} className="pl-6 text-muted-foreground">
+                        <SelectItem key={child.id} value={child.slug} className="pl-6 text-muted-foreground">
                           ↳ {child.name}
                         </SelectItem>
                       ))}
@@ -373,7 +373,7 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
                 DeepWiki
                 <ExternalLink className="h-2.5 w-2.5 ml-auto opacity-50" />
               </Link>
-              <Link href="/how_to_write_effective_prompts" prefetch={false} className="hover:text-foreground">
+              <Link href="/how-to-write-effective-prompts" prefetch={false} className="hover:text-foreground">
                 {t("footer.howTo")}
               </Link>
               <Link href="/docs/self-hosting" prefetch={false} className="hover:text-foreground">

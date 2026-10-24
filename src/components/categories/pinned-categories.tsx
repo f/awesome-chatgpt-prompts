@@ -14,10 +14,10 @@ interface PinnedCategory {
 
 interface PinnedCategoriesProps {
   categories: PinnedCategory[];
-  currentCategoryId?: string;
+  currentCategorySlug?: string;
 }
 
-export function PinnedCategories({ categories, currentCategoryId }: PinnedCategoriesProps) {
+export function PinnedCategories({ categories, currentCategorySlug }: PinnedCategoriesProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const t = useTranslations("categories");
@@ -27,14 +27,14 @@ export function PinnedCategories({ categories, currentCategoryId }: PinnedCatego
     return null;
   }
 
-  const handleCategoryClick = (categoryId: string) => {
+  const handleCategoryClick = (categorySlug: string) => {
     setFilterPending(true);
     const params = new URLSearchParams(searchParams?.toString() ?? "");
     
-    if (currentCategoryId === categoryId) {
+    if (currentCategorySlug === categorySlug) {
       params.delete("category");
     } else {
-      params.set("category", categoryId);
+      params.set("category", categorySlug);
     }
     
     params.delete("page");
@@ -56,7 +56,7 @@ export function PinnedCategories({ categories, currentCategoryId }: PinnedCatego
         onClick={handleClearFilter}
         className={cn(
           "inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border transition-colors",
-          !currentCategoryId
+          !currentCategorySlug
             ? "bg-primary text-primary-foreground border-primary"
             : "bg-background hover:bg-accent border-border"
         )}
@@ -66,10 +66,10 @@ export function PinnedCategories({ categories, currentCategoryId }: PinnedCatego
       {categories.map((category) => (
         <button
           key={category.id}
-          onClick={() => handleCategoryClick(category.id)}
+          onClick={() => handleCategoryClick(category.slug)}
           className={cn(
             "inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border transition-colors",
-            currentCategoryId === category.id
+            currentCategorySlug === category.slug
               ? "bg-primary text-primary-foreground border-primary"
               : "bg-background hover:bg-accent border-border"
           )}
