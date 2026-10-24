@@ -1720,7 +1720,7 @@
     "title": "O Livro Interativo de Prompting",
     "donate": "Apoie o projeto",
     "subtitle": "Um Guia Interativo para Criar Prompts Claros e Eficazes",
-    "metaTitle": "O Livro Interativo de Prompting | Guia Gratuito Online de Engenharia de Prompts IA",
+    "metaTitle": "Guia de engenharia de prompts: O Livro Interativo de Prompting",
     "metaDescription": "Domine a engenharia de prompts IA com este guia interativo gratuito. Aprenda prompts do ChatGPT, raciocínio chain-of-thought, few-shot learning e técnicas avançadas. 28+ capítulos com exemplos reais.",
     "interactiveGuideBy": "Um Guia Interativo de",
     "authorIntro": "Olá, sou <author>Fatih Kadir Akın</author>, o curador do popular repositório <repoLink>Awesome ChatGPT Prompts</repoLink> no GitHub e do <siteName>prompts.chat</siteName>.",
@@ -2255,6 +2255,110 @@
       "nodeJs": "Node.js 24.x",
       "postgresql": "PostgreSQL database",
       "npm": "npm"
+    }
+  },
+  "seo": {
+    "page": "Página {page}",
+    "home": {
+      "title": "prompts.chat - Prompts grátis para ChatGPT, Claude e Gemini",
+      "description": "Biblioteca de prompts de IA gratuita e open source, antiga Awesome ChatGPT Prompts. Descubra, copie e compartilhe milhares de prompts para ChatGPT, Claude e Gemini."
+    },
+    "prompts": {
+      "title": "Biblioteca de prompts: prompts grátis para ChatGPT e IA",
+      "description": "Veja os prompts gratuitos mais recentes da comunidade prompts.chat. Filtre por categoria, tag ou tipo e cole no ChatGPT, Claude, Gemini e em outras IAs.",
+      "searchTitle": "Resultados da busca por “{query}”"
+    },
+    "discover": {
+      "title": "Descubra os melhores prompts de IA: destaques e tendências",
+      "description": "Prompts de IA em destaque, em alta e mais votados pela comunidade prompts.chat, com novos prompts todos os dias para ChatGPT, Claude, Gemini, imagem e vídeo.",
+      "heading": "Descubra Prompts de IA"
+    },
+    "categories": {
+      "title": "Categorias de prompts de IA: código, escrita, imagens e mais",
+      "description": "Prompts de IA grátis por categoria: programação, escrita, marketing, negócios, educação, geração de imagens e vídeos. Encontre o prompt certo para cada tarefa.",
+      "heading": "Categorias de Prompts"
+    },
+    "category": {
+      "title": "Prompts de {name} para ChatGPT, Claude e Gemini",
+      "description": "{description} Veja {count} prompts de {name} grátis para ChatGPT, Claude, Gemini e outras ferramentas de IA.",
+      "fallbackDescription": "Veja {count} prompts de {name} grátis para ChatGPT, Claude, Gemini e outras ferramentas de IA. Copie, personalize e compartilhe prompts da comunidade prompts.chat.",
+      "heading": "Prompts de {name}"
+    },
+    "tags": {
+      "title": "Prompts de IA por tag",
+      "description": "Explore prompts de IA grátis por tag, de Python e SQL a Midjourney, marketing e carreira. Prompts para ChatGPT, Claude, Gemini e imagens sobre qualquer assunto."
+    },
+    "tag": {
+      "title": "Prompts de {name}",
+      "description": "Veja {count} prompts de IA grátis com a tag {name}. Use no ChatGPT, Claude, Gemini e em outras ferramentas de IA, ou compartilhe os seus no prompts.chat.",
+      "heading": "Prompts de {name}"
+    },
+    "skills": {
+      "title": "Habilidades de agente: SKILL.md para Claude Code e IA",
+      "description": "Habilidades de agente grátis e open source (arquivos SKILL.md) para Claude Code, Codex, Cursor e outros agentes de IA, compartilhadas pela comunidade prompts.chat.",
+      "heading": "Habilidades de Agente"
+    },
+    "workflows": {
+      "title": "Fluxos de trabalho e cadeias de prompts de IA",
+      "description": "Fluxos de IA em várias etapas e cadeias de prompts em que cada etapa alimenta a seguinte. Reutilize sequências testadas para ChatGPT, Claude, imagem e vídeo.",
+      "heading": "Fluxos de Trabalho de Prompts"
+    },
+    "taste": {
+      "title": "Perfis de estilo de código (taste.md) para agentes de IA",
+      "description": "Veja perfis taste.md que ensinam a agentes de programação com IA, como Claude Code, Cursor e Codex, suas convenções, frameworks e estilo de código preferidos.",
+      "heading": "Perfis de Estilo de Código"
+    },
+    "promptmasters": {
+      "title": "Promptmasters: os melhores criadores de prompts de IA",
+      "description": "Conheça os melhores engenheiros de prompt do prompts.chat, classificados pelos votos em seus prompts de IA. Veja os rankings geral, mensal e semanal."
+    },
+    "developers": {
+      "title": "Ferramentas dev: melhorador de prompts, tokenizer e embeds",
+      "description": "Ferramentas grátis do prompts.chat para desenvolvedores: melhore prompts com IA, conte tokens, crie widgets incorporáveis e monte prompts em um editor estilo IDE."
+    },
+    "howToWrite": {
+      "title": "Como escrever prompts de IA eficazes: dicas e exemplos",
+      "description": "Aprenda a escrever prompts de IA eficazes com dicas práticas, exemplos e boas práticas para prompts de persona, variáveis, saída estruturada e muito mais."
+    },
+    "kids": {
+      "title": "Prompting para crianças: aprenda a conversar com a IA",
+      "description": "Um jogo gratuito para as crianças aprenderem a conversar com a IA. Viaje com o robô Promi pela Terra dos Prompts e aprenda a escrever prompts incríveis."
+    },
+    "support": {
+      "title": "Suporte e perguntas frequentes"
+    },
+    "apiDocs": {
+      "title": "Documentação da API de prompts e do servidor MCP",
+      "description": "Busque e obtenha prompts de IA via código com a API gratuita e o servidor MCP do prompts.chat. Endpoints, parâmetros e exemplos prontos para copiar."
+    },
+    "selfHosting": {
+      "title": "Guia de auto-hospedagem",
+      "description": "Implante sua própria instância privada do prompts.chat com marca, temas e autenticação personalizados. Gratuito, open source e pronto para equipes."
+    },
+    "privacy": {
+      "title": "Política de Privacidade",
+      "description": "Como o prompts.chat coleta, usa e protege seus dados."
+    },
+    "terms": {
+      "title": "Termos de Serviço",
+      "description": "Os termos que se aplicam ao uso do prompts.chat."
+    },
+    "profile": {
+      "title": "{name} (@{username}) - Prompts de IA",
+      "description": "Veja {count} prompts de IA compartilhados por {name} (@{username}) no prompts.chat, a biblioteca de prompts gratuita e open source."
+    },
+    "bookChapter": {
+      "title": "{chapter} - Guia de engenharia de prompts"
+    },
+    "promptTypes": {
+      "TEXT": "Prompt para ChatGPT",
+      "STRUCTURED": "Prompt de IA estruturado",
+      "IMAGE": "Prompt de imagem com IA",
+      "VIDEO": "Prompt de vídeo com IA",
+      "AUDIO": "Prompt de áudio com IA",
+      "SKILL": "Habilidade de agente",
+      "TASTE": "Perfil de estilo de código",
+      "model": "Prompt para {model}"
     }
   }
 }

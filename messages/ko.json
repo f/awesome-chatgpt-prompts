@@ -1720,7 +1720,7 @@
     "title": "인터랙티브 프롬프팅 북",
     "donate": "프로젝트 후원하기",
     "subtitle": "명확하고 효과적인 프롬프트를 만들기 위한 인터랙티브 가이드",
-    "metaTitle": "인터랙티브 프롬프팅 북 | AI 프롬프트 엔지니어링 무료 온라인 가이드",
+    "metaTitle": "프롬프트 엔지니어링 가이드: 인터랙티브 프롬프팅 북",
     "metaDescription": "이 무료 인터랙티브 가이드로 AI 프롬프트 엔지니어링을 마스터하세요. ChatGPT 프롬프트, 사고의 사슬 추론, Few-Shot 학습 및 고급 기술을 배우세요. 실제 예제가 포함된 28개 이상의 챕터.",
     "interactiveGuideBy": "인터랙티브 가이드 by",
     "authorIntro": "안녕하세요, 저는 <author>Fatih Kadir Akın</author>입니다. GitHub의 인기 <repoLink>Awesome ChatGPT Prompts</repoLink> 저장소와 <siteName>prompts.chat</siteName>의 큐레이터입니다.",
@@ -2241,6 +2241,110 @@
       "nodeJs": "Node.js 24.x",
       "postgresql": "PostgreSQL database",
       "npm": "npm"
+    }
+  },
+  "seo": {
+    "page": "{page}페이지",
+    "home": {
+      "title": "prompts.chat - ChatGPT, Claude, Gemini용 무료 AI 프롬프트",
+      "description": "무료 오픈 소스 AI 프롬프트 라이브러리(구 Awesome ChatGPT Prompts). ChatGPT, Claude, Gemini 등에서 바로 쓸 수 있는 수천 개의 프롬프트를 찾아 복사하고 공유하세요."
+    },
+    "prompts": {
+      "title": "프롬프트 라이브러리: 무료 ChatGPT·AI 프롬프트 모음",
+      "description": "prompts.chat 커뮤니티의 최신 무료 프롬프트를 둘러보세요. 카테고리, 태그, 유형별로 필터링하고 ChatGPT, Claude, Gemini 등에 바로 복사해 붙여넣을 수 있습니다.",
+      "searchTitle": "‘{query}’ 검색 결과"
+    },
+    "discover": {
+      "title": "최고의 AI 프롬프트 찾기: 추천·인기 프롬프트",
+      "description": "prompts.chat 커뮤니티가 엄선한 추천·인기·최다 득표 AI 프롬프트를 만나보세요. ChatGPT, Claude, Gemini, 이미지·영상 프롬프트가 매일 새로 업데이트됩니다.",
+      "heading": "AI 프롬프트 둘러보기"
+    },
+    "categories": {
+      "title": "AI 프롬프트 카테고리: 코딩, 글쓰기, 이미지 등",
+      "description": "코딩, 글쓰기, 마케팅, 비즈니스, 교육, 이미지·영상 생성 등 카테고리별로 무료 AI 프롬프트를 살펴보세요. 어떤 작업이든 딱 맞는 프롬프트를 찾을 수 있습니다.",
+      "heading": "프롬프트 카테고리"
+    },
+    "category": {
+      "title": "ChatGPT, Claude, Gemini용 {name} 프롬프트",
+      "description": "{description} ChatGPT, Claude, Gemini 등 AI 도구에서 쓸 수 있는 무료 {name} 프롬프트 {count}개를 둘러보세요.",
+      "fallbackDescription": "ChatGPT, Claude, Gemini 등 AI 도구에서 쓸 수 있는 무료 {name} 프롬프트 {count}개를 둘러보세요. prompts.chat 커뮤니티의 프롬프트를 복사하고 수정해 공유해 보세요.",
+      "heading": "{name} 프롬프트"
+    },
+    "tags": {
+      "title": "태그별 AI 프롬프트 둘러보기",
+      "description": "Python, SQL부터 Midjourney, 마케팅, 커리어까지 태그별로 무료 AI 프롬프트를 찾아보세요. 어떤 주제든 ChatGPT, Claude, Gemini, 이미지 프롬프트를 찾을 수 있습니다."
+    },
+    "tag": {
+      "title": "{name} 프롬프트",
+      "description": "{name} 태그가 달린 무료 AI 프롬프트 {count}개를 둘러보세요. ChatGPT, Claude, Gemini 등 AI 도구에서 사용하거나 나만의 프롬프트를 prompts.chat에 공유해 보세요.",
+      "heading": "{name} 프롬프트"
+    },
+    "skills": {
+      "title": "에이전트 스킬 라이브러리: Claude Code용 SKILL.md",
+      "description": "Claude Code, Codex, Cursor 등 AI 에이전트를 위한 무료 오픈 소스 에이전트 스킬(SKILL.md 파일)을 둘러보세요. prompts.chat 커뮤니티가 함께 공유하고 개선합니다.",
+      "heading": "에이전트 스킬"
+    },
+    "workflows": {
+      "title": "AI 프롬프트 워크플로우와 프롬프트 체인",
+      "description": "각 단계의 결과가 다음 단계로 이어지는 다단계 AI 프롬프트 워크플로우와 프롬프트 체인을 살펴보세요. ChatGPT, Claude, 이미지·영상 생성에 검증된 흐름을 재사용할 수 있습니다.",
+      "heading": "프롬프트 워크플로우"
+    },
+    "taste": {
+      "title": "AI 코딩 에이전트를 위한 코딩 취향 프로필(taste.md)",
+      "description": "Claude Code, Cursor, Codex 같은 AI 코딩 에이전트에게 선호하는 컨벤션, 프레임워크, 코딩 스타일을 알려주는 taste.md 프로필을 둘러보세요.",
+      "heading": "코딩 취향 프로필"
+    },
+    "promptmasters": {
+      "title": "프롬프트마스터: 최고의 AI 프롬프트 제작자",
+      "description": "AI 프롬프트가 받은 추천 수로 순위를 매긴 prompts.chat 최고의 프롬프트 엔지니어를 만나보세요. 전체, 월간, 주간 리더보드를 확인할 수 있습니다."
+    },
+    "developers": {
+      "title": "개발자 도구: 프롬프트 개선기, 토크나이저, 임베드",
+      "description": "prompts.chat의 무료 개발자 도구로 AI로 프롬프트를 개선하고, 토큰 수를 세고, 임베드용 프롬프트 위젯을 디자인하고, IDE 스타일 편집기에서 프롬프트를 만들어 보세요."
+    },
+    "howToWrite": {
+      "title": "효과적인 AI 프롬프트 작성법: 팁과 예시",
+      "description": "역할 프롬프트, 변수, 구조화된 출력 등에 대한 실용적인 팁, 예시, 모범 사례로 효과적인 AI 프롬프트 작성법을 배워보세요."
+    },
+    "kids": {
+      "title": "어린이를 위한 프롬프트: AI와 대화하는 법 배우기",
+      "description": "아이들이 게임처럼 즐기며 AI와 대화하는 법을 배우는 무료 학습 공간입니다. 로봇 Promi와 함께 프롬프트 랜드를 모험하며 멋진 프롬프트 쓰는 법을 배워요."
+    },
+    "support": {
+      "title": "지원 및 자주 묻는 질문"
+    },
+    "apiDocs": {
+      "title": "프롬프트 API 및 MCP 서버 문서",
+      "description": "무료 prompts.chat API와 MCP 서버로 AI 프롬프트를 프로그래밍 방식으로 검색하고 가져오세요. 엔드포인트, 파라미터, 바로 복사해 쓰는 예제를 제공합니다."
+    },
+    "selfHosting": {
+      "title": "셀프 호스팅 가이드",
+      "description": "브랜딩, 테마, 인증을 원하는 대로 설정해 나만의 비공개 prompts.chat 인스턴스를 배포하세요. 무료 오픈 소스이며 팀에서 바로 쓸 수 있습니다."
+    },
+    "privacy": {
+      "title": "개인정보 처리방침",
+      "description": "prompts.chat이 사용자의 데이터를 수집, 이용, 보호하는 방법을 안내합니다."
+    },
+    "terms": {
+      "title": "서비스 이용약관",
+      "description": "prompts.chat 이용 시 적용되는 약관입니다."
+    },
+    "profile": {
+      "title": "{name} (@{username}) - AI 프롬프트",
+      "description": "{name} (@{username}) 님이 무료 오픈 소스 프롬프트 라이브러리 prompts.chat에 공유한 AI 프롬프트 {count}개를 둘러보세요."
+    },
+    "bookChapter": {
+      "title": "{chapter} - 프롬프트 엔지니어링 가이드"
+    },
+    "promptTypes": {
+      "TEXT": "ChatGPT 프롬프트",
+      "STRUCTURED": "구조화된 AI 프롬프트",
+      "IMAGE": "AI 이미지 프롬프트",
+      "VIDEO": "AI 영상 프롬프트",
+      "AUDIO": "AI 오디오 프롬프트",
+      "SKILL": "에이전트 스킬",
+      "TASTE": "코딩 취향 프로필",
+      "model": "{model} 프롬프트"
     }
   }
 }

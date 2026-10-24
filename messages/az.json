@@ -1720,7 +1720,7 @@
     "title": "İnteraktiv Prompting Kitabı",
     "donate": "Layihəni dəstəkləyin",
     "subtitle": "Aydın və Effektiv Promptlar Yaratmaq üçün İnteraktiv Bələdçi",
-    "metaTitle": "İnteraktiv Prompting Kitabı | AI Prompt Mühəndisliyi üçün Pulsuz Onlayn Bələdçi",
+    "metaTitle": "Prompt Mühəndisliyi Bələdçisi: İnteraktiv Prompting Kitabı",
     "metaDescription": "Bu pulsuz, interaktiv bələdçi ilə AI prompt mühəndisliyini mənimsəyin. ChatGPT promptları, düşüncə zənciri, az nümunə ilə öyrənmə və qabaqcıl texnikaları öyrənin. Real nümunələrlə 28+ fəsil.",
     "interactiveGuideBy": "İnteraktiv Bələdçi",
     "authorIntro": "Salam, mən <author>Fatih Kadir Akın</author>-am, GitHub-da populyar <repoLink>Awesome ChatGPT Prompts</repoLink> deposunun və <siteName>prompts.chat</siteName> saytının yaradıcısıyam.",
@@ -2253,6 +2253,110 @@
       "nodeJs": "Node.js 24.x",
       "postgresql": "PostgreSQL database",
       "npm": "npm"
+    }
+  },
+  "seo": {
+    "page": "Səhifə {page}",
+    "home": {
+      "title": "prompts.chat - ChatGPT, Claude və Gemini üçün Pulsuz Promptlar",
+      "description": "Əvvəlki adı Awesome ChatGPT Prompts olan pulsuz, açıq mənbəli AI prompt kitabxanası. ChatGPT, Claude və Gemini üçün minlərlə promptu kəşf edin və paylaşın."
+    },
+    "prompts": {
+      "title": "Prompt Kitabxanası: Pulsuz ChatGPT və AI Promptları",
+      "description": "prompts.chat icmasının ən yeni pulsuz promptlarına baxın. Kateqoriya, etiket və ya növə görə süzün, ChatGPT, Claude, Gemini kimi alətlərə kopyalayıb yapışdırın.",
+      "searchTitle": "“{query}” üçün axtarış nəticələri"
+    },
+    "discover": {
+      "title": "Ən Yaxşı AI Promptlarını Kəşf Edin: Seçilmiş və Trend",
+      "description": "prompts.chat icmasının seçdiyi seçilmiş, trend və ən çox bəyənilən AI promptları. Hər gün yeni ChatGPT, Claude, Gemini, şəkil və video promptları əlavə olunur.",
+      "heading": "AI Promptlarını Kəşf Edin"
+    },
+    "categories": {
+      "title": "AI Prompt Kateqoriyaları: Kodlaşdırma, Yazı, Şəkil və Daha Çox",
+      "description": "Pulsuz AI promptlarını kateqoriyaya görə kəşf edin: kodlaşdırma, yazı, marketinq, biznes, təhsil, şəkil və video yaratma. Hər tapşırıq üçün doğru promptu tapın.",
+      "heading": "Prompt Kateqoriyaları"
+    },
+    "category": {
+      "title": "ChatGPT, Claude və Gemini üçün {name} Promptları",
+      "description": "{description} ChatGPT, Claude, Gemini və digər AI alətləri üçün {count} pulsuz {name} promptuna baxın.",
+      "fallbackDescription": "ChatGPT, Claude, Gemini və digər AI alətləri üçün {count} pulsuz {name} promptuna baxın. prompts.chat icmasının promptlarını kopyalayın, uyğunlaşdırın və paylaşın.",
+      "heading": "{name} Promptları"
+    },
+    "tags": {
+      "title": "Etiketlərə Görə AI Promptları",
+      "description": "Python və SQL-dən Midjourney və marketinqə qədər pulsuz AI promptlarını etiketlərə görə kəşf edin. Hər mövzu üçün ChatGPT, Claude, Gemini və şəkil promptları tapın."
+    },
+    "tag": {
+      "title": "{name} Promptları",
+      "description": "{name} etiketli {count} pulsuz AI promptuna baxın. ChatGPT, Claude, Gemini və digər alətlərlə istifadə edin və ya öz promptlarınızı prompts.chat-da paylaşın.",
+      "heading": "{name} Promptları"
+    },
+    "skills": {
+      "title": "Agent Bacarıqları: Claude Code üçün SKILL.md Kitabxanası",
+      "description": "Claude Code, Codex, Cursor və digər AI agentləri üçün pulsuz, açıq mənbəli agent bacarıqları (SKILL.md faylları); prompts.chat icması tərəfindən paylaşılır.",
+      "heading": "Agent Bacarıqları"
+    },
+    "workflows": {
+      "title": "AI Prompt İş Axınları və Prompt Zəncirləri",
+      "description": "Hər addımın növbətisini qidalandırdığı çoxaddımlı AI iş axınları və prompt zəncirləri. ChatGPT, Claude, şəkil və video üçün sınanmış ardıcıllıqlardan yararlanın.",
+      "heading": "Prompt İş Axınları"
+    },
+    "taste": {
+      "title": "AI Agentləri üçün Kod Üslubu Profilləri (taste.md)",
+      "description": "Claude Code, Cursor və Codex kimi AI kodlaşdırma agentlərinə üstünlük verdiyiniz qaydaları, freymvorkları və kod yazma üslubunuzu öyrədən taste.md profillərinə baxın.",
+      "heading": "Kod Üslubu Profilləri"
+    },
+    "promptmasters": {
+      "title": "Promptmasterlər: Ən Yaxşı AI Prompt Müəllifləri",
+      "description": "AI promptlarının aldığı bəyənmələrə görə sıralanan prompts.chat-ın ən yaxşı prompt mühəndisləri ilə tanış olun. Bütün zamanların, aylıq və həftəlik reytinqlərə baxın."
+    },
+    "developers": {
+      "title": "Tərtibatçı Alətləri: Prompt Təkmilləşdirici, Tokenizer, Embed",
+      "description": "prompts.chat-ın pulsuz tərtibatçı alətləri: promptları AI ilə təkmilləşdirin, token sayın, yerləşdirilə bilən vidjetlər yaradın və IDE tipli redaktorda prompt yazın."
+    },
+    "howToWrite": {
+      "title": "Effektiv AI Promptları Necə Yazılır: Məsləhətlər və Nümunələr",
+      "description": "Rol promptları, dəyişənlər, strukturlaşdırılmış çıxış və s. üçün praktik məsləhətlər, nümunələr və ən yaxşı təcrübələrlə effektiv AI promptları yazmağı öyrənin."
+    },
+    "kids": {
+      "title": "Uşaqlar üçün Prompt Yazma: Süni İntellektlə Danışmağı Öyrən",
+      "description": "Uşaqların süni intellektlə danışmağı oyun oynayaraq öyrəndiyi pulsuz bir yol. Robot Promi ilə Prompt Diyarında macəraya çıx və əla promptlar yazmağı öyrən."
+    },
+    "support": {
+      "title": "Dəstək və Tez-tez Verilən Suallar"
+    },
+    "apiDocs": {
+      "title": "Prompts API və MCP Server Sənədləri",
+      "description": "Pulsuz prompts.chat API-si və MCP serveri ilə AI promptlarını proqram vasitəsilə axtarın və əldə edin. Endpoint-lər, parametrlər və kopyalamağa hazır nümunələr."
+    },
+    "selfHosting": {
+      "title": "Öz Serverinizdə Quraşdırma Bələdçisi",
+      "description": "Fərdi brendinq, mövzular və autentifikasiya ilə öz şəxsi prompts.chat nüsxənizi qurun. Pulsuz, açıq mənbəli və komandalar üçün hazırdır."
+    },
+    "privacy": {
+      "title": "Məxfilik Siyasəti",
+      "description": "prompts.chat-ın məlumatlarınızı necə topladığı, istifadə etdiyi və qoruduğu barədə."
+    },
+    "terms": {
+      "title": "İstifadə Şərtləri",
+      "description": "prompts.chat-dan istifadə edərkən tətbiq olunan şərtlər."
+    },
+    "profile": {
+      "title": "{name} (@{username}) - AI Promptları",
+      "description": "{name} (@{username}) tərəfindən pulsuz və açıq mənbəli prompt kitabxanası prompts.chat-da paylaşılan {count} AI promptuna baxın."
+    },
+    "bookChapter": {
+      "title": "{chapter} - Prompt Mühəndisliyi Bələdçisi"
+    },
+    "promptTypes": {
+      "TEXT": "ChatGPT Promptu",
+      "STRUCTURED": "Strukturlaşdırılmış AI Promptu",
+      "IMAGE": "AI Şəkil Promptu",
+      "VIDEO": "AI Video Promptu",
+      "AUDIO": "AI Audio Promptu",
+      "SKILL": "Agent Bacarığı",
+      "TASTE": "Kod Üslubu Profili",
+      "model": "{model} Promptu"
     }
   }
 }

@@ -1720,7 +1720,7 @@
     "title": "互动提示词工程之书",
     "donate": "支持项目",
     "subtitle": "创建清晰有效提示词的互动指南",
-    "metaTitle": "互动提示词工程之书 | AI提示词工程免费在线指南",
+    "metaTitle": "提示词工程指南：互动提示词工程之书",
     "metaDescription": "通过这本免费互动指南掌握AI提示词工程。学习ChatGPT提示词、思维链推理、少样本学习和高级技术。28+章节配有真实示例。",
     "interactiveGuideBy": "互动指南 by",
     "authorIntro": "你好，我是<author>Fatih Kadir Akın</author>，GitHub上热门<repoLink>Awesome ChatGPT Prompts</repoLink>仓库和<siteName>prompts.chat</siteName>的策展人。",
@@ -2241,6 +2241,110 @@
       "nodeJs": "Node.js 24.x",
       "postgresql": "PostgreSQL database",
       "npm": "npm"
+    }
+  },
+  "seo": {
+    "page": "第{page}页",
+    "home": {
+      "title": "prompts.chat - 免费AI提示词库：ChatGPT、Claude、Gemini",
+      "description": "免费开源的AI提示词库，前身为Awesome ChatGPT Prompts。发现、复制并分享数千条适用于ChatGPT、Claude、Gemini等AI工具的提示词，覆盖写作、编程、绘图等各类场景。"
+    },
+    "prompts": {
+      "title": "提示词库：免费ChatGPT与AI提示词大全",
+      "description": "浏览prompts.chat社区最新发布的免费提示词。可按分类、标签或类型筛选，一键复制到ChatGPT、Claude、Gemini等AI工具中直接使用。",
+      "searchTitle": "“{query}”的搜索结果"
+    },
+    "discover": {
+      "title": "发现优质AI提示词：精选与热门",
+      "description": "汇集prompts.chat社区精选、热门及高赞的AI提示词，每日更新，涵盖ChatGPT、Claude、Gemini以及图像和视频生成等方向的最新提示词。",
+      "heading": "发现AI提示词"
+    },
+    "categories": {
+      "title": "AI提示词分类：编程、写作、图像等",
+      "description": "按分类浏览免费AI提示词：编程、写作、营销、商业、教育、图像与视频生成等，轻松为每项任务找到合适的提示词，复制即可使用。",
+      "heading": "提示词分类"
+    },
+    "category": {
+      "title": "{name}提示词：适用于ChatGPT、Claude和Gemini",
+      "description": "{description} 浏览{count}条免费{name}提示词，适用于ChatGPT、Claude、Gemini等AI工具。",
+      "fallbackDescription": "浏览{count}条免费{name}提示词，适用于ChatGPT、Claude、Gemini等AI工具。复制、修改并分享来自prompts.chat社区的提示词。",
+      "heading": "{name}提示词"
+    },
+    "tags": {
+      "title": "按标签浏览AI提示词",
+      "description": "按标签浏览免费AI提示词，涵盖Python、SQL、Midjourney、营销、职场等主题，轻松找到适用于ChatGPT、Claude、Gemini和图像生成的提示词。"
+    },
+    "tag": {
+      "title": "{name}提示词",
+      "description": "浏览{count}条标签为“{name}”的免费AI提示词，可用于ChatGPT、Claude、Gemini等AI工具，也欢迎在prompts.chat分享你的提示词。",
+      "heading": "{name}提示词"
+    },
+    "skills": {
+      "title": "智能体技能库：Claude Code等AI智能体的SKILL.md",
+      "description": "浏览免费开源的智能体技能（SKILL.md文件），适用于Claude Code、Codex、Cursor等AI智能体，由prompts.chat社区共享和持续完善。",
+      "heading": "智能体技能"
+    },
+    "workflows": {
+      "title": "AI提示词工作流与提示词链",
+      "description": "探索多步骤AI提示词工作流和提示词链，每一步的输出都会作为下一步的输入。复用经过验证的流程，用于ChatGPT、Claude以及图像和视频生成。",
+      "heading": "提示词工作流"
+    },
+    "taste": {
+      "title": "编码风格档案（taste.md）：适用于AI编程智能体",
+      "description": "浏览taste.md档案，让Claude Code、Cursor、Codex等AI编程智能体掌握你偏好的编码规范、常用框架和代码风格，写出更符合你习惯的代码。",
+      "heading": "编码风格档案"
+    },
+    "promptmasters": {
+      "title": "Promptmasters：顶尖AI提示词创作者",
+      "description": "认识prompts.chat上的顶尖提示词工程师，按其AI提示词获得的点赞数排名。查看历史总榜、月榜和周榜，发现最受欢迎的提示词创作者。"
+    },
+    "developers": {
+      "title": "开发者工具：提示词优化、Token计数与嵌入组件",
+      "description": "prompts.chat免费开发者工具：用AI优化提示词、统计Token数量、设计可嵌入的提示词组件，并在IDE风格的编辑器中构建提示词。"
+    },
+    "howToWrite": {
+      "title": "如何写出高效的AI提示词：技巧与示例",
+      "description": "通过实用技巧、示例和最佳实践，系统学习如何写出高效的AI提示词，内容涵盖角色提示词、变量、结构化输出等常用技巧。"
+    },
+    "kids": {
+      "title": "儿童提示词课堂：学会与AI对话",
+      "description": "一款免费的游戏化课程，让孩子在玩乐中学会与AI对话。跟着机器人Promi一起闯荡提示词王国，一步步学会写出精彩的提示词。"
+    },
+    "support": {
+      "title": "支持与常见问题"
+    },
+    "apiDocs": {
+      "title": "提示词API与MCP服务器文档",
+      "description": "通过prompts.chat免费API和MCP服务器，以编程方式搜索和获取AI提示词。文档包含接口端点、参数说明以及可直接复制使用的示例代码。"
+    },
+    "selfHosting": {
+      "title": "自托管指南",
+      "description": "部署属于你自己的私有prompts.chat实例，支持自定义品牌、主题和身份验证。完全免费开源，开箱即用，适合团队内部部署与使用。"
+    },
+    "privacy": {
+      "title": "隐私政策",
+      "description": "prompts.chat如何收集、使用和保护你的数据。"
+    },
+    "terms": {
+      "title": "服务条款",
+      "description": "使用prompts.chat时适用的条款。"
+    },
+    "profile": {
+      "title": "{name} (@{username}) - AI提示词",
+      "description": "浏览{name} (@{username}) 在prompts.chat分享的{count}条AI提示词。prompts.chat是免费开源的提示词库。"
+    },
+    "bookChapter": {
+      "title": "{chapter} - 提示词工程指南"
+    },
+    "promptTypes": {
+      "TEXT": "ChatGPT提示词",
+      "STRUCTURED": "结构化AI提示词",
+      "IMAGE": "AI绘图提示词",
+      "VIDEO": "AI视频提示词",
+      "AUDIO": "AI音频提示词",
+      "SKILL": "智能体技能",
+      "TASTE": "编码风格档案",
+      "model": "{model}提示词"
     }
   }
 }

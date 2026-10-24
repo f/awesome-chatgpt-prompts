@@ -1720,7 +1720,7 @@
     "title": "Το Διαδραστικό Βιβλίο Prompting",
     "donate": "Υποστηρίξτε το έργο",
     "subtitle": "Ένας Διαδραστικός Οδηγός για τη Δημιουργία Σαφών και Αποτελεσματικών Prompts",
-    "metaTitle": "Το Διαδραστικό Βιβλίο Prompting | Δωρεάν Online Οδηγός AI Prompt Engineering",
+    "metaTitle": "Οδηγός Prompt Engineering: Το Διαδραστικό Βιβλίο Prompting",
     "metaDescription": "Κατακτήστε το AI prompt engineering με αυτόν τον δωρεάν διαδραστικό οδηγό. Μάθετε ChatGPT prompts, αλυσίδα σκέψης, few-shot μάθηση και προηγμένες τεχνικές. 28+ κεφάλαια με πραγματικά παραδείγματα.",
     "interactiveGuideBy": "Ένας Διαδραστικός Οδηγός από",
     "authorIntro": "Γεια, είμαι ο <author>Fatih Kadir Akın</author>, επιμελητής του δημοφιλούς αποθετηρίου <repoLink>Awesome ChatGPT Prompts</repoLink> στο GitHub και του <siteName>prompts.chat</siteName>.",
@@ -2244,6 +2244,110 @@
       "nodeJs": "Node.js 24.x",
       "postgresql": "PostgreSQL database",
       "npm": "npm"
+    }
+  },
+  "seo": {
+    "page": "Σελίδα {page}",
+    "home": {
+      "title": "prompts.chat - Δωρεάν AI prompts για ChatGPT, Claude, Gemini",
+      "description": "Δωρεάν βιβλιοθήκη AI prompts ανοιχτού κώδικα, πρώην Awesome ChatGPT Prompts. Ανακαλύψτε, αντιγράψτε και μοιραστείτε χιλιάδες prompts για ChatGPT, Claude και Gemini."
+    },
+    "prompts": {
+      "title": "Βιβλιοθήκη prompts: Δωρεάν prompts για ChatGPT και AI",
+      "description": "Δείτε τα νεότερα δωρεάν prompts της κοινότητας του prompts.chat. Φιλτράρετε ανά κατηγορία, ετικέτα ή τύπο και επικολλήστε τα σε ChatGPT, Claude, Gemini κ.ά.",
+      "searchTitle": "Αποτελέσματα αναζήτησης για «{query}»"
+    },
+    "discover": {
+      "title": "Τα καλύτερα AI prompts: Προτεινόμενα και δημοφιλή",
+      "description": "Προτεινόμενα, δημοφιλή και πιο ψηφισμένα AI prompts από την κοινότητα του prompts.chat, με νέα prompts κάθε μέρα για ChatGPT, Claude, Gemini, εικόνα και βίντεο.",
+      "heading": "Ανακαλύψτε AI Prompts"
+    },
+    "categories": {
+      "title": "Κατηγορίες AI prompts: Κώδικας, γραφή, εικόνες και άλλα",
+      "description": "Εξερευνήστε δωρεάν AI prompts ανά κατηγορία: προγραμματισμός, γραφή, μάρκετινγκ, επιχειρήσεις, εκπαίδευση, δημιουργία εικόνων και βίντεο. Βρείτε το σωστό prompt.",
+      "heading": "Κατηγορίες Prompts"
+    },
+    "category": {
+      "title": "Prompts για {name} σε ChatGPT, Claude και Gemini",
+      "description": "{description} Δείτε {count} δωρεάν prompts για {name}, έτοιμα για ChatGPT, Claude, Gemini και άλλα εργαλεία AI.",
+      "fallbackDescription": "Δείτε {count} δωρεάν prompts για {name}, έτοιμα για ChatGPT, Claude, Gemini και άλλα εργαλεία AI. Αντιγράψτε, προσαρμόστε και μοιραστείτε τα στο prompts.chat.",
+      "heading": "Prompts για {name}"
+    },
+    "tags": {
+      "title": "AI prompts ανά ετικέτα",
+      "description": "Δωρεάν AI prompts ανά ετικέτα, από Python και SQL έως Midjourney, μάρκετινγκ και καριέρα. Βρείτε prompts για ChatGPT, Claude, Gemini και εικόνες για κάθε θέμα."
+    },
+    "tag": {
+      "title": "Prompts για {name}",
+      "description": "Δείτε {count} δωρεάν AI prompts με την ετικέτα {name}. Χρησιμοποιήστε τα με ChatGPT, Claude, Gemini και άλλα εργαλεία AI ή μοιραστείτε τα δικά σας στο prompts.chat.",
+      "heading": "Prompts για {name}"
+    },
+    "skills": {
+      "title": "Δεξιότητες πράκτορα: SKILL.md για Claude Code και AI",
+      "description": "Δωρεάν δεξιότητες πράκτορα ανοιχτού κώδικα (αρχεία SKILL.md) για Claude Code, Codex, Cursor και άλλους AI πράκτορες, από την κοινότητα του prompts.chat.",
+      "heading": "Δεξιότητες Πράκτορα"
+    },
+    "workflows": {
+      "title": "Ροές εργασίας AI και αλυσίδες prompts",
+      "description": "Ροές εργασίας AI πολλών βημάτων και αλυσίδες prompts, όπου κάθε βήμα τροφοδοτεί το επόμενο. Αξιοποιήστε δοκιμασμένες σειρές για ChatGPT, Claude, εικόνα και βίντεο.",
+      "heading": "Ροές Εργασίας Prompts"
+    },
+    "taste": {
+      "title": "Προφίλ στυλ κώδικα (taste.md) για AI πράκτορες κώδικα",
+      "description": "Δείτε προφίλ taste.md που μαθαίνουν σε AI πράκτορες κώδικα, όπως Claude Code, Cursor και Codex, τις συμβάσεις, τα frameworks και το στυλ κώδικα που προτιμάτε.",
+      "heading": "Προφίλ Στυλ Κώδικα"
+    },
+    "promptmasters": {
+      "title": "Promptmasters: Οι κορυφαίοι δημιουργοί AI prompts",
+      "description": "Οι κορυφαίοι prompt engineers του prompts.chat, με κατάταξη βάσει των ψήφων στα AI prompts τους. Δείτε τις κατατάξεις όλων των εποχών, του μήνα και της εβδομάδας."
+    },
+    "developers": {
+      "title": "Εργαλεία προγραμματιστών: Βελτίωση prompts, tokenizer, embeds",
+      "description": "Δωρεάν εργαλεία του prompts.chat για προγραμματιστές: βελτιώστε prompts με AI, μετρήστε tokens, σχεδιάστε ενσωματώσιμα widgets και γράψτε prompts σε editor τύπου IDE."
+    },
+    "howToWrite": {
+      "title": "Πώς να γράψετε καλά AI prompts: Συμβουλές και παραδείγματα",
+      "description": "Μάθετε να γράφετε αποτελεσματικά AI prompts με πρακτικές συμβουλές, παραδείγματα και βέλτιστες πρακτικές για prompts ρόλων, μεταβλητές, δομημένη έξοδο και άλλα."
+    },
+    "kids": {
+      "title": "Prompting για παιδιά: Μάθε να μιλάς με την AI",
+      "description": "Ένα δωρεάν παιχνίδι για να μάθουν τα παιδιά να μιλούν με την AI. Ακολούθησε το ρομπότ Promi στη Χώρα των Prompts και μάθε να γράφεις υπέροχα prompts."
+    },
+    "support": {
+      "title": "Υποστήριξη και συχνές ερωτήσεις"
+    },
+    "apiDocs": {
+      "title": "Τεκμηρίωση Prompts API και MCP server",
+      "description": "Αναζητήστε και ανακτήστε AI prompts μέσω κώδικα με το δωρεάν API και τον MCP server του prompts.chat. Endpoints, παράμετροι και έτοιμα παραδείγματα για αντιγραφή."
+    },
+    "selfHosting": {
+      "title": "Οδηγός self-hosting",
+      "description": "Στήστε το δικό σας ιδιωτικό prompts.chat με δική σας επωνυμία, θέματα και έλεγχο ταυτότητας. Δωρεάν, ανοιχτού κώδικα και έτοιμο για ομάδες."
+    },
+    "privacy": {
+      "title": "Πολιτική απορρήτου",
+      "description": "Πώς το prompts.chat συλλέγει, χρησιμοποιεί και προστατεύει τα δεδομένα σας."
+    },
+    "terms": {
+      "title": "Όροι χρήσης",
+      "description": "Οι όροι που ισχύουν όταν χρησιμοποιείτε το prompts.chat."
+    },
+    "profile": {
+      "title": "{name} (@{username}) - AI prompts",
+      "description": "Δείτε {count} AI prompts που μοιράστηκε το μέλος {name} (@{username}) στο prompts.chat, τη δωρεάν βιβλιοθήκη prompts ανοιχτού κώδικα."
+    },
+    "bookChapter": {
+      "title": "{chapter} - Οδηγός Prompt Engineering"
+    },
+    "promptTypes": {
+      "TEXT": "Prompt για ChatGPT",
+      "STRUCTURED": "Δομημένο AI prompt",
+      "IMAGE": "AI prompt εικόνας",
+      "VIDEO": "AI prompt βίντεο",
+      "AUDIO": "AI prompt ήχου",
+      "SKILL": "Δεξιότητα πράκτορα",
+      "TASTE": "Προφίλ στυλ κώδικα",
+      "model": "Prompt για {model}"
     }
   }
 }

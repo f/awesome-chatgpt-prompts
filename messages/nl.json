@@ -1720,7 +1720,7 @@
     "title": "Het Interactieve Prompting Boek",
     "donate": "Steun het project",
     "subtitle": "Een Interactieve Gids voor het Maken van Duidelijke en Effectieve Prompts",
-    "metaTitle": "Het Interactieve Prompting Boek | Gratis Online Gids voor AI Prompt Engineering",
+    "metaTitle": "Gids voor prompt engineering: Het Interactieve Prompting Boek",
     "metaDescription": "Beheers AI prompt engineering met deze gratis interactieve gids. Leer ChatGPT prompts, chain-of-thought redeneren, few-shot leren en geavanceerde technieken. 28+ hoofdstukken met echte voorbeelden.",
     "interactiveGuideBy": "Een Interactieve Gids door",
     "authorIntro": "Hallo, ik ben <author>Fatih Kadir Akın</author>, de curator van de populaire <repoLink>Awesome ChatGPT Prompts</repoLink> repository op GitHub en <siteName>prompts.chat</siteName>.",
@@ -2244,6 +2244,110 @@
       "nodeJs": "Node.js 24.x",
       "postgresql": "PostgreSQL database",
       "npm": "npm"
+    }
+  },
+  "seo": {
+    "page": "Pagina {page}",
+    "home": {
+      "title": "prompts.chat - Gratis AI-prompts: ChatGPT, Claude en Gemini",
+      "description": "Gratis open-source bibliotheek met AI-prompts, voorheen Awesome ChatGPT Prompts. Ontdek, kopieer en deel duizenden prompts voor ChatGPT, Claude, Gemini en meer."
+    },
+    "prompts": {
+      "title": "Promptbibliotheek: gratis ChatGPT- en AI-prompts",
+      "description": "Bekijk de nieuwste gratis prompts van de prompts.chat-community. Filter op categorie, tag of type en plak ze in ChatGPT, Claude, Gemini en andere AI-tools.",
+      "searchTitle": "Zoekresultaten voor “{query}”"
+    },
+    "discover": {
+      "title": "Ontdek de beste AI-prompts: uitgelicht en trending",
+      "description": "Uitgelichte, trending en best beoordeelde AI-prompts, gekozen door de prompts.chat-community. Elke dag nieuwe prompts voor ChatGPT, Claude, Gemini, beeld en video.",
+      "heading": "Ontdek AI-prompts"
+    },
+    "categories": {
+      "title": "AI-promptcategorieën: coderen, schrijven, beeld en meer",
+      "description": "Ontdek gratis AI-prompts per categorie: coderen, schrijven, marketing, business, onderwijs, beeld- en videogeneratie en meer. Vind de juiste prompt voor elke taak.",
+      "heading": "Promptcategorieën"
+    },
+    "category": {
+      "title": "{name}-prompts voor ChatGPT, Claude en Gemini",
+      "description": "{description} Bekijk {count} gratis {name}-prompts voor ChatGPT, Claude, Gemini en andere AI-tools.",
+      "fallbackDescription": "Bekijk {count} gratis {name}-prompts voor ChatGPT, Claude, Gemini en andere AI-tools. Kopieer, pas aan en deel prompts uit de prompts.chat-community.",
+      "heading": "{name}-prompts"
+    },
+    "tags": {
+      "title": "AI-prompts per tag",
+      "description": "Bekijk gratis AI-prompts per tag, van Python en SQL tot Midjourney, marketing en carrière. Vind ChatGPT-, Claude-, Gemini- en beeldprompts voor elk onderwerp."
+    },
+    "tag": {
+      "title": "{name}-prompts",
+      "description": "Bekijk {count} gratis AI-prompts met de tag {name}. Gebruik ze met ChatGPT, Claude, Gemini en andere AI-tools, of deel je eigen prompts op prompts.chat.",
+      "heading": "{name}-prompts"
+    },
+    "skills": {
+      "title": "Agentvaardigheden: SKILL.md voor Claude Code en AI-agents",
+      "description": "Gratis open-source agentvaardigheden (SKILL.md-bestanden) voor Claude Code, Codex, Cursor en andere AI-agents, gedeeld en verbeterd door de prompts.chat-community.",
+      "heading": "Agentvaardigheden"
+    },
+    "workflows": {
+      "title": "AI-promptworkflows en promptketens",
+      "description": "AI-workflows in meerdere stappen en promptketens waarin elke stap de volgende voedt. Hergebruik beproefde reeksen voor ChatGPT, Claude, beeld- en videogeneratie.",
+      "heading": "Promptworkflows"
+    },
+    "taste": {
+      "title": "Codeerstijlprofielen (taste.md) voor AI-codeeragents",
+      "description": "Bekijk taste.md-profielen die AI-codeeragents zoals Claude Code, Cursor en Codex jouw favoriete conventies, frameworks en codeerstijl aanleren.",
+      "heading": "Codeerstijlprofielen"
+    },
+    "promptmasters": {
+      "title": "Promptmasters: de beste makers van AI-prompts",
+      "description": "Maak kennis met de beste prompt engineers van prompts.chat, gerangschikt op de upvotes van hun AI-prompts. Bekijk de ranglijsten van altijd, deze maand en deze week."
+    },
+    "developers": {
+      "title": "Developertools: Prompt Enhancer, tokenizer en embeds",
+      "description": "Gratis developertools van prompts.chat: verbeter prompts met AI, tel tokens, ontwerp insluitbare promptwidgets en bouw prompts in een editor in IDE-stijl."
+    },
+    "howToWrite": {
+      "title": "Effectieve AI-prompts schrijven: tips en voorbeelden",
+      "description": "Leer effectieve AI-prompts schrijven met praktische tips, voorbeelden en best practices voor rolprompts, variabelen, gestructureerde output en meer."
+    },
+    "kids": {
+      "title": "Prompting voor kinderen: leer praten met AI",
+      "description": "Een gratis spel waarmee kinderen leren praten met AI. Ga met Promi de robot op avontuur door Promptland en leer hoe je geweldige prompts schrijft."
+    },
+    "support": {
+      "title": "Ondersteuning en veelgestelde vragen"
+    },
+    "apiDocs": {
+      "title": "Documentatie Prompts-API en MCP-server",
+      "description": "Zoek en haal AI-prompts programmatisch op met de gratis API en MCP-server van prompts.chat. Endpoints, parameters en voorbeelden die je zo kunt kopiëren."
+    },
+    "selfHosting": {
+      "title": "Handleiding voor zelf hosten",
+      "description": "Draai je eigen privé-instantie van prompts.chat met eigen branding, thema's en authenticatie. Gratis, open source en klaar voor teams."
+    },
+    "privacy": {
+      "title": "Privacybeleid",
+      "description": "Hoe prompts.chat je gegevens verzamelt, gebruikt en beschermt."
+    },
+    "terms": {
+      "title": "Gebruiksvoorwaarden",
+      "description": "De voorwaarden die gelden wanneer je prompts.chat gebruikt."
+    },
+    "profile": {
+      "title": "{name} (@{username}) - AI-prompts",
+      "description": "Bekijk {count} AI-prompts gedeeld door {name} (@{username}) op prompts.chat, de gratis open-source promptbibliotheek."
+    },
+    "bookChapter": {
+      "title": "{chapter} - Gids voor prompt engineering"
+    },
+    "promptTypes": {
+      "TEXT": "ChatGPT-prompt",
+      "STRUCTURED": "Gestructureerde AI-prompt",
+      "IMAGE": "AI-beeldprompt",
+      "VIDEO": "AI-videoprompt",
+      "AUDIO": "AI-audioprompt",
+      "SKILL": "Agentvaardigheid",
+      "TASTE": "Codeerstijlprofiel",
+      "model": "{model}-prompt"
     }
   }
 }
