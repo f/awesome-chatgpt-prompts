@@ -29,7 +29,8 @@ function generateBaseUsername(email: string, name?: string | null): string {
 
 // Custom adapter that wraps PrismaAdapter to add username
 function CustomPrismaAdapter(): Adapter {
-  const prismaAdapter = PrismaAdapter(db);
+  // The adapter only touches auth models, so the client's global `omit` config is irrelevant to it
+  const prismaAdapter = PrismaAdapter(db as unknown as Parameters<typeof PrismaAdapter>[0]);
   
   return {
     ...prismaAdapter,

@@ -99,11 +99,8 @@ export async function GET(
       hasVoted = !!vote;
     }
 
-    // Omit embedding from response (it's large binary data)
-    const { embedding: _embedding, ...promptWithoutEmbedding } = prompt;
-
     return NextResponse.json({
-      ...promptWithoutEmbedding,
+      ...prompt,
       voteCount: prompt._count.votes,
       hasVoted,
     });
