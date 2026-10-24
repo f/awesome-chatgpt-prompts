@@ -193620,3 +193620,20 @@ Natural body proportions, realistic hands, sharp eyes, balanced skin tones, docu
 
 </details>
 
+<details>
+<summary><strong>bank po strategy</strong></summary>
+
+## bank po strategy
+
+Contributed by @anonymous
+
+```md
+1.i am a beginner i want a complete roadmap hoe to clear bak po exam in 10 months
+2. i want each link up of chapter in each subject for ex in qunat reasoning and english which chapters should i start from so that i can link up with other chapters
+3.how much mocks should i give to clear cut off in general category in pre and  mains in po exams
+4.
+
+```
+
+</details>
+
