@@ -51,7 +51,10 @@ export function paginatedPath(path: string, page: number): string {
  * meta description of at most `maxLength` characters, cut on a word boundary.
  */
 export function toMetaDescription(text: string, maxLength = 160): string {
+  // Prompt content has no length limit, and the markup patterns below get slow
+  // on long unterminated "[" or "${" runs, so only the start of the text is used
   const plain = text
+    .slice(0, 2000)
     // ${variable} and ${variable:default} -> variable
     .replace(/\$\{([^}:]+)(?::[^}]*)?\}/g, "$1")
     // Markdown images and links
@@ -68,6 +71,33 @@ export function toMetaDescription(text: string, maxLength = 160): string {
   const lastSpace = cut.lastIndexOf(" ");
   const trimmed = lastSpace > maxLength * 0.6 ? cut.slice(0, lastSpace) : cut;
   return `${trimmed.replace(/[\s,;:.\-–—]+$/, "")}…`;
+}
+
+/**
+ * Escapes a value for use in XML. Next.js writes sitemap values into the XML
+ * as-is, so a URL with a query string such as "?format=jpg&name=large" would
+ * otherwise make the whole sitemap invalid.
+ */
+export function escapeXml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+/**
+ * Turns a stored media URL into an absolute, XML-safe URL for an image
+ * sitemap entry, or null when it isn't a usable http(s) URL
+ */
+export function toSitemapImageUrl(mediaUrl: string): string | null {
+  try {
+    const url = new URL(mediaUrl, getBaseUrl());
+    return url.protocol === "http:" || url.protocol === "https:" ? escapeXml(url.href) : null;
+  } catch {
+    return null;
+  }
 }
 
 interface PageMetadataOptions {

@@ -21,6 +21,7 @@ import { ActivityChartWrapper } from "@/components/user/activity-chart-wrapper";
 import { ProfileLinks, type CustomLink } from "@/components/user/profile-links";
 import { JsonLd, profilePageSchema } from "@/components/seo/structured-data";
 import { buildPageMetadata, NOINDEX_ROBOTS, paginatedPath, toMetaDescription } from "@/lib/seo";
+import { escapeLikePattern } from "@/lib/utils";
 
 interface UserProfilePageProps {
   params: Promise<{ username: string }>;
@@ -40,7 +41,7 @@ export async function generateMetadata({ params, searchParams }: UserProfilePage
   const username = decodedUsername.slice(1);
     
   const user = await db.user.findFirst({
-    where: { username: { equals: username, mode: "insensitive" } },
+    where: { username: { equals: escapeLikePattern(username), mode: "insensitive" } },
     orderBy: { createdAt: "asc" },
     select: {
       name: true,
@@ -69,6 +70,7 @@ export async function generateMetadata({ params, searchParams }: UserProfilePage
     description: toMetaDescription(user.bio ? `${description} ${user.bio}` : description),
     path: paginatedPath(`/@${user.username}`, page),
     openGraphType: "profile",
+    image: "route",
     // Profiles without public prompts are thin; secondary tabs and day filters repeat other pages
     noindex: user._count.prompts === 0 || (!!tab && tab !== "prompts") || !!date,
   });
@@ -94,7 +96,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
   const username = decodedUsername.slice(1);
 
   const user = await db.user.findFirst({
-    where: { username: { equals: username, mode: "insensitive" } },
+    where: { username: { equals: escapeLikePattern(username), mode: "insensitive" } },
     orderBy: { createdAt: "asc" },
     select: {
       id: true,

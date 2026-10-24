@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { db } from "@/lib/db";
 import { getConfig } from "@/lib/config";
+import { escapeLikePattern } from "@/lib/utils";
 
 export const alt = "User Profile";
 export const size = {
@@ -49,7 +50,7 @@ export default async function OGImage({ params }: { params: Promise<{ username: 
   const username = decodedUsername.slice(1);
 
   const user = await db.user.findFirst({
-    where: { username: { equals: username, mode: "insensitive" } },
+    where: { username: { equals: escapeLikePattern(username), mode: "insensitive" } },
     orderBy: { createdAt: "asc" },
     select: {
       id: true,

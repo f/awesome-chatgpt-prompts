@@ -51,11 +51,12 @@ export default async function PromptLayout({ children, params }: PromptLayoutPro
   // Serve every prompt from a single URL: /prompts/{id} and outdated slugs
   // permanently redirect to /prompts/{id}_{current-slug}. Nested routes such
   // as /edit and /changes keep their own URLs.
-  const pathname = (await headers()).get("x-pathname") ?? "";
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") ?? "";
   const isPromptPage = pathname.split("/").filter(Boolean).length === 2;
   const canonicalPath = getPromptUrl(id, prompt.slug);
   if (isPromptPage && `/prompts/${idParam}` !== canonicalPath) {
-    permanentRedirect(canonicalPath);
+    permanentRedirect(`${canonicalPath}${headersList.get("x-search") ?? ""}`);
   }
 
   return children;

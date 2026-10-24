@@ -4,7 +4,15 @@ vi.mock("@/../prompts.config", () => ({
   default: { branding: { name: "prompts.chat" } },
 }));
 
-import { absoluteUrl, buildPageMetadata, getBaseUrl, paginatedPath, toMetaDescription } from "@/lib/seo";
+import {
+  absoluteUrl,
+  buildPageMetadata,
+  escapeXml,
+  getBaseUrl,
+  paginatedPath,
+  toMetaDescription,
+  toSitemapImageUrl,
+} from "@/lib/seo";
 
 describe("getBaseUrl", () => {
   const originalUrl = process.env.NEXTAUTH_URL;
@@ -80,9 +88,46 @@ describe("toMetaDescription", () => {
     expect(result.endsWith("word…")).toBe(true);
   });
 
+  it("should stay fast on very long unterminated markup", () => {
+    const start = performance.now();
+    toMetaDescription("[".repeat(1_000_000));
+    toMetaDescription("${".repeat(500_000));
+    expect(performance.now() - start).toBeLessThan(1000);
+  });
+
   it("should not leave trailing punctuation before the ellipsis", () => {
     const result = toMetaDescription("First sentence here, second sentence goes on and on", 24);
     expect(result).toBe("First sentence here…");
+  });
+});
+
+describe("escapeXml", () => {
+  it("should escape XML special characters", () => {
+    expect(escapeXml(`a&b<c>"d'`)).toBe("a&amp;b&lt;c&gt;&quot;d&apos;");
+  });
+});
+
+describe("toSitemapImageUrl", () => {
+  beforeEach(() => {
+    process.env.NEXTAUTH_URL = "https://prompts.chat";
+  });
+
+  it("should escape ampersands in query strings", () => {
+    expect(toSitemapImageUrl("https://pbs.twimg.com/media/abc?format=jpg&name=large")).toBe(
+      "https://pbs.twimg.com/media/abc?format=jpg&amp;name=large"
+    );
+  });
+
+  it("should make relative upload paths absolute", () => {
+    expect(toSitemapImageUrl("/uploads/image.png")).toBe("https://prompts.chat/uploads/image.png");
+  });
+
+  it("should percent-encode spaces", () => {
+    expect(toSitemapImageUrl("https://example.com/my image.png")).toBe("https://example.com/my%20image.png");
+  });
+
+  it("should reject non-http URLs", () => {
+    expect(toSitemapImageUrl("data:image/png;base64,AAAA")).toBeNull();
   });
 });
 
