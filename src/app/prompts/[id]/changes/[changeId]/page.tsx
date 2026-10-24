@@ -13,6 +13,13 @@ import { SkillDiffViewer } from "@/components/prompts/skill-diff-viewer";
 import { ChangeRequestActions } from "@/components/prompts/change-request-actions";
 import { ReopenChangeRequestButton } from "@/components/prompts/reopen-change-request-button";
 import { DismissChangeRequestButton } from "@/components/prompts/dismiss-change-request-button";
+import type { Metadata } from "next";
+import { NOINDEX_ROBOTS } from "@/lib/seo";
+
+// Signed-in or workflow page with no search value
+export const metadata: Metadata = {
+  robots: NOINDEX_ROBOTS,
+};
 
 interface ChangeRequestPageProps {
   params: Promise<{ id: string; changeId: string }>;

@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { unstable_cache } from "next/cache";
 import { Tag } from "lucide-react";
 import { db } from "@/lib/db";
+import { buildPageMetadata } from "@/lib/seo";
 
 // Cached tags query
 const getTags = unstable_cache(
@@ -33,6 +35,15 @@ const getTags = unstable_cache(
   ["tags-page"],
   { tags: ["tags"] }
 );
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("seo.tags");
+  return buildPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/tags",
+  });
+}
 
 export default async function TagsPage() {
   const t = await getTranslations("tags");

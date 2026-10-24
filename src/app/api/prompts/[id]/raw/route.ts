@@ -119,6 +119,8 @@ export async function GET(
   return new NextResponse(output, {
     headers: {
       "Content-Type": contentType,
+      // Served at /prompts/{id}.prompt.md, which duplicates the prompt page
+      "X-Robots-Tag": "noindex",
     },
   });
 }

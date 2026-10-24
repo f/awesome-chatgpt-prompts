@@ -1,14 +1,17 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { buildPageMetadata } from "@/lib/seo";
 import { PromptWritingGuideContent } from "@/components/prompts/prompt-writing-guide-content";
 import { LanguageSwitcher } from "@/components/prompts/language-switcher";
 import { InteractiveBookBanner } from "@/components/prompts/interactive-book-banner";
 
-export async function generateMetadata() {
-  const t = await getTranslations("promptWritingGuide");
-  return {
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("seo.howToWrite");
+  return buildPageMetadata({
     title: t("title"),
-    description: t("subtitle"),
-  };
+    description: t("description"),
+    path: "/how-to-write-effective-prompts",
+  });
 }
 
 export default async function HowToWriteEffectivePromptsPage() {

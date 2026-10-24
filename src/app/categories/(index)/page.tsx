@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { unstable_cache } from "next/cache";
@@ -5,6 +6,7 @@ import { FolderOpen, ChevronRight } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { SubscribeButton } from "@/components/categories/subscribe-button";
+import { buildPageMetadata } from "@/lib/seo";
 
 // Visible prompt filter
 const visiblePromptFilter = {
@@ -55,8 +57,18 @@ const getCategories = unstable_cache(
   { tags: ["categories"] }
 );
 
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("seo.categories");
+  return buildPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/categories",
+  });
+}
+
 export default async function CategoriesPage() {
   const t = await getTranslations("categories");
+  const tSeo = await getTranslations("seo.categories");
   const session = await auth();
 
   // Fetch root categories (no parent) with their children (cached)
@@ -75,7 +87,7 @@ export default async function CategoriesPage() {
   return (
     <div className="container py-6">
       <div className="mb-6">
-        <h1 className="text-lg font-semibold">{t("title")}</h1>
+        <h1 className="text-lg font-semibold">{tSeo("heading")}</h1>
         <p className="text-sm text-muted-foreground">{t("description")}</p>
       </div>
 

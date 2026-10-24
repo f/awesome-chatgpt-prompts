@@ -1720,7 +1720,7 @@
     "title": "הספר האינטראקטיבי של Prompting",
     "donate": "תמכו בפרויקט",
     "subtitle": "מדריך אינטראקטיבי ליצירת פרומפטים ברורים ויעילים",
-    "metaTitle": "הספר האינטראקטיבי של Prompting | מדריך אונליין חינמי להנדסת פרומפטים של AI",
+    "metaTitle": "מדריך להנדסת פרומפטים: הספר האינטראקטיבי של Prompting",
     "metaDescription": "שלטו בהנדסת פרומפטים של AI עם המדריך האינטראקטיבי החינמי הזה. למדו פרומפטים ל-ChatGPT, שרשרת חשיבה, למידת few-shot וטכניקות מתקדמות. יותר מ-28 פרקים עם דוגמאות מהעולם האמיתי.",
     "interactiveGuideBy": "מדריך אינטראקטיבי מאת",
     "authorIntro": "שלום, אני <author>פאטיח קאדיר אקין</author>, אוצר המאגר הפופולרי <repoLink>Awesome ChatGPT Prompts</repoLink> ב-GitHub ו-<siteName>prompts.chat</siteName>.",
@@ -2237,6 +2237,110 @@
       "nodeJs": "Node.js 24.x",
       "postgresql": "PostgreSQL database",
       "npm": "npm"
+    }
+  },
+  "seo": {
+    "page": "עמוד {page}",
+    "home": {
+      "title": "prompts.chat - פרומפטים חינמיים ל-ChatGPT, Claude ו-Gemini",
+      "description": "ספריית פרומפטים חינמית בקוד פתוח ל-AI, לשעבר Awesome ChatGPT Prompts. גלו, העתיקו ושתפו אלפי פרומפטים ל-ChatGPT, Claude, Gemini ועוד."
+    },
+    "prompts": {
+      "title": "ספריית פרומפטים: פרומפטים חינמיים ל-ChatGPT ו-AI",
+      "description": "הפרומפטים החינמיים החדשים ביותר מקהילת prompts.chat. סננו לפי קטגוריה, תגית או סוג, והעתיקו אותם ל-ChatGPT, Claude, Gemini ועוד.",
+      "searchTitle": "תוצאות חיפוש עבור \"{query}\""
+    },
+    "discover": {
+      "title": "פרומפטי ה-AI הטובים ביותר: מומלצים וטרנדיים",
+      "description": "פרומפטים מומלצים, טרנדיים ומדורגים ביותר לבינה מלאכותית שבחרה קהילת prompts.chat, עם פרומפטים חדשים מדי יום ל-ChatGPT, Claude, Gemini, תמונות ווידאו.",
+      "heading": "גלו פרומפטים ל-AI"
+    },
+    "categories": {
+      "title": "קטגוריות פרומפטים ל-AI: קוד, כתיבה, תמונות ועוד",
+      "description": "גלו פרומפטים חינמיים ל-AI לפי קטגוריה: תכנות, כתיבה, שיווק, עסקים, חינוך, יצירת תמונות ווידאו ועוד. מצאו את הפרומפט המתאים לכל משימה.",
+      "heading": "קטגוריות פרומפטים"
+    },
+    "category": {
+      "title": "פרומפטים בנושא {name} ל-ChatGPT, Claude ו-Gemini",
+      "description": "{description} עיינו ב-{count} פרומפטים חינמיים בנושא {name} ל-ChatGPT, Claude, Gemini ולכלי AI נוספים.",
+      "fallbackDescription": "עיינו ב-{count} פרומפטים חינמיים בנושא {name} ל-ChatGPT, Claude, Gemini ולכלי AI נוספים. העתיקו, התאימו ושתפו פרומפטים מקהילת prompts.chat.",
+      "heading": "פרומפטים בנושא {name}"
+    },
+    "tags": {
+      "title": "פרומפטים ל-AI לפי תגיות",
+      "description": "עיינו בפרומפטים חינמיים ל-AI לפי תגית, מ-Python ו-SQL ועד Midjourney, שיווק וקריירה. מצאו פרומפטים ל-ChatGPT, Claude, Gemini ולתמונות בכל נושא."
+    },
+    "tag": {
+      "title": "פרומפטים בנושא {name}",
+      "description": "עיינו ב-{count} פרומפטים חינמיים ל-AI עם התגית {name}. השתמשו בהם ב-ChatGPT, Claude, Gemini ובכלי AI נוספים, או שתפו פרומפטים משלכם ב-prompts.chat.",
+      "heading": "פרומפטים בנושא {name}"
+    },
+    "skills": {
+      "title": "מיומנויות סוכן: קובצי SKILL.md ל-Claude Code ולסוכני AI",
+      "description": "מיומנויות סוכן חינמיות בקוד פתוח (קובצי SKILL.md) ל-Claude Code, Codex, Cursor ולסוכני AI נוספים, שקהילת prompts.chat משתפת ומשפרת.",
+      "heading": "מיומנויות סוכן"
+    },
+    "workflows": {
+      "title": "תהליכי עבודה ושרשראות פרומפטים ל-AI",
+      "description": "גלו תהליכי עבודה רב-שלביים ושרשראות פרומפטים, שבהם כל שלב מזין את הבא. השתמשו ברצפים מוכחים ל-ChatGPT, Claude, יצירת תמונות ווידאו.",
+      "heading": "תהליכי עבודה עם פרומפטים"
+    },
+    "taste": {
+      "title": "פרופילי סגנון קוד (taste.md) לסוכני קוד AI",
+      "description": "קובצי taste.md שמלמדים סוכני קוד AI כמו Claude Code, Cursor ו-Codex את המוסכמות, הפריימוורקים וסגנון הקוד שאתם מעדיפים.",
+      "heading": "פרופילי סגנון קוד"
+    },
+    "promptmasters": {
+      "title": "מאסטרים: יוצרי פרומפטי ה-AI המובילים",
+      "description": "הכירו את מהנדסי הפרומפטים המובילים ב-prompts.chat, מדורגים לפי הדירוגים שקיבלו הפרומפטים שלהם. צפו בטבלאות המובילים של כל הזמנים, החודש והשבוע."
+    },
+    "developers": {
+      "title": "כלים למפתחים: שיפור פרומפטים, טוקנייזר והטמעה",
+      "description": "כלי פיתוח חינמיים מ-prompts.chat: שפרו פרומפטים עם AI, ספרו טוקנים, עצבו ווידג'טים להטמעה ובנו פרומפטים בעורך בסגנון IDE."
+    },
+    "howToWrite": {
+      "title": "איך לכתוב פרומפטים יעילים ל-AI: טיפים ודוגמאות",
+      "description": "למדו לכתוב פרומפטים יעילים ל-AI עם טיפים מעשיים, דוגמאות ושיטות עבודה מומלצות לפרומפטים של תפקיד, משתנים, פלט מובנה ועוד."
+    },
+    "kids": {
+      "title": "פרומפטים לילדים: לומדים לדבר עם AI",
+      "description": "דרך חינמית ומשחקית שבה ילדים לומדים לדבר עם בינה מלאכותית. הצטרפו לרובוט צ'יפ להרפתקה בארץ הפרומפטים ולמדו לכתוב פרומפטים מעולים."
+    },
+    "support": {
+      "title": "תמיכה ושאלות נפוצות"
+    },
+    "apiDocs": {
+      "title": "תיעוד Prompts API ושרת MCP",
+      "description": "חפשו ושלפו פרומפטים ל-AI באופן תכנותי עם ה-API החינמי ושרת ה-MCP של prompts.chat. נקודות קצה, פרמטרים ודוגמאות מוכנות להעתקה."
+    },
+    "selfHosting": {
+      "title": "מדריך לאירוח עצמי",
+      "description": "הקימו מופע פרטי משלכם של prompts.chat עם מיתוג, ערכות נושא ואימות משתמשים בהתאמה אישית. חינמי, בקוד פתוח ומוכן לעבודת צוות."
+    },
+    "privacy": {
+      "title": "מדיניות פרטיות",
+      "description": "איך prompts.chat אוסף, משתמש ומגן על המידע שלכם."
+    },
+    "terms": {
+      "title": "תנאי שימוש",
+      "description": "התנאים החלים על השימוש ב-prompts.chat."
+    },
+    "profile": {
+      "title": "{name} (@{username}) - פרומפטים ל-AI",
+      "description": "עיינו ב-{count} פרומפטים ל-AI מאת {name} (@{username}) ב-prompts.chat, ספריית הפרומפטים החינמית בקוד פתוח."
+    },
+    "bookChapter": {
+      "title": "{chapter} - מדריך להנדסת פרומפטים"
+    },
+    "promptTypes": {
+      "TEXT": "פרומפט ל-ChatGPT",
+      "STRUCTURED": "פרומפט AI מובנה",
+      "IMAGE": "פרומפט לתמונות AI",
+      "VIDEO": "פרומפט לווידאו AI",
+      "AUDIO": "פרומפט לאודיו AI",
+      "SKILL": "מיומנות סוכן",
+      "TASTE": "פרופיל סגנון קוד",
+      "model": "פרומפט ל-{model}"
     }
   }
 }

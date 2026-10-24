@@ -11,9 +11,10 @@ export function proxy(request: NextRequest) {
     return NextResponse.rewrite(url);
   }
 
-  // Add pathname header for layout detection
+  // Add pathname and query headers for layout detection
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-pathname", pathname);
+  requestHeaders.set("x-search", request.nextUrl.search);
 
   return NextResponse.next({
     request: {

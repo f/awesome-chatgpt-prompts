@@ -14,14 +14,10 @@ import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
 import { db } from "@/lib/db";
 import { isAISearchEnabled, semanticSearch } from "@/lib/ai/embeddings";
 import { isAIGenerationEnabled } from "@/lib/ai/generation";
+import { buildPageMetadata } from "@/lib/seo";
 import config from "@/../prompts.config";
 
 export const revalidate = 60;
-
-export const metadata: Metadata = {
-  title: "Prompts",
-  description: "Browse and discover AI prompts",
-};
 
 // Query for categories (cached)
 const getCategories = unstable_cache(
@@ -173,11 +169,67 @@ interface PromptsPageProps {
   }>;
 }
 
+/**
+ * Finds the filtered category by slug, or by ID for links created before
+ * category filters used slugs
+ */
+function findCategory(categories: Awaited<ReturnType<typeof getCategories>>, param?: string) {
+  if (!param) return undefined;
+  return categories.find((c) => c.slug === param) ?? categories.find((c) => c.id === param);
+}
+
+export async function generateMetadata({ searchParams }: PromptsPageProps): Promise<Metadata> {
+  const params = await searchParams;
+  const t = await getTranslations("seo");
+  const filters = [params.q, params.type, params.category, params.tag].filter(Boolean);
+
+  // A single category or tag filter shows the same prompts as its own landing page
+  if (filters.length === 1 && params.category) {
+    const category = findCategory(await getCategories(), params.category);
+    if (category) {
+      return buildPageMetadata({
+        title: t("category.title", { name: category.name }),
+        description: t("prompts.description"),
+        path: `/categories/${category.slug}`,
+      });
+    }
+  }
+  if (filters.length === 1 && params.tag && !params.tag.includes(",")) {
+    const tag = (await getTags()).find((tag) => tag.slug === params.tag);
+    if (tag) {
+      return buildPageMetadata({
+        title: t("tag.title", { name: tag.name }),
+        description: t("prompts.description"),
+        path: `/tags/${tag.slug}`,
+      });
+    }
+  }
+
+  // Search results and other filter combinations stay out of the index;
+  // sorting alone doesn't change the content, so it shares the main canonical
+  return buildPageMetadata({
+    title: params.q ? t("prompts.searchTitle", { query: params.q }) : t("prompts.title"),
+    description: t("prompts.description"),
+    path: "/prompts",
+    noindex: filters.length > 0 || !!params.ai,
+  });
+}
+
 export default async function PromptsPage({ searchParams }: PromptsPageProps) {
   const t = await getTranslations("prompts");
   const tSearch = await getTranslations("search");
   const params = await searchParams;
-  
+
+  // Fetch categories, pinned categories, and tags for filter
+  const [categories, pinnedCategories, tags] = await Promise.all([
+    getCategories(),
+    getPinnedCategories(),
+    getTags(),
+  ]);
+
+  // Legacy ID-based category filters are redirected to slugs in layout.tsx
+  const activeCategory = findCategory(categories, params.category);
+
   const perPage = 24;
   const aiSearchAvailable = await isAISearchEnabled();
   const aiGenerationAvailable = await isAIGenerationEnabled();
@@ -241,7 +293,7 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
     }
     
     if (params.category) {
-      where.categoryId = params.category;
+      where.categoryId = activeCategory?.id ?? params.category;
     }
     
     // Handle tag parameter (can be comma-separated for multiple tags)
@@ -278,13 +330,6 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
     total = result.total;
   }
 
-  // Fetch categories, pinned categories, and tags for filter
-  const [categories, pinnedCategories, tags] = await Promise.all([
-    getCategories(),
-    getPinnedCategories(),
-    getTags(),
-  ]);
-
   return (
     <div className="container py-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
@@ -313,7 +358,7 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
           <div className="mb-4">
             <PinnedCategories 
               categories={pinnedCategories} 
-              currentCategoryId={params.category} 
+              currentCategorySlug={activeCategory?.slug} 
             />
           </div>
         </Suspense>
@@ -333,8 +378,8 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
               filters={{
                 q: params.q,
                 type: params.type,
-                category: params.category,
-                categorySlug: categories.find(c => c.id === params.category)?.slug,
+                category: activeCategory?.id ?? params.category,
+                categorySlug: activeCategory?.slug,
                 tag: params.tag,
                 sort: params.sort,
               }}

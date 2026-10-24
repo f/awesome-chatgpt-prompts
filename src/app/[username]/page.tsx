@@ -19,19 +19,22 @@ import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
 import { PrivatePromptsNote } from "@/components/prompts/private-prompts-note";
 import { ActivityChartWrapper } from "@/components/user/activity-chart-wrapper";
 import { ProfileLinks, type CustomLink } from "@/components/user/profile-links";
+import { JsonLd, profilePageSchema } from "@/components/seo/structured-data";
+import { buildPageMetadata, NOINDEX_ROBOTS, paginatedPath, toMetaDescription } from "@/lib/seo";
 
 interface UserProfilePageProps {
   params: Promise<{ username: string }>;
   searchParams: Promise<{ page?: string; tab?: string; date?: string }>;
 }
 
-export async function generateMetadata({ params }: UserProfilePageProps): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: UserProfilePageProps): Promise<Metadata> {
   const { username: rawUsername } = await params;
+  const { page: pageParam, tab, date } = await searchParams;
   const decodedUsername = decodeURIComponent(rawUsername);
   
   // Only support /@username format
   if (!decodedUsername.startsWith("@")) {
-    return { title: "User Not Found" };
+    return { title: "User Not Found", robots: NOINDEX_ROBOTS };
   }
   
   const username = decodedUsername.slice(1);
@@ -39,17 +42,36 @@ export async function generateMetadata({ params }: UserProfilePageProps): Promis
   const user = await db.user.findFirst({
     where: { username: { equals: username, mode: "insensitive" } },
     orderBy: { createdAt: "asc" },
-    select: { name: true, username: true },
+    select: {
+      name: true,
+      username: true,
+      bio: true,
+      _count: {
+        select: {
+          prompts: { where: { isPrivate: false, isUnlisted: false, deletedAt: null } },
+        },
+      },
+    },
   });
 
   if (!user) {
-    return { title: "User Not Found" };
+    return { title: "User Not Found", robots: NOINDEX_ROBOTS };
   }
 
-  return {
-    title: `${user.name || user.username} (@${user.username})`,
-    description: `View ${user.name || user.username}'s prompts`,
-  };
+  const t = await getTranslations("seo");
+  const name = user.name || user.username;
+  const page = Math.max(1, parseInt(pageParam || "1") || 1);
+  const title = t("profile.title", { name, username: user.username });
+  const description = t("profile.description", { name, username: user.username, count: user._count.prompts });
+
+  return buildPageMetadata({
+    title: page > 1 ? `${title} - ${t("page", { page })}` : title,
+    description: toMetaDescription(user.bio ? `${description} ${user.bio}` : description),
+    path: paginatedPath(`/@${user.username}`, page),
+    openGraphType: "profile",
+    // Profiles without public prompts are thin; secondary tabs and day filters repeat other pages
+    noindex: user._count.prompts === 0 || (!!tab && tab !== "prompts") || !!date,
+  });
 }
 
 export default async function UserProfilePage({ params, searchParams }: UserProfilePageProps) {
@@ -448,6 +470,17 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
 
   return (
     <div className="container py-6">
+      <JsonLd
+        data={profilePageSchema({
+          path: `/@${user.username}`,
+          name: user.name || user.username,
+          username: user.username,
+          avatar: user.avatar,
+          bio: user.bio,
+          createdAt: user.createdAt,
+          promptCount: user._count.prompts,
+        })}
+      />
       {/* Profile Header */}
       <div className="flex flex-col gap-4 mb-8">
         {/* Avatar + Name row */}

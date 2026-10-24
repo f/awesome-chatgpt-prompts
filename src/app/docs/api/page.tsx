@@ -1,5 +1,8 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { headers } from "next/headers";
+import { getTranslations } from "next-intl/server";
+import { buildPageMetadata } from "@/lib/seo";
 import { Code, Zap, Terminal, Search, Box, Key, Save, Sparkles, Cpu, FilePlus, FileX } from "lucide-react";
 import { ImprovePromptDemo } from "@/components/api/improve-prompt-demo";
 import {
@@ -13,10 +16,14 @@ import {
 import { McpConfigTabs } from "@/components/mcp/mcp-config-tabs";
 import config from "@/../prompts.config";
 
-export const metadata = {
-  title: "API Documentation - prompts.chat",
-  description: "API for searching and discovering AI prompts programmatically",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("seo.apiDocs");
+  return buildPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/docs/api",
+  });
+}
 
 export default async function ApiDocsPage() {
   const headersList = await headers();

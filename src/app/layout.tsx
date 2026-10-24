@@ -7,12 +7,12 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CookieConsentBanner } from "@/components/layout/cookie-consent";
 import { Analytics } from "@/components/layout/analytics";
-import { WebsiteStructuredData } from "@/components/seo/structured-data";
 import { AppBanner } from "@/components/layout/app-banner";
 import { AnnouncementBanner } from "@/components/layout/announcement-banner";
 import { LocaleDetector } from "@/components/providers/locale-detector";
 import { getConfig } from "@/lib/config";
 import { isRtlLocale } from "@/lib/i18n/config";
+import { getBaseUrl } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -39,7 +39,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXTAUTH_URL || "http://localhost:3000"),
+  metadataBase: new URL(getBaseUrl()),
   title: {
     default: "prompts.chat - AI Prompts Community",
     template: "%s | prompts.chat",
@@ -107,9 +107,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  alternates: {
-    canonical: process.env.NEXTAUTH_URL || "https://prompts.chat",
   },
 };
 
@@ -184,7 +181,6 @@ export default async function RootLayout({
         {process.env.GOOGLE_ADSENSE_ACCOUNT && (
           <meta name="google-adsense-account" content={process.env.GOOGLE_ADSENSE_ACCOUNT} />
         )}
-        <WebsiteStructuredData />
       </head>
       <body className={`${fontClasses} antialiased`}>
         {process.env.GOOGLE_ANALYTICS_ID && (

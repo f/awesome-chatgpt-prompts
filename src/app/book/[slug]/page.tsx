@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { MobileTOCButton } from "@/components/book/sidebar";
 import type { Metadata } from "next";
 import { getTranslations, getLocale } from "next-intl/server";
+import { JsonLd, breadcrumbSchema } from "@/components/seo/structured-data";
+import { absoluteUrl, NOINDEX_ROBOTS } from "@/lib/seo";
 
 interface ChapterPageProps {
   params: Promise<{ slug: string }>;
@@ -23,15 +25,18 @@ export async function generateMetadata({ params }: ChapterPageProps): Promise<Me
   const t = await getTranslations("book");
 
   if (!chapter) {
-    return { title: t("chapter.notFound") };
+    return { title: t("chapter.notFound"), robots: NOINDEX_ROBOTS };
   }
+
+  const tSeo = await getTranslations("seo.bookChapter");
+  const title = tSeo("title", { chapter: chapter.title });
 
   const description = chapter.description 
     ? `${chapter.description}. Learn ${chapter.title.toLowerCase()} techniques in this free interactive prompt engineering guide.`
     : `Learn about ${chapter.title.toLowerCase()} in this free interactive prompt engineering guide. Part of The Interactive Book of Prompting.`;
 
   return {
-    title: `${chapter.title} | The Interactive Book of Prompting`,
+    title,
     description,
     keywords: [
       chapter.title.toLowerCase(),
@@ -43,9 +48,9 @@ export async function generateMetadata({ params }: ChapterPageProps): Promise<Me
     ],
     authors: [{ name: "Fatih Kadir Akın", url: "https://github.com/f" }],
     openGraph: {
-      title: `${chapter.title} - The Interactive Book of Prompting`,
+      title,
       description,
-      url: `https://prompts.chat/book/${slug}`,
+      url: `/book/${slug}`,
       siteName: "prompts.chat",
       images: [
         {
@@ -60,12 +65,12 @@ export async function generateMetadata({ params }: ChapterPageProps): Promise<Me
     },
     twitter: {
       card: "summary_large_image",
-      title: `${chapter.title} | Prompt Engineering`,
+      title,
       description,
       images: ["https://prompts.chat/book-cover-photo.jpg"],
     },
     alternates: {
-      canonical: `https://prompts.chat/book/${slug}`,
+      canonical: `/book/${slug}`,
     },
     robots: {
       index: true,
@@ -164,6 +169,34 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
 
   return (
     <article>
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "@id": absoluteUrl(`/book/${slug}`),
+            headline: chapter.title,
+            description: chapter.description,
+            url: absoluteUrl(`/book/${slug}`),
+            inLanguage: "en",
+            author: { "@type": "Person", name: "Fatih Kadir Akın", url: "https://github.com/f" },
+            publisher: { "@type": "Organization", name: "prompts.chat", url: absoluteUrl("/") },
+            image: absoluteUrl("/book-cover-photo.jpg"),
+            isAccessibleForFree: true,
+            license: "https://creativecommons.org/publicdomain/zero/1.0/",
+            isPartOf: {
+              "@type": "Book",
+              name: "The Interactive Book of Prompting",
+              url: absoluteUrl("/book"),
+            },
+          },
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "The Interactive Book of Prompting", path: "/book" },
+            { name: chapter.title, path: `/book/${slug}` },
+          ]),
+        ]}
+      />
       {/* Chapter Header */}
       <header className="mb-8">
         <div className="text-sm text-primary font-medium mb-1">

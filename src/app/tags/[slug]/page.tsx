@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
@@ -8,25 +9,49 @@ import config from "@/../prompts.config";
 import { Button } from "@/components/ui/button";
 import { PromptCard } from "@/components/prompts/prompt-card";
 import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
+import { JsonLd, breadcrumbSchema, collectionPageSchema } from "@/components/seo/structured-data";
+import { buildPageMetadata, NOINDEX_ROBOTS, paginatedPath } from "@/lib/seo";
+import { getPromptUrl } from "@/lib/urls";
+
+// Tags with fewer public prompts than this are too thin to be indexed
+const MIN_INDEXABLE_PROMPTS = 3;
+
+const PROMPTS_PER_PAGE = 24;
 
 interface TagPageProps {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ page?: string }>;
 }
 
-export async function generateMetadata({ params }: TagPageProps) {
+export async function generateMetadata({ params, searchParams }: TagPageProps): Promise<Metadata> {
   const { slug } = await params;
+  const { page: pageParam } = await searchParams;
+  const page = Math.max(1, parseInt(pageParam || "1") || 1);
   const tag = await db.tag.findUnique({
     where: { slug },
-    select: { name: true },
+    select: {
+      name: true,
+      _count: {
+        select: {
+          prompts: { where: { prompt: { isPrivate: false, isUnlisted: false, deletedAt: null } } },
+        },
+      },
+    },
   });
 
-  if (!tag) return { title: "Tag Not Found" };
+  if (!tag || page > Math.max(1, Math.ceil(tag._count.prompts / PROMPTS_PER_PAGE))) {
+    return { title: "Tag Not Found", robots: NOINDEX_ROBOTS };
+  }
 
-  return {
-    title: `${tag.name} - Tags`,
-    description: `Browse prompts tagged with ${tag.name}`,
-  };
+  const t = await getTranslations("seo");
+  const title = t("tag.title", { name: tag.name });
+
+  return buildPageMetadata({
+    title: page > 1 ? `${title} - ${t("page", { page })}` : title,
+    description: t("tag.description", { name: tag.name, count: tag._count.prompts }),
+    path: paginatedPath(`/tags/${slug}`, page),
+    noindex: tag._count.prompts < MIN_INDEXABLE_PROMPTS,
+  });
 }
 
 export default async function TagPage({ params, searchParams }: TagPageProps) {
@@ -35,6 +60,7 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
   const session = await auth();
   const t = await getTranslations("tags");
   const tPrompts = await getTranslations("prompts");
+  const tSeo = await getTranslations("seo");
 
   const tag = await db.tag.findUnique({
     where: { slug },
@@ -45,7 +71,7 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
   }
 
   const page = Math.max(1, parseInt(pageParam || "1") || 1);
-  const perPage = 24;
+  const perPage = PROMPTS_PER_PAGE;
 
   // Build where clause
   const where = {
@@ -109,8 +135,30 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
 
   const totalPages = Math.ceil(total / perPage);
 
+  // Pages past the end would be empty duplicates of the listing
+  if (page > 1 && page > totalPages) {
+    notFound();
+  }
+
+  const tagPath = `/tags/${tag.slug}`;
+
   return (
     <div className="container py-6">
+      <JsonLd
+        data={[
+          collectionPageSchema({
+            name: tSeo("tag.heading", { name: tag.name }),
+            description: tSeo("tag.description", { name: tag.name, count: total }),
+            path: paginatedPath(tagPath, page),
+            items: prompts.map((prompt) => ({ name: prompt.title, path: getPromptUrl(prompt.id, prompt.slug) })),
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Tags", path: "/tags" },
+            { name: tag.name, path: tagPath },
+          ]),
+        ]}
+      />
       {/* Header */}
       <div className="mb-6">
         <Button variant="ghost" size="sm" asChild className="mb-4 -ml-2">
@@ -126,7 +174,7 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
               className="w-4 h-4 rounded-full"
               style={{ backgroundColor: tag.color }}
             />
-            <h1 className="text-xl font-semibold">{tag.name}</h1>
+            <h1 className="text-xl font-semibold">{tSeo("tag.heading", { name: tag.name })}</h1>
             <span className="text-sm text-muted-foreground">
               {total} {t("prompts")}
             </span>
@@ -162,7 +210,7 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
                 asChild={page > 1}
               >
                 {page > 1 ? (
-                  <Link href={`/tags/${slug}?page=${page - 1}`}>
+                  <Link href={paginatedPath(`/tags/${slug}`, page - 1)}>
                     {tPrompts("previous")}
                   </Link>
                 ) : (

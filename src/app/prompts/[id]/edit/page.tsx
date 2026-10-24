@@ -5,6 +5,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { PromptForm } from "@/components/prompts/prompt-form";
 import { isAIGenerationEnabled, getAIModelName } from "@/lib/ai/generation";
+import { NOINDEX_ROBOTS } from "@/lib/seo";
 
 interface EditPromptPageProps {
   params: Promise<{ id: string }>;
@@ -24,6 +25,7 @@ function extractPromptId(idParam: string): string {
 export const metadata: Metadata = {
   title: "Edit Prompt",
   description: "Edit your prompt",
+  robots: NOINDEX_ROBOTS,
 };
 
 export default async function EditPromptPage({ params }: EditPromptPageProps) {

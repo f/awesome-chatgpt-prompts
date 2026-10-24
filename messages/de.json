@@ -1720,7 +1720,7 @@
     "title": "Das Interaktive Buch des Promptings",
     "donate": "Projekt unterstützen",
     "subtitle": "Ein Interaktiver Leitfaden zur Erstellung Klarer und Effektiver Prompts",
-    "metaTitle": "Das Interaktive Buch des Promptings | Kostenloser Online-Leitfaden für KI-Prompt-Engineering",
+    "metaTitle": "Prompt-Engineering-Leitfaden: Das Interaktive Buch des Promptings",
     "metaDescription": "Meistern Sie KI-Prompt-Engineering mit diesem kostenlosen, interaktiven Leitfaden. Lernen Sie ChatGPT-Prompts, Chain-of-Thought-Reasoning, Few-Shot-Learning und fortgeschrittene Techniken. 28+ Kapitel mit echten Beispielen.",
     "interactiveGuideBy": "Ein Interaktiver Leitfaden von",
     "authorIntro": "Hallo, ich bin <author>Fatih Kadir Akın</author>, der Kurator des beliebten <repoLink>Awesome ChatGPT Prompts</repoLink>-Repositories auf GitHub und von <siteName>prompts.chat</siteName>.",
@@ -2253,6 +2253,110 @@
       "nodeJs": "Node.js 24.x",
       "postgresql": "PostgreSQL database",
       "npm": "npm"
+    }
+  },
+  "seo": {
+    "page": "Seite {page}",
+    "home": {
+      "title": "prompts.chat - Kostenlose KI-Prompts: ChatGPT, Claude, Gemini",
+      "description": "Kostenlose Open-Source-Bibliothek für KI-Prompts, ehemals Awesome ChatGPT Prompts. Tausende Prompts für ChatGPT, Claude, Gemini & Co. entdecken, kopieren und teilen."
+    },
+    "prompts": {
+      "title": "Prompt-Bibliothek: Kostenlose ChatGPT- & KI-Prompts",
+      "description": "Entdecken Sie die neuesten kostenlosen Prompts der prompts.chat-Community. Nach Kategorie, Tag oder Typ filtern und direkt in ChatGPT, Claude, Gemini & Co. einfügen.",
+      "searchTitle": "Suchergebnisse für „{query}“"
+    },
+    "discover": {
+      "title": "Die besten KI-Prompts entdecken: Empfohlen & im Trend",
+      "description": "Empfohlene, angesagte und bestbewertete KI-Prompts, ausgewählt von der prompts.chat-Community – täglich neue Prompts für ChatGPT, Claude, Gemini, Bilder und Videos.",
+      "heading": "KI-Prompts entdecken"
+    },
+    "categories": {
+      "title": "KI-Prompt-Kategorien: Coding, Texten, Bilder & mehr",
+      "description": "Kostenlose KI-Prompts nach Kategorie: Programmieren, Texten, Marketing, Business, Bildung, Bild- und Videogenerierung – für jede Aufgabe der passende Prompt.",
+      "heading": "Prompt-Kategorien"
+    },
+    "category": {
+      "title": "{name}-Prompts für ChatGPT, Claude & Gemini",
+      "description": "{description} Entdecken Sie {count} kostenlose {name}-Prompts für ChatGPT, Claude, Gemini und andere KI-Tools.",
+      "fallbackDescription": "Entdecken Sie {count} kostenlose {name}-Prompts für ChatGPT, Claude, Gemini und andere KI-Tools. Prompts der prompts.chat-Community kopieren, anpassen und teilen.",
+      "heading": "{name}-Prompts"
+    },
+    "tags": {
+      "title": "KI-Prompts nach Tags",
+      "description": "Kostenlose KI-Prompts nach Tags – von Python und SQL über Midjourney bis Marketing und Karriere. ChatGPT-, Claude-, Gemini- und Bild-Prompts zu jedem Thema."
+    },
+    "tag": {
+      "title": "{name}-Prompts",
+      "description": "Entdecken Sie {count} kostenlose KI-Prompts mit dem Tag {name}. Nutzen Sie sie mit ChatGPT, Claude, Gemini & Co. oder teilen Sie eigene auf prompts.chat.",
+      "heading": "{name}-Prompts"
+    },
+    "skills": {
+      "title": "Agent Skills: SKILL.md für Claude Code & KI-Agenten",
+      "description": "Kostenlose Open-Source-Agent-Skills (SKILL.md-Dateien) für Claude Code, Codex, Cursor und andere KI-Agenten – geteilt und verbessert von der prompts.chat-Community.",
+      "heading": "Agent Skills"
+    },
+    "workflows": {
+      "title": "KI-Prompt-Workflows & Prompt-Ketten",
+      "description": "Mehrstufige KI-Workflows und Prompt-Ketten, bei denen jeder Schritt den nächsten speist. Bewährte Abläufe für ChatGPT, Claude sowie Bild- und Videogenerierung.",
+      "heading": "Prompt-Workflows"
+    },
+    "taste": {
+      "title": "Coding-Stilprofile (taste.md) für KI-Coding-Agenten",
+      "description": "Entdecken Sie taste.md-Profile, die KI-Coding-Agenten wie Claude Code, Cursor und Codex Ihre bevorzugten Konventionen, Frameworks und Ihren Coding-Stil beibringen.",
+      "heading": "Coding-Stilprofile"
+    },
+    "promptmasters": {
+      "title": "Promptmasters: Die besten Ersteller von KI-Prompts",
+      "description": "Lernen Sie die besten Prompt-Engineers auf prompts.chat kennen – gerankt nach Stimmen für ihre KI-Prompts. Bestenlisten für alle Zeiten, den Monat und die Woche."
+    },
+    "developers": {
+      "title": "Entwickler-Tools: Prompt-Verbesserer, Tokenizer & Embeds",
+      "description": "Kostenlose Entwickler-Tools von prompts.chat: Prompts mit KI verbessern, Tokens zählen, einbettbare Widgets gestalten und Prompts im IDE-artigen Editor bauen."
+    },
+    "howToWrite": {
+      "title": "Effektive KI-Prompts schreiben: Tipps & Beispiele",
+      "description": "So schreiben Sie effektive KI-Prompts: praktische Tipps, Beispiele und Best Practices für Rollen-Prompts, Variablen, strukturierte Ausgaben und vieles mehr."
+    },
+    "kids": {
+      "title": "Prompting für Kinder: Lerne, mit KI zu sprechen",
+      "description": "Ein kostenloses Lernspiel, mit dem Kinder lernen, mit KI zu sprechen. Begleite den Roboter Promi durch das Prompt-Land und lerne, tolle Prompts zu schreiben."
+    },
+    "support": {
+      "title": "Support & FAQ"
+    },
+    "apiDocs": {
+      "title": "Prompts-API & MCP-Server: Dokumentation",
+      "description": "KI-Prompts programmatisch suchen und abrufen – mit der kostenlosen API und dem MCP-Server von prompts.chat. Endpunkte, Parameter und Beispiele zum Kopieren."
+    },
+    "selfHosting": {
+      "title": "Self-Hosting-Anleitung",
+      "description": "Betreiben Sie Ihre eigene private prompts.chat-Instanz mit eigenem Branding, Themes und eigener Authentifizierung. Kostenlos, Open Source und bereit für Teams."
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "description": "Wie prompts.chat Ihre Daten erhebt, verwendet und schützt."
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "description": "Die Bedingungen, die für die Nutzung von prompts.chat gelten."
+    },
+    "profile": {
+      "title": "{name} (@{username}) - KI-Prompts",
+      "description": "Entdecken Sie {count} KI-Prompts von {name} (@{username}) auf prompts.chat, der kostenlosen Open-Source-Bibliothek für Prompts."
+    },
+    "bookChapter": {
+      "title": "{chapter} - Prompt-Engineering-Leitfaden"
+    },
+    "promptTypes": {
+      "TEXT": "ChatGPT-Prompt",
+      "STRUCTURED": "Strukturierter KI-Prompt",
+      "IMAGE": "KI-Bild-Prompt",
+      "VIDEO": "KI-Video-Prompt",
+      "AUDIO": "KI-Audio-Prompt",
+      "SKILL": "Agent Skill",
+      "TASTE": "Coding-Stilprofil",
+      "model": "{model}-Prompt"
     }
   }
 }

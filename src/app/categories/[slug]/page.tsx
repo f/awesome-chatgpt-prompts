@@ -11,6 +11,9 @@ import { PromptList } from "@/components/prompts/prompt-list";
 import { SubscribeButton } from "@/components/categories/subscribe-button";
 import { CategoryFilters } from "@/components/categories/category-filters";
 import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
+import { JsonLd, breadcrumbSchema, collectionPageSchema } from "@/components/seo/structured-data";
+import { buildPageMetadata, NOINDEX_ROBOTS, paginatedPath, toMetaDescription } from "@/lib/seo";
+import { getPromptUrl } from "@/lib/urls";
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
@@ -19,21 +22,43 @@ interface CategoryPageProps {
 
 const PROMPTS_PER_PAGE = 30;
 
-export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+const visiblePromptFilter = {
+  isPrivate: false,
+  isUnlisted: false,
+  deletedAt: null,
+};
+
+export async function generateMetadata({ params, searchParams }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
+  const { page, q } = await searchParams;
+  const currentPage = Math.max(1, parseInt(page || "1", 10) || 1);
   const category = await db.category.findUnique({
     where: { slug },
-    select: { name: true, description: true },
+    select: {
+      name: true,
+      description: true,
+      _count: { select: { prompts: { where: visiblePromptFilter } } },
+    },
   });
 
-  if (!category) {
-    return { title: "Category Not Found" };
+  const count = category?._count.prompts ?? 0;
+  if (!category || currentPage > Math.max(1, Math.ceil(count / PROMPTS_PER_PAGE))) {
+    return { title: "Category Not Found", robots: NOINDEX_ROBOTS };
   }
 
-  return {
-    title: category.name,
-    description: category.description || `Browse prompts in ${category.name}`,
-  };
+  const t = await getTranslations("seo");
+  const description = category.description
+    ? t("category.description", { description: category.description.replace(/[.!?\s]*$/, "."), name: category.name, count })
+    : t("category.fallbackDescription", { name: category.name, count });
+  const title = t("category.title", { name: category.name });
+
+  return buildPageMetadata({
+    title: currentPage > 1 ? `${title} - ${t("page", { page: currentPage })}` : title,
+    description: toMetaDescription(description),
+    // Sorted views share the canonical of the default order; searches aren't indexed
+    path: paginatedPath(`/categories/${slug}`, currentPage),
+    noindex: !!q,
+  });
 }
 
 export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
@@ -47,6 +72,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const category = await db.category.findUnique({
     where: { slug },
     include: {
+      parent: {
+        select: { name: true, slug: true },
+      },
       _count: {
         select: { prompts: true, subscribers: true },
       },
@@ -56,6 +84,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   if (!category) {
     notFound();
   }
+
+  const tSeo = await getTranslations("seo");
 
   // Check if user is subscribed
   const isSubscribed = session?.user
@@ -100,6 +130,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Count total prompts for pagination
   const totalPrompts = await db.prompt.count({ where: whereClause });
   const totalPages = Math.ceil(totalPrompts / PROMPTS_PER_PAGE);
+
+  // Pages past the end would be empty duplicates of the listing
+  if (currentPage > 1 && currentPage > totalPages) {
+    notFound();
+  }
 
   // Fetch prompts in this category
   const promptsRaw = await db.prompt.findMany({
@@ -146,8 +181,28 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     contributorCount: p._count.contributors,
   }));
 
+  const categoryPath = `/categories/${category.slug}`;
+
   return (
     <div className="container py-6">
+      <JsonLd
+        data={[
+          collectionPageSchema({
+            name: tSeo("category.heading", { name: category.name }),
+            description: category.description || tSeo("category.fallbackDescription", { name: category.name, count: totalPrompts }),
+            path: paginatedPath(categoryPath, currentPage),
+            items: prompts.map((prompt) => ({ name: prompt.title, path: getPromptUrl(prompt.id, prompt.slug) })),
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Categories", path: "/categories" },
+            ...(category.parent
+              ? [{ name: category.parent.name, path: `/categories/${category.parent.slug}` }]
+              : []),
+            { name: category.name, path: categoryPath },
+          ]),
+        ]}
+      />
       {/* Header */}
       <div className="mb-6">
         <Button variant="ghost" size="sm" className="mb-4 -ml-2" asChild>
@@ -160,7 +215,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         <div className="flex items-start justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-xl font-semibold">{category.name}</h1>
+              <h1 className="text-xl font-semibold">{tSeo("category.heading", { name: category.name })}</h1>
               {session?.user && (
                 <SubscribeButton
                   categoryId={category.id}

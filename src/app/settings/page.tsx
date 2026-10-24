@@ -6,6 +6,13 @@ import config from "@/../prompts.config";
 import { ProfileForm } from "@/components/settings/profile-form";
 import { ApiKeySettings } from "@/components/settings/api-key-settings";
 import type { CustomLink } from "@/components/user/profile-links";
+import type { Metadata } from "next";
+import { NOINDEX_ROBOTS } from "@/lib/seo";
+
+// Signed-in or workflow page with no search value
+export const metadata: Metadata = {
+  robots: NOINDEX_ROBOTS,
+};
 
 export default async function SettingsPage() {
   const session = await auth();

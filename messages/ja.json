@@ -1720,7 +1720,7 @@
     "title": "インタラクティブ・プロンプティングブック",
     "donate": "プロジェクトを支援",
     "subtitle": "明確で効果的なプロンプトを作成するためのインタラクティブガイド",
-    "metaTitle": "インタラクティブ・プロンプティングブック | AIプロンプトエンジニアリング無料オンラインガイド",
+    "metaTitle": "プロンプトエンジニアリングガイド：インタラクティブ・プロンプティングブック",
     "metaDescription": "この無料インタラクティブガイドでAIプロンプトエンジニアリングをマスターしましょう。ChatGPTプロンプト、Chain-of-Thought推論、Few-Shot学習、高度なテクニックを学べます。実例付き28以上のチャプター。",
     "interactiveGuideBy": "インタラクティブガイド by",
     "authorIntro": "こんにちは、<author>Fatih Kadir Akın</author>です。GitHubで人気の<repoLink>Awesome ChatGPT Prompts</repoLink>リポジトリと<siteName>prompts.chat</siteName>のキュレーターです。",
@@ -2241,6 +2241,110 @@
       "nodeJs": "Node.js 24.x",
       "postgresql": "PostgreSQL database",
       "npm": "npm"
+    }
+  },
+  "seo": {
+    "page": "{page}ページ目",
+    "home": {
+      "title": "prompts.chat - ChatGPT・Claude・Gemini向け無料AIプロンプト集",
+      "description": "旧Awesome ChatGPT Promptsの無料オープンソースAIプロンプトライブラリ。ChatGPT、Claude、Geminiなどで使える数千件のプロンプトを見つけて、コピー・共有できます。"
+    },
+    "prompts": {
+      "title": "プロンプトライブラリ：無料のChatGPT・AIプロンプト",
+      "description": "prompts.chatコミュニティの最新の無料プロンプトを一覧で。カテゴリー・タグ・種類で絞り込み、ChatGPT、Claude、Geminiなどにコピー＆ペーストして使えます。",
+      "searchTitle": "「{query}」の検索結果"
+    },
+    "discover": {
+      "title": "おすすめAIプロンプト：注目・トレンド・人気",
+      "description": "prompts.chatコミュニティが選んだ注目・トレンド・高評価のAIプロンプト。ChatGPT、Claude、Gemini、画像・動画生成の新しいプロンプトを毎日更新しています。",
+      "heading": "AIプロンプトを探す"
+    },
+    "categories": {
+      "title": "AIプロンプトのカテゴリー：コーディング・文章・画像など",
+      "description": "コーディング、文章作成、マーケティング、ビジネス、教育、画像・動画生成など、カテゴリー別に無料AIプロンプトを探せます。あらゆるタスクに合うプロンプトが見つかります。",
+      "heading": "プロンプトのカテゴリー"
+    },
+    "category": {
+      "title": "{name}のプロンプト集：ChatGPT・Claude・Gemini対応",
+      "description": "{description} ChatGPT、Claude、GeminiなどのAIツールで使える{name}の無料プロンプトを{count}件掲載しています。",
+      "fallbackDescription": "ChatGPT、Claude、GeminiなどのAIツールで使える{name}の無料プロンプトを{count}件掲載。prompts.chatコミュニティのプロンプトをコピー・カスタマイズ・共有できます。",
+      "heading": "{name}のプロンプト"
+    },
+    "tags": {
+      "title": "タグからAIプロンプトを探す",
+      "description": "Python、SQLからMidjourney、マーケティング、キャリアまで、タグ別に無料AIプロンプトを探せます。ChatGPT、Claude、Gemini、画像生成向けのプロンプトが見つかります。"
+    },
+    "tag": {
+      "title": "{name}のプロンプト",
+      "description": "「{name}」タグが付いた無料AIプロンプト{count}件。ChatGPT、Claude、GeminiなどのAIツールで使えるほか、自作のプロンプトをprompts.chatで共有することもできます。",
+      "heading": "{name}のプロンプト"
+    },
+    "skills": {
+      "title": "エージェントスキル集：Claude Code・AIエージェント向けSKILL.md",
+      "description": "Claude Code、Codex、CursorなどのAIエージェント向けの無料・オープンソースのエージェントスキル（SKILL.mdファイル）。prompts.chatコミュニティが共有・改善しています。",
+      "heading": "エージェントスキル"
+    },
+    "workflows": {
+      "title": "AIプロンプトワークフローとプロンプトチェーン",
+      "description": "各ステップの出力が次のステップにつながる、多段階のAIプロンプトワークフローとプロンプトチェーン。ChatGPT、Claude、画像・動画生成で実績のある手順を再利用できます。",
+      "heading": "プロンプトワークフロー"
+    },
+    "taste": {
+      "title": "AIコーディングエージェント向けテイストプロファイル（taste.md）",
+      "description": "Claude Code、Cursor、CodexなどのAIコーディングエージェントに、好みの規約・フレームワーク・コーディングスタイルを教えるtaste.mdプロファイルを探せます。",
+      "heading": "コーディングテイストプロファイル"
+    },
+    "promptmasters": {
+      "title": "Promptmasters：人気AIプロンプトクリエイター",
+      "description": "AIプロンプトが獲得した高評価の数でランク付けされた、prompts.chatのトッププロンプトエンジニアを紹介。総合・月間・週間ランキングをチェックしましょう。"
+    },
+    "developers": {
+      "title": "開発者ツール：プロンプト改善・トークナイザー・埋め込み",
+      "description": "prompts.chatの無料開発者ツール。AIでプロンプトを改善し、トークン数を数え、埋め込み用プロンプトウィジェットをデザインし、IDE風エディターでプロンプトを作成できます。"
+    },
+    "howToWrite": {
+      "title": "効果的なAIプロンプトの書き方：コツと例文",
+      "description": "ロールプロンプト、変数、構造化出力などについて、実践的なコツ・例文・ベストプラクティスを交えながら効果的なAIプロンプトの書き方を学べます。"
+    },
+    "kids": {
+      "title": "子ども向けプロンプト入門：AIと話す方法を学ぼう",
+      "description": "子どもがAIとの話し方をゲーム感覚で学べる無料コンテンツ。ロボットのPromiと一緒にプロンプトランドを冒険して、上手なプロンプトの書き方を身につけよう。"
+    },
+    "support": {
+      "title": "サポート・よくある質問"
+    },
+    "apiDocs": {
+      "title": "プロンプトAPI・MCPサーバー ドキュメント",
+      "description": "prompts.chatの無料APIとMCPサーバーで、AIプロンプトをプログラムから検索・取得できます。エンドポイント、パラメーター、すぐ使えるサンプルコードを掲載。"
+    },
+    "selfHosting": {
+      "title": "セルフホスティングガイド",
+      "description": "独自のブランディング、テーマ、認証を設定して、プライベートなprompts.chatを自分でホストできます。無料・オープンソースでチーム利用にも対応。"
+    },
+    "privacy": {
+      "title": "プライバシーポリシー",
+      "description": "prompts.chatがお客様のデータをどのように収集・利用・保護するかについて。"
+    },
+    "terms": {
+      "title": "利用規約",
+      "description": "prompts.chatのご利用に適用される規約です。"
+    },
+    "profile": {
+      "title": "{name} (@{username}) - AIプロンプト",
+      "description": "{name} (@{username}) さんがprompts.chatで公開しているAIプロンプト{count}件。prompts.chatは無料・オープンソースのプロンプトライブラリです。"
+    },
+    "bookChapter": {
+      "title": "{chapter} - プロンプトエンジニアリングガイド"
+    },
+    "promptTypes": {
+      "TEXT": "ChatGPTプロンプト",
+      "STRUCTURED": "構造化AIプロンプト",
+      "IMAGE": "AI画像生成プロンプト",
+      "VIDEO": "AI動画生成プロンプト",
+      "AUDIO": "AI音声プロンプト",
+      "SKILL": "エージェントスキル",
+      "TASTE": "コーディングテイスト",
+      "model": "{model}プロンプト"
     }
   }
 }

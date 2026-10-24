@@ -1,8 +1,23 @@
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { DiscoveryPrompts } from "@/components/prompts/discovery-prompts";
-import { StructuredData } from "@/components/seo/structured-data";
+import { JsonLd, breadcrumbSchema, collectionPageSchema } from "@/components/seo/structured-data";
 import { db } from "@/lib/db";
+import { buildPageMetadata } from "@/lib/seo";
+import { getPromptUrl } from "@/lib/urls";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("seo.discover");
+  return buildPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/discover",
+  });
+}
 
 export default async function DiscoverPage() {
+  const t = await getTranslations("seo.discover");
+
   // Fetch top prompts for structured data
   const topPrompts = await db.prompt.findMany({
     where: {
@@ -17,33 +32,28 @@ export default async function DiscoverPage() {
     select: {
       id: true,
       title: true,
-      description: true,
       slug: true,
     },
   });
 
-  const itemListData = topPrompts.map((prompt) => ({
-    name: prompt.title,
-    url: `/prompts/${prompt.id}${prompt.slug ? `_${prompt.slug}` : ""}`,
-    description: prompt.description || undefined,
-  }));
-
   return (
     <>
-      <StructuredData
-        type="itemList"
-        data={{ items: itemListData }}
-      />
-      <StructuredData
-        type="breadcrumb"
-        data={{
-          breadcrumbs: [
-            { name: "Home", url: "/" },
-            { name: "Discover", url: "/discover" },
-          ],
-        }}
+      <JsonLd
+        data={[
+          collectionPageSchema({
+            name: t("heading"),
+            description: t("description"),
+            path: "/discover",
+            items: topPrompts.map((prompt) => ({ name: prompt.title, path: getPromptUrl(prompt.id, prompt.slug) })),
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Discover", path: "/discover" },
+          ]),
+        ]}
       />
       <div className="flex flex-col">
+        <h1 className="sr-only">{t("heading")}</h1>
         <DiscoveryPrompts />
       </div>
     </>

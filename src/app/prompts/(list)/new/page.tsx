@@ -7,10 +7,12 @@ import { PromptForm } from "@/components/prompts/prompt-form";
 import { db } from "@/lib/db";
 import { isAIGenerationEnabled, getAIModelName } from "@/lib/ai/generation";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { NOINDEX_ROBOTS } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Create Prompt",
   description: "Create a new prompt",
+  robots: NOINDEX_ROBOTS,
 };
 
 interface PageProps {

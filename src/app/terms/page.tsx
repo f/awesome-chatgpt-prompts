@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Terms of Service - prompts.chat",
-  description: "Terms of Service for prompts.chat",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("seo.terms");
+  return buildPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/terms",
+  });
+}
 
 export default function TermsPage() {
   return (

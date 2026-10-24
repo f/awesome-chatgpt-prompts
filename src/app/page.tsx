@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
@@ -11,6 +12,19 @@ import { CliCommand } from "@/components/layout/cli-command";
 import { ExtensionLink } from "@/components/layout/extension-link";
 import { AnimatedText } from "@/components/layout/animated-text";
 import { SponsorLink, BecomeSponsorLink, BuiltWithLink } from "@/components/layout/sponsor-link";
+import { WebsiteStructuredData } from "@/components/seo/structured-data";
+import { buildPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("seo.home");
+  return buildPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/",
+    absoluteTitle: true,
+    image: "route",
+  });
+}
 
 function getOrdinalSuffix(n: number): string {
   const s = ["th", "st", "nd", "rd"];
@@ -50,6 +64,7 @@ export default async function HomePage() {
   // Show landing page for all users
   return (
     <div className="flex flex-col">
+      <WebsiteStructuredData />
       {/* Hero Section */}
       <section className="relative py-12 md:py-16 border-b overflow-hidden">
         {/* Background - Right Side */}
@@ -140,6 +155,8 @@ export default async function HomePage() {
               <>
                 <h1 className="space-y-0 overflow-visible">
                   <AnimatedText className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-none text-balance">{tHomepage("heroTitle")}</AnimatedText>
+                  {/* Keeps the two lines apart as words in the heading's text content */}
+                  {" "}
                   <AnimatedText className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl italic font-display tracking-tight leading-none whitespace-nowrap">{tHomepage("heroSubtitle")}</AnimatedText>
                 </h1>
                 <p className="mt-6 text-muted-foreground text-lg max-w-xl">

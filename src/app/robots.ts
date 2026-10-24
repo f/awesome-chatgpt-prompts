@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
+import { getBaseUrl } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXTAUTH_URL || "https://prompts.chat";
+  const baseUrl = getBaseUrl();
 
   return {
     rules: [
@@ -14,6 +15,12 @@ export default function robots(): MetadataRoute.Robots {
           "/settings/",
           "/login",
           "/register",
+          // Signed-in only pages that redirect anonymous visitors to /login
+          "/feed",
+          "/collection",
+          "/prompts/new",
+          "/prompts/*/edit",
+          "/prompts/*/changes/new",
         ],
       },
     ],

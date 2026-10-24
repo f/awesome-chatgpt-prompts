@@ -3,11 +3,8 @@ import { getTranslations } from "next-intl/server";
 import { unstable_cache } from "next/cache";
 import { InfinitePromptList } from "@/components/prompts/infinite-prompt-list";
 import { db } from "@/lib/db";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Workflows",
-  description: "Browse prompts with sequential flows and connections",
-};
 
 // Query for workflows list (cached)
 function getCachedWorkflows(
@@ -118,9 +115,21 @@ interface WorkflowsPageProps {
   }>;
 }
 
+export async function generateMetadata({ searchParams }: WorkflowsPageProps): Promise<Metadata> {
+  const { q } = await searchParams;
+  const t = await getTranslations("seo.workflows");
+  return buildPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/workflows",
+    // Search results aren't indexed; sorted views share the main canonical
+    noindex: !!q,
+  });
+}
+
 export default async function WorkflowsPage({ searchParams }: WorkflowsPageProps) {
   const t = await getTranslations("workflows");
-  const tNav = await getTranslations("nav");
+  const tSeo = await getTranslations("seo.workflows");
   const tSearch = await getTranslations("search");
   const params = await searchParams;
   
@@ -143,7 +152,7 @@ export default async function WorkflowsPage({ searchParams }: WorkflowsPageProps
     <div className="container py-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div className="flex items-baseline gap-2">
-          <h1 className="text-lg font-semibold">{tNav("workflows")}</h1>
+          <h1 className="text-lg font-semibold">{tSeo("heading")}</h1>
           <span className="text-xs text-muted-foreground">{tSearch("found", { count: total })}</span>
         </div>
       </div>
