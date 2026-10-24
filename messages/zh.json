@@ -35,6 +35,7 @@
     "collapseAll": "全部折叠"
   },
   "nav": {
+    "bots": "机器人",
     "collection": "我的收藏",
     "feed": "动态",
     "promptmasters": "Promptmasters",
@@ -499,6 +500,7 @@
       "tags": "标签",
       "webhooks": "Webhooks",
       "prompts": "提示词",
+      "bots": "机器人",
       "reports": "举报"
     },
     "reports": {
@@ -758,6 +760,21 @@
       "generating": "生成中...",
       "generateSuccess": "{count} 个嵌入生成成功",
       "generateResult": "成功：{success}，失败：{failed}"
+    },
+    "botsList": {
+      "title": "机器人",
+      "description": "管理社区机器人：推荐、取消列出、编辑或删除。",
+      "noBots": "未找到机器人",
+      "open": "打开",
+      "edit": "编辑",
+      "feature": "推荐",
+      "unfeature": "取消推荐",
+      "unlist": "取消列出",
+      "relist": "重新列出",
+      "updated": "机器人已更新",
+      "deleted": "机器人已删除",
+      "deleteConfirmTitle": "删除机器人？",
+      "deleteConfirmDescription": "这将永久删除“{title}”，且无法撤销。"
     }
   },
   "search": {
@@ -895,6 +912,69 @@
     "noWorkflows": "暂无工作流程",
     "noWorkflowsDescription": "工作流程是按顺序连接到其他提示词的提示词。创建一个提示词并添加连接以构建工作流程。",
     "browsePrompts": "浏览提示词"
+  },
+  "bots": {
+    "description": "现成的 AI 智能体机器人，包含指令、例行任务和技能。可安装到 OpenClaw、Hermes Agent 或 Grok Bot。",
+    "count": "{count, plural, other {# 个机器人}}",
+    "allPlatforms": "全部",
+    "noBots": "该平台暂无机器人。",
+    "scheduledCount": "{count, plural, other {# 个定时任务}}",
+    "eventCount": "{count, plural, other {# 个事件触发}}",
+    "backToBots": "所有机器人",
+    "instructions": "指令",
+    "routines": "例行任务",
+    "noRoutines": "该机器人没有例行任务。",
+    "scheduled": "定时",
+    "eventTriggered": "事件触发",
+    "schedule": "计划",
+    "trigger": "触发条件",
+    "skills": "技能",
+    "connectors": "所需连接器",
+    "install": "安装",
+    "installOn": "安装到 {platform}",
+    "installLinkComingSoon": "安装链接即将推出",
+    "hermesCommandHint": "一条命令即可将机器人安装为技能：",
+    "copyCommand": "复制命令",
+    "installPromptHint": "将此提示粘贴到你的智能体中。它会获取机器人定义并设置指令、例行任务和技能。",
+    "installPromptFallbackHint": "或者将此提示粘贴到 Grok Bot 中自行创建机器人：",
+    "copyInstallPrompt": "复制安装提示",
+    "machineReadable": "机器可读",
+    "create": "新建机器人",
+    "edit": "编辑",
+    "private": "私密",
+    "unlisted": "未列出",
+    "form": {
+      "createTitle": "创建机器人",
+      "editTitle": "编辑机器人",
+      "name": "名称",
+      "namePlaceholder": "例如：每日站会汇报员",
+      "platform": "平台",
+      "description": "简短描述",
+      "descriptionPlaceholder": "这个机器人做什么？",
+      "installUrl": "安装链接",
+      "installUrlHint": "可选。一键安装链接，例如你的 Grok Bot 模板分享链接。",
+      "instructionsHint": "智能体的系统提示或常驻指令。",
+      "instructionsPlaceholder": "你是一个乐于助人的助手，…",
+      "routinesHint": "机器人运行的定时或事件触发任务。",
+      "routineName": "任务名称",
+      "cronPlaceholder": "Cron，例如 0 8 * * *",
+      "eventPlaceholder": "事件，例如：有新的 issue 被创建时",
+      "triggerLabelPlaceholder": "可读的计划（可选），例如：每天 08:00",
+      "routinePromptPlaceholder": "该任务运行时机器人应该做什么？",
+      "addRoutine": "添加任务",
+      "skillsHint": "机器人使用的技能。如有安装来源请一并填写。",
+      "skillName": "技能名称",
+      "skillDescription": "功能说明",
+      "skillSourcePlaceholder": "安装来源（可选）",
+      "addSkill": "添加技能",
+      "connectorsPlaceholder": "例如 GitHub、Slack、Telegram",
+      "connectorsHint": "用户需要连接的账号或服务，用逗号分隔。",
+      "remove": "移除",
+      "submit": "创建机器人",
+      "save": "保存机器人",
+      "created": "机器人已创建",
+      "updated": "机器人已更新"
+    }
   },
   "collection": {
     "title": "我的收藏",
@@ -2288,6 +2368,11 @@
       "title": "AI提示词工作流与提示词链",
       "description": "探索多步骤AI提示词工作流和提示词链，每一步的输出都会作为下一步的输入。复用经过验证的流程，用于ChatGPT、Claude以及图像和视频生成。",
       "heading": "提示词工作流"
+    },
+    "bots": {
+      "title": "适用于 OpenClaw、Hermes 和 Grok 的现成 AI 智能体机器人",
+      "description": "浏览包含指令、定时任务和技能的现成 AI 智能体机器人，一键安装到 OpenClaw、Hermes Agent 或 Grok Bot。",
+      "heading": "机器人"
     },
     "taste": {
       "title": "编码风格档案（taste.md）：适用于AI编程智能体",

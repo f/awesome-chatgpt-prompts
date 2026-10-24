@@ -1,0 +1,22 @@
+import { Badge } from "@/components/ui/badge";
+import { BOT_PLATFORM_INFO, type BotPlatform } from "@/lib/bots/schema";
+import { cn } from "@/lib/utils";
+
+const PLATFORM_STYLES: Record<BotPlatform, string> = {
+  OPENCLAW: "border-red-500/30 bg-red-500/10 text-red-700 dark:text-red-300",
+  HERMES: "border-violet-500/30 bg-violet-500/10 text-violet-700 dark:text-violet-300",
+  GROK_BOT: "border-foreground/20 bg-foreground/5 text-foreground",
+};
+
+interface BotPlatformBadgeProps {
+  platform: BotPlatform;
+  className?: string;
+}
+
+export function BotPlatformBadge({ platform, className }: BotPlatformBadgeProps) {
+  return (
+    <Badge variant="outline" className={cn(PLATFORM_STYLES[platform], className)}>
+      {BOT_PLATFORM_INFO[platform].name}
+    </Badge>
+  );
+}

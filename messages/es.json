@@ -35,6 +35,7 @@
     "collapseAll": "Contraer todo"
   },
   "nav": {
+    "bots": "Bots",
     "collection": "Mi Colección",
     "feed": "Feed",
     "promptmasters": "Promptmasters",
@@ -499,6 +500,7 @@
       "tags": "Etiquetas",
       "webhooks": "Webhooks",
       "prompts": "Prompts",
+      "bots": "Bots",
       "reports": "Reportes"
     },
     "reports": {
@@ -758,6 +760,21 @@
       "generating": "Generando...",
       "generateSuccess": "{count} embeddings generados",
       "generateResult": "Generados: {success}, Fallidos: {failed}"
+    },
+    "botsList": {
+      "title": "Bots",
+      "description": "Gestiona los bots de la comunidad: destácalos, ocúltalos de los listados, edítalos o elimínalos.",
+      "noBots": "No se encontraron bots",
+      "open": "Abrir",
+      "edit": "Editar",
+      "feature": "Destacar",
+      "unfeature": "Quitar destacado",
+      "unlist": "Ocultar del listado",
+      "relist": "Volver a listar",
+      "updated": "Bot actualizado",
+      "deleted": "Bot eliminado",
+      "deleteConfirmTitle": "¿Eliminar bot?",
+      "deleteConfirmDescription": "Esto elimina \"{title}\" de forma permanente. No se puede deshacer."
     }
   },
   "search": {
@@ -895,6 +912,69 @@
     "noWorkflows": "Aún no hay flujos de trabajo",
     "noWorkflowsDescription": "Los flujos de trabajo son prompts que se conectan a otros prompts en secuencia. Crea un prompt y agrega conexiones para construir un flujo de trabajo.",
     "browsePrompts": "Explorar Prompts"
+  },
+  "bots": {
+    "description": "Bots de agentes de IA listos para usar, con instrucciones, rutinas y habilidades. Instálalos en OpenClaw, Hermes Agent o Grok Bot.",
+    "count": "{count, plural, one {# bot} other {# bots}}",
+    "allPlatforms": "Todos",
+    "noBots": "Todavía no hay bots para esta plataforma.",
+    "scheduledCount": "{count, plural, one {# rutina programada} other {# rutinas programadas}}",
+    "eventCount": "{count, plural, one {# disparador de evento} other {# disparadores de eventos}}",
+    "backToBots": "Todos los bots",
+    "instructions": "Instrucciones",
+    "routines": "Rutinas",
+    "noRoutines": "Este bot no tiene rutinas.",
+    "scheduled": "Programada",
+    "eventTriggered": "Activada por evento",
+    "schedule": "Programación",
+    "trigger": "Disparador",
+    "skills": "Habilidades",
+    "connectors": "Conectores necesarios",
+    "install": "Instalar",
+    "installOn": "Instalar en {platform}",
+    "installLinkComingSoon": "Enlace de instalación próximamente",
+    "hermesCommandHint": "Instala el bot como habilidad con un solo comando:",
+    "copyCommand": "Copiar comando",
+    "installPromptHint": "Pega este prompt en tu agente. Obtiene la definición del bot y configura las instrucciones, rutinas y habilidades.",
+    "installPromptFallbackHint": "O pega este prompt en Grok Bot para crear el bot tú mismo:",
+    "copyInstallPrompt": "Copiar prompt de instalación",
+    "machineReadable": "Legible por máquinas",
+    "create": "Nuevo bot",
+    "edit": "Editar",
+    "private": "Privado",
+    "unlisted": "No listado",
+    "form": {
+      "createTitle": "Crear un bot",
+      "editTitle": "Editar bot",
+      "name": "Nombre",
+      "namePlaceholder": "p. ej. Informe diario de standup",
+      "platform": "Plataforma",
+      "description": "Descripción corta",
+      "descriptionPlaceholder": "¿Qué hace este bot?",
+      "installUrl": "URL de instalación",
+      "installUrlHint": "Opcional. Un enlace de instalación en un clic, por ejemplo el enlace para compartir tu plantilla de Grok Bot.",
+      "instructionsHint": "El prompt del sistema o las instrucciones permanentes del agente.",
+      "instructionsPlaceholder": "Eres un asistente útil que…",
+      "routinesHint": "Tareas programadas o activadas por eventos que ejecuta el bot.",
+      "routineName": "Nombre de la rutina",
+      "cronPlaceholder": "Cron, p. ej. 0 8 * * *",
+      "eventPlaceholder": "Evento, p. ej. Cuando se abre un nuevo issue",
+      "triggerLabelPlaceholder": "Programación legible (opcional), p. ej. Todos los días a las 08:00",
+      "routinePromptPlaceholder": "¿Qué debe hacer el bot cuando se ejecute esta rutina?",
+      "addRoutine": "Añadir rutina",
+      "skillsHint": "Habilidades que usa el bot. Añade una fuente de instalación si la tiene.",
+      "skillName": "Nombre de la habilidad",
+      "skillDescription": "Qué hace",
+      "skillSourcePlaceholder": "Fuente de instalación (opcional)",
+      "addSkill": "Añadir habilidad",
+      "connectorsPlaceholder": "p. ej. GitHub, Slack, Telegram",
+      "connectorsHint": "Cuentas o servicios que el usuario debe conectar, separados por comas.",
+      "remove": "Quitar",
+      "submit": "Crear bot",
+      "save": "Guardar bot",
+      "created": "Bot creado",
+      "updated": "Bot actualizado"
+    }
   },
   "collection": {
     "title": "Mi Colección",
@@ -2303,6 +2383,11 @@
       "title": "Flujos de trabajo y cadenas de prompts de IA",
       "description": "Flujos de IA de varios pasos y cadenas de prompts en los que cada paso alimenta al siguiente. Reutiliza secuencias probadas para ChatGPT, Claude, imagen y video.",
       "heading": "Flujos de Trabajo de Prompts"
+    },
+    "bots": {
+      "title": "Bots de agentes de IA listos para OpenClaw, Hermes y Grok",
+      "description": "Explora bots de agentes de IA listos para usar, con instrucciones, rutinas programadas y habilidades, e instálalos en OpenClaw, Hermes Agent o Grok Bot con un clic.",
+      "heading": "Bots"
     },
     "taste": {
       "title": "Perfiles de estilo de código (taste.md) para agentes de IA",

@@ -30,6 +30,7 @@ export async function GET(request: NextRequest) {
     const sortBy = searchParams.get("sortBy") || "createdAt";
     const sortOrder = searchParams.get("sortOrder") || "desc";
     const filter = searchParams.get("filter") || "all";
+    const type = searchParams.get("type");
 
     // Validate pagination
     const validPage = Math.max(1, page);
@@ -44,6 +45,7 @@ export async function GET(request: NextRequest) {
       isFeatured?: boolean;
       deletedAt?: { not: null } | null;
       reports?: { some: object };
+      type?: "BOT";
     };
 
     const filterConditions: WhereCondition = {};
@@ -77,6 +79,7 @@ export async function GET(request: NextRequest) {
     // Build where clause combining search and filters
     const where: WhereCondition = {
       ...filterConditions,
+      ...(type === "BOT" && { type: "BOT" as const }),
       ...(search && {
         OR: [
           { title: { contains: search, mode: "insensitive" as const } },
@@ -102,6 +105,7 @@ export async function GET(request: NextRequest) {
           title: true,
           slug: true,
           type: true,
+          botPlatform: true,
           isPrivate: true,
           isUnlisted: true,
           isFeatured: true,

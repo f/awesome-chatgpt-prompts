@@ -35,6 +35,7 @@
     "collapseAll": "Hamısını yığ"
   },
   "nav": {
+    "bots": "Botlar",
     "collection": "Kolleksiyam",
     "feed": "Lent",
     "promptmasters": "Promptmasterlər",
@@ -499,6 +500,7 @@
       "tags": "Etiketlər",
       "webhooks": "Webhooks",
       "prompts": "Promptlar",
+      "bots": "Botlar",
       "reports": "Hesabatlar"
     },
     "reports": {
@@ -758,6 +760,21 @@
       "generating": "Yaradılır...",
       "generateSuccess": "{count} embedding yaradıldı",
       "generateResult": "Yaradıldı: {success}, Uğursuz: {failed}"
+    },
+    "botsList": {
+      "title": "Botlar",
+      "description": "İcma botlarını idarə edin: önə çıxarın, siyahıdan çıxarın, redaktə edin və ya silin.",
+      "noBots": "Bot tapılmadı",
+      "open": "Aç",
+      "edit": "Redaktə et",
+      "feature": "Önə çıxar",
+      "unfeature": "Önə çıxarmanı ləğv et",
+      "unlist": "Siyahıdan çıxar",
+      "relist": "Yenidən siyahıya sal",
+      "updated": "Bot yeniləndi",
+      "deleted": "Bot silindi",
+      "deleteConfirmTitle": "Bot silinsin?",
+      "deleteConfirmDescription": "Bu, \"{title}\" botunu həmişəlik siləcək. Geri qaytarmaq mümkün deyil."
     }
   },
   "search": {
@@ -895,6 +912,69 @@
     "noWorkflows": "Hələ iş axını yoxdur",
     "noWorkflowsDescription": "İş axınları digər promptlara ardıcıl olaraq bağlanan promptlardır. İş axını yaratmaq üçün prompt yaradın və əlaqələr əlavə edin.",
     "browsePrompts": "Promptlara Bax"
+  },
+  "bots": {
+    "description": "Təlimatları, rutinləri və bacarıqları olan hazır süni intellekt agent botları. Onları OpenClaw, Hermes Agent və ya Grok Bot-a quraşdırın.",
+    "count": "{count, plural, one {# bot} other {# bot}}",
+    "allPlatforms": "Hamısı",
+    "noBots": "Bu platforma üçün hələ bot yoxdur.",
+    "scheduledCount": "{count, plural, one {# planlaşdırılmış rutin} other {# planlaşdırılmış rutin}}",
+    "eventCount": "{count, plural, one {# hadisə tetikleyicisi} other {# hadisə tetikleyicisi}}",
+    "backToBots": "Bütün botlar",
+    "instructions": "Təlimatlar",
+    "routines": "Rutinlər",
+    "noRoutines": "Bu botun rutini yoxdur.",
+    "scheduled": "Planlaşdırılmış",
+    "eventTriggered": "Hadisə ilə işə düşən",
+    "schedule": "Cədvəl",
+    "trigger": "Tetikleyici",
+    "skills": "Bacarıqlar",
+    "connectors": "Tələb olunan konnektorlar",
+    "install": "Quraşdır",
+    "installOn": "{platform} üzərində quraşdır",
+    "installLinkComingSoon": "Quraşdırma linki tezliklə",
+    "hermesCommandHint": "Botu bir əmrlə bacarıq kimi quraşdırın:",
+    "copyCommand": "Əmri kopyala",
+    "installPromptHint": "Bu promptu agentinizə yapışdırın. O, bot tərifini alır və təlimatları, rutinləri və bacarıqları qurur.",
+    "installPromptFallbackHint": "Və ya botu özünüz yaratmaq üçün bu promptu Grok Bot-a yapışdırın:",
+    "copyInstallPrompt": "Quraşdırma promptunu kopyala",
+    "machineReadable": "Maşın tərəfindən oxunan",
+    "create": "Yeni bot",
+    "edit": "Redaktə et",
+    "private": "Gizli",
+    "unlisted": "Siyahıda deyil",
+    "form": {
+      "createTitle": "Bot yarat",
+      "editTitle": "Botu redaktə et",
+      "name": "Ad",
+      "namePlaceholder": "məs. Gündəlik iclas hesabatçısı",
+      "platform": "Platforma",
+      "description": "Qısa təsvir",
+      "descriptionPlaceholder": "Bu bot nə edir?",
+      "installUrl": "Quraşdırma URL-i",
+      "installUrlHint": "İstəyə bağlı. Bir kliklə quraşdırma linki, məsələn Grok Bot şablonunuzun paylaşım linki.",
+      "instructionsHint": "Agent üçün sistem promptu və ya daimi təlimatlar.",
+      "instructionsPlaceholder": "Sən faydalı bir köməkçisən…",
+      "routinesHint": "Botun icra etdiyi planlaşdırılmış və ya hadisə ilə işə düşən tapşırıqlar.",
+      "routineName": "Rutinin adı",
+      "cronPlaceholder": "Cron, məs. 0 8 * * *",
+      "eventPlaceholder": "Hadisə, məs. Yeni issue açılanda",
+      "triggerLabelPlaceholder": "Oxunaqlı cədvəl (istəyə bağlı), məs. Hər gün saat 08:00-da",
+      "routinePromptPlaceholder": "Bu rutin işə düşəndə bot nə etməlidir?",
+      "addRoutine": "Rutin əlavə et",
+      "skillsHint": "Botun istifadə etdiyi bacarıqlar. Varsa quraşdırma mənbəyini əlavə edin.",
+      "skillName": "Bacarığın adı",
+      "skillDescription": "Nə edir",
+      "skillSourcePlaceholder": "Quraşdırma mənbəyi (istəyə bağlı)",
+      "addSkill": "Bacarıq əlavə et",
+      "connectorsPlaceholder": "məs. GitHub, Slack, Telegram",
+      "connectorsHint": "İstifadəçinin qoşmalı olduğu hesablar və ya xidmətlər, vergüllə ayrılmış.",
+      "remove": "Sil",
+      "submit": "Bot yarat",
+      "save": "Botu yadda saxla",
+      "created": "Bot yaradıldı",
+      "updated": "Bot yeniləndi"
+    }
   },
   "collection": {
     "title": "Kolleksiyam",
@@ -2300,6 +2380,11 @@
       "title": "AI Prompt İş Axınları və Prompt Zəncirləri",
       "description": "Hər addımın növbətisini qidalandırdığı çoxaddımlı AI iş axınları və prompt zəncirləri. ChatGPT, Claude, şəkil və video üçün sınanmış ardıcıllıqlardan yararlanın.",
       "heading": "Prompt İş Axınları"
+    },
+    "bots": {
+      "title": "OpenClaw, Hermes və Grok üçün hazır süni intellekt agent botları",
+      "description": "Təlimatları, planlaşdırılmış rutinləri və bacarıqları olan hazır süni intellekt agent botlarına baxın və onları bir kliklə OpenClaw, Hermes Agent və ya Grok Bot-a quraşdırın.",
+      "heading": "Botlar"
     },
     "taste": {
       "title": "AI Agentləri üçün Kod Üslubu Profilləri (taste.md)",

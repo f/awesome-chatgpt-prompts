@@ -35,6 +35,7 @@
     "collapseAll": "Collapse All"
   },
   "nav": {
+    "bots": "Bots",
     "collection": "My Collection",
     "feed": "Feed",
     "promptmasters": "Promptmasters",
@@ -499,6 +500,7 @@
       "tags": "Tags",
       "webhooks": "Webhooks",
       "prompts": "Prompts",
+      "bots": "Bots",
       "reports": "Reports"
     },
     "reports": {
@@ -758,6 +760,21 @@
       "generating": "Generating...",
       "generateSuccess": "{count} embeddings generated",
       "generateResult": "Generated: {success}, Failed: {failed}"
+    },
+    "botsList": {
+      "title": "Bots",
+      "description": "Manage community bots: feature, unlist, edit or delete them.",
+      "noBots": "No bots found",
+      "open": "Open",
+      "edit": "Edit",
+      "feature": "Feature",
+      "unfeature": "Unfeature",
+      "unlist": "Unlist",
+      "relist": "Relist",
+      "updated": "Bot updated",
+      "deleted": "Bot deleted",
+      "deleteConfirmTitle": "Delete bot?",
+      "deleteConfirmDescription": "This permanently deletes \"{title}\". This cannot be undone."
     }
   },
   "search": {
@@ -895,6 +912,69 @@
     "noWorkflows": "No workflows yet",
     "noWorkflowsDescription": "Workflows are prompts that connect to other prompts in a sequence. Create a prompt and add connections to build a workflow.",
     "browsePrompts": "Browse Prompts"
+  },
+  "bots": {
+    "description": "Ready-made AI agent bots with instructions, routines and skills. Install them on OpenClaw, Hermes Agent or Grok Bot.",
+    "count": "{count, plural, one {# bot} other {# bots}}",
+    "allPlatforms": "All",
+    "noBots": "No bots for this platform yet.",
+    "scheduledCount": "{count, plural, one {# scheduled routine} other {# scheduled routines}}",
+    "eventCount": "{count, plural, one {# event trigger} other {# event triggers}}",
+    "backToBots": "All bots",
+    "instructions": "Instructions",
+    "routines": "Routines",
+    "noRoutines": "This bot has no routines.",
+    "scheduled": "Scheduled",
+    "eventTriggered": "Event-triggered",
+    "schedule": "Schedule",
+    "trigger": "Trigger",
+    "skills": "Skills",
+    "connectors": "Required connectors",
+    "install": "Install",
+    "installOn": "Install on {platform}",
+    "installLinkComingSoon": "Install link coming soon",
+    "hermesCommandHint": "Install the bot as a skill with one command:",
+    "copyCommand": "Copy command",
+    "installPromptHint": "Paste this prompt into your agent. It fetches the bot definition and sets up the instructions, routines and skills.",
+    "installPromptFallbackHint": "Or paste this prompt into Grok Bot to create the bot yourself:",
+    "copyInstallPrompt": "Copy install prompt",
+    "machineReadable": "Machine-readable",
+    "create": "New bot",
+    "edit": "Edit",
+    "private": "Private",
+    "unlisted": "Unlisted",
+    "form": {
+      "createTitle": "Create a bot",
+      "editTitle": "Edit bot",
+      "name": "Name",
+      "namePlaceholder": "e.g. Daily Standup Reporter",
+      "platform": "Platform",
+      "description": "Short description",
+      "descriptionPlaceholder": "What does this bot do?",
+      "installUrl": "Install URL",
+      "installUrlHint": "Optional. A one-click install link, for example the share link of your Grok Bot template.",
+      "instructionsHint": "The system prompt or standing instructions for the agent.",
+      "instructionsPlaceholder": "You are a helpful assistant that…",
+      "routinesHint": "Scheduled or event-triggered jobs the bot runs.",
+      "routineName": "Routine name",
+      "cronPlaceholder": "Cron, e.g. 0 8 * * *",
+      "eventPlaceholder": "Event, e.g. When a new issue is opened",
+      "triggerLabelPlaceholder": "Readable schedule (optional), e.g. Every day at 08:00",
+      "routinePromptPlaceholder": "What should the bot do when this routine runs?",
+      "addRoutine": "Add routine",
+      "skillsHint": "Skills the bot uses. Add an install source if it has one.",
+      "skillName": "Skill name",
+      "skillDescription": "What it does",
+      "skillSourcePlaceholder": "Install source (optional)",
+      "addSkill": "Add skill",
+      "connectorsPlaceholder": "e.g. GitHub, Slack, Telegram",
+      "connectorsHint": "Accounts or services the user has to connect, separated by commas.",
+      "remove": "Remove",
+      "submit": "Create bot",
+      "save": "Save bot",
+      "created": "Bot created",
+      "updated": "Bot updated"
+    }
   },
   "collection": {
     "title": "My Collection",
@@ -2304,6 +2384,11 @@
       "title": "AI Prompt Workflows & Prompt Chains",
       "description": "Explore multi-step AI prompt workflows and prompt chains where each step feeds the next. Reuse proven sequences for ChatGPT, Claude, image and video generation.",
       "heading": "Prompt Workflows"
+    },
+    "bots": {
+      "title": "Ready-Made AI Agent Bots for OpenClaw, Hermes & Grok",
+      "description": "Browse ready-made AI agent bots with instructions, scheduled routines and skills, and install them on OpenClaw, Hermes Agent or Grok Bot in one click.",
+      "heading": "Bots"
     },
     "taste": {
       "title": "Coding Taste Profiles (taste.md) for AI Coding Agents",

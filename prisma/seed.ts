@@ -1,5 +1,6 @@
 import { PrismaClient, PromptType, StructuredFormat, RequiredMediaType } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { seedExampleBots } from "./seed-bots";
 
 const prisma = new PrismaClient();
 
@@ -307,6 +308,9 @@ async function main() {
       `This likely indicates an upstream API regression — check that ${PROMPTS_JSON_URL} returns content.`
     );
   }
+
+  const botsCreated = await seedExampleBots(prisma, admin.id);
+  console.log(`✅ Created ${botsCreated} example bots`);
 
   console.log("\n🎉 Seeding complete!");
   console.log("\n📋 Test credentials (password: password123):");

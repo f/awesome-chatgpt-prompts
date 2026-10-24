@@ -6,12 +6,13 @@ import { db } from "@/lib/db";
 import { generatePromptEmbedding, findAndSaveRelatedPrompts } from "@/lib/ai/embeddings";
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
+import { BOT_PLATFORMS, botConfigSchema, installUrlSchema } from "@/lib/bots/schema";
 
 const updatePromptSchema = z.object({
   title: z.string().min(1).max(200).optional(),
   description: z.string().max(500).optional(),
   content: z.string().min(1).optional(),
-  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO", "SKILL", "TASTE"]).optional(), // Output type, SKILL, or TASTE
+  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO", "SKILL", "TASTE", "BOT"]).optional(), // Output type, SKILL, TASTE, or BOT
   structuredFormat: z.enum(["JSON", "YAML"]).optional().nullable(),
   categoryId: z.string().optional().nullable(),
   tagIds: z.array(z.string()).optional(),
@@ -27,6 +28,10 @@ const updatePromptSchema = z.object({
     tools: z.array(z.string()).optional(),
   })).optional(),
   workflowLink: z.string().url().optional().or(z.literal("")).nullable(),
+  // BOT prompts only
+  botPlatform: z.enum(BOT_PLATFORMS).optional(),
+  installUrl: installUrlSchema.optional().or(z.literal("")).nullable(),
+  botConfig: botConfigSchema.optional(),
 });
 
 // Get single prompt
@@ -159,7 +164,7 @@ export async function PATCH(
       );
     }
 
-    const { tagIds, contributorIds, categoryId, mediaUrl, title, bestWithModels, bestWithMCP, workflowLink, ...data } = parsed.data;
+    const { tagIds, contributorIds, categoryId, mediaUrl, title, bestWithModels, bestWithMCP, workflowLink, installUrl, ...data } = parsed.data;
 
     // Regenerate slug if title changed
     let newSlug: string | undefined;
@@ -177,6 +182,7 @@ export async function PATCH(
       ...(bestWithModels !== undefined && { bestWithModels }),
       ...(bestWithMCP !== undefined && { bestWithMCP }),
       ...(workflowLink !== undefined && { workflowLink: workflowLink || null }),
+      ...(installUrl !== undefined && { installUrl: installUrl || null }),
     };
 
     // Update prompt

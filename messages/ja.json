@@ -35,6 +35,7 @@
     "collapseAll": "すべて折りたたむ"
   },
   "nav": {
+    "bots": "ボット",
     "collection": "マイコレクション",
     "feed": "フィード",
     "promptmasters": "Promptmasters",
@@ -499,6 +500,7 @@
       "tags": "タグ",
       "webhooks": "Webhook",
       "prompts": "プロンプト",
+      "bots": "ボット",
       "reports": "報告"
     },
     "reports": {
@@ -758,6 +760,21 @@
       "generating": "生成中...",
       "generateSuccess": "{count}件の埋め込みを生成しました",
       "generateResult": "成功: {success}, 失敗: {failed}"
+    },
+    "botsList": {
+      "title": "ボット",
+      "description": "コミュニティのボットを管理：おすすめ、限定公開、編集、削除。",
+      "noBots": "ボットが見つかりません",
+      "open": "開く",
+      "edit": "編集",
+      "feature": "おすすめにする",
+      "unfeature": "おすすめを解除",
+      "unlist": "限定公開にする",
+      "relist": "再公開",
+      "updated": "ボットを更新しました",
+      "deleted": "ボットを削除しました",
+      "deleteConfirmTitle": "ボットを削除しますか？",
+      "deleteConfirmDescription": "「{title}」を完全に削除します。元に戻せません。"
     }
   },
   "search": {
@@ -895,6 +912,69 @@
     "noWorkflows": "まだワークフローがありません",
     "noWorkflowsDescription": "ワークフローは、他のプロンプトに順番に接続するプロンプトです。プロンプトを作成し、接続を追加してワークフローを構築してください。",
     "browsePrompts": "プロンプトを見る"
+  },
+  "bots": {
+    "description": "指示・ルーティン・スキルを備えたすぐに使える AI エージェントボット。OpenClaw、Hermes Agent、Grok Bot にインストールできます。",
+    "count": "{count, plural, other {# 件のボット}}",
+    "allPlatforms": "すべて",
+    "noBots": "このプラットフォームのボットはまだありません。",
+    "scheduledCount": "{count, plural, other {# 件の定期ルーティン}}",
+    "eventCount": "{count, plural, other {# 件のイベントトリガー}}",
+    "backToBots": "すべてのボット",
+    "instructions": "指示",
+    "routines": "ルーティン",
+    "noRoutines": "このボットにはルーティンがありません。",
+    "scheduled": "定期実行",
+    "eventTriggered": "イベント起動",
+    "schedule": "スケジュール",
+    "trigger": "トリガー",
+    "skills": "スキル",
+    "connectors": "必要なコネクタ",
+    "install": "インストール",
+    "installOn": "{platform} にインストール",
+    "installLinkComingSoon": "インストールリンクは近日公開",
+    "hermesCommandHint": "1 つのコマンドでボットをスキルとしてインストール:",
+    "copyCommand": "コマンドをコピー",
+    "installPromptHint": "このプロンプトをエージェントに貼り付けてください。ボットの定義を取得し、指示・ルーティン・スキルを設定します。",
+    "installPromptFallbackHint": "または、このプロンプトを Grok Bot に貼り付けて自分でボットを作成します:",
+    "copyInstallPrompt": "インストールプロンプトをコピー",
+    "machineReadable": "機械可読",
+    "create": "新しいボット",
+    "edit": "編集",
+    "private": "非公開",
+    "unlisted": "限定公開",
+    "form": {
+      "createTitle": "ボットを作成",
+      "editTitle": "ボットを編集",
+      "name": "名前",
+      "namePlaceholder": "例：デイリースタンドアップ報告",
+      "platform": "プラットフォーム",
+      "description": "短い説明",
+      "descriptionPlaceholder": "このボットは何をしますか？",
+      "installUrl": "インストール URL",
+      "installUrlHint": "任意。ワンクリックインストール用のリンク（例：Grok Bot テンプレートの共有リンク）。",
+      "instructionsHint": "エージェントのシステムプロンプトまたは常設の指示。",
+      "instructionsPlaceholder": "あなたは親切なアシスタントで…",
+      "routinesHint": "ボットが実行する定期またはイベント起動のジョブ。",
+      "routineName": "ルーティン名",
+      "cronPlaceholder": "Cron（例：0 8 * * *）",
+      "eventPlaceholder": "イベント（例：新しい issue が作成されたとき）",
+      "triggerLabelPlaceholder": "読みやすいスケジュール（任意、例：毎日 08:00）",
+      "routinePromptPlaceholder": "このルーティンの実行時にボットは何をしますか？",
+      "addRoutine": "ルーティンを追加",
+      "skillsHint": "ボットが使うスキル。インストール元があれば追加してください。",
+      "skillName": "スキル名",
+      "skillDescription": "できること",
+      "skillSourcePlaceholder": "インストール元（任意）",
+      "addSkill": "スキルを追加",
+      "connectorsPlaceholder": "例：GitHub, Slack, Telegram",
+      "connectorsHint": "ユーザーが接続する必要のあるアカウントやサービス（カンマ区切り）。",
+      "remove": "削除",
+      "submit": "ボットを作成",
+      "save": "ボットを保存",
+      "created": "ボットを作成しました",
+      "updated": "ボットを更新しました"
+    }
   },
   "collection": {
     "title": "マイコレクション",
@@ -2288,6 +2368,11 @@
       "title": "AIプロンプトワークフローとプロンプトチェーン",
       "description": "各ステップの出力が次のステップにつながる、多段階のAIプロンプトワークフローとプロンプトチェーン。ChatGPT、Claude、画像・動画生成で実績のある手順を再利用できます。",
       "heading": "プロンプトワークフロー"
+    },
+    "bots": {
+      "title": "OpenClaw・Hermes・Grok 向けのすぐに使える AI エージェントボット",
+      "description": "指示、定期ルーティン、スキルを備えたすぐに使える AI エージェントボットを探して、OpenClaw、Hermes Agent、Grok Bot にワンクリックでインストールできます。",
+      "heading": "ボット"
     },
     "taste": {
       "title": "AIコーディングエージェント向けテイストプロファイル（taste.md）",

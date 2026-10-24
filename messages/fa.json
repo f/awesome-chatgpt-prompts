@@ -35,6 +35,7 @@
     "collapseAll": "بستن همه"
   },
   "nav": {
+    "bots": "ربات‌ها",
     "collection": "مجموعه من",
     "feed": "فید",
     "promptmasters": "پرامپت‌مسترها",
@@ -499,6 +500,7 @@
       "tags": "برچسب‌ها",
       "webhooks": "وب‌هوک‌ها",
       "prompts": "پرامپت‌ها",
+      "bots": "ربات‌ها",
       "reports": "گزارش‌ها"
     },
     "reports": {
@@ -758,6 +760,21 @@
       "generating": "در حال تولید...",
       "generateSuccess": "{count} embedding تولید شد",
       "generateResult": "تولید شده: {success}، ناموفق: {failed}"
+    },
+    "botsList": {
+      "title": "ربات‌ها",
+      "description": "مدیریت ربات‌های جامعه: ویژه کردن، حذف از فهرست، ویرایش یا حذف.",
+      "noBots": "رباتی یافت نشد",
+      "open": "باز کردن",
+      "edit": "ویرایش",
+      "feature": "ویژه کردن",
+      "unfeature": "لغو ویژه",
+      "unlist": "حذف از فهرست",
+      "relist": "بازگرداندن به فهرست",
+      "updated": "ربات به‌روزرسانی شد",
+      "deleted": "ربات حذف شد",
+      "deleteConfirmTitle": "ربات حذف شود؟",
+      "deleteConfirmDescription": "این کار «{title}» را برای همیشه حذف می‌کند و قابل بازگشت نیست."
     }
   },
   "search": {
@@ -895,6 +912,69 @@
     "noWorkflows": "هنوز گردش کاری وجود ندارد",
     "noWorkflowsDescription": "گردش کار پرامپت‌هایی هستند که به ترتیب به پرامپت‌های دیگر متصل می‌شوند. یک پرامپت ایجاد کنید و اتصالات اضافه کنید تا گردش کار بسازید.",
     "browsePrompts": "مرور پرامپت‌ها"
+  },
+  "bots": {
+    "description": "ربات‌های آماده عامل هوش مصنوعی با دستورالعمل‌ها، روال‌ها و مهارت‌ها. آن‌ها را روی OpenClaw، Hermes Agent یا Grok Bot نصب کنید.",
+    "count": "{count, plural, other {# ربات}}",
+    "allPlatforms": "همه",
+    "noBots": "هنوز رباتی برای این پلتفرم وجود ندارد.",
+    "scheduledCount": "{count, plural, other {# روال زمان‌بندی‌شده}}",
+    "eventCount": "{count, plural, other {# محرک رویداد}}",
+    "backToBots": "همه ربات‌ها",
+    "instructions": "دستورالعمل‌ها",
+    "routines": "روال‌ها",
+    "noRoutines": "این ربات روالی ندارد.",
+    "scheduled": "زمان‌بندی‌شده",
+    "eventTriggered": "مبتنی بر رویداد",
+    "schedule": "زمان‌بندی",
+    "trigger": "محرک",
+    "skills": "مهارت‌ها",
+    "connectors": "اتصال‌دهنده‌های لازم",
+    "install": "نصب",
+    "installOn": "نصب روی {platform}",
+    "installLinkComingSoon": "لینک نصب به‌زودی",
+    "hermesCommandHint": "ربات را با یک دستور به‌عنوان مهارت نصب کنید:",
+    "copyCommand": "کپی دستور",
+    "installPromptHint": "این پرامپت را در عامل خود قرار دهید. تعریف ربات را دریافت می‌کند و دستورالعمل‌ها، روال‌ها و مهارت‌ها را راه‌اندازی می‌کند.",
+    "installPromptFallbackHint": "یا این پرامپت را در Grok Bot قرار دهید تا خودتان ربات را بسازید:",
+    "copyInstallPrompt": "کپی پرامپت نصب",
+    "machineReadable": "قابل خواندن توسط ماشین",
+    "create": "ربات جدید",
+    "edit": "ویرایش",
+    "private": "خصوصی",
+    "unlisted": "فهرست‌نشده",
+    "form": {
+      "createTitle": "ساخت ربات",
+      "editTitle": "ویرایش ربات",
+      "name": "نام",
+      "namePlaceholder": "مثلاً گزارشگر جلسه روزانه",
+      "platform": "پلتفرم",
+      "description": "توضیح کوتاه",
+      "descriptionPlaceholder": "این ربات چه کاری انجام می‌دهد؟",
+      "installUrl": "آدرس نصب",
+      "installUrlHint": "اختیاری. لینک نصب با یک کلیک، مثلاً لینک اشتراک قالب Grok Bot شما.",
+      "instructionsHint": "پرامپت سیستمی یا دستورالعمل‌های ثابت عامل.",
+      "instructionsPlaceholder": "تو یک دستیار مفید هستی که…",
+      "routinesHint": "کارهای زمان‌بندی‌شده یا مبتنی بر رویداد که ربات اجرا می‌کند.",
+      "routineName": "نام روال",
+      "cronPlaceholder": "Cron، مثلاً 0 8 * * *",
+      "eventPlaceholder": "رویداد، مثلاً وقتی یک issue جدید باز می‌شود",
+      "triggerLabelPlaceholder": "زمان‌بندی خوانا (اختیاری)، مثلاً هر روز ساعت 08:00",
+      "routinePromptPlaceholder": "وقتی این روال اجرا می‌شود ربات چه کند؟",
+      "addRoutine": "افزودن روال",
+      "skillsHint": "مهارت‌هایی که ربات استفاده می‌کند. اگر منبع نصب دارد آن را اضافه کنید.",
+      "skillName": "نام مهارت",
+      "skillDescription": "چه کاری می‌کند",
+      "skillSourcePlaceholder": "منبع نصب (اختیاری)",
+      "addSkill": "افزودن مهارت",
+      "connectorsPlaceholder": "مثلاً GitHub، Slack، Telegram",
+      "connectorsHint": "حساب‌ها یا سرویس‌هایی که کاربر باید متصل کند، با کاما جدا شده.",
+      "remove": "حذف",
+      "submit": "ساخت ربات",
+      "save": "ذخیره ربات",
+      "created": "ربات ساخته شد",
+      "updated": "ربات به‌روزرسانی شد"
+    }
   },
   "collection": {
     "title": "مجموعه من",
@@ -2284,6 +2364,11 @@
       "title": "گردش کار و زنجیره پرامپت هوش مصنوعی",
       "description": "گردش‌کارهای چندمرحله‌ای و زنجیره‌های پرامپت که خروجی هر مرحله ورودی مرحله بعد است. توالی‌های آزموده را برای ChatGPT، Claude، تولید تصویر و ویدیو دوباره به کار ببرید.",
       "heading": "گردش کار پرامپت‌ها"
+    },
+    "bots": {
+      "title": "ربات‌های آماده عامل هوش مصنوعی برای OpenClaw، Hermes و Grok",
+      "description": "ربات‌های آماده عامل هوش مصنوعی با دستورالعمل‌ها، روال‌های زمان‌بندی‌شده و مهارت‌ها را مرور کنید و با یک کلیک روی OpenClaw، Hermes Agent یا Grok Bot نصب کنید.",
+      "heading": "ربات‌ها"
     },
     "taste": {
       "title": "پروفایل‌های سلیقه کدنویسی (taste.md) برای عامل‌های AI",

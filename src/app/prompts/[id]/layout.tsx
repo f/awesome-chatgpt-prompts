@@ -3,7 +3,7 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { canViewPrompt } from "@/lib/prompt-access";
-import { getPromptUrl } from "@/lib/urls";
+import { getBotUrl, getPromptUrl } from "@/lib/urls";
 
 interface PromptLayoutProps {
   children: React.ReactNode;
@@ -32,7 +32,7 @@ export default async function PromptLayout({ children, params }: PromptLayoutPro
 
   const prompt = await db.prompt.findUnique({
     where: { id },
-    select: { slug: true, isPrivate: true, deletedAt: true, authorId: true },
+    select: { slug: true, type: true, isPrivate: true, deletedAt: true, authorId: true },
   });
 
   if (!prompt) {
@@ -48,11 +48,18 @@ export default async function PromptLayout({ children, params }: PromptLayoutPro
     }
   }
 
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") ?? "";
+
+  // Bots have their own pages, including the editor
+  if (prompt.type === "BOT") {
+    const botPath = getBotUrl(id, prompt.slug);
+    permanentRedirect(pathname.endsWith("/edit") ? `${botPath}/edit` : botPath);
+  }
+
   // Serve every prompt from a single URL: /prompts/{id} and outdated slugs
   // permanently redirect to /prompts/{id}_{current-slug}. Nested routes such
   // as /edit and /changes keep their own URLs.
-  const headersList = await headers();
-  const pathname = headersList.get("x-pathname") ?? "";
   const isPromptPage = pathname.split("/").filter(Boolean).length === 2;
   const canonicalPath = getPromptUrl(id, prompt.slug);
   if (isPromptPage && `/prompts/${idParam}` !== canonicalPath) {

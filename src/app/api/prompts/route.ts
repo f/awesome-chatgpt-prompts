@@ -8,12 +8,13 @@ import { generatePromptEmbedding, findAndSaveRelatedPrompts } from "@/lib/ai/emb
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
 import { isSimilarContent, normalizeContent } from "@/lib/similarity";
+import { BOT_PLATFORMS, EMPTY_BOT_CONFIG, botConfigSchema, installUrlSchema } from "@/lib/bots/schema";
 
 const promptSchema = z.object({
   title: z.string().min(1).max(200),
   description: z.string().max(500).optional(),
   content: z.string().min(1),
-  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO", "SKILL", "TASTE"]), // Output type, SKILL, or TASTE
+  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO", "SKILL", "TASTE", "BOT"]), // Output type, SKILL, TASTE, or BOT
   structuredFormat: z.enum(["JSON", "YAML"]).nullish(), // Input type indicator
   categoryId: z.string().optional(),
   tagIds: z.array(z.string()),
@@ -29,6 +30,13 @@ const promptSchema = z.object({
     tools: z.array(z.string()).optional(),
   })).optional(),
   workflowLink: z.string().url().optional().or(z.literal("")),
+  // BOT prompts only
+  botPlatform: z.enum(BOT_PLATFORMS).optional(),
+  installUrl: installUrlSchema.optional().or(z.literal("")),
+  botConfig: botConfigSchema.optional(),
+}).refine((data) => data.type !== "BOT" || !!data.botPlatform, {
+  message: "botPlatform is required for bots",
+  path: ["botPlatform"],
 });
 
 // Create prompt
@@ -52,7 +60,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount, bestWithModels, bestWithMCP, workflowLink } = parsed.data;
+    const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount, bestWithModels, bestWithMCP, workflowLink, botPlatform, installUrl, botConfig } = parsed.data;
+    const isBot = type === "BOT";
 
     // Check if user is flagged (for auto-delisting and daily limit)
     const currentUser = await db.user.findUnique({
@@ -185,6 +194,11 @@ export async function POST(request: Request) {
         bestWithModels: bestWithModels || [],
         bestWithMCP: bestWithMCP || [],
         workflowLink: workflowLink || null,
+        ...(isBot && {
+          botPlatform,
+          installUrl: installUrl || null,
+          botConfig: botConfig ?? EMPTY_BOT_CONFIG,
+        }),
         authorId: session.user.id,
         categoryId: categoryId || null,
         // Auto-delist prompts from flagged users

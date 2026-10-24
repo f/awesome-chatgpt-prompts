@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { db } from "@/lib/db";
 import { getAllChapters } from "@/lib/book/chapters";
-import { getPromptUrl } from "@/lib/urls";
+import { getBotUrl, getPromptUrl } from "@/lib/urls";
 import { getBaseUrl, toSitemapImageUrl } from "@/lib/seo";
 
 // Revalidate sitemap every hour (3600 seconds)
@@ -28,6 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // derived from real content changes, because Google ignores inaccurate dates.
   const staticPaths = [
     "",
+    "/bots",
     "/prompts",
     "/discover",
     "/categories",
@@ -114,7 +115,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const promptPages: MetadataRoute.Sitemap = prompts.map((prompt) => {
       const image = prompt.type === "IMAGE" && prompt.mediaUrl ? toSitemapImageUrl(prompt.mediaUrl) : null;
       return {
-        url: `${baseUrl}${getPromptUrl(prompt.id, prompt.slug)}`,
+        url: `${baseUrl}${prompt.type === "BOT" ? getBotUrl(prompt.id, prompt.slug) : getPromptUrl(prompt.id, prompt.slug)}`,
         lastModified: prompt.updatedAt,
         ...(image && { images: [image] }),
       };

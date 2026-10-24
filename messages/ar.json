@@ -35,6 +35,7 @@
     "collapseAll": "طي الكل"
   },
   "nav": {
+    "bots": "البوتات",
     "collection": "مجموعتي",
     "feed": "الخلاصة",
     "promptmasters": "Promptmasters",
@@ -499,6 +500,7 @@
       "tags": "الوسوم",
       "webhooks": "Webhooks",
       "prompts": "الأوامر",
+      "bots": "البوتات",
       "reports": "البلاغات"
     },
     "reports": {
@@ -758,6 +760,21 @@
       "generating": "جاري الإنشاء...",
       "generateSuccess": "تم إنشاء {count} تضمين",
       "generateResult": "نجح: {success}، فشل: {failed}"
+    },
+    "botsList": {
+      "title": "البوتات",
+      "description": "إدارة بوتات المجتمع: تمييزها أو إلغاء إدراجها أو تعديلها أو حذفها.",
+      "noBots": "لم يتم العثور على بوتات",
+      "open": "فتح",
+      "edit": "تعديل",
+      "feature": "تمييز",
+      "unfeature": "إلغاء التمييز",
+      "unlist": "إلغاء الإدراج",
+      "relist": "إعادة الإدراج",
+      "updated": "تم تحديث البوت",
+      "deleted": "تم حذف البوت",
+      "deleteConfirmTitle": "حذف البوت؟",
+      "deleteConfirmDescription": "سيؤدي هذا إلى حذف \"{title}\" نهائيًا. لا يمكن التراجع عن ذلك."
     }
   },
   "search": {
@@ -895,6 +912,69 @@
     "noWorkflows": "لا توجد سير عمل بعد",
     "noWorkflowsDescription": "سير العمل هي أوامر تتصل بأوامر أخرى بالتسلسل. أنشئ أمرًا وأضف اتصالات لبناء سير عمل.",
     "browsePrompts": "تصفح الأوامر"
+  },
+  "bots": {
+    "description": "بوتات وكلاء ذكاء اصطناعي جاهزة مع التعليمات والمهام الروتينية والمهارات. ثبّتها على OpenClaw أو Hermes Agent أو Grok Bot.",
+    "count": "{count, plural, zero {لا توجد بوتات} one {بوت واحد} two {بوتان} few {# بوتات} many {# بوتًا} other {# بوت}}",
+    "allPlatforms": "الكل",
+    "noBots": "لا توجد بوتات لهذه المنصة بعد.",
+    "scheduledCount": "{count, plural, one {مهمة مجدولة واحدة} two {مهمتان مجدولتان} few {# مهام مجدولة} many {# مهمة مجدولة} other {# مهمة مجدولة}}",
+    "eventCount": "{count, plural, one {مشغّل حدث واحد} two {مشغّلا حدث} few {# مشغّلات أحداث} many {# مشغّل حدث} other {# مشغّل حدث}}",
+    "backToBots": "كل البوتات",
+    "instructions": "التعليمات",
+    "routines": "المهام الروتينية",
+    "noRoutines": "لا توجد مهام روتينية لهذا البوت.",
+    "scheduled": "مجدولة",
+    "eventTriggered": "تُشغَّل بحدث",
+    "schedule": "الجدول",
+    "trigger": "المشغّل",
+    "skills": "المهارات",
+    "connectors": "الموصلات المطلوبة",
+    "install": "تثبيت",
+    "installOn": "التثبيت على {platform}",
+    "installLinkComingSoon": "رابط التثبيت قريبًا",
+    "hermesCommandHint": "ثبّت البوت كمهارة بأمر واحد:",
+    "copyCommand": "نسخ الأمر",
+    "installPromptHint": "الصق هذه التعليمة في وكيلك. سيجلب تعريف البوت ويُعدّ التعليمات والمهام الروتينية والمهارات.",
+    "installPromptFallbackHint": "أو الصق هذه التعليمة في Grok Bot لإنشاء البوت بنفسك:",
+    "copyInstallPrompt": "نسخ تعليمة التثبيت",
+    "machineReadable": "قابل للقراءة آليًا",
+    "create": "بوت جديد",
+    "edit": "تعديل",
+    "private": "خاص",
+    "unlisted": "غير مُدرج",
+    "form": {
+      "createTitle": "إنشاء بوت",
+      "editTitle": "تعديل البوت",
+      "name": "الاسم",
+      "namePlaceholder": "مثال: مُعِدّ تقرير الاجتماع اليومي",
+      "platform": "المنصة",
+      "description": "وصف قصير",
+      "descriptionPlaceholder": "ماذا يفعل هذا البوت؟",
+      "installUrl": "رابط التثبيت",
+      "installUrlHint": "اختياري. رابط تثبيت بنقرة واحدة، مثل رابط مشاركة قالب Grok Bot الخاص بك.",
+      "instructionsHint": "تعليمة النظام أو التعليمات الدائمة للوكيل.",
+      "instructionsPlaceholder": "أنت مساعد مفيد…",
+      "routinesHint": "مهام مجدولة أو تُشغَّل بحدث ينفذها البوت.",
+      "routineName": "اسم المهمة",
+      "cronPlaceholder": "Cron، مثال: 0 8 * * *",
+      "eventPlaceholder": "حدث، مثال: عند فتح issue جديد",
+      "triggerLabelPlaceholder": "جدول مقروء (اختياري)، مثال: كل يوم الساعة 08:00",
+      "routinePromptPlaceholder": "ماذا يجب أن يفعل البوت عند تشغيل هذه المهمة؟",
+      "addRoutine": "إضافة مهمة",
+      "skillsHint": "المهارات التي يستخدمها البوت. أضف مصدر التثبيت إن وُجد.",
+      "skillName": "اسم المهارة",
+      "skillDescription": "ماذا تفعل",
+      "skillSourcePlaceholder": "مصدر التثبيت (اختياري)",
+      "addSkill": "إضافة مهارة",
+      "connectorsPlaceholder": "مثال: GitHub، Slack، Telegram",
+      "connectorsHint": "الحسابات أو الخدمات التي يجب على المستخدم ربطها، مفصولة بفواصل.",
+      "remove": "إزالة",
+      "submit": "إنشاء البوت",
+      "save": "حفظ البوت",
+      "created": "تم إنشاء البوت",
+      "updated": "تم تحديث البوت"
+    }
   },
   "collection": {
     "title": "مجموعتي",
@@ -2286,6 +2366,11 @@
       "title": "سير عمل وسلاسل أوامر الذكاء الاصطناعي",
       "description": "استكشف سير عمل متعدد الخطوات وسلاسل أوامر تُغذّي فيها كل خطوة الخطوة التالية. أعد استخدام تسلسلات مجرّبة لـ ChatGPT وClaude وتوليد الصور والفيديو.",
       "heading": "سير عمل الأوامر"
+    },
+    "bots": {
+      "title": "بوتات وكلاء ذكاء اصطناعي جاهزة لـ OpenClaw وHermes وGrok",
+      "description": "تصفّح بوتات وكلاء ذكاء اصطناعي جاهزة مع التعليمات والمهام المجدولة والمهارات، وثبّتها على OpenClaw أو Hermes Agent أو Grok Bot بنقرة واحدة.",
+      "heading": "البوتات"
     },
     "taste": {
       "title": "ملفات أسلوب البرمجة (taste.md) لوكلاء الذكاء الاصطناعي",

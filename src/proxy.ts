@@ -11,6 +11,20 @@ export function proxy(request: NextRequest) {
     return NextResponse.rewrite(url);
   }
 
+  // Rewrite machine-readable bot files to the bots API route
+  if (pathname === "/bots.json") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/api/bots";
+    return NextResponse.rewrite(url);
+  }
+  const botFile = pathname.match(/^\/bots\/([A-Za-z0-9_-]+)(\.md|\.json|\/SKILL\.md)$/);
+  if (botFile) {
+    const [, slug, suffix] = botFile;
+    const url = request.nextUrl.clone();
+    url.pathname = `/api/bots/${slug}/${suffix === ".json" ? "json" : suffix === ".md" ? "md" : "skill"}`;
+    return NextResponse.rewrite(url);
+  }
+
   // Add pathname and query headers for layout detection
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-pathname", pathname);

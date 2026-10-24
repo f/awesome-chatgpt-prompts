@@ -35,6 +35,7 @@
     "collapseAll": "Alles invouwen"
   },
   "nav": {
+    "bots": "Bots",
     "collection": "Mijn Collectie",
     "feed": "Feed",
     "promptmasters": "Promptmasters",
@@ -499,6 +500,7 @@
       "tags": "Tags",
       "webhooks": "Webhooks",
       "prompts": "Prompts",
+      "bots": "Bots",
       "reports": "Rapporten"
     },
     "reports": {
@@ -758,6 +760,21 @@
       "generating": "Genereren...",
       "generateSuccess": "{count} embeddings gegenereerd",
       "generateResult": "Gegenereerd: {success}, Mislukt: {failed}"
+    },
+    "botsList": {
+      "title": "Bots",
+      "description": "Beheer communitybots: uitlichten, uit lijsten halen, bewerken of verwijderen.",
+      "noBots": "Geen bots gevonden",
+      "open": "Openen",
+      "edit": "Bewerken",
+      "feature": "Uitlichten",
+      "unfeature": "Niet meer uitlichten",
+      "unlist": "Uit lijsten halen",
+      "relist": "Weer vermelden",
+      "updated": "Bot bijgewerkt",
+      "deleted": "Bot verwijderd",
+      "deleteConfirmTitle": "Bot verwijderen?",
+      "deleteConfirmDescription": "Hiermee wordt \"{title}\" definitief verwijderd. Dit kan niet ongedaan worden gemaakt."
     }
   },
   "search": {
@@ -895,6 +912,69 @@
     "noWorkflows": "Nog geen workflows",
     "noWorkflowsDescription": "Workflows zijn prompts die in volgorde verbonden zijn met andere prompts. Maak een prompt en voeg verbindingen toe om een workflow te bouwen.",
     "browsePrompts": "Prompts bekijken"
+  },
+  "bots": {
+    "description": "Kant-en-klare AI-agentbots met instructies, routines en skills. Installeer ze op OpenClaw, Hermes Agent of Grok Bot.",
+    "count": "{count, plural, one {# bot} other {# bots}}",
+    "allPlatforms": "Alle",
+    "noBots": "Nog geen bots voor dit platform.",
+    "scheduledCount": "{count, plural, one {# geplande routine} other {# geplande routines}}",
+    "eventCount": "{count, plural, one {# gebeurtenistrigger} other {# gebeurtenistriggers}}",
+    "backToBots": "Alle bots",
+    "instructions": "Instructies",
+    "routines": "Routines",
+    "noRoutines": "Deze bot heeft geen routines.",
+    "scheduled": "Gepland",
+    "eventTriggered": "Door gebeurtenis gestart",
+    "schedule": "Schema",
+    "trigger": "Trigger",
+    "skills": "Skills",
+    "connectors": "Vereiste connectors",
+    "install": "Installeren",
+    "installOn": "Installeren op {platform}",
+    "installLinkComingSoon": "Installatielink volgt binnenkort",
+    "hermesCommandHint": "Installeer de bot met één commando als skill:",
+    "copyCommand": "Commando kopiëren",
+    "installPromptHint": "Plak deze prompt in je agent. Die haalt de botdefinitie op en stelt de instructies, routines en skills in.",
+    "installPromptFallbackHint": "Of plak deze prompt in Grok Bot om de bot zelf te maken:",
+    "copyInstallPrompt": "Installatieprompt kopiëren",
+    "machineReadable": "Machineleesbaar",
+    "create": "Nieuwe bot",
+    "edit": "Bewerken",
+    "private": "Privé",
+    "unlisted": "Niet vermeld",
+    "form": {
+      "createTitle": "Bot maken",
+      "editTitle": "Bot bewerken",
+      "name": "Naam",
+      "namePlaceholder": "bijv. Dagelijkse stand-up-rapporteur",
+      "platform": "Platform",
+      "description": "Korte beschrijving",
+      "descriptionPlaceholder": "Wat doet deze bot?",
+      "installUrl": "Installatie-URL",
+      "installUrlHint": "Optioneel. Een installatielink met één klik, bijvoorbeeld de deellink van je Grok Bot-sjabloon.",
+      "instructionsHint": "De systeemprompt of vaste instructies voor de agent.",
+      "instructionsPlaceholder": "Je bent een behulpzame assistent die…",
+      "routinesHint": "Geplande of door gebeurtenissen gestarte taken die de bot uitvoert.",
+      "routineName": "Naam van de routine",
+      "cronPlaceholder": "Cron, bijv. 0 8 * * *",
+      "eventPlaceholder": "Gebeurtenis, bijv. Wanneer een nieuw issue wordt geopend",
+      "triggerLabelPlaceholder": "Leesbaar schema (optioneel), bijv. Elke dag om 08:00",
+      "routinePromptPlaceholder": "Wat moet de bot doen als deze routine draait?",
+      "addRoutine": "Routine toevoegen",
+      "skillsHint": "Skills die de bot gebruikt. Voeg een installatiebron toe als die er is.",
+      "skillName": "Skillnaam",
+      "skillDescription": "Wat het doet",
+      "skillSourcePlaceholder": "Installatiebron (optioneel)",
+      "addSkill": "Skill toevoegen",
+      "connectorsPlaceholder": "bijv. GitHub, Slack, Telegram",
+      "connectorsHint": "Accounts of diensten die de gebruiker moet koppelen, gescheiden door komma's.",
+      "remove": "Verwijderen",
+      "submit": "Bot maken",
+      "save": "Bot opslaan",
+      "created": "Bot gemaakt",
+      "updated": "Bot bijgewerkt"
+    }
   },
   "collection": {
     "title": "Mijn collectie",
@@ -2291,6 +2371,11 @@
       "title": "AI-promptworkflows en promptketens",
       "description": "AI-workflows in meerdere stappen en promptketens waarin elke stap de volgende voedt. Hergebruik beproefde reeksen voor ChatGPT, Claude, beeld- en videogeneratie.",
       "heading": "Promptworkflows"
+    },
+    "bots": {
+      "title": "Kant-en-klare AI-agentbots voor OpenClaw, Hermes en Grok",
+      "description": "Bekijk kant-en-klare AI-agentbots met instructies, geplande routines en skills en installeer ze met één klik op OpenClaw, Hermes Agent of Grok Bot.",
+      "heading": "Bots"
     },
     "taste": {
       "title": "Codeerstijlprofielen (taste.md) voor AI-codeeragents",
