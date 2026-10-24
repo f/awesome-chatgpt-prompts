@@ -1,38 +1,39 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import { Bot as BotIcon, Clock, Zap } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Bot as BotIcon, Clock, Star, Zap } from "lucide-react";
 import { BotPlatformBadge } from "@/components/bots/bot-platform-badge";
-import type { Bot } from "@/lib/bots";
+import type { BotView } from "@/lib/bots";
+import { getBotUrl } from "@/lib/urls";
 
 interface BotCardProps {
-  bot: Bot;
+  bot: BotView;
 }
 
 export async function BotCard({ bot }: BotCardProps) {
   const t = await getTranslations("bots");
-  const scheduled = bot.routines.filter((r) => r.type === "schedule").length;
-  const events = bot.routines.length - scheduled;
+  const scheduled = bot.config.routines.filter((r) => r.type === "schedule").length;
+  const events = bot.config.routines.length - scheduled;
 
   return (
     <Link
-      href={`/bots/${bot.slug}`}
+      href={getBotUrl(bot.id, bot.slug)}
       className="group flex flex-col gap-3 rounded-[var(--radius)] border bg-card p-4 transition-colors hover:border-foreground/30 hover:bg-accent/40"
     >
       <div className="flex items-start justify-between gap-2">
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border bg-muted">
           <BotIcon className="h-4 w-4 text-muted-foreground" />
         </div>
-        <div className="flex flex-wrap justify-end gap-1">
-          {bot.isExample && <Badge variant="secondary">{t("example")}</Badge>}
+        <div className="flex flex-wrap items-center justify-end gap-1">
+          {bot.isFeatured && <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />}
           <BotPlatformBadge platform={bot.platform} />
         </div>
       </div>
       <div className="space-y-1">
-        <h2 className="font-semibold leading-snug group-hover:underline">{bot.name}</h2>
-        <p className="text-sm text-muted-foreground line-clamp-3">{bot.summary}</p>
+        <h2 className="font-semibold leading-snug group-hover:underline">{bot.title}</h2>
+        {bot.description && <p className="text-sm text-muted-foreground line-clamp-3">{bot.description}</p>}
       </div>
-      <div className="mt-auto flex items-center gap-3 text-xs text-muted-foreground">
+      <div className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+        <span>@{bot.author.username}</span>
         {scheduled > 0 && (
           <span className="flex items-center gap-1">
             <Clock className="h-3 w-3" />

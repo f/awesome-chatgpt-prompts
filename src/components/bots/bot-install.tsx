@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Check, Copy, ExternalLink, FileCode2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import type { BotPlatform } from "@/lib/bots";
+import type { BotPlatform } from "@/lib/bots/schema";
 
 interface BotInstallProps {
   platform: BotPlatform;
@@ -49,23 +49,21 @@ export function BotInstall({ platform, platformName, installUrl, installPrompt, 
 
   return (
     <div className="space-y-4">
-      {platform === "grok" && (
-        installUrl ? (
-          <Button asChild className="w-full">
-            <a href={installUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="h-4 w-4" />
-              {t("installOn", { platform: platformName })}
-            </a>
+      {installUrl ? (
+        <Button asChild className="w-full">
+          <a href={installUrl} target="_blank" rel="noopener noreferrer">
+            <ExternalLink className="h-4 w-4" />
+            {t("installOn", { platform: platformName })}
+          </a>
+        </Button>
+      ) : platform === "GROK_BOT" && (
+        <div className="space-y-1">
+          <Button className="w-full" disabled>
+            <ExternalLink className="h-4 w-4" />
+            {t("installOn", { platform: platformName })}
           </Button>
-        ) : (
-          <div className="space-y-1">
-            <Button className="w-full" disabled>
-              <ExternalLink className="h-4 w-4" />
-              {t("installOn", { platform: platformName })}
-            </Button>
-            <p className="text-xs text-muted-foreground text-center">{t("installLinkComingSoon")}</p>
-          </div>
-        )
+          <p className="text-xs text-muted-foreground text-center">{t("installLinkComingSoon")}</p>
+        </div>
       )}
 
       {hermesCommand && (
@@ -77,7 +75,7 @@ export function BotInstall({ platform, platformName, installUrl, installPrompt, 
 
       <div className="space-y-2">
         <p className="text-sm text-muted-foreground">
-          {platform === "grok" ? t("installPromptFallbackHint") : t("installPromptHint")}
+          {platform === "GROK_BOT" ? t("installPromptFallbackHint") : t("installPromptHint")}
         </p>
         <CopyBlock text={installPrompt} label={t("copyInstallPrompt")} />
       </div>

@@ -500,6 +500,7 @@
       "tags": "תגיות",
       "webhooks": "Webhooks",
       "prompts": "פרומפטים",
+      "bots": "בוטים",
       "reports": "דיווחים"
     },
     "reports": {
@@ -759,6 +760,21 @@
       "generating": "מייצר...",
       "generateSuccess": "{count} הטמעות נוצרו",
       "generateResult": "נוצרו: {success}, נכשלו: {failed}"
+    },
+    "botsList": {
+      "title": "בוטים",
+      "description": "ניהול בוטים של הקהילה: הצגה מומלצת, הסרה מהרשימות, עריכה או מחיקה.",
+      "noBots": "לא נמצאו בוטים",
+      "open": "פתיחה",
+      "edit": "עריכה",
+      "feature": "הצגה כמומלץ",
+      "unfeature": "ביטול המלצה",
+      "unlist": "הסרה מהרשימות",
+      "relist": "החזרה לרשימות",
+      "updated": "הבוט עודכן",
+      "deleted": "הבוט נמחק",
+      "deleteConfirmTitle": "למחוק את הבוט?",
+      "deleteConfirmDescription": "פעולה זו תמחק את \"{title}\" לצמיתות. לא ניתן לבטל אותה."
     }
   },
   "search": {
@@ -902,8 +918,6 @@
     "count": "{count, plural, one {בוט אחד} other {# בוטים}}",
     "allPlatforms": "הכול",
     "noBots": "עדיין אין בוטים לפלטפורמה הזו.",
-    "example": "דוגמה",
-    "exampleNotice": "זהו בוט לדוגמה שמציג את הפורמט. התאימו אותו לפני שתסתמכו עליו.",
     "scheduledCount": "{count, plural, one {שגרה מתוזמנת אחת} other {# שגרות מתוזמנות}}",
     "eventCount": "{count, plural, one {טריגר אירוע אחד} other {# טריגרי אירועים}}",
     "backToBots": "כל הבוטים",
@@ -924,7 +938,43 @@
     "installPromptHint": "הדביקו את הפרומפט הזה בסוכן שלכם. הוא יטען את הגדרת הבוט ויגדיר את ההנחיות, השגרות והמיומנויות.",
     "installPromptFallbackHint": "או הדביקו את הפרומפט הזה ב-Grok Bot כדי ליצור את הבוט בעצמכם:",
     "copyInstallPrompt": "העתקת פרומפט ההתקנה",
-    "machineReadable": "קריא למכונה"
+    "machineReadable": "קריא למכונה",
+    "create": "בוט חדש",
+    "edit": "עריכה",
+    "private": "פרטי",
+    "unlisted": "לא רשום",
+    "form": {
+      "createTitle": "יצירת בוט",
+      "editTitle": "עריכת בוט",
+      "name": "שם",
+      "namePlaceholder": "לדוגמה: מדווח פגישת הבוקר",
+      "platform": "פלטפורמה",
+      "description": "תיאור קצר",
+      "descriptionPlaceholder": "מה הבוט הזה עושה?",
+      "installUrl": "כתובת התקנה",
+      "installUrlHint": "אופציונלי. קישור להתקנה בלחיצה אחת, למשל קישור השיתוף של תבנית ה-Grok Bot שלכם.",
+      "instructionsHint": "פרומפט המערכת או ההנחיות הקבועות של הסוכן.",
+      "instructionsPlaceholder": "אתה עוזר מועיל ש…",
+      "routinesHint": "משימות מתוזמנות או מופעלות באירוע שהבוט מריץ.",
+      "routineName": "שם השגרה",
+      "cronPlaceholder": "Cron, לדוגמה 0 8 * * *",
+      "eventPlaceholder": "אירוע, לדוגמה: כשנפתח issue חדש",
+      "triggerLabelPlaceholder": "תזמון קריא (אופציונלי), לדוגמה: כל יום ב-08:00",
+      "routinePromptPlaceholder": "מה הבוט צריך לעשות כשהשגרה רצה?",
+      "addRoutine": "הוספת שגרה",
+      "skillsHint": "מיומנויות שהבוט משתמש בהן. הוסיפו מקור התקנה אם יש.",
+      "skillName": "שם המיומנות",
+      "skillDescription": "מה היא עושה",
+      "skillSourcePlaceholder": "מקור התקנה (אופציונלי)",
+      "addSkill": "הוספת מיומנות",
+      "connectorsPlaceholder": "לדוגמה GitHub, Slack, Telegram",
+      "connectorsHint": "חשבונות או שירותים שהמשתמש צריך לחבר, מופרדים בפסיקים.",
+      "remove": "הסרה",
+      "submit": "יצירת בוט",
+      "save": "שמירת בוט",
+      "created": "הבוט נוצר",
+      "updated": "הבוט עודכן"
+    }
   },
   "collection": {
     "title": "האוסף שלי",

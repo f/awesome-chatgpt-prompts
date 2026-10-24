@@ -500,6 +500,7 @@
       "tags": "Ετικέτες",
       "webhooks": "Webhooks",
       "prompts": "Prompts",
+      "bots": "Bots",
       "reports": "Αναφορές"
     },
     "reports": {
@@ -759,6 +760,21 @@
       "generating": "Δημιουργία...",
       "generateSuccess": "{count} embeddings δημιουργήθηκαν",
       "generateResult": "Δημιουργήθηκαν: {success}, Απέτυχαν: {failed}"
+    },
+    "botsList": {
+      "title": "Bots",
+      "description": "Διαχειριστείτε τα bots της κοινότητας: προβολή, απόκρυψη από λίστες, επεξεργασία ή διαγραφή.",
+      "noBots": "Δεν βρέθηκαν bots",
+      "open": "Άνοιγμα",
+      "edit": "Επεξεργασία",
+      "feature": "Προβολή",
+      "unfeature": "Κατάργηση προβολής",
+      "unlist": "Απόκρυψη από λίστες",
+      "relist": "Επανεμφάνιση",
+      "updated": "Το bot ενημερώθηκε",
+      "deleted": "Το bot διαγράφηκε",
+      "deleteConfirmTitle": "Διαγραφή bot;",
+      "deleteConfirmDescription": "Αυτό διαγράφει οριστικά το \"{title}\". Δεν μπορεί να αναιρεθεί."
     }
   },
   "search": {
@@ -902,8 +918,6 @@
     "count": "{count, plural, one {# bot} other {# bots}}",
     "allPlatforms": "Όλα",
     "noBots": "Δεν υπάρχουν ακόμη bots για αυτή την πλατφόρμα.",
-    "example": "Παράδειγμα",
-    "exampleNotice": "Αυτό είναι ένα παράδειγμα bot που δείχνει τη μορφή. Προσαρμόστε το πριν το χρησιμοποιήσετε.",
     "scheduledCount": "{count, plural, one {# προγραμματισμένη ρουτίνα} other {# προγραμματισμένες ρουτίνες}}",
     "eventCount": "{count, plural, one {# έναυσμα συμβάντος} other {# εναύσματα συμβάντων}}",
     "backToBots": "Όλα τα bots",
@@ -924,7 +938,43 @@
     "installPromptHint": "Επικολλήστε αυτό το prompt στον πράκτορά σας. Φέρνει τον ορισμό του bot και ρυθμίζει τις οδηγίες, τις ρουτίνες και τις δεξιότητες.",
     "installPromptFallbackHint": "Ή επικολλήστε αυτό το prompt στο Grok Bot για να δημιουργήσετε το bot μόνοι σας:",
     "copyInstallPrompt": "Αντιγραφή prompt εγκατάστασης",
-    "machineReadable": "Αναγνώσιμο από μηχανές"
+    "machineReadable": "Αναγνώσιμο από μηχανές",
+    "create": "Νέο bot",
+    "edit": "Επεξεργασία",
+    "private": "Ιδιωτικό",
+    "unlisted": "Μη καταχωρισμένο",
+    "form": {
+      "createTitle": "Δημιουργία bot",
+      "editTitle": "Επεξεργασία bot",
+      "name": "Όνομα",
+      "namePlaceholder": "π.χ. Αναφορά καθημερινού standup",
+      "platform": "Πλατφόρμα",
+      "description": "Σύντομη περιγραφή",
+      "descriptionPlaceholder": "Τι κάνει αυτό το bot;",
+      "installUrl": "URL εγκατάστασης",
+      "installUrlHint": "Προαιρετικό. Σύνδεσμος εγκατάστασης με ένα κλικ, π.χ. ο σύνδεσμος κοινοποίησης του προτύπου Grok Bot σας.",
+      "instructionsHint": "Το system prompt ή οι μόνιμες οδηγίες του πράκτορα.",
+      "instructionsPlaceholder": "Είσαι ένας χρήσιμος βοηθός που…",
+      "routinesHint": "Προγραμματισμένες εργασίες ή εργασίες με έναυσμα συμβάντος που εκτελεί το bot.",
+      "routineName": "Όνομα ρουτίνας",
+      "cronPlaceholder": "Cron, π.χ. 0 8 * * *",
+      "eventPlaceholder": "Συμβάν, π.χ. Όταν ανοίγει νέο issue",
+      "triggerLabelPlaceholder": "Ευανάγνωστο πρόγραμμα (προαιρετικό), π.χ. Κάθε μέρα στις 08:00",
+      "routinePromptPlaceholder": "Τι πρέπει να κάνει το bot όταν εκτελείται αυτή η ρουτίνα;",
+      "addRoutine": "Προσθήκη ρουτίνας",
+      "skillsHint": "Δεξιότητες που χρησιμοποιεί το bot. Προσθέστε πηγή εγκατάστασης αν υπάρχει.",
+      "skillName": "Όνομα δεξιότητας",
+      "skillDescription": "Τι κάνει",
+      "skillSourcePlaceholder": "Πηγή εγκατάστασης (προαιρετικό)",
+      "addSkill": "Προσθήκη δεξιότητας",
+      "connectorsPlaceholder": "π.χ. GitHub, Slack, Telegram",
+      "connectorsHint": "Λογαριασμοί ή υπηρεσίες που πρέπει να συνδέσει ο χρήστης, χωρισμένα με κόμμα.",
+      "remove": "Αφαίρεση",
+      "submit": "Δημιουργία bot",
+      "save": "Αποθήκευση bot",
+      "created": "Το bot δημιουργήθηκε",
+      "updated": "Το bot ενημερώθηκε"
+    }
   },
   "collection": {
     "title": "Η Συλλογή μου",

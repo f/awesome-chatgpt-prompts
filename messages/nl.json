@@ -500,6 +500,7 @@
       "tags": "Tags",
       "webhooks": "Webhooks",
       "prompts": "Prompts",
+      "bots": "Bots",
       "reports": "Rapporten"
     },
     "reports": {
@@ -759,6 +760,21 @@
       "generating": "Genereren...",
       "generateSuccess": "{count} embeddings gegenereerd",
       "generateResult": "Gegenereerd: {success}, Mislukt: {failed}"
+    },
+    "botsList": {
+      "title": "Bots",
+      "description": "Beheer communitybots: uitlichten, uit lijsten halen, bewerken of verwijderen.",
+      "noBots": "Geen bots gevonden",
+      "open": "Openen",
+      "edit": "Bewerken",
+      "feature": "Uitlichten",
+      "unfeature": "Niet meer uitlichten",
+      "unlist": "Uit lijsten halen",
+      "relist": "Weer vermelden",
+      "updated": "Bot bijgewerkt",
+      "deleted": "Bot verwijderd",
+      "deleteConfirmTitle": "Bot verwijderen?",
+      "deleteConfirmDescription": "Hiermee wordt \"{title}\" definitief verwijderd. Dit kan niet ongedaan worden gemaakt."
     }
   },
   "search": {
@@ -902,8 +918,6 @@
     "count": "{count, plural, one {# bot} other {# bots}}",
     "allPlatforms": "Alle",
     "noBots": "Nog geen bots voor dit platform.",
-    "example": "Voorbeeld",
-    "exampleNotice": "Dit is een voorbeeldbot die het formaat laat zien. Pas hem aan voordat je erop vertrouwt.",
     "scheduledCount": "{count, plural, one {# geplande routine} other {# geplande routines}}",
     "eventCount": "{count, plural, one {# gebeurtenistrigger} other {# gebeurtenistriggers}}",
     "backToBots": "Alle bots",
@@ -924,7 +938,43 @@
     "installPromptHint": "Plak deze prompt in je agent. Die haalt de botdefinitie op en stelt de instructies, routines en skills in.",
     "installPromptFallbackHint": "Of plak deze prompt in Grok Bot om de bot zelf te maken:",
     "copyInstallPrompt": "Installatieprompt kopiëren",
-    "machineReadable": "Machineleesbaar"
+    "machineReadable": "Machineleesbaar",
+    "create": "Nieuwe bot",
+    "edit": "Bewerken",
+    "private": "Privé",
+    "unlisted": "Niet vermeld",
+    "form": {
+      "createTitle": "Bot maken",
+      "editTitle": "Bot bewerken",
+      "name": "Naam",
+      "namePlaceholder": "bijv. Dagelijkse stand-up-rapporteur",
+      "platform": "Platform",
+      "description": "Korte beschrijving",
+      "descriptionPlaceholder": "Wat doet deze bot?",
+      "installUrl": "Installatie-URL",
+      "installUrlHint": "Optioneel. Een installatielink met één klik, bijvoorbeeld de deellink van je Grok Bot-sjabloon.",
+      "instructionsHint": "De systeemprompt of vaste instructies voor de agent.",
+      "instructionsPlaceholder": "Je bent een behulpzame assistent die…",
+      "routinesHint": "Geplande of door gebeurtenissen gestarte taken die de bot uitvoert.",
+      "routineName": "Naam van de routine",
+      "cronPlaceholder": "Cron, bijv. 0 8 * * *",
+      "eventPlaceholder": "Gebeurtenis, bijv. Wanneer een nieuw issue wordt geopend",
+      "triggerLabelPlaceholder": "Leesbaar schema (optioneel), bijv. Elke dag om 08:00",
+      "routinePromptPlaceholder": "Wat moet de bot doen als deze routine draait?",
+      "addRoutine": "Routine toevoegen",
+      "skillsHint": "Skills die de bot gebruikt. Voeg een installatiebron toe als die er is.",
+      "skillName": "Skillnaam",
+      "skillDescription": "Wat het doet",
+      "skillSourcePlaceholder": "Installatiebron (optioneel)",
+      "addSkill": "Skill toevoegen",
+      "connectorsPlaceholder": "bijv. GitHub, Slack, Telegram",
+      "connectorsHint": "Accounts of diensten die de gebruiker moet koppelen, gescheiden door komma's.",
+      "remove": "Verwijderen",
+      "submit": "Bot maken",
+      "save": "Bot opslaan",
+      "created": "Bot gemaakt",
+      "updated": "Bot bijgewerkt"
+    }
   },
   "collection": {
     "title": "Mijn collectie",

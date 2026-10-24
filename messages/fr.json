@@ -500,6 +500,7 @@
       "tags": "Tags",
       "webhooks": "Webhooks",
       "prompts": "Prompts",
+      "bots": "Bots",
       "reports": "Signalements"
     },
     "reports": {
@@ -759,6 +760,21 @@
       "generating": "Génération...",
       "generateSuccess": "{count} embeddings générés",
       "generateResult": "Générés : {success}, Échecs : {failed}"
+    },
+    "botsList": {
+      "title": "Bots",
+      "description": "Gérez les bots de la communauté : mettez-les en avant, retirez-les des listes, modifiez-les ou supprimez-les.",
+      "noBots": "Aucun bot trouvé",
+      "open": "Ouvrir",
+      "edit": "Modifier",
+      "feature": "Mettre en avant",
+      "unfeature": "Retirer la mise en avant",
+      "unlist": "Retirer des listes",
+      "relist": "Remettre en liste",
+      "updated": "Bot mis à jour",
+      "deleted": "Bot supprimé",
+      "deleteConfirmTitle": "Supprimer le bot ?",
+      "deleteConfirmDescription": "Cela supprime définitivement « {title} ». Cette action est irréversible."
     }
   },
   "search": {
@@ -902,8 +918,6 @@
     "count": "{count, plural, one {# bot} other {# bots}}",
     "allPlatforms": "Tous",
     "noBots": "Aucun bot pour cette plateforme pour le moment.",
-    "example": "Exemple",
-    "exampleNotice": "Ceci est un bot d'exemple qui illustre le format. Adaptez-le avant de vous en servir.",
     "scheduledCount": "{count, plural, one {# routine planifiée} other {# routines planifiées}}",
     "eventCount": "{count, plural, one {# déclencheur d'événement} other {# déclencheurs d'événements}}",
     "backToBots": "Tous les bots",
@@ -924,7 +938,43 @@
     "installPromptHint": "Collez ce prompt dans votre agent. Il récupère la définition du bot et configure les instructions, routines et compétences.",
     "installPromptFallbackHint": "Ou collez ce prompt dans Grok Bot pour créer le bot vous-même :",
     "copyInstallPrompt": "Copier le prompt d'installation",
-    "machineReadable": "Lisible par machine"
+    "machineReadable": "Lisible par machine",
+    "create": "Nouveau bot",
+    "edit": "Modifier",
+    "private": "Privé",
+    "unlisted": "Non répertorié",
+    "form": {
+      "createTitle": "Créer un bot",
+      "editTitle": "Modifier le bot",
+      "name": "Nom",
+      "namePlaceholder": "ex. Rapporteur du point quotidien",
+      "platform": "Plateforme",
+      "description": "Description courte",
+      "descriptionPlaceholder": "Que fait ce bot ?",
+      "installUrl": "URL d'installation",
+      "installUrlHint": "Facultatif. Un lien d'installation en un clic, par exemple le lien de partage de votre modèle Grok Bot.",
+      "instructionsHint": "Le prompt système ou les instructions permanentes de l'agent.",
+      "instructionsPlaceholder": "Tu es un assistant serviable qui…",
+      "routinesHint": "Tâches planifiées ou déclenchées par un événement que le bot exécute.",
+      "routineName": "Nom de la routine",
+      "cronPlaceholder": "Cron, ex. 0 8 * * *",
+      "eventPlaceholder": "Événement, ex. Quand une nouvelle issue est ouverte",
+      "triggerLabelPlaceholder": "Planification lisible (facultatif), ex. Tous les jours à 08:00",
+      "routinePromptPlaceholder": "Que doit faire le bot quand cette routine s'exécute ?",
+      "addRoutine": "Ajouter une routine",
+      "skillsHint": "Compétences utilisées par le bot. Ajoutez une source d'installation si elle existe.",
+      "skillName": "Nom de la compétence",
+      "skillDescription": "Ce qu'elle fait",
+      "skillSourcePlaceholder": "Source d'installation (facultatif)",
+      "addSkill": "Ajouter une compétence",
+      "connectorsPlaceholder": "ex. GitHub, Slack, Telegram",
+      "connectorsHint": "Comptes ou services que l'utilisateur doit connecter, séparés par des virgules.",
+      "remove": "Retirer",
+      "submit": "Créer le bot",
+      "save": "Enregistrer le bot",
+      "created": "Bot créé",
+      "updated": "Bot mis à jour"
+    }
   },
   "collection": {
     "title": "Ma Collection",

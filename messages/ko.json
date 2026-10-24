@@ -500,6 +500,7 @@
       "tags": "태그",
       "webhooks": "웹훅",
       "prompts": "프롬프트",
+      "bots": "봇",
       "reports": "신고"
     },
     "reports": {
@@ -759,6 +760,21 @@
       "generating": "생성 중...",
       "generateSuccess": "{count}개 임베딩 생성됨",
       "generateResult": "생성됨: {success}, 실패: {failed}"
+    },
+    "botsList": {
+      "title": "봇",
+      "description": "커뮤니티 봇 관리: 추천, 목록에서 숨기기, 편집 또는 삭제.",
+      "noBots": "봇을 찾을 수 없습니다",
+      "open": "열기",
+      "edit": "편집",
+      "feature": "추천",
+      "unfeature": "추천 해제",
+      "unlist": "목록에서 숨기기",
+      "relist": "다시 표시",
+      "updated": "봇이 업데이트되었습니다",
+      "deleted": "봇이 삭제되었습니다",
+      "deleteConfirmTitle": "봇을 삭제할까요?",
+      "deleteConfirmDescription": "\"{title}\"이(가) 영구적으로 삭제됩니다. 되돌릴 수 없습니다."
     }
   },
   "search": {
@@ -902,8 +918,6 @@
     "count": "{count, plural, other {봇 #개}}",
     "allPlatforms": "전체",
     "noBots": "이 플랫폼용 봇이 아직 없습니다.",
-    "example": "예시",
-    "exampleNotice": "형식을 보여주는 예시 봇입니다. 사용하기 전에 필요에 맞게 수정하세요.",
     "scheduledCount": "{count, plural, other {예약 루틴 #개}}",
     "eventCount": "{count, plural, other {이벤트 트리거 #개}}",
     "backToBots": "모든 봇",
@@ -924,7 +938,43 @@
     "installPromptHint": "이 프롬프트를 에이전트에 붙여 넣으세요. 봇 정의를 가져와 지침, 루틴, 스킬을 설정합니다.",
     "installPromptFallbackHint": "또는 이 프롬프트를 Grok Bot에 붙여 넣어 직접 봇을 만드세요:",
     "copyInstallPrompt": "설치 프롬프트 복사",
-    "machineReadable": "기계 판독용"
+    "machineReadable": "기계 판독용",
+    "create": "새 봇",
+    "edit": "편집",
+    "private": "비공개",
+    "unlisted": "목록 미표시",
+    "form": {
+      "createTitle": "봇 만들기",
+      "editTitle": "봇 편집",
+      "name": "이름",
+      "namePlaceholder": "예: 데일리 스탠드업 리포터",
+      "platform": "플랫폼",
+      "description": "짧은 설명",
+      "descriptionPlaceholder": "이 봇은 무엇을 하나요?",
+      "installUrl": "설치 URL",
+      "installUrlHint": "선택 사항. 원클릭 설치 링크(예: Grok Bot 템플릿 공유 링크).",
+      "instructionsHint": "에이전트의 시스템 프롬프트 또는 상시 지침입니다.",
+      "instructionsPlaceholder": "당신은 도움이 되는 어시스턴트로서…",
+      "routinesHint": "봇이 실행하는 예약 또는 이벤트 트리거 작업입니다.",
+      "routineName": "루틴 이름",
+      "cronPlaceholder": "Cron, 예: 0 8 * * *",
+      "eventPlaceholder": "이벤트, 예: 새 이슈가 열릴 때",
+      "triggerLabelPlaceholder": "읽기 쉬운 일정(선택), 예: 매일 08:00",
+      "routinePromptPlaceholder": "이 루틴이 실행될 때 봇이 무엇을 해야 하나요?",
+      "addRoutine": "루틴 추가",
+      "skillsHint": "봇이 사용하는 스킬입니다. 설치 소스가 있으면 추가하세요.",
+      "skillName": "스킬 이름",
+      "skillDescription": "하는 일",
+      "skillSourcePlaceholder": "설치 소스(선택)",
+      "addSkill": "스킬 추가",
+      "connectorsPlaceholder": "예: GitHub, Slack, Telegram",
+      "connectorsHint": "사용자가 연결해야 하는 계정 또는 서비스(쉼표로 구분).",
+      "remove": "제거",
+      "submit": "봇 만들기",
+      "save": "봇 저장",
+      "created": "봇이 생성되었습니다",
+      "updated": "봇이 업데이트되었습니다"
+    }
   },
   "collection": {
     "title": "내 컬렉션",

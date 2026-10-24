@@ -500,6 +500,7 @@
       "tags": "Tags",
       "webhooks": "Webhooks",
       "prompts": "Prompts",
+      "bots": "Bots",
       "reports": "Reports"
     },
     "reports": {
@@ -759,6 +760,21 @@
       "generating": "Generating...",
       "generateSuccess": "{count} embeddings generated",
       "generateResult": "Generated: {success}, Failed: {failed}"
+    },
+    "botsList": {
+      "title": "Bots",
+      "description": "Manage community bots: feature, unlist, edit or delete them.",
+      "noBots": "No bots found",
+      "open": "Open",
+      "edit": "Edit",
+      "feature": "Feature",
+      "unfeature": "Unfeature",
+      "unlist": "Unlist",
+      "relist": "Relist",
+      "updated": "Bot updated",
+      "deleted": "Bot deleted",
+      "deleteConfirmTitle": "Delete bot?",
+      "deleteConfirmDescription": "This permanently deletes \"{title}\". This cannot be undone."
     }
   },
   "search": {
@@ -902,8 +918,6 @@
     "count": "{count, plural, one {# bot} other {# bots}}",
     "allPlatforms": "All",
     "noBots": "No bots for this platform yet.",
-    "example": "Example",
-    "exampleNotice": "This is an example bot that shows the format. Adapt it before relying on it.",
     "scheduledCount": "{count, plural, one {# scheduled routine} other {# scheduled routines}}",
     "eventCount": "{count, plural, one {# event trigger} other {# event triggers}}",
     "backToBots": "All bots",
@@ -924,7 +938,43 @@
     "installPromptHint": "Paste this prompt into your agent. It fetches the bot definition and sets up the instructions, routines and skills.",
     "installPromptFallbackHint": "Or paste this prompt into Grok Bot to create the bot yourself:",
     "copyInstallPrompt": "Copy install prompt",
-    "machineReadable": "Machine-readable"
+    "machineReadable": "Machine-readable",
+    "create": "New bot",
+    "edit": "Edit",
+    "private": "Private",
+    "unlisted": "Unlisted",
+    "form": {
+      "createTitle": "Create a bot",
+      "editTitle": "Edit bot",
+      "name": "Name",
+      "namePlaceholder": "e.g. Daily Standup Reporter",
+      "platform": "Platform",
+      "description": "Short description",
+      "descriptionPlaceholder": "What does this bot do?",
+      "installUrl": "Install URL",
+      "installUrlHint": "Optional. A one-click install link, for example the share link of your Grok Bot template.",
+      "instructionsHint": "The system prompt or standing instructions for the agent.",
+      "instructionsPlaceholder": "You are a helpful assistant that…",
+      "routinesHint": "Scheduled or event-triggered jobs the bot runs.",
+      "routineName": "Routine name",
+      "cronPlaceholder": "Cron, e.g. 0 8 * * *",
+      "eventPlaceholder": "Event, e.g. When a new issue is opened",
+      "triggerLabelPlaceholder": "Readable schedule (optional), e.g. Every day at 08:00",
+      "routinePromptPlaceholder": "What should the bot do when this routine runs?",
+      "addRoutine": "Add routine",
+      "skillsHint": "Skills the bot uses. Add an install source if it has one.",
+      "skillName": "Skill name",
+      "skillDescription": "What it does",
+      "skillSourcePlaceholder": "Install source (optional)",
+      "addSkill": "Add skill",
+      "connectorsPlaceholder": "e.g. GitHub, Slack, Telegram",
+      "connectorsHint": "Accounts or services the user has to connect, separated by commas.",
+      "remove": "Remove",
+      "submit": "Create bot",
+      "save": "Save bot",
+      "created": "Bot created",
+      "updated": "Bot updated"
+    }
   },
   "collection": {
     "title": "My Collection",

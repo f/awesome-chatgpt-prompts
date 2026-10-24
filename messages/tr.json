@@ -500,6 +500,7 @@
       "tags": "Etiketler",
       "webhooks": "Webhooklar",
       "prompts": "Promptlar",
+      "bots": "Botlar",
       "reports": "Şikayetler"
     },
     "reports": {
@@ -759,6 +760,21 @@
       "generating": "Oluşturuluyor...",
       "generateSuccess": "{count} gömme vektörü oluşturuldu",
       "generateResult": "Oluşturulan: {success}, Başarısız: {failed}"
+    },
+    "botsList": {
+      "title": "Botlar",
+      "description": "Topluluk botlarını yönetin: öne çıkarın, listeden kaldırın, düzenleyin veya silin.",
+      "noBots": "Bot bulunamadı",
+      "open": "Aç",
+      "edit": "Düzenle",
+      "feature": "Öne çıkar",
+      "unfeature": "Öne çıkarmayı kaldır",
+      "unlist": "Listeden kaldır",
+      "relist": "Yeniden listele",
+      "updated": "Bot güncellendi",
+      "deleted": "Bot silindi",
+      "deleteConfirmTitle": "Bot silinsin mi?",
+      "deleteConfirmDescription": "\"{title}\" kalıcı olarak silinecek. Bu işlem geri alınamaz."
     }
   },
   "search": {
@@ -902,8 +918,6 @@
     "count": "{count, plural, one {# bot} other {# bot}}",
     "allPlatforms": "Tümü",
     "noBots": "Bu platform için henüz bot yok.",
-    "example": "Örnek",
-    "exampleNotice": "Bu, formatı gösteren örnek bir bottur. Kullanmadan önce kendinize göre uyarlayın.",
     "scheduledCount": "{count, plural, one {# zamanlanmış rutin} other {# zamanlanmış rutin}}",
     "eventCount": "{count, plural, one {# olay tetikleyici} other {# olay tetikleyici}}",
     "backToBots": "Tüm botlar",
@@ -924,7 +938,43 @@
     "installPromptHint": "Bu istemi ajanınıza yapıştırın. Bot tanımını alır ve talimatları, rutinleri ve becerileri kurar.",
     "installPromptFallbackHint": "Ya da botu kendiniz oluşturmak için bu istemi Grok Bot'a yapıştırın:",
     "copyInstallPrompt": "Kurulum istemini kopyala",
-    "machineReadable": "Makine tarafından okunabilir"
+    "machineReadable": "Makine tarafından okunabilir",
+    "create": "Yeni bot",
+    "edit": "Düzenle",
+    "private": "Gizli",
+    "unlisted": "Listelenmemiş",
+    "form": {
+      "createTitle": "Bot oluştur",
+      "editTitle": "Botu düzenle",
+      "name": "Ad",
+      "namePlaceholder": "ör. Günlük Toplantı Raporlayıcı",
+      "platform": "Platform",
+      "description": "Kısa açıklama",
+      "descriptionPlaceholder": "Bu bot ne yapıyor?",
+      "installUrl": "Kurulum URL'si",
+      "installUrlHint": "İsteğe bağlı. Tek tıkla kurulum bağlantısı, örneğin Grok Bot şablonunuzun paylaşım bağlantısı.",
+      "instructionsHint": "Ajan için sistem istemi veya kalıcı talimatlar.",
+      "instructionsPlaceholder": "Sen yardımsever bir asistansın…",
+      "routinesHint": "Botun çalıştırdığı zamanlanmış veya olayla tetiklenen işler.",
+      "routineName": "Rutin adı",
+      "cronPlaceholder": "Cron, ör. 0 8 * * *",
+      "eventPlaceholder": "Olay, ör. Yeni bir issue açıldığında",
+      "triggerLabelPlaceholder": "Okunabilir zamanlama (isteğe bağlı), ör. Her gün 08:00'de",
+      "routinePromptPlaceholder": "Bu rutin çalıştığında bot ne yapmalı?",
+      "addRoutine": "Rutin ekle",
+      "skillsHint": "Botun kullandığı beceriler. Varsa bir kurulum kaynağı ekleyin.",
+      "skillName": "Beceri adı",
+      "skillDescription": "Ne yapar",
+      "skillSourcePlaceholder": "Kurulum kaynağı (isteğe bağlı)",
+      "addSkill": "Beceri ekle",
+      "connectorsPlaceholder": "ör. GitHub, Slack, Telegram",
+      "connectorsHint": "Kullanıcının bağlaması gereken hesaplar veya hizmetler, virgülle ayrılmış.",
+      "remove": "Kaldır",
+      "submit": "Bot oluştur",
+      "save": "Botu kaydet",
+      "created": "Bot oluşturuldu",
+      "updated": "Bot güncellendi"
+    }
   },
   "collection": {
     "title": "Koleksiyonum",
