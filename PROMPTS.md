@@ -193650,3 +193650,20 @@ Act as ur an bank po expert and you have cleared all bank po exams 1.i am a begi
 
 </details>
 
+<details>
+<summary><strong>Playful Fisheye Candid Portrait</strong></summary>
+
+## Playful Fisheye Candid Portrait
+
+Contributed by @anonymous
+
+```md
+GPT Image 2.5 on ChatGPT
+
+Prompt: 
+
+Create a realistic fisheye photo of the woman in my uploaded selfie, preserving her exact facial features. She sits on a doorstep in front of weathered green wooden doors, wearing a beige trench coat, ivory turtleneck, and light blue jeans. A curious tabby-and-white cat fills the right foreground with an oversized nose and expressive eyes. Soft daylight, natural textures, playful candid mood, ultra-realistic photography, landscape 16:9, no text.
+```
+
+</details>
+
