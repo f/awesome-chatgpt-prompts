@@ -7,16 +7,18 @@ import { ExternalLink, Heart } from "lucide-react";
 import { db } from "@/lib/db";
 import { ContributorAvatar } from "./contributor-avatar";
 import config from "@/../prompts.config";
+import { buildPageMetadata } from "@/lib/seo";
 
 // Revalidate the page once per day (86400 seconds)
 export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("about");
-  return {
+  return buildPageMetadata({
     title: t("title"),
     description: t("description"),
-  };
+    path: "/about",
+  });
 }
 
 async function getContributors() {

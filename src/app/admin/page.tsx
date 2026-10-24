@@ -14,10 +14,12 @@ import { WebhooksTable } from "@/components/admin/webhooks-table";
 import { PromptsManagement } from "@/components/admin/prompts-management";
 import { ReportsTable } from "@/components/admin/reports-table";
 import { isAISearchEnabled } from "@/lib/ai/embeddings";
+import { NOINDEX_ROBOTS } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Admin Dashboard",
   description: "Manage your application",
+  robots: NOINDEX_ROBOTS,
 };
 
 export default async function AdminPage() {

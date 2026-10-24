@@ -6,11 +6,8 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { InfinitePromptList } from "@/components/prompts/infinite-prompt-list";
 import { db } from "@/lib/db";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Skills",
-  description: "Browse and discover AI agent skills",
-};
 
 // Query for skills list (cached)
 function getCachedSkills(
@@ -110,9 +107,21 @@ interface SkillsPageProps {
   }>;
 }
 
+export async function generateMetadata({ searchParams }: SkillsPageProps): Promise<Metadata> {
+  const { q } = await searchParams;
+  const t = await getTranslations("seo.skills");
+  return buildPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/skills",
+    // Search results aren't indexed; sorted views share the main canonical
+    noindex: !!q,
+  });
+}
+
 export default async function SkillsPage({ searchParams }: SkillsPageProps) {
   const t = await getTranslations("prompts");
-  const tNav = await getTranslations("nav");
+  const tSeo = await getTranslations("seo.skills");
   const tSearch = await getTranslations("search");
   const params = await searchParams;
   
@@ -135,7 +144,7 @@ export default async function SkillsPage({ searchParams }: SkillsPageProps) {
     <div className="container py-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div className="flex items-baseline gap-2">
-          <h1 className="text-lg font-semibold">{tNav("skills")}</h1>
+          <h1 className="text-lg font-semibold">{tSeo("heading")}</h1>
           <span className="text-xs text-muted-foreground">{tSearch("found", { count: total })}</span>
         </div>
         <Button size="sm" className="h-8 text-xs w-full sm:w-auto" asChild>

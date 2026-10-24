@@ -41,7 +41,7 @@ export function RelatedPrompts({ prompts }: RelatedPromptsProps) {
   return (
     <div className="mt-8 space-y-4">
       <div className="flex items-center gap-2">
-        <h3 className="font-semibold">{t("relatedPrompts")}</h3>
+        <h2 className="font-semibold">{t("relatedPrompts")}</h2>
       </div>
       <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
         {prompts.map((prompt) => (
@@ -52,9 +52,9 @@ export function RelatedPrompts({ prompts }: RelatedPromptsProps) {
           >
             {/* Header */}
             <div className="flex items-start justify-between gap-2 mb-2">
-              <h4 className="font-medium text-sm line-clamp-1 group-hover:underline">
+              <h3 className="font-medium text-sm line-clamp-1 group-hover:underline">
                 {prompt.title}
-              </h4>
+              </h3>
               <Badge variant="outline" className="text-[10px] shrink-0">
                 {t(`types.${prompt.type.toLowerCase()}`)}
               </Badge>

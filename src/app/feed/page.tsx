@@ -7,6 +7,13 @@ import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PromptList } from "@/components/prompts/prompt-list";
+import type { Metadata } from "next";
+import { NOINDEX_ROBOTS } from "@/lib/seo";
+
+// Signed-in or workflow page with no search value
+export const metadata: Metadata = {
+  robots: NOINDEX_ROBOTS,
+};
 
 export default async function FeedPage() {
   const t = await getTranslations("feed");

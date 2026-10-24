@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      url: "https://prompts.chat/book",
+      url: "/book",
       siteName: "prompts.chat",
       images: [
         {
@@ -65,7 +65,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: "@fkadev",
     },
     alternates: {
-      canonical: "https://prompts.chat/book",
+      canonical: "/book",
     },
     robots: {
       index: true,

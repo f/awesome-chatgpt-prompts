@@ -1,12 +1,15 @@
 import { SlideDeck, SlideTitle, SlideContent, SlideHighlight } from "@/components/presentation/SlideDeck";
 import { MoveRight, Star, GitMerge, FileCode2, Sparkles, MessageSquare, Globe, Users, Code, Zap, Lightbulb } from "lucide-react";
 import Link from "next/link";
+import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 
-export const metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Why prompts.chat? | Presentation",
   description: "Discover why prompts are more important than ever in the agentic era.",
-};
+  path: "/presentation",
+});
 
 export default function PresentationPage() {
   return (

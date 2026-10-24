@@ -1,6 +1,8 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { buildPageMetadata } from "@/lib/seo";
 import { Server, Database, Key, Palette, Globe, Settings, Cpu } from "lucide-react";
 import DeepWikiIcon from "@/../public/deepwiki.svg";
 import Context7Icon from "@/../public/context7.svg";
@@ -13,10 +15,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-export const metadata = {
-  title: "Self-Hosting Guide - prompts.chat",
-  description: "Deploy your own prompts.chat instance with customizable branding, themes, and authentication",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("seo.selfHosting");
+  return buildPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/docs/self-hosting",
+  });
+}
 
 export default async function SelfHostingPage() {
   const t = await getTranslations("selfHosting");

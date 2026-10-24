@@ -31,8 +31,10 @@ import { PromptFlowSection } from "@/components/prompts/prompt-flow-section";
 import { RelatedPrompts } from "@/components/prompts/related-prompts";
 import { AddToCollectionButton } from "@/components/prompts/add-to-collection-button";
 import { getConfig } from "@/lib/config";
-import { StructuredData } from "@/components/seo/structured-data";
+import { JsonLd, breadcrumbSchema, promptHowToSchema, promptSchema } from "@/components/seo/structured-data";
 import { AI_MODELS } from "@/lib/works-best-with";
+import { getPromptUrl } from "@/lib/urls";
+import { buildPageMetadata, NOINDEX_ROBOTS, toMetaDescription } from "@/lib/seo";
 
 interface PromptPageProps {
   params: Promise<{ id: string }>;
@@ -57,29 +59,72 @@ function extractPromptId(idParam: string): string {
 }
 
 
+// Titles that already say what they are don't get a suffix, e.g. "Information Gathering Prompt"
+const TITLE_KEYWORDS: Record<string, RegExp> = {
+  SKILL: /\bskills?\b/i,
+  TASTE: /\btaste\b/i,
+};
+const PROMPT_KEYWORD = /\bprompts?\b/i;
+
+/**
+ * Builds a search-friendly title, e.g. "Movie Critic - ChatGPT Prompt" or "Neon Portrait - Nano Banana Prompt"
+ */
+async function getPromptMetaTitle(title: string, type: string, bestWithModels: string[]): Promise<string> {
+  if ((TITLE_KEYWORDS[type] ?? PROMPT_KEYWORD).test(title)) {
+    return title;
+  }
+
+  const t = await getTranslations("seo.promptTypes");
+  const model = AI_MODELS[bestWithModels[0] as keyof typeof AI_MODELS];
+  if (model && type !== "SKILL" && type !== "TASTE") {
+    return `${title} - ${t("model", { model: model.name })}`;
+  }
+
+  const label = ["STRUCTURED", "IMAGE", "VIDEO", "AUDIO", "SKILL", "TASTE"].includes(type) ? type : "TEXT";
+  return `${title} - ${t(label)}`;
+}
+
 export async function generateMetadata({ params }: PromptPageProps): Promise<Metadata> {
   const { id: idParam } = await params;
   const id = extractPromptId(idParam);
   const prompt = await db.prompt.findUnique({
     where: { id },
-    select: { title: true, description: true, isPrivate: true, authorId: true },
+    select: {
+      title: true,
+      slug: true,
+      description: true,
+      content: true,
+      type: true,
+      bestWithModels: true,
+      isPrivate: true,
+      isUnlisted: true,
+      deletedAt: true,
+      authorId: true,
+    },
   });
 
   if (!prompt) {
-    return { title: "Prompt Not Found" };
+    return { title: "Prompt Not Found", robots: NOINDEX_ROBOTS };
   }
 
-  if (prompt.isPrivate) {
+  if (prompt.deletedAt || prompt.isPrivate) {
     const session = await auth();
-    if (!canViewPrompt(prompt, session)) {
-      return { title: "Prompt Not Found" };
-    }
+    const canView = prompt.deletedAt ? session?.user?.role === "ADMIN" : canViewPrompt(prompt, session);
+    return { title: canView ? prompt.title : "Prompt Not Found", robots: NOINDEX_ROBOTS };
   }
 
-  return {
-    title: prompt.title,
-    description: prompt.description || `View the prompt: ${prompt.title}`,
-  };
+  // Always the slugged URL, also when the page is requested as /prompts/{id}
+  const canonicalPath = getPromptUrl(id, prompt.slug);
+
+  return buildPageMetadata({
+    title: await getPromptMetaTitle(prompt.title.trim(), prompt.type, prompt.bestWithModels),
+    description: toMetaDescription(prompt.description || prompt.content),
+    path: canonicalPath,
+    openGraphType: "article",
+    image: "route",
+    // Unlisted prompts are reachable by direct link only
+    noindex: prompt.isUnlisted,
+  });
 }
 
 export default async function PromptPage({ params }: PromptPageProps) {
@@ -132,7 +177,10 @@ export default async function PromptPage({ params }: PromptPageProps) {
         },
       },
       _count: {
-        select: { votes: true },
+        select: {
+          votes: true,
+          comments: { where: { deletedAt: null } },
+        },
       },
       contributors: {
         select: {
@@ -144,6 +192,18 @@ export default async function PromptPage({ params }: PromptPageProps) {
       },
     },
   });
+
+  if (!prompt) {
+    notFound();
+  }
+
+  // Check if user can view private prompt
+  if (!canViewPrompt(prompt, session)) {
+    notFound();
+  }
+
+  // Non-canonical URLs are redirected in layout.tsx
+  const canonicalPath = getPromptUrl(prompt.id, prompt.slug);
 
   // Check if user has voted
   const userVote = session?.user
@@ -226,15 +286,6 @@ export default async function PromptPage({ params }: PromptPageProps) {
   });
   const hasFlowConnections = flowConnectionCount > 0;
 
-  if (!prompt) {
-    notFound();
-  }
-
-  // Check if user can view private prompt
-  if (!canViewPrompt(prompt, session)) {
-    notFound();
-  }
-
   // Unlisted prompts are accessible via direct link (like YouTube unlisted videos)
   // They just don't appear in public listings, search results, or feeds
 
@@ -286,35 +337,52 @@ export default async function PromptPage({ params }: PromptPageProps) {
   return (
     <>
       {/* Structured Data for Rich Results */}
-      <StructuredData
-        type="prompt"
-        data={{
-          prompt: {
-            id: prompt.id,
-            name: prompt.title,
-            description: prompt.description || `AI prompt: ${prompt.title}`,
-            content: prompt.content,
-            author: prompt.author.name || prompt.author.username,
-            authorUrl: `${process.env.NEXTAUTH_URL || "https://prompts.chat"}/@${prompt.author.username}`,
-            datePublished: prompt.createdAt.toISOString(),
-            dateModified: prompt.updatedAt.toISOString(),
-            category: prompt.category?.name,
-            tags: prompt.tags.map(({ tag }) => tag.name),
-            voteCount: voteCount,
-          },
-        }}
+      <JsonLd
+        data={promptHowToSchema({
+          id: prompt.id,
+          name: prompt.title,
+          description: prompt.description || `AI prompt: ${prompt.title}`,
+          content: prompt.content,
+          author: prompt.author.name || prompt.author.username,
+          authorUrl: `${process.env.NEXTAUTH_URL || "https://prompts.chat"}/@${prompt.author.username}`,
+          datePublished: prompt.createdAt.toISOString(),
+          dateModified: prompt.updatedAt.toISOString(),
+          category: prompt.category?.name,
+          tags: prompt.tags.map(({ tag }) => tag.name),
+          voteCount: voteCount,
+          branding: config.branding,
+        })}
       />
-      <StructuredData
-        type="breadcrumb"
-        data={{
-          breadcrumbs: [
-            { name: "Home", url: "/" },
-            { name: "Prompts", url: "/prompts" },
-            ...(prompt.category ? [{ name: prompt.category.name, url: `/categories/${prompt.category.slug}` }] : []),
-            { name: prompt.title, url: `/prompts/${prompt.id}` },
-          ],
-        }}
-      />
+      {!prompt.isPrivate && (
+        <JsonLd
+          data={[
+            promptSchema({
+              path: canonicalPath,
+              title: prompt.title,
+              description: toMetaDescription(prompt.description || prompt.content),
+              content: prompt.content,
+              type: prompt.type,
+              mediaUrl: prompt.mediaUrl,
+              author: { name: prompt.author.name || prompt.author.username, username: prompt.author.username },
+              datePublished: prompt.createdAt,
+              dateModified: prompt.updatedAt,
+              category: prompt.category?.name,
+              tags: prompt.tags.map(({ tag }) => tag.name),
+              voteCount,
+              commentCount: prompt._count.comments,
+            }),
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Prompts", path: "/prompts" },
+              ...(prompt.category?.parent
+                ? [{ name: prompt.category.parent.name, path: `/categories/${prompt.category.parent.slug}` }]
+                : []),
+              ...(prompt.category ? [{ name: prompt.category.name, path: `/categories/${prompt.category.slug}` }] : []),
+              { name: prompt.title, path: canonicalPath },
+            ]),
+          ]}
+        />
+      )}
       <div className="container max-w-4xl py-8">
         {/* Deleted Banner - shown to admins when prompt is deleted */}
       {prompt.deletedAt && isAdmin && (
@@ -714,7 +782,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
         <TabsContent value="versions" className="mt-0">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-base font-semibold">{t("versionHistory")}</h3>
+              <h2 className="text-base font-semibold">{t("versionHistory")}</h2>
               <div className="flex items-center gap-2">
                 <VersionCompareModal 
                   versions={prompt.versions} 
@@ -789,7 +857,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
           <TabsContent value="changes" className="mt-0">
             <div>
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-base font-semibold">{t("changeRequests")}</h3>
+                <h2 className="text-base font-semibold">{t("changeRequests")}</h2>
               </div>
               <div className="divide-y border rounded-lg">
                 {changeRequests.map((cr) => {

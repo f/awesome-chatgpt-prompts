@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getLocale } from "next-intl/server";
 import { getLevelBySlug, getAllLevels } from "@/lib/kids/levels";
+import { buildPageMetadata, NOINDEX_ROBOTS } from "@/lib/seo";
 import { LevelContentWrapper } from "@/components/kids/layout/level-content-wrapper";
 import type { Metadata } from "next";
 
@@ -19,13 +20,14 @@ export async function generateMetadata({ params }: LevelPageProps): Promise<Meta
   const level = getLevelBySlug(slug);
 
   if (!level) {
-    return { title: "Level Not Found" };
+    return { title: "Level Not Found", robots: NOINDEX_ROBOTS };
   }
 
-  return {
+  return buildPageMetadata({
     title: `${level.title} | Learn Prompting for Kids`,
     description: level.description,
-  };
+    path: `/kids/level/${slug}`,
+  });
 }
 
 export default async function LevelPage({ params }: LevelPageProps) {

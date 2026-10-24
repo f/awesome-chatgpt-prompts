@@ -6,6 +6,13 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { ChangeRequestForm } from "@/components/prompts/change-request-form";
+import type { Metadata } from "next";
+import { NOINDEX_ROBOTS } from "@/lib/seo";
+
+// Signed-in or workflow page with no search value
+export const metadata: Metadata = {
+  robots: NOINDEX_ROBOTS,
+};
 
 interface NewChangeRequestPageProps {
   params: Promise<{ id: string }>;

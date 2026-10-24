@@ -1,11 +1,13 @@
 import { getTranslations } from "next-intl/server";
 import { ProgressMap } from "@/components/kids/elements/progress-map";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "World Map | Learn Prompting for Kids",
   description: "Choose your adventure! Pick a level and start learning how to talk to AI.",
-};
+  path: "/kids/map",
+});
 
 export default async function KidsMapPage() {
   const t = await getTranslations("kids");

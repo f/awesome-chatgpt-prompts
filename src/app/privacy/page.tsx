@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Privacy Policy - prompts.chat",
-  description: "Privacy Policy for prompts.chat",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("seo.privacy");
+  return buildPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/privacy",
+  });
+}
 
 export default function PrivacyPage() {
   return (
