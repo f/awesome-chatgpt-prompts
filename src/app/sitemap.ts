@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { db } from "@/lib/db";
 import { getAllChapters } from "@/lib/book/chapters";
 import { getPromptUrl } from "@/lib/urls";
-import { getBaseUrl } from "@/lib/seo";
+import { getBaseUrl, toSitemapImageUrl } from "@/lib/seo";
 
 // Revalidate sitemap every hour (3600 seconds)
 export const revalidate = 3600;
@@ -111,11 +111,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: categoryStats.get(category.id)?._max.updatedAt ?? undefined,
       }));
 
-    const promptPages: MetadataRoute.Sitemap = prompts.map((prompt) => ({
-      url: `${baseUrl}${getPromptUrl(prompt.id, prompt.slug)}`,
-      lastModified: prompt.updatedAt,
-      ...(prompt.type === "IMAGE" && prompt.mediaUrl && { images: [prompt.mediaUrl] }),
-    }));
+    const promptPages: MetadataRoute.Sitemap = prompts.map((prompt) => {
+      const image = prompt.type === "IMAGE" && prompt.mediaUrl ? toSitemapImageUrl(prompt.mediaUrl) : null;
+      return {
+        url: `${baseUrl}${getPromptUrl(prompt.id, prompt.slug)}`,
+        lastModified: prompt.updatedAt,
+        ...(image && { images: [image] }),
+      };
+    });
 
     const tagPages: MetadataRoute.Sitemap = tags
       .filter((tag) => tag.prompts.length >= MIN_LISTING_PROMPTS)

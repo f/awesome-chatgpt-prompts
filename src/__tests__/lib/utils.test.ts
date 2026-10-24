@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { cn, isChromeBrowser } from "@/lib/utils";
+import { cn, escapeLikePattern, isChromeBrowser } from "@/lib/utils";
 
 describe("cn (className utility)", () => {
   it("should merge class names", () => {
@@ -110,5 +110,20 @@ describe("isChromeBrowser", () => {
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15",
     });
     expect(isChromeBrowser()).toBe(false);
+  });
+});
+
+describe("escapeLikePattern", () => {
+  it("should escape LIKE wildcards", () => {
+    expect(escapeLikePattern("john_doe")).toBe("john\\_doe");
+    expect(escapeLikePattern("100%")).toBe("100\\%");
+  });
+
+  it("should escape backslashes", () => {
+    expect(escapeLikePattern("a\\b")).toBe("a\\\\b");
+  });
+
+  it("should leave plain values unchanged", () => {
+    expect(escapeLikePattern("promptmaster")).toBe("promptmaster");
   });
 });

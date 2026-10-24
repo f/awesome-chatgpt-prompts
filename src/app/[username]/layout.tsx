@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
+import { escapeLikePattern } from "@/lib/utils";
 
 interface UserProfileLayoutProps {
   children: React.ReactNode;
@@ -21,7 +22,7 @@ export default async function UserProfileLayout({ children, params }: UserProfil
   }
 
   const user = await db.user.findFirst({
-    where: { username: { equals: decodedUsername.slice(1), mode: "insensitive" } },
+    where: { username: { equals: escapeLikePattern(decodedUsername.slice(1)), mode: "insensitive" } },
     select: { id: true },
   });
 

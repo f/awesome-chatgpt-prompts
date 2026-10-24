@@ -36,7 +36,7 @@ const nextConfig: NextConfig = {
   // this for its built-in list of HTML-limited bots, which leaves out Googlebot and AI
   // crawlers; they would otherwise find the title, canonical and robots tags in <body>.
   htmlLimitedBots:
-    /bot|crawler|spider|slurp|google-|-google|googleother|lighthouse|facebookexternalhit|facebookcatalog|externalagent|perplexity|whatsapp|ia_archiver|vkshare|quora link preview|skypeuripreview|yeti|tumblr|yandex|sogou|googleweblight/i,
+    /bot|crawler|spider|slurp|google-|-google|googleother|bingpreview|lighthouse|facebookexternalhit|facebookcatalog|externalagent|perplexity|whatsapp|ia_archiver|vkshare|quora link preview|skypeuripreview|yeti|tumblr|yandex|sogou|googleweblight/i,
   // Image optimization
   images: {
     remotePatterns: [

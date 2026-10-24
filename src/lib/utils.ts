@@ -6,6 +6,15 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
+ * Escapes LIKE wildcards so a value matches literally. Prisma runs
+ * case-insensitive `equals` filters as ILIKE on PostgreSQL, where "_" and "%"
+ * match any character.
+ */
+export function escapeLikePattern(value: string): string {
+  return value.replace(/[\\%_]/g, "\\$&")
+}
+
+/**
  * Detect if the browser is Chrome-based (Chrome, Edge, Brave, Opera, etc.)
  * Must be called on client-side only
  */
