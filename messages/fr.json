@@ -35,6 +35,7 @@
     "collapseAll": "Tout réduire"
   },
   "nav": {
+    "bots": "Bots",
     "collection": "Ma Collection",
     "feed": "Flux",
     "promptmasters": "Promptmasters",
@@ -895,6 +896,35 @@
     "noWorkflows": "Pas encore de flux de travail",
     "noWorkflowsDescription": "Les flux de travail sont des prompts qui se connectent à d'autres prompts en séquence. Créez un prompt et ajoutez des connexions pour construire un flux de travail.",
     "browsePrompts": "Parcourir les Prompts"
+  },
+  "bots": {
+    "description": "Des bots d'agents IA prêts à l'emploi, avec instructions, routines et compétences. Installez-les sur OpenClaw, Hermes Agent ou Grok Bot.",
+    "count": "{count, plural, one {# bot} other {# bots}}",
+    "allPlatforms": "Tous",
+    "noBots": "Aucun bot pour cette plateforme pour le moment.",
+    "example": "Exemple",
+    "exampleNotice": "Ceci est un bot d'exemple qui illustre le format. Adaptez-le avant de vous en servir.",
+    "scheduledCount": "{count, plural, one {# routine planifiée} other {# routines planifiées}}",
+    "eventCount": "{count, plural, one {# déclencheur d'événement} other {# déclencheurs d'événements}}",
+    "backToBots": "Tous les bots",
+    "instructions": "Instructions",
+    "routines": "Routines",
+    "noRoutines": "Ce bot n'a pas de routines.",
+    "scheduled": "Planifiée",
+    "eventTriggered": "Déclenchée par un événement",
+    "schedule": "Planification",
+    "trigger": "Déclencheur",
+    "skills": "Compétences",
+    "connectors": "Connecteurs requis",
+    "install": "Installer",
+    "installOn": "Installer sur {platform}",
+    "installLinkComingSoon": "Lien d'installation bientôt disponible",
+    "hermesCommandHint": "Installez le bot comme compétence en une seule commande :",
+    "copyCommand": "Copier la commande",
+    "installPromptHint": "Collez ce prompt dans votre agent. Il récupère la définition du bot et configure les instructions, routines et compétences.",
+    "installPromptFallbackHint": "Ou collez ce prompt dans Grok Bot pour créer le bot vous-même :",
+    "copyInstallPrompt": "Copier le prompt d'installation",
+    "machineReadable": "Lisible par machine"
   },
   "collection": {
     "title": "Ma Collection",
@@ -2303,6 +2333,11 @@
       "title": "Flux de travail IA et chaînes de prompts",
       "description": "Flux de travail IA en plusieurs étapes et chaînes de prompts où chaque étape nourrit la suivante. Des séquences éprouvées pour ChatGPT, Claude, l'image et la vidéo.",
       "heading": "Flux de Travail de Prompts"
+    },
+    "bots": {
+      "title": "Bots d'agents IA prêts à l'emploi pour OpenClaw, Hermes et Grok",
+      "description": "Parcourez des bots d'agents IA prêts à l'emploi, avec instructions, routines planifiées et compétences, et installez-les sur OpenClaw, Hermes Agent ou Grok Bot en un clic.",
+      "heading": "Bots"
     },
     "taste": {
       "title": "Profils de style de code (taste.md) pour agents de codage IA",

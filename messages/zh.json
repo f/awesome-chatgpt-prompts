@@ -35,6 +35,7 @@
     "collapseAll": "全部折叠"
   },
   "nav": {
+    "bots": "机器人",
     "collection": "我的收藏",
     "feed": "动态",
     "promptmasters": "Promptmasters",
@@ -895,6 +896,35 @@
     "noWorkflows": "暂无工作流程",
     "noWorkflowsDescription": "工作流程是按顺序连接到其他提示词的提示词。创建一个提示词并添加连接以构建工作流程。",
     "browsePrompts": "浏览提示词"
+  },
+  "bots": {
+    "description": "现成的 AI 智能体机器人，包含指令、例行任务和技能。可安装到 OpenClaw、Hermes Agent 或 Grok Bot。",
+    "count": "{count, plural, other {# 个机器人}}",
+    "allPlatforms": "全部",
+    "noBots": "该平台暂无机器人。",
+    "example": "示例",
+    "exampleNotice": "这是一个展示格式的示例机器人。使用前请根据需要调整。",
+    "scheduledCount": "{count, plural, other {# 个定时任务}}",
+    "eventCount": "{count, plural, other {# 个事件触发}}",
+    "backToBots": "所有机器人",
+    "instructions": "指令",
+    "routines": "例行任务",
+    "noRoutines": "该机器人没有例行任务。",
+    "scheduled": "定时",
+    "eventTriggered": "事件触发",
+    "schedule": "计划",
+    "trigger": "触发条件",
+    "skills": "技能",
+    "connectors": "所需连接器",
+    "install": "安装",
+    "installOn": "安装到 {platform}",
+    "installLinkComingSoon": "安装链接即将推出",
+    "hermesCommandHint": "一条命令即可将机器人安装为技能：",
+    "copyCommand": "复制命令",
+    "installPromptHint": "将此提示粘贴到你的智能体中。它会获取机器人定义并设置指令、例行任务和技能。",
+    "installPromptFallbackHint": "或者将此提示粘贴到 Grok Bot 中自行创建机器人：",
+    "copyInstallPrompt": "复制安装提示",
+    "machineReadable": "机器可读"
   },
   "collection": {
     "title": "我的收藏",
@@ -2288,6 +2318,11 @@
       "title": "AI提示词工作流与提示词链",
       "description": "探索多步骤AI提示词工作流和提示词链，每一步的输出都会作为下一步的输入。复用经过验证的流程，用于ChatGPT、Claude以及图像和视频生成。",
       "heading": "提示词工作流"
+    },
+    "bots": {
+      "title": "适用于 OpenClaw、Hermes 和 Grok 的现成 AI 智能体机器人",
+      "description": "浏览包含指令、定时任务和技能的现成 AI 智能体机器人，一键安装到 OpenClaw、Hermes Agent 或 Grok Bot。",
+      "heading": "机器人"
     },
     "taste": {
       "title": "编码风格档案（taste.md）：适用于AI编程智能体",

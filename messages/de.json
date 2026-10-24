@@ -35,6 +35,7 @@
     "collapseAll": "Alle einklappen"
   },
   "nav": {
+    "bots": "Bots",
     "collection": "Meine Sammlung",
     "feed": "Feed",
     "promptmasters": "Promptmasters",
@@ -895,6 +896,35 @@
     "noWorkflows": "Noch keine Workflows",
     "noWorkflowsDescription": "Workflows sind Prompts, die in einer Sequenz mit anderen Prompts verbunden sind. Erstellen Sie einen Prompt und fügen Sie Verbindungen hinzu, um einen Workflow zu erstellen.",
     "browsePrompts": "Prompts durchsuchen"
+  },
+  "bots": {
+    "description": "Fertige KI-Agenten-Bots mit Anweisungen, Routinen und Skills. Installiere sie auf OpenClaw, Hermes Agent oder Grok Bot.",
+    "count": "{count, plural, one {# Bot} other {# Bots}}",
+    "allPlatforms": "Alle",
+    "noBots": "Für diese Plattform gibt es noch keine Bots.",
+    "example": "Beispiel",
+    "exampleNotice": "Dies ist ein Beispiel-Bot, der das Format zeigt. Passe ihn an, bevor du dich darauf verlässt.",
+    "scheduledCount": "{count, plural, one {# geplante Routine} other {# geplante Routinen}}",
+    "eventCount": "{count, plural, one {# Ereignis-Trigger} other {# Ereignis-Trigger}}",
+    "backToBots": "Alle Bots",
+    "instructions": "Anweisungen",
+    "routines": "Routinen",
+    "noRoutines": "Dieser Bot hat keine Routinen.",
+    "scheduled": "Geplant",
+    "eventTriggered": "Ereignisgesteuert",
+    "schedule": "Zeitplan",
+    "trigger": "Auslöser",
+    "skills": "Skills",
+    "connectors": "Benötigte Konnektoren",
+    "install": "Installieren",
+    "installOn": "Auf {platform} installieren",
+    "installLinkComingSoon": "Installationslink folgt in Kürze",
+    "hermesCommandHint": "Installiere den Bot mit einem Befehl als Skill:",
+    "copyCommand": "Befehl kopieren",
+    "installPromptHint": "Füge diesen Prompt in deinen Agenten ein. Er ruft die Bot-Definition ab und richtet Anweisungen, Routinen und Skills ein.",
+    "installPromptFallbackHint": "Oder füge diesen Prompt in Grok Bot ein, um den Bot selbst zu erstellen:",
+    "copyInstallPrompt": "Installations-Prompt kopieren",
+    "machineReadable": "Maschinenlesbar"
   },
   "collection": {
     "title": "Meine Sammlung",
@@ -2300,6 +2330,11 @@
       "title": "KI-Prompt-Workflows & Prompt-Ketten",
       "description": "Mehrstufige KI-Workflows und Prompt-Ketten, bei denen jeder Schritt den nächsten speist. Bewährte Abläufe für ChatGPT, Claude sowie Bild- und Videogenerierung.",
       "heading": "Prompt-Workflows"
+    },
+    "bots": {
+      "title": "Fertige KI-Agenten-Bots für OpenClaw, Hermes und Grok",
+      "description": "Entdecke fertige KI-Agenten-Bots mit Anweisungen, geplanten Routinen und Skills und installiere sie mit einem Klick auf OpenClaw, Hermes Agent oder Grok Bot.",
+      "heading": "Bots"
     },
     "taste": {
       "title": "Coding-Stilprofile (taste.md) für KI-Coding-Agenten",

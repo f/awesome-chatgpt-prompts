@@ -181,6 +181,13 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
               {/* Navigation */}
               <nav className="flex-1 p-4">
                 <div className="space-y-1">
+                  <Link 
+                    href="/bots" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                  >
+                    {t("nav.bots")}
+                  </Link>
                   {user && (
                     <>
                       <Link 
@@ -212,13 +219,6 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                     className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
                   >
                     {t("nav.skills")}
-                  </Link>
-                  <Link 
-                    href="/taste" 
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-                  >
-                    {t("nav.taste")}
                   </Link>
                   <Link 
                     href="/workflows" 
@@ -254,6 +254,13 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                     className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
                   >
                     {t("nav.promptmasters")}
+                  </Link>
+                  <Link 
+                    href="/taste" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                  >
+                    {t("nav.taste")}
                   </Link>
                   {!branding.useCloneBranding && (
                     <Link 
@@ -353,6 +360,12 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1 text-sm">
+          <Link
+            href="/bots"
+            className="px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
+          >
+            {t("nav.bots")}
+          </Link>
           {user && (
             <>
               <Link
@@ -382,18 +395,12 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
             {t("nav.skills")}
           </Link>
           <Link
-            href="/taste"
-            className="hidden xl:block px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
-          >
-            {t("nav.taste")}
-          </Link>
-          <Link
             href="/workflows"
             className="hidden xl:block px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
           >
             {t("nav.workflows")}
           </Link>
-          {/* Categories, Tags, Promptmasters - visible on lg+ screens */}
+          {/* Categories, Tags, Promptmasters, Taste - visible on 2xl+ screens */}
           <Link
             href="/categories"
             className="hidden 2xl:block px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
@@ -412,6 +419,12 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
           >
             {t("nav.promptmasters")}
           </Link>
+          <Link
+            href="/taste"
+            className="hidden 2xl:block px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
+          >
+            {t("nav.taste")}
+          </Link>
           {/* Three-dot dropdown for collapsed nav items */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -424,11 +437,6 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
               <DropdownMenuItem asChild className="xl:hidden">
                 <Link href="/skills">
                   {t("nav.skills")}
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild className="xl:hidden">
-                <Link href="/taste">
-                  {t("nav.taste")}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="xl:hidden">
@@ -450,6 +458,11 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
               <DropdownMenuItem asChild>
                 <Link href="/promptmasters">
                   {t("nav.promptmasters")}
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/taste">
+                  {t("nav.taste")}
                 </Link>
               </DropdownMenuItem>
               {!branding.useCloneBranding && (

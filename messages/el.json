@@ -35,6 +35,7 @@
     "collapseAll": "Σύμπτυξη όλων"
   },
   "nav": {
+    "bots": "Bots",
     "collection": "Η Συλλογή μου",
     "feed": "Ροή",
     "promptmasters": "Promptmasters",
@@ -895,6 +896,35 @@
     "noWorkflows": "Δεν υπάρχουν ακόμα ροές εργασίας",
     "noWorkflowsDescription": "Οι ροές εργασίας είναι prompts που συνδέονται με άλλα prompts σε ακολουθία. Δημιουργήστε ένα prompt και προσθέστε συνδέσεις για να δημιουργήσετε μια ροή εργασίας.",
     "browsePrompts": "Περιήγηση Prompts"
+  },
+  "bots": {
+    "description": "Έτοιμα bots πρακτόρων AI με οδηγίες, ρουτίνες και δεξιότητες. Εγκαταστήστε τα στο OpenClaw, στο Hermes Agent ή στο Grok Bot.",
+    "count": "{count, plural, one {# bot} other {# bots}}",
+    "allPlatforms": "Όλα",
+    "noBots": "Δεν υπάρχουν ακόμη bots για αυτή την πλατφόρμα.",
+    "example": "Παράδειγμα",
+    "exampleNotice": "Αυτό είναι ένα παράδειγμα bot που δείχνει τη μορφή. Προσαρμόστε το πριν το χρησιμοποιήσετε.",
+    "scheduledCount": "{count, plural, one {# προγραμματισμένη ρουτίνα} other {# προγραμματισμένες ρουτίνες}}",
+    "eventCount": "{count, plural, one {# έναυσμα συμβάντος} other {# εναύσματα συμβάντων}}",
+    "backToBots": "Όλα τα bots",
+    "instructions": "Οδηγίες",
+    "routines": "Ρουτίνες",
+    "noRoutines": "Αυτό το bot δεν έχει ρουτίνες.",
+    "scheduled": "Προγραμματισμένη",
+    "eventTriggered": "Με έναυσμα συμβάντος",
+    "schedule": "Πρόγραμμα",
+    "trigger": "Έναυσμα",
+    "skills": "Δεξιότητες",
+    "connectors": "Απαιτούμενοι σύνδεσμοι",
+    "install": "Εγκατάσταση",
+    "installOn": "Εγκατάσταση στο {platform}",
+    "installLinkComingSoon": "Ο σύνδεσμος εγκατάστασης έρχεται σύντομα",
+    "hermesCommandHint": "Εγκαταστήστε το bot ως δεξιότητα με μία εντολή:",
+    "copyCommand": "Αντιγραφή εντολής",
+    "installPromptHint": "Επικολλήστε αυτό το prompt στον πράκτορά σας. Φέρνει τον ορισμό του bot και ρυθμίζει τις οδηγίες, τις ρουτίνες και τις δεξιότητες.",
+    "installPromptFallbackHint": "Ή επικολλήστε αυτό το prompt στο Grok Bot για να δημιουργήσετε το bot μόνοι σας:",
+    "copyInstallPrompt": "Αντιγραφή prompt εγκατάστασης",
+    "machineReadable": "Αναγνώσιμο από μηχανές"
   },
   "collection": {
     "title": "Η Συλλογή μου",
@@ -2291,6 +2321,11 @@
       "title": "Ροές εργασίας AI και αλυσίδες prompts",
       "description": "Ροές εργασίας AI πολλών βημάτων και αλυσίδες prompts, όπου κάθε βήμα τροφοδοτεί το επόμενο. Αξιοποιήστε δοκιμασμένες σειρές για ChatGPT, Claude, εικόνα και βίντεο.",
       "heading": "Ροές Εργασίας Prompts"
+    },
+    "bots": {
+      "title": "Έτοιμα bots πρακτόρων AI για OpenClaw, Hermes και Grok",
+      "description": "Εξερευνήστε έτοιμα bots πρακτόρων AI με οδηγίες, προγραμματισμένες ρουτίνες και δεξιότητες και εγκαταστήστε τα στο OpenClaw, στο Hermes Agent ή στο Grok Bot με ένα κλικ.",
+      "heading": "Bots"
     },
     "taste": {
       "title": "Προφίλ στυλ κώδικα (taste.md) για AI πράκτορες κώδικα",

@@ -35,6 +35,7 @@
     "collapseAll": "طي الكل"
   },
   "nav": {
+    "bots": "البوتات",
     "collection": "مجموعتي",
     "feed": "الخلاصة",
     "promptmasters": "Promptmasters",
@@ -895,6 +896,35 @@
     "noWorkflows": "لا توجد سير عمل بعد",
     "noWorkflowsDescription": "سير العمل هي أوامر تتصل بأوامر أخرى بالتسلسل. أنشئ أمرًا وأضف اتصالات لبناء سير عمل.",
     "browsePrompts": "تصفح الأوامر"
+  },
+  "bots": {
+    "description": "بوتات وكلاء ذكاء اصطناعي جاهزة مع التعليمات والمهام الروتينية والمهارات. ثبّتها على OpenClaw أو Hermes Agent أو Grok Bot.",
+    "count": "{count, plural, zero {لا توجد بوتات} one {بوت واحد} two {بوتان} few {# بوتات} many {# بوتًا} other {# بوت}}",
+    "allPlatforms": "الكل",
+    "noBots": "لا توجد بوتات لهذه المنصة بعد.",
+    "example": "مثال",
+    "exampleNotice": "هذا بوت تجريبي يوضح الصيغة. عدّله قبل الاعتماد عليه.",
+    "scheduledCount": "{count, plural, one {مهمة مجدولة واحدة} two {مهمتان مجدولتان} few {# مهام مجدولة} many {# مهمة مجدولة} other {# مهمة مجدولة}}",
+    "eventCount": "{count, plural, one {مشغّل حدث واحد} two {مشغّلا حدث} few {# مشغّلات أحداث} many {# مشغّل حدث} other {# مشغّل حدث}}",
+    "backToBots": "كل البوتات",
+    "instructions": "التعليمات",
+    "routines": "المهام الروتينية",
+    "noRoutines": "لا توجد مهام روتينية لهذا البوت.",
+    "scheduled": "مجدولة",
+    "eventTriggered": "تُشغَّل بحدث",
+    "schedule": "الجدول",
+    "trigger": "المشغّل",
+    "skills": "المهارات",
+    "connectors": "الموصلات المطلوبة",
+    "install": "تثبيت",
+    "installOn": "التثبيت على {platform}",
+    "installLinkComingSoon": "رابط التثبيت قريبًا",
+    "hermesCommandHint": "ثبّت البوت كمهارة بأمر واحد:",
+    "copyCommand": "نسخ الأمر",
+    "installPromptHint": "الصق هذه التعليمة في وكيلك. سيجلب تعريف البوت ويُعدّ التعليمات والمهام الروتينية والمهارات.",
+    "installPromptFallbackHint": "أو الصق هذه التعليمة في Grok Bot لإنشاء البوت بنفسك:",
+    "copyInstallPrompt": "نسخ تعليمة التثبيت",
+    "machineReadable": "قابل للقراءة آليًا"
   },
   "collection": {
     "title": "مجموعتي",
@@ -2286,6 +2316,11 @@
       "title": "سير عمل وسلاسل أوامر الذكاء الاصطناعي",
       "description": "استكشف سير عمل متعدد الخطوات وسلاسل أوامر تُغذّي فيها كل خطوة الخطوة التالية. أعد استخدام تسلسلات مجرّبة لـ ChatGPT وClaude وتوليد الصور والفيديو.",
       "heading": "سير عمل الأوامر"
+    },
+    "bots": {
+      "title": "بوتات وكلاء ذكاء اصطناعي جاهزة لـ OpenClaw وHermes وGrok",
+      "description": "تصفّح بوتات وكلاء ذكاء اصطناعي جاهزة مع التعليمات والمهام المجدولة والمهارات، وثبّتها على OpenClaw أو Hermes Agent أو Grok Bot بنقرة واحدة.",
+      "heading": "البوتات"
     },
     "taste": {
       "title": "ملفات أسلوب البرمجة (taste.md) لوكلاء الذكاء الاصطناعي",

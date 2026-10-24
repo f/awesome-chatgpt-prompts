@@ -35,6 +35,7 @@
     "collapseAll": "Alles invouwen"
   },
   "nav": {
+    "bots": "Bots",
     "collection": "Mijn Collectie",
     "feed": "Feed",
     "promptmasters": "Promptmasters",
@@ -895,6 +896,35 @@
     "noWorkflows": "Nog geen workflows",
     "noWorkflowsDescription": "Workflows zijn prompts die in volgorde verbonden zijn met andere prompts. Maak een prompt en voeg verbindingen toe om een workflow te bouwen.",
     "browsePrompts": "Prompts bekijken"
+  },
+  "bots": {
+    "description": "Kant-en-klare AI-agentbots met instructies, routines en skills. Installeer ze op OpenClaw, Hermes Agent of Grok Bot.",
+    "count": "{count, plural, one {# bot} other {# bots}}",
+    "allPlatforms": "Alle",
+    "noBots": "Nog geen bots voor dit platform.",
+    "example": "Voorbeeld",
+    "exampleNotice": "Dit is een voorbeeldbot die het formaat laat zien. Pas hem aan voordat je erop vertrouwt.",
+    "scheduledCount": "{count, plural, one {# geplande routine} other {# geplande routines}}",
+    "eventCount": "{count, plural, one {# gebeurtenistrigger} other {# gebeurtenistriggers}}",
+    "backToBots": "Alle bots",
+    "instructions": "Instructies",
+    "routines": "Routines",
+    "noRoutines": "Deze bot heeft geen routines.",
+    "scheduled": "Gepland",
+    "eventTriggered": "Door gebeurtenis gestart",
+    "schedule": "Schema",
+    "trigger": "Trigger",
+    "skills": "Skills",
+    "connectors": "Vereiste connectors",
+    "install": "Installeren",
+    "installOn": "Installeren op {platform}",
+    "installLinkComingSoon": "Installatielink volgt binnenkort",
+    "hermesCommandHint": "Installeer de bot met één commando als skill:",
+    "copyCommand": "Commando kopiëren",
+    "installPromptHint": "Plak deze prompt in je agent. Die haalt de botdefinitie op en stelt de instructies, routines en skills in.",
+    "installPromptFallbackHint": "Of plak deze prompt in Grok Bot om de bot zelf te maken:",
+    "copyInstallPrompt": "Installatieprompt kopiëren",
+    "machineReadable": "Machineleesbaar"
   },
   "collection": {
     "title": "Mijn collectie",
@@ -2291,6 +2321,11 @@
       "title": "AI-promptworkflows en promptketens",
       "description": "AI-workflows in meerdere stappen en promptketens waarin elke stap de volgende voedt. Hergebruik beproefde reeksen voor ChatGPT, Claude, beeld- en videogeneratie.",
       "heading": "Promptworkflows"
+    },
+    "bots": {
+      "title": "Kant-en-klare AI-agentbots voor OpenClaw, Hermes en Grok",
+      "description": "Bekijk kant-en-klare AI-agentbots met instructies, geplande routines en skills en installeer ze met één klik op OpenClaw, Hermes Agent of Grok Bot.",
+      "heading": "Bots"
     },
     "taste": {
       "title": "Codeerstijlprofielen (taste.md) voor AI-codeeragents",

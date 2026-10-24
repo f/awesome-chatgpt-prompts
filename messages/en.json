@@ -35,6 +35,7 @@
     "collapseAll": "Collapse All"
   },
   "nav": {
+    "bots": "Bots",
     "collection": "My Collection",
     "feed": "Feed",
     "promptmasters": "Promptmasters",
@@ -895,6 +896,35 @@
     "noWorkflows": "No workflows yet",
     "noWorkflowsDescription": "Workflows are prompts that connect to other prompts in a sequence. Create a prompt and add connections to build a workflow.",
     "browsePrompts": "Browse Prompts"
+  },
+  "bots": {
+    "description": "Ready-made AI agent bots with instructions, routines and skills. Install them on OpenClaw, Hermes Agent or Grok Bot.",
+    "count": "{count, plural, one {# bot} other {# bots}}",
+    "allPlatforms": "All",
+    "noBots": "No bots for this platform yet.",
+    "example": "Example",
+    "exampleNotice": "This is an example bot that shows the format. Adapt it before relying on it.",
+    "scheduledCount": "{count, plural, one {# scheduled routine} other {# scheduled routines}}",
+    "eventCount": "{count, plural, one {# event trigger} other {# event triggers}}",
+    "backToBots": "All bots",
+    "instructions": "Instructions",
+    "routines": "Routines",
+    "noRoutines": "This bot has no routines.",
+    "scheduled": "Scheduled",
+    "eventTriggered": "Event-triggered",
+    "schedule": "Schedule",
+    "trigger": "Trigger",
+    "skills": "Skills",
+    "connectors": "Required connectors",
+    "install": "Install",
+    "installOn": "Install on {platform}",
+    "installLinkComingSoon": "Install link coming soon",
+    "hermesCommandHint": "Install the bot as a skill with one command:",
+    "copyCommand": "Copy command",
+    "installPromptHint": "Paste this prompt into your agent. It fetches the bot definition and sets up the instructions, routines and skills.",
+    "installPromptFallbackHint": "Or paste this prompt into Grok Bot to create the bot yourself:",
+    "copyInstallPrompt": "Copy install prompt",
+    "machineReadable": "Machine-readable"
   },
   "collection": {
     "title": "My Collection",
@@ -2304,6 +2334,11 @@
       "title": "AI Prompt Workflows & Prompt Chains",
       "description": "Explore multi-step AI prompt workflows and prompt chains where each step feeds the next. Reuse proven sequences for ChatGPT, Claude, image and video generation.",
       "heading": "Prompt Workflows"
+    },
+    "bots": {
+      "title": "Ready-Made AI Agent Bots for OpenClaw, Hermes & Grok",
+      "description": "Browse ready-made AI agent bots with instructions, scheduled routines and skills, and install them on OpenClaw, Hermes Agent or Grok Bot in one click.",
+      "heading": "Bots"
     },
     "taste": {
       "title": "Coding Taste Profiles (taste.md) for AI Coding Agents",

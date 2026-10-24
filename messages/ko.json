@@ -35,6 +35,7 @@
     "collapseAll": "모두 접기"
   },
   "nav": {
+    "bots": "봇",
     "collection": "내 컬렉션",
     "feed": "피드",
     "promptmasters": "프롬프트마스터",
@@ -895,6 +896,35 @@
     "noWorkflows": "아직 워크플로우가 없습니다",
     "noWorkflowsDescription": "워크플로우는 다른 프롬프트에 순차적으로 연결되는 프롬프트입니다. 프롬프트를 만들고 연결을 추가하여 워크플로우를 구축하세요.",
     "browsePrompts": "프롬프트 둘러보기"
+  },
+  "bots": {
+    "description": "지침, 루틴, 스킬을 갖춘 바로 쓸 수 있는 AI 에이전트 봇입니다. OpenClaw, Hermes Agent 또는 Grok Bot에 설치하세요.",
+    "count": "{count, plural, other {봇 #개}}",
+    "allPlatforms": "전체",
+    "noBots": "이 플랫폼용 봇이 아직 없습니다.",
+    "example": "예시",
+    "exampleNotice": "형식을 보여주는 예시 봇입니다. 사용하기 전에 필요에 맞게 수정하세요.",
+    "scheduledCount": "{count, plural, other {예약 루틴 #개}}",
+    "eventCount": "{count, plural, other {이벤트 트리거 #개}}",
+    "backToBots": "모든 봇",
+    "instructions": "지침",
+    "routines": "루틴",
+    "noRoutines": "이 봇에는 루틴이 없습니다.",
+    "scheduled": "예약됨",
+    "eventTriggered": "이벤트 트리거",
+    "schedule": "일정",
+    "trigger": "트리거",
+    "skills": "스킬",
+    "connectors": "필요한 커넥터",
+    "install": "설치",
+    "installOn": "{platform}에 설치",
+    "installLinkComingSoon": "설치 링크 준비 중",
+    "hermesCommandHint": "명령어 하나로 봇을 스킬로 설치하세요:",
+    "copyCommand": "명령어 복사",
+    "installPromptHint": "이 프롬프트를 에이전트에 붙여 넣으세요. 봇 정의를 가져와 지침, 루틴, 스킬을 설정합니다.",
+    "installPromptFallbackHint": "또는 이 프롬프트를 Grok Bot에 붙여 넣어 직접 봇을 만드세요:",
+    "copyInstallPrompt": "설치 프롬프트 복사",
+    "machineReadable": "기계 판독용"
   },
   "collection": {
     "title": "내 컬렉션",
@@ -2288,6 +2318,11 @@
       "title": "AI 프롬프트 워크플로우와 프롬프트 체인",
       "description": "각 단계의 결과가 다음 단계로 이어지는 다단계 AI 프롬프트 워크플로우와 프롬프트 체인을 살펴보세요. ChatGPT, Claude, 이미지·영상 생성에 검증된 흐름을 재사용할 수 있습니다.",
       "heading": "프롬프트 워크플로우"
+    },
+    "bots": {
+      "title": "OpenClaw, Hermes, Grok용 바로 쓰는 AI 에이전트 봇",
+      "description": "지침, 예약 루틴, 스킬을 갖춘 바로 쓸 수 있는 AI 에이전트 봇을 둘러보고 클릭 한 번으로 OpenClaw, Hermes Agent 또는 Grok Bot에 설치하세요.",
+      "heading": "봇"
     },
     "taste": {
       "title": "AI 코딩 에이전트를 위한 코딩 취향 프로필(taste.md)",

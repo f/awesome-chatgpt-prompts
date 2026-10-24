@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { db } from "@/lib/db";
 import { getAllChapters } from "@/lib/book/chapters";
+import { getAllBots } from "@/lib/bots";
 import { getPromptUrl } from "@/lib/urls";
 import { getBaseUrl, toSitemapImageUrl } from "@/lib/seo";
 
@@ -28,6 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // derived from real content changes, because Google ignores inaccurate dates.
   const staticPaths = [
     "",
+    "/bots",
     "/prompts",
     "/discover",
     "/categories",
@@ -50,6 +52,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const chapters = getAllChapters();
   const bookPages: MetadataRoute.Sitemap = chapters.map((chapter) => ({
     url: `${baseUrl}/book/${chapter.slug}`,
+  }));
+
+  const botPages: MetadataRoute.Sitemap = getAllBots().map((bot) => ({
+    url: `${baseUrl}/bots/${bot.slug}`,
   }));
 
   // Dynamic pages - skip if database is unavailable (e.g., during build)
@@ -133,10 +139,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: authorUpdates.get(user.id) ?? undefined,
     }));
 
-    return [...staticPages, ...bookPages, ...categoryPages, ...tagPages, ...promptPages, ...profilePages];
+    return [...staticPages, ...bookPages, ...botPages, ...categoryPages, ...tagPages, ...promptPages, ...profilePages];
   } catch {
     // Database unavailable (build time) - return static and book pages only
     const staticPages: MetadataRoute.Sitemap = staticPaths.map((path) => ({ url: `${baseUrl}${path}` }));
-    return [...staticPages, ...bookPages];
+    return [...staticPages, ...bookPages, ...botPages];
   }
 }

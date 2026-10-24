@@ -35,6 +35,7 @@
     "collapseAll": "Comprimi tutto"
   },
   "nav": {
+    "bots": "Bot",
     "collection": "La Mia Collezione",
     "feed": "Feed",
     "promptmasters": "Promptmaster",
@@ -895,6 +896,35 @@
     "noWorkflows": "Ancora nessun flusso di lavoro",
     "noWorkflowsDescription": "I flussi di lavoro sono prompt che si connettono ad altri prompt in sequenza. Crea un prompt e aggiungi connessioni per costruire un flusso di lavoro.",
     "browsePrompts": "Sfoglia Prompt"
+  },
+  "bots": {
+    "description": "Bot di agenti IA pronti all'uso, con istruzioni, routine e skill. Installali su OpenClaw, Hermes Agent o Grok Bot.",
+    "count": "{count, plural, one {# bot} other {# bot}}",
+    "allPlatforms": "Tutti",
+    "noBots": "Non ci sono ancora bot per questa piattaforma.",
+    "example": "Esempio",
+    "exampleNotice": "Questo è un bot di esempio che mostra il formato. Adattalo prima di usarlo.",
+    "scheduledCount": "{count, plural, one {# routine pianificata} other {# routine pianificate}}",
+    "eventCount": "{count, plural, one {# trigger di evento} other {# trigger di evento}}",
+    "backToBots": "Tutti i bot",
+    "instructions": "Istruzioni",
+    "routines": "Routine",
+    "noRoutines": "Questo bot non ha routine.",
+    "scheduled": "Pianificata",
+    "eventTriggered": "Attivata da evento",
+    "schedule": "Pianificazione",
+    "trigger": "Trigger",
+    "skills": "Skill",
+    "connectors": "Connettori richiesti",
+    "install": "Installa",
+    "installOn": "Installa su {platform}",
+    "installLinkComingSoon": "Link di installazione in arrivo",
+    "hermesCommandHint": "Installa il bot come skill con un solo comando:",
+    "copyCommand": "Copia comando",
+    "installPromptHint": "Incolla questo prompt nel tuo agente. Recupera la definizione del bot e configura istruzioni, routine e skill.",
+    "installPromptFallbackHint": "Oppure incolla questo prompt in Grok Bot per creare il bot da solo:",
+    "copyInstallPrompt": "Copia prompt di installazione",
+    "machineReadable": "Leggibile dalle macchine"
   },
   "collection": {
     "title": "La Mia Collezione",
@@ -2306,6 +2336,11 @@
       "title": "Flussi di lavoro AI e catene di prompt",
       "description": "Flussi di lavoro AI in più passaggi e catene di prompt in cui ogni passaggio alimenta il successivo. Riusa sequenze collaudate per ChatGPT, Claude, immagini e video.",
       "heading": "Flussi di Lavoro di Prompt"
+    },
+    "bots": {
+      "title": "Bot di agenti IA pronti per OpenClaw, Hermes e Grok",
+      "description": "Sfoglia bot di agenti IA pronti all'uso con istruzioni, routine pianificate e skill, e installali su OpenClaw, Hermes Agent o Grok Bot con un clic.",
+      "heading": "Bot"
     },
     "taste": {
       "title": "Profili di stile di codice (taste.md) per agenti AI",

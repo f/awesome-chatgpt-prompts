@@ -35,6 +35,7 @@
     "collapseAll": "すべて折りたたむ"
   },
   "nav": {
+    "bots": "ボット",
     "collection": "マイコレクション",
     "feed": "フィード",
     "promptmasters": "Promptmasters",
@@ -895,6 +896,35 @@
     "noWorkflows": "まだワークフローがありません",
     "noWorkflowsDescription": "ワークフローは、他のプロンプトに順番に接続するプロンプトです。プロンプトを作成し、接続を追加してワークフローを構築してください。",
     "browsePrompts": "プロンプトを見る"
+  },
+  "bots": {
+    "description": "指示・ルーティン・スキルを備えたすぐに使える AI エージェントボット。OpenClaw、Hermes Agent、Grok Bot にインストールできます。",
+    "count": "{count, plural, other {# 件のボット}}",
+    "allPlatforms": "すべて",
+    "noBots": "このプラットフォームのボットはまだありません。",
+    "example": "サンプル",
+    "exampleNotice": "これは形式を示すサンプルボットです。使う前に調整してください。",
+    "scheduledCount": "{count, plural, other {# 件の定期ルーティン}}",
+    "eventCount": "{count, plural, other {# 件のイベントトリガー}}",
+    "backToBots": "すべてのボット",
+    "instructions": "指示",
+    "routines": "ルーティン",
+    "noRoutines": "このボットにはルーティンがありません。",
+    "scheduled": "定期実行",
+    "eventTriggered": "イベント起動",
+    "schedule": "スケジュール",
+    "trigger": "トリガー",
+    "skills": "スキル",
+    "connectors": "必要なコネクタ",
+    "install": "インストール",
+    "installOn": "{platform} にインストール",
+    "installLinkComingSoon": "インストールリンクは近日公開",
+    "hermesCommandHint": "1 つのコマンドでボットをスキルとしてインストール:",
+    "copyCommand": "コマンドをコピー",
+    "installPromptHint": "このプロンプトをエージェントに貼り付けてください。ボットの定義を取得し、指示・ルーティン・スキルを設定します。",
+    "installPromptFallbackHint": "または、このプロンプトを Grok Bot に貼り付けて自分でボットを作成します:",
+    "copyInstallPrompt": "インストールプロンプトをコピー",
+    "machineReadable": "機械可読"
   },
   "collection": {
     "title": "マイコレクション",
@@ -2288,6 +2318,11 @@
       "title": "AIプロンプトワークフローとプロンプトチェーン",
       "description": "各ステップの出力が次のステップにつながる、多段階のAIプロンプトワークフローとプロンプトチェーン。ChatGPT、Claude、画像・動画生成で実績のある手順を再利用できます。",
       "heading": "プロンプトワークフロー"
+    },
+    "bots": {
+      "title": "OpenClaw・Hermes・Grok 向けのすぐに使える AI エージェントボット",
+      "description": "指示、定期ルーティン、スキルを備えたすぐに使える AI エージェントボットを探して、OpenClaw、Hermes Agent、Grok Bot にワンクリックでインストールできます。",
+      "heading": "ボット"
     },
     "taste": {
       "title": "AIコーディングエージェント向けテイストプロファイル（taste.md）",
